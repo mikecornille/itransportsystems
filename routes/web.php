@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/twilio', function () {
+    return view('twilio');
+});
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

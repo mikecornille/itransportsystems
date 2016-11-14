@@ -2,6 +2,9 @@ const elixir = require('laravel-elixir');
 
 require('laravel-elixir-vue-2');
 
+const jquery = require( 'jquery' );
+const datatables = require( 'datatables.net' );
+
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -15,5 +18,7 @@ require('laravel-elixir-vue-2');
 
 elixir((mix) => {
     mix.sass('app.scss')
-       .webpack('app.js');
+       .webpack('app.js')
+       .scripts('main.js')
+       .scripts('datepicker.js')
 });
