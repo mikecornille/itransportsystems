@@ -16,7 +16,7 @@ class User extends Authenticatable
      */
     protected $table = 'cms_users';
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'cell', 'password',
     ];
 
     /**
