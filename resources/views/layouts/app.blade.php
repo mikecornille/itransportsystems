@@ -11,6 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
     <link href="/css/app.css" rel="stylesheet">
 
     <!-- Scripts -->
@@ -85,5 +86,7 @@
     <script src="/js/app.js"></script>
     <script src="/js/datepicker.js"></script>
     <script src="/js/main.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/fixedcolumns/3.2.2/js/dataTables.fixedColumns.min.js"></script>
 </body>
 </html>

@@ -3,9 +3,9 @@
 @section('content')
 
 
+<div class="container-fluid">
 
-
-<div class="container" id="customer_container">
+<div id="customer_container">
     <div class="well">
         <div class="form-group">
             <div class="row">
@@ -80,7 +80,7 @@
         </div>
     </div>
 
-<div class="container" id="carrier_container">
+<div id="carrier_container">
     <div class="well">
 
         <div class="form-group">
@@ -200,7 +200,7 @@
     </div>
 </div>
 
-<div class="container" id="origin_container">
+<div id="origin_container">
     <div class="well">
 
         <div class="form-group">
@@ -332,7 +332,7 @@
     </div>
 </div>
 
-<div class="container" id="destination_container">
+<div id="destination_container">
     <div class="well">
 
         <div class="form-group">
@@ -460,17 +460,23 @@
     </div>
 </div>
 
-<div class="container" id="reference_container">
+<div id="reference_container">
     <div class="well">
 
         <div class="form-group">
 
             <div class="row">
 
-                <div class="col-xs-12">
+                <div class="col-xs-10">
 
-                    <label class="label-control" for="pro_number">PRO #</label>
-                    <input type="text" class="form-control" id="id" name="pro_number">
+                    
+                      <label class="label-control" for="pro_number">PRO #</label>
+                      <div class="input-group">
+                    <span class="input-group-btn">
+                      <input type="text" class="form-control" id="id" name="pro_number">
+                      <button class="btn btn-success" id="search_pro_number" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                    </span>
+                    </div>
 
                 </div>
 
@@ -548,7 +554,7 @@
     </div>
 </div>
 
-<div class="container" id="accounting_container">
+<div id="accounting_container">
     <div class="well">
 
         <div class="form-group">
@@ -611,46 +617,99 @@
     </div>
 </div>
 
-<div class="container" id="commodity_section">
+<div id="commodity_section">
     <div class="well">
         <label for="commodity">Commodity</label>
         <textarea name="commodity" id="commodity" class="form-control" rows="2"></textarea>
     </div>
 </div>
 
-<div class="container" id="instructions_section">
+<div id="instructions_section">
     <div class="well">
         <label for="instructions">Special Instructions (These notes appear on Rate Con Only)</label>
         <textarea name="instructions" id="instructions" class="form-control" rows="2"></textarea>
     </div>
 </div>
 
-<div class="container" id="stops_section">
+<div id="stops_section">
     <div class="well">
         <label for="stops">Additinal Stops</label>
         <textarea name="stops" id="stops" class="form-control" rows="2"></textarea>
     </div>
 </div>
 
-<div class="container" id="internal_notes_section">
+<div id="internal_notes_section">
     <div class="well">
         <label for="commodity">Internal Notes (These notes are for ITS eyes only)</label>
         <textarea name="commodity" id="commodity" class="form-control" rows="2"></textarea>
     </div>
 </div>
 
-<div class="container" id="invoice_notes_section">
+<div id="invoice_notes_section">
     <div class="well">
         <label for="instructions">Invoice Notes (These notes get attached to the Invoice)</label>
         <textarea name="instructions" id="instructions" class="form-control" rows="2"></textarea>
     </div>
 </div>
 
-<div class="container" id="update_message_section">
+<div id="update_message_section">
     <div class="well">
-        <label for="stops">Update Message (These are sent when "Update Customer" or "Email Internal" are clicked)</label>
+        <label for="stops">Message (Sent when "Update Customer" or "Email Internal" are clicked)</label>
         <textarea name="stops" id="stops" class="form-control" rows="2"></textarea>
     </div>
 </div>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-primary">NEW</button>
+  <button type="button" class="btn btn-primary">UPDATE</button>
+  <button type="button" class="btn btn-primary">PRINT INVOICE</button>
+  <button type="button" class="btn btn-primary">EMAIL INVOICE</button>
+  <button type="button" class="btn btn-primary">PRINT RATE CON</button>
+  <button type="button" class="btn btn-primary">EMAIL RATE CON</button>
+  <button type="button" class="btn btn-primary">GET STATUS</button>
+  <button type="button" class="btn btn-primary">POD REQUEST</button>
+  <button type="button" class="btn btn-primary">UPDATE CUSTOMER</button>
+  <button type="button" class="btn btn-primary">EMAIL INTERNAL</button>
+  <button type="button" class="btn btn-primary">TO BE LOADED</button>
+  <button type="button" class="btn btn-primary">TO BE DELIVERED</button>
+  <button type="button" class="btn btn-primary">CONTACT LIST</button>
+  <button type="button" class="btn btn-primary">EMAIL BOL</button>
+</div>
+
+<div class="well">
+<table id="mainTable" cellspacing="0" class="stripe row-border order-column" width="100%">
+        <thead>
+            <tr>
+                <th>Pick City</th>
+                <th>Pick State</th>
+                <th>Delivery City</th>
+                <th>Delivery State</th>
+                
+                
+                
+                
+                
+                
+
+
+            </tr>
+        </thead>
+         <tfoot>
+            <tr>
+                <th>Pick City</th>
+                <th>Pick State</th>
+                <th>Delivery City</th>
+                <th>Delivery State</th>
+              
+                
+           
+                
+
+            </tr>
+        </tfoot>  
+    </table>
+    </div>
+
+</div> <!-- end main container -->
 
 @endsection
