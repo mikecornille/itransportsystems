@@ -682,6 +682,7 @@
 <table id="mainTable" cellspacing="0" class="stripe row-border order-column" width="100%">
         <thead>
             <tr>
+            <th></th>
                 <th>Pro</th>
                 <th>CreatedOn</th>
                 <th>Pick Status</th>
@@ -720,6 +721,7 @@
         </thead>
          <tfoot>
             <tr>
+            <th></th>
                 <th>Pro</th>
                 <th>CreatedOn</th>
                 <th>Pick Status</th>
