@@ -11,7 +11,7 @@ $('html').bind('keypress', function(e)
 //GET THE CONTENT FOR THE DATATABLE
 
 $(document).ready(function() {
-//
+
     var table = $('#mainTable').DataTable({
         
 		 scrollY:        "300px",
@@ -21,11 +21,40 @@ $(document).ready(function() {
          fixedColumns: true,
 		"ajax": "/loads",
         "columns": [
+			// {
+   //              "className":      'details-control',
+   //              "orderable":      false,
+   //              "data":           'id',
+   //              "render": function ( data, type, full, meta ) {
+   //    			return '<a href="/edit/url?id='+data+'">EDIT</a>';}
+   //  		},
 			
-			{ "data": "pick_city" },
-            { "data": "pick_state" },
-            { "data": "delivery_city" },
-            { "data": "delivery_state" }
+			{ "data": "id" },
+            { "data": "creation_date" },
+            { "data": "pick_status"},
+            { "data": "pick_date"},
+            { "data": "pick_time"},
+            { "data": "delivery_status"},
+            { "data": "delivery_date"},
+            { "data": "delivery_time"},
+            { "data": "billed_date"},
+            { "data": "ref_number"},
+            { "data": "customer_name" },
+            { "data": "carrier_name" },
+            { "data": "pick_company"},
+            { "data": "pick_city"},
+            { "data": "delivery_company"},
+            { "data": "delivery_city"},
+            { "data": "po_number"},
+            { "data": "bol_number"},
+            { "data": "commodity"},
+            { "data": "rate_con_creation_date"},
+            { "data": "created_by"},
+            { "data": "its_group"},
+            { "data": "amount_due"},
+            { "data": "carrier_rate"},
+            { "data": "trailer_type"},
+            { "data": "total_miles"}
 
 
         ],
@@ -40,13 +69,13 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     // Setup - add a text input to each footer cell
-    $('#mainTable tfoot th').each( function () {
+    $('#myTable tfoot th').each( function () {
         var title = $(this).text();
         $(this).html( '<input type="text" placeholder="'+title+'" />' );
     } );
  
     // DataTable
-    var table = $('#mainTable').DataTable();
+    var table = $('#myTable').DataTable();
  
     // Apply the search
     table.columns().every( function () {
