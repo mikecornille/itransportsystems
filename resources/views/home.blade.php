@@ -160,9 +160,6 @@
           <label class="label-control" for="name">Invoice Created</label>
           <input type="text" class="form-control datepicker" id="datepicker4" name="creation_date" value="">
         </div>
-        <div class="col-xs-12">
-          <button type="button" class="btn btn-primary">NEW</button>
-        </div>
       </div> <!-- row -->
     </div> <!-- form group -->
   </div> <!-- well -->
@@ -208,6 +205,10 @@
 </div>
 
 </div>
+
+
+      <button type="submit" class="btn btn-primary">NEW</button>
+
 </form>
 
 <div class="container-fluid">
