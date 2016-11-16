@@ -15,7 +15,7 @@ $(document).ready(function() {
     var table = $('#mainTable').DataTable({
         
 		 // scrollY:        "300px",
-   //       scrollX:        true,
+         scrollX:        true,
    //       scrollCollapse: true,
    //       paging:         true,
    //       fixedColumns: true,
