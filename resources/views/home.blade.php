@@ -670,20 +670,44 @@
   <button type="button" class="btn btn-primary">POD REQUEST</button>
   <button type="button" class="btn btn-primary">UPDATE CUSTOMER</button>
   <button type="button" class="btn btn-primary">EMAIL INTERNAL</button>
-  <button type="button" class="btn btn-primary">TO BE LOADED</button>
+  <button type="button" onclick="toBeLoaded()" class="btn btn-primary">TO BE LOADED</button>
   <button type="button" class="btn btn-primary">TO BE DELIVERED</button>
   <button type="button" class="btn btn-primary">CONTACT LIST</button>
   <button type="button" class="btn btn-primary">EMAIL BOL</button>
 </div>
 
+
+
 <div class="well">
 <table id="mainTable" cellspacing="0" class="stripe row-border order-column" width="100%">
         <thead>
             <tr>
+                <th>Pro</th>
+                <th>CreatedOn</th>
+                <th>Pick Status</th>
+                <th>Pick Date</th>
+                <th>Pick Time</th>
+                <th>Del Status</th>
+                <th>Del Date</th>
+                <th>Del Time</th>
+                <th>Billed</th>
+                <th>Reference</th>
+                <th>Customer</th>
+                <th>Carrier</th>
+                <th>Pick Company</th>
                 <th>Pick City</th>
-                <th>Pick State</th>
-                <th>Delivery City</th>
-                <th>Delivery State</th>
+                <th>Del Company</th>
+                <th>Del City</th>
+                <th>PO Num</th>
+                <th>BOL</th>
+                <th>Commodity</th>
+                <th>Rate Con</th>
+                <th>Creator</th>
+                <th>Group</th>
+                <th>Amount</th>
+                <th>Carrier Rate</th>
+                <th>Trailer Type</th>
+                <th>Signed</th>
                 
                 
                 
@@ -696,10 +720,32 @@
         </thead>
          <tfoot>
             <tr>
+                <th>Pro</th>
+                <th>CreatedOn</th>
+                <th>Pick Status</th>
+                <th>Pick Date</th>
+                <th>Pick Time</th>
+                <th>Del Status</th>
+                <th>Del Date</th>
+                <th>Del Time</th>
+                <th>Billed</th>
+                <th>Reference</th>
+                <th>Customer</th>
+                <th>Carrier</th>
+                <th>Pick Company</th>
                 <th>Pick City</th>
-                <th>Pick State</th>
-                <th>Delivery City</th>
-                <th>Delivery State</th>
+                <th>Del Company</th>
+                <th>Del City</th>
+                <th>PO Num</th>
+                <th>BOL</th>
+                <th>Commodity</th>
+                <th>Rate Con</th>
+                <th>Creator</th>
+                <th>Group</th>
+                <th>Amount</th>
+                <th>Carrier Rate</th>
+                <th>Trailer Type</th>
+                <th>Signed</th>
               
                 
            

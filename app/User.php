@@ -14,7 +14,8 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $table = 'cms_users';
+    protected $table = 'users';
+    //protected $table = 'cms_users';
     protected $fillable = [
         'name', 'email', 'cell', 'password',
     ];
@@ -27,4 +28,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = ucwords($value);
+    }
 }

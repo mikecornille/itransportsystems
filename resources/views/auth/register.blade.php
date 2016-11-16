@@ -14,7 +14,7 @@
                             <label for="name" class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="John Smith" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -42,7 +42,7 @@
                             <label for="cell" class="col-md-4 control-label">Cell Phone</label>
 
                             <div class="col-md-6">
-                                <input id="cell" type="cell" class="form-control" name="cell" value="{{ old('cell') }}" required>
+                                <input id="cell" type="cell" class="form-control" name="cell" value="{{ old('cell') }}" placeholder="Example: 630-832-6900" required>
 
                                 @if ($errors->has('cell'))
                                     <span class="help-block">
