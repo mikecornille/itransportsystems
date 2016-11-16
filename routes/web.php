@@ -26,4 +26,4 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/loads', 'LoadsController@index');
 
-Route::post('/newload', 'LoadsController@store');
+Route::post('/newload', 'LoadsController@create');
