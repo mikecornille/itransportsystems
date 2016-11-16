@@ -15,7 +15,7 @@ $(document).ready(function() {
     var table = $('#mainTable').DataTable({
         
 		 // scrollY:        "300px",
-         scrollX:        true,
+    //     scrollX:        true,
    //       scrollCollapse: true,
    //       paging:         true,
    //       fixedColumns: true,
@@ -26,7 +26,7 @@ $(document).ready(function() {
                 "orderable":      false,
                 "data":           'id',
                 "render": function ( data, type, full, meta ) {
-      			return '<a href="/edit/url?id='+data+'">PRO #</a>';}
+      			return '<a href="/edit/url?id='+data+'">Edit/View</a>';}
     		},
 			
 			{ "data": "id" },

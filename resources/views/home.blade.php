@@ -7,6 +7,12 @@
 
 <div id="customer_container">
     <div class="well">
+
+<form>
+
+<input type="hidden" name="its_group" id="its_group" value="ITS">
+
+  
         <div class="form-group">
             <div class="row">
                 <div class="col-xs-12">
@@ -500,41 +506,18 @@
                     <input type="text" class="form-control" id="bol_number" name="bol_number">
 
                 </div>
+                
+                <div class="col-xs-12">
+
+                    <label class="label-control" for="created_by">Created By</label>
+                    <input type="text" class="form-control" id="created_by" name="created_by" value="{{ \Auth::user()->email }}">
+
+                </div>
 
            
 
             
-      <div class="col-xs-12">
-        <label for="created_by" class="label-control">Created By</label>
-          <select name="created_by" id="created_by" class="form-control">
-              <option value="Please Choose One">Please Choose One</option>
-              <option value="Bruschuk">Bruschuk</option>
-              <option value="Mowrer">Mowrer</option>
-              <option value="King">King</option>
-              <option value="Carnahan">Carnahan</option>
-              <option value="M. Cornille">M. Cornille</option>
-              <option value="R. Cornille">R. Cornille</option>
-              <option value="Bansberg">Bansberg</option>
-              <option value="Mesik">Mesik</option>
-              <option value="Giovingo">Giovingo</option>
-           </select>
-      </div>
-
-
-     
-      <div class="col-xs-12">
-        <label for="its_group" class="label-control">Group</label>
-          <select name="its_group" id="its_group" class="form-control">
-              <option value="Please Choose One">Please Choose One</option>
-              <option value="UR">UR</option>
-              <option value="SUN">SUN</option>
-              <option value="FM">FM</option>
-              <option value="MJM">MJM</option>
-              <option value="JM">JM</option>
-              <option value="BLUE">BLUE</option>
-              <option value="CSX">CSX</option>
-           </select>
-      </div>
+    
 
       
                             <div class="col-xs-6">
@@ -676,7 +659,7 @@
   <button type="button" class="btn btn-primary">EMAIL BOL</button>
 </div>
 
-
+</form>
 
 <div class="well">
 <table id="mainTable" cellspacing="0" class="stripe row-border order-column" width="100%">
