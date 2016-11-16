@@ -140,11 +140,15 @@ $('#datepicker7').on('changeDate', function(ev){
 
 <!-- INSERT TIMESTAMP IN UPDATE CUSTOMER MESSAGE TEXTAREA -->
 
+<!-- INSERT TIMESTAMP IN UPDATE CUSTOMER MESSAGE TEXTAREA -->
+
 $(document).on('dblclick', '#update_customer_message', function(){
 
-var $timestamp_updates = Date(); 
+var d = new Date();
+var n = d.toDateString();
+var m = d.toLocaleTimeString();
 
-$('#update_customer_message').val($('#update_customer_message').val() + $timestamp_updates + " - ");
+$('#update_customer_message').val($('#update_customer_message').val() + n + " " + m + " - ");
 
 });
 
@@ -152,16 +156,38 @@ $('#update_customer_message').val($('#update_customer_message').val() + $timesta
 
 $(document).on('dblclick', '#internal_notes', function(){
 
-var $timestamp_updates = Date();
+var d = new Date();
+var n = d.toDateString();
+var m = d.toLocaleTimeString();
 
-$('#internal_notes').val($('#internal_notes').val() + $timestamp_updates + " - ");
+$('#internal_notes').val($('#internal_notes').val() + n + " " + m + " - ");
 
 });
 
+$(document).on('dblclick', '#quick_status_notes', function(){
+
+var d = new Date();
+var n = d.getDate();
+var m = d.toLocaleTimeString();
+
+$('#quick_status_notes').val($('#quick_status_notes').val() + "Day " + n + " " + m + " - ");
+
+});
+
+// $(document).on('dblclick', '#quick_status_notes', function(){
+
+// var d = new Date();
+// var n = d.getDate();
+// var m = d.toLocaleTimeString();
+
+// $('#quick_status_notes').val($('#quick_status_notes').val() + 'Day ' n + ' ' + m + " - ");
+
+// });
+
 $(document).on('dblclick', '#signed_rate_con', function(){
 
-var $signed = 'SIGNED';
+var signed = 'SIGNED';
 
-$('#signed_rate_con').val($signed);
+$('#signed_rate_con').val(signed);
 
 });

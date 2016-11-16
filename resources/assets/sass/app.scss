@@ -1,24 +1,35 @@
-#customer_container, #carrier_container, #origin_container, #destination_container, #reference_container {
+$mainmarginright: 50px;
+$mainmarginleft: 100px;
+
+#customer, #origin, #delivery, #reference {
     
     width: 300px; 
     float: left;
+    margin-right: $mainmarginright;
 }
 
-#accounting_container {
-    
-    width:200px;
-    float:left
+#customer {
+  
+  margin-left: $mainmarginleft;
 }
 
-#commodity_section, #instructions_section, #stops_section, #internal_notes_section, #invoice_notes_section, #update_message_section {
-    width: 560px; 
+
+
+#commodity_div, #special_ins_div, #stops_div, #internal_notes_div, #invoice_notes_div  {
+    width: 500px; 
     float: left;
+    margin-right: $mainmarginright;
 }
 
-#commodity_section {
+#commodity_div, #internal_notes_div {
     
     clear:left;
+    margin-left: $mainmarginleft;
 }
+
+
+
+
 
 html, body {
                 background-color: #fff;

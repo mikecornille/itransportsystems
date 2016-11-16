@@ -16,4 +16,22 @@ class LoadsController extends Controller
 		return(['data' => $data]);
 		
 	}
+
+	 public function store(Request $request)
+	{
+		
+		
+		
+		
+
+		$newload = New Load($request->all());
+		
+		$newload->its_group = "ITS";
+		$newload->pick_status = "Open";
+		$newload->delivery_status = "Open";
+		$newload->created_by = \Auth::user()->email;
+
+		$newload->save();
+		
+	}
 }

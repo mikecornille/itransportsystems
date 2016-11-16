@@ -1,19 +1,21 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-#customer_container, #carrier_container, #origin_container, #destination_container, #reference_container {
+#customer, #origin, #delivery, #reference {
   width: 300px;
-  float: left; }
+  float: left;
+  margin-right: 50px; }
 
-#accounting_container {
-  width: 200px;
-  float: left; }
+#customer {
+  margin-left: 100px; }
 
-#commodity_section, #instructions_section, #stops_section, #internal_notes_section, #invoice_notes_section, #update_message_section {
-  width: 560px;
-  float: left; }
+#commodity_div, #special_ins_div, #stops_div, #internal_notes_div, #invoice_notes_div {
+  width: 500px;
+  float: left;
+  margin-right: 50px; }
 
-#commodity_section {
-  clear: left; }
+#commodity_div, #internal_notes_div {
+  clear: left;
+  margin-left: 100px; }
 
 html, body {
   background-color: #fff;
