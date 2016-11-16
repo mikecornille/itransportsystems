@@ -32,6 +32,8 @@ class LoadsController extends Controller
 		$newload->created_by = \Auth::user()->email;
 
 		$newload->save();
+
+		return back();
 		
 	}
 }
