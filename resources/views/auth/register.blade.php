@@ -42,7 +42,7 @@
                             <label for="cell" class="col-md-4 control-label">Cell Phone</label>
 
                             <div class="col-md-6">
-                                <input id="cell" type="cell" class="form-control" name="cell" value="{{ old('cell') }}" placeholder="Example: 630-832-6900" required>
+                                <input id="cell" type="cell" class="form-control" name="cell" value="{{ old('cell') }}" placeholder="No spaces or dashes example: 6308326900" required>
 
                                 @if ($errors->has('cell'))
                                     <span class="help-block">
