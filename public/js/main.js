@@ -21,13 +21,13 @@ $(document).ready(function() {
          fixedColumns: true,
 		"ajax": "/loads",
         "columns": [
-			{
-                "className":      'details-control',
-                "orderable":      false,
-                "data":           'id',
-                "render": function ( data, type, full, meta ) {
-      			return '<a href="/edit/url?id='+data+'">PRO #</a>';}
-    		},
+			// {
+   //              "className":      'details-control',
+   //              "orderable":      false,
+   //              "data":           'id',
+   //              "render": function ( data, type, full, meta ) {
+   //    			return '<a href="/edit/url?id='+data+'">PRO #</a>';}
+   //  		},
 			
 			{ "data": "id" },
             { "data": "creation_date" },
