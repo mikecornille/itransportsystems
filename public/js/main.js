@@ -21,13 +21,13 @@ $(document).ready(function() {
          fixedColumns: true,
 		"ajax": "/loads",
         "columns": [
-			// {
-   //              "className":      'details-control',
-   //              "orderable":      false,
-   //              "data":           'id',
-   //              "render": function ( data, type, full, meta ) {
-   //    			return '<a href="/edit/url?id='+data+'">EDIT</a>';}
-   //  		},
+			{
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           'id',
+                "render": function ( data, type, full, meta ) {
+      			return '<a href="/edit/url?id='+data+'">PRO #</a>';}
+    		},
 			
 			{ "data": "id" },
             { "data": "creation_date" },
@@ -69,13 +69,13 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     // Setup - add a text input to each footer cell
-    $('#myTable tfoot th').each( function () {
+    $('#mainTable tfoot th').each( function () {
         var title = $(this).text();
         $(this).html( '<input type="text" placeholder="'+title+'" />' );
     } );
  
     // DataTable
-    var table = $('#myTable').DataTable();
+    var table = $('#mainTable').DataTable();
  
     // Apply the search
     table.columns().every( function () {
