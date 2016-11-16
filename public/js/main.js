@@ -136,4 +136,33 @@ $('#datepicker6').on('changeDate', function(ev){
 $('#datepicker7').on('changeDate', function(ev){
     $(this).datepicker('hide');
 });
+
+
+<!-- INSERT TIMESTAMP IN UPDATE CUSTOMER MESSAGE TEXTAREA -->
+
+$(document).on('dblclick', '#update_customer_message', function(){
+
+var $timestamp_updates = Date(); 
+
+$('#update_customer_message').val($('#update_customer_message').val() + $timestamp_updates + " - ");
+
+});
+
+
+
+$(document).on('dblclick', '#internal_notes', function(){
+
+var $timestamp_updates = Date();
+
+$('#internal_notes').val($('#internal_notes').val() + $timestamp_updates + " - ");
+
+});
+
+$(document).on('dblclick', '#signed_rate_con', function(){
+
+var $signed = 'SIGNED';
+
+$('#signed_rate_con').val($signed);
+
+});
 //# sourceMappingURL=main.js.map

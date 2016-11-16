@@ -609,36 +609,36 @@
 
 <div id="instructions_section">
     <div class="well">
-        <label for="instructions">Special Instructions (These notes appear on Rate Con Only)</label>
-        <textarea name="instructions" id="instructions" class="form-control" rows="2"></textarea>
+        <label for="special_ins">Special Instructions (These notes appear on Rate Con Only)</label>
+        <textarea name="special_ins" id="special_ins" class="form-control" rows="2"></textarea>
     </div>
 </div>
 
 <div id="stops_section">
     <div class="well">
-        <label for="stops">Additinal Stops</label>
-        <textarea name="stops" id="stops" class="form-control" rows="2"></textarea>
+        <label for="add_stops">Additional Stops</label>
+        <textarea name="add_stops" id="add_stops" class="form-control" rows="2"></textarea>
     </div>
 </div>
 
 <div id="internal_notes_section">
     <div class="well">
-        <label for="commodity">Internal Notes (These notes are for ITS eyes only)</label>
-        <textarea name="commodity" id="commodity" class="form-control" rows="2"></textarea>
+        <label for="internal_notes">Internal Notes (These notes are for ITS eyes only)</label>
+        <textarea name="internal_notes" id="internal_notes" class="form-control" rows="2"></textarea>
     </div>
 </div>
 
 <div id="invoice_notes_section">
     <div class="well">
-        <label for="instructions">Invoice Notes (These notes get attached to the Invoice)</label>
-        <textarea name="instructions" id="instructions" class="form-control" rows="2"></textarea>
+        <label for="invoice_notes">Invoice Notes (These notes get attached to the Invoice)</label>
+        <textarea name="invoice_notes" id="invoice_notes" class="form-control" rows="2"></textarea>
     </div>
 </div>
 
 <div id="update_message_section">
     <div class="well">
-        <label for="stops">Message (Sent when "Update Customer" or "Email Internal" are clicked)</label>
-        <textarea name="stops" id="stops" class="form-control" rows="2"></textarea>
+        <label for="update_customer_message">Message (Sent when "Update Customer" or "Email Internal" are clicked)</label>
+        <textarea name="update_customer_message" id="update_customer_message" class="form-control" rows="2"></textarea>
     </div>
 </div>
 
