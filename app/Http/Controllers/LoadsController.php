@@ -68,7 +68,7 @@ class LoadsController extends Controller
 
 		$newload->save();
 
-		return back();
+		return back()->with('status', 'New Load Created!');
 		
 	}
 

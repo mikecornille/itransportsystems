@@ -12,6 +12,12 @@
     </div>
 @endif
 
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+
 <form role="form" class="form-horizontal" method="POST" action="/new">
         
         {{ csrf_field() }}
