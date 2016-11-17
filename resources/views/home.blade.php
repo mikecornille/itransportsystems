@@ -7,7 +7,7 @@
 
 <div id="customer">
     <div class="well">
-      <form role="form" class="form-horizontal" method="POST" action="/new">
+      <form role="form" class="form-horizontal" method="POST" action="/new/">
         
         {{ csrf_field() }}
       
