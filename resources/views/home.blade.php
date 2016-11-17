@@ -49,14 +49,16 @@
                 <label class="label-control" for="customer_fax">Fax</label>
                 <input type="text" class="form-control" id="customer_fax" name="customer_fax">
             </div>
+
+             <button type="submit" class="btn btn-primary">NEW</button>
+
+              </form>
           </div> <!-- row -->
         </div> <!-- form group -->
     </div> <!-- customer well -->
 </div> <!-- customer div -->
 
- <button type="submit" class="btn btn-primary">NEW</button>
 
-</form>
 
 
 <!-- <div id="origin">
