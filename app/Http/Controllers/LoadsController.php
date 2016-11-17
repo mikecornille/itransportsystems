@@ -74,5 +74,13 @@ class LoadsController extends Controller
 		
 	}
 
+	public function edit(Request $request)
+	{
+
+		$info = Load::find($request->input('id'));
+		return view('edit', compact('info'));	
+		
+	}
+
 	
 }

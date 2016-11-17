@@ -1,3 +1,8 @@
+@extends('layouts.app')
+
+@section('content')
+
+
 <div class="container-fluid">
 
 <div id="customer_container">
@@ -681,3 +686,5 @@
 <!-- </div> -->
 
 </form>
+
+@endsection

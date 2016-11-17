@@ -29,4 +29,7 @@ Route::post('/new', 'LoadsController@store');
 Route::get('/loads', 'LoadsController@index');
 
 
+Route::get('/edit/{id}', 'LoadsController@edit');
+
+
 
