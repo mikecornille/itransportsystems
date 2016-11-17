@@ -14,11 +14,11 @@ $(document).ready(function() {
 
     var table = $('#mainTable').DataTable({
         
-		 scrollY:        "800px",
-         scrollX:        true,
-         scrollCollapse: true,
-         paging:         true,
-         fixedColumns: true,
+		 // scrollY:        "800px",
+   //       scrollX:        true,
+   //       scrollCollapse: true,
+   //       paging:         true,
+   //       fixedColumns: true,
 		"ajax": "/loads",
         "columns": [
 			{
