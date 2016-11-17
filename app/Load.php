@@ -44,7 +44,9 @@ class Load extends Model
 			  'internal_notes',
 			  'add_stops',
 			  'invoice_notes',
-			  'update_customer_message',
+			  'update_customer_message'
+
+			  ];
   //    'customer_name',
   // 'customer_address',
   // 'customer_city',
@@ -121,5 +123,5 @@ class Load extends Model
     
 
 
-    ];
+    
 }
