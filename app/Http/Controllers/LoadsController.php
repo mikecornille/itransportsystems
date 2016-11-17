@@ -12,6 +12,7 @@ use Illuminate\Support\Collection;
 
 
 
+
 class LoadsController extends Controller
 {
     public function index()
@@ -49,7 +50,6 @@ class LoadsController extends Controller
 			  'delivery_zip' => 'required',
 			  'delivery_phone' => 'required',
 			  'amount_due' => 'required',
-			  'creation_date' => 'required',
 			  'commodity' => 'required',
         
          ]);
@@ -65,6 +65,8 @@ class LoadsController extends Controller
 		$newload->pick_status = "Open";
 		$newload->delivery_status = "Open";
 		$newload->created_by = strtoupper(\Auth::user()->email);
+		$newload->creation_date = date('m/d/Y');
+		
 
 		$newload->save();
 

@@ -38,7 +38,6 @@ class Load extends Model
 			  'ref_number',
 			  'bol_number',
 			  'amount_due',
-			  'creation_date',
 			  'commodity',
 			  'special_ins',
 			  'internal_notes',

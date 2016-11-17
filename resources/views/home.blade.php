@@ -176,10 +176,6 @@
           <label class="label-control" for="amount_due">Amount Due</label>
           <input type="text" class="form-control" id="amount_due" name="amount_due" value="{{ old('amount_due') }}">
         </div>
-        <div class="col-xs-12">
-          <label class="label-control" for="datepicker4">Invoice Created</label>
-          <input type="text" class="form-control datepicker" id="datepicker4" name="creation_date" value="{{ old('creation_date') }}">
-        </div>
       </div> 
     </div> 
   </div> 
