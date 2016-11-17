@@ -95,10 +95,10 @@
             <label class="label-control" for="pick_email">Email</label>
             <input type="text" class="form-control" id="pick_email" name="pick_email">
           </div> -->
-      </div> <!-- row -->
-    </div> <!-- form group -->
-  </div> <!-- well -->
-</div> <!-- origin div -->
+  <!--     </div> 
+    </div> 
+  </div> 
+</div> --> 
 
 <!-- <div id="delivery">
   <div class="well">
@@ -136,10 +136,10 @@
             <label class="label-control" for="delivery_email">Email</label>
             <input type="text" class="form-control" id="delivery_email" name="delivery_email">
           </div> -->
-      </div> <!-- row -->
-    </div> <!-- form group -->
-  </div> <!-- well -->
-</div> <!-- delivery div -->
+<!--       </div> 
+    </div> 
+  </div> 
+</div>  -->
 
 <!-- <div id="reference">
   <div class="well">
@@ -165,10 +165,10 @@
           <label class="label-control" for="name">Invoice Created</label>
           <input type="text" class="form-control datepicker" id="datepicker4" name="creation_date" value="">
         </div> -->
-      </div> <!-- row -->
-    </div> <!-- form group -->
-  </div> <!-- well -->
-</div>  <!-- reference div -->
+<!--       </div> 
+    </div> 
+  </div> 
+</div> -->  
 
 <!-- </div>
 

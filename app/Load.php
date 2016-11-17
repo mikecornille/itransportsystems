@@ -10,7 +10,7 @@ class Load extends Model
 
     protected $fillable = [
 			  'customer_name',
-			  'customer_address'
+			  'customer_address',
 			  'customer_city',
 			  'customer_state',
 			  'customer_zip',
