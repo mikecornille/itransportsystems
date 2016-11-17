@@ -21,11 +21,7 @@
                 <label class="label-control" for="customer_address">Address</label>
                 <input type="text" class="form-control" id="customer_address" name="customer_address">
             </div>
-
-                              <button type="submit" class="btn btn-primary">NEW</button>
-
-</form>
-            <!-- <div class="col-xs-12">
+            <div class="col-xs-12">
                 <label class="label-control" for="customer_city">City</label>
                 <input type="text" class="form-control" id="customer_city" name="customer_city">
             </div>
@@ -52,12 +48,15 @@
             <div class="col-xs-6">
                 <label class="label-control" for="customer_fax">Fax</label>
                 <input type="text" class="form-control" id="customer_fax" name="customer_fax">
-            </div> -->
+            </div>
           </div> <!-- row -->
         </div> <!-- form group -->
     </div> <!-- customer well -->
 </div> <!-- customer div -->
 
+ <button type="submit" class="btn btn-primary">NEW</button>
+
+</form>
 
 
 <!-- <div id="origin">
