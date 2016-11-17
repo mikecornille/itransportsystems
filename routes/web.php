@@ -24,6 +24,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+
+Route::post('/new', 'LoadsController@store');
 Route::get('/loads', 'LoadsController@index');
 
-Route::post('/newload', 'LoadsController@create');
+
+
