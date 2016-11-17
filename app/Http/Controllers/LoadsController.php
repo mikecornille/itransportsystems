@@ -26,7 +26,36 @@ class LoadsController extends Controller
 	 public function store(Request $request)
 	{
 		
-		
+		 $this->validate($request, [
+
+		 	'customer_name' => 'required',			  
+         	  'customer_address' => 'required',
+			  'customer_city' => 'required',
+			  'customer_state' => 'required',
+			  'customer_zip' => 'required',
+			  'customer_contact' => 'required',
+			  'customer_email' => 'required',
+			  'customer_phone' => 'required',
+			  'pick_company' => 'required',
+			  'pick_address' => 'required',
+			  'pick_city' => 'required',
+			  'pick_state' => 'required',
+			  'pick_zip' => 'required',
+			  'pick_phone' => 'required',
+			  'delivery_company' => 'required',
+			  'delivery_address' => 'required',
+			  'delivery_city' => 'required',
+			  'delivery_state' => 'required',
+			  'delivery_zip' => 'required',
+			  'delivery_phone' => 'required',
+			  'amount_due' => 'required',
+			  'creation_date' => 'required',
+			  'commodity' => 'required',
+        
+         ]);
+
+         	  
+			  
 		
 		
 
