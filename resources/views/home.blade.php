@@ -3,13 +3,13 @@
 @section('content')
 
 
-<div class="container-fluid">
+<form role="form" class="form-horizontal" method="POST" action="/new">
+        
+        {{ csrf_field() }}
 
 <div id="customer">
     <div class="well">
-      <form role="form" class="form-horizontal" method="POST" action="/new">
-        
-        {{ csrf_field() }}
+      
       
       <div class="form-group">
         <div class="row">
@@ -49,19 +49,15 @@
                 <label class="label-control" for="customer_fax">Fax</label>
                 <input type="text" class="form-control" id="customer_fax" name="customer_fax">
             </div>
-
-             <button type="submit" class="btn btn-primary">NEW</button>
-
-              </form>
-          </div> <!-- row -->
-        </div> <!-- form group -->
-    </div> <!-- customer well -->
-</div> <!-- customer div -->
+          </div> 
+        </div> 
+    </div> 
+</div> 
 
 
 
 
-<!-- <div id="origin">
+<div id="origin">
   <div class="well">
     <div class="form-group">
         <div class="row">
@@ -96,13 +92,13 @@
           <div class="col-xs-12">
             <label class="label-control" for="pick_email">Email</label>
             <input type="text" class="form-control" id="pick_email" name="pick_email">
-          </div> -->
-  <!--     </div> 
+          </div>
+      </div> 
     </div> 
   </div> 
-</div> --> 
+</div> 
 
-<!-- <div id="delivery">
+<div id="delivery">
   <div class="well">
     <div class="form-group">
         <div class="row">
@@ -137,13 +133,13 @@
           <div class="col-xs-12">
             <label class="label-control" for="delivery_email">Email</label>
             <input type="text" class="form-control" id="delivery_email" name="delivery_email">
-          </div> -->
-<!--       </div> 
+          </div>
+      </div> 
     </div> 
   </div> 
-</div>  -->
+</div> 
 
-<!-- <div id="reference">
+<div id="reference">
   <div class="well">
     <div class="form-group">
       <div class="row">
@@ -166,15 +162,15 @@
         <div class="col-xs-12">
           <label class="label-control" for="name">Invoice Created</label>
           <input type="text" class="form-control datepicker" id="datepicker4" name="creation_date" value="">
-        </div> -->
-<!--       </div> 
+        </div>
+      </div> 
     </div> 
   </div> 
-</div> -->  
+</div>  
 
-<!-- </div>
 
-<div class="container-fluid">
+
+
 
 <div id="commodity_div">
     <div class="well">
@@ -215,7 +211,7 @@
 
 </form>
 
-</div>  -->
+
 
 
 
