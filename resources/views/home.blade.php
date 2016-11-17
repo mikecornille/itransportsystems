@@ -15,11 +15,11 @@
         <div class="row">
             <div class="col-xs-12">
                 <label class="label-control" for="customer_name">CUSTOMER</label>
-                <input type="text" class="form-control" id="customer_name" name="customer_name" value="kahdk">
+                <input type="text" class="form-control" id="customer_name" name="customer_name">
             </div>
             <div class="col-xs-12">
                 <label class="label-control" for="customer_address">Address</label>
-                <input type="text" class="form-control" id="customer_address" value="kahdk" name="customer_address">
+                <input type="text" class="form-control" id="customer_address" name="customer_address">
             </div>
             <div class="col-xs-12">
                 <label class="label-control" for="customer_city">City</label>
