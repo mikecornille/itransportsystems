@@ -11,13 +11,13 @@ class Load extends Model
     protected $fillable = [
 			  'customer_name',
 			  'customer_address'
-			  // 'customer_city',
-			  // 'customer_state',
-			  // 'customer_zip',
-			  // 'customer_contact',
-			  // 'customer_email',
-			  // 'customer_phone',
-			  // 'customer_fax',
+			  'customer_city',
+			  'customer_state',
+			  'customer_zip',
+			  'customer_contact',
+			  'customer_email',
+			  'customer_phone',
+			  'customer_fax'
 			  // 'pick_company',
 			  // 'pick_address',
 			  // 'pick_city',
