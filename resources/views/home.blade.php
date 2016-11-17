@@ -7,7 +7,7 @@
 
 <div id="customer">
     <div class="well">
-      <form role="form" class="form-horizontal" method="POST" action="/new/">
+      <form role="form" class="form-horizontal" method="POST" action="/new">
         
         {{ csrf_field() }}
       
@@ -21,7 +21,11 @@
                 <label class="label-control" for="customer_address">Address</label>
                 <input type="text" class="form-control" id="customer_address" name="customer_address">
             </div>
-            <div class="col-xs-12">
+
+                              <button type="submit" class="btn btn-primary">NEW</button>
+
+</form>
+            <!-- <div class="col-xs-12">
                 <label class="label-control" for="customer_city">City</label>
                 <input type="text" class="form-control" id="customer_city" name="customer_city">
             </div>
@@ -48,7 +52,7 @@
             <div class="col-xs-6">
                 <label class="label-control" for="customer_fax">Fax</label>
                 <input type="text" class="form-control" id="customer_fax" name="customer_fax">
-            </div>
+            </div> -->
           </div> <!-- row -->
         </div> <!-- form group -->
     </div> <!-- customer well -->
@@ -56,7 +60,7 @@
 
 
 
-<div id="origin">
+<!-- <div id="origin">
   <div class="well">
     <div class="form-group">
         <div class="row">
@@ -91,13 +95,13 @@
           <div class="col-xs-12">
             <label class="label-control" for="pick_email">Email</label>
             <input type="text" class="form-control" id="pick_email" name="pick_email">
-          </div>
+          </div> -->
       </div> <!-- row -->
     </div> <!-- form group -->
   </div> <!-- well -->
 </div> <!-- origin div -->
 
-<div id="delivery">
+<!-- <div id="delivery">
   <div class="well">
     <div class="form-group">
         <div class="row">
@@ -132,13 +136,13 @@
           <div class="col-xs-12">
             <label class="label-control" for="delivery_email">Email</label>
             <input type="text" class="form-control" id="delivery_email" name="delivery_email">
-          </div>
+          </div> -->
       </div> <!-- row -->
     </div> <!-- form group -->
   </div> <!-- well -->
 </div> <!-- delivery div -->
 
-<div id="reference">
+<!-- <div id="reference">
   <div class="well">
     <div class="form-group">
       <div class="row">
@@ -161,13 +165,13 @@
         <div class="col-xs-12">
           <label class="label-control" for="name">Invoice Created</label>
           <input type="text" class="form-control datepicker" id="datepicker4" name="creation_date" value="">
-        </div>
+        </div> -->
       </div> <!-- row -->
     </div> <!-- form group -->
   </div> <!-- well -->
 </div>  <!-- reference div -->
 
-</div>
+<!-- </div>
 
 <div class="container-fluid">
 
@@ -210,7 +214,7 @@
 
 </form>
 
-</div> 
+</div>  -->
 
 
 
