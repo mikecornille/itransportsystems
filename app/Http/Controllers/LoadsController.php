@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Load;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
 use Illuminate\Support\Collection;
 
-use App\Load;
+
 
 class LoadsController extends Controller
 {
