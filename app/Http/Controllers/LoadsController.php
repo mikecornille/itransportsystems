@@ -64,7 +64,7 @@ class LoadsController extends Controller
 		$newload->its_group = "ITS";
 		$newload->pick_status = "Open";
 		$newload->delivery_status = "Open";
-		$newload->created_by = \Auth::user()->email;
+		$newload->created_by = strtoupper(\Auth::user()->email);
 
 		$newload->save();
 
