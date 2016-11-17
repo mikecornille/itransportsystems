@@ -17,7 +17,7 @@ class Load extends Model
 			  'customer_contact',
 			  'customer_email',
 			  'customer_phone',
-			  'customer_fax'
+			  'customer_fax',
 			  // 'pick_company',
 			  // 'pick_address',
 			  // 'pick_city',
