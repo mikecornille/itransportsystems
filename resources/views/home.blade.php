@@ -235,7 +235,8 @@
 
 <div class="container-fluid">
 <div class="well">
-<table id="mainTable" cellspacing="0" class="stripe row-border order-column" width="100%">
+<table id="mainTable" cellspacing="0" class="stripe row-border order-column" width="100%" style="width: 2800px; margin-left: 10px;">
+
         <thead>
             <tr>
             <th></th>
