@@ -30,15 +30,15 @@
         <div class="row">
             <div class="col-xs-12">
                 <label class="label-control" for="customer_name">CUSTOMER</label>
-                <input type="text" class="form-control" id="customer_name" name="customer_name">
+                <input type="text" class="form-control" id="customer_name" name="customer_name" value="{{ old('customer_name') }}">
             </div>
             <div class="col-xs-12">
                 <label class="label-control" for="customer_address">Address</label>
-                <input type="text" class="form-control" id="customer_address" name="customer_address">
+                <input type="text" class="form-control" id="customer_address" name="customer_address" value="{{ old('customer_address') }}">
             </div>
             <div class="col-xs-12">
                 <label class="label-control" for="customer_city">City</label>
-                <input type="text" class="form-control" id="customer_city" name="customer_city">
+                <input type="text" class="form-control" id="customer_city" name="customer_city" value="{{ old('customer_city') }}">
             </div>
             <div class="col-xs-6">
                 <label class="label-control" for="customer_state">State</label>
@@ -119,7 +119,7 @@
         <div class="row">
           <div class="col-xs-12">
             <label class="label-control" for="delivery_company">DESTINATION</label>
-            <input type="text" class="form-control" id="delivery_company" name="v_company">
+            <input type="text" class="form-control" id="delivery_company" name="delivery_company">
           </div>
           <div class="col-xs-12">
             <label class="label-control" for="delivery_address">Address</label>
