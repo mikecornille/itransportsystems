@@ -64,7 +64,7 @@ class Load extends Model
 			  'internal_notes',
 			  'add_stops',
 			  'invoice_notes',
-			  'update_customer_message'
+			  'update_customer_message',
 'rate_con_creation_date',
         'total_miles',
         'quick_status_notes',
