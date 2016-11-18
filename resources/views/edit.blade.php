@@ -4,6 +4,18 @@
 @section('content')
 
 
+@if (session('status'))
+    <div class="alert alert-success alert-dismissible">
+        
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>{{ session('status') }}</strong> Click the X at the far right to close this notification.
+    </div>
+@endif
+
+<form role="form" class="form-horizontal" method="POST" action="/changed">
+        
+        {{ csrf_field() }}
+
 <div class="page-header">
 	<h1>PRO # {{ $info->id }} <small> created by {{ $info->created_by }} on {{ $info->creation_date }}</small></h1>
 </div>
