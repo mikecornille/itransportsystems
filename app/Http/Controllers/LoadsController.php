@@ -82,5 +82,13 @@ class LoadsController extends Controller
 		
 	}
 
+	public function update(Request $request, Load $load)
+	{
+
+		$load->update($request->all());
+		return back();
+
+	}
+
 	
 }

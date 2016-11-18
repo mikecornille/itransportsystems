@@ -12,9 +12,9 @@
     </div>
 @endif
 
-<form role="form" class="form-horizontal" method="POST" action="/changed">
+<form role="form" class="form-horizontal" method="POST" action="/load/{{ $info->id }}">
         
-        {{ csrf_field() }}
+        {{ method_field('PATCH') }}
 
 <div class="page-header">
 	<h1>PRO # {{ $info->id }} <small> created by {{ $info->created_by }} on {{ $info->creation_date }}</small></h1>
