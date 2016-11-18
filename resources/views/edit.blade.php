@@ -9,8 +9,18 @@
 
 
 <div class="page-header">
-	<h1>PRO # {{ $info->id }} <small> created by {{ $info->created_by }} on {{ $info->creation_date }}</small></h1>
+	<h1 class="text-center">PRO # {{ $info->id }} <small> created by {{ $info->created_by }} on {{ $info->creation_date }}</small></h1>
 </div>
+
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
 @if (session('status'))
     <div class="alert alert-success alert-dismissible">
@@ -144,8 +154,7 @@
                     <label class="label-control" for="carrier_driver_cell">Driver Cell</label>
                     <input type="text" class="form-control" id="carrier_driver_cell" name="carrier_driver_cell" value="{{ $info->carrier_driver_cell }}">
                 </div>
-                <div class="form-group">
-      				<div class="col-xs-12">
+      			<div class="col-xs-12">
         				<label for="trailer_type" class="label-control">Trailer Type</label>
           					<select name="trailer_type" id="trailer_type" class="form-control">
           					  <option value="{{ $info->trailer_type }}">{{ $info->trailer_type }}</option>
@@ -184,8 +193,7 @@
 				              <option value="STRAIGHT TRUCK">STRAIGHT TRUCK</option>
           					</select>
       				</div>
-    			</div>
-			</div>
+    		</div>
 		</div>
 	</div>
 </div>
