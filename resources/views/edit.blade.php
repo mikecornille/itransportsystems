@@ -24,6 +24,8 @@
         
         {{ method_field('PATCH') }}
 
+        {{ csrf_field() }}
+
 
 <div id="customer">
     <div class="well">

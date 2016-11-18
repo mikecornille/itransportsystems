@@ -74,7 +74,7 @@ class Load extends Model
         'remit_address',
         'remit_city',
         'remit_state',
-        'remit_zip'
+        'remit_zip',
 
 			  ];
   
