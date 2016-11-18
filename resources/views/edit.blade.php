@@ -4,7 +4,9 @@
 @section('content')
 
 
-
+<div class="page-header">
+	<h1>PRO # {{ $info->id }} <small> created by {{ $info->created_by }} on {{ $info->creation_date }}</small></h1>
+</div>
 
 
 <div id="customer">

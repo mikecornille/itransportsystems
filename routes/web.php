@@ -33,3 +33,4 @@ Route::get('/edit/{id}', 'LoadsController@edit');
 
 
 
+
