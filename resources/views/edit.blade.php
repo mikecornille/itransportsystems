@@ -441,10 +441,6 @@
                     <input type="text" class="form-control" id="total_miles" name="total_miles" value="{{ $info->total_miles }}">
 				</div>
 				<div class="col-xs-12">
-					<label class="label-control" for="name">Invoice Created</label>
-                    <input type="text" class="form-control datepicker" id="datepicker4" name="creation_date" value="{{ $info->creation_date }}">
-				</div>
-				<div class="col-xs-12">
 					<label class="label-control" for="rate_con_creation_date">Rate Con Create</label>
                     <input type="text" class="form-control datepicker" id="datepicker5" name="rate_con_creation_date" value="{{ $info->rate_con_creation_date }}">
 				</div>
@@ -511,15 +507,17 @@
 </form>
 
 <div class="btn-group" role="group" aria-label="...">
-  <button type="button" class="btn btn-default">Left</button>
-  <button type="button" class="btn btn-default">Middle</button>
-  <button type="button" class="btn btn-default">Right</button>
-  <button type="button" class="btn btn-default">Left</button>
-  <button type="button" class="btn btn-default">Middle</button>
-  <button type="button" class="btn btn-default">Right</button>
-  <button type="button" class="btn btn-default">Left</button>
-  <button type="button" class="btn btn-default">Middle</button>
-  <button type="button" class="btn btn-default">Right</button>
+  <button type="submit" class="btn btn-primary">UPDATE</button>
+  <button type="button" class="btn btn-default">PRINT INVOICE</button>
+  <button type="button" class="btn btn-default">EMAIL INVOICE</button>
+  <button type="button" class="btn btn-default">PRINT RATE CON</button>
+  <button type="button" class="btn btn-default">EMAIL RATE CON</button>
+  <button type="button" class="btn btn-default">GET STATUS</button>
+  <button type="button" class="btn btn-default">POD REQUEST</button>
+  <button type="button" class="btn btn-default">UPDATE CUSTOMER</button>
+  <button type="button" class="btn btn-default">EMAIL INTERNAL</button>
+  <button type="button" class="btn btn-default">CONTACT LIST</button>
+  <button type="button" class="btn btn-default">EMAIL BOL</button>
 </div>
 
 @endsection

@@ -220,7 +220,14 @@
     </div>
 </div>
 
-                  <button type="submit" class="btn btn-primary">NEW</button>
+                  
+
+                <div class="btn-group" role="group">
+                    <button type="submit" class="btn btn-primary">NEW</button>
+                    <button type="button" class="btn btn-default">To Be Loaded</button>
+                    <button type="button" class="btn btn-default">To Be Delivered</button>
+                    
+</div>
 
 </form>
 
