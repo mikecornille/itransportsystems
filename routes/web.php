@@ -33,7 +33,7 @@ Route::get('/edit/{id}', 'LoadsController@edit');
 
 
 
-Route::patch('load/{load}', 'LoadsController@update')
+Route::patch('load/{load}', 'LoadsController@update');
 
 
 
