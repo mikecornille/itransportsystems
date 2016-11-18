@@ -229,5 +229,92 @@ class Load extends Model
     }
 
 
+    //remaining list of mutators
+
+    public function setCarrierNameAttribute($value)
+    {
+        $this->attributes['carrier_name'] = strtoupper($value);
+    }
+
+    public function setCarrierAddressAttribute($value)
+    {
+        $this->attributes['carrier_address'] = strtoupper($value);
+    }
+
+    public function setCarrierCityAttribute($value)
+    {
+        $this->attributes['carrier_city'] = strtoupper($value);
+    }
+
+    public function setCarrierStateAttribute($value)
+    {
+        $this->attributes['carrier_state'] = strtoupper($value);
+    }
+
+    public function setCarrierZipAttribute($value)
+    {
+        $this->attributes['carrier_zip'] = strtoupper($value);
+    }
+
+    public function setCarrierContactAttribute($value)
+    {
+        $this->attributes['carrier_contact'] = strtoupper($value);
+    }
+
+    public function setCarrierEmailAttribute($value)
+    {
+        $this->attributes['carrier_email'] = strtoupper($value);
+    }
+
+    public function setCarrierDriverNameAttribute($value)
+    {
+        $this->attributes['carrier_driver_name'] = strtoupper($value);
+    }
+
+    public function setCarrierRateAttribute($value)
+    {
+        $this->attributes['carrier_rate'] = strtoupper($value);
+    }
+
+    public function setInternalNotesAttribute($value)
+    {
+        $this->attributes['internal_notes'] = strtoupper($value);
+    }
+
+    public function setTotalMilesAttribute($value)
+    {
+        $this->attributes['total_miles'] = strtoupper($value);
+    }
+    public function setQuickStatusNotesAttribute($value)
+    {
+        $this->attributes['quick_status_notes'] = strtoupper($value);
+    }
+    public function setVendorInvoiceNumberAttribute($value)
+    {
+        $this->attributes['vendor_invoice_number'] = strtoupper($value);
+    }
+
+    public function setRemitNameAttribute($value)
+    {
+        $this->attributes['remit_name'] = strtoupper($value);
+    }
+    public function setRemitAddressAttribute($value)
+    {
+        $this->attributes['remit_address'] = strtoupper($value);
+    }
+    public function setRemitCityAttribute($value)
+    {
+        $this->attributes['remit_city'] = strtoupper($value);
+    }
+    public function setRemitStateAttribute($value)
+    {
+        $this->attributes['remit_state'] = strtoupper($value);
+    }
+    public function setRemitZipAttribute($value)
+    {
+        $this->attributes['remit_zip'] = strtoupper($value);
+    }
+
+
     
 }
