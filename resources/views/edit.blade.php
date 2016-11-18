@@ -83,8 +83,7 @@
             </div>
              <div class="col-xs-12">
                 <label for="cohort_message" class="label-control">Internal Email Recipient</label>
-                    <select name="cohort_message" id="cohort_message" class="form-control">
-                      <option value="{{ $info->cohort_message }}">{{ $info->cohort_message }}</option>
+                    <select name="cohort_message" id="cohort_message" class="form-control">          
                       <option value="Please Choose One">Please Choose One</option>
                       <option value="joem@itransys.com">Joe Mowrer</option>
                       <option value="mikeb@itransys.com">Mike Bruschuk</option>
@@ -124,7 +123,7 @@
 				</div>
 				<div class="col-xs-6">
                     <label class="label-control" for="carrier_state">State</label>
-                    <input type="text" class="form-control" id="customer_state" name="customer_state" value="{{ $info->customer_state }}">
+                    <input type="text" class="form-control" id="carrier_state" name="carrier_state" value="{{ $info->carrier_state }}">
                 </div>
                 <div class="col-xs-6">
                     <label class="label-control" for="carrier_zip">Zip</label>
@@ -132,7 +131,7 @@
                 </div>
                 <div class="col-xs-6">
                     <label class="label-control" for="carrier_contact">Contact</label>
-                    <input type="text" class="form-control" id="carrrier_contact" name="carrrier_contact" value="{{ $info->carrrier_contact }}">
+                    <input type="text" class="form-control" id="carrier_contact" name="carrier_contact" value="{{ $info->carrier_contact }}">
                 </div>
                 <div class="col-xs-6">
                     <label class="label-control" for="carrier_email">Email</label>
@@ -140,7 +139,7 @@
                 </div>
                 <div class="col-xs-6">
                     <label class="label-control" for="carrier_phone">Phone</label>
-                    <input type="text" class="form-control" id="carrrier_phone" name="carrrier_phone" value="{{ $info->carrrier_phone }}">
+                    <input type="text" class="form-control" id="carrier_phone" name="carrier_phone" value="{{ $info->carrier_phone }}">
                 </div>
                 <div class="col-xs-6">
                     <label class="label-control" for="carrier_fax">Fax</label>
@@ -438,8 +437,8 @@
                     <input type="text" class="form-control" id="carrier_rate" name="carrier_rate" value="{{ $info->carrier_rate }}">
 				</div>
 				<div class="col-xs-12">
-					<label class="label-control" for="signed_rate_con">Signed Rate Con</label>
-                    <input type="text" class="form-control" id="signed_rate_con" name="signed_rate_con" value="{{ $info->signed_rate_con }}">
+					<label class="label-control" for="total_miles">Signed Rate Con</label>
+                    <input type="text" class="form-control" id="total_miles" name="total_miles" value="{{ $info->total_miles }}">
 				</div>
 				<div class="col-xs-12">
 					<label class="label-control" for="name">Invoice Created</label>
@@ -507,8 +506,20 @@
     </div>
 </div>
 
-                  <button type="submit" class="btn btn-primary">NEW</button>
+                  <button type="submit" class="btn btn-primary">UPDATE</button>
 
 </form>
+
+<div class="btn-group" role="group" aria-label="...">
+  <button type="button" class="btn btn-default">Left</button>
+  <button type="button" class="btn btn-default">Middle</button>
+  <button type="button" class="btn btn-default">Right</button>
+  <button type="button" class="btn btn-default">Left</button>
+  <button type="button" class="btn btn-default">Middle</button>
+  <button type="button" class="btn btn-default">Right</button>
+  <button type="button" class="btn btn-default">Left</button>
+  <button type="button" class="btn btn-default">Middle</button>
+  <button type="button" class="btn btn-default">Right</button>
+</div>
 
 @endsection
