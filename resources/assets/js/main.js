@@ -152,8 +152,6 @@ $('#update_customer_message').val($('#update_customer_message').val() + n + " " 
 
 });
 
-
-
 $(document).on('dblclick', '#internal_notes', function(){
 
 var d = new Date();
@@ -174,20 +172,10 @@ $('#quick_status_notes').val($('#quick_status_notes').val() + "Day " + n + " " +
 
 });
 
-// $(document).on('dblclick', '#quick_status_notes', function(){
-
-// var d = new Date();
-// var n = d.getDate();
-// var m = d.toLocaleTimeString();
-
-// $('#quick_status_notes').val($('#quick_status_notes').val() + 'Day ' n + ' ' + m + " - ");
-
-// });
-
-$(document).on('dblclick', '#signed_rate_con', function(){
+$(document).on('dblclick', '#total_miles', function(){
 
 var signed = 'SIGNED';
 
-$('#signed_rate_con').val(signed);
+$('#total_miles').val(signed);
 
 });

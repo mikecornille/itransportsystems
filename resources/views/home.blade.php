@@ -223,9 +223,9 @@
                   
 
                 <div class="btn-group" role="group">
-                    <button type="submit" class="btn btn-primary">NEW</button>
-                    <button type="button" class="btn btn-default">To Be Loaded</button>
-                    <button type="button" class="btn btn-default">To Be Delivered</button>
+                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> NEW</button>
+                    <button type="button" onclick="toBeLoaded()" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> TO BE LOADED</button>
+    <button type="button" onclick="toBeDelivered()" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> TO BE DELIVERED</button>
                     
 </div>
 

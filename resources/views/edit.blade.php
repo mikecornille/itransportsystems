@@ -502,22 +502,21 @@
     </div>
 </div>
 
-                  <button type="submit" class="btn btn-primary">UPDATE</button>
+                  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>UPDATE</button>
 
 </form>
 
 <div class="btn-group" role="group" aria-label="...">
-  <button type="submit" class="btn btn-primary">UPDATE</button>
-  <button type="button" class="btn btn-default">PRINT INVOICE</button>
-  <button type="button" class="btn btn-default">EMAIL INVOICE</button>
-  <button type="button" class="btn btn-default">PRINT RATE CON</button>
-  <button type="button" class="btn btn-default">EMAIL RATE CON</button>
-  <button type="button" class="btn btn-default">GET STATUS</button>
-  <button type="button" class="btn btn-default">POD REQUEST</button>
-  <button type="button" class="btn btn-default">UPDATE CUSTOMER</button>
-  <button type="button" class="btn btn-default">EMAIL INTERNAL</button>
-  <button type="button" class="btn btn-default">CONTACT LIST</button>
-  <button type="button" class="btn btn-default">EMAIL BOL</button>
+  <button type="button" id="print_invoice" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> PRINT INVOICE</button>
+    <button type="button" id="email_invoice" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> EMAIL INVOICE</button>
+    <button type="button" id="print_ratecon" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> PRINT RATE CON</button>
+    <button type="button" id="email_ratecon" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> EMAIL RATE CON</button>
+    <button type="button" id="get_status" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> GET STATUS</button>
+    <button type="button" id="pod_request" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-share" aria-hidden="true"></span> POD REQUEST</button>
+    <button type="button" id="update_customer" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> UPDATE CUSTOMER</button>
+    <button type="button" id="email_internal_cohort" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> EMAIL INTERNAL</button>
+    <button type="button" onclick="callList()" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> CONTACT LIST</button>
+    <button type="button" id="print_bol" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> EMAIL BOL</button>
 </div>
 
 @endsection
