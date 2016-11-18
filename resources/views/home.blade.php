@@ -24,7 +24,7 @@
         
         {{ csrf_field() }}
 
-<div id="customer">
+<div id="customer_home">
     <div class="well">
       
       
@@ -74,7 +74,7 @@
 
 
 
-<div id="origin">
+<div id="origin_home">
   <div class="well">
     <div class="form-group">
         <div class="row">
@@ -115,7 +115,7 @@
   </div> 
 </div> 
 
-<div id="delivery">
+<div id="delivery_home">
   <div class="well">
     <div class="form-group">
         <div class="row">
@@ -156,7 +156,7 @@
   </div> 
 </div> 
 
-<div id="reference">
+<div id="reference_home">
   <div class="well">
     <div class="form-group">
       <div class="row">

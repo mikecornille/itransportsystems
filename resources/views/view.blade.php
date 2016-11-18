@@ -10,10 +10,6 @@
 
 <form>
 
-<input type="hidden" name="its_group" id="its_group" value="ITS">
-<input type="hidden" name="pick_status" id="pick_status" value="Open">
-<input type="hidden" name="delivery_status" id="delivery_status" value="Open">
-<input type="hidden" name="created_by" id="created_by" value="{{ \Auth::user()->email }}">
 
 
   
