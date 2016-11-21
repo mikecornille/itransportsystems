@@ -507,9 +507,9 @@
 </form>
 
 <div class="btn-group" role="group" aria-label="...">
-  <button type="button" id="print_invoice" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> PRINT INVOICE</button>
+  <button type="button" id="print_invoice" class="btn btn-primary btn-md" href="{{ route('getInvoicePDF') }}"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> PRINT INVOICE</button>
     <button type="button" id="email_invoice" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> EMAIL INVOICE</button>
-    <button type="button" id="print_ratecon" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> PRINT RATE CON</button>
+    <button type="button" id="print_ratecon" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-print" aria-hidden="true" href="{{ route('getContractPDF') }}"></span> PRINT RATE CON</button>
     <button type="button" id="email_ratecon" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> EMAIL RATE CON</button>
     <button type="button" id="get_status" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> GET STATUS</button>
     <button type="button" id="pod_request" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-share" aria-hidden="true"></span> POD REQUEST</button>

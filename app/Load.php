@@ -228,9 +228,6 @@ class Load extends Model
         $this->attributes['update_customer_message'] = strtoupper($value);
     }
 
-
-    //remaining list of mutators
-
     public function setCarrierNameAttribute($value)
     {
         $this->attributes['carrier_name'] = strtoupper($value);

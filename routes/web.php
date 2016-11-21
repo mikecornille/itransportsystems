@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 Route::get('/twilio', function () {
@@ -34,6 +34,8 @@ Route::get('/edit/{id}', 'LoadsController@edit');
 
 Route::patch('load/{load}', 'LoadsController@update');
 
+Route::get('getInvoicePDF', 'PDFController@getInvoicePDF');
 
+Route::get('getContractPDF', 'PDFController@getContractPDF');
 
 
