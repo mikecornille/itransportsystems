@@ -180,6 +180,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
 
 
     ],

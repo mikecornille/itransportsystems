@@ -20,5 +20,5 @@ elixir((mix) => {
     mix.sass('app.scss')
        .webpack('app.js')
        .scripts('main.js')
-       .scripts('datepicker.js')
+       .scripts(['datepicker.js','autofill.js'])
 });

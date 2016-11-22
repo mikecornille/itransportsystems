@@ -10,7 +10,10 @@
         "intervention/image": "^2.3",
         "spatie/laravel-backup": "^3.0.0",
         "twilio/sdk": "^5.4",
-        "barryvdh/laravel-dompdf": "^0.7.0"
+        "barryvdh/laravel-dompdf": "^0.7.0",
+        "phpmailer/phpmailer": "^5.2",
+        "laravel/scout": "^1.1",
+        "algolia/algoliasearch-client-php": "^1.11"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

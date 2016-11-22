@@ -17,6 +17,16 @@
 
     </head>
     <body>
+
+    <form action="{{ route('sendmail') }}" method="post">
+    {{ csrf_field() }}
+        <input type="email" name="mail">
+        <input type="text" name="title">
+        <button type="submit">Send mail</button>
+    </form>
+
+
+
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">

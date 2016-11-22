@@ -10,11 +10,12 @@ use App\Http\Requests;
 
 use Illuminate\Support\Collection;
 
-
+use PDF;
 
 
 class LoadsController extends Controller
 {
+	use helpers\Mailer;
     public function index()
 	{
 		
@@ -117,5 +118,58 @@ class LoadsController extends Controller
 
 	}
 
+	public function internalEmail($id)
+	{
+		$info = Load::find($id);
+
+		$subject = "Your Internal Email " . $info->customer_name;
+ 		$content = "Your Internal Email " . $info->customer_name;
+
+ 		$this->sendEmail($subject,$content);
+
+ 		return back()->with('status', 'Your internal email has been sent.');
+
+	}
+
+	public function getStatusEmail($id)
+	{
+		$info = Load::find($id);
+
+		$subject = "Your Status Request " . $info->customer_name;
+ 		$content = "Your Status Request " . $info->customer_name;
+
+ 		$this->sendEmail($subject,$content);
+
+ 		return back()->with('status', 'Your status update request has been sent.');
+
+	}
+
+	public function podRequestEmail($id)
+	{
+		$info = Load::find($id);
+
+		$subject = "Your POD Request " . $info->customer_name;
+ 		$content = "Your POD Request " . $info->customer_name;
+
+ 		$this->sendEmail($subject,$content);
+
+ 		return back()->with('status', 'Your POD request has been sent.');
+
+	}
+
+	public function updateCustomerEmail($id)
+	{
+		$info = Load::find($id);
+
+		$subject = "Your Update Customer " . $info->customer_name;
+ 		$content = "Your Update Customer " . $info->customer_name;
+
+ 		$this->sendEmail($subject,$content);
+
+ 		return back()->with('status', 'Your customer has been updated.');
+
+	}
+
 	
 }
+

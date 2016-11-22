@@ -7,7 +7,6 @@
 
 
 
-
 <div class="page-header">
 	<h1 class="text-center">PRO # {{ $info->id }} <small> created by {{ $info->created_by }} on {{ $info->creation_date }}</small></h1>
 </div>
@@ -506,17 +505,19 @@
 
 </form>
 
-<div class="btn-group" role="group" aria-label="...">
-  <button type="button" id="print_invoice" class="btn btn-primary btn-md" href="{{ route('getInvoicePDF') }}"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> PRINT INVOICE</button>
-    <button type="button" id="email_invoice" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> EMAIL INVOICE</button>
-    <button type="button" id="print_ratecon" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-print" aria-hidden="true" href="{{ route('getContractPDF') }}"></span> PRINT RATE CON</button>
-    <button type="button" id="email_ratecon" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> EMAIL RATE CON</button>
-    <button type="button" id="get_status" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> GET STATUS</button>
-    <button type="button" id="pod_request" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-share" aria-hidden="true"></span> POD REQUEST</button>
-    <button type="button" id="update_customer" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> UPDATE CUSTOMER</button>
-    <button type="button" id="email_internal_cohort" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> EMAIL INTERNAL</button>
-    <button type="button" onclick="callList()" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> CONTACT LIST</button>
-    <button type="button" id="print_bol" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> EMAIL BOL</button>
-</div>
+<a href="{{ URL::to('/getInvoicePDF/' . $info->id) }}" class="btn btn-default">Print Invoice</a>
+
+<a href="{{ URL::to('/getContractPDF/' . $info->id) }}" class="btn btn-default">Print Rate Con</a>
+
+<a href="{{ URL::to('/emailInvoicePDF/' . $info->id) }}" class="btn btn-default">Send Invoice</a>
+
+<a href="{{ URL::to('/internal/' . $info->id) }}" class="btn btn-default">Email Internal</a>
+
+<a href="{{ URL::to('/updateCustomer/' . $info->id) }}" class="btn btn-default">Update Customer</a>
+
+<a href="{{ URL::to('/pod/' . $info->id) }}" class="btn btn-default">POD Request</a>
+
+<a href="{{ URL::to('/status/' . $info->id) }}" class="btn btn-default">Get Status</a>
+
 
 @endsection

@@ -34,8 +34,33 @@ Route::get('/edit/{id}', 'LoadsController@edit');
 
 Route::patch('load/{load}', 'LoadsController@update');
 
-Route::get('getInvoicePDF', 'PDFController@getInvoicePDF');
+//Print the Invoice and Rate Confirmation
 
-Route::get('getContractPDF', 'PDFController@getContractPDF');
+Route::get('/getInvoicePDF/{id}', 'PDFController@getInvoicePDF');
+
+Route::get('/getContractPDF/{id}', 'PDFController@getContractPDF');
+
+Route::get('/emailInvoicePDF/{id}', 'PDFController@emailInvoicePDF');
+
+
+//Emails sent with load data
+
+Route::get('/internal/{id}', 'LoadsController@internalEmail');
+
+Route::get('/status/{id}', 'LoadsController@getStatusEmail');
+
+Route::get('/pod/{id}', 'LoadsController@podRequestEmail');
+
+Route::get('/updateCustomer/{id}', 'LoadsController@updateCustomerEmail');
+
+Route::post('/sendmail', function (\Illuminate\Http\Request $request, \Illuminate\Mail\Mailer $mailer) {
+	
+	$mailer
+		->to($request->input('mail'))
+		->send(new \App\Mail\MyMail($request->input('title')));
+			
+		return redirect()->back();
+	  
+	  })->name('sendmail');
 
 
