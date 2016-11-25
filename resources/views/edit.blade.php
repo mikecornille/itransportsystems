@@ -515,7 +515,7 @@
 
 <a href="{{ URL::to('/updateCustomer/' . $info->id) }}" class="btn btn-default">Update Customer</a>
 
-<a href="{{ URL::to('/pod/' . $info->id) }}" class="btn btn-default">POD Request</a>
+<a href="{{ URL::to('/sendmail/' . $info->id) }}" class="btn btn-default">POD Request</a>
 
 <a href="{{ URL::to('/status/' . $info->id) }}" class="btn btn-default">Get Status</a>
 

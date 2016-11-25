@@ -13,8 +13,7 @@ class PDFController extends Controller
 {
     use helpers\Mailer;
 	
-	//Prints the Invoice and Rate Confirmation
-
+	//Prints the invoice
 	public function getInvoicePDF($id)
 	{
 		$info = Load::find($id);
@@ -25,6 +24,7 @@ class PDFController extends Controller
 	
 	}
 
+	//Prints the rate confirmation
 	public function getContractPDF($id)
 	{
     
@@ -36,43 +36,66 @@ class PDFController extends Controller
 	
 	}
 
-	//Emails the Invoice and Rate Confirmation
-
+	//Emails the invoice
 	public function emailInvoicePDF($id)
 	{
-
-		//Generate the email message
+		//$filename = sys_get_temp_dir() . '/' . $id . '_rate.pdf';
 		$subject = "Your Invoice";
 		$content = "Your Load Information";
 
-		//Get the PDF
 		$info = Load::find($id);
-		$pdf = PDF::loadView('pdf.invoice',['info'=>$info]);
+
+		$pdfpath = PDF::loadView('pdf.invoice',['info'=>$info]);
+
+		// $pdf->Output();
+		// $pdf->Output($filename, "F");
+		// $pdfpath = $filename;
 	    
-	   Mail::to('joel.rosenthal@gmail.com')->send(new \App\Mail\Invoice($pdf));
+		$this->sendEmail($subject,$content,$pdfpath);
 
-
-	    //Generate the email with the pdf attachment
-		$this->sendEmail($subject,$content,$pdf);
-
-		//Show a success message
-	    return back()->with('status', 'The Invoice has been sent.');
+	    return back()->with('status', 'The Rate Confirmation has been sent.');
 	
 	}
 
+	//Emails the rate confirmation
 	public function emailContractPDF($id)
 	{
 
-		$subject = "Your Invoice";
+		$subject = "Your Rate Confirmation";
 		$content = "Your Load Information";
 
-		$pdf = PDF::loadView('pdf.invoice',['info'=>$info]);
+		$pdf = PDF::loadView('pdf.contract',['info'=>$info]);
 	    
 		$this->sendEmail($subject,$content);
 
 	    return back()->with('status', 'The Rate Confirmation has been sent.');
 	
 	}
+
+	//create new function to send mail with attachment
+      public function attach_email($id){
+        
+        //Get the selected load info
+      	$info = Load::find($id);
+
+      	//Turn it into an array
+        $data=['info'=>$info];
+
+        
+        Mail::send(['text'=>'mail'], $data, function($message){
+            
+
+            $message->to('mikecornille@gmail.com','Mike Cornille')->subject('Send Mail from Laravel with HTML Email');
+          
+            $message->from('mikec@itransys.com','The Other Mike');
+
+        });
+        echo 'HTML Email was sent!';
+      }
+
+      
+
+
 }
 
 

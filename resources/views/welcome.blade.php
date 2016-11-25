@@ -18,12 +18,12 @@
     </head>
     <body>
 
-    <form action="{{ route('sendmail') }}" method="post">
+   <!--  <form action="{{ URL::to('sendmail') }}" method="post">
     {{ csrf_field() }}
         <input type="email" name="mail">
         <input type="text" name="title">
         <button type="submit">Send mail</button>
-    </form>
+    </form> -->
 
 
 

@@ -6,25 +6,22 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Load;
 
 class MyMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-// protected $to;
-// protected $from;
-// protected $attachment;
-
-    public $title;
+    public $load;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($title)
+    public function __construct(Load $load)
     {
-    $this->title = $title;
+    $this->load = $load;
     }
 
     /**
@@ -34,7 +31,9 @@ class MyMail extends Mailable
      */
     public function build()
     {
-        return $this->from('johnny@gmail.com')
-                ->view('email.invoice_email');
+
+    
+        return $this->from('mikecornille@gmail.com')
+                ->view('email.mymail');
     }
 }

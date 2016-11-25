@@ -12,19 +12,23 @@ use Illuminate\Support\Collection;
 
 use PDF;
 
+use Illuminate\Support\Facades\Mail;
+
 
 class LoadsController extends Controller
 {
 	use helpers\Mailer;
+    
+	//Load the datatable
     public function index()
 	{
 		
-		//$data = Quote::where('user_id', \Auth::user()->id)->get();
 		$data = Load::all();
 		return(['data' => $data]);
 		
 	}
 
+	//Store a new record in database
 	 public function store(Request $request)
 	{
 		
@@ -55,12 +59,7 @@ class LoadsController extends Controller
         
          ]);
 
-         	  
-			  
-		
-		
-
-		$newload = New Load($request->all());
+        $newload = New Load($request->all());
 		
 		$newload->its_group = "ITS";
 		$newload->pick_status = "Open";
@@ -75,6 +74,8 @@ class LoadsController extends Controller
 		
 	}
 
+	
+	//Go to edit form with selected record
 	public function edit(Request $request)
 	{
 
@@ -83,6 +84,7 @@ class LoadsController extends Controller
 		
 	}
 
+	//Update record
 	public function update(Request $request, Load $load)
 	{
 
@@ -118,10 +120,13 @@ class LoadsController extends Controller
 
 	}
 
+	//Send internal email to fellow employee
+
 	public function internalEmail($id)
 	{
 		$info = Load::find($id);
 
+		//Build the subject and content
 		$subject = "Your Internal Email " . $info->customer_name;
  		$content = "Your Internal Email " . $info->customer_name;
 
@@ -131,10 +136,13 @@ class LoadsController extends Controller
 
 	}
 
+	//Request status email from a carrier
+
 	public function getStatusEmail($id)
 	{
 		$info = Load::find($id);
 
+		//Build the subject and content
 		$subject = "Your Status Request " . $info->customer_name;
  		$content = "Your Status Request " . $info->customer_name;
 
@@ -144,10 +152,13 @@ class LoadsController extends Controller
 
 	}
 
+	//Request a POD from a carrier
+
 	public function podRequestEmail($id)
 	{
 		$info = Load::find($id);
 
+		//Build the subject and content
 		$subject = "Your POD Request " . $info->customer_name;
  		$content = "Your POD Request " . $info->customer_name;
 
@@ -157,10 +168,13 @@ class LoadsController extends Controller
 
 	}
 
+	//Update the customer 
+
 	public function updateCustomerEmail($id)
 	{
 		$info = Load::find($id);
 
+		//Build the subject and content
 		$subject = "Your Update Customer " . $info->customer_name;
  		$content = "Your Update Customer " . $info->customer_name;
 
@@ -169,6 +183,15 @@ class LoadsController extends Controller
  		return back()->with('status', 'Your customer has been updated.');
 
 	}
+
+	 public function youtubetest($id)
+    {
+        $info = Load::find($id);
+
+        // Ship order...
+
+        Mail::to('mikecornille@gmail.com')->send(new MyMail($info));
+    }
 
 	
 }

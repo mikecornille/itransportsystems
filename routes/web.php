@@ -53,14 +53,9 @@ Route::get('/pod/{id}', 'LoadsController@podRequestEmail');
 
 Route::get('/updateCustomer/{id}', 'LoadsController@updateCustomerEmail');
 
-Route::post('/sendmail', function (\Illuminate\Http\Request $request, \Illuminate\Mail\Mailer $mailer) {
-	
-	$mailer
-		->to($request->input('mail'))
-		->send(new \App\Mail\MyMail($request->input('title')));
-			
-		return redirect()->back();
-	  
-	  })->name('sendmail');
+Route::get('/sendmail/{id}', 'LoadsController@youtubetest');
+
+
+Route::get('/basicemail/{id}','PDFController@attach_email');
 
 

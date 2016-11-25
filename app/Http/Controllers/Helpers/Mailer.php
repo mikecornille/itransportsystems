@@ -2,7 +2,7 @@
 namespace App\Http\Controllers\Helpers;
 //Capitalize Helper
 trait mailer {
-	public function sendEmail($subject,$content,$attachment = null)
+	public function sendEmail($subject,$content,$pdf)
 	{
 		$mail = new \PHPMailer();
 
@@ -23,12 +23,9 @@ trait mailer {
 	$mail->AddAddress($current_user_email, $current_user_name);
 	$mail->isHTML(true);
 	$mail->WordWrap = 50;
+	$mail->AddAttachment($pdf);
 	$mail->Subject    = $subject;
 	$mail->Body       = $content;
-	if ($attachment) {
-		$mail->addAttachment($attachment->output());
-	}
-
 	$mail->Send();
 	}
 	
