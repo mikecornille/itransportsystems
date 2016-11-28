@@ -30,6 +30,16 @@
   clear: left;
   margin-left: 100px; }
 
+#submit_button {
+  margin-top: 18px; }
+
+#action_buttons {
+  margin-top: 18px;
+  margin-left: 30px; }
+
+#submit_new_load_button {
+  margin-top: 18px; }
+
 html, body {
   background-color: #fff;
   color: #636b6f;

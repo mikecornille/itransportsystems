@@ -6,7 +6,9 @@
 <body>
 <h1>Invoice</h1>
 
-<!-- <h1>{{ $info->customer_name }}</h1> -->
-<h1>kaksjdkjahskjahsd</h1>>
+
+
+<p>{{ $info->customer_contact }}</p>
+
 </body>
 </html>

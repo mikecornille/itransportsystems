@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<input type="text" id="location-search"></input>
+<!-- <input type="text" id="location-search"></input> -->
 
 @if (count($errors) > 0)
     <div class="alert alert-danger">
@@ -177,6 +177,9 @@
           <label class="label-control" for="amount_due">Amount Due</label>
           <input type="text" class="form-control" id="amount_due" name="amount_due" value="{{ old('amount_due') }}">
         </div>
+        <div class="col-xs-12" id="submit_new_load_button">
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> NEW</button>
+        </div>
       </div> 
     </div> 
   </div> 
@@ -221,14 +224,6 @@
     </div>
 </div>
 
-                  
-
-                <div class="btn-group" role="group">
-                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> NEW</button>
-                    <button type="button" onclick="toBeLoaded()" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> TO BE LOADED</button>
-    <button type="button" onclick="toBeDelivered()" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> TO BE DELIVERED</button>
-                    
-</div>
 
 </form>
 
@@ -238,7 +233,7 @@
 
 
 <div class="container-fluid">
-<div class="well">
+<!-- <div class="well"> -->
 <table id="mainTable" cellspacing="0" class="stripe row-border order-column" width="100%" style="width: 2800px; margin-left: 10px;">
 
         <thead>
@@ -317,7 +312,7 @@
             </tr>
         </tfoot>  
     </table>
-    </div>
+    <!-- </div> -->
     </div>
 
 

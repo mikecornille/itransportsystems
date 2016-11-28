@@ -8,6 +8,7 @@
 
 
 <div class="page-header">
+<h2 class="text-center"><a href="{{ url('/home') }}">Back to Home</a></h2>
 	<h1 class="text-center">PRO # {{ $info->id }} <small> created by {{ $info->created_by }} on {{ $info->creation_date }}</small></h1>
 </div>
 
@@ -418,6 +419,32 @@
           <label class="label-control" for="vendor_invoice_date">Vendor Invoice Date</label>
           <input type="text" class="form-control datepicker" id="datepicker3" name="vendor_invoice_date" value="{{ $info->vendor_invoice_date }}">
     	</div>
+
+
+      <div class="btn-group" id="action_buttons">
+  <button type="button" class="btn btn-primary">Actions</button>
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="{{ URL::to('/getInvoicePDF/' . $info->id) }}">Print Invoice</a></li>
+    <li><a href="{{ URL::to('/emailInvoicePDF/' . $info->id) }}">Email Invoice</a></li>
+    <li><a href="{{ URL::to('/getContractPDF/' . $info->id) }}">Print Rate Con</a></li>
+    <li><a href="{{ URL::to('/emailRateConPDF/' . $info->id) }}">Email Rate Con</a></li>
+    <li><a href="{{ URL::to('/status/' . $info->id) }}">Get Status</a></li>
+    <li><a href="{{ URL::to('/pod/' . $info->id) }}">POD Request</a></li>
+    <li><a href="{{ URL::to('/updateCustomer/' . $info->id) }}">Update Customer</a></li>
+    <li><a href="{{ URL::to('/internal/' . $info->id) }}">Email Internal</a></li>
+    <li><a href="#">Contact List</a></li>
+    <li><a href="#">Email BOL</a></li>
+  </ul>
+</div>
+
+
+
+
+
+
 	  </div> 
     </div> 
   </div> 
@@ -451,7 +478,10 @@
 					<label class="label-control" for="approved_carrier_invoice">APVD CRR INV</label>
                     <input type="text" class="form-control" id="datepicker7" name="approved_carrier_invoice" value="{{ $info->approved_carrier_invoice }}">
 				</div>
-			</div>
+        <div class="col-xs-12 text-center" id="submit_button">
+          <button type="submit"class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>UPDATE</button>
+			 </div>
+      </div>
 		</div>
 	</div>
 </div>
@@ -496,28 +526,24 @@
 
 <div id="update_message_section">
     <div class="well">
-        <label for="update_customer_message">Message (Sent when "Update Customer" or "Email Internal" are clicked)</label>
+        <label for="update_customer_message">Sent when "Update Customer" or "Email Internal" are clicked</label>
         <textarea name="update_customer_message" id="update_customer_message" class="form-control" rows="2">{{ $info->update_customer_message }}</textarea>
     </div>
 </div>
 
-                  <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>UPDATE</button>
+                  
 
 </form>
 
-<a href="{{ URL::to('/getInvoicePDF/' . $info->id) }}" class="btn btn-default">Print Invoice</a>
 
-<a href="{{ URL::to('/getContractPDF/' . $info->id) }}" class="btn btn-default">Print Rate Con</a>
 
-<a href="{{ URL::to('/emailInvoicePDF/' . $info->id) }}" class="btn btn-default">Send Invoice</a>
 
-<a href="{{ URL::to('/internal/' . $info->id) }}" class="btn btn-default">Email Internal</a>
 
-<a href="{{ URL::to('/updateCustomer/' . $info->id) }}" class="btn btn-default">Update Customer</a>
+<!-- These buttons require data passed through but no PDF attachments needed -->
 
-<a href="{{ URL::to('/sendmail/' . $info->id) }}" class="btn btn-default">POD Request</a>
 
-<a href="{{ URL::to('/status/' . $info->id) }}" class="btn btn-default">Get Status</a>
+
+
 
 
 @endsection

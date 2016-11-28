@@ -37,7 +37,7 @@ $mainmarginleft: 100px;
 
 
 #commodity_div, #special_ins_div, #stops_div, #internal_notes_div, #invoice_notes_div, #update_message_section  {
-    width: 500px; 
+    width: 400px; 
     float: left;
     margin-right: $mainmarginright;
 }
@@ -48,9 +48,19 @@ $mainmarginleft: 100px;
     margin-left: $mainmarginleft;
 }
 
+#submit_button {
+  margin-top: 18px;
+}
 
+#action_buttons {
+  margin-top: 18px;
+  margin-left: 30px;
+}
 
-
+#submit_new_load_button {
+  
+  margin-top: 18px;
+}
 
 html, body {
                 background-color: #fff;

@@ -124,73 +124,88 @@ class LoadsController extends Controller
 
 	public function internalEmail($id)
 	{
-		$info = Load::find($id);
+        $info = Load::find($id);
+		
+		$info = ['info' => $info];
+        
+        Mail::send(['html'=>'email.internalEmail'], $info, function($message) use ($info){
+            
+            
+           	$message->to($info['info']['carrier_email'])
 
-		//Build the subject and content
-		$subject = "Your Internal Email " . $info->customer_name;
- 		$content = "Your Internal Email " . $info->customer_name;
+           	->subject('Looking for a status update on PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] .  ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name);
 
- 		$this->sendEmail($subject,$content);
+        });
 
- 		return back()->with('status', 'Your internal email has been sent.');
-
-	}
+    	return back()->with('status', 'Your status request has been sent.');
+    }
 
 	//Request status email from a carrier
 
 	public function getStatusEmail($id)
 	{
-		$info = Load::find($id);
+        $info = Load::find($id);
+		
+		$info = ['info' => $info];
+        
+        Mail::send(['html'=>'email.getStatus'], $info, function($message) use ($info){
+            
+            
+           	$message->to($info['info']['carrier_email'])
 
-		//Build the subject and content
-		$subject = "Your Status Request " . $info->customer_name;
- 		$content = "Your Status Request " . $info->customer_name;
+           	->subject('Looking for a status update on PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] .  ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name);
 
- 		$this->sendEmail($subject,$content);
+        });
 
- 		return back()->with('status', 'Your status update request has been sent.');
-
-	}
+    	return back()->with('status', 'Your status request has been sent.');
+    }
 
 	//Request a POD from a carrier
 
 	public function podRequestEmail($id)
 	{
-		$info = Load::find($id);
+        $info = Load::find($id);
+		
+		$info = ['info' => $info];
+        
+        Mail::send(['html'=>'email.podRequest'], $info, function($message) use ($info){
+            
+            
+           	$message->to($info['info']['carrier_email'])
 
-		//Build the subject and content
-		$subject = "Your POD Request " . $info->customer_name;
- 		$content = "Your POD Request " . $info->customer_name;
+           	->subject('Please Send Invoice with Signed Bill of Lading on PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] .  ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name);
 
- 		$this->sendEmail($subject,$content);
+        });
 
- 		return back()->with('status', 'Your POD request has been sent.');
+    	return back()->with('status', 'Your POD request has been sent.');
+    }
 
-	}
-
-	//Update the customer 
+	
 
 	public function updateCustomerEmail($id)
 	{
-		$info = Load::find($id);
-
-		//Build the subject and content
-		$subject = "Your Update Customer " . $info->customer_name;
- 		$content = "Your Update Customer " . $info->customer_name;
-
- 		$this->sendEmail($subject,$content);
-
- 		return back()->with('status', 'Your customer has been updated.');
-
-	}
-
-	 public function youtubetest($id)
-    {
         $info = Load::find($id);
+		
+		$info = ['info' => $info];
+        
+        Mail::send(['html'=>'email.updateCustomer'], $info, function($message) use ($info){
+            
+            
+           	$message->to($info['info']['customer_email'])
 
-        // Ship order...
+           	->subject('Status Update on ITS PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] .  ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name);
 
-        Mail::to('mikecornille@gmail.com')->send(new MyMail($info));
+        });
+
+    	return back()->with('status', 'Your customer has been updated.');
     }
 
 	
