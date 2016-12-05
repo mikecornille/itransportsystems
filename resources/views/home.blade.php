@@ -175,7 +175,11 @@
         </div>
         <div class="col-xs-12">
           <label class="label-control" for="amount_due">Amount Due</label>
+          <div class="input-group">
+          <span class="input-group-addon">$</span>
           <input type="text" class="form-control" id="amount_due" name="amount_due" value="{{ old('amount_due') }}">
+          <span class="input-group-addon">.00</span>
+                    </div>
         </div>
         <div class="col-xs-12" id="submit_new_load_button">
             <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> NEW</button>

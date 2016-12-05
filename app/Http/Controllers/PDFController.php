@@ -36,14 +36,14 @@ class PDFController extends Controller
 	
 	}
 
-	//create new function to send mail with attachment
+	//Emails an Invoice attachment
       public function emailInvoicePDF($id){
         
         $info = Load::find($id);
 
       	$info = ['info'=>$info];
 
-        Mail::send(['text'=>'mail'], $info, function($message) use ($info){
+        Mail::send(['html'=>'email.invoice_email_body'], $info, function($message) use ($info){
             
             $pdf = PDF::loadView('pdf.invoice', $info);
 
@@ -53,7 +53,7 @@ class PDFController extends Controller
           
             $message->from(\Auth::user()->email, \Auth::user()->name);
 
-            $message->attachData($pdf->output(), 'filename.pdf');
+            $message->attachData($pdf->output(), 'Invoice_' . $info['info']['id'] . '.pdf');
 
             
 
@@ -61,7 +61,36 @@ class PDFController extends Controller
 
         return back()->with('status', 'The Invoice has been sent!');
     }
+
+    //Emails a Rate Confirmation
+      public function emailRateConPDF($id){
+        
+        $info = Load::find($id);
+
+      	$info = ['info'=>$info];
+
+        Mail::send(['html'=>'email.rate_con_email_body'], $info, function($message) use ($info){
+            
+            $pdf = PDF::loadView('pdf.contract', $info);
+
+            $message->to($info['info']['carrier_email'])
+
+            ->subject('Load Confirmation for PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name);
+
+            $message->attachData($pdf->output(), 'Load_Confirmation_' . $info['info']['id'] . '.pdf');
+
+            
+
+        });
+
+        return back()->with('status', 'The Rate Confirmation has been sent!');
+    }
 }
+
+	
+
 
 
 

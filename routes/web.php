@@ -45,8 +45,9 @@ Route::get('/status/{id}', 'LoadsController@getStatusEmail');
 Route::get('/pod/{id}', 'LoadsController@podRequestEmail');
 Route::get('/updateCustomer/{id}', 'LoadsController@updateCustomerEmail');
 
-//Attempts at emailing with an attachment
+//Emailing Invoice and Rate Confirmation with an attachment
 Route::get('/emailInvoicePDF/{id}', 'PDFController@emailInvoicePDF');
+Route::get('/emailRateConPDF/{id}', 'PDFController@emailRateConPDF');
 
 
 

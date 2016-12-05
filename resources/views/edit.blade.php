@@ -104,14 +104,18 @@
     </div> 
 </div> 
 
-
 <div id="carrier">
 	<div class="well">
 		<div class="form-group">
 			<div class="row">
 				<div class="col-xs-12">
 					<label class="label-control" for="carrier_name">CARRIER</label>
+                    <div class="input-group">
                     <input type="text" class="form-control" id="carrier_name" name="carrier_name" value="{{ $info->carrier_name }}">
+                    <span class="input-group-btn">
+        <button class="btn btn-secondary" type="button"><span class="glyphicon glyphicon-flash" aria-hidden="true"></span></button>
+      </span>
+    </div>
 				</div>
 				<div class="col-xs-12">
 					<label class="label-control" for="carrier_address">Address</label>
@@ -456,11 +460,19 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<label class="label-control" for="amount_due">Amount Due</label>
+                    <div class="input-group">
+                    <span class="input-group-addon">$</span>
                     <input type="text" class="form-control" id="amount_due" name="amount_due" value="{{ $info->amount_due }}">
+                    <span class="input-group-addon">.00</span>
+                    </div>
 				</div>
-				<div class="col-xs-12">
+        <div class="col-xs-12">
 					<label class="label-control" for="carrier_rate">Carrier Rate</label>
+          <div class="input-group">
+                    <span class="input-group-addon">$</span>
                     <input type="text" class="form-control" id="carrier_rate" name="carrier_rate" value="{{ $info->carrier_rate }}">
+                    <span class="input-group-addon">.00</span>
+                    </div>
 				</div>
 				<div class="col-xs-12">
 					<label class="label-control" for="total_miles">Signed Rate Con</label>
@@ -479,7 +491,7 @@
                     <input type="text" class="form-control" id="datepicker7" name="approved_carrier_invoice" value="{{ $info->approved_carrier_invoice }}">
 				</div>
         <div class="col-xs-12 text-center" id="submit_button">
-          <button type="submit"class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>UPDATE</button>
+          <button type="submit"class="btn btn-success">Update</button>
 			 </div>
       </div>
 		</div>
