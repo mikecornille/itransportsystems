@@ -1,5 +1,5 @@
-$mainmarginright: 50px;
-$mainmarginleft: 100px;
+$mainmarginright: 30px;
+$mainmarginleft: 50px;
 
 #customer_home, #origin_home, #delivery_home, #reference_home {
     
@@ -36,17 +36,25 @@ $mainmarginleft: 100px;
 
 
 
-#commodity_div, #special_ins_div, #stops_div, #internal_notes_div, #invoice_notes_div, #update_message_section  {
+#commodity_div, #special_ins_div, #stops_div, #invoice_notes_div {
+    width: 400px; 
+    float: left;
+    margin-right: $mainmarginright;
+}
+
+
+
+#internal_notes_div, #email_internal_section, #message_customer_section, #message_carrier_section {
     width: 400px; 
     float: left;
     margin-right: $mainmarginright;
 }
 
 #commodity_div, #internal_notes_div {
-    
     clear:left;
     margin-left: $mainmarginleft;
 }
+
 
 #submit_button {
   margin-top: 18px;

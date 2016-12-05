@@ -3,10 +3,10 @@
 #customer_home, #origin_home, #delivery_home, #reference_home {
   width: 300px;
   float: left;
-  margin-right: 50px; }
+  margin-right: 30px; }
 
 #customer_home {
-  margin-left: 100px; }
+  margin-left: 50px; }
 
 #customer, #origin, #delivery, #carrier {
   width: 300px;
@@ -21,14 +21,19 @@
   float: left;
   margin-right: 20px; }
 
-#commodity_div, #special_ins_div, #stops_div, #internal_notes_div, #invoice_notes_div, #update_message_section {
+#commodity_div, #special_ins_div, #stops_div, #invoice_notes_div {
   width: 400px;
   float: left;
-  margin-right: 50px; }
+  margin-right: 30px; }
+
+#internal_notes_div, #email_internal_section, #message_customer_section, #message_carrier_section {
+  width: 400px;
+  float: left;
+  margin-right: 30px; }
 
 #commodity_div, #internal_notes_div {
   clear: left;
-  margin-left: 100px; }
+  margin-left: 50px; }
 
 #submit_button {
   margin-top: 18px; }

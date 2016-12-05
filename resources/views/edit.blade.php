@@ -82,8 +82,9 @@
                 <input type="text" class="form-control" id="quick_status_notes" name="quick_status_notes" value="{{ $info->quick_status_notes }}">
             </div>
              <div class="col-xs-12">
-                <label for="cohort_message" class="label-control">Internal Email Recipient</label>
-                    <select name="cohort_message" id="cohort_message" class="form-control">          
+                <label for="internal_email" class="label-control">Internal Email Recipient</label>
+                    <select name="internal_email" id="internal_email" class="form-control"> 
+                      <option value="{{ $info->internal_email }}">{{ $info->internal_email }}</option>
                       <option value="Please Choose One">Please Choose One</option>
                       <option value="joem@itransys.com">Joe Mowrer</option>
                       <option value="mikeb@itransys.com">Mike Bruschuk</option>
@@ -437,8 +438,9 @@
     <li><a href="{{ URL::to('/emailRateConPDF/' . $info->id) }}">Email Rate Con</a></li>
     <li><a href="{{ URL::to('/status/' . $info->id) }}">Get Status</a></li>
     <li><a href="{{ URL::to('/pod/' . $info->id) }}">POD Request</a></li>
-    <li><a href="{{ URL::to('/updateCustomer/' . $info->id) }}">Update Customer</a></li>
     <li><a href="{{ URL::to('/internal/' . $info->id) }}">Email Internal</a></li>
+    <li><a href="{{ URL::to('/updateCustomer/' . $info->id) }}">Email Customer</a></li>
+    <li><a href="{{ URL::to('/emailCarrier/' . $info->id) }}">Email Carrier</a></li>
     <li><a href="#">Contact List</a></li>
     <li><a href="#">Email BOL</a></li>
   </ul>
@@ -521,14 +523,6 @@
         <textarea name="add_stops" id="add_stops" class="form-control" rows="2">{{ $info->add_stops }}</textarea>
     </div>
 </div>
-
-<div id="internal_notes_div">
-    <div class="well">
-        <label for="internal_notes">Internal Notes (These notes are for ITS eyes only)</label>
-        <textarea name="internal_notes" id="internal_notes" class="form-control" rows="2">{{ $info->internal_notes }}</textarea>
-    </div>
-</div>
-
 <div id="invoice_notes_div">
     <div class="well">
         <label for="invoice_notes">Invoice Notes (These notes get attached to the Invoice)</label>
@@ -536,10 +530,28 @@
     </div>
 </div>
 
-<div id="update_message_section">
+<div id="internal_notes_div">
     <div class="well">
-        <label for="update_customer_message">Sent when "Update Customer" or "Email Internal" are clicked</label>
+        <label for="internal_notes">Internal Notes (These notes are for ITS eyes only)</label>
+        <textarea name="internal_notes" id="internal_notes" class="form-control" rows="2">{{ $info->internal_notes }}</textarea>
+    </div>
+</div>
+<div id="email_internal_section">
+    <div class="well">
+        <label for="internal_message">Email Internal</label>
+        <textarea name="internal_message" id="internal_message" class="form-control" rows="2">{{ $info->internal_message }}</textarea>
+    </div>
+</div>
+<div id="message_customer_section">
+    <div class="well">
+        <label for="update_customer_message">Message Customer</label>
         <textarea name="update_customer_message" id="update_customer_message" class="form-control" rows="2">{{ $info->update_customer_message }}</textarea>
+    </div>
+</div>
+<div id="message_carrier_section">
+    <div class="well">
+        <label for="carrier_message">Message Carrier</label>
+        <textarea name="carrier_message" id="carrier_message" class="form-control" rows="2">{{ $info->carrier_message }}</textarea>
     </div>
 </div>
 

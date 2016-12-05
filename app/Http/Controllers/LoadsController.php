@@ -131,15 +131,15 @@ class LoadsController extends Controller
         Mail::send(['html'=>'email.internalEmail'], $info, function($message) use ($info){
             
             
-           	$message->to($info['info']['carrier_email'])
+           	$message->to($info['info']['internal_email'])
 
-           	->subject('Looking for a status update on PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] .  ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+           	->subject('Internal Message on PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] .  ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
           
             $message->from(\Auth::user()->email, \Auth::user()->name);
 
         });
 
-    	return back()->with('status', 'Your status request has been sent.');
+    	return back()->with('status', 'Your internal message has been sent.');
     }
 
 	//Request status email from a carrier
@@ -164,7 +164,7 @@ class LoadsController extends Controller
     	return back()->with('status', 'Your status request has been sent.');
     }
 
-	//Request a POD from a carrier
+	//Request a POD from carrier email
 
 	public function podRequestEmail($id)
 	{
@@ -187,7 +187,8 @@ class LoadsController extends Controller
     }
 
 	
-
+    //Update customer email
+	
 	public function updateCustomerEmail($id)
 	{
         $info = Load::find($id);
@@ -206,6 +207,28 @@ class LoadsController extends Controller
         });
 
     	return back()->with('status', 'Your customer has been updated.');
+    }
+
+     //Carrier email
+	
+	public function emailCarrier($id)
+	{
+        $info = Load::find($id);
+		
+		$info = ['info' => $info];
+        
+        Mail::send(['html'=>'email.emailCarrier'], $info, function($message) use ($info){
+            
+            
+           	$message->to($info['info']['carrier_email'])
+
+           	->subject('Message from ITS regarding PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] .  ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name);
+
+        });
+
+    	return back()->with('status', 'Your carrier has been emailed.');
     }
 
 	

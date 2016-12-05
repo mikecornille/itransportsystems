@@ -75,6 +75,9 @@ class Load extends Model
               'remit_city',
               'remit_state',
               'remit_zip',
+              'carrier_message',
+              'internal_email',
+              'internal_message',
 
 			  ];
   
@@ -310,6 +313,14 @@ class Load extends Model
     public function setRemitZipAttribute($value)
     {
         $this->attributes['remit_zip'] = strtoupper($value);
+    }
+     public function setCarrierMessageAttribute($value)
+    {
+        $this->attributes['carrier_message'] = strtoupper($value);
+    }
+    public function setInternalMessageAttribute($value)
+    {
+        $this->attributes['internal_message'] = strtoupper($value);
     }
 
 

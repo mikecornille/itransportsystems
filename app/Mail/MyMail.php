@@ -12,16 +12,16 @@ class MyMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $load;
+    
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Load $load)
+    public function __construct()
     {
-    $this->load = $load;
+    
     }
 
     /**
@@ -33,7 +33,6 @@ class MyMail extends Mailable
     {
 
     
-        return $this->from('mikecornille@gmail.com')
-                ->view('email.mymail');
+        
     }
 }
