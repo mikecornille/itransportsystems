@@ -441,8 +441,8 @@
     <li><a href="{{ URL::to('/internal/' . $info->id) }}">Email Internal</a></li>
     <li><a href="{{ URL::to('/updateCustomer/' . $info->id) }}">Email Customer</a></li>
     <li><a href="{{ URL::to('/emailCarrier/' . $info->id) }}">Email Carrier</a></li>
-    <li><a href="#">Contact List</a></li>
-    <li><a href="#">Email BOL</a></li>
+    <li><a href="{{ URL::to('/emailBOLCarrier/' . $info->id) }}">Email BOL Carrier</a></li>
+    <li><a href="{{ URL::to('/emailBOLYou/' . $info->id) }}">Email BOL You</a></li>
   </ul>
 </div>
 
@@ -563,7 +563,88 @@
 
 
 
-<!-- These buttons require data passed through but no PDF attachments needed -->
+<div class="container-fluid">
+<!-- <div class="well"> -->
+<table id="mainTable" cellspacing="0" class="stripe row-border order-column" width="100%" style="width: 2800px; margin-left: 10px;">
+
+        <thead>
+            <tr>
+            <th></th>
+                <th>Pro</th>
+                <th>CreatedOn</th>
+                <th>Pick Status</th>
+                <th>Pick Date</th>
+                <th>Pick Time</th>
+                <th>Del Status</th>
+                <th>Del Date</th>
+                <th>Del Time</th>
+                <th>Billed</th>
+                <th>Reference</th>
+                <th>Customer</th>
+                <th>Carrier</th>
+                <th>Pick Company</th>
+                <th>Pick City</th>
+                <th>Del Company</th>
+                <th>Del City</th>
+                <th>PO Num</th>
+                <th>BOL</th>
+                <th>Commodity</th>
+                <th>Rate Con</th>
+                <th>Creator</th>
+                <th>Group</th>
+                <th>Amount</th>
+                <th>Carrier Rate</th>
+                <th>Trailer Type</th>
+                <th>Signed</th>
+                
+                
+                
+                
+                
+                
+
+
+            </tr>
+        </thead>
+         <tfoot>
+            <tr>
+            <th></th>
+                <th>Pro</th>
+                <th>CreatedOn</th>
+                <th>Pick Status</th>
+                <th>Pick Date</th>
+                <th>Pick Time</th>
+                <th>Del Status</th>
+                <th>Del Date</th>
+                <th>Del Time</th>
+                <th>Billed</th>
+                <th>Reference</th>
+                <th>Customer</th>
+                <th>Carrier</th>
+                <th>Pick Company</th>
+                <th>Pick City</th>
+                <th>Del Company</th>
+                <th>Del City</th>
+                <th>PO Num</th>
+                <th>BOL</th>
+                <th>Commodity</th>
+                <th>Rate Con</th>
+                <th>Creator</th>
+                <th>Group</th>
+                <th>Amount</th>
+                <th>Carrier Rate</th>
+                <th>Trailer Type</th>
+                <th>Signed</th>
+              
+                
+           
+                
+
+            </tr>
+        </tfoot>  
+    </table>
+    <!-- </div> -->
+    </div>
 
 
 

@@ -45,7 +45,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'CMS') }}
                     </a>
                 </div>
 
@@ -63,12 +63,25 @@
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
                             
+                            <!-- <form id="search-pro-form" class="navbar-form navbar-left" action="{{ URL::to('searchPro') }}" method="POST">
+                            {{ csrf_field() }}
+                                <div class="form-group">
+                                  <input type="text" class="form-control" name="id" placeholder="Pro number search">
+                                </div>
+                                <button type="submit" class="btn btn-default">Submit</button>
+                                
+                            </form> -->
+
+                            
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">To Be Loaded</a></li>
+                                    <li><a href="#">To Be Delivered</a></li>
+                                    <li><a href="#">Find Trucks</a></li>
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
@@ -80,8 +93,7 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
-                                    <li><a href="#">To Be Loaded</a></li>
-                                    <li><a href="#">To Be Delivered</a></li>
+
                                 </ul>
                             </li>
                         @endif

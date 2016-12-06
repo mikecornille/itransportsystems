@@ -87,6 +87,59 @@ class PDFController extends Controller
 
         return back()->with('status', 'The Rate Confirmation has been sent!');
     }
+
+    //Emails a BOL to Carrier
+      public function emailBOLCarrier($id){
+        
+        $info = Load::find($id);
+
+      	$info = ['info'=>$info];
+
+        Mail::send(['html'=>'email.bol_email_body'], $info, function($message) use ($info){
+            
+            $pdf = PDF::loadView('pdf.bol', $info);
+
+            $message->to($info['info']['carrier_email'])
+
+            ->subject('Bill of Lading from ITS for PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name);
+
+            $message->attachData($pdf->output(), 'BOL_' . $info['info']['id'] . '.pdf');
+
+            
+
+        });
+
+        return back()->with('status', 'The BOL has been sent to the carrier!');
+    }
+
+    // emailBOLYou
+
+     public function emailBOLYou($id){
+        
+        $info = Load::find($id);
+
+      	$info = ['info'=>$info];
+
+        Mail::send(['html'=>'email.bol_email_body'], $info, function($message) use ($info){
+            
+            $pdf = PDF::loadView('pdf.bol', $info);
+
+            $message->to(\Auth::user()->email)
+
+            ->subject('Bill of Lading from ITS for PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name);
+
+            $message->attachData($pdf->output(), 'BOL_' . $info['info']['id'] . '.pdf');
+
+            
+
+        });
+
+        return back()->with('status', 'The BOL has been sent to you!');
+    }
 }
 
 	

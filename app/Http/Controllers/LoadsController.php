@@ -231,6 +231,13 @@ class LoadsController extends Controller
     	return back()->with('status', 'Your carrier has been emailed.');
     }
 
+  //   public function searchPro(Request $request)
+  //   {
+    	
+  //   	$info = Load::find($request->input('id'));
+		// return view('edit', compact('info'));
+  //   }
+
 	
 }
 

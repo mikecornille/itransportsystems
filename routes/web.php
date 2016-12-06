@@ -34,6 +34,8 @@ Route::get('/edit/{id}', 'LoadsController@edit');
 
 Route::patch('load/{load}', 'LoadsController@update');
 
+//Route::post('/searchPro', 'LoadsController@searchPro');
+
 //Print the Invoice and Rate Confirmation
 Route::get('/getInvoicePDF/{id}', 'PDFController@getInvoicePDF');
 Route::get('/getContractPDF/{id}', 'PDFController@getContractPDF');
@@ -50,6 +52,8 @@ Route::get('/emailCarrier/{id}', 'LoadsController@emailCarrier');
 //Emailing Invoice and Rate Confirmation with an attachment
 Route::get('/emailInvoicePDF/{id}', 'PDFController@emailInvoicePDF');
 Route::get('/emailRateConPDF/{id}', 'PDFController@emailRateConPDF');
+Route::get('/emailBOLCarrier/{id}', 'PDFController@emailBOLCarrier');
+Route::get('/emailBOLYou/{id}', 'PDFController@emailBOLYou');
 
 
 

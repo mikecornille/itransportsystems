@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     //protected $table = 'users';
-    protected $table = 'users';
+    protected $table = 'cms_users';
     protected $fillable = [
         'name', 'email', 'cell', 'password',
     ];

@@ -2,6 +2,13 @@
 <html>
 <head>
 	<title>Update Customer</title>
+	<style>
+
+	ul {
+
+	list-style-type: none;
+}
+	</style>
 </head>
 <body>
 <h3>Status Update on ITS PRO # {{ $info->id }}</h3>
@@ -12,7 +19,7 @@
 <p>BOL # {{ $info->bol_number }}</p>
 <h3>Status Update:</h3>
 <p>{{ $info->update_customer_message }}</p>
-<ul style="list-style-type: none;">
+<ul>
 <li>Thank You,</li>
 <li>{{ \Auth::user()->name }}</li>
 <li>{{ \Auth::user()->email }}</li>
