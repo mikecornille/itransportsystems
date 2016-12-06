@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Mail;
 
 class LoadsController extends Controller
 {
-	use helpers\Mailer;
+	//use helpers\Mailer;
     
 	//Load the datatable
     public function index()
