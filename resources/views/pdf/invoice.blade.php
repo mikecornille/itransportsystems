@@ -78,25 +78,31 @@ table {
     <td><b>CUSTOMER: {{ $info->customer_name }}</b></td>
     <td><b>BILLED DATE: {{ $info->billed_date }}</b></td>
   </tr>
-  <tr>
+	<tr>
     <td>ADDRESS: {{ $info->customer_address }}</td>
-    <td>CREATED DATE: {{ $info->creation_date }}</td>
-  </tr>
-  <tr>
-    <td>CONTACT: {{ $info->customer_contact }}</td>
     <td>PRO NUMBER: {{ $info->id }}</td>
   </tr>
-  <tr>
-    <td>EMAIL: {{ $info->customer_email }}</td>
+
+   <tr>
+    <td>CITY/STATE: {{ $info->customer_city . ', ' . $info->customer_state . ' ' . $info->customer_zip }}</td>
     <td>PO #: {{ $info->po_number }}</td>
   </tr>
+
   <tr>
-    <td>PHONE: {{ $info->customer_phone }}</td>
+    <td>CONTACT: {{ $info->customer_contact }}</td>
     <td>BOL #: {{ $info->bol_number }}</td>
   </tr>
   <tr>
-    <td>FAX: {{ $info->customer_fax }}</td>
+    <td>EMAIL: {{ $info->customer_email }}</td>
     <td>REF #: {{ $info->ref_number }}</td>
+  </tr>
+  <tr>
+    <td>PHONE: {{ $info->customer_phone }}</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>FAX: {{ $info->customer_fax }}</td>
+    <td></td>
   </tr>
 </table>
 
@@ -152,9 +158,9 @@ table {
 
 @endif
 
-<h2 class="text-center" id="amount_due"><i>AMOUNT DUE:</i> ${{ $info->amount_due }}.00 due on {{ $toString }}</h2>
+<h2 class="text-center" id="amount_due"><i>AMOUNT DUE:</i> ${{ $info->amount_due }}.00 paid by {{ $toString }}</h2>
 <h4 class="text-center"><u>THANK YOU FOR YOUR BUSINESS!</u></h4>
-<h4 class="text-center"><u>SEND FEEDBACK ON OUR SERVICE TO OPERATIONS@ITRANSYS.COM</u></h4>
+<h4 class="text-center"><u>HOME SITE: <i>TRANSPORTLOAD.COM</i> CUSTOMER TOOL: <i>MANAGELOADS.COM</i></u></h4>
 
 </body>
 </html>

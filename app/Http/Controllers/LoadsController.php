@@ -155,7 +155,7 @@ class LoadsController extends Controller
             
            	$message->to($info['info']['carrier_email'])
 
-           	->subject('Looking for a status update on PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] .  ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+           	->subject('PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] .  ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
           
             $message->from(\Auth::user()->email, \Auth::user()->name);
 
@@ -222,7 +222,7 @@ class LoadsController extends Controller
             
            	$message->to($info['info']['carrier_email'])
 
-           	->subject('Message from ITS regarding PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] .  ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+           	->subject('PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] .  ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
           
             $message->from(\Auth::user()->email, \Auth::user()->name);
 

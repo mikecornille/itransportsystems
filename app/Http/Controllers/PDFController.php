@@ -75,7 +75,7 @@ class PDFController extends Controller
 
             $message->to($info['info']['carrier_email'])
 
-            ->subject('Load Confirmation for PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+            ->subject('PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
           
             $message->from(\Auth::user()->email, \Auth::user()->name);
 
@@ -101,7 +101,7 @@ class PDFController extends Controller
 
             $message->to($info['info']['carrier_email'])
 
-            ->subject('Bill of Lading from ITS for PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+            ->subject('PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
           
             $message->from(\Auth::user()->email, \Auth::user()->name);
 

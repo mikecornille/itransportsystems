@@ -42,8 +42,14 @@ table {
 }
 
 .text_sections {
-	margin-top: 30px;
+	margin-top: 10px;
 }
+
+#latch_des {
+	font-size: 12px;
+	font-style: italic;
+}
+
 
 </style>
 
@@ -66,9 +72,9 @@ table {
 	</ul>
 </div>
 
-<table style="margin-top: 50px;">
+<table style="margin-top: 30px;">
   <tr>
-    <td>CARRIER: {{ $info->carrier_name }}</td>
+    <td><b>CARRIER: {{ $info->carrier_name }}</b></td>
     <td>CREATED DATE: {{ $info->creation_date }}</td>
   </tr>
   <tr>
@@ -81,15 +87,15 @@ table {
   </tr>
   <tr>
     <td>EMAIL: {{ $info->carrier_email }}</td>
-    <td>PO #: {{ $info->po_number }}</td>
-  </tr>
-  <tr>
-    <td>PHONE: {{ $info->carrier_phone }}</td>
     <td>BOL #: {{ $info->bol_number }}</td>
   </tr>
   <tr>
-    <td>FAX: {{ $info->carrier_fax }}</td>
+    <td>PHONE: {{ $info->carrier_phone }}</td>
     <td>REF #: {{ $info->ref_number }}</td>
+  </tr>
+  <tr>
+    <td>FAX: {{ $info->carrier_fax }}</td>
+    <td></td>
   </tr>
   <tr>
     <td>DRIVERS NAME: {{ $info->carrier_driver_name }}</td>
@@ -100,13 +106,13 @@ table {
     <td></td>
   </tr>
   <tr>
-    <td><b><i><u>TRAILER TYPE: {{ $info->trailer_type }}</u></i></b></td>
+    <td style="font-size: 15px;"><b><i>TRAILER TYPE: {{ $info->trailer_type }}</i></b></td>
     <td></td>
   </tr>
 </table>
 
 
-<table>
+<table class="text_sections">
   <tr>
     <td><u><b>ORIGIN</b></u></td>
     <td><u><b>DESTINATION</b></u></td>
@@ -133,21 +139,28 @@ table {
   </tr>
 </table>
 
-<hr>
+
+<p id="latch_des">***CHECK ALL LATCHES AND ENGINE COVERS BEFORE LEAVING THE SHIPPER, MAKE SURE LOADED WITH COWLING / COVER HINGES TOWARD FRONT, LATCHES TOWARD REAR TO ENSURE THEY DO NOT BLOW OPEN IN TRANSIT***</p>
+
 
 <div class="text_sections">
-	<h5><u><b>COMMODITY</b></u></h5>
+	<p><u><b>COMMODITY</b></u></p>
 	<p>{{ $info->commodity }}</p>
 </div>
 
+
+@if (!$info->add_stops == null)
 <div class="text_sections">
 <h5><u><b>ADDITIONAL STOPS</b></u></h5>
-<p>{{ $info->commodity }}</p>
+<p>{{ $info->add_stops }}</p>
 </div>
+@else
+
+@endif
 
 <div class="text_sections">
 <h5><u><b>SPECIAL NOTES</b></u></h5>
-<p>{{ $info->invoice_notes }}</p>
+<p>{{ $info->special_ins }}</p>
 </div>
 
 <h5 class="text-center"><b>ONCE DELIVERED CALL 877-663-2200 TO PROVIDE THE NAME OF WHO SIGNED FOR THE SHIPMENT</b></h5>

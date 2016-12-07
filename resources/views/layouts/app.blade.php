@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'ITS Maker') }}</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
@@ -45,7 +45,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'CMS') }}
+                        {{ config('app.name', 'ITS Maker') }}
                     </a>
                 </div>
 
@@ -82,6 +82,7 @@
                                     <li><a href="#">To Be Loaded</a></li>
                                     <li><a href="#">To Be Delivered</a></li>
                                     <li><a href="#">Find Trucks</a></li>
+                                    <li><a href="#">My Stats</a></li>
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
