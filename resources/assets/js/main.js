@@ -30,7 +30,6 @@ $(document).ready(function() {
     		},
 			
 			{ "data": "id" },
-            { "data": "creation_date" },
             { "data": "pick_status"},
             { "data": "pick_date"},
             { "data": "pick_time"},
@@ -54,7 +53,8 @@ $(document).ready(function() {
             { "data": "amount_due"},
             { "data": "carrier_rate"},
             { "data": "trailer_type"},
-            { "data": "total_miles"}
+            { "data": "total_miles"},
+            { "data": "creation_date" }
 
 
         ],
@@ -63,31 +63,31 @@ $(document).ready(function() {
         "columnDefs": [
       { "width": "20px", "targets": 0 }, //pro # button
       { "width": "40px", "targets": 1 }, //pro #
-      { "width": "50px", "targets": 2 }, //creation date
-      { "width": "50px", "targets": 3 }, //pick status 
-      { "width": "50px", "targets": 4 }, //pick date
-      { "width": "25px", "targets": 5 }, //pick time
-      { "width": "50px", "targets": 6 }, //delivery status 
-      { "width": "50px", "targets": 7 }, //delivery date
-      { "width": "25px", "targets": 8 }, //delivery time
-      { "width": "50px", "targets": 9 }, //billed date
-      { "width": "50px", "targets": 10 }, //reference number
-      { "width": "100px", "targets": 11 }, //customer
-      { "width": "100px", "targets": 12 }, //carrier
-      { "width": "100px", "targets": 13 }, //pick company
-      { "width": "100px", "targets": 14 }, //pick city
-      { "width": "100px", "targets": 15 }, //delivery company
-      { "width": "100px", "targets": 16 }, //delivery city
-      { "width": "50px", "targets": 17 }, //po number
-      { "width": "50px", "targets": 18 }, //bol number
-      { "width": "200px", "targets": 19 }, //commodity
-      { "width": "50px", "targets": 20 }, //rate con date
-      { "width": "50px", "targets": 21 }, //created by
-      { "width": "50px", "targets": 22 }, //group
-      { "width": "40px", "targets": 23 }, //amount due
-      { "width": "40px", "targets": 24 }, //carrier rate
-      { "width": "70px", "targets": 25 }, //trailer type
-      { "width": "50px", "targets": 26 } //signed
+      { "width": "50px", "targets": 2 }, //pick status 
+      { "width": "50px", "targets": 3 }, //pick date
+      { "width": "25px", "targets": 4 }, //pick time
+      { "width": "50px", "targets": 5 }, //delivery status 
+      { "width": "50px", "targets": 6 }, //delivery date
+      { "width": "25px", "targets": 7 }, //delivery time
+      { "width": "50px", "targets": 8 }, //billed date
+      { "width": "50px", "targets": 9 }, //reference number
+      { "width": "100px", "targets": 10 }, //customer
+      { "width": "100px", "targets": 11 }, //carrier
+      { "width": "100px", "targets": 12 }, //pick company
+      { "width": "100px", "targets": 13 }, //pick city
+      { "width": "100px", "targets": 14 }, //delivery company
+      { "width": "100px", "targets": 15 }, //delivery city
+      { "width": "50px", "targets": 16 }, //po number
+      { "width": "50px", "targets": 17 }, //bol number
+      { "width": "200px", "targets": 18 }, //commodity
+      { "width": "50px", "targets": 19 }, //rate con date
+      { "width": "50px", "targets": 20 }, //created by
+      { "width": "50px", "targets": 21 }, //group
+      { "width": "40px", "targets": 22 }, //amount due
+      { "width": "40px", "targets": 23 }, //carrier rate
+      { "width": "70px", "targets": 24 }, //trailer type
+      { "width": "50px", "targets": 25 }, //signed
+      { "width": "50px", "targets": 26 } //creation date
      
     ]
 
@@ -208,5 +208,48 @@ $(document).on('dblclick', '#total_miles', function(){
 var signed = 'SIGNED';
 
 $('#total_miles').val(signed);
+
+});
+
+<!-- CLEARS OUT CARRIER DATA -->
+
+$(document).on('click', '#clear_carrier', function(){
+
+$('#carrier_name').val('');
+$('#carrier_address').val('');
+$('#carrier_city').val('');
+$('#carrier_state').val('');
+$('#carrier_zip').val('');
+$('#carrier_contact').val('');
+$('#carrier_email').val('');
+$('#carrier_phone').val('');
+$('#carrier_fax').val('');
+$('#carrier_driver_name').val('');
+$('#carrier_driver_cell').val('');
+$('#carrier_rate').val('');
+$('#datepicker').val('');
+$('#datepicker2').val('');
+$('#datepicker5').val('');
+$('#trailer_type').val('Please Choose One');
+$('#delivery_status').val('Open');
+$('#pick_status').val('Open');
+$('#delivery_time').val('0700');
+$('#pick_time').val('0700');
+//$('#factoring_company').val('');
+$('#quick_status_notes').val('');
+$('#datepicker6').val('');
+$('#datepicker7').val('');
+// $('#remit_name').val('');
+// $('#remit_address').val('');
+// $('#remit_city').val('');
+// $('#remit_state').val('');
+// $('#remit_zip').val('');
+// $('#remit_to_name').text('');
+// $('#remit_to_address').text('');
+// $('#remit_to_citystatezip').text('');
+// $('#vendor_invoice_number').val('');
+// $('#vendor_invoice_date').val('');
+$('#total_miles').val('');
+
 
 });

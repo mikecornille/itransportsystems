@@ -86,18 +86,18 @@
                     <select name="internal_email" id="internal_email" class="form-control"> 
                       <option value="{{ $info->internal_email }}">{{ $info->internal_email }}</option>
                       <option value="Please Choose One">Please Choose One</option>
-                      <option value="joem@itransys.com">Joe Mowrer</option>
-                      <option value="mikeb@itransys.com">Mike Bruschuk</option>
-                      <option value="mattk@itransys.com">Matt King</option>
-                      <option value="mattc@itransys.com">Matt Carnahan</option>
-                      <option value="mikec@itransys.com">Mike Cornille</option>
-                      <option value="ronc@itransys.com">Ron Cornille</option>
-                      <option value="robert@itransys.com">Robert Bansberg</option>
-                      <option value="aj@itransys.com">AJ Mesik</option>
-                      <option value="lianey@itransys.com">Liane Cornille</option>
-                      <option value="jennifer@itransys.com">Jennifer Wendell</option>
-                      <option value="molly@itransys.com">Molly Karcz</option>
-                      <option value="wanda@itransys.com">Wanda Giovingo</option>
+                      <option value="joem@itransys.com">joem@itransys.com</option>
+                      <option value="mikeb@itransys.com">mikeb@itransys.com</option>
+                      <option value="mattk@itransys.com">mattk@itransys.com</option>
+                      <option value="mattc@itransys.com">mattc@itransys.com</option>
+                      <option value="mikec@itransys.com">mikec@itransys.com</option>
+                      <option value="ronc@itransys.com">ronc@itransys.com</option>
+                      <option value="robert@itransys.com">robert@itransys.com</option>
+                      <option value="aj@itransys.com">aj@itransys.com</option>
+                      <option value="lianey@itransys.com">lianey@itransys.com</option>
+                      <option value="jennifer@itransys.com">jennifer@itransys.com</option>
+                      <option value="molly@itransys.com">molly@itransys.com</option>
+                      <option value="wanda@itransys.com">wanda@itransys.com</option>
                     </select>
             </div>
           </div> 
@@ -114,7 +114,7 @@
                     <div class="input-group">
                     <input type="text" class="form-control" id="carrier_name" name="carrier_name" value="{{ $info->carrier_name }}">
                     <span class="input-group-btn">
-        <button class="btn btn-secondary" type="button"><span class="glyphicon glyphicon-flash" aria-hidden="true"></span></button>
+        <button class="btn btn-secondary" id="clear_carrier" type="button"><span class="glyphicon glyphicon-flash" aria-hidden="true"></span></button>
       </span>
     </div>
 				</div>
@@ -432,17 +432,17 @@
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu">
-    <li><a href="{{ URL::to('/getInvoicePDF/' . $info->id) }}">Print Invoice</a></li>
-    <li><a href="{{ URL::to('/emailInvoicePDF/' . $info->id) }}">Email Invoice</a></li>
-    <li><a href="{{ URL::to('/getContractPDF/' . $info->id) }}">Print Rate Con</a></li>
-    <li><a href="{{ URL::to('/emailRateConPDF/' . $info->id) }}">Email Rate Con</a></li>
-    <li><a href="{{ URL::to('/status/' . $info->id) }}">Get Status</a></li>
-    <li><a href="{{ URL::to('/pod/' . $info->id) }}">POD Request</a></li>
-    <li><a href="{{ URL::to('/internal/' . $info->id) }}">Email Internal</a></li>
-    <li><a href="{{ URL::to('/updateCustomer/' . $info->id) }}">Email Customer</a></li>
-    <li><a href="{{ URL::to('/emailCarrier/' . $info->id) }}">Email Carrier</a></li>
-    <li><a href="{{ URL::to('/emailBOLCarrier/' . $info->id) }}">Email BOL Carrier</a></li>
-    <li><a href="{{ URL::to('/emailBOLYou/' . $info->id) }}">Email BOL You</a></li>
+    <li><a href="{{ URL::to('/getInvoicePDF/' . $info->id) }}"><b>Print Invoice</b></a></li>
+    <li><a href="{{ URL::to('/emailInvoicePDF/' . $info->id) }}"><b>Email Invoice</b></a></li>
+    <li><a href="{{ URL::to('/getContractPDF/' . $info->id) }}"><b>Print Rate Con</b></a></li>
+    <li><a href="{{ URL::to('/emailRateConPDF/' . $info->id) }}"><b>Email Rate Con</b></a></li>
+    <li><a href="{{ URL::to('/status/' . $info->id) }}"><b>Get Status</b></a></li>
+    <li><a href="{{ URL::to('/pod/' . $info->id) }}"><b>POD Request</b></a></li>
+    <li><a href="{{ URL::to('/internal/' . $info->id) }}"><b>Email Internal</b></a></li>
+    <li><a href="{{ URL::to('/updateCustomer/' . $info->id) }}"><b>Email Customer</b></a></li>
+    <li><a href="{{ URL::to('/emailCarrier/' . $info->id) }}"><b>Email Carrier</b></a></li>
+    <li><a href="{{ URL::to('/emailBOLCarrier/' . $info->id) }}"><b>Email BOL Carrier</b></a></li>
+    <li><a href="{{ URL::to('/emailBOLYou/' . $info->id) }}"><b>Email BOL You</b></a></li>
   </ul>
 </div>
 
@@ -567,13 +567,12 @@
 
 <div class="container-fluid">
 <!-- <div class="well"> -->
-<table id="mainTable" cellspacing="0" class="stripe row-border order-column" style="width: 2800px; margin-left: 10px; font-size: 12px;">
+<table id="mainTable" cellspacing="0" class="stripe row-border order-column" style="border-collapse: collapse; width: 2800px; margin-left: 10px; font-size: 12px; table-layout: fixed; word-wrap:break-word;">
 
         <thead>
             <tr>
             <th></th>
                 <th>Pro</th>
-                <th>Created</th>
                 <th>P Status</th>
                 <th>P Date</th>
                 <th>PT</th>
@@ -598,7 +597,7 @@
                 <th>C Rate</th>
                 <th>Trailer</th>
                 <th>Signed</th>
-                
+                <th>Created</th>
                 
                 
                 
@@ -612,7 +611,6 @@
             <tr>
             <th></th>
                 <th>Pro</th>
-                <th>Created</th>
                 <th>P Status</th>
                 <th>P Date</th>
                 <th>PT</th>
@@ -637,6 +635,7 @@
                 <th>C Rate</th>
                 <th>Trailer</th>
                 <th>Signed</th>
+                <th>Created</th>
               
                 
            

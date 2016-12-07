@@ -21,6 +21,8 @@
     </div>
 @endif
 
+<div class="home_form">
+
 <form role="form" class="form-horizontal" method="POST" action="/new">
         
         {{ csrf_field() }}
@@ -231,20 +233,19 @@
 
 </form>
 
-
+</div>
 
 
 
 
 <div class="container-fluid">
 <!-- <div class="well"> -->
-<table id="mainTable" cellspacing="0" class="stripe row-border order-column" style="width: 2800px; margin-left: 10px; font-size: 12px;">
+<table id="mainTable" cellspacing="0" class="stripe row-border order-column" style="border-collapse: collapse; width: 2800px; margin-left: 10px; font-size: 12px; table-layout: fixed; word-wrap:break-word;">
 
         <thead>
             <tr>
             <th></th>
                 <th>Pro</th>
-                <th>Created</th>
                 <th>P Status</th>
                 <th>P Date</th>
                 <th>PT</th>
@@ -269,7 +270,7 @@
                 <th>C Rate</th>
                 <th>Trailer</th>
                 <th>Signed</th>
-                
+                <th>Created</th>
                 
                 
                 
@@ -283,7 +284,6 @@
             <tr>
             <th></th>
                 <th>Pro</th>
-                <th>Created</th>
                 <th>P Status</th>
                 <th>P Date</th>
                 <th>PT</th>
@@ -308,6 +308,7 @@
                 <th>C Rate</th>
                 <th>Trailer</th>
                 <th>Signed</th>
+                <th>Created</th>
               
                 
            
