@@ -1,12 +1,12 @@
 //DISABLE THE ENTER BUTTON ON KEYBOARDS
 
-$('html').bind('keypress', function(e)
-	{
-   		if(e.keyCode == 13)
-   			{
-      			return false;
-   			}
-	});
+// $('html').bind('keypress', function(e)
+// 	{
+//    		if(e.keyCode == 13)
+//    			{
+//       			return false;
+//    			}
+// 	});
 
 //GET THE CONTENT FOR THE DATATABLE
 
@@ -26,7 +26,7 @@ $(document).ready(function() {
                 "orderable":      false,
                 "data":           'id',
                 "render": function ( data, type, full, meta ) {
-      			return '<a href="/edit/url?id='+data+'">Edit/View</a>';}
+      			return '<a href="/edit/url?id='+data+'">View</a>';}
     		},
 			
 			{ "data": "id" },
@@ -59,6 +59,37 @@ $(document).ready(function() {
 
         ],
         "order": [[1,'desc']],
+
+        "columnDefs": [
+      { "width": "20px", "targets": 0 }, //pro # button
+      { "width": "40px", "targets": 1 }, //pro #
+      { "width": "50px", "targets": 2 }, //creation date
+      { "width": "50px", "targets": 3 }, //pick status 
+      { "width": "50px", "targets": 4 }, //pick date
+      { "width": "25px", "targets": 5 }, //pick time
+      { "width": "50px", "targets": 6 }, //delivery status 
+      { "width": "50px", "targets": 7 }, //delivery date
+      { "width": "25px", "targets": 8 }, //delivery time
+      { "width": "50px", "targets": 9 }, //billed date
+      { "width": "50px", "targets": 10 }, //reference number
+      { "width": "100px", "targets": 11 }, //customer
+      { "width": "100px", "targets": 12 }, //carrier
+      { "width": "100px", "targets": 13 }, //pick company
+      { "width": "100px", "targets": 14 }, //pick city
+      { "width": "100px", "targets": 15 }, //delivery company
+      { "width": "100px", "targets": 16 }, //delivery city
+      { "width": "50px", "targets": 17 }, //po number
+      { "width": "50px", "targets": 18 }, //bol number
+      { "width": "200px", "targets": 19 }, //commodity
+      { "width": "50px", "targets": 20 }, //rate con date
+      { "width": "50px", "targets": 21 }, //created by
+      { "width": "50px", "targets": 22 }, //group
+      { "width": "40px", "targets": 23 }, //amount due
+      { "width": "40px", "targets": 24 }, //carrier rate
+      { "width": "70px", "targets": 25 }, //trailer type
+      { "width": "50px", "targets": 26 } //signed
+     
+    ]
 
 });   
 

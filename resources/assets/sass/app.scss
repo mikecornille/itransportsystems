@@ -1,6 +1,20 @@
 $mainmarginright: 30px;
 $mainmarginleft: 50px;
 
+table {
+  margin: 0 auto;
+  width: 100%;
+  clear: both;
+  border-collapse: collapse;
+  table-layout: fixed; // ***********add this
+  word-wrap:break-word; // ***********and this
+}
+
+textarea { 
+   /* will prevent resizing horizontally */
+   resize:vertical;
+}
+
 #customer_home, #origin_home, #delivery_home, #reference_home {
     
     width: 300px; 
@@ -32,8 +46,6 @@ $mainmarginleft: 50px;
     margin-right: 20px;
   
 }
-
-
 
 
 #commodity_div, #special_ins_div, #stops_div, #invoice_notes_div {

@@ -11,7 +11,7 @@ use App\Load;
 
 class PDFController extends Controller
 {
-    use helpers\Mailer;
+    //use helpers\Mailer;
 	
 	//Prints the invoice
 	public function getInvoicePDF($id)

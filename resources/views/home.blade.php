@@ -193,37 +193,37 @@
 
 
 
-<div id="commodity_div">
-    <div class="well">
+<div class="well" id="commodity_div">
+    <div class="form-group">
         <label for="commodity">Commodity</label>
         <textarea name="commodity" id="commodity" class="form-control" rows="2">{{ old('commodity') }}</textarea>
     </div>
 </div>
 
-<div id="special_ins_div">
-    <div class="well">
-        <label for="special_ins">Special Instructions (These notes appear on Rate Con Only)</label>
+<div class="well" id="special_ins_div">
+    <div class="form-group">
+        <label for="special_ins">Special Instructions (Appear on Rate Con)</label>
         <textarea name="special_ins" id="special_ins" class="form-control" rows="2">{{ old('special_ins') }}</textarea>
     </div>
 </div>
 
-<div id="stops_div">
-    <div class="well">
+<div class="well" id="stops_div">
+    <div class="form-group">
         <label for="add_stops">Additional Stops</label>
         <textarea name="add_stops" id="add_stops" class="form-control" rows="2">{{ old('add_stops') }}</textarea>
     </div>
 </div>
 
-<div id="internal_notes_div">
-    <div class="well">
-        <label for="internal_notes">Internal Notes (These notes are for ITS eyes only)</label>
+<div class="well" id="internal_notes_div">
+    <div class="form-group">
+        <label for="internal_notes">Internal Notes (ITS eyes only)</label>
         <textarea name="internal_notes" id="internal_notes" class="form-control" rows="2">{{ old('internal_notes') }}</textarea>
     </div>
 </div>
 
-<div id="invoice_notes_div">
-    <div class="well">
-        <label for="invoice_notes">Invoice Notes (These notes get attached to the Invoice)</label>
+<div class="well" id="invoice_notes_div">
+    <div class="form-group">
+        <label for="invoice_notes">Invoice Notes (Appear on Invoice)</label>
         <textarea name="invoice_notes" id="invoice_notes" class="form-control" rows="2">{{ old('invoice_notes') }}</textarea>
     </div>
 </div>
@@ -238,36 +238,36 @@
 
 <div class="container-fluid">
 <!-- <div class="well"> -->
-<table id="mainTable" cellspacing="0" class="stripe row-border order-column" width="100%" style="width: 2800px; margin-left: 10px;">
+<table id="mainTable" cellspacing="0" class="stripe row-border order-column" style="width: 2800px; margin-left: 10px; font-size: 12px;">
 
         <thead>
             <tr>
             <th></th>
                 <th>Pro</th>
-                <th>CreatedOn</th>
-                <th>Pick Status</th>
-                <th>Pick Date</th>
-                <th>Pick Time</th>
-                <th>Del Status</th>
-                <th>Del Date</th>
-                <th>Del Time</th>
+                <th>Created</th>
+                <th>P Status</th>
+                <th>P Date</th>
+                <th>PT</th>
+                <th>D Status</th>
+                <th>D Date</th>
+                <th>DT</th>
                 <th>Billed</th>
-                <th>Reference</th>
+                <th>Ref</th>
                 <th>Customer</th>
                 <th>Carrier</th>
-                <th>Pick Company</th>
-                <th>Pick City</th>
-                <th>Del Company</th>
-                <th>Del City</th>
+                <th>P Company</th>
+                <th>P City</th>
+                <th>D Company</th>
+                <th>D City</th>
                 <th>PO Num</th>
                 <th>BOL</th>
                 <th>Commodity</th>
                 <th>Rate Con</th>
                 <th>Creator</th>
                 <th>Group</th>
-                <th>Amount</th>
-                <th>Carrier Rate</th>
-                <th>Trailer Type</th>
+                <th>I Rate</th>
+                <th>C Rate</th>
+                <th>Trailer</th>
                 <th>Signed</th>
                 
                 
@@ -283,30 +283,30 @@
             <tr>
             <th></th>
                 <th>Pro</th>
-                <th>CreatedOn</th>
-                <th>Pick Status</th>
-                <th>Pick Date</th>
-                <th>Pick Time</th>
-                <th>Del Status</th>
-                <th>Del Date</th>
-                <th>Del Time</th>
+                <th>Created</th>
+                <th>P Status</th>
+                <th>P Date</th>
+                <th>PT</th>
+                <th>D Status</th>
+                <th>D Date</th>
+                <th>DT</th>
                 <th>Billed</th>
-                <th>Reference</th>
+                <th>Ref</th>
                 <th>Customer</th>
                 <th>Carrier</th>
-                <th>Pick Company</th>
-                <th>Pick City</th>
-                <th>Del Company</th>
-                <th>Del City</th>
+                <th>P Company</th>
+                <th>P City</th>
+                <th>D Company</th>
+                <th>D City</th>
                 <th>PO Num</th>
                 <th>BOL</th>
                 <th>Commodity</th>
                 <th>Rate Con</th>
                 <th>Creator</th>
                 <th>Group</th>
-                <th>Amount</th>
-                <th>Carrier Rate</th>
-                <th>Trailer Type</th>
+                <th>I Rate</th>
+                <th>C Rate</th>
+                <th>Trailer</th>
                 <th>Signed</th>
               
                 

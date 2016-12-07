@@ -1,5 +1,17 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+table {
+  margin: 0 auto;
+  width: 100%;
+  clear: both;
+  border-collapse: collapse;
+  table-layout: fixed;
+  word-wrap: break-word; }
+
+textarea {
+  /* will prevent resizing horizontally */
+  resize: vertical; }
+
 #customer_home, #origin_home, #delivery_home, #reference_home {
   width: 300px;
   float: left;
