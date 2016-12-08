@@ -19,6 +19,24 @@ Route::get('/twilio', function () {
     return view('twilio');
 });
 
+Route::get('/toBeLoaded', function () {
+    return view('/toBeLoaded');
+});
+
+
+
+Route::get('/toBeDelivered', function () {
+    return view('/toBeDelivered');
+});
+
+Route::get('/myStats', function () {
+    return view('/myStats');
+});
+
+Route::get('/findTrucks', function () {
+    return view('/findTrucks');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
@@ -26,6 +44,10 @@ Route::get('/home', 'HomeController@index');
 
 Route::post('/new', 'LoadsController@store');
 Route::get('/loads', 'LoadsController@index');
+Route::get('/tobedata', 'LoadsController@indextwo');
+Route::get('/tobedatatwo', 'LoadsController@tobedatatwo');
+
+
 
 
 Route::get('/edit/{id}', 'LoadsController@edit');

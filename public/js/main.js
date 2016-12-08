@@ -8,6 +8,106 @@
 //    			}
 // 	});
 
+//GET THE CONTENT FOR THE DATATABLE TO BE DELIVERED
+
+$(document).ready(function() {
+
+    var table = $('#mainTableThree').DataTable({
+        
+         // scrollY:        "800px",
+   //       scrollX:        true,
+   //       scrollCollapse: true,
+   //       paging:         true,
+   //       fixedColumns: true,
+        "ajax": "/tobedatatwo",
+        "columns": [
+            {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           'id',
+                "render": function ( data, type, full, meta ) {
+                return '<a href="/edit/url?id='+data+'">View</a>';}
+            },
+            
+            { "data": "id" },
+            { "data": "quick_status_notes"},
+            { "data": "pick_date"},
+            { "data": "pick_time"},
+            { "data": "customer_name"},
+            { "data": "pick_city"},
+            { "data": "delivery_city"}
+
+
+        ],
+        "order": [[3,'asc'],[4,'asc']],
+
+        "columnDefs": [
+      { "width": "20px", "targets": 0 }, //pro # button
+      { "width": "20px", "targets": 1 }, //pro #
+      { "width": "100px", "targets": 2 }, //status 
+      { "width": "50px", "targets": 3 }, //pick date
+      { "width": "25px", "targets": 4 }, //pick time
+      { "width": "100px", "targets": 5 }, //customer
+      { "width": "50px", "targets": 6 }, //pick city
+      { "width": "50px", "targets": 7 }, //delivery city
+
+      ]
+
+});   
+
+});
+
+//GET THE CONTENT FOR THE DATATABLE TO BE LOADED
+
+$(document).ready(function() {
+
+    var table = $('#mainTableTwo').DataTable({
+        
+         // scrollY:        "800px",
+   //       scrollX:        true,
+   //       scrollCollapse: true,
+   //       paging:         true,
+   //       fixedColumns: true,
+        "ajax": "/tobedata",
+        "columns": [
+            {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           'id',
+                "render": function ( data, type, full, meta ) {
+                return '<a href="/edit/url?id='+data+'">View</a>';}
+            },
+            
+            { "data": "id" },
+            { "data": "quick_status_notes"},
+            { "data": "pick_date"},
+            { "data": "pick_time"},
+            { "data": "customer_name"},
+            { "data": "pick_city"},
+            { "data": "delivery_city"}
+
+
+        ],
+        "order": [[3,'asc'],[4,'asc']],
+
+        "columnDefs": [
+      { "width": "20px", "targets": 0 }, //pro # button
+      { "width": "20px", "targets": 1 }, //pro #
+      { "width": "100px", "targets": 2 }, //status 
+      { "width": "50px", "targets": 3 }, //pick date
+      { "width": "25px", "targets": 4 }, //pick time
+      { "width": "100px", "targets": 5 }, //customer
+      { "width": "50px", "targets": 6 }, //pick city
+      { "width": "50px", "targets": 7 }, //delivery city
+
+      ]
+
+});   
+
+});
+
+
+
 //GET THE CONTENT FOR THE DATATABLE
 
 $(document).ready(function() {

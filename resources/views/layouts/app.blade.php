@@ -71,7 +71,10 @@
                                 <button type="submit" class="btn btn-default">Submit</button>
                                 
                             </form> -->
-
+                            <li><a href="{{ url('/home') }}">New Invoice</a></li>
+                            <li><a href="{{ URL::to('/toBeLoaded') }}">To Be Loaded</a></li>
+                            <li><a href="{{ URL::to('/toBeDelivered') }}">To Be Delivered</a></li>
+                            <li><a href="{{ URL::to('/findTrucks') }}">Find Trucks</a></li>
                             
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -79,10 +82,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">To Be Loaded</a></li>
-                                    <li><a href="#">To Be Delivered</a></li>
-                                    <li><a href="#">Find Trucks</a></li>
-                                    <li><a href="#">My Stats</a></li>
+                                    <li><a href="{{ URL::to('/myStats') }}">My Stats</a></li>
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();

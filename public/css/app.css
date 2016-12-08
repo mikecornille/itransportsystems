@@ -28,6 +28,18 @@ textarea {
   float: left;
   margin-right: 20px; }
 
+#location-search {
+  margin-left: 500px;
+  margin-bottom: 20px;
+  width: 600px;
+  height: 50px;
+  background: #b4b7bd;
+  border: none;
+  font-size: 14pt;
+  color: #131519;
+  padding-left: 45px;
+  border-radius: 5px; }
+
 #commodity_div, #special_ins_div, #stops_div, #invoice_notes_div {
   width: 400px;
   float: left;

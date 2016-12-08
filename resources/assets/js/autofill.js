@@ -12,8 +12,8 @@
                             response($.map(data, function (item) {
                                 window.record = item;
                                 return {
-                                    label: item.location_name,
-                                    value: item.id
+                                    label: item.location_name + ' ' + item.address,
+                                    value: item.location_name + ' ' + item.address
                                 }
                         }));
                     }});
@@ -22,6 +22,7 @@
                 select: function( event, ui ) {
                     
                     $('#customer_name').val(window.record.location_name);
+                    $('#customer_address').val(window.record.address);
                     log( ui.item ?
                     "Selected: " + ui.item.label :
                     "Nothing selected, input was " + this.value);

@@ -28,6 +28,24 @@ class LoadsController extends Controller
 		
 	}
 
+	public function indextwo()
+	{
+		
+		$data = Load::where('pick_status', 'Booked')->get();
+		return(['data' => $data]);
+		
+	}
+
+	public function tobedatatwo()
+	{
+		
+		$data = Load::where('pick_status', 'Loaded')->get();
+		return(['data' => $data]);
+		
+	}
+
+	
+
 	//Store a new record in database
 	 public function store(Request $request)
 	{
@@ -75,6 +93,8 @@ class LoadsController extends Controller
 	}
 
 	
+
+	
 	//Go to edit form with selected record
 	public function edit(Request $request)
 	{
@@ -115,9 +135,26 @@ class LoadsController extends Controller
         
          ]);
 
+            	//need to make sure rate_con_creator doesnt already exist
+
+            if ($request->pick_status === 'Booked')
+            {
+            	$load->rate_con_creator = strtoupper(\Auth::user()->email);
+            }
+            else
+            {
+            	$load->rate_con_creator = NULL;
+            }
+        
+        
 		$load->update($request->all());
 		return back()->with('status', 'Your updates have been successfully saved!');
 
+
+
+
+
+		
 	}
 
 	//Send internal email to fellow employee

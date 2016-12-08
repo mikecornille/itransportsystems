@@ -1,7 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<input type="text" id="location-search"></input>
+
+
+
+
+<input type="text" id="location-search" placeholder="Search Databases..."></input>
+
+
+
 
 @if (count($errors) > 0)
     <div class="alert alert-danger">
@@ -319,6 +326,7 @@
     </table>
     <!-- </div> -->
     </div>
+
 
 
 

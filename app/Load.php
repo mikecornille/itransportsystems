@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Load extends Model
 {
-    protected $table = 'loads';
+    protected $table = 'example_loads';
 
     protected $fillable = [
 			  'customer_name',
@@ -78,6 +78,7 @@ class Load extends Model
               'carrier_message',
               'internal_email',
               'internal_message',
+              
 
 			  ];
   
