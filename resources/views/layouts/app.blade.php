@@ -71,6 +71,10 @@
                                 <button type="submit" class="btn btn-default">Submit</button>
                                 
                             </form> -->
+                            @if (Auth::user()->admin)
+                                                        <li><a href="{{ url('/admin') }}">Admin</a></li>
+
+                            @endif
                             <li><a href="{{ url('/home') }}">New Invoice</a></li>
                             <li><a href="{{ URL::to('/toBeLoaded') }}">To Be Loaded</a></li>
                             <li><a href="{{ URL::to('/toBeDelivered') }}">To Be Delivered</a></li>

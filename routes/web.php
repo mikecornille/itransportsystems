@@ -15,12 +15,23 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
+Auth::routes();
+
 Route::get('/twilio', function () {
     return view('twilio');
 });
 
 Route::get('/toBeLoaded', function () {
     return view('/toBeLoaded');
+});
+Route::group(['middleware' => 'auth'],function() {
+
+
+Route::get('/admin', function () {
+	if ( ! Auth::user()->admin) {
+		return redirect('/home');
+	}
+    return view('/admin');
 });
 
 
@@ -37,7 +48,7 @@ Route::get('/findTrucks', function () {
     return view('/findTrucks');
 });
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index');
 
@@ -76,5 +87,5 @@ Route::get('/emailRateConPDF/{id}', 'PDFController@emailRateConPDF');
 Route::get('/emailBOLCarrier/{id}', 'PDFController@emailBOLCarrier');
 Route::get('/emailBOLYou/{id}', 'PDFController@emailBOLYou');
 
-
+});
 

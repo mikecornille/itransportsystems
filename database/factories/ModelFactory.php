@@ -23,3 +23,21 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'cell' => $faker->phoneNumber
     ];
 });
+
+$factory->define(App\Location::class, function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+        'location_name' => $faker->word(),
+        'location_number' => $faker->randomNumber(),
+        'address' => $faker->streetAddress(),
+        'city' => $faker->city(),
+        'state' => $faker->state(),
+        'zip' => $faker->postcode(),
+        'contact' => $faker->name(),
+        'phone' => $faker->phoneNumber(),
+        'email' => $faker->email(),
+        'cell' => $faker->phoneNumber(),
+        'location_notes' => $faker->sentence(),
+    ];
+});
