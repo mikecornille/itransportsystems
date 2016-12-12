@@ -41,3 +41,22 @@ $factory->define(App\Location::class, function (Faker\Generator $faker) {
         'location_notes' => $faker->sentence(),
     ];
 });
+
+$factory->define(App\Customer::class, function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+        'name' => $faker->word(),
+        'location_number' => $faker->randomNumber(),
+        'address' => $faker->streetAddress(),
+        'city' => $faker->city(),
+        'state' => $faker->state(),
+        'zip' => $faker->postcode(),
+        'fax' => $faker->phoneNumber(),
+        'name_1' => $faker->name(),
+        'phone_1' => $faker->phoneNumber(),
+        'email_1' => $faker->email(),
+        'internal_notes' => $faker->sentence(),
+    ];
+});
+

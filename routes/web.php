@@ -21,11 +21,25 @@ Route::get('/twilio', function () {
     return view('twilio');
 });
 
-Route::get('/toBeLoaded', function () {
-    return view('/toBeLoaded');
-});
+
 Route::group(['middleware' => 'auth'],function() {
 
+
+Route::get('/newCarrier', function () {
+    return view('/newCarrier');
+});
+
+Route::get('/newCustomer', function () {
+    return view('/newCustomer');
+});
+
+Route::get('/newLocation', function () {
+    return view('/newLocation');
+});
+
+Route::get('/newEquipment', function () {
+    return view('/newEquipment');
+});
 
 Route::get('/admin', function () {
 	if ( ! Auth::user()->admin) {
@@ -34,7 +48,16 @@ Route::get('/admin', function () {
     return view('/admin');
 });
 
+Route::get('/accounting', function () {
+	if ( ! Auth::user()->accounting) {
+		return redirect('/home');
+	}
+    return view('/accounting');
+});
 
+Route::get('/toBeLoaded', function () {
+    return view('/toBeLoaded');
+});
 
 Route::get('/toBeDelivered', function () {
     return view('/toBeDelivered');
@@ -58,7 +81,8 @@ Route::get('/loads', 'LoadsController@index');
 Route::get('/tobedata', 'LoadsController@indextwo');
 Route::get('/tobedatatwo', 'LoadsController@tobedatatwo');
 
-
+//New Customer Form Submission
+Route::post('/newCustomer', 'CustomersController@store');
 
 
 Route::get('/edit/{id}', 'LoadsController@edit');

@@ -1,5 +1,11 @@
 @charset "UTF-8";
+/* CUSTOMER DATA STYLES */
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+#customer_data {
+  width: 500px;
+  float: none;
+  margin: 0 auto; }
+
 .home_form {
   margin-left: 100px; }
 

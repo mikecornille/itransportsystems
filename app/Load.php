@@ -78,7 +78,7 @@ class Load extends Model
               'carrier_message',
               'internal_email',
               'internal_message',
-              
+
 
 			  ];
   
