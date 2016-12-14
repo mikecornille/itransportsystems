@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Load extends Model
 {
-    protected $table = 'example_loads';
+    protected $table = 'loads';
 
     protected $fillable = [
 			  'customer_name',
