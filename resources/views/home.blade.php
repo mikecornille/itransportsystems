@@ -247,7 +247,7 @@
 
 
 
-<!-- <div class="container-fluid">
+<div class="container-fluid">
 
 <table id="mainTable" cellspacing="0" class="stripe row-border order-column" style="border-collapse: collapse; width: 2800px; margin-left: 10px; font-size: 12px; table-layout: fixed; word-wrap:break-word;">
 
@@ -327,7 +327,7 @@
         </tfoot>  
     </table>
     
-    </div>  -->
+    </div> 
 
 
 

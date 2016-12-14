@@ -84,9 +84,9 @@
                 <input type="text" class="form-control" id="quick_status_notes" name="quick_status_notes" value="{{ $info->quick_status_notes }}">
             </div>
              <div class="col-xs-12">
-                <label for="internal_email" class="label-control">Internal Email Recipient</label>
-                    <select name="internal_email" id="internal_email" class="form-control"> 
-                      <option value="{{ $info->internal_email }}">{{ $info->internal_email }}</option>
+                <label for="internal_email_address" class="label-control">Internal Email Recipient</label>
+                    <select name="internal_email_address" id="internal_email_address" class="form-control"> 
+                      <option value="{{ $info->internal_email_address }}">{{ $info->internal_email_address }}</option>
                       <option value="Please Choose One">Please Choose One</option>
                       <option value="joem@itransys.com">joem@itransys.com</option>
                       <option value="mikeb@itransys.com">mikeb@itransys.com</option>
@@ -479,8 +479,8 @@
                     </div>
 				</div>
 				<div class="col-xs-12">
-					<label class="label-control" for="total_miles">Signed Rate Con</label>
-                    <input type="text" class="form-control" id="total_miles" name="total_miles" value="{{ $info->total_miles }}">
+					<label class="label-control" for="signed_rate_con">Signed Rate Con</label>
+                    <input type="text" class="form-control" id="signed_rate_con" name="signed_rate_con" value="{{ $info->signed_rate_con }}">
 				</div>
 				<div class="col-xs-12">
 					<label class="label-control" for="rate_con_creation_date">Rate Con Create</label>

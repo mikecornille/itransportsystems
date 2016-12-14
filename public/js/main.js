@@ -153,7 +153,7 @@ $(document).ready(function() {
             { "data": "amount_due"},
             { "data": "carrier_rate"},
             { "data": "trailer_type"},
-            { "data": "total_miles"},
+            { "data": "signed_rate_con"},
             { "data": "creation_date" }
 
 

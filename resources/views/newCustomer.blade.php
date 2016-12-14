@@ -70,6 +70,51 @@
         </div>
 
         <div class="row">
+            <div class="col-xs-4">
+                <label class="label-control" for="name_2">NAME</label>
+                <input type="text" class="form-control" id="name_2" name="name_2" value="{{ old('name_2') }}">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="phone_2">PHONE</label>
+                <input type="text" class="form-control" id="phone_2" name="phone_2" value="{{ old('phone_2') }}">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="email_2">EMAIL</label>
+                <input type="text" class="form-control" id="email_2" name="email_2" value="{{ old('email_2') }}">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="label-control" for="name_3">NAME</label>
+                <input type="text" class="form-control" id="name_3" name="name_3" value="{{ old('name_3') }}">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="phone_3">PHONE</label>
+                <input type="text" class="form-control" id="phone_3" name="phone_3" value="{{ old('phone_3') }}">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="email_3">EMAIL</label>
+                <input type="text" class="form-control" id="email_3" name="email_3" value="{{ old('email_3') }}">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="label-control" for="name_4">NAME</label>
+                <input type="text" class="form-control" id="name_4" name="name_4" value="{{ old('name_4') }}">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="phone_4">PHONE</label>
+                <input type="text" class="form-control" id="phone_4" name="phone_4" value="{{ old('phone_4') }}">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="email_4">EMAIL</label>
+                <input type="text" class="form-control" id="email_4" name="email_4" value="{{ old('email_4') }}">
+            </div>
+        </div>
+
+        <div class="row">
 		
 		    <div class="col-xs-12">
 		        <label class="label-control" for="internal_notes">INTERNAL NOTES</label>

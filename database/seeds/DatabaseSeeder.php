@@ -13,4 +13,14 @@ class DatabaseSeeder extends Seeder
     {
          $this->call(LocationSeeder::class);
     }
+
+    // public function run()
+    // {
+    //     DB::table('users')->insert([
+    //         'name' => 'Mike Cornille',
+    //         'email' => 'mikecornille@gmail.com',
+    //         'cell' => 6307501718,
+    //         'password' => 'password',
+    //     ]);
+    // }
 }

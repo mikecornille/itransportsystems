@@ -66,7 +66,7 @@ class Load extends Model
 			  'invoice_notes',
 			  'update_customer_message',
               'rate_con_creation_date',
-              'total_miles',
+              'rate_con_signed',
               'quick_status_notes',
               'vendor_invoice_number',
               'vendor_invoice_date',
@@ -76,7 +76,7 @@ class Load extends Model
               'remit_state',
               'remit_zip',
               'carrier_message',
-              'internal_email',
+              'internal_email_address',
               'internal_message',
 
 
