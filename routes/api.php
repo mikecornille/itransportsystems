@@ -20,3 +20,7 @@ Route::get('/user', function (Request $request) {
 Route::get('/location/{query}', function($query) {
 	return App\Location::search($query)->get();
 });
+
+Route::get('/customer/{query}', function($query) {
+	return App\Customer::search($query)->get();
+});

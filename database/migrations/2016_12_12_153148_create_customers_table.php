@@ -25,6 +25,15 @@ class CreateCustomersTable extends Migration
             $table->string('name_1');
             $table->string('phone_1');
             $table->string('email_1');
+            $table->string('name_2');
+            $table->string('phone_2');
+            $table->string('email_2');
+            $table->string('name_3');
+            $table->string('phone_3');
+            $table->string('email_3');
+            $table->string('name_4');
+            $table->string('phone_4');
+            $table->string('email_4');
             $table->text('internal_notes');
             $table->timestamps();
         });
