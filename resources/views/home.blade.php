@@ -43,7 +43,7 @@
       <div class="form-group">
         <div class="row">
             <div class="col-xs-12">
-                <label class="label-control" for="customer_name">CUSTOMER SHIT</label>
+                <label class="label-control" for="customer_name">CUSTOMER</label>
                 <input type="text" class="form-control" id="customer_name" name="customer_name" value="{{ old('customer_name') }}">
             </div>
             <div class="col-xs-12">
@@ -247,8 +247,8 @@
 
 
 
-<div class="container-fluid">
-<!-- <div class="well"> -->
+<!-- <div class="container-fluid">
+
 <table id="mainTable" cellspacing="0" class="stripe row-border order-column" style="border-collapse: collapse; width: 2800px; margin-left: 10px; font-size: 12px; table-layout: fixed; word-wrap:break-word;">
 
         <thead>
@@ -326,8 +326,8 @@
             </tr>
         </tfoot>  
     </table>
-    <!-- </div> -->
-    </div>
+    
+    </div>  -->
 
 
 
