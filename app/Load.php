@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Load extends Model
 {
     protected $table = 'loads';
-
+    //change
     protected $fillable = [
 			  'customer_name',
 			  'customer_address',
