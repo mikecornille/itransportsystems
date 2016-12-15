@@ -12,7 +12,6 @@
 
 function goToEditPage() {
   $('#customer-name').val(window.customerRecord.item.object.name);
-    
   };
 
 $(document).ready(function() {

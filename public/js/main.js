@@ -12,8 +12,6 @@
 
 function goToEditPage() {
   $('#customer-name').val(window.customerRecord.item.object.name);
-    var url = '/editCustomerForm/' + window.customerRecord.item.object.id;
-    window.location.href=url;
   };
 
 $(document).ready(function() {
