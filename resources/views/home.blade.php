@@ -5,9 +5,9 @@
 
 
 
-<input type="text" id="location-search" placeholder="Search Databases..."></input>
+<input type="text" id="location-search" placeholder="Search Locations..."></input>
 
-<input type="text" id="customer-search" placeholder="Search Databases..."></input>
+<input type="text" id="customer-search" placeholder="Search Customers..."></input>
 
 
 
