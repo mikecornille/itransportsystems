@@ -10,7 +10,14 @@
 
 //GET THE CONTENT FOR THE DATATABLE TO BE DELIVERED
 
+function goToEditPage() {
+  $('#customer-name').val(window.customerRecord.item.object.name);
+    
+  };
+
 $(document).ready(function() {
+
+
 
     var table = $('#mainTableThree').DataTable({
         

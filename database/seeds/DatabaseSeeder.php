@@ -12,15 +12,23 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
          $this->call(LocationSeeder::class);
+         $this->seedUser();
     }
 
-    // public function run()
-    // {
-    //     DB::table('users')->insert([
-    //         'name' => 'Mike Cornille',
-    //         'email' => 'mikecornille@gmail.com',
-    //         'cell' => 6307501718,
-    //         'password' => 'password',
-    //     ]);
-    // }
-}
+    public function seedUser()
+    {
+                DB::table('users')->insert([
+            'name' => 'Mike Cornille',
+            'email' => 'mikecornille@gmail.com',
+            'cell' => 6307501718,
+            'password' => bcrypt('password'),
+        ]);
+                factory(App\Location::class,3)->create();
+
+        factory(App\Customer::class,3)->create();
+
+        factory(App\Load::class,3)->create();
+            }
+
+        
+    }

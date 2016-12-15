@@ -78,6 +78,7 @@
                 <label class="label-control" for="customer_fax">Fax</label>
                 <input type="text" class="form-control" id="customer_fax" name="customer_fax" value="{{ old('customer_fax') }}">
             </div>
+            <button type="button" data-toggle="modal" data-target="#myModal" onclick="goToEditPage('test')" class="btn btn-default">Edit Customer</button>
           </div> 
         </div> 
     </div> 
@@ -193,7 +194,7 @@
                     </div>
         </div>
         <div class="col-xs-12" id="submit_new_load_button">
-            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> NEW</button>
+            <button id="edit-customer"><b>Edit Customer</b></button>
         </div>
       </div> 
     </div> 
@@ -328,7 +329,31 @@
     </table>
     
     </div> 
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+      <form>
+        <input name="customer-name" id="customer-name"></input>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
 

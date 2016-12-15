@@ -21,9 +21,9 @@
                 },
                 minLength: 1,
                 select: function( event, ui ) {
-                    window.record = ui;
-                    $('#pick_company').val(window.record.item.object.location_name);
-                    $('#pick_address').val(window.record.item.object.address);
+                    window.originRecord = ui;
+                    $('#pick_company').val(window.originRecord.item.object.location_name);
+                    $('#pick_address').val(window.originRecord.item.object.address);
                     log( ui.item ?
                     "Selected: " + ui.item.label :
                     "Nothing selected, input was " + this.value);
@@ -63,9 +63,9 @@
                 },
                 minLength: 1,
                 select: function( event, ui ) {
-                    window.record = ui;
-                    $('#customer_name').val(window.record.item.object.name);
-                    $('#customer_address').val(window.record.item.object.address);
+                    window.customerRecord = ui;
+                    $('#customer_name').val(window.customerRecord.item.object.name);
+                    $('#customer_address').val(window.customerRecord.item.object.address);
                     log( ui.item ?
                     "Selected: " + ui.item.label :
                     "Nothing selected, input was " + this.value);
