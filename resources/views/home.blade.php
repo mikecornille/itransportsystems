@@ -47,8 +47,24 @@
             </div>
             <div class="col-xs-12">
                 <label class="label-control" for="customer_name">CUSTOMER</label>
-                <input type="text" class="form-control" id="customer_name" name="customer_name" value="{{ old('customer_name') }}">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="customer_name" name="customer_name" value="{{ old('customer_name') }}">
+                    <span class="input-group-btn"><button type="button" data-toggle="modal" data-target="#customerModal" onclick="goToCustomerEditPage()" class="btn btn-secondary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></span>
+              </div>
             </div>
+            
+
+
+
+
+<!-- <div class="col-xs-6">
+            <button type="button" data-toggle="modal" data-target="#customerModal" onclick="goToCustomerEditPage()" class="btn btn-info"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
+            </div> -->
+
+
+
+
+
             <div class="col-xs-12">
                 <label class="label-control" for="customer_address">Address</label>
                 <input type="text" class="form-control" id="customer_address" name="customer_address" value="{{ old('customer_address') }}">
@@ -81,7 +97,6 @@
                 <label class="label-control" for="customer_fax">Fax</label>
                 <input type="text" class="form-control" id="customer_fax" name="customer_fax" value="{{ old('customer_fax') }}">
             </div>
-            <button type="button" data-toggle="modal" data-target="#customerModal" onclick="goToCustomerEditPage()" class="btn btn-default">Edit Customer</button>
           </div> 
         </div> 
     </div> 
@@ -99,7 +114,10 @@
           </div>
           <div class="col-xs-12">
             <label class="label-control" for="pick_company">ORIGIN</label>
-            <input type="text" class="form-control" id="pick_company" name="pick_company" value="{{ old('pick_company') }}">
+            <div class="input-group">
+                    <input type="text" class="form-control" id="pick_company" name="pick_company" value="{{ old('pick_company') }}">
+                    <span class="input-group-btn"><button type="button" data-toggle="modal" data-target="#originModal" onclick="goToOriginEditPage()" class="btn btn-secondary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></span>
+              </div>
           </div>
           <div class="col-xs-12">
             <label class="label-control" for="pick_address">Address</label>
@@ -129,7 +147,6 @@
             <label class="label-control" for="pick_email">Email</label>
             <input type="text" class="form-control" id="pick_email" name="pick_email" value="{{ old('pick_email') }}">
           </div>
-          <button type="button" data-toggle="modal" data-target="#originModal" onclick="goToOriginEditPage()" class="btn btn-default">Edit Origin</button>
       </div> 
     </div> 
   </div> 
@@ -144,7 +161,10 @@
           </div>
           <div class="col-xs-12">
             <label class="label-control" for="delivery_company">DESTINATION</label>
-            <input type="text" class="form-control" id="delivery_company" name="delivery_company" value="{{ old('delivery_company') }}">
+            <div class="input-group">
+                    <input type="text" class="form-control" id="delivery_company" name="delivery_company" value="{{ old('delivery_company') }}">
+                    <span class="input-group-btn"><button type="button" data-toggle="modal" data-target="#destinationModal" onclick="goToDesEditPage()" class="btn btn-secondary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></span>
+              </div>
           </div>
           <div class="col-xs-12">
             <label class="label-control" for="delivery_address">Address</label>
@@ -174,8 +194,8 @@
             <label class="label-control" for="delivery_email">Email</label>
             <input type="text" class="form-control" id="delivery_email" name="delivery_email" value="{{ old('delivery_email') }}">
           </div>
-
-          <button type="button" data-toggle="modal" data-target="#destinationModal" onclick="goToDesEditPage()" class="btn btn-default">Edit Delivery</button>
+          <div class="col-xs-6">
+          
       </div> 
     </div> 
   </div> 

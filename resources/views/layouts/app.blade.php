@@ -77,21 +77,9 @@
                                 
                             </form> -->
 
-                            <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">New Entries <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-
-                                
-                                <li><a href="{{ URL::to('/newCustomer') }}">New Customer</a></li>
-                                <li><a href="{{ URL::to('/newLocation') }}">New Location</a></li>
-                                <li><a href="{{ URL::to('/newEquipment') }}">New Equipment</a></li>
-
-                                </ul>
-
-
-                            </li>
+                            <li><a href="{{ URL::to('/newLocation') }}">New Location</a></li>
+                            <li><a href="{{ URL::to('/newEquipment') }}">New Equipment</a></li>
+                            
                             <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Carrier Center <span class="caret"></span>
                                 </a>
@@ -101,6 +89,22 @@
                                 <li><a href="{{ URL::to('/newCarrier') }}">New Carrier</a></li>
                                 <li><a href="{{ URL::to('#') }}">Find Carrier</a></li>
                                 <li><a href="{{ URL::to('#') }}">Find Trucks</a></li>
+                                
+
+                                </ul>
+
+
+                            </li>
+
+                            <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Customer Center <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+
+                                <li><a href="{{ URL::to('/newCustomer') }}">New Customer</a></li>
+                                <li><a href="{{ URL::to('#') }}">Find Customer</a></li>
+                                
                                 
 
                                 </ul>

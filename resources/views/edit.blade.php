@@ -513,6 +513,9 @@
 
 
 <div class="well" id="commodity_div">
+<div class="col-xs-12">
+            <input type="text" class="form-control" id="equipment-search" placeholder="Equipment Search">
+          </div>
     <div class="form-group">
       <label for="commodity">Commodity</label>
       <textarea name="commodity" id="commodity" class="form-control" rows="2">{{ $info->commodity }}</textarea>

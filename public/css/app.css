@@ -1,6 +1,12 @@
 @charset "UTF-8";
-/* CUSTOMER DATA STYLES */
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+#customer-search, #origin-search, #delivery-search, #equipment-search {
+  background-color: lightgray; }
+
+.btn-info {
+  margin-top: 10px; }
+
+/* CUSTOMER DATA STYLES */
 #customer_data {
   width: 500px;
   float: none;

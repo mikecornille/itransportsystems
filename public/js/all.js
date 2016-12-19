@@ -493,7 +493,7 @@
                         }));
                     }});
                 },
-                minLength: 1,
+                minLength: 3,
                 select: function( event, ui ) {
                     window.originRecord = ui;
                     $('#pick_company').val(window.originRecord.item.object.location_name);
@@ -541,7 +541,7 @@
                         }));
                     }});
                 },
-                minLength: 1,
+                minLength: 3,
                 select: function( event, ui ) {
                     window.deliveryRecord = ui;
                     $('#delivery_company').val(window.deliveryRecord.item.object.location_name);
@@ -589,7 +589,7 @@
                         }));
                     }});
                 },
-                minLength: 1,
+                minLength: 3,
                 select: function( event, ui ) {
                     window.customerRecord = ui;
                     $('#customer_name').val(window.customerRecord.item.object.name);
@@ -632,16 +632,16 @@
                         success: function( data ) {
                             response($.map(data, function (item) {
                                 return {
-                                    label: item.name + ' ' + item.make,
-                                    value: item.name + ' ' + item.model,
+                                    label: item.make + ' ' + item.model,
+                                    value: item.make + ' ' + item.model,
                                     object: item
                                 }
                         }));
                     }});
                 },
-                minLength: 1,
+                minLength: 3,
                 select: function( event, ui ) {
-                    window.customerRecord = ui;
+                    window.equipmentRecord = ui;
                     $('#commodity').val(window.equipmentRecord.item.object.make);
                     log( ui.item ?
                     "Selected: " + ui.item.label :
