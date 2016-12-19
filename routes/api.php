@@ -24,3 +24,7 @@ Route::get('/location/{query}', function($query) {
 Route::get('/customer/{query}', function($query) {
 	return App\Customer::search($query)->get();
 });
+
+Route::get('/equipment/{query}', function($query) {
+	return App\Equipment::search($query)->get();
+});

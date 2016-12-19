@@ -4,9 +4,6 @@
 @section('content')
 
 
-<input type="text" id="location-search" placeholder="Search Databases..."></input>
-
-
 <div class="page-header">
 <!-- <h2 class="text-center"><a href="{{ url('/home') }}">Back to Home</a></h2> -->
 	<h3 class="text-center">PRO # {{ $info->id }}</h3> 
@@ -43,6 +40,9 @@
     <div class="well">
       <div class="form-group">
         <div class="row">
+        <div class="col-xs-12">
+                <input type="text" class="form-control" id="customer-search" placeholder="Customer Search">
+            </div>
             <div class="col-xs-12">
                 <label class="label-control" for="customer_name">CUSTOMER</label>
                 <input type="text" class="form-control" id="customer_name" name="customer_name" value="{{ $info->customer_name }}">
@@ -207,7 +207,11 @@
 <div id="origin">
   <div class="well">
     <div class="form-group">
+
         <div class="row">
+        <div class="col-xs-12">
+            <input type="text" class="form-control" id="origin-search" placeholder="Origin Search">
+          </div>
           <div class="col-xs-12">
             <label class="label-control" for="pick_company">ORIGIN</label>
             <input type="text" class="form-control" id="pick_company" name="pick_company" value="{{ $info->pick_company }}">
@@ -309,6 +313,9 @@
   <div class="well">
     <div class="form-group">
         <div class="row">
+        <div class="col-xs-12">
+            <input type="text" class="form-control" id="delivery-search" placeholder="Delivery Search">
+          </div>
           <div class="col-xs-12">
             <label class="label-control" for="delivery_company">DESTINATION</label>
             <input type="text" class="form-control" id="delivery_company" name="delivery_company" value="{{ $info->delivery_company }}">

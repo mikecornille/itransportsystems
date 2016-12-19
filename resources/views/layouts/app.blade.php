@@ -7,6 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    
 
     <title>{{ config('app.name', 'ITS Maker') }}</title>
 
@@ -19,7 +20,11 @@
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
+
+
     </script>
+
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -71,16 +76,47 @@
                                 <button type="submit" class="btn btn-default">Submit</button>
                                 
                             </form> -->
+
                             <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">New Entries <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
 
-                                <li><a href="{{ URL::to('/newCarrier') }}">New Carrier</a></li>
+                                
                                 <li><a href="{{ URL::to('/newCustomer') }}">New Customer</a></li>
                                 <li><a href="{{ URL::to('/newLocation') }}">New Location</a></li>
                                 <li><a href="{{ URL::to('/newEquipment') }}">New Equipment</a></li>
+
+                                </ul>
+
+
+                            </li>
+                            <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Carrier Center <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+
+                                <li><a href="{{ URL::to('/newCarrier') }}">New Carrier</a></li>
+                                <li><a href="{{ URL::to('#') }}">Find Carrier</a></li>
+                                <li><a href="{{ URL::to('#') }}">Find Trucks</a></li>
+                                
+
+                                </ul>
+
+
+                            </li>
+
+                            <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Load Status <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+
+                                <li><a href="{{ URL::to('/toBeLoaded') }}">To Be Loaded</a></li>
+                                <li><a href="{{ URL::to('/toBeDelivered') }}">To Be Delivered</a></li>
+                                
 
                                 </ul>
 
@@ -90,10 +126,9 @@
                                 <li><a href="{{ url('/admin') }}">Admin</a></li>
 
                             @endif
-                            <li><a href="{{ url('/home') }}">New Invoice</a></li>
-                            <li><a href="{{ URL::to('/toBeLoaded') }}">To Be Loaded</a></li>
-                            <li><a href="{{ URL::to('/toBeDelivered') }}">To Be Delivered</a></li>
-                            <li><a href="{{ URL::to('/findTrucks') }}">Find Trucks</a></li>
+                            <li><a href="{{ url('/home') }}">Home</a></li>
+                            
+                            
                             
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

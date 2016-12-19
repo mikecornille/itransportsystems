@@ -72,40 +72,34 @@ Route::get('/findTrucks', function () {
 });
 
 
-
 Route::get('/home', 'HomeController@index');
-
-
 Route::post('/new', 'LoadsController@store');
 Route::get('/loads', 'LoadsController@index');
-Route::get('/tobedata', 'LoadsController@indextwo');
-Route::get('/tobedatatwo', 'LoadsController@tobedatatwo');
-
-//New Customer Form Submission
-Route::post('/newCustomer', 'CustomersController@store');
-
-
+Route::get('/tobedata', 'LoadsController@indextwo'); //FOR DATATABLES
+Route::get('/tobedatatwo', 'LoadsController@tobedatatwo'); //FOR DATATABLES
 Route::get('/edit/{id}', 'LoadsController@edit');
-
-
 Route::patch('load/{load}', 'LoadsController@update');
 
-//Route::post('/searchPro', 'LoadsController@searchPro');
+//CREATE NEW DATABASE RECORDS
+Route::post('/newCustomer', 'CustomersController@store');
+Route::post('/newLocation', 'LocationsController@store');
 
-//Print the Invoice and Rate Confirmation
+//UPDATE DATABASES WITH AJAX
+Route::post('/updateCustomer', "CustomersController@updateCustomer");
+Route::post('/updateLocation', "LocationsController@updateLocation");
+
+//PRINT THE INVOICE AND RATE CONFIRMATION
 Route::get('/getInvoicePDF/{id}', 'PDFController@getInvoicePDF');
 Route::get('/getContractPDF/{id}', 'PDFController@getContractPDF');
 
-
-//Emails sent with load data but no PDF attachments needed
+//EMAILS SENT WITH LOAD DATA BUT NO ATTACHMENTS
 Route::get('/internal/{id}', 'LoadsController@internalEmail');
 Route::get('/status/{id}', 'LoadsController@getStatusEmail');
 Route::get('/pod/{id}', 'LoadsController@podRequestEmail');
 Route::get('/updateCustomer/{id}', 'LoadsController@updateCustomerEmail');
 Route::get('/emailCarrier/{id}', 'LoadsController@emailCarrier');
 
-
-//Emailing Invoice and Rate Confirmation with an attachment
+//EMAILS SENT WITH PDF ATTACHMENTS
 Route::get('/emailInvoicePDF/{id}', 'PDFController@emailInvoicePDF');
 Route::get('/emailRateConPDF/{id}', 'PDFController@emailRateConPDF');
 Route::get('/emailBOLCarrier/{id}', 'PDFController@emailBOLCarrier');

@@ -149,5 +149,21 @@ $factory->define(App\Load::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Equipment::class, function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+        'make' => $faker->word(),
+        'model' => $faker->randomNumber(),
+        'commodity' => $faker->word(),
+        'length' => $faker->randomNumber(),
+        'width' => $faker->randomNumber(),
+        'height' => $faker->randomNumber(),
+        'weight' => $faker->randomNumber(),
+        'loading_instructions' => $faker->sentence(),
+        
+    ];
+});
+
 
 

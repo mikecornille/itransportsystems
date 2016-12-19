@@ -10,7 +10,7 @@ use App\Http\Requests;
 
 class CustomersController extends Controller
 {
-    //Store a new record in database
+    //STORES A NEW CUSTOMER IN THE DATABASE
 	 public function store(Request $request)
 	{
 		
@@ -30,12 +30,22 @@ class CustomersController extends Controller
 
         $newCustomer = New Customer($request->all());
 		
-		
-		
-
 		$newCustomer->save();
 
 		return back()->with('status', 'New Customer Created!');
 		
 	}
+
+	//UPDATES RECORD IN DATABASE THORUGH AJAX CALL
+	public function updateCustomer(Request $request) 
+	{
+    
+		//IF I WANT TO UPDATE SPECIFIC COLUMNS
+		// Customer::where('id', $request->id)->update([
+        // 'name' => $request->name,
+        // 'country' => $request->country,
+	    // ]);
+
+    	Customer::where('id', $request->id)->update($request->all());
+   }
 }
