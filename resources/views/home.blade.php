@@ -2,16 +2,6 @@
 
 @section('content')
 
-
-
-
-
-
-
-
-
-
-
 @if (count($errors) > 0)
     <div class="alert alert-danger">
         <ul>
@@ -30,7 +20,7 @@
     </div>
 @endif
 
-<div class="home_form">
+
 
 <form role="form" class="form-horizontal" method="POST" action="/new">
         
@@ -38,8 +28,6 @@
 
 <div id="customer_home">
     <div class="well">
-      
-      
       <div class="form-group">
         <div class="row">
             <div class="col-xs-12">
@@ -50,21 +38,9 @@
                 <div class="input-group">
                     <input type="text" class="form-control" id="customer_name" name="customer_name" value="{{ old('customer_name') }}">
                     <span class="input-group-btn"><button type="button" data-toggle="modal" data-target="#customerModal" onclick="goToCustomerEditPage()" class="btn btn-secondary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></span>
-              </div>
+                </div> <!--end input group-->
             </div>
             
-
-
-
-
-<!-- <div class="col-xs-6">
-            <button type="button" data-toggle="modal" data-target="#customerModal" onclick="goToCustomerEditPage()" class="btn btn-info"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
-            </div> -->
-
-
-
-
-
             <div class="col-xs-12">
                 <label class="label-control" for="customer_address">Address</label>
                 <input type="text" class="form-control" id="customer_address" name="customer_address" value="{{ old('customer_address') }}">
@@ -97,10 +73,11 @@
                 <label class="label-control" for="customer_fax">Fax</label>
                 <input type="text" class="form-control" id="customer_fax" name="customer_fax" value="{{ old('customer_fax') }}">
             </div>
-          </div> 
-        </div> 
-    </div> 
-</div> 
+        </div> <!--end row-->
+      </div> <!--end form group-->
+    </div> <!--end well-->
+  </div> <!--end customer_home-->
+
 
 
 
@@ -194,12 +171,10 @@
             <label class="label-control" for="delivery_email">Email</label>
             <input type="text" class="form-control" id="delivery_email" name="delivery_email" value="{{ old('delivery_email') }}">
           </div>
-          <div class="col-xs-6">
-          
-      </div> 
-    </div> 
-  </div> 
-</div> 
+    </div> <!--end row-->
+  </div> <!--end form group-->
+</div> <!--end well-->
+</div> <!--end delivery_home-->
 
 <div id="reference_home">
   <div class="well">
@@ -240,7 +215,7 @@
 <div class="well" id="commodity_div">
     <div class="form-group">
     <div class="col-xs-12">
-            <input type="text" class="form-control" id="equipment-search" placeholder="Equipment Search">
+            <input type="text" class="form-control" id="equipment-search" placeholder="Commodity Search">
           </div>
         <label for="commodity">Commodity</label>
         <textarea name="commodity" id="commodity" class="form-control" rows="2">{{ old('commodity') }}</textarea>
