@@ -184,3 +184,55 @@
                 }
             });
         });
+
+
+    //Carrier Autofill
+  $(function() {
+            function log( message ) {
+                $( "<div>" ).text( message ).prependTo( "#log" );
+                $( "#log" ).scrollTop( 0 );
+            }
+            $( "#carrier-search" ).autocomplete({
+                source: function( request, response ) {
+                    $.ajax({
+                        url: "/api/carrier/" + request.term,
+                        dataType: "json",
+                        success: function( data ) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.company + ' ' + item.address,
+                                    value: item.company + ' ' + item.address,
+                                    object: item
+                                }
+                        }));
+                    }});
+                },
+                minLength: 3,
+                select: function( event, ui ) {
+                    window.carrierRecord = ui;
+                    $('#carrier_name').val(window.carrierRecord.item.object.company);
+                    $('#carrier_address').val(window.carrierRecord.item.object.address);
+                    $('#carrier_city').val(window.carrierRecord.item.object.city);
+                    $('#carrier_state').val(window.carrierRecord.item.object.state);
+                    $('#carrier_zip').val(window.carrierRecord.item.object.zip);
+                    $('#carrier_contact').val(window.carrierRecord.item.object.contact);
+                    $('#carrier_email').val(window.carrierRecord.item.object.email);
+                    $('#carrier_phone').val(window.carrierRecord.item.object.phone);
+                    $('#carrier_fax').val(window.carrierRecord.item.object.fax);
+                    $('#carrier_driver_name').val(window.carrierRecord.item.object.driver_name);
+                    $('#carrier_driver_cell').val(window.carrierRecord.item.object.driver_phone);
+                log( ui.item ?
+                    "Selected: " + ui.item.label :
+                    "Nothing selected, input was " + this.value);
+                                        $('#carrier-search').val('test');
+
+                },
+                open: function() {
+                    $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+
+                },
+                close: function() {
+                    $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+                }
+            });
+        });

@@ -23,13 +23,16 @@ class DatabaseSeeder extends Seeder
             'cell' => 6307501718,
             'password' => bcrypt('password'),
         ]);
-                factory(App\Location::class,3)->create();
+        
+        factory(App\Location::class,3)->create();
 
         factory(App\Customer::class,3)->create();
 
         factory(App\Load::class,3)->create();
 
         factory(App\Equipment::class,3)->create();
+
+        factory(App\Carrier::class,3)->create();
             }
 
         

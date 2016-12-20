@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/* autocomplete */
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 .ui-autocomplete {
   position: absolute;
@@ -41,7 +42,7 @@
   -moz-border-radius: 0px;
   background-image: none; }
 
-#customer-search, #origin-search, #delivery-search, #equipment-search {
+#customer-search, #origin-search, #delivery-search, #equipment-search, #carrier-search {
   background-color: lightgray; }
 
 .btn-info {
@@ -49,6 +50,18 @@
 
 /* CUSTOMER DATA STYLES */
 #customer_data {
+  width: 500px;
+  float: none;
+  margin: 0 auto; }
+
+/* EQUIPMENT DATA STYLES */
+#equipment_data {
+  width: 500px;
+  float: none;
+  margin: 0 auto; }
+
+/* LOCATION DATA STYLES */
+#location_data {
   width: 500px;
   float: none;
   margin: 0 auto; }

@@ -461,11 +461,11 @@ $('#quick_status_notes').val($('#quick_status_notes').val() + "Day " + n + " " +
 
 });
 
-$(document).on('dblclick', '#total_miles', function(){
+$(document).on('dblclick', '#signed_rate_con', function(){
 
 var signed = 'SIGNED';
 
-$('#total_miles').val(signed);
+$('#signed_rate_con').val(signed);
 
 });
 

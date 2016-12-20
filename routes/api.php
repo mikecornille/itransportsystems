@@ -28,3 +28,7 @@ Route::get('/customer/{query}', function($query) {
 Route::get('/equipment/{query}', function($query) {
 	return App\Equipment::search($query)->get();
 });
+
+Route::get('/carrier/{query}', function($query) {
+	return App\Carrier::search($query)->get();
+});

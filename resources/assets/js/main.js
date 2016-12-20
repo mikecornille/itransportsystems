@@ -1,3 +1,33 @@
+
+
+// SENDS THE INFO TO THE CARRIER MODAL FOR EDITING
+// function goToCarrierEditPage() {
+//   $('#name').val(window.carrierRecord.item.object.name);
+//   $('#location_number').val(window.carrierRecord.item.object.location_number);
+//   $('#address').val(window.carrierRecord.item.object.address);
+//   $('#city').val(window.carrierRecord.item.object.city);
+//   $('#state').val(window.carrierRecord.item.object.state);
+//   $('#zip').val(window.carrierRecord.item.object.zip);
+//   $('#fax').val(window.carrierRecord.item.object.fax);
+//   $('#name_1').val(window.carrierRecord.item.object.name_1);
+//   $('#phone_1').val(window.carrierRecord.item.object.phone_1);
+//   $('#email_1').val(window.carrierRecord.item.object.email_1);
+//   $('#name_2').val(window.carrierRecord.item.object.name_2);
+//   $('#phone_2').val(window.carrierRecord.item.object.phone_2);
+//   $('#email_2').val(window.carrierRecord.item.object.email_2);
+//   $('#name_3').val(window.carrierRecord.item.object.name_3);
+//   $('#phone_3').val(window.carrierRecord.item.object.phone_3);
+//   $('#email_3').val(window.carrierRecord.item.object.email_3);
+//   $('#name_4').val(window.carrierRecord.item.object.name_4);
+//   $('#phone_4').val(window.carrierRecord.item.object.phone_4);
+//   $('#email_4').val(window.carrierRecord.item.object.email_4);
+//   $('textarea#internal_notes').val(window.carrierRecord.item.object.internal_notes);
+//   $('#customer_id').val(window.carrierRecord.item.object.id);
+//   };
+//END NOTES
+
+
+
 // SENDS THE INFO TO THE CUSTOMER MODAL FOR EDITING
 function goToCustomerEditPage() {
   $('#name').val(window.customerRecord.item.object.name);
@@ -461,11 +491,11 @@ $('#quick_status_notes').val($('#quick_status_notes').val() + "Day " + n + " " +
 
 });
 
-$(document).on('dblclick', '#total_miles', function(){
+$(document).on('dblclick', '#signed_rate_con', function(){
 
 var signed = 'SIGNED';
 
-$('#total_miles').val(signed);
+$('#signed_rate_con').val(signed);
 
 });
 

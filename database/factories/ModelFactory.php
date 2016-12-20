@@ -166,4 +166,46 @@ $factory->define(App\Equipment::class, function (Faker\Generator $faker) {
 });
 
 
+$factory->define(App\Carrier::class, function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+            
+            'company' => $faker->word(),            
+            'contact' => $faker->name(),
+            'mc_number' => $faker->randomNumber(),
+            'address' => $faker->streetAddress(),
+            'city' => $faker->city(),
+            'state' => $faker->state(),
+            'zip' => $faker->postcode(),
+            'phone' => $faker->phoneNumber(),
+            'fax' => $faker->phoneNumber(),
+            'email' => $faker->email(),
+            'driver_name' => $faker->name(),
+            'driver_phone' => $faker->phoneNumber(),
+            'cargo_exp' => $faker->date($format = 'm/d/Y', $max = 'now'),
+            'cargo_amount' => $faker->randomNumber(),
+            'bc_contract' => $faker->date($format = 'm/d/Y', $max = 'now'),
+            'flatbed' => $faker->numberBetween($min = 0 , $max = 1),  
+            'stepdeck' => $faker->numberBetween($min = 0 , $max = 1),
+            'conestoga' => $faker->numberBetween($min = 0 , $max = 1),
+            'hot_shot' => $faker->numberBetween($min = 0 , $max = 1),
+            'van' => $faker->numberBetween($min = 0 , $max = 1),
+            'power' => $faker->numberBetween($min = 0 , $max = 1),
+            'lowboy' => $faker->numberBetween($min = 0 , $max = 1),
+            'landoll' => $faker->numberBetween($min = 0 , $max = 1),
+            'towing' => $faker->numberBetween($min = 0 , $max = 1),
+            'auto_carrier' => $faker->numberBetween($min = 0 , $max = 1),
+            'straight_truck' => $faker->numberBetween($min = 0 , $max = 1),
+            'remit_name' => $faker->word(),
+            'remit_address' => $faker->streetAddress(),
+            'remit_city' => $faker->city(),
+            'remit_state' => $faker->state(),
+            'remit_zip' => $faker->postcode(),
+            'internal_notes' => $faker->sentence(),
+            
+        
+    ];
+});
+
 

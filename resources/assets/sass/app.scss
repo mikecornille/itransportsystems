@@ -1,6 +1,8 @@
 $mainmarginright: 30px;
 $mainmarginleft: 50px;
 
+/* autocomplete */
+
   .ui-autocomplete {
     position: absolute;
     top: 100%;
@@ -54,7 +56,7 @@ $mainmarginleft: 50px;
 
 
 
-#customer-search, #origin-search, #delivery-search, #equipment-search {
+#customer-search, #origin-search, #delivery-search, #equipment-search, #carrier-search {
   background-color: lightgray;
 
 }
@@ -65,7 +67,26 @@ $mainmarginleft: 50px;
 
 /* CUSTOMER DATA STYLES */
 
-#customer_data {
+#customer_data 
+{
+  width: 500px;
+  float: none;
+  margin: 0 auto;
+}
+
+/* EQUIPMENT DATA STYLES */
+
+#equipment_data
+{
+  width: 500px;
+  float: none;
+  margin: 0 auto;
+}
+
+/* LOCATION DATA STYLES */
+
+#location_data
+{
   width: 500px;
   float: none;
   margin: 0 auto;
