@@ -1,29 +1,43 @@
+//SENDS THE INFO TO THE EQUIPMENT MODAL FOR EDITING
+function goToEquipmentEditPage() {
+  $('#equip_make').val(window.equipmentRecord.item.object.make);
+  $('#equip_model').val(window.equipmentRecord.item.object.model);
+  $('#equip_length').val(window.equipmentRecord.item.object.length);
+  $('#equip_width').val(window.equipmentRecord.item.object.width);
+  $('#equip_height').val(window.equipmentRecord.item.object.height);
+  $('#equip_weight').val(window.equipmentRecord.item.object.weight);
+  $('#equip_commodity').val(window.equipmentRecord.item.object.commodity);
+  $('textarea#equip_loading_instructions').val(window.equipmentRecord.item.object.loading_instructions);
+  };
+//END NOTES
 
-
-// SENDS THE INFO TO THE CARRIER MODAL FOR EDITING
-// function goToCarrierEditPage() {
-//   $('#name').val(window.carrierRecord.item.object.name);
-//   $('#location_number').val(window.carrierRecord.item.object.location_number);
-//   $('#address').val(window.carrierRecord.item.object.address);
-//   $('#city').val(window.carrierRecord.item.object.city);
-//   $('#state').val(window.carrierRecord.item.object.state);
-//   $('#zip').val(window.carrierRecord.item.object.zip);
-//   $('#fax').val(window.carrierRecord.item.object.fax);
-//   $('#name_1').val(window.carrierRecord.item.object.name_1);
-//   $('#phone_1').val(window.carrierRecord.item.object.phone_1);
-//   $('#email_1').val(window.carrierRecord.item.object.email_1);
-//   $('#name_2').val(window.carrierRecord.item.object.name_2);
-//   $('#phone_2').val(window.carrierRecord.item.object.phone_2);
-//   $('#email_2').val(window.carrierRecord.item.object.email_2);
-//   $('#name_3').val(window.carrierRecord.item.object.name_3);
-//   $('#phone_3').val(window.carrierRecord.item.object.phone_3);
-//   $('#email_3').val(window.carrierRecord.item.object.email_3);
-//   $('#name_4').val(window.carrierRecord.item.object.name_4);
-//   $('#phone_4').val(window.carrierRecord.item.object.phone_4);
-//   $('#email_4').val(window.carrierRecord.item.object.email_4);
-//   $('textarea#internal_notes').val(window.carrierRecord.item.object.internal_notes);
-//   $('#customer_id').val(window.carrierRecord.item.object.id);
-//   };
+//SENDS THE INFO TO THE CARRIER MODAL FOR EDITING
+function goToCarrierEditPage() {
+  $('#car_company').val(window.carrierRecord.item.object.company);
+  $('#car_contact').val(window.carrierRecord.item.object.contact);
+  $('#car_mc_number').val(window.carrierRecord.item.object.mc_number);
+  $('#car_dot_number').val(window.carrierRecord.item.object.dot_number);
+  $('#car_address').val(window.carrierRecord.item.object.address);
+  $('#car_city').val(window.carrierRecord.item.object.city);
+  $('#car_state').val(window.carrierRecord.item.object.state);
+  $('#car_zip').val(window.carrierRecord.item.object.zip);
+  $('#car_phone').val(window.carrierRecord.item.object.phone);
+  $('#car_fax').val(window.carrierRecord.item.object.fax);
+  $('#car_email').val(window.carrierRecord.item.object.email);
+  $('#car_driver_name').val(window.carrierRecord.item.object.driver_name);
+  $('#car_driver_phone').val(window.carrierRecord.item.object.driver_phone);
+  $('#car_cargo_exp').val(window.carrierRecord.item.object.cargo_exp);
+  $('#car_cargo_amount').val(window.carrierRecord.item.object.cargo_amount);
+  $('#car_bc_contract').val(window.carrierRecord.item.object.bc_contract);
+  $('#car_remit_name').val(window.carrierRecord.item.object.remit_name);
+  $('#car_remit_address').val(window.carrierRecord.item.object.remit_address);
+  $('#car_remit_city').val(window.carrierRecord.item.object.remit_city);
+  $('#car_remit_state').val(window.carrierRecord.item.object.remit_state);
+  $('#car_remit_zip').val(window.carrierRecord.item.object.remit_zip);
+  $('textarea#car_load_info').val(window.carrierRecord.item.object.load_info);
+  $('textarea#car_permanent_notes').val(window.carrierRecord.item.object.permanent_notes);
+  
+  };
 //END NOTES
 
 

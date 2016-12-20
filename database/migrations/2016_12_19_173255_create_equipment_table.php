@@ -15,14 +15,14 @@ class CreateEquipmentTable extends Migration
     {
         Schema::create('equipment', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('make');
-            $table->integer('model');
-            $table->integer('length');
-            $table->integer('width');
-            $table->integer('height');
-            $table->integer('weight');
-            $table->string('commodity');
-            $table->text('loading_instructions');
+            $table->string('make')->nullable();
+            $table->string('model')->nullable();
+            $table->integer('length')->nullable();
+            $table->integer('width')->nullable();
+            $table->integer('height')->nullable();
+            $table->integer('weight')->nullable();
+            $table->string('commodity')->nullable();
+            $table->text('loading_instructions')->nullable();
             $table->timestamps();
         });
     }

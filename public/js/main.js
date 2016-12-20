@@ -1,3 +1,47 @@
+//SENDS THE INFO TO THE EQUIPMENT MODAL FOR EDITING
+function goToEquipmentEditPage() {
+  $('#equip_make').val(window.equipmentRecord.item.object.make);
+  $('#equip_model').val(window.equipmentRecord.item.object.model);
+  $('#equip_length').val(window.equipmentRecord.item.object.length);
+  $('#equip_width').val(window.equipmentRecord.item.object.width);
+  $('#equip_height').val(window.equipmentRecord.item.object.height);
+  $('#equip_weight').val(window.equipmentRecord.item.object.weight);
+  $('#equip_commodity').val(window.equipmentRecord.item.object.commodity);
+  $('textarea#equip_loading_instructions').val(window.equipmentRecord.item.object.loading_instructions);
+  };
+//END NOTES
+
+//SENDS THE INFO TO THE CARRIER MODAL FOR EDITING
+function goToCarrierEditPage() {
+  $('#car_company').val(window.carrierRecord.item.object.company);
+  $('#car_contact').val(window.carrierRecord.item.object.contact);
+  $('#car_mc_number').val(window.carrierRecord.item.object.mc_number);
+  $('#car_dot_number').val(window.carrierRecord.item.object.dot_number);
+  $('#car_address').val(window.carrierRecord.item.object.address);
+  $('#car_city').val(window.carrierRecord.item.object.city);
+  $('#car_state').val(window.carrierRecord.item.object.state);
+  $('#car_zip').val(window.carrierRecord.item.object.zip);
+  $('#car_phone').val(window.carrierRecord.item.object.phone);
+  $('#car_fax').val(window.carrierRecord.item.object.fax);
+  $('#car_email').val(window.carrierRecord.item.object.email);
+  $('#car_driver_name').val(window.carrierRecord.item.object.driver_name);
+  $('#car_driver_phone').val(window.carrierRecord.item.object.driver_phone);
+  $('#car_cargo_exp').val(window.carrierRecord.item.object.cargo_exp);
+  $('#car_cargo_amount').val(window.carrierRecord.item.object.cargo_amount);
+  $('#car_bc_contract').val(window.carrierRecord.item.object.bc_contract);
+  $('#car_remit_name').val(window.carrierRecord.item.object.remit_name);
+  $('#car_remit_address').val(window.carrierRecord.item.object.remit_address);
+  $('#car_remit_city').val(window.carrierRecord.item.object.remit_city);
+  $('#car_remit_state').val(window.carrierRecord.item.object.remit_state);
+  $('#car_remit_zip').val(window.carrierRecord.item.object.remit_zip);
+  $('textarea#car_load_info').val(window.carrierRecord.item.object.load_info);
+  $('textarea#car_permanent_notes').val(window.carrierRecord.item.object.permanent_notes);
+  
+  };
+//END NOTES
+
+
+
 // SENDS THE INFO TO THE CUSTOMER MODAL FOR EDITING
 function goToCustomerEditPage() {
   $('#name').val(window.customerRecord.item.object.name);

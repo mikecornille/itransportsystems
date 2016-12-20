@@ -22,37 +22,37 @@
       <div class="form-group">
         <div class="row">
             <div class="col-xs-6">
-                <label class="label-control" for="name">MAKE</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
+                <label class="label-control" for="make">MAKE</label>
+                <input type="text" class="form-control" id="make" name="make" value="{{ old('make') }}">
             </div>
             <div class="col-xs-6">
-                <label class="label-control" for="location_number">MODEL</label>
-                <input type="text" class="form-control" id="location_number" name="location_number" value="{{ old('location_number') }}">
+                <label class="label-control" for="model">MODEL</label>
+                <input type="text" class="form-control" id="model" name="model" value="{{ old('model') }}">
             </div>
         </div>
         
         <div class="row">
             <div class="col-xs-3">
-                <label class="label-control" for="city">LENGTH</label>
-                <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}">
+                <label class="label-control" for="length">LENGTH</label>
+                <input type="text" class="form-control" id="length" name="length" value="{{ old('length') }}">
             </div>
             <div class="col-xs-3">
-                <label class="label-control" for="state">WIDTH</label>
-                <input type="text" class="form-control" id="state" name="state" value="{{ old('state') }}">
+                <label class="label-control" for="width">WIDTH</label>
+                <input type="text" class="form-control" id="width" name="width" value="{{ old('width') }}">
             </div>
             <div class="col-xs-3">
-                <label class="label-control" for="zip">HEIGHT</label>
-                <input type="text" class="form-control" id="zip" name="zip" value="{{ old('zip') }}">
+                <label class="label-control" for="height">HEIGHT</label>
+                <input type="text" class="form-control" id="height" name="height" value="{{ old('height') }}">
             </div>
             <div class="col-xs-3">
-                <label class="label-control" for="zip">WEIGHT</label>
-                <input type="text" class="form-control" id="zip" name="zip" value="{{ old('zip') }}">
+                <label class="label-control" for="weight">WEIGHT</label>
+                <input type="text" class="form-control" id="weight" name="weight" value="{{ old('weight') }}">
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <label class="label-control" for="name_1">COMMODITY</label>
-                <input type="text" class="form-control" id="name_1" name="name_1" value="{{ old('name_1') }}">
+                <label class="label-control" for="commodity">COMMODITY</label>
+                <input type="text" class="form-control" id="commodity" name="commodity" value="{{ old('commodity') }}">
             </div>
             
             
@@ -64,8 +64,8 @@
         <div class="row">
 		
 		    <div class="col-xs-12">
-		        <label class="label-control" for="internal_notes">LOADING INSTRUCTIONS</label>
-		        <textarea name="internal_notes" id="internal_notes" class="form-control" rows="2">{{ old('internal_notes') }}</textarea>
+		        <label class="label-control" for="loading_instructions">LOADING INSTRUCTIONS</label>
+		        <textarea name="loading_instructions" id="loading_instructions" class="form-control" rows="2">{{ old('loading_instructions') }}</textarea>
 		    </div>
 		
 		</div>

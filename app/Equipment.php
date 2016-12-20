@@ -8,4 +8,15 @@ use Laravel\Scout\Searchable;
 class Equipment extends Model
 {
     use Searchable;
+    protected $fillable = [
+			  'make',
+			  'model',
+			  'length',
+			  'width',
+			  'height',
+			  'weight',
+			  'commodity',
+			  'loading_instructions',
+			  
+             ];
 }

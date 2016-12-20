@@ -41,7 +41,10 @@
       <div class="form-group">
         <div class="row">
         <div class="col-xs-12">
+        <div class="input-group">
                 <input type="text" class="form-control" id="customer-search" placeholder="Customer Search">
+                <span class="input-group-btn"><button type="button" data-toggle="modal" data-target="#customerModal" onclick="goToCustomerEditPage()" class="btn btn-secondary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></span>
+                </div>
             </div>
             
 
@@ -49,10 +52,9 @@
 
             <div class="col-xs-12">
                 <label class="label-control" for="customer_name">CUSTOMER</label>
-                <div class="input-group">
+               
                     <input type="text" class="form-control" id="customer_name" name="customer_name" value="{{ $info->customer_name }}">
-                    <span class="input-group-btn"><button type="button" data-toggle="modal" data-target="#customerModal" onclick="goToCustomerEditPage()" class="btn btn-secondary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></span>
-                </div> <!--end input group-->
+                    
             </div>
 
 
@@ -237,14 +239,19 @@
 
         <div class="row">
         <div class="col-xs-12">
+            
+              <div class="input-group">
             <input type="text" class="form-control" id="origin-search" placeholder="Origin Search">
+            <span class="input-group-btn"><button type="button" data-toggle="modal" data-target="#originModal" onclick="goToOriginEditPage()" class="btn btn-secondary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></span>
+          </div>
+
           </div>
           <div class="col-xs-12">
             <label class="label-control" for="pick_company">ORIGIN</label>
-            <div class="input-group">
+            
                     <input type="text" class="form-control" id="pick_company" name="pick_company" value="{{ $info->pick_company }}">
-                    <span class="input-group-btn"><button type="button" data-toggle="modal" data-target="#originModal" onclick="goToOriginEditPage()" class="btn btn-secondary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></span>
-              </div>
+                    
+             
           </div>
           <div class="col-xs-12">
             <label class="label-control" for="pick_address">Address</label>
@@ -344,14 +351,19 @@
     <div class="form-group">
         <div class="row">
         <div class="col-xs-12">
+            
+<div class="input-group">
             <input type="text" class="form-control" id="delivery-search" placeholder="Delivery Search">
+            <span class="input-group-btn"><button type="button" data-toggle="modal" data-target="#destinationModal" onclick="goToDesEditPage()" class="btn btn-secondary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></span>
+          </div>
+
           </div>
           <div class="col-xs-12">
             <label class="label-control" for="delivery_company">DESTINATION</label>
-            <div class="input-group">
+            
                     <input type="text" class="form-control" id="delivery_company" name="delivery_company" value="{{ $info->delivery_company }}">
-                    <span class="input-group-btn"><button type="button" data-toggle="modal" data-target="#destinationModal" onclick="goToDesEditPage()" class="btn btn-secondary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></span>
-              </div>
+                    
+              
           </div>
           <div class="col-xs-12">
             <label class="label-control" for="delivery_address">Address</label>
@@ -1001,6 +1013,307 @@
     </div>
   </div>
 </div>
+
+<!-- MODAL FOR EQUIPMENT FORM -->
+<div id="equipmentModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Equipment Data</h4>
+      </div>
+      <div class="modal-body">
+
+      <div id="equip_data">
+    <div class="well">
+      
+      <div class="form-group">
+        <div class="row">
+            <div class="col-xs-6">
+                <label class="label-control" for="equip_make">MAKE</label>
+                <input type="text" class="form-control" id="equip_make" name="equip_make" value="">
+            </div>
+            <div class="col-xs-6">
+                <label class="label-control" for="equip_model">MODEL</label>
+                <input type="text" class="form-control" id="equip_model" name="equip_model" value="">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-xs-3">
+                <label class="label-control" for="equip_length">LENGTH</label>
+                <input type="text" class="form-control" id="equip_length" name="equip_length" value="">
+            </div>
+            <div class="col-xs-3">
+                <label class="label-control" for="equip_width">WIDTH</label>
+                <input type="text" class="form-control" id="equip_width" name="equip_width" value="">
+            </div>
+            <div class="col-xs-3">
+                <label class="label-control" for="equip_height">HEIGHT</label>
+                <input type="text" class="form-control" id="equip_height" name="equip_height" value="">
+            </div>
+            <div class="col-xs-3">
+                <label class="label-control" for="equip_weight">WEIGHT</label>
+                <input type="text" class="form-control" id="equip_weight" name="equip_weight" value="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <label class="label-control" for="equip_commodity">COMMODITY</label>
+                <input type="text" class="form-control" id="equip_commodity" name="equip_commodity" value="">
+            </div>
+            
+            
+        </div>
+
+       
+
+
+        <div class="row">
+    
+        <div class="col-xs-12">
+            <label class="label-control" for="equip_loading_instructions">LOADING INSTRUCTIONS</label>
+            <textarea name="equip_loading_instructions" id="equip_loading_instructions" class="form-control" rows="2"></textarea>
+        </div>
+    
+    </div>
+      
+
+    <!-- <button type="button" id="editEquip" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Update</button> -->
+
+    </div>
+    </div>
+    </div>
+        
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL FOR CARRIER FORM -->
+<div id="carrierModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Carrier Data</h4>
+      </div>
+      <div class="modal-body">
+
+      <div id="carrier_data">
+    <div class="well">
+      
+      <div class="form-group">
+        <div class="row">
+            <div class="col-xs-6">
+                <label class="label-control" for="car_company">COMPANY</label>
+                <input type="text" class="form-control" id="car_company" name="car_company" value="">
+            </div>
+            <div class="col-xs-3">
+                <label class="label-control" for="car_mc_number">MC #</label>
+                <input type="text" class="form-control" id="car_mc_number" name="car_mc_number" value="">
+            </div>
+            <div class="col-xs-3">
+                <label class="label-control" for="car_dot_number">DOT #</label>
+                <input type="text" class="form-control" id="car_dot_number" name="car_dot_number" value="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-9">
+                <label class="label-control" for="car_address">ADDRESS</label>
+                <input type="text" class="form-control" id="car_address" name="car_address" value="">
+            </div>
+            <div class="col-xs-3">
+                <label class="label-control" for="car_contact">CONTACT</label>
+                <input type="text" class="form-control" id="car_contact" name="car_contact" value="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <label class="label-control" for="car_city">CITY</label>
+                <input type="text" class="form-control" id="car_city" name="car_city" value="">
+            </div>
+            <div class="col-xs-3">
+                <label class="label-control" for="car_state">STATE</label>
+                <input type="text" class="form-control" id="car_state" name="car_state" value="">
+            </div>
+            <div class="col-xs-3">
+                <label class="label-control" for="car_zip">ZIP</label>
+                <input type="text" class="form-control" id="car_zip" name="car_zip" value="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="label-control" for="car_phone">PHONE</label>
+                <input type="text" class="form-control" id="car_phone" name="car_phone" value="">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="car_fax">FAX</label>
+                <input type="text" class="form-control" id="car_fax" name="car_fax" value="">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="car_email">EMAIL</label>
+                <input type="text" class="form-control" id="car_email" name="car_email" value="">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6">
+                <label class="label-control" for="car_driver_name">DRIVER NAME</label>
+                <input type="text" class="form-control" id="car_driver_name" name="car_driver_name" value="">
+            </div>
+            <div class="col-xs-6">
+                <label class="label-control" for="car_driver_phone">DRIVER PHONE</label>
+                <input type="text" class="form-control" id="car_driver_phone" name="car_driver_phone" value="">
+            </div>
+            
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="label-control" for="car_cargo_exp">CARGO EXP.</label>
+                <input type="text" class="form-control" id="car_cargo_exp" name="car_cargo_exp" value="">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="car_cargo_amount">CARGO AMOUNT</label>
+                <input type="text" class="form-control" id="car_cargo_amount" name="car_cargo_amount" value="">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="car_bc_contract">BC CONTRACT</label>
+                <input type="text" class="form-control" id="car_bc_contract" name="car_bc_contract" value="">
+            </div>
+        </div>
+
+       <!--  <div class="row">
+        <div class="col-xs-4">
+        <div class="checkbox">
+        <label><input type="checkbox" value="">Flatbeds</label>
+    </div>
+    </div>
+    <div class="col-xs-4">
+    <div class="checkbox">
+        <label><input type="checkbox" value="">Stepdecks</label>
+    </div>
+    </div>
+    <div class="col-xs-4">
+    <div class="checkbox">
+        <label><input type="checkbox" value="">Conestogas</label>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+        <div class="checkbox">
+        <label><input type="checkbox" value="">Hot Shots</label>
+    </div>
+    </div>
+    <div class="col-xs-4">
+    <div class="checkbox">
+        <label><input type="checkbox" value="">Vans</label>
+    </div>
+    </div>
+    <div class="col-xs-4">
+    <div class="checkbox">
+        <label><input type="checkbox" value="">Power Only</label>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+        <div class="checkbox">
+        <label><input type="checkbox" value="">Lowboys</label>
+    </div>
+    </div>
+    <div class="col-xs-4">
+    <div class="checkbox">
+        <label><input type="checkbox" value="">Landoll</label>
+    </div>
+    </div>
+    <div class="col-xs-4">
+    <div class="checkbox">
+        <label><input type="checkbox" value="">Towing</label>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+        <div class="checkbox">
+        <label><input type="checkbox" value="">Auto Carrier</label>
+    </div>
+    </div>
+    <div class="col-xs-4">
+    <div class="checkbox">
+        <label><input type="checkbox" value="">Straight Trucks</label>
+    </div>
+    </div>
+    </div> -->
+
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="label-control" for="car_remit_name">REMIT NAME</label>
+                <input type="text" class="form-control" id="car_remit_name" name="car_remit_name" value="">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="car_remit_address">REMIT ADDRESS</label>
+                <input type="text" class="form-control" id="car_remit_address" name="car_remit_address" value="">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="label-control" for="car_remit_city">REMIT CITY</label>
+                <input type="text" class="form-control" id="car_remit_city" name="car_remit_city" value="">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="car_remit_state">REMIT STATE</label>
+                <input type="text" class="form-control" id="car_remit_state" name="car_remit_state" value="">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="car_remit_zip">ZIP</label>
+                <input type="text" class="form-control" id="car_remit_zip" name="car_remit_zip" value="">
+            </div>
+        </div>
+
+        <div class="row">
+    
+        <div class="col-xs-12">
+            <label class="label-control" for="car_permanent_notes">PERMANENT NOTES</label>
+            <textarea name="car_permanent_notes" id="car_permanent_notes" class="form-control" rows="2"></textarea>
+        </div>
+    
+    </div>
+
+    <div class="row">
+    
+        <div class="col-xs-12">
+            <label class="label-control" for="car_load_info">LOAD INFORMATION</label>
+            <textarea name="car_internal_notes" id="car_load_info" class="form-control" rows="2"></textarea>
+        </div>
+    
+    </div>
+
+    
+    <button type="button" id="editCarrier" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Update</button>
+      
+      
+    </div>
+    </div>
+        
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 
 @endsection

@@ -18,6 +18,7 @@ class CreateCarriersTable extends Migration
             $table->string('company');
             $table->string('contact');
             $table->integer('mc_number');
+            $table->integer('dot_number');
             $table->string('address');
             $table->string('city');
             $table->string('state');
@@ -46,7 +47,8 @@ class CreateCarriersTable extends Migration
             $table->string('remit_city');
             $table->string('remit_state');
             $table->string('remit_zip');
-            $table->text('internal_notes');
+            $table->text('load_info');
+            $table->text('permanent_notes');
             $table->timestamps();
         });
     }

@@ -22,13 +22,17 @@
       
       <div class="form-group">
         <div class="row">
-            <div class="col-xs-8">
-                <label class="label-control" for="name">COMPANY</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
+            <div class="col-xs-6">
+                <label class="label-control" for="company">COMPANY</label>
+                <input type="text" class="form-control" id="company" name="company" value="{{ old('company') }}">
             </div>
-            <div class="col-xs-4">
-                <label class="label-control" for="location_number">DOT/MC #</label>
-                <input type="text" class="form-control" id="location_number" name="location_number" value="{{ old('location_number') }}">
+            <div class="col-xs-3">
+                <label class="label-control" for="mc_number">MC #</label>
+                <input type="text" class="form-control" id="mc_number" name="mc_number" value="{{ old('mc_number') }}">
+            </div>
+            <div class="col-xs-3">
+                <label class="label-control" for="dot_number">DOT #</label>
+                <input type="text" class="form-control" id="dot_number" name="dot_number" value="{{ old('dot_number') }}">
             </div>
         </div>
         <div class="row">
@@ -37,8 +41,8 @@
                 <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}">
             </div>
             <div class="col-xs-3">
-                <label class="label-control" for="fax">CONTACT</label>
-                <input type="text" class="form-control" id="fax" name="fax" value="{{ old('fax') }}">
+                <label class="label-control" for="contact">CONTACT</label>
+                <input type="text" class="form-control" id="contact" name="contact" value="{{ old('contact') }}">
             </div>
         </div>
         <div class="row">
@@ -57,77 +61,141 @@
         </div>
         <div class="row">
             <div class="col-xs-4">
-                <label class="label-control" for="name_1">PHONE</label>
-                <input type="text" class="form-control" id="name_1" name="name_1" value="{{ old('name_1') }}">
+                <label class="label-control" for="phone">PHONE</label>
+                <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}">
             </div>
             <div class="col-xs-4">
-                <label class="label-control" for="phone_1">FAX</label>
-                <input type="text" class="form-control" id="phone_1" name="phone_1" value="{{ old('phone_1') }}">
+                <label class="label-control" for="fax">FAX</label>
+                <input type="text" class="form-control" id="fax" name="fax" value="{{ old('fax') }}">
             </div>
             <div class="col-xs-4">
-                <label class="label-control" for="email_1">EMAIL</label>
-                <input type="text" class="form-control" id="email_1" name="email_1" value="{{ old('email_1') }}">
+                <label class="label-control" for="email">EMAIL</label>
+                <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}">
             </div>
         </div>
 
         <div class="row">
             <div class="col-xs-6">
-                <label class="label-control" for="name_2">DRIVER NAME</label>
-                <input type="text" class="form-control" id="name_2" name="name_2" value="{{ old('name_2') }}">
+                <label class="label-control" for="driver_name">DRIVER NAME</label>
+                <input type="text" class="form-control" id="driver_name" name="driver_name" value="{{ old('driver_name') }}">
             </div>
             <div class="col-xs-6">
-                <label class="label-control" for="phone_2">DRIVER PHONE</label>
-                <input type="text" class="form-control" id="phone_2" name="phone_2" value="{{ old('phone_2') }}">
+                <label class="label-control" for="driver_phone">DRIVER PHONE</label>
+                <input type="text" class="form-control" id="driver_phone" name="driver_phone" value="{{ old('driver_phone') }}">
             </div>
             
         </div>
 
         <div class="row">
             <div class="col-xs-4">
-                <label class="label-control" for="name_3">CARGO EXP.</label>
-                <input type="text" class="form-control" id="name_3" name="name_3" value="{{ old('name_3') }}">
+                <label class="label-control" for="cargo_exp">CARGO EXP.</label>
+                <input type="text" class="form-control" id="cargo_exp" name="cargo_exp" value="{{ old('cargo_exp') }}">
             </div>
             <div class="col-xs-4">
-                <label class="label-control" for="phone_3">CARGO AMOUNT</label>
-                <input type="text" class="form-control" id="phone_3" name="phone_3" value="{{ old('phone_3') }}">
+                <label class="label-control" for="cargo_amount">CARGO AMOUNT</label>
+                <input type="text" class="form-control" id="cargo_amount" name="cargo_amount" value="{{ old('cargo_amount') }}">
             </div>
             <div class="col-xs-4">
-                <label class="label-control" for="email_3">BC CONTRACT</label>
-                <input type="text" class="form-control" id="email_3" name="email_3" value="{{ old('email_3') }}">
+                <label class="label-control" for="bc_contact">BC CONTRACT</label>
+                <input type="text" class="form-control" id="bc_contact" name="bc_contact" value="{{ old('bc_contact') }}">
+            </div>
+        </div>
+
+        <!-- <div class="row">
+        <div class="col-xs-4">
+        <div class="checkbox">
+  			<label><input type="checkbox" value="">Flatbeds</label>
+		</div>
+		</div>
+		<div class="col-xs-4">
+		<div class="checkbox">
+  			<label><input type="checkbox" value="">Stepdecks</label>
+		</div>
+		</div>
+		<div class="col-xs-4">
+		<div class="checkbox">
+  			<label><input type="checkbox" value="">Conestogas</label>
+		</div>
+		</div>
+		</div>
+		<div class="row">
+        <div class="col-xs-4">
+        <div class="checkbox">
+  			<label><input type="checkbox" value="">Hot Shots</label>
+		</div>
+		</div>
+		<div class="col-xs-4">
+		<div class="checkbox">
+  			<label><input type="checkbox" value="">Vans</label>
+		</div>
+		</div>
+		<div class="col-xs-4">
+		<div class="checkbox">
+  			<label><input type="checkbox" value="">Power Only</label>
+		</div>
+		</div>
+		</div>
+		<div class="row">
+        <div class="col-xs-4">
+        <div class="checkbox">
+  			<label><input type="checkbox" value="">Lowboys</label>
+		</div>
+		</div>
+		<div class="col-xs-4">
+		<div class="checkbox">
+  			<label><input type="checkbox" value="">Landoll</label>
+		</div>
+		</div>
+		<div class="col-xs-4">
+		<div class="checkbox">
+  			<label><input type="checkbox" value="">Towing</label>
+		</div>
+		</div>
+		</div>
+		<div class="row">
+        <div class="col-xs-4">
+        <div class="checkbox">
+  			<label><input type="checkbox" value="">Auto Carrier</label>
+		</div>
+		</div>
+		<div class="col-xs-4">
+		<div class="checkbox">
+  			<label><input type="checkbox" value="">Straight Trucks</label>
+		</div>
+		</div>
+		</div> -->
+
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="label-control" for="remit_name">REMIT NAME</label>
+                <input type="text" class="form-control" id="remit_name" name="remit_name" value="{{ old('remit_name') }}">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="remit_address">REMIT ADDRESS</label>
+                <input type="text" class="form-control" id="remit_address" name="remit_address" value="{{ old('remit_address') }}">
             </div>
         </div>
 
         <div class="row">
             <div class="col-xs-4">
-                <label class="label-control" for="name_4">REMIT NAME</label>
-                <input type="text" class="form-control" id="name_4" name="name_4" value="{{ old('name_4') }}">
+                <label class="label-control" for="remit_city">REMIT CITY</label>
+                <input type="text" class="form-control" id="remit_city" name="remit_city" value="{{ old('remit_city') }}">
             </div>
             <div class="col-xs-4">
-                <label class="label-control" for="phone_4">REMIT ADDRESS</label>
-                <input type="text" class="form-control" id="phone_4" name="phone_4" value="{{ old('phone_4') }}">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-4">
-                <label class="label-control" for="name_4">REMIT CITY</label>
-                <input type="text" class="form-control" id="name_4" name="name_4" value="{{ old('name_4') }}">
+                <label class="label-control" for="remit_state">REMIT STATE</label>
+                <input type="text" class="form-control" id="remit_state" name="remit_state" value="{{ old('remit_state') }}">
             </div>
             <div class="col-xs-4">
-                <label class="label-control" for="phone_4">REMIT STATE</label>
-                <input type="text" class="form-control" id="phone_4" name="phone_4" value="{{ old('phone_4') }}">
-            </div>
-            <div class="col-xs-4">
-                <label class="label-control" for="email_4">ZIP</label>
-                <input type="text" class="form-control" id="email_4" name="email_4" value="{{ old('email_4') }}">
+                <label class="label-control" for="remit_zip">ZIP</label>
+                <input type="text" class="form-control" id="remit_zip" name="remit_zip" value="{{ old('remit_zip') }}">
             </div>
         </div>
 
         <div class="row">
 		
 		    <div class="col-xs-12">
-		        <label class="label-control" for="internal_notes">PERMANENT NOTES</label>
-		        <textarea name="internal_notes" id="internal_notes" class="form-control" rows="2"></textarea>
+		        <label class="label-control" for="permanent_notes">PERMANENT NOTES</label>
+		        <textarea name="permanent_notes" id="permanent_notes" class="form-control" rows="2">{{ old('permanent_notes') }}</textarea>
 		    </div>
 		
 		</div>
@@ -135,8 +203,8 @@
 		<div class="row">
 		
 		    <div class="col-xs-12">
-		        <label class="label-control" for="internal_notes">LOAD INFORMATION</label>
-		        <textarea name="internal_notes" id="internal_notes" class="form-control" rows="2">{{ old('internal_notes') }}</textarea>
+		        <label class="label-control" for="load_info">LOAD INFORMATION</label>
+		        <textarea name="load_info" id="load_info" class="form-control" rows="2">{{ old('load_info') }}</textarea>
 		    </div>
 		
 		</div>

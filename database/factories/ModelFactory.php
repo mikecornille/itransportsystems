@@ -132,6 +132,7 @@ $factory->define(App\Load::class, function (Faker\Generator $faker) {
             'add_stops' => $faker->sentence(),
             'invoice_notes' => $faker->sentence(),
             'update_customer_message' => $faker->sentence(),
+            'rate_con_creator' => $faker->name(),
             'rate_con_creation_date' => $faker->date($format = 'm/d/Y', $max = 'now'),
             'signed_rate_con' => $faker->word(),
             'quick_status_notes' => $faker->word(),
@@ -174,6 +175,7 @@ $factory->define(App\Carrier::class, function (Faker\Generator $faker) {
             'company' => $faker->word(),            
             'contact' => $faker->name(),
             'mc_number' => $faker->randomNumber(),
+            'dot_number' => $faker->randomNumber(),
             'address' => $faker->streetAddress(),
             'city' => $faker->city(),
             'state' => $faker->state(),
@@ -202,8 +204,8 @@ $factory->define(App\Carrier::class, function (Faker\Generator $faker) {
             'remit_city' => $faker->city(),
             'remit_state' => $faker->state(),
             'remit_zip' => $faker->postcode(),
-            'internal_notes' => $faker->sentence(),
-            
+            'load_info' => $faker->sentence(),
+            'permanent_notes' => $faker->sentence(),
         
     ];
 });

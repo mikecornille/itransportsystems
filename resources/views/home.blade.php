@@ -211,16 +211,22 @@
 
 
 
-
 <div class="well" id="commodity_div">
-    <div class="form-group">
-    <div class="col-xs-12">
-            <input type="text" class="form-control" id="equipment-search" placeholder="Commodity Search">
-          </div>
-        <label for="commodity">Commodity</label>
-        <textarea name="commodity" id="commodity" class="form-control" rows="2">{{ old('commodity') }}</textarea>
-    </div>
+<div class="col-xs-12">
+            
+<div class="input-group">
+            <input type="text" class="form-control" id="equipment-search" placeholder="Equipment Search">
+            <span class="input-group-btn"><button type="button" data-toggle="modal" data-target="#equipmentModal" onclick="goToEquipmentEditPage()" class="btn btn-secondary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></span>
 </div>
+</div>
+    <div class="form-group">
+      <label for="commodity">Commodity</label>
+      <textarea name="commodity" id="commodity" class="form-control" rows="2">{{ old('commodity') }}</textarea>
+    </div>
+  </div>
+
+
+
 
 <div class="well" id="special_ins_div">
     <div class="form-group">
@@ -635,6 +641,87 @@
     </div>
 
     <button type="button" id="editDest" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Update</button>
+
+    </div>
+    </div>
+    </div>
+        
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL FOR EQUIPMENT FORM -->
+<div id="equipmentModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Equipment Data</h4>
+      </div>
+      <div class="modal-body">
+
+      <div id="equip_data">
+    <div class="well">
+      
+      <div class="form-group">
+        <div class="row">
+            <div class="col-xs-6">
+                <label class="label-control" for="equip_make">MAKE</label>
+                <input type="text" class="form-control" id="equip_make" name="equip_make" value="">
+            </div>
+            <div class="col-xs-6">
+                <label class="label-control" for="equip_model">MODEL</label>
+                <input type="text" class="form-control" id="equip_model" name="equip_model" value="">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-xs-3">
+                <label class="label-control" for="equip_length">LENGTH</label>
+                <input type="text" class="form-control" id="equip_length" name="equip_length" value="">
+            </div>
+            <div class="col-xs-3">
+                <label class="label-control" for="equip_width">WIDTH</label>
+                <input type="text" class="form-control" id="equip_width" name="equip_width" value="">
+            </div>
+            <div class="col-xs-3">
+                <label class="label-control" for="equip_height">HEIGHT</label>
+                <input type="text" class="form-control" id="equip_height" name="equip_height" value="">
+            </div>
+            <div class="col-xs-3">
+                <label class="label-control" for="equip_weight">WEIGHT</label>
+                <input type="text" class="form-control" id="equip_weight" name="equip_weight" value="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <label class="label-control" for="equip_commodity">COMMODITY</label>
+                <input type="text" class="form-control" id="equip_commodity" name="equip_commodity" value="">
+            </div>
+            
+            
+        </div>
+
+       
+
+
+        <div class="row">
+    
+        <div class="col-xs-12">
+            <label class="label-control" for="equip_loading_instructions">LOADING INSTRUCTIONS</label>
+            <textarea name="equip_loading_instructions" id="equip_loading_instructions" class="form-control" rows="2"></textarea>
+        </div>
+    
+    </div>
+      
+
+    <button type="button" id="editEquip" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Update</button>
 
     </div>
     </div>

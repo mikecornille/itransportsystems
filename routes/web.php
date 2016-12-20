@@ -83,6 +83,8 @@ Route::patch('load/{load}', 'LoadsController@update');
 //CREATE NEW DATABASE RECORDS
 Route::post('/newCustomer', 'CustomersController@store');
 Route::post('/newLocation', 'LocationsController@store');
+Route::post('/newCarrier', 'CarriersController@store');
+Route::post('/newEquipment', 'EquipmentController@store');
 
 //UPDATE DATABASES WITH AJAX
 Route::post('/updateCustomer', "CustomersController@updateCustomer");
