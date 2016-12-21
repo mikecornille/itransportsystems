@@ -66,7 +66,7 @@ class Load extends Model
 			  'invoice_notes',
 			  'update_customer_message',
               'rate_con_creation_date',
-              'rate_con_signed',
+              'signed_rate_con',
               'quick_status_notes',
               'vendor_invoice_number',
               'vendor_invoice_date',
@@ -78,6 +78,8 @@ class Load extends Model
               'carrier_message',
               'internal_email_address',
               'internal_message',
+              'trailer_for_search',
+              'carrier_mc',
 
 
 			  ];

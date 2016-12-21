@@ -47,5 +47,7 @@ class CustomersController extends Controller
 	    // ]);
 
     	Customer::where('id', $request->id)->update($request->all());
+
+    	
    }
 }

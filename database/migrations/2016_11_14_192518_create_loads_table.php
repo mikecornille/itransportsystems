@@ -88,6 +88,8 @@ class CreateLoadsTable extends Migration
             $table->text('internal_message')->nullable();
             $table->string('creation_date')->nullable();
             $table->string('rate_con_creator')->nullable();
+            $table->string('trailer_for_search')->nullable();
+            $table->string('carrier_mc')->nullable();
             $table->timestamps();
 
         });

@@ -1,9 +1,9 @@
  //Origin Autofill
  $(function() {
-            function log( message ) {
-                $( "<div>" ).text( message ).prependTo( "#log" );
-                $( "#log" ).scrollTop( 0 );
-            }
+            // function log( message ) {
+            //     $( "<div>" ).text( message ).prependTo( "#log" );
+            //     $( "#log" ).scrollTop( 0 );
+            // }
             $( "#origin-search" ).autocomplete({
                 source: function( request, response ) {
                     $.ajax({
@@ -12,7 +12,7 @@
                         success: function( data ) {
                             response($.map(data, function (item) {
                                 return {
-                                    label: item.location_name + ' ' + item.address,
+                                    label: item.location_name + ' ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' ' + item.contact + ' ' + item.phone,
                                     value: item.location_name + ' ' + item.address,
                                     object: item
                                 }
@@ -30,10 +30,10 @@
                     $('#pick_contact').val(window.originRecord.item.object.contact);
                     $('#pick_phone').val(window.originRecord.item.object.phone);
                     $('#pick_email').val(window.originRecord.item.object.email);
-                    log( ui.item ?
-                    "Selected: " + ui.item.label :
-                    "Nothing selected, input was " + this.value);
-                                        $('#location-search').val('test');
+                    // log( ui.item ?
+                    // "Selected: " + ui.item.label :
+                    // "Nothing selected, input was " + this.value);
+                    //                     $('#location-search').val('test');
 
                 },
                 open: function() {
@@ -60,7 +60,7 @@
                         success: function( data ) {
                             response($.map(data, function (item) {
                                 return {
-                                    label: item.location_name + ' ' + item.address,
+                                    label: item.location_name + ' ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' ' + item.contact + ' ' + item.phone,
                                     value: item.location_name + ' ' + item.address,
                                     object: item
                                 }
@@ -108,7 +108,7 @@
                         success: function( data ) {
                             response($.map(data, function (item) {
                                 return {
-                                    label: item.name + ' ' + item.address,
+                                    label: item.name + ' ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' ' + item.contact + ' ' + item.email + ' ' + item.phone,
                                     value: item.name + ' ' + item.address,
                                     object: item
                                 }
@@ -123,9 +123,9 @@
                     $('#customer_city').val(window.customerRecord.item.object.city);
                     $('#customer_state').val(window.customerRecord.item.object.state);
                     $('#customer_zip').val(window.customerRecord.item.object.zip);
-                    $('#customer_contact').val(window.customerRecord.item.object.name_1);
-                    $('#customer_email').val(window.customerRecord.item.object.email_1);
-                    $('#customer_phone').val(window.customerRecord.item.object.phone_1);
+                    $('#customer_contact').val(window.customerRecord.item.object.contact);
+                    $('#customer_email').val(window.customerRecord.item.object.email);
+                    $('#customer_phone').val(window.customerRecord.item.object.phone);
                     $('#customer_fax').val(window.customerRecord.item.object.fax);
                     log( ui.item ?
                     "Selected: " + ui.item.label :
@@ -158,7 +158,7 @@
                         success: function( data ) {
                             response($.map(data, function (item) {
                                 return {
-                                    label: item.make + ' ' + item.model,
+                                    label: item.make + ' ' + item.model + ' ' + item.length + 'in. ' + item.width + 'in. ' + item.height + 'in. ' + item.weight + 'lbs. ' + item.loading_instructions,
                                     value: item.make + ' ' + item.model,
                                     object: item
                                 }
@@ -168,7 +168,8 @@
                 minLength: 3,
                 select: function( event, ui ) {
                     window.equipmentRecord = ui;
-                    $('#commodity').val(window.equipmentRecord.item.object.make);
+                    $('#commodity').val(window.equipmentRecord.item.object.make + ' ' + window.equipmentRecord.item.object.model + ' ' + window.equipmentRecord.item.object.length + 'in. X ' + window.equipmentRecord.item.object.width + 'in. X ' + window.equipmentRecord.item.object.height + 'in. ' + window.equipmentRecord.item.object.weight + 'lbs. ');
+                    $('#special_ins').val(window.equipmentRecord.item.object.loading_instructions);
                     log( ui.item ?
                     "Selected: " + ui.item.label :
                     "Nothing selected, input was " + this.value);
@@ -200,7 +201,7 @@
                         success: function( data ) {
                             response($.map(data, function (item) {
                                 return {
-                                    label: item.company + ' ' + item.address,
+                                    label: item.company + ' ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' ' + item.contact + ' ' + item.phone + ' ' + item.email + ' ' + item.cargo_exp + ' ' + item.cargo_amount + ' ' + item.bc_contract,
                                     value: item.company + ' ' + item.address,
                                     object: item
                                 }
@@ -221,6 +222,12 @@
                     $('#carrier_fax').val(window.carrierRecord.item.object.fax);
                     $('#carrier_driver_name').val(window.carrierRecord.item.object.driver_name);
                     $('#carrier_driver_cell').val(window.carrierRecord.item.object.driver_phone);
+                    $('#remit_name').val(window.carrierRecord.item.object.remit_name);
+                    $('#remit_address').val(window.carrierRecord.item.object.remit_address);
+                    $('#remit_city').val(window.carrierRecord.item.object.remit_city);
+                    $('#remit_state').val(window.carrierRecord.item.object.remit_state);
+                    $('#remit_zip').val(window.carrierRecord.item.object.remit_zip);
+                    $('#carrier_mc').val(window.carrierRecord.item.object.mc_number);
                 log( ui.item ?
                     "Selected: " + ui.item.label :
                     "Nothing selected, input was " + this.value);

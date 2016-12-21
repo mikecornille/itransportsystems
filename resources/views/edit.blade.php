@@ -35,6 +35,11 @@
 
         {{ csrf_field() }}
 
+<input type="hidden" id="remit_name" name="remit_name" value="{{ $info->remit_name }}">
+<input type="hidden" id="remit_address" name="remit_address" value="{{ $info->remit_address }}">
+<input type="hidden" id="remit_city" name="remit_city" value="{{ $info->remit_city }}">
+<input type="hidden" id="remit_state" name="remit_state" value="{{ $info->remit_state }}">
+<input type="hidden" id="remit_zip" name="remit_zip" value="{{ $info->remit_zip }}">
 
 <div id="customer">
     <div class="well">
@@ -153,10 +158,14 @@
 					<label class="label-control" for="carrier_address">Address</label>
                     <input type="text" class="form-control" id="carrier_address" name="carrier_address" value="{{ $info->carrier_address }}">
 				</div>
-				<div class="col-xs-12">
+				<div class="col-xs-6">
 					<label class="label-control" for="carrier_city">City</label>
                     <input type="text" class="form-control" id="carrier_city" name="carrier_city" value="{{ $info->carrier_city }}">
 				</div>
+        <div class="col-xs-6">
+          <label class="label-control" for="carrier_mc">MC #</label>
+                    <input type="text" class="form-control" id="carrier_mc" name="carrier_mc" value="{{ $info->carrier_mc }}">
+        </div>
 				<div class="col-xs-6">
                     <label class="label-control" for="carrier_state">State</label>
                     <input type="text" class="form-control" id="carrier_state" name="carrier_state" value="{{ $info->carrier_state }}">
@@ -189,7 +198,7 @@
                     <label class="label-control" for="carrier_driver_cell">Driver Cell</label>
                     <input type="text" class="form-control" id="carrier_driver_cell" name="carrier_driver_cell" value="{{ $info->carrier_driver_cell }}">
                 </div>
-      			<div class="col-xs-12">
+      			<div class="col-xs-6">
         				<label for="trailer_type" class="label-control">Trailer Type</label>
           					<select name="trailer_type" id="trailer_type" class="form-control">
           					  <option value="{{ $info->trailer_type }}">{{ $info->trailer_type }}</option>
@@ -228,6 +237,24 @@
 				              <option value="STRAIGHT TRUCK">STRAIGHT TRUCK</option>
           					</select>
       				</div>
+              <div class="col-xs-6">
+                <label for="trailer_for_search" class="label-control">Database Trailer</label>
+                    <select name="trailer_for_search" id="trailer_for_search" class="form-control">
+                      <option value="{{ $info->trailer_for_search }}">{{ $info->trailer_for_search }}</option>
+                      <option value="Flatbed">Flatbed</option>
+                      <option value="Stepdeck">Stepdeck</option>
+                      <option value="Conestoga">Conestoga</option>
+                      <option value="Hot Shot">Hot Shot</option>
+                      <option value="Van">Van</option>
+                      <option value="Power">Power</option>
+                      <option value="Lowboy">Lowboy</option>
+                      <option value="Landoll">Landoll</option>
+                      <option value="Towing">Towing</option>
+                      <option value="Auto Carrier">Auto Carrier</option>
+                      <option value="Straight Truck">Straight Truck</option>
+                      
+                    </select>
+              </div>
     		</div>
 		</div>
 	</div>
@@ -479,6 +506,17 @@
           <input type="text" class="form-control datepicker" id="datepicker3" name="vendor_invoice_date" value="{{ $info->vendor_invoice_date }}">
     	</div>
 
+      <!-- <div class="col-xs-12">
+      <ul>
+      <li>{{ $info->remit_address }}</li>
+      <li>remit nane</li>
+      <li>remit nane</li>
+      <li>remit nane</li>
+      <li>remit nane</li>
+      </ul>
+
+      </div> -->
+
 
       <div class="btn-group" id="action_buttons">
   <button type="button" class="btn btn-primary">Actions</button>
@@ -718,8 +756,9 @@
         <h4 class="modal-title">Customer Data</h4>
       </div>
       <div class="modal-body">
-        <div id="customer_data">
+        <div id="customer_data_modal">
           <div class="well">
+          <div class="alert alert-success hidden" id="success-alert-display"></div>
             <input type="hidden" id="customer_id" name="customer_id" value="">
         <div class="form-group">
           <div class="row">
@@ -758,64 +797,23 @@
         </div>
         <div class="row">
             <div class="col-xs-4">
-                <label class="label-control" for="name_1">NAME</label>
-                <input type="text" class="form-control" id="name_1" name="name_1" value="">
+                <label class="label-control" for="contact">NAME</label>
+                <input type="text" class="form-control" id="contact" name="contact" value="">
             </div>
             <div class="col-xs-4">
-                <label class="label-control" for="phone_1">PHONE</label>
-                <input type="text" class="form-control" id="phone_1" name="phone_1" value="">
+                <label class="label-control" for="phone">PHONE</label>
+                <input type="text" class="form-control" id="phone" name="phone" value="">
             </div>
             <div class="col-xs-4">
-                <label class="label-control" for="email_1">EMAIL</label>
-                <input type="text" class="form-control" id="email_1" name="email_1" value="">
+                <label class="label-control" for="email">EMAIL</label>
+                <input type="text" class="form-control" id="email" name="email" value="">
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-4">
-                <label class="label-control" for="name_2">NAME</label>
-                <input type="text" class="form-control" id="name_2" name="name_2" value="">
-            </div>
-            <div class="col-xs-4">
-                <label class="label-control" for="phone_2">PHONE</label>
-                <input type="text" class="form-control" id="phone_2" name="phone_2" value="">
-            </div>
-            <div class="col-xs-4">
-                <label class="label-control" for="email_2">EMAIL</label>
-                <input type="text" class="form-control" id="email_2" name="email_2" value="">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-4">
-                <label class="label-control" for="name_3">NAME</label>
-                <input type="text" class="form-control" id="name_3" name="name_3" value="">
-            </div>
-            <div class="col-xs-4">
-                <label class="label-control" for="phone_3">PHONE</label>
-                <input type="text" class="form-control" id="phone_3" name="phone_3" value="">
-            </div>
-            <div class="col-xs-4">
-                <label class="label-control" for="email_3">EMAIL</label>
-                <input type="text" class="form-control" id="email_3" name="email_3" value="">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-4">
-                <label class="label-control" for="name_4">NAME</label>
-                <input type="text" class="form-control" id="name_4" name="name_4" value="">
-            </div>
-            <div class="col-xs-4">
-                <label class="label-control" for="phone_4">PHONE</label>
-                <input type="text" class="form-control" id="phone_4" name="phone_4" value="">
-            </div>
-            <div class="col-xs-4">
-                <label class="label-control" for="email_4">EMAIL</label>
-                <input type="text" class="form-control" id="email_4" name="email_4" value="">
-            </div>
-        </div>
+        
         <div class="row">
         <div class="col-xs-12">
-            <label class="label-control" for="internal_notes">INTERNAL NOTES</label>
-            <textarea name="internal_notes" id="internal_notes" class="form-control" rows="2"></textarea>
+            <label class="label-control" for="cus_internal_notes">INTERNAL NOTES</label>
+            <textarea name="cus_internal_notes" id="cus_internal_notes" class="form-control" rows="2"></textarea>
         </div>
     </div>
       <button type="button" id="editCustomer" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Update</button>
@@ -841,20 +839,22 @@
       </div>
       <div class="modal-body">
 
-      <div id="location_data">
+      <div id="location_data_modal">
     <div class="well">
+    <div class="alert alert-success hidden" id="success-alert-display"></div>
       
       
       <div class="form-group">
       <input type="hidden" id="location_id" name="location_id" value="">
         <div class="row">
+        <div class="alert alert-success hidden" id="success-alert-origin"></div>
             <div class="col-xs-8">
                 <label class="label-control" for="location_name">NAME</label>
                 <input type="text" class="form-control" id="location_name" name="location_name" value="">
             </div>
             <div class="col-xs-4">
-                <label class="label-control" for="location_number">LOCATION #</label>
-                <input type="text" class="form-control" id="location_number" name="location_number" value="">
+                <label class="label-control" for="origin_location_number">LOCATION #</label>
+                <input type="text" class="form-control" id="origin_location_number" name="origin_location_number" value="">
             </div>
         </div>
         <div class="row">
@@ -933,8 +933,9 @@
       </div>
       <div class="modal-body">
 
-      <div id="dest_data">
+      <div id="dest_data_modal">
     <div class="well">
+    <div class="alert alert-success hidden" id="success-alert-dest"></div>
       
       
       <div class="form-group">
@@ -1025,11 +1026,14 @@
       </div>
       <div class="modal-body">
 
-      <div id="equip_data">
+      <div id="equip_data_modal">
     <div class="well">
+    <div class="alert alert-success hidden" id="success-alert-equip"></div>
       
       <div class="form-group">
         <div class="row">
+         <input type="hidden" id="equip_id" name="equip_id" value="">
+
             <div class="col-xs-6">
                 <label class="label-control" for="equip_make">MAKE</label>
                 <input type="text" class="form-control" id="equip_make" name="equip_make" value="">
@@ -1080,7 +1084,7 @@
     </div>
       
 
-    <!-- <button type="button" id="editEquip" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Update</button> -->
+    <button type="button" id="editEquip" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Update</button>
 
     </div>
     </div>
@@ -1105,11 +1109,13 @@
       </div>
       <div class="modal-body">
 
-      <div id="carrier_data">
+      <div id="carrier_data_modal">
     <div class="well">
+    <div class="alert alert-success hidden" id="success-alert-carrier"></div>
       
       <div class="form-group">
         <div class="row">
+        <input type="hidden" id="car_id" name="car_id" value="">
             <div class="col-xs-6">
                 <label class="label-control" for="car_company">COMPANY</label>
                 <input type="text" class="form-control" id="car_company" name="car_company" value="">

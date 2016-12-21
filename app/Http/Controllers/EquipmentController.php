@@ -14,18 +14,18 @@ class EquipmentController extends Controller
 	 public function store(Request $request)
 	{
 		
-		 // $this->validate($request, [
+		 $this->validate($request, [
 
-		 // 	'make' => 'required',			  
-   //       	  'model' => 'required',
-			//   'length' => 'required',
-			//   'width' => 'required',
-			//   'height' => 'required',
-			//   'weight' => 'required',
-			//   'commodity' => 'required',
-			//   'loading_instructions' => 'required',
+		 	'make' => 'required',			  
+         	  'model' => 'required',
+			  'length' => 'required',
+			  'width' => 'required',
+			  'height' => 'required',
+			  'weight' => 'required',
+			  'commodity' => 'required',
+			  'loading_instructions' => 'required',
 			  
-			// ]);
+			]);
 
         $newEquipment = New Equipment($request->all());
 		
@@ -34,4 +34,19 @@ class EquipmentController extends Controller
 		return back()->with('status', 'New Equipment Created!');
 		
 	}
+
+	//UPDATES RECORD IN DATABASE THORUGH AJAX CALL
+	public function updateEquipment(Request $request) 
+	{
+    
+		//IF I WANT TO UPDATE SPECIFIC COLUMNS
+		// Customer::where('id', $request->id)->update([
+        // 'name' => $request->name,
+        // 'country' => $request->country,
+	    // ]);
+
+    	Equipment::where('id', $request->id)->update($request->all());
+
+    	
+   }
 }

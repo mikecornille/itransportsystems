@@ -19,7 +19,7 @@
     <div id="location_data">
     <div class="well">
       
-      
+      <h1 class="text-center">New Location</h1> 
       <div class="form-group">
         <div class="row">
             <div class="col-xs-8">

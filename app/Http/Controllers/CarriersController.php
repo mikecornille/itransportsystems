@@ -44,15 +44,15 @@ class CarriersController extends Controller
 	}
 
 	//UPDATES RECORD IN DATABASE THORUGH AJAX CALL
-	// public function updateCustomer(Request $request) 
-	// {
+	public function updateCarrier(Request $request) 
+	{
     
-		//IF I WANT TO UPDATE SPECIFIC COLUMNS
+		// IF I WANT TO UPDATE SPECIFIC COLUMNS
 		// Customer::where('id', $request->id)->update([
-        // 'name' => $request->name,
-        // 'country' => $request->country,
-	    // ]);
+  //       'name' => $request->name,
+  //       'country' => $request->country,
+	 //    ]);
 
-   //  	Customer::where('id', $request->id)->update($request->all());
-   // }
+    	Carrier::where('id', $request->id)->update($request->all());
+   }
 }

@@ -1,6 +1,16 @@
 $mainmarginright: 30px;
 $mainmarginleft: 50px;
 
+#overall_form_div
+{
+  margin-left: 150px;
+}
+
+#editCustomer, #editLocation, #editDest, #editEquip, #editCarrier, #newCarrierSubmit
+{
+  margin-top: 10px;
+}
+
 /* autocomplete */
 
   .ui-autocomplete {
@@ -69,7 +79,7 @@ $mainmarginleft: 50px;
 
 #customer_data 
 {
-  width: 500px;
+  width: 800px;
   float: none;
   margin: 0 auto;
 }
@@ -78,7 +88,7 @@ $mainmarginleft: 50px;
 
 #equipment_data
 {
-  width: 500px;
+  width: 800px;
   float: none;
   margin: 0 auto;
 }
@@ -87,7 +97,16 @@ $mainmarginleft: 50px;
 
 #location_data
 {
-  width: 500px;
+  width: 800px;
+  float: none;
+  margin: 0 auto;
+}
+
+/* CARRIER DATA STYLES */
+
+#carrier_data
+{
+  width: 800px;
   float: none;
   margin: 0 auto;
 }

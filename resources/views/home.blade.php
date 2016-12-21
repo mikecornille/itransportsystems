@@ -20,7 +20,7 @@
     </div>
 @endif
 
-
+<div id="overall_form_div">
 
 <form role="form" class="form-horizontal" method="POST" action="/new">
         
@@ -31,14 +31,16 @@
       <div class="form-group">
         <div class="row">
             <div class="col-xs-12">
+            <div class="input-group">
                 <input type="text" class="form-control" id="customer-search" placeholder="Customer Search">
+                <span class="input-group-btn"><button type="button" data-toggle="modal" data-target="#customerModal" onclick="goToCustomerEditPage()" class="btn btn-secondary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></span>
+                </div>
             </div>
             <div class="col-xs-12">
                 <label class="label-control" for="customer_name">CUSTOMER</label>
-                <div class="input-group">
+                
                     <input type="text" class="form-control" id="customer_name" name="customer_name" value="{{ old('customer_name') }}">
-                    <span class="input-group-btn"><button type="button" data-toggle="modal" data-target="#customerModal" onclick="goToCustomerEditPage()" class="btn btn-secondary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></span>
-                </div> <!--end input group-->
+                    
             </div>
             
             <div class="col-xs-12">
@@ -87,14 +89,16 @@
     <div class="form-group">
         <div class="row">
           <div class="col-xs-12">
+          <div class="input-group">
             <input type="text" class="form-control" id="origin-search" placeholder="Origin Search">
+            <span class="input-group-btn"><button type="button" data-toggle="modal" data-target="#originModal" onclick="goToOriginEditPage()" class="btn btn-secondary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></span>
+            </div>
           </div>
           <div class="col-xs-12">
             <label class="label-control" for="pick_company">ORIGIN</label>
-            <div class="input-group">
+            
                     <input type="text" class="form-control" id="pick_company" name="pick_company" value="{{ old('pick_company') }}">
-                    <span class="input-group-btn"><button type="button" data-toggle="modal" data-target="#originModal" onclick="goToOriginEditPage()" class="btn btn-secondary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></span>
-              </div>
+                    
           </div>
           <div class="col-xs-12">
             <label class="label-control" for="pick_address">Address</label>
@@ -134,15 +138,22 @@
     <div class="form-group">
         <div class="row">
         <div class="col-xs-12">
+            <div class="input-group">
             <input type="text" class="form-control" id="delivery-search" placeholder="Delivery Search">
+            <span class="input-group-btn"><button type="button" data-toggle="modal" data-target="#destinationModal" onclick="goToDesEditPage()" class="btn btn-secondary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></span>
           </div>
+          </div>
+          
+
           <div class="col-xs-12">
             <label class="label-control" for="delivery_company">DESTINATION</label>
-            <div class="input-group">
+            
                     <input type="text" class="form-control" id="delivery_company" name="delivery_company" value="{{ old('delivery_company') }}">
-                    <span class="input-group-btn"><button type="button" data-toggle="modal" data-target="#destinationModal" onclick="goToDesEditPage()" class="btn btn-secondary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></span>
-              </div>
+                   
+              
           </div>
+          
+
           <div class="col-xs-12">
             <label class="label-control" for="delivery_address">Address</label>
             <input type="text" class="form-control" id="delivery_address" name="delivery_address" value="{{ old('delivery_address') }}">
@@ -357,8 +368,9 @@
         <h4 class="modal-title">Customer Data</h4>
       </div>
       <div class="modal-body">
-        <div id="customer_data">
+        <div id="customer_data_modal">
           <div class="well">
+            <div class="alert alert-success hidden" id="success-alert-display"></div>
             <input type="hidden" id="customer_id" name="customer_id" value="">
         <div class="form-group">
           <div class="row">
@@ -397,64 +409,23 @@
         </div>
         <div class="row">
             <div class="col-xs-4">
-                <label class="label-control" for="name_1">NAME</label>
-                <input type="text" class="form-control" id="name_1" name="name_1" value="">
+                <label class="label-control" for="contact">NAME</label>
+                <input type="text" class="form-control" id="contact" name="contact" value="">
             </div>
             <div class="col-xs-4">
-                <label class="label-control" for="phone_1">PHONE</label>
-                <input type="text" class="form-control" id="phone_1" name="phone_1" value="">
+                <label class="label-control" for="phone">PHONE</label>
+                <input type="text" class="form-control" id="phone" name="phone" value="">
             </div>
             <div class="col-xs-4">
-                <label class="label-control" for="email_1">EMAIL</label>
-                <input type="text" class="form-control" id="email_1" name="email_1" value="">
+                <label class="label-control" for="email">EMAIL</label>
+                <input type="text" class="form-control" id="email" name="email" value="">
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-4">
-                <label class="label-control" for="name_2">NAME</label>
-                <input type="text" class="form-control" id="name_2" name="name_2" value="">
-            </div>
-            <div class="col-xs-4">
-                <label class="label-control" for="phone_2">PHONE</label>
-                <input type="text" class="form-control" id="phone_2" name="phone_2" value="">
-            </div>
-            <div class="col-xs-4">
-                <label class="label-control" for="email_2">EMAIL</label>
-                <input type="text" class="form-control" id="email_2" name="email_2" value="">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-4">
-                <label class="label-control" for="name_3">NAME</label>
-                <input type="text" class="form-control" id="name_3" name="name_3" value="">
-            </div>
-            <div class="col-xs-4">
-                <label class="label-control" for="phone_3">PHONE</label>
-                <input type="text" class="form-control" id="phone_3" name="phone_3" value="">
-            </div>
-            <div class="col-xs-4">
-                <label class="label-control" for="email_3">EMAIL</label>
-                <input type="text" class="form-control" id="email_3" name="email_3" value="">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-4">
-                <label class="label-control" for="name_4">NAME</label>
-                <input type="text" class="form-control" id="name_4" name="name_4" value="">
-            </div>
-            <div class="col-xs-4">
-                <label class="label-control" for="phone_4">PHONE</label>
-                <input type="text" class="form-control" id="phone_4" name="phone_4" value="">
-            </div>
-            <div class="col-xs-4">
-                <label class="label-control" for="email_4">EMAIL</label>
-                <input type="text" class="form-control" id="email_4" name="email_4" value="">
-            </div>
-        </div>
+        
         <div class="row">
         <div class="col-xs-12">
-            <label class="label-control" for="internal_notes">INTERNAL NOTES</label>
-            <textarea name="internal_notes" id="internal_notes" class="form-control" rows="2"></textarea>
+            <label class="label-control" for="cus_internal_notes">INTERNAL NOTES</label>
+            <textarea name="cus_internal_notes" id="cus_internal_notes" class="form-control" rows="2"></textarea>
         </div>
     </div>
       <button type="button" id="editCustomer" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Update</button>
@@ -481,8 +452,9 @@
       </div>
       <div class="modal-body">
 
-      <div id="location_data">
+      <div id="location_data_modal">
     <div class="well">
+    <div class="alert alert-success hidden" id="success-alert-origin"></div>
       
       
       <div class="form-group">
@@ -493,8 +465,8 @@
                 <input type="text" class="form-control" id="location_name" name="location_name" value="">
             </div>
             <div class="col-xs-4">
-                <label class="label-control" for="location_number">LOCATION #</label>
-                <input type="text" class="form-control" id="location_number" name="location_number" value="">
+                <label class="label-control" for="origin_location_number">LOCATION #</label>
+                <input type="text" class="form-control" id="origin_location_number" name="origin_location_number" value="">
             </div>
         </div>
         <div class="row">
@@ -531,11 +503,11 @@
         </div>
 
         <div class="row">
-            <div class="col-xs-4">
+            <div class="col-xs-6">
                 <label class="label-control" for="location_email">EMAIL</label>
                 <input type="text" class="form-control" id="location_email" name="location_email" value="">
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-6">
                 <label class="label-control" for="location_cell">CELL</label>
                 <input type="text" class="form-control" id="location_cell" name="location_cell" value="">
             </div>
@@ -573,8 +545,9 @@
       </div>
       <div class="modal-body">
 
-      <div id="dest_data">
+      <div id="dest_data_modal">
     <div class="well">
+    <div class="alert alert-success hidden" id="success-alert-dest"></div>
       
       
       <div class="form-group">
@@ -666,11 +639,13 @@
       </div>
       <div class="modal-body">
 
-      <div id="equip_data">
+      <div id="equip_data_modal">
     <div class="well">
+    <div class="alert alert-success hidden" id="success-alert-equip"></div>
       
       <div class="form-group">
         <div class="row">
+        <input type="hidden" id="equip_id" name="equip_id" value="">
             <div class="col-xs-6">
                 <label class="label-control" for="equip_make">MAKE</label>
                 <input type="text" class="form-control" id="equip_make" name="equip_make" value="">

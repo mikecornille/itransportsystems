@@ -1,5 +1,6 @@
 //SENDS THE INFO TO THE EQUIPMENT MODAL FOR EDITING
 function goToEquipmentEditPage() {
+  $('#equip_id').val(window.equipmentRecord.item.object.id);
   $('#equip_make').val(window.equipmentRecord.item.object.make);
   $('#equip_model').val(window.equipmentRecord.item.object.model);
   $('#equip_length').val(window.equipmentRecord.item.object.length);
@@ -11,8 +12,45 @@ function goToEquipmentEditPage() {
   };
 //END NOTES
 
+//GETS THE VALUES FROM THE EQUIPMENT MODAL AND SUBMITS THEM TO COORESPONDING ID IN DATABASE
+$(document).on('click', '#editEquip', function(){
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+  
+$.ajax({
+        method: 'POST',
+        url: './updateEquipment',
+        data: {
+
+            id: $("#equip_id").val(),
+            make: $("#equip_make").val(),
+            model: $("#equip_model").val(),   
+            length: $("#equip_length").val(),
+            width: $("#equip_width").val(),
+            height: $("#equip_height").val(),
+            weight: $("#equip_weight").val(),
+            commodity: $("#equip_commodity").val(),
+            loading_instructions: $("#equip_loading_instructions").val(),
+
+         },
+         success: function(result){
+                $("#success-alert-equip").removeClass('hidden');
+                $("#success-alert-equip").alert();
+                $("#success-alert-equip").text('The equipment update has been saved.');
+                $("#success-alert-equip").fadeTo(4000, 500).slideUp(500);
+               
+}
+    });
+});
+// END NOTES
+
 //SENDS THE INFO TO THE CARRIER MODAL FOR EDITING
 function goToCarrierEditPage() {
+  $('#car_id').val(window.carrierRecord.item.object.id);
   $('#car_company').val(window.carrierRecord.item.object.company);
   $('#car_contact').val(window.carrierRecord.item.object.contact);
   $('#car_mc_number').val(window.carrierRecord.item.object.mc_number);
@@ -40,6 +78,57 @@ function goToCarrierEditPage() {
   };
 //END NOTES
 
+//GETS THE VALUES FROM THE CARRIER MODAL AND SUBMITS THEM TO COORESPONDING ID IN DATABASE
+$(document).on('click', '#editCarrier', function(){
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+  
+$.ajax({
+        method: 'POST',
+        url: './updateCarrier',
+        data: {
+
+            id: $("#car_id").val(),
+            company: $("#car_company").val(),
+            contact: $("#car_contact").val(),   
+            mc_number: $("#car_mc_number").val(),
+            dot_number: $("#car_dot_number").val(),
+            address: $("#car_address").val(),
+            city: $("#car_city").val(),
+            state: $("#car_state").val(),
+            zip: $("#car_zip").val(),
+            phone: $("#car_phone").val(),
+            fax: $("#car_fax").val(),
+            email: $("#car_email").val(),
+            driver_name: $("#car_driver_name").val(),
+            driver_phone: $("#car_driver_phone").val(),
+            cargo_exp: $("#car_cargo_exp").val(),
+            cargo_amount: $("#car_cargo_amount").val(),
+            bc_contract: $("#car_bc_contract").val(),
+            remit_name: $("#car_remit_name").val(),
+            remit_address: $("#car_remit_address").val(),
+            remit_city: $("#car_remit_city").val(),
+            remit_state: $("#car_remit_state").val(),
+            remit_zip: $("#car_remit_zip").val(),
+            load_info: $("#car_load_info").val(),
+            permanent_notes: $("#car_permanent_notes").val(),
+
+         },
+         success: function(result){
+                $("#success-alert-carrier").removeClass('hidden');
+                $("#success-alert-carrier").alert();
+                $("#success-alert-carrier").text('The carrier update has been saved.');
+                $("#success-alert-carrier").fadeTo(4000, 500).slideUp(500);
+               
+}
+    });
+});
+// END NOTES
+
 
 
 // SENDS THE INFO TO THE CUSTOMER MODAL FOR EDITING
@@ -51,19 +140,10 @@ function goToCustomerEditPage() {
   $('#state').val(window.customerRecord.item.object.state);
   $('#zip').val(window.customerRecord.item.object.zip);
   $('#fax').val(window.customerRecord.item.object.fax);
-  $('#name_1').val(window.customerRecord.item.object.name_1);
-  $('#phone_1').val(window.customerRecord.item.object.phone_1);
-  $('#email_1').val(window.customerRecord.item.object.email_1);
-  $('#name_2').val(window.customerRecord.item.object.name_2);
-  $('#phone_2').val(window.customerRecord.item.object.phone_2);
-  $('#email_2').val(window.customerRecord.item.object.email_2);
-  $('#name_3').val(window.customerRecord.item.object.name_3);
-  $('#phone_3').val(window.customerRecord.item.object.phone_3);
-  $('#email_3').val(window.customerRecord.item.object.email_3);
-  $('#name_4').val(window.customerRecord.item.object.name_4);
-  $('#phone_4').val(window.customerRecord.item.object.phone_4);
-  $('#email_4').val(window.customerRecord.item.object.email_4);
-  $('textarea#internal_notes').val(window.customerRecord.item.object.internal_notes);
+  $('#contact').val(window.customerRecord.item.object.contact);
+  $('#phone').val(window.customerRecord.item.object.phone);
+  $('#email').val(window.customerRecord.item.object.email);
+  $('textarea#cus_internal_notes').val(window.customerRecord.item.object.internal_notes);
   $('#customer_id').val(window.customerRecord.item.object.id);
   };
 //END NOTES
@@ -91,21 +171,19 @@ $.ajax({
             state: $("#state").val(),
             zip: $("#zip").val(),
             fax: $("#fax").val(),
-            name_1: $("#name_1").val(),
-            phone_1: $("#phone_1").val(),
-            email_1: $("#email_1").val(),
-            name_2: $("#name_2").val(),
-            phone_2: $("#phone_2").val(),
-            email_2: $("#email_2").val(),
-            name_3: $("#name_3").val(),
-            phone_3: $("#phone_3").val(),
-            email_3: $("#email_3").val(),
-            name_4: $("#name_4").val(),
-            phone_4: $("#phone_4").val(),
-            email_4: $("#email_4").val(),
-            internal_notes: $("#internal_notes").val(),
+            contact: $("#contact").val(),
+            phone: $("#phone").val(),
+            email: $("#email").val(),
+            internal_notes: $("#cus_internal_notes").val(),
 
          },
+         success: function(result){
+                $("#success-alert-display").removeClass('hidden');
+                $("#success-alert-display").alert();
+                $("#success-alert-display").text('The customer update has been saved.');
+                $("#success-alert-display").fadeTo(4000, 500).slideUp(500);
+               
+}
     });
 });
 // END NOTES
@@ -114,7 +192,7 @@ $.ajax({
 // SENDS THE INFO TO THE ORIGIN MODAL FOR EDITING
 function goToOriginEditPage() {
   $('#location_name').val(window.originRecord.item.object.location_name);
-  $('#location_number').val(window.originRecord.item.object.location_number);
+  $('#origin_location_number').val(window.originRecord.item.object.location_number);
   $('#location_address').val(window.originRecord.item.object.address);
   $('#location_city').val(window.originRecord.item.object.city);
   $('#location_state').val(window.originRecord.item.object.state);
@@ -144,7 +222,7 @@ $.ajax({
         data: {
             id: $("#location_id").val(),
             location_name: $("#location_name").val(),
-            location_number: $("#location_number").val(),   
+            location_number: $("#origin_location_number").val(),   
             address: $("#location_address").val(),
             city: $("#location_city").val(),
             state: $("#location_state").val(),
@@ -156,6 +234,12 @@ $.ajax({
             location_notes: $("#location_notes").val(),
 
          },
+         success: function(result){
+                $("#success-alert-origin").removeClass('hidden');
+                $("#success-alert-origin").alert();
+                $("#success-alert-origin").text('The updated origin information has been saved.');
+                $("#success-alert-origin").fadeTo(4000, 500).slideUp(500);
+              }
     });
 });
 //END NOTES
@@ -204,6 +288,12 @@ $.ajax({
             location_notes: $("#dest_notes").val(),
 
          },
+         success: function(result){
+                $("#success-alert-dest").removeClass('hidden');
+                $("#success-alert-dest").alert();
+                $("#success-alert-dest").text('The updated destination information has been saved.');
+                $("#success-alert-dest").fadeTo(4000, 500).slideUp(500);
+              }
     });
 });
 //END NOTES

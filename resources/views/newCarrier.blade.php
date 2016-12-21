@@ -16,10 +16,10 @@
         {{ csrf_field() }}
 
 
-    <div id="customer_data">
+    <div id="carrier_data">
     <div class="well">
       
-      
+      <h1 class="text-center">New Carrier</h1> 
       <div class="form-group">
         <div class="row">
             <div class="col-xs-6">
@@ -209,7 +209,7 @@
 		
 		</div>
 
-		<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> NEW</button>
+		<button type="submit" class="btn btn-primary" id="newCarrierSubmit"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> NEW</button>
 
 		</div>
 		</div>

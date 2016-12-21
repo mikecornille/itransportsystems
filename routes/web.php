@@ -88,7 +88,13 @@ Route::post('/newEquipment', 'EquipmentController@store');
 
 //UPDATE DATABASES WITH AJAX
 Route::post('/updateCustomer', "CustomersController@updateCustomer");
+Route::post('/edit/updateCustomer', "CustomersController@updateCustomer");
 Route::post('/updateLocation', "LocationsController@updateLocation");
+Route::post('/edit/updateLocation', "LocationsController@updateLocation");
+Route::post('/updateEquipment', "EquipmentController@updateEquipment");
+Route::post('/edit/updateEquipment', "EquipmentController@updateEquipment");
+Route::post('/edit/updateCarrier', "CarriersController@updateCarrier");
+
 
 //PRINT THE INVOICE AND RATE CONFIRMATION
 Route::get('/getInvoicePDF/{id}', 'PDFController@getInvoicePDF');
