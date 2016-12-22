@@ -71,6 +71,10 @@ Route::get('/findTrucks', function () {
     return view('/findTrucks');
 });
 
+Route::get('/findCarrier', function () {
+    return view('/findCarrier');
+});
+
 
 Route::get('/home', 'HomeController@index');
 Route::post('/new', 'LoadsController@store');

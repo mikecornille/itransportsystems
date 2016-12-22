@@ -87,7 +87,7 @@
                                 <ul class="dropdown-menu" role="menu">
 
                                 <li><a href="{{ URL::to('/newCarrier') }}">New Carrier</a></li>
-                                <li><a href="{{ URL::to('#') }}">Find Carrier</a></li>
+                                <li><a href="{{ URL::to('/findCarrier') }}">Find Carrier</a></li>
                                 <li><a href="{{ URL::to('#') }}">Find Trucks</a></li>
                                 
 

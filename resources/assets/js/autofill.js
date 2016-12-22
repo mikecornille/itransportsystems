@@ -1,9 +1,6 @@
  //Origin Autofill
  $(function() {
-            // function log( message ) {
-            //     $( "<div>" ).text( message ).prependTo( "#log" );
-            //     $( "#log" ).scrollTop( 0 );
-            // }
+            
             $( "#origin-search" ).autocomplete({
                 source: function( request, response ) {
                     $.ajax({
@@ -30,10 +27,7 @@
                     $('#pick_contact').val(window.originRecord.item.object.contact);
                     $('#pick_phone').val(window.originRecord.item.object.phone);
                     $('#pick_email').val(window.originRecord.item.object.email);
-                    // log( ui.item ?
-                    // "Selected: " + ui.item.label :
-                    // "Nothing selected, input was " + this.value);
-                    //                     $('#location-search').val('test');
+                    
 
                 },
                 open: function() {

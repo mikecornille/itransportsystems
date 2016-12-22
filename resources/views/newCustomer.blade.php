@@ -80,7 +80,7 @@
 		
 		</div>
 
-		<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> NEW</button>
+		<button type="submit" class="btn btn-primary" id="newCustomerSubmit"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> NEW</button>
 
 		</div>
 		</div>

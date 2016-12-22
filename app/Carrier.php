@@ -32,5 +32,31 @@ class Carrier extends Model
 			  'remit_zip',
 			  'load_info',
 			  'permanent_notes',
+			  'flatbed',
+			  'stepdeck',
+			  'conestoga',
+			  'van',
+			  'power',
+			  'hot_shot',
+			  'straight_truck',
+			  'auto_carrier',
+			  'lowboy',
+			  'landoll',
+			  'towing',
+
         ];
+
+        public static function getTrailers() {
+        	return ['flatbed',
+			  'stepdeck',
+			  'conestoga',
+			  'van',
+			  'power',
+			  'hot_shot',
+			  'straight_truck',
+			  'auto_carrier',
+			  'lowboy',
+			  'landoll',
+			  'towing',];
+			}
 }

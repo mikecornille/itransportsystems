@@ -137,7 +137,7 @@ class LoadsController extends Controller
 
             	//need to make sure rate_con_creator doesnt already exist
 
-            if ($request->pick_status === 'Booked')
+            if ($request->pick_status === 'Booked' && empty($load->rate_con_creator))
             {
             	$load->rate_con_creator = strtoupper(\Auth::user()->email);
             }

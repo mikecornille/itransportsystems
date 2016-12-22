@@ -28,6 +28,7 @@ class CustomersController extends Controller
         
          ]);
 
+
         $newCustomer = New Customer($request->all());
 		
 		$newCustomer->save();
@@ -48,6 +49,6 @@ class CustomersController extends Controller
 
     	Customer::where('id', $request->id)->update($request->all());
 
-    	
+
    }
 }

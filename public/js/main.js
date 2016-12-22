@@ -74,7 +74,17 @@ function goToCarrierEditPage() {
   $('#car_remit_zip').val(window.carrierRecord.item.object.remit_zip);
   $('textarea#car_load_info').val(window.carrierRecord.item.object.load_info);
   $('textarea#car_permanent_notes').val(window.carrierRecord.item.object.permanent_notes);
-  
+  $('#flatbed').prop('checked', window.carrierRecord.item.object.flatbed);
+$('#stepdeck').prop('checked', window.carrierRecord.item.object.stepdeck);
+$('#conestoga').prop('checked', window.carrierRecord.item.object.conestoga);
+$('#hot_shot').prop('checked', window.carrierRecord.item.object.hot_shot);
+$('#van').prop('checked', window.carrierRecord.item.object.van);
+$('#power').prop('checked', window.carrierRecord.item.object.power);
+$('#lowboy').prop('checked', window.carrierRecord.item.object.lowboy);
+$('#landoll').prop('checked', window.carrierRecord.item.object.landoll);
+$('#towing').prop('checked', window.carrierRecord.item.object.towing);
+$('#auto_carrier').prop('checked', window.carrierRecord.item.object.auto_carrier);
+$('#straight_truck').prop('checked', window.carrierRecord.item.object.straight_truck);
   };
 //END NOTES
 
@@ -116,6 +126,17 @@ $.ajax({
             remit_zip: $("#car_remit_zip").val(),
             load_info: $("#car_load_info").val(),
             permanent_notes: $("#car_permanent_notes").val(),
+            flatbed: $("#flatbed").is(':checked'),
+            stepdeck: $("#stepdeck").is(':checked'),
+            conestoga: $("#conestoga").is(':checked'),
+            hot_shot: $("#hot_shot").is(':checked'),
+            van: $("#van").is(':checked'),
+            power: $("#power").is(':checked'),
+            lowboy: $("#lowboy").is(':checked'),
+            landoll: $("#landoll").is(':checked'),
+            towing: $("#towing").is(':checked'),
+            auto_carrier: $("#auto_carrier").is(':checked'),
+            straight_truck: $("#straight_truck").is(':checked')
 
          },
          success: function(result){
@@ -606,7 +627,6 @@ $('#signed_rate_con').val(signed);
 <!-- CLEARS OUT CARRIER DATA -->
 
 $(document).on('click', '#clear_carrier', function(){
-
 $('#carrier_name').val('');
 $('#carrier_address').val('');
 $('#carrier_city').val('');

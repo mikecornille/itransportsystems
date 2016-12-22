@@ -101,69 +101,69 @@
             </div>
         </div>
 
-        <!-- <div class="row">
+        <div class="row">
         <div class="col-xs-4">
         <div class="checkbox">
-  			<label><input type="checkbox" value="">Flatbeds</label>
+  			<label><input type="checkbox" name="flatbed" id="flatbed">Flatbeds</label>
 		</div>
 		</div>
 		<div class="col-xs-4">
 		<div class="checkbox">
-  			<label><input type="checkbox" value="">Stepdecks</label>
+  			<label><input type="checkbox" name="stepdeck" id="stepdeck">Stepdecks</label>
 		</div>
 		</div>
 		<div class="col-xs-4">
 		<div class="checkbox">
-  			<label><input type="checkbox" value="">Conestogas</label>
+  			<label><input type="checkbox" name="conestoga" id="conestoga">Conestogas</label>
 		</div>
 		</div>
 		</div>
 		<div class="row">
         <div class="col-xs-4">
         <div class="checkbox">
-  			<label><input type="checkbox" value="">Hot Shots</label>
+  			<label><input type="checkbox" name="hot_shot" id="hot_shot">Hot Shots</label>
 		</div>
 		</div>
 		<div class="col-xs-4">
 		<div class="checkbox">
-  			<label><input type="checkbox" value="">Vans</label>
+  			<label><input type="checkbox" name="van" id="van">Vans</label>
 		</div>
 		</div>
 		<div class="col-xs-4">
 		<div class="checkbox">
-  			<label><input type="checkbox" value="">Power Only</label>
+  			<label><input type="checkbox" name="power" id="power">Power Only</label>
 		</div>
 		</div>
 		</div>
 		<div class="row">
         <div class="col-xs-4">
         <div class="checkbox">
-  			<label><input type="checkbox" value="">Lowboys</label>
+  			<label><input type="checkbox" name="lowboy" id="lowboy">Lowboys</label>
 		</div>
 		</div>
 		<div class="col-xs-4">
 		<div class="checkbox">
-  			<label><input type="checkbox" value="">Landoll</label>
+  			<label><input type="checkbox" name="landoll" id="landoll">Landoll</label>
 		</div>
 		</div>
 		<div class="col-xs-4">
 		<div class="checkbox">
-  			<label><input type="checkbox" value="">Towing</label>
+  			<label><input type="checkbox" name="towing" id="towing">Towing</label>
 		</div>
 		</div>
 		</div>
 		<div class="row">
         <div class="col-xs-4">
         <div class="checkbox">
-  			<label><input type="checkbox" value="">Auto Carrier</label>
+  			<label><input type="checkbox" name="auto_carrier" id="auto_carrier">Auto Carrier</label>
 		</div>
 		</div>
 		<div class="col-xs-4">
 		<div class="checkbox">
-  			<label><input type="checkbox" value="">Straight Trucks</label>
+  			<label><input type="checkbox" name="straight_truck" id="straight_truck">Straight Trucks</label>
 		</div>
 		</div>
-		</div> -->
+		</div>
 
         <div class="row">
             <div class="col-xs-4">
