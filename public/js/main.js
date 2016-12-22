@@ -602,7 +602,7 @@ var d = new Date();
 var n = d.toDateString();
 var m = d.toLocaleTimeString();
 
-$('#internal_notes').val($('#internal_notes').val() + n + " " + m + " - ");
+$('#internal_notes').val($('#internal_notes').val() + n + " " + m + ' ' + user.name + " - ");
 
 });
 

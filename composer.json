@@ -14,7 +14,8 @@
         "phpmailer/phpmailer": "^5.2",
         "laravel/scout": "^1.1",
         "algolia/algoliasearch-client-php": "^1.11",
-        "guzzlehttp/guzzle": "^6.2"
+        "guzzlehttp/guzzle": "^6.2",
+        "laracasts/utilities": "^2.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

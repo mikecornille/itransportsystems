@@ -163,7 +163,7 @@
 
         @yield('content')
     </div>
-
+@include ('footer')
     <!-- Scripts -->
     <script src="/js/app.js"></script>
     <script src="/js/all.js"></script>

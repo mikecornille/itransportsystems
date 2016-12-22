@@ -14,6 +14,8 @@ use PDF;
 
 use Illuminate\Support\Facades\Mail;
 
+use Laracasts\Utilities\JavaScript\JavaScriptFacade as Javascript;
+
 
 class LoadsController extends Controller
 {
@@ -98,6 +100,10 @@ class LoadsController extends Controller
 	//Go to edit form with selected record
 	public function edit(Request $request)
 	{
+
+		JavaScript::put([
+		        'user' => \Auth::user(),
+    ]);
 
 		$info = Load::find($request->input('id'));
 		return view('edit', compact('info'));	
