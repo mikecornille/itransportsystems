@@ -85,6 +85,7 @@ $('#landoll').prop('checked', window.carrierRecord.item.object.landoll);
 $('#towing').prop('checked', window.carrierRecord.item.object.towing);
 $('#auto_carrier').prop('checked', window.carrierRecord.item.object.auto_carrier);
 $('#straight_truck').prop('checked', window.carrierRecord.item.object.straight_truck);
+$('#email_colleague_carrier').val(window.carrierRecord.item.object.email_colleague_carrier);
   };
 //END NOTES
 
@@ -126,6 +127,7 @@ $.ajax({
             remit_zip: $("#car_remit_zip").val(),
             load_info: $("#car_load_info").val(),
             permanent_notes: $("#car_permanent_notes").val(),
+            email_colleague_carrier: $("#email_colleague_carrier").val(),
             flatbed: $("#flatbed").is(':checked'),
             stepdeck: $("#stepdeck").is(':checked'),
             conestoga: $("#conestoga").is(':checked'),
@@ -228,7 +230,7 @@ function goToOriginEditPage() {
 //END NOTES
 
 
-//GETS THE VALUES FROM THE CUSTOMER MODAL AND SUBMITS THEM TO COORESPONDING ID IN DATABASE
+//GETS THE VALUES FROM THE ORIGIN MODAL AND SUBMITS THEM TO COORESPONDING ID IN DATABASE
 $(document).on('click', '#editLocation', function(){
 
 $.ajaxSetup({
@@ -318,6 +320,101 @@ $.ajax({
     });
 });
 //END NOTES
+
+//EMAIL CARRIER INSURANCE REQUEST
+$(document).on('click', '#getInsurance', function(){
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+  
+$.ajax({
+        method: 'POST',
+        url: './getInsurance',
+        data: {
+            email: $("#car_email").val(),
+            name: $("#car_contact").val(),
+            company: $("#car_company").val(),   
+            mc_number: $("#car_mc_number").val(),
+            cargo: $("#car_cargo_exp").val(),
+
+
+         },
+         success: function(result){
+                $("#success-alert-carrier").removeClass('hidden');
+                $("#success-alert-carrier").alert();
+                $("#success-alert-carrier").text('The request for updated insurance has been sent!');
+                $("#success-alert-carrier").fadeTo(4000, 500).slideUp(500);
+              }
+    });
+});
+
+//EMAIL CARRIER PACKET REQUEST
+$(document).on('click', '#getPacket', function(){
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+  
+$.ajax({
+        method: 'POST',
+        url: './getPacket',
+        data: {
+            email: $("#car_email").val(),
+            name: $("#car_contact").val(),
+            company: $("#car_company").val(),   
+            mc_number: $("#car_mc_number").val(),
+            cargo: $("#car_cargo_exp").val(),
+
+
+         },
+         success: function(result){
+                $("#success-alert-carrier").removeClass('hidden');
+                $("#success-alert-carrier").alert();
+                $("#success-alert-carrier").text('The packet has been sent!');
+                $("#success-alert-carrier").fadeTo(4000, 500).slideUp(500);
+              }
+    });
+});
+
+//EMAIL LOAD INFO TO COLLEAGUE
+$(document).on('click', '#sendCarrierInfo', function(){
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+  
+$.ajax({
+        method: 'POST',
+        url: './sendCarrierInfo',
+        data: {
+            email: $("#car_email").val(),
+            name: $("#car_contact").val(),
+            company: $("#car_company").val(),   
+            mc_number: $("#car_mc_number").val(),
+            cargo: $("#car_cargo_exp").val(),
+            load_info: $("#car_load_info").val(),
+            permanent_notes: $("#car_permanent_notes").val(),
+            colleague_email: $("#email_colleague_carrier").val(),
+
+
+         },
+         success: function(result){
+                $("#success-alert-carrier").removeClass('hidden');
+                $("#success-alert-carrier").alert();
+                $("#success-alert-carrier").text('The load info has been sent!');
+                $("#success-alert-carrier").fadeTo(4000, 500).slideUp(500);
+              }
+    });
+});
+
+
 
 
 
@@ -602,7 +699,7 @@ var d = new Date();
 var n = d.toDateString();
 var m = d.toLocaleTimeString();
 
-$('#internal_notes').val($('#internal_notes').val() + n + " " + m + ' ' + user.name + " - ");
+$('#internal_notes').val($('#internal_notes').val() + n + " " + m + " " + user.name + " - ");
 
 });
 
@@ -612,7 +709,7 @@ var d = new Date();
 var n = d.getDate();
 var m = d.toLocaleTimeString();
 
-$('#quick_status_notes').val($('#quick_status_notes').val() + "Day " + n + " " + m + " - ");
+$('#quick_status_notes').val($('#quick_status_notes').val() + "Day " + n + " " + m + " " + user.name + " - ");
 
 });
 

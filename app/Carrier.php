@@ -43,6 +43,7 @@ class Carrier extends Model
 			  'lowboy',
 			  'landoll',
 			  'towing',
+			  'email_colleague_carrier',
 
         ];
 

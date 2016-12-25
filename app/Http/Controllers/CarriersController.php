@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Illuminate\Support\Facades\Mail;
+
+use PDF;
+
 class CarriersController extends Controller
 {
      //STORES A NEW CARRIER IN THE DATABASE
@@ -18,7 +22,7 @@ class CarriersController extends Controller
 		$this->validate($request, [
 
 			'company' => 'required',			  
-         	/*  'contact' => 'required',
+         	  'contact' => 'required',
 			  'address' => 'required',
 			  'city' => 'required',
 			  'state' => 'required',
@@ -31,7 +35,7 @@ class CarriersController extends Controller
 			  'driver_phone' => 'required',
 			  'cargo_exp' => 'required',
 			  'cargo_amount' => 'required',
-			  */
+			  
 			  
 
 			  ]);
@@ -75,4 +79,99 @@ class CarriersController extends Controller
 
 		Carrier::where('id', $request->id)->update($requestFields);
 	}
+
+	
+	public function getInsurance(Request $request)
+	{
+
+		// $name = $request->name; 
+		// $email = $request->email;
+		// $company = $request->company;
+		// $mc_number = $request->mc_number;
+		// $cargo_exp = $request->cargo_exp;
+
+		$info = ['info' => $request];
+
+		Mail::send(['html'=>'email.getInsurance'], $info, function($message) use ($info){
+            
+            
+           	$message->to($info['info']['email'])
+
+           	->subject('Please Email Your Updated Certificate of Cargo Insurance for MC # ' . $info['info']['mc_number']);
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name);
+
+        });
+
+
+	}
+
+	
+
+	public function getPacket(Request $request)
+	{
+
+		$info = ['info' => $request];
+
+		Mail::send(['html'=>'email.getPacket'], $info, function($message) use ($info){
+            
+           
+			$pathToFile = 'Broker_Carrier_Contract.pdf';
+            
+
+             $message->attach($pathToFile);
+
+           	$message->to($info['info']['email'])
+
+           	->subject('Set Up Packet from International Transport Systems, Inc.');
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name);
+
+        });
+
+
+	}
+
+	public function sendCarrierInfo(Request $request)
+	{
+
+		$info = ['info' => $request];
+
+		Mail::send(['html'=>'email.colleague_carrier_info'], $info, function($message) use ($info){
+            
+           
+
+           	$message->to($info['info']['colleague_email'])
+
+           	->subject('Carrier Info for Load');
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name);
+
+        });
+
+
+	}
+
+	
 }
+
+
+// public function getStatusEmail($id)
+// 	{
+//         $info = Load::find($id);
+		
+// 		$info = ['info' => $info];
+        
+//         Mail::send(['html'=>'email.getStatus'], $info, function($message) use ($info){
+            
+            
+//            	$message->to($info['info']['carrier_email'])
+
+//            	->subject('PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] .  ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+          
+//             $message->from(\Auth::user()->email, \Auth::user()->name);
+
+//         });
+
+//     	return back()->with('status', 'Your status request has been sent.');
+//     }

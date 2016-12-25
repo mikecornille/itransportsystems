@@ -96,8 +96,8 @@
                 <input type="text" class="form-control" id="cargo_amount" name="cargo_amount" value="{{ old('cargo_amount') }}">
             </div>
             <div class="col-xs-4">
-                <label class="label-control" for="bc_contact">BC CONTRACT</label>
-                <input type="text" class="form-control" id="bc_contact" name="bc_contact" value="{{ old('bc_contact') }}">
+                <label class="label-control" for="bc_contract">BC CONTRACT</label>
+                <input type="text" class="form-control" id="bc_contract" name="bc_contract" value="{{ old('bc_contract') }}">
             </div>
         </div>
 

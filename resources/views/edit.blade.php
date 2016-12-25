@@ -639,7 +639,7 @@
 </div>
 <div class="well" id="email_internal_section">
   <div class="form-group">
-    <label for="internal_message">Email Internal</label>
+    <label for="internal_message">Email Colleague</label>
     <textarea name="internal_message" id="internal_message" class="form-control" rows="2">{{ $info->internal_message }}</textarea>
   </div>
 </div>
@@ -1303,9 +1303,44 @@
                 
               </div>
 
+              <div class="row">
+              <div class="col-xs-12">
+            <label for="email_colleague_carrier" class="label-control">Colleague Email Recipient</label>
+            <select name="email_colleague_carrier" id="email_colleague_carrier" class="form-control"> 
+              <option value="{{ $info->email_colleague_carrier }}">{{ $info->email_colleague_carrier }}</option>
+              <option value="Please Choose One">Please Choose One</option>
+              <option value="joem@itransys.com">joem@itransys.com</option>
+              <option value="mikeb@itransys.com">mikeb@itransys.com</option>
+              <option value="mattk@itransys.com">mattk@itransys.com</option>
+              <option value="mattc@itransys.com">mattc@itransys.com</option>
+              <option value="mikec@itransys.com">mikec@itransys.com</option>
+              <option value="ronc@itransys.com">ronc@itransys.com</option>
+              <option value="robert@itransys.com">robert@itransys.com</option>
+              <option value="aj@itransys.com">aj@itransys.com</option>
+              <option value="lianey@itransys.com">lianey@itransys.com</option>
+              <option value="jennifer@itransys.com">jennifer@itransys.com</option>
+              <option value="molly@itransys.com">molly@itransys.com</option>
+              <option value="wanda@itransys.com">wanda@itransys.com</option>
+            </select>
+          </div>
+          </div>
+
+              <div class="btn-group" id="carrier_action_buttons" role="group" aria-label="carrier">
               
               <button type="button" id="editCarrier" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Update</button>
+
+              <button type="button" id="getInsurance" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Insurance</button>
+
+              <button type="button" id="getPacket" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Send Packet</button>
+
+              <button type="button" id="sendCarrierInfo" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Email Colleague</button>
               
+              </div>
+
+
+  
+              
+
               
             </div>
           </div>

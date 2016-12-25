@@ -222,7 +222,7 @@
                     $('#remit_state').val(window.carrierRecord.item.object.remit_state);
                     $('#remit_zip').val(window.carrierRecord.item.object.remit_zip);
                     $('#carrier_mc').val(window.carrierRecord.item.object.mc_number);
-                log( ui.item ?
+                    log( ui.item ?
                     "Selected: " + ui.item.label :
                     "Nothing selected, input was " + this.value);
                                         $('#carrier-search').val('test');

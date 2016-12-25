@@ -110,12 +110,16 @@ Route::get('/status/{id}', 'LoadsController@getStatusEmail');
 Route::get('/pod/{id}', 'LoadsController@podRequestEmail');
 Route::get('/updateCustomer/{id}', 'LoadsController@updateCustomerEmail');
 Route::get('/emailCarrier/{id}', 'LoadsController@emailCarrier');
+Route::post('/edit/getInsurance', 'CarriersController@getInsurance');
+Route::post('/edit/sendCarrierInfo', 'CarriersController@sendCarrierInfo');
+
 
 //EMAILS SENT WITH PDF ATTACHMENTS
 Route::get('/emailInvoicePDF/{id}', 'PDFController@emailInvoicePDF');
 Route::get('/emailRateConPDF/{id}', 'PDFController@emailRateConPDF');
 Route::get('/emailBOLCarrier/{id}', 'PDFController@emailBOLCarrier');
 Route::get('/emailBOLYou/{id}', 'PDFController@emailBOLYou');
+Route::post('/edit/getPacket', 'CarriersController@getPacket');
 
 });
 

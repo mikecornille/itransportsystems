@@ -49,6 +49,7 @@ class CreateCarriersTable extends Migration
             $table->string('remit_zip')->nullable();
             $table->text('load_info')->nullable();
             $table->text('permanent_notes')->nullable();
+            $table->string('email_colleague_carrier')->nullable();
             $table->timestamps();
         });
     }
