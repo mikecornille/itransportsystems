@@ -143,7 +143,7 @@ class CarriersController extends Controller
 
            	$message->to($info['info']['colleague_email'])
 
-           	->subject('Carrier Info for Load');
+           	->subject('Check out this message from Carrier Data DOT # ' . $info['info']['mc_number']);
           
             $message->from(\Auth::user()->email, \Auth::user()->name);
 

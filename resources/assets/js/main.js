@@ -201,6 +201,7 @@ $.ajax({
 
          },
          success: function(result){
+                $("#customer_name").val($("#name").val());
                 $("#success-alert-display").removeClass('hidden');
                 $("#success-alert-display").alert();
                 $("#success-alert-display").text('The customer update has been saved.');
@@ -402,6 +403,13 @@ $.ajax({
             load_info: $("#car_load_info").val(),
             permanent_notes: $("#car_permanent_notes").val(),
             colleague_email: $("#email_colleague_carrier").val(),
+            address: $("#car_address").val(),
+            city: $("#car_city").val(),
+            state: $("#car_state").val(),
+            zip: $("#car_zip").val(),
+            phone: $("#car_phone").val(),
+            driver_name: $("#car_driver_name").val(),
+            driver_phone: $("#car_driver_phone").val(),
             //GET PRETTY MUCH ALL THE INFO NEEDED FOR A ROBUST EMAIL
 
 
@@ -442,8 +450,9 @@ $(document).ready(function() {
             
             { "data": "id" },
             { "data": "quick_status_notes"},
-            { "data": "pick_date"},
-            { "data": "pick_time"},
+            { "data": "delivery_date"},
+            { "data": "delivery_time"},
+            { "data": "carrier_name"},
             { "data": "customer_name"},
             { "data": "pick_city"},
             { "data": "delivery_city"}
@@ -455,12 +464,13 @@ $(document).ready(function() {
         "columnDefs": [
       { "width": "20px", "targets": 0 }, //pro # button
       { "width": "20px", "targets": 1 }, //pro #
-      { "width": "100px", "targets": 2 }, //status 
-      { "width": "50px", "targets": 3 }, //pick date
-      { "width": "25px", "targets": 4 }, //pick time
-      { "width": "100px", "targets": 5 }, //customer
-      { "width": "50px", "targets": 6 }, //pick city
-      { "width": "50px", "targets": 7 }, //delivery city
+      { "width": "150px", "targets": 2 }, //status 
+      { "width": "50px", "targets": 3 }, //delivery date
+      { "width": "25px", "targets": 4 }, //delivery time
+      { "width": "75px", "targets": 5 }, //carrier
+      { "width": "75px", "targets": 6 }, //customer
+      { "width": "50px", "targets": 7 }, //pick city
+      { "width": "50px", "targets": 8 }, //delivery city
 
       ]
 
@@ -493,6 +503,7 @@ $(document).ready(function() {
             { "data": "quick_status_notes"},
             { "data": "pick_date"},
             { "data": "pick_time"},
+            { "data": "carrier_name"},
             { "data": "customer_name"},
             { "data": "pick_city"},
             { "data": "delivery_city"}
@@ -504,12 +515,13 @@ $(document).ready(function() {
         "columnDefs": [
       { "width": "20px", "targets": 0 }, //pro # button
       { "width": "20px", "targets": 1 }, //pro #
-      { "width": "100px", "targets": 2 }, //status 
+      { "width": "150px", "targets": 2 }, //status 
       { "width": "50px", "targets": 3 }, //pick date
       { "width": "25px", "targets": 4 }, //pick time
-      { "width": "100px", "targets": 5 }, //customer
-      { "width": "50px", "targets": 6 }, //pick city
-      { "width": "50px", "targets": 7 }, //delivery city
+      { "width": "75px", "targets": 5 }, //carrier
+      { "width": "75px", "targets": 6 }, //customer
+      { "width": "50px", "targets": 7 }, //pick city
+      { "width": "50px", "targets": 8 }, //delivery city
 
       ]
 

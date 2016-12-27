@@ -131,6 +131,7 @@ textarea {
   margin-top: 18px; }
 
 html, body {
+  background-image: 'rainbow.jpg';
   background-color: #fff;
   color: #636b6f;
   font-family: 'Raleway', sans-serif;

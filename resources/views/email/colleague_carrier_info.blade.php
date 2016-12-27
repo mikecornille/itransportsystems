@@ -12,14 +12,27 @@
 	</style>
 </head>
 <body>
-<p>{{ $info->email }},</p>
-<p>{{ $info->colleague_email }},</p>
-<p>{{ $info->mc_number }},</p>
-<p>{{ $info->cargo }},</p>
-<p>{{ $info->load_info }},</p>
-<p>{{ $info->permanent_notes }},</p>
-<p>{{ $info->name }},</p>
-<p>{{ $info->company }},</p>
+
+<p>Hello {{ $info->colleague_email }},</p>
+
+<h3><u>Specific Load Notes</u></h3>
+<p>{{ $info->load_info }}</p>
+
+<h3><u>Carrier Permanent Notes</u></h3>
+<p>{{ $info->permanent_notes }}</p>
+
+<h3><u>Carrier Data Information</u></h3>
+<ul>
+<li><b>Company Name:</b> {{ $info->company }}</li>
+<li><b>MC #:</b> {{ $info->mc_number }}</li>
+<li><b>Address:</b> {{ $info->address }} - {{ $info->city }}, {{ $info->state }} {{ $info->zip }}</li>
+<li><b>Contact Name:</b> {{ $info->name }}</li>
+<li><b>Email:</b> {{ $info->email }}</li>
+<li><b>Phone:</b> {{ $info->phone }}</li>
+<li><b>Driver Name:</b> {{ $info->driver_name }}</li>
+<li><b>Driver Phone:</b> {{ $info->driver_phone }}</li>
+
+</ul>
 
 <ul>
 <li>Thank You,</li>

@@ -174,7 +174,7 @@ class LoadsController extends Controller
         Mail::send(['html'=>'email.internalEmail'], $info, function($message) use ($info){
             
             
-           	$message->to($info['info']['internal_email'])
+           	$message->to($info['info']['internal_email_address'])
 
            	->subject('Internal Message on PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] .  ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
           

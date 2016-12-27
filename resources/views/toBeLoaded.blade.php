@@ -13,6 +13,7 @@
                 <th>Status</th>
                 <th>Pick Date</th>
                 <th>Pick Time</th>
+                <th>Carrier</th>
                 <th>Customer</th>
                 <th>Pick City</th>
                 <th>Delivery City</th>

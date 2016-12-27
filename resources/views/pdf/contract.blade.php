@@ -74,7 +74,7 @@ table {
 
 <table style="margin-top: 30px;">
   <tr>
-    <td><b>CARRIER: {{ $info->carrier_name }}</b></td>
+    <td><b>CARRIER: {{ $info->carrier_name }} MC # {{ $info->carrier_mc }}</b></td>
     <td>CREATED DATE: {{ $info->creation_date }}</td>
   </tr>
   <tr>
