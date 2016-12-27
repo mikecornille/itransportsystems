@@ -162,8 +162,8 @@
                 minLength: 3,
                 select: function( event, ui ) {
                     window.equipmentRecord = ui;
-                    $('#commodity').val(window.equipmentRecord.item.object.make + ' ' + window.equipmentRecord.item.object.model + ' ' + window.equipmentRecord.item.object.length + 'in. X ' + window.equipmentRecord.item.object.width + 'in. X ' + window.equipmentRecord.item.object.height + 'in. ' + window.equipmentRecord.item.object.weight + 'lbs. ');
-                    $('#special_ins').val(window.equipmentRecord.item.object.loading_instructions);
+                    $('#commodity').val($('#commodity').val() + ' ' + window.equipmentRecord.item.object.make + ' ' + window.equipmentRecord.item.object.model + ' ' + window.equipmentRecord.item.object.length + 'in. X ' + window.equipmentRecord.item.object.width + 'in. X ' + window.equipmentRecord.item.object.height + 'in. ' + window.equipmentRecord.item.object.weight + 'lbs. ');
+                    $('#special_ins').val($('#special_ins').val() + ' ' + window.equipmentRecord.item.object.loading_instructions);
                     log( ui.item ?
                     "Selected: " + ui.item.label :
                     "Nothing selected, input was " + this.value);
@@ -226,6 +226,51 @@
                     "Selected: " + ui.item.label :
                     "Nothing selected, input was " + this.value);
                                         $('#carrier-search').val('test');
+
+                },
+                open: function() {
+                    $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+
+                },
+                close: function() {
+                    $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+                }
+            });
+        });
+
+
+      //Find Carrier Autofill
+  $(function() {
+            function log( message ) {
+                $( "<div>" ).text( message ).prependTo( "#log" );
+                $( "#log" ).scrollTop( 0 );
+            }
+            $( "#find-carrier-search" ).autocomplete({
+                source: function( request, response ) {
+                    $.ajax({
+                        url: "/api/carrier/" + request.term,
+                        dataType: "json",
+                        success: function( data ) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.company + ' ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' ' + item.contact + ' ' + item.phone + ' ' + item.email + ' ' + item.cargo_exp + ' ' + item.cargo_amount + ' ' + item.bc_contract,
+                                    value: item.company + ' ' + item.address,
+                                    object: item
+                                }
+                        }));
+                    }});
+                },
+                minLength: 3,
+                select: function( event, ui ) {
+                    window.carrierRecord = ui;
+                    $('#company').val(window.carrierRecord.item.object.company);
+                    $('#mc_number').val(window.carrierRecord.item.object.mc_number);
+                    
+                    
+                    log( ui.item ?
+                    "Selected: " + ui.item.label :
+                    "Nothing selected, input was " + this.value);
+                                        $('#find-carrier-search').val('test');
 
                 },
                 open: function() {

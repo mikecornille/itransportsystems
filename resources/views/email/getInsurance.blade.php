@@ -14,7 +14,8 @@
 <body>
 <p>{{ $info->name }},</p>
 <p>Please Email or Fax Your Updated Certificate of Cargo Insurance.  The certificate we have expired(s) on {{ $info->cargo }}</p>
-
+<p><b>Email:</b> {{ \Auth::user()->email }}</p>
+<p><b>Fax:</b> 630-832-6901</p>
 <ul>
 <li>Thank You,</li>
 <li>{{ \Auth::user()->name }}</li>

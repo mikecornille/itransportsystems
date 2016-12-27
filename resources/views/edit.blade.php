@@ -645,13 +645,13 @@
 </div>
 <div class="well" id="message_customer_section">
   <div class="form-group">
-    <label for="update_customer_message">Message Customer</label>
+    <label for="update_customer_message">Email Customer</label>
     <textarea name="update_customer_message" id="update_customer_message" class="form-control" rows="2">{{ $info->update_customer_message }}</textarea>
   </div>
 </div>
 <div class="well" id="message_carrier_section">
   <div class="form-group">
-    <label for="carrier_message">Message Carrier</label>
+    <label for="carrier_message">Email Carrier</label>
     <textarea name="carrier_message" id="carrier_message" class="form-control" rows="2">{{ $info->carrier_message }}</textarea>
   </div>
 </div>

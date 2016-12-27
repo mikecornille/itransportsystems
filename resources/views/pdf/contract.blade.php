@@ -68,7 +68,7 @@ table {
 		<li class="its_title"><i>International Transport Systems, Inc.</i></li>
 		<li><i>111 North Addison Ave 2nd Floor</i></li>
 		<li><i>Elmhurst, IL 60126</i></li>
-		<li><i>PH: 877-663-2200 FX: 630-832-6901 Email Invoices: molly@itransys.com</i></li>
+		<li><i>PH: 630-832-6900 FX: 630-832-6901 Email Invoices: molly@itransys.com</i></li>
 	</ul>
 </div>
 
@@ -163,7 +163,7 @@ table {
 <p>{{ $info->special_ins }}</p>
 </div>
 
-<h5 class="text-center"><b>ONCE DELIVERED CALL 877-663-2200 TO PROVIDE THE NAME OF WHO SIGNED FOR THE SHIPMENT</b></h5>
+<h5 class="text-center"><b>ONCE DELIVERED 630-832-6900 TO PROVIDE THE NAME OF WHO SIGNED FOR THE SHIPMENT</b></h5>
 <h4 class="text-center"><b><u>** DO NOT USE AS A DELIVERY RECEIPT / THIS IS NOT A BILL OF LADING **</u></b></h4>
 <p class="text-center"><i>Page 1 of 2</i></p>
 
@@ -182,7 +182,7 @@ table {
 		<li class="its_title"><i>International Transport Systems, Inc.</i></li>
 		<li><i>111 North Addison Ave 2nd Floor</i></li>
 		<li><i>Elmhurst, IL 60126</i></li>
-		<li><i>PH: 877-663-2200 FX: 630-832-6901 Email Invoices: molly@itransys.com</i></li>
+		<li><i>PH: 630-832-6900 FX: 630-832-6901 Email Invoices: molly@itransys.com</i></li>
 	</ul>
 </div>
 
@@ -216,7 +216,7 @@ table {
 <h2 class="text-center" style="margin-top: 20px;"><u>BILLING REQUIREMENTS</u></h2>
 <p class="ten_requirements">PLEASE EMAIL YOUR INVOICE ALONG WITH SIGNED PROOF OF DELIVERY TO MOLLY@ITRANSYS.COM.  ALL DOCUMENTS MUST BE LEGIBLE AND CLEAR IN A SINGLE ATTACHED PDF FILE.  IF YOU WOULD LIKE TO BE PAID WITHIN 1 WEEK PLEASE WRITE "QUICK PAY" ON YOUR INVOICE AND DEDUCT 5% FROM THE TOTAL AMOUNT DUE.</p>
 
-<h5 class="text-center"><b>ONCE DELIVERED CALL 877-663-2200 TO PROVIDE THE NAME OF WHO SIGNED FOR THE SHIPMENT</b></h5>
+<h5 class="text-center"><b>ONCE DELIVERED CALL 630-832-6900 TO PROVIDE THE NAME OF WHO SIGNED FOR THE SHIPMENT</b></h5>
 <h4 class="text-center"><b><u>** DO NOT USE AS A DELIVERY RECEIPT / THIS IS NOT A BILL OF LADING **</u></b></h4>
 <p class="text-center"><i>Page 2 of 2</i></p>
 

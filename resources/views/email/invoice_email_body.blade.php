@@ -17,7 +17,7 @@ ul {
 
 <p>International Transport Systems Invoice for PRO # {{ $info->id }} from {{ $info->pick_city }}, {{ $info->pick_state }} to {{ $info->delivery_city }}, {{ $info->delivery_state }}</p>
 
-
+<p>Thank you very much for your business, we look forward to working with you again!</p>
 
 <ul>
 <li>Thank You,</li>

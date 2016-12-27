@@ -13,7 +13,7 @@
 </head>
 <body>
 <p>{{ $info->name }},</p>
-<p>Attached you will find the Broker/Carrier Contract from International Transport Systems, Inc.  Please fill out the Broker Agreement on the 3rd page and send it back along with your Updated Cargo Insurance, Authority, and W9 via fax 630-832-6901 or email</p>
+<p>Attached you will find the Broker/Carrier Contract from International Transport Systems, Inc.  Please fill out the Broker Agreement on the 3rd page and send it back along with your Updated Cargo Insurance, Authority, and W9 via fax 630-832-6901 or email {{ \Auth::user()->email }}</p>
 
 <ul>
 <li>Thank You,</li>

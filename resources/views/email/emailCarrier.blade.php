@@ -16,7 +16,7 @@
 <p>{{ $info->carrier_contact }},</p>
 <p>Below is a message on the load from {{ $info->pick_city }}, {{ $info->pick_state }} to {{ $info->delivery_city }}, {{ $info->delivery_state }}</p>
 <h3>Message:</h3>
-<p>{{ $info->update_customer_message }}</p>
+<p>{{ $info->carrier_message }}</p>
 <ul>
 <li>Thank You,</li>
 <li>{{ \Auth::user()->name }}</li>

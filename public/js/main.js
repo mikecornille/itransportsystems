@@ -202,6 +202,10 @@ $.ajax({
          },
          success: function(result){
                 $("#customer_name").val($("#name").val());
+                $("#customer_address").val($("#address").val());
+                $("#customer_city").val($("#city").val());
+                $("#customer_state").val($("#state").val());
+                $("#customer_zip").val($("#zip").val());
                 $("#success-alert-display").removeClass('hidden');
                 $("#success-alert-display").alert();
                 $("#success-alert-display").text('The customer update has been saved.');
@@ -649,19 +653,27 @@ $(document).ready(function() {
 
 //DATEPICKERS
 
-$('#datepicker').datepicker()
+$('#datepicker').datepicker();
 
-$('#datepicker2').datepicker()
+$('#datepicker2').datepicker();
 
-$('#datepicker3').datepicker()
+$('#datepicker3').datepicker();
 
-$('#datepicker4').datepicker()
+$('#datepicker4').datepicker();
 
-$('#datepicker5').datepicker()
+$('#datepicker5').datepicker();
 
-$('#datepicker6').datepicker()
+$('#datepicker6').datepicker();
 
-$('#datepicker7').datepicker()
+$('#datepicker7').datepicker();
+
+$('#cargo_exp').datepicker();
+
+$('#bc_contract').datepicker();
+
+$('#car_cargo_exp').datepicker();
+
+$('#car_bc_contract').datepicker();
 
 $('#datepicker').on('changeDate', function(ev){
     $(this).datepicker('hide');
@@ -688,6 +700,22 @@ $('#datepicker6').on('changeDate', function(ev){
 });
 
 $('#datepicker7').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
+$('#cargo_exp').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
+$('#bc_contract').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
+$('#car_cargo_exp').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
+$('#car_bc_contract').on('changeDate', function(ev){
     $(this).datepicker('hide');
 });
 
