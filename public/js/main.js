@@ -38,6 +38,7 @@ $.ajax({
 
          },
          success: function(result){
+                $("#carrier_name").val($("#car_company").val());
                 $("#success-alert-equip").removeClass('hidden');
                 $("#success-alert-equip").alert();
                 $("#success-alert-equip").text('The equipment update has been saved.');
@@ -154,6 +155,14 @@ $.ajax({
                 $("#carrier_driver_name").val($("#car_driver_name").val());
                 $("#carrier_driver_cell").val($("#car_driver_phone").val());
                 $("#carrier_mc").val($("#car_mc_number").val());
+                $("#remit_name_display").text($("#car_remit_name").val());
+                $("#remit_address_display").text($("#car_remit_address").val());
+                $("#remit_citystatezip_display").text($("#car_remit_city").val() + ', ' + $("#car_remit_state").val() + ' ' + $("#car_remit_zip").val());
+                $("#remit_name").val($("#car_remit_name").val());
+                $("#remit_address").val($("#car_remit_address").val());
+                $("#remit_city").val($("#car_remit_city").val());
+                $("#remit_state").val($("#car_remit_state").val());
+                $("#remit_zip").val($("#car_remit_zip").val());
                 $("#success-alert-carrier").removeClass('hidden');
                 $("#success-alert-carrier").alert();
                 $("#success-alert-carrier").text('The carrier update has been saved.');

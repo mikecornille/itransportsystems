@@ -506,16 +506,14 @@
           <input type="text" class="form-control datepicker" id="datepicker3" name="vendor_invoice_date" value="{{ $info->vendor_invoice_date }}">
         </div>
 
-      <!-- <div class="col-xs-12">
-      <ul>
-      <li>{{ $info->remit_address }}</li>
-      <li>remit nane</li>
-      <li>remit nane</li>
-      <li>remit nane</li>
-      <li>remit nane</li>
+      <div class="col-xs-12">
+      <ul id="remite_to_ul_style">
+      <li id="remit_name_display">{{ $info->remit_name }}</li>
+      <li id="remit_address_display">{{ $info->remit_address }}</li>
+      <li id="remit_citystatezip_display">{{ $info->remit_city . ', ' . $info->remit_state . ' ' . $info->remit_zip }}</li>
       </ul>
 
-    </div> -->
+    </div>
 
 
     <div class="btn-group" id="action_buttons">

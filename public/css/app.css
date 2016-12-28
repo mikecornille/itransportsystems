@@ -3,6 +3,12 @@
 #overall_form_div {
   margin-left: 150px; }
 
+#remite_to_ul_style {
+  list-style-type: none;
+  font-size: 12px;
+  padding-left: 0px;
+  margin-top: 10px; }
+
 #editCustomer, #editLocation, #editDest, #editEquip, #carrier_action_buttons, #newCarrierSubmit, #newLocationSubmit, #newEquipmentSubmit, #newCustomerSubmit {
   margin-top: 10px; }
 
