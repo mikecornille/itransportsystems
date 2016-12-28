@@ -98,6 +98,8 @@ Route::post('/edit/updateLocation', "LocationsController@updateLocation");
 Route::post('/updateEquipment', "EquipmentController@updateEquipment");
 Route::post('/edit/updateEquipment', "EquipmentController@updateEquipment");
 Route::post('/edit/updateCarrier', "CarriersController@updateCarrier");
+//FROM THE FIND CARRIER PAGE
+Route::post('/updateCarrier', "CarriersController@updateCarrier");
 
 
 //PRINT THE INVOICE AND RATE CONFIRMATION
@@ -111,7 +113,11 @@ Route::get('/pod/{id}', 'LoadsController@podRequestEmail');
 Route::get('/updateCustomer/{id}', 'LoadsController@updateCustomerEmail');
 Route::get('/emailCarrier/{id}', 'LoadsController@emailCarrier');
 Route::post('/edit/getInsurance', 'CarriersController@getInsurance');
+//FROM THE FIND CARRIER PAGE
+Route::post('/getInsurance', 'CarriersController@getInsurance');
 Route::post('/edit/sendCarrierInfo', 'CarriersController@sendCarrierInfo');
+//FROM THE FIND CARRIER PAGE
+Route::post('/sendCarrierInfo', 'CarriersController@sendCarrierInfo');
 
 
 //EMAILS SENT WITH PDF ATTACHMENTS
@@ -120,6 +126,8 @@ Route::get('/emailRateConPDF/{id}', 'PDFController@emailRateConPDF');
 Route::get('/emailBOLCarrier/{id}', 'PDFController@emailBOLCarrier');
 Route::get('/emailBOLYou/{id}', 'PDFController@emailBOLYou');
 Route::post('/edit/getPacket', 'CarriersController@getPacket');
+//FROM THE FIND CARRIER PAGE
+Route::post('/getPacket', 'CarriersController@getPacket');
 
 });
 

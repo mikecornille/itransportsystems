@@ -737,8 +737,42 @@
                 minLength: 3,
                 select: function( event, ui ) {
                     window.carrierRecord = ui;
-                    $('#company').val(window.carrierRecord.item.object.company);
-                    $('#mc_number').val(window.carrierRecord.item.object.mc_number);
+                      $('#car_id').val(window.carrierRecord.item.object.id);
+                      $('#car_company').val(window.carrierRecord.item.object.company);
+                      $('#car_contact').val(window.carrierRecord.item.object.contact);
+                      $('#car_mc_number').val(window.carrierRecord.item.object.mc_number);
+                      $('#car_dot_number').val(window.carrierRecord.item.object.dot_number);
+                      $('#car_address').val(window.carrierRecord.item.object.address);
+                      $('#car_city').val(window.carrierRecord.item.object.city);
+                      $('#car_state').val(window.carrierRecord.item.object.state);
+                      $('#car_zip').val(window.carrierRecord.item.object.zip);
+                      $('#car_phone').val(window.carrierRecord.item.object.phone);
+                      $('#car_fax').val(window.carrierRecord.item.object.fax);
+                      $('#car_email').val(window.carrierRecord.item.object.email);
+                      $('#car_driver_name').val(window.carrierRecord.item.object.driver_name);
+                      $('#car_driver_phone').val(window.carrierRecord.item.object.driver_phone);
+                      $('#car_cargo_exp').val(window.carrierRecord.item.object.cargo_exp);
+                      $('#car_cargo_amount').val(window.carrierRecord.item.object.cargo_amount);
+                      $('#car_bc_contract').val(window.carrierRecord.item.object.bc_contract);
+                      $('#car_remit_name').val(window.carrierRecord.item.object.remit_name);
+                      $('#car_remit_address').val(window.carrierRecord.item.object.remit_address);
+                      $('#car_remit_city').val(window.carrierRecord.item.object.remit_city);
+                      $('#car_remit_state').val(window.carrierRecord.item.object.remit_state);
+                      $('#car_remit_zip').val(window.carrierRecord.item.object.remit_zip);
+                      $('textarea#car_load_info').val(window.carrierRecord.item.object.load_info);
+                      $('textarea#car_permanent_notes').val(window.carrierRecord.item.object.permanent_notes);
+                      $('#flatbed').prop('checked', window.carrierRecord.item.object.flatbed);
+                    $('#stepdeck').prop('checked', window.carrierRecord.item.object.stepdeck);
+                    $('#conestoga').prop('checked', window.carrierRecord.item.object.conestoga);
+                    $('#hot_shot').prop('checked', window.carrierRecord.item.object.hot_shot);
+                    $('#van').prop('checked', window.carrierRecord.item.object.van);
+                    $('#power').prop('checked', window.carrierRecord.item.object.power);
+                    $('#lowboy').prop('checked', window.carrierRecord.item.object.lowboy);
+                    $('#landoll').prop('checked', window.carrierRecord.item.object.landoll);
+                    $('#towing').prop('checked', window.carrierRecord.item.object.towing);
+                    $('#auto_carrier').prop('checked', window.carrierRecord.item.object.auto_carrier);
+                    $('#straight_truck').prop('checked', window.carrierRecord.item.object.straight_truck);
+                    $('#email_colleague_carrier').val(window.carrierRecord.item.object.email_colleague_carrier);
                     
                     
                     log( ui.item ?

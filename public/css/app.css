@@ -78,6 +78,20 @@
   float: none;
   margin: 0 auto; }
 
+#find_carrier_wrapper {
+  width: 800px;
+  float: none;
+  margin: 0 auto; }
+
+#find-carrier-search {
+  width: 700px;
+  height: 50px;
+  float: none;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  font-size: 25px;
+  background-color: aliceblue; }
+
 .home_form {
   margin-left: 100px; }
 
@@ -131,7 +145,6 @@ textarea {
   margin-top: 18px; }
 
 html, body {
-  background-image: 'rainbow.jpg';
   background-color: #fff;
   color: #636b6f;
   font-family: 'Raleway', sans-serif;
