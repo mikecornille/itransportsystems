@@ -19,6 +19,9 @@ $mainmarginleft: 50px;
   margin-top: 10px;
 }
 
+
+.datepicker{z-index:9999 !important}
+
 /* autocomplete */
 
   .ui-autocomplete {
@@ -213,15 +216,26 @@ textarea {
   margin-top: 18px;
 }
 
+
+
 html, body {
 
                 background-color: #fff;
+                /*background: url(../images/fabric.png) no-repeat center center fixed;*/
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: bold;
                 height: 100vh;
                 margin: 0;
             }
+
+/*html { 
+  background: url(../images/blue.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}*/
 
             .full-height {
                 height: 100vh;

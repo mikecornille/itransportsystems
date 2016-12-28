@@ -87,6 +87,12 @@ $('#towing').prop('checked', window.carrierRecord.item.object.towing);
 $('#auto_carrier').prop('checked', window.carrierRecord.item.object.auto_carrier);
 $('#straight_truck').prop('checked', window.carrierRecord.item.object.straight_truck);
 $('#email_colleague_carrier').val(window.carrierRecord.item.object.email_colleague_carrier);
+
+
+
+// $('#car_bc_contract').on('changeDate', function(ev){
+//     $(this).datepicker('hide');
+// });
   };
 //END NOTES
 
@@ -759,6 +765,8 @@ $('#car_cargo_exp').on('changeDate', function(ev){
 $('#car_bc_contract').on('changeDate', function(ev){
     $(this).datepicker('hide');
 });
+
+
 
 
 <!-- INSERT TIMESTAMP IN UPDATE CUSTOMER MESSAGE TEXTAREA -->
