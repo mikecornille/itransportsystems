@@ -48,7 +48,7 @@
   -moz-border-radius: 0px;
   background-image: none; }
 
-#customer-search, #origin-search, #delivery-search, #equipment-search, #carrier-search {
+#customer-search, #origin-search, #delivery-search, #equipment-search, #carrier-search, #additional-search {
   background-color: lightgray; }
 
 .btn-info {

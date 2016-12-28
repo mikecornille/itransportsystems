@@ -247,6 +247,9 @@
 </div>
 
 <div class="well" id="stops_div">
+<div class="col-xs-12">
+      <input type="text" class="form-control" id="additional-search" placeholder="Location Search">
+</div>
     <div class="form-group">
         <label for="add_stops">Additional Stops</label>
         <textarea name="add_stops" id="add_stops" class="form-control" rows="2">{{ old('add_stops') }}</textarea>

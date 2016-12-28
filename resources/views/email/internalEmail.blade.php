@@ -13,7 +13,7 @@
 </head>
 <body>
 <p>Good Day,</p>
-<p>Below is a status update message on the load from {{ $info->pick_city }}, {{ $info->pick_state }} to {{ $info->delivery_city }}, {{ $info->delivery_state }}</p>
+<p>Below is a message regarding the load from {{ $info->pick_city }}, {{ $info->pick_state }} to {{ $info->delivery_city }}, {{ $info->delivery_state }}</p>
 <h3>Specific Message:</h3>
 <p>{{ $info->internal_message }}</p>
 <h3>Internal Notes:</h3>
@@ -26,6 +26,11 @@
 <li><b>BOL #:</b> {{ $info->bol_number }}</li>
 <li><b>REF#:</b> {{ $info->ref_number }}</li>
 <li><b>Carrier:</b> {{ $info->carrier_name }}</li>
+<li><b>Carrier Contact:</b> {{ $info->carrier_contact }}</li>
+<li><b>Carrier Phone:</b> {{ $info->carrier_phone }}</li>
+<li><b>Carrier Email:</b> {{ $info->carrier_email }}</li>
+<li><b>Driver Name:</b> {{ $info->carrier_driver_name }}</li>
+<li><b>Driver Cell:</b> {{ $info->carrier_driver_cell }}</li>
 <li><b>Trailer Type:</b> {{ $info->trailer_type }}</li>
 <li><b>Pick Status:</b> {{ $info->pick_status }}</li>
 <li><b>Scheduled Pick Date:</b> {{ $info->pick_date . ' ' . $info->pick_time }}</li>

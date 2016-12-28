@@ -1,3 +1,38 @@
+  //Additional Stops Autofill
+ $(function() {
+            
+            $( "#additional-search" ).autocomplete({
+                source: function( request, response ) {
+                    $.ajax({
+                        url: "/api/location/" + request.term,
+                        dataType: "json",
+                        success: function( data ) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.location_name + ' ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' ' + item.contact + ' ' + item.phone,
+                                    value: item.location_name + ' ' + item.address,
+                                    object: item
+                                }
+                        }));
+                    }});
+                },
+                minLength: 3,
+                select: function( event, ui ) {
+                    window.originRecord = ui;
+                    $('#add_stops').val($('#add_stops').val() + ' ' + window.originRecord.item.object.location_name + ' ' + window.originRecord.item.object.address + ' ' + window.originRecord.item.object.city + ', ' + window.originRecord.item.object.state + ' ' + window.originRecord.item.object.zip + ' ' + window.originRecord.item.object.contact + ' ' + window.originRecord.item.object.phone);
+                    
+
+                },
+                open: function() {
+                    $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+
+                },
+                close: function() {
+                    $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+                }
+            });
+        });
+
  //Origin Autofill
  $(function() {
             

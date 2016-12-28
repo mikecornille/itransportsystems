@@ -142,6 +142,18 @@ $.ajax({
 
          },
          success: function(result){
+                $("#carrier_name").val($("#car_company").val());
+                $("#carrier_address").val($("#car_address").val());
+                $("#carrier_city").val($("#car_city").val());
+                $("#carrier_state").val($("#car_state").val());
+                $("#carrier_zip").val($("#car_zip").val());
+                $("#carrier_contact").val($("#car_contact").val());
+                $("#carrier_email").val($("#car_email").val());
+                $("#carrier_phone").val($("#car_phone").val());
+                $("#carrier_fax").val($("#car_fax").val());
+                $("#carrier_driver_name").val($("#car_driver_name").val());
+                $("#carrier_driver_cell").val($("#car_driver_phone").val());
+                $("#carrier_mc").val($("#car_mc_number").val());
                 $("#success-alert-carrier").removeClass('hidden');
                 $("#success-alert-carrier").alert();
                 $("#success-alert-carrier").text('The carrier update has been saved.');
@@ -206,6 +218,10 @@ $.ajax({
                 $("#customer_city").val($("#city").val());
                 $("#customer_state").val($("#state").val());
                 $("#customer_zip").val($("#zip").val());
+                $("#customer_contact").val($("#contact").val());
+                $("#customer_email").val($("#email").val());
+                $("#customer_phone").val($("#phone").val());
+                $("#customer_fax").val($("#fax").val());
                 $("#success-alert-display").removeClass('hidden');
                 $("#success-alert-display").alert();
                 $("#success-alert-display").text('The customer update has been saved.');
@@ -263,6 +279,14 @@ $.ajax({
 
          },
          success: function(result){
+                $("#pick_company").val($("#location_name").val());
+                $("#pick_address").val($("#location_address").val());
+                $("#pick_city").val($("#location_city").val());
+                $("#pick_state").val($("#location_state").val());
+                $("#pick_zip").val($("#location_zip").val());
+                $("#pick_contact").val($("#location_contact").val());
+                $("#pick_phone").val($("#location_phone").val());
+                $("#pick_email").val($("#location_email").val());
                 $("#success-alert-origin").removeClass('hidden');
                 $("#success-alert-origin").alert();
                 $("#success-alert-origin").text('The updated origin information has been saved.');
@@ -317,6 +341,14 @@ $.ajax({
 
          },
          success: function(result){
+                $("#delivery_company").val($("#dest_name").val());
+                $("#delivery_address").val($("#dest_address").val());
+                $("#delivery_city").val($("#dest_city").val());
+                $("#delivery_state").val($("#dest_state").val());
+                $("#delivery_zip").val($("#dest_zip").val());
+                $("#delivery_contact").val($("#dest_contact").val());
+                $("#delivery_phone").val($("#dest_phone").val());
+                $("#delivery_email").val($("#dest_email").val());
                 $("#success-alert-dest").removeClass('hidden');
                 $("#success-alert-dest").alert();
                 $("#success-alert-dest").text('The updated destination information has been saved.');
