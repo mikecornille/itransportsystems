@@ -1,6 +1,18 @@
 @charset "UTF-8";
-/* AUTOCOMPLETE */
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+html, body {
+  background-color: whitesmoke;
+  /*background: url(../images/fabric.png) no-repeat center center fixed;*/
+  color: #636b6f;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  height: 100vh;
+  margin: 0; }
+
+body {
+  background-color: whitesmoke; }
+
+/* AUTOCOMPLETE */
 .ui-autocomplete {
   position: absolute;
   top: 100%;
@@ -43,6 +55,9 @@
   background-image: none; }
 
 /* END AUTOCOMPLETE */
+#pro_search_button {
+  width: 100px; }
+
 #overall_form_div {
   margin-left: 150px; }
 
@@ -108,7 +123,9 @@
 
 textarea {
   /* will prevent resizing horizontally */
-  resize: vertical;
+  resize: vertical; }
+
+textarea#commodity, textarea#special_ins, textarea#add_stops, textarea#invoice_notes, textarea#internal_notes, textarea#update_customer_message, textarea#internal_message, textarea#carrier_message {
   font-size: 12px; }
 
 #customer_home, #origin_home, #delivery_home, #reference_home {
@@ -155,15 +172,6 @@ textarea {
 
 #submit_new_load_button {
   margin-top: 18px; }
-
-html, body {
-  background-color: #fff;
-  /*background: url(../images/fabric.png) no-repeat center center fixed;*/
-  color: #636b6f;
-  font-family: 'Raleway', sans-serif;
-  font-weight: bold;
-  height: 100vh;
-  margin: 0; }
 
 .full-height {
   height: 100vh; }

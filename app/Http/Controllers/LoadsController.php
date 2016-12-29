@@ -279,6 +279,8 @@ class LoadsController extends Controller
     	
   //   	$info = Load::find($request->input('id'));
 		// return view('edit', compact('info'));
+		// "/edit/url?id='+data+'"
+		// return view('/edit/url?id=' . $request->input('id'))
   //   }
 
 	

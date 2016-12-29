@@ -73,9 +73,13 @@
                             <!-- <form id="search-pro-form" class="navbar-form navbar-left" action="{{ URL::to('searchPro') }}" method="POST">
                             {{ csrf_field() }}
                                 <div class="form-group">
-                                  <input type="text" class="form-control" name="id" placeholder="Pro number search">
+                                    <div class="input-group">
+                                  <input type="text" class="form-control" id="pro_search_button" name="id" placeholder="PRO #">
+                                  <span class="input-group-btn"><button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></span>
+                                  </div>
+                                
                                 </div>
-                                <button type="submit" class="btn btn-default">Submit</button>
+                                
                                 
                             </form> -->
 

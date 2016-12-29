@@ -6,9 +6,9 @@
 
 <div class="page-header">
   <!-- <h2 class="text-center"><a href="{{ url('/home') }}">Back to Home</a></h2> -->
-  <h3 class="text-center">PRO # {{ $info->id }}</h3> 
-  <h4 class="text-center">Invoice: {{ $info->created_by }} on {{ $info->creation_date }}</h4> 
-  @if($info->rate_con_creator !== NULL) <h4 class="text-center">Rate Con: {{ $info->rate_con_creator }} on {{ $info->rate_con_creation_date }} </h4> @endif
+  <h3 class="text-center text-primary">PRO # {{ $info->id }}</h3> 
+  <h4 class="text-center text-primary"><i>INVOICE:</i> {{ $info->created_by }} on {{ $info->creation_date }}</h4> 
+  @if($info->rate_con_creator !== NULL) <h4 class="text-center text-primary"><i>RATE CON:</i> {{ $info->rate_con_creator }} on {{ $info->rate_con_creation_date }} </h4> @endif
 </div>
 
 @if (count($errors) > 0)

@@ -133,5 +133,9 @@ Route::post('/getPacket', 'CarriersController@getPacket');
 Route::get('/textLoadInfo/{id}', 'PDFController@textLoadInfo');
 
 
+//Route::post('/searchPro', 'LoadsController@searchPro');
+
+
+
 });
 

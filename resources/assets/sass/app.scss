@@ -1,3 +1,18 @@
+html, body {
+
+                background-color: whitesmoke;
+                /*background: url(../images/fabric.png) no-repeat center center fixed;*/
+                color: #636b6f;
+                font-family: 'Raleway', sans-serif;
+                font-weight: bold;
+                height: 100vh;
+                margin: 0;
+            }
+body
+{
+ background-color: whitesmoke; 
+}
+
 $mainmarginright: 30px;
 $mainmarginleft: 50px;
 
@@ -54,6 +69,11 @@ $mainmarginleft: 50px;
 }
 
 /* END AUTOCOMPLETE */
+
+#pro_search_button
+{
+  width: 100px;
+}
 
 #overall_form_div
 {
@@ -149,7 +169,12 @@ $mainmarginleft: 50px;
 textarea { 
    /* will prevent resizing horizontally */
    resize:vertical;
-   font-size: 12px;
+   
+}
+
+textarea#commodity, textarea#special_ins, textarea#add_stops, textarea#invoice_notes, textarea#internal_notes, textarea#update_customer_message, textarea#internal_message, textarea#carrier_message
+{
+  font-size: 12px;
 }
 
 #customer_home, #origin_home, #delivery_home, #reference_home {
@@ -220,58 +245,49 @@ textarea {
 
 
 
-html, body {
 
-                background-color: #fff;
-                /*background: url(../images/fabric.png) no-repeat center center fixed;*/
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: bold;
-                height: 100vh;
-                margin: 0;
-            }
 
-            .full-height {
-                height: 100vh;
-            }
+.full-height {
+    height: 100vh;
+}
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
 
-            .position-ref {
-                position: relative;
-            }
+.position-ref {
+    position: relative;
+}
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+}
 
-            .content {
-                text-align: center;
-            }
+.content {
+    text-align: center;
+}
 
-            .title {
-                font-size: 84px;
-            }
+.title {
+    font-size: 84px;
+}
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+.links > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
+.m-b-md {
+    margin-bottom: 30px;
+}
 
 /*!
  * Datepicker for Bootstrap
