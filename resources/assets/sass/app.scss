@@ -12,6 +12,7 @@ $mainmarginleft: 50px;
     font-size: 12px;
     padding-left: 0px;
     margin-top: 10px;
+    color: lightseagreen;
 }
 
 #editCustomer, #editLocation, #editDest, #editEquip, #carrier_action_buttons, #newCarrierSubmit, #newLocationSubmit, #newEquipmentSubmit, #newCustomerSubmit
@@ -148,6 +149,7 @@ $mainmarginleft: 50px;
 textarea { 
    /* will prevent resizing horizontally */
    resize:vertical;
+   font-size: 12px;
 }
 
 #customer_home, #origin_home, #delivery_home, #reference_home {

@@ -508,6 +508,7 @@
 
       <div class="col-xs-12">
       <ul id="remite_to_ul_style">
+      <li><u><i>REMIT TO INFO</i></u></li>
       <li id="remit_name_display">{{ $info->remit_name }}</li>
       <li id="remit_address_display">{{ $info->remit_address }}</li>
       <li id="remit_citystatezip_display">{{ $info->remit_city . ', ' . $info->remit_state . ' ' . $info->remit_zip }}</li>
