@@ -1,22 +1,6 @@
 @charset "UTF-8";
+/* AUTOCOMPLETE */
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-#overall_form_div {
-  margin-left: 150px; }
-
-#remite_to_ul_style {
-  list-style-type: none;
-  font-size: 12px;
-  padding-left: 0px;
-  margin-top: 10px;
-  color: lightseagreen; }
-
-#editCustomer, #editLocation, #editDest, #editEquip, #carrier_action_buttons, #newCarrierSubmit, #newLocationSubmit, #newEquipmentSubmit, #newCustomerSubmit {
-  margin-top: 10px; }
-
-.datepicker {
-  z-index: 9999 !important; }
-
-/* autocomplete */
 .ui-autocomplete {
   position: absolute;
   top: 100%;
@@ -57,6 +41,23 @@
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   background-image: none; }
+
+/* END AUTOCOMPLETE */
+#overall_form_div {
+  margin-left: 150px; }
+
+#remite_to_ul_style {
+  list-style-type: none;
+  font-size: 12px;
+  padding-left: 0px;
+  margin-top: 10px;
+  color: lightseagreen; }
+
+#editCustomer, #editLocation, #editDest, #editEquip, #carrier_action_buttons, #newCarrierSubmit, #newLocationSubmit, #newEquipmentSubmit, #newCustomerSubmit {
+  margin-top: 10px; }
+
+.datepicker {
+  z-index: 9999 !important; }
 
 #customer-search, #origin-search, #delivery-search, #equipment-search, #carrier-search, #additional-search {
   background-color: lightgray; }
@@ -164,13 +165,6 @@ html, body {
   height: 100vh;
   margin: 0; }
 
-/*html { 
-  background: url(../images/blue.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}*/
 .full-height {
   height: 100vh; }
 

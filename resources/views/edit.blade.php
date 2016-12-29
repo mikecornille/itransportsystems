@@ -523,24 +523,28 @@
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu">
-        <li><a href="{{ URL::to('/getInvoicePDF/' . $info->id) }}"><b>Print Invoice</b></a></li>
-        <li><a href="{{ URL::to('/emailInvoicePDF/' . $info->id) }}"><b>Email Invoice</b></a></li>
-        <li><a href="{{ URL::to('/getContractPDF/' . $info->id) }}"><b>Print Rate Con</b></a></li>
+        <li class="dropdown-header">EMAILS WITH PDF</li>
         <li><a href="{{ URL::to('/emailRateConPDF/' . $info->id) }}"><b>Email Rate Con</b></a></li>
+        <li><a href="{{ URL::to('/emailBOLYou/' . $info->id) }}"><b>Email BOL You</b></a></li>
+        <li><a href="{{ URL::to('/emailBOLCarrier/' . $info->id) }}"><b>Email BOL Carrier</b></a></li>
+        <li><a href="{{ URL::to('/emailInvoicePDF/' . $info->id) }}"><b>Email Invoice</b></a></li>
+        <li class="divider"></li>
+        <li class="dropdown-header">PRINT PDF</li>
+        <li><a href="{{ URL::to('/getContractPDF/' . $info->id) }}"><b>Print Rate Con</b></a></li>
+        <li><a href="{{ URL::to('/getInvoicePDF/' . $info->id) }}"><b>Print Invoice</b></a></li>
+        <li class="divider"></li>
+        <li class="dropdown-header">AUTO EMAILS</li>
         <li><a href="{{ URL::to('/status/' . $info->id) }}"><b>Get Status</b></a></li>
         <li><a href="{{ URL::to('/pod/' . $info->id) }}"><b>POD Request</b></a></li>
+        <li class="divider"></li>
+        <li class="dropdown-header">EMAILS W/MESSAGE</li>
         <li><a href="{{ URL::to('/internal/' . $info->id) }}"><b>Email Internal</b></a></li>
         <li><a href="{{ URL::to('/updateCustomer/' . $info->id) }}"><b>Email Customer</b></a></li>
         <li><a href="{{ URL::to('/emailCarrier/' . $info->id) }}"><b>Email Carrier</b></a></li>
-        <li><a href="{{ URL::to('/emailBOLCarrier/' . $info->id) }}"><b>Email BOL Carrier</b></a></li>
-        <li><a href="{{ URL::to('/emailBOLYou/' . $info->id) }}"><b>Email BOL You</b></a></li>
+        
+        
       </ul>
     </div>
-
-
-
-
-
 
   </div> 
 </div> 
