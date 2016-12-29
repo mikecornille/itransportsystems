@@ -204,6 +204,13 @@
 		
 		    <div class="col-xs-12">
 		        <label class="label-control" for="load_info">LOAD INFORMATION</label>
+		        <ul>
+                	<li>Carrier rate</li>
+                	<li>Detailed trailer type and condition</li>
+                	<li>Miles from current drop-off and/or miles from our pick</li>
+                	<li>Driver's plans for delivery (other drops, out of hours, etc)</li>
+                	<li>Delivery date and time</li>
+                	</ul>
 		        <textarea name="load_info" id="load_info" class="form-control" rows="2">{{ old('load_info') }}</textarea>
 		    </div>
 		

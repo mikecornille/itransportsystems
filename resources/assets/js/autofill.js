@@ -9,7 +9,7 @@
                         success: function( data ) {
                             response($.map(data, function (item) {
                                 return {
-                                    label: item.location_name + ' ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' ' + item.contact + ' ' + item.phone,
+                                    label: '--NAME-- ' + item.location_name + ' --ADDRESS-- ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' --CONTACT-- ' + item.contact + ' --PHONE-- ' + item.phone,
                                     value: item.location_name + ' ' + item.address,
                                     object: item
                                 }
@@ -44,7 +44,7 @@
                         success: function( data ) {
                             response($.map(data, function (item) {
                                 return {
-                                    label: item.location_name + ' ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' ' + item.contact + ' ' + item.phone,
+                                    label: '--NAME-- ' + item.location_name + ' --ADDRESS-- ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' --CONTACT-- ' + item.contact + ' --PHONE-- ' + item.phone,
                                     value: item.location_name + ' ' + item.address,
                                     object: item
                                 }
@@ -89,7 +89,7 @@
                         success: function( data ) {
                             response($.map(data, function (item) {
                                 return {
-                                    label: item.location_name + ' ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' ' + item.contact + ' ' + item.phone,
+                                    label: '--NAME-- ' + item.location_name + ' --ADDRESS-- ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' --CONTACT-- ' + item.contact + ' --PHONE-- ' + item.phone,
                                     value: item.location_name + ' ' + item.address,
                                     object: item
                                 }
@@ -137,7 +137,7 @@
                         success: function( data ) {
                             response($.map(data, function (item) {
                                 return {
-                                    label: item.name + ' ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' ' + item.contact + ' ' + item.email + ' ' + item.phone,
+                                    label: '--NAME-- ' + item.name + ' --ADDRESS-- ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' --CONTACT-- ' + item.contact + ' --EMAIL-- ' + item.email + ' --PHONE-- ' + item.phone,
                                     value: item.name + ' ' + item.address,
                                     object: item
                                 }
@@ -187,7 +187,7 @@
                         success: function( data ) {
                             response($.map(data, function (item) {
                                 return {
-                                    label: item.make + ' ' + item.model + ' ' + item.length + 'in. ' + item.width + 'in. ' + item.height + 'in. ' + item.weight + 'lbs. ' + item.loading_instructions,
+                                    label: ' --MAKE-- ' + item.make + ' --MODEL-- ' + item.model + ' --DIMS-- ' + item.length + 'in. ' + item.width + 'in. ' + item.height + 'in. ' + item.weight + 'lbs. --LOADING INS-- ' + item.loading_instructions,
                                     value: item.make + ' ' + item.model,
                                     object: item
                                 }
@@ -230,7 +230,7 @@
                         success: function( data ) {
                             response($.map(data, function (item) {
                                 return {
-                                    label: item.company + ' ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' ' + item.contact + ' ' + item.phone + ' ' + item.email + ' ' + item.cargo_exp + ' ' + item.cargo_amount + ' ' + item.bc_contract,
+                                    label: '--NAME-- ' + item.company + ' --MC #-- ' + item.mc_number + ' --ADDRESS-- ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' --CONTACT-- ' + item.contact + ' --PHONE-- ' + item.phone + ' --EMAIL-- ' + item.email + ' --CARGO EXP-- ' + item.cargo_exp + ' --CARGO AMOUNT-- ' + item.cargo_amount + ' --BROKER CONTRACT-- ' + item.bc_contract,
                                     value: item.company + ' ' + item.address,
                                     object: item
                                 }
@@ -291,7 +291,7 @@
                         success: function( data ) {
                             response($.map(data, function (item) {
                                 return {
-                                    label: item.company + ' ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' ' + item.contact + ' ' + item.phone + ' ' + item.email + ' ' + item.cargo_exp + ' ' + item.cargo_amount + ' ' + item.bc_contract,
+                                    label: '--NAME-- ' + item.company + ' --MC #-- ' + item.mc_number + ' --ADDRESS-- ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' --CONTACT-- ' + item.contact + ' --PHONE-- ' + item.phone + ' --EMAIL-- ' + item.email + ' --CARGO EXP-- ' + item.cargo_exp + ' --CARGO AMOUNT-- ' + item.cargo_amount + ' --BROKER CONTRACT-- ' + item.bc_contract,
                                     value: item.company + ' ' + item.address,
                                     object: item
                                 }
