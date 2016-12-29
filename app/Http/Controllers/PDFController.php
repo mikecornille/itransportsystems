@@ -176,6 +176,50 @@ class PDFController extends Controller
 
         return back()->with('status', 'The BOL has been sent to you!');
     }
+
+    //Emails a Rate Confirmation
+      public function textLoadInfo($id){
+        
+        $info = Load::find($id);
+
+        $info = ['info'=>$info];
+
+
+        // Step 2: set our AccountSid and AuthToken from https://twilio.com/console
+        $AccountSid = "ACf01e703e3d89fe05b97de8f8b103058e";
+        $AuthToken = "b71795afcc839bbd050ad1a513d1d871";
+
+        // Step 3: instantiate a new Twilio Rest Client
+        $client = new Client($AccountSid, $AuthToken);
+
+        // Step 4: make an array of people we know, to send them a message. 
+        // Feel free to change/add your own phone number and name here.
+        $people = array(
+        "+1" . \Auth::user()->cell => "User"
+        );
+
+    // Step 5: Loop over all our friends. $number is a phone number above, and 
+    // $name is the name next to it
+    foreach ($people as $number => $name) {
+
+        $sms = $client->account->messages->create(
+
+            // the number we are sending to - Any phone number
+            $number,
+
+            array(
+                // Step 6: Change the 'From' number below to be a valid Twilio number 
+                // that you've purchased
+                'from' => "+14159697014", 
+                
+                // the sms body
+                'body' => "LOAD INFO\n" . "PICK INFO\n" . $info['info']['pick_company'] . "\n" . $info['info']['pick_address'] . "\n" . $info['info']['pick_city'] . ", " . $info['info']['pick_state'] . " " . $info['info']['pick_zip'] . "\n" . $info['info']['pick_phone'] . "\n" . $info['info']['pick_date'] . " " . $info['info']['pick_time'] . " " . $info['info']['pick_status'] . "\n" . "\n" . "DELIVERY INFO\n" . $info['info']['delivery_company'] . "\n" . $info['info']['delivery_address'] . "\n" . $info['info']['delivery_city'] . ", " . $info['info']['delivery_state'] . " " . $info['info']['delivery_zip'] . "\n" . $info['info']['delivery_phone'] . "\n" . "\n" . "COMMODITY\n" . $info['info']['commodity'] . "\n" . "\n" . "SPECIAL INS" . "\n" . $info['info']['special_ins'] . "\n" . "\n" . "PO # " . $info['info']['po_number'] . "\n" . "REF # " . $info['info']['ref_number'] . "\n" . "BOL # " . $info['info']['bol_number'] . "\n" . "\n" . "CARRIER INFO\n" . $info['info']['carrier_name'] . "\n" . "DISPATCH: " . $info['info']['carrier_contact'] . "\n" . $info['info']['carrier_phone'] . "\n" . "DRIVER: " . $info['info']['carrier_driver_name'] . "\n" . $info['info']['carrier_driver_cell']
+            )
+        );
+    }
+
+        return back()->with('status', 'The Text Message has been sent!');
+    }
 }
 
 	

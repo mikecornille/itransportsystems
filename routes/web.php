@@ -129,5 +129,9 @@ Route::post('/edit/getPacket', 'CarriersController@getPacket');
 //FROM THE FIND CARRIER PAGE
 Route::post('/getPacket', 'CarriersController@getPacket');
 
+//TEXT LOAD INFO
+Route::get('/textLoadInfo/{id}', 'PDFController@textLoadInfo');
+
+
 });
 
