@@ -1,16 +1,16 @@
-html, body {
-
-                background-color: whitesmoke;
-                /*background: url(../images/fabric.png) no-repeat center center fixed;*/
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: bold;
-                height: 100vh;
-                margin: 0;
-            }
-body
+html, body 
 {
- background-color: whitesmoke; 
+
+  background-color: whitesmoke;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  height: 100vh;
+  margin: 0;
+}
+
+.well
+{
+  background-color: lavender;
 }
 
 $mainmarginright: 30px;
@@ -95,7 +95,7 @@ $mainmarginleft: 50px;
 }
 
 
-.datepicker{z-index:9999 !important}
+
 
 
 #customer-search, #origin-search, #delivery-search, #equipment-search, #carrier-search, #additional-search {
@@ -471,12 +471,14 @@ textarea#commodity, textarea#special_ins, textarea#add_stops, textarea#invoice_n
   width: 16px;
   height: 16px;
 }
+
+.datepicker{z-index:9999 !important}
             
 // Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+//@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
 // Variables
-@import "variables";
+//@import "variables";
 
 // Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+//@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
