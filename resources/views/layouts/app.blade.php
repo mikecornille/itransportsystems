@@ -84,7 +84,8 @@
                                 
                                 
                             </form> -->
-
+                            <li><a href="{{ URL::to('/displayLoads') }}">Loads</a></li>
+                            <li><a href="{{ url('/home') }}">New Invoice</a></li>
                             <li><a href="{{ URL::to('/newLocation') }}">New Location</a></li>
                             <li><a href="{{ URL::to('/newEquipment') }}">New Equipment</a></li>
                             
@@ -138,7 +139,7 @@
                                 <li><a href="{{ url('/admin') }}">Admin</a></li>
 
                             @endif
-                            <li><a href="{{ url('/home') }}">New Invoice</a></li>
+                            
                             
                             
                             

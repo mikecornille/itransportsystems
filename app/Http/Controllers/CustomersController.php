@@ -21,9 +21,9 @@ class CustomersController extends Controller
 			  'city' => 'required',
 			  'state' => 'required',
 			  'zip' => 'required',
-			  'name_1' => 'required',
-			  'phone_1' => 'required',
-			  'email_1' => 'required',
+			  'contact' => 'required',
+			  'phone' => 'required',
+			  'email' => 'required',
 			  
         
          ]);

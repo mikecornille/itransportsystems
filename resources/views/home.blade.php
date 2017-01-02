@@ -30,6 +30,8 @@
     <div class="well">
       <div class="form-group">
         <div class="row">
+        <div class="col-xs-12">
+        </div>
             <div class="col-xs-12">
             <div class="input-group">
                 <input type="text" class="form-control" id="customer-search" placeholder="Customer Search">
