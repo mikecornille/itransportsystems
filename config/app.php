@@ -182,6 +182,7 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class
 
 
     ],

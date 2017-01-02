@@ -15,7 +15,8 @@
         "laravel/scout": "^1.1",
         "algolia/algoliasearch-client-php": "^1.11",
         "guzzlehttp/guzzle": "^6.2",
-        "laracasts/utilities": "^2.1"
+        "laracasts/utilities": "^2.1",
+        "league/flysystem-aws-s3-v3": "~1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
