@@ -12,19 +12,16 @@ class LocationsController extends Controller
 	 public function store(Request $request)
 	{
 		
-		 // $this->validate($request, [
+		$this->validate($request, [
 
-		 // 	'name' => 'required',			  
-   //       	  'address' => 'required',
-			//   'city' => 'required',
-			//   'state' => 'required',
-			//   'zip' => 'required',
-			//   'name_1' => 'required',
-			//   'phone_1' => 'required',
-			//   'email_1' => 'required',
+		 	'location_name' => 'required',			  
+         	  'address' => 'required',
+			  'city' => 'required',
+			  'state' => 'required',
+			  'zip' => 'required',
+			  'phone' => 'required',
 			  
-        
-   //       ]);
+			]);
 
         $newLocation = New Location($request->all());
 		
