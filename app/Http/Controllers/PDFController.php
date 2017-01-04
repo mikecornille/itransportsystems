@@ -52,7 +52,11 @@ class PDFController extends Controller
 
             ->subject('International Transport Systems Invoice for PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
           
-            $message->from(\Auth::user()->email, \Auth::user()->name);
+            $message->from(\Auth::user()->email, \Auth::user()->name)
+
+            ->replyTo(\Auth::user()->email, \Auth::user()->name)
+
+            ->sender(\Auth::user()->email, \Auth::user()->name);
 
             $message->attachData($pdf->output(), 'Invoice_' . $info['info']['id'] . '.pdf');
 
@@ -82,7 +86,11 @@ class PDFController extends Controller
 
             ->subject('PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
           
-            $message->from(\Auth::user()->email, \Auth::user()->name);
+            $message->from(\Auth::user()->email, \Auth::user()->name)
+
+            ->replyTo(\Auth::user()->email, \Auth::user()->name)
+
+            ->sender(\Auth::user()->email, \Auth::user()->name);
 
             $message->attachData($pdf->output(), 'Load_Confirmation_' . $info['info']['id'] . '.pdf');
 
@@ -141,7 +149,11 @@ class PDFController extends Controller
 
             ->subject('PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
           
-            $message->from(\Auth::user()->email, \Auth::user()->name);
+            $message->from(\Auth::user()->email, \Auth::user()->name)
+
+            ->replyTo(\Auth::user()->email, \Auth::user()->name)
+
+            ->sender(\Auth::user()->email, \Auth::user()->name);
 
             $message->attachData($pdf->output(), 'BOL_' . $info['info']['id'] . '.pdf');
 
@@ -168,7 +180,11 @@ class PDFController extends Controller
 
             ->subject('Bill of Lading from ITS for PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
           
-            $message->from(\Auth::user()->email, \Auth::user()->name);
+            $message->from(\Auth::user()->email, \Auth::user()->name)
+
+            ->replyTo(\Auth::user()->email, \Auth::user()->name)
+
+            ->sender(\Auth::user()->email, \Auth::user()->name)
 
             $message->attachData($pdf->output(), 'BOL_' . $info['info']['id'] . '.pdf');
 

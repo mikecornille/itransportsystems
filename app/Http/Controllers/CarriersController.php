@@ -99,7 +99,11 @@ class CarriersController extends Controller
 
            	->subject('Please Email Your Updated Certificate of Cargo Insurance for MC # ' . $info['info']['mc_number']);
           
-            $message->from(\Auth::user()->email, \Auth::user()->name);
+            $message->from(\Auth::user()->email, \Auth::user()->name)
+
+            ->replyTo(\Auth::user()->email, \Auth::user()->name)
+
+           	->sender(\Auth::user()->email, \Auth::user()->name);
 
         });
 
@@ -125,7 +129,11 @@ class CarriersController extends Controller
 
            	->subject('Set Up Packet from International Transport Systems, Inc.');
           
-            $message->from(\Auth::user()->email, \Auth::user()->name);
+            $message->from(\Auth::user()->email, \Auth::user()->name)
+
+            ->replyTo(\Auth::user()->email, \Auth::user()->name)
+
+           	->sender(\Auth::user()->email, \Auth::user()->name);
 
         });
 
@@ -146,6 +154,8 @@ class CarriersController extends Controller
            	->from(\Auth::user()->email, \Auth::user()->name)
 
            	->replyTo(\Auth::user()->email, \Auth::user()->name)
+
+           	->sender(\Auth::user()->email, \Auth::user()->name)
 
            	->subject('Check out this message from Carrier Data MC # ' . $info['info']['mc_number']);
           
