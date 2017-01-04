@@ -76,8 +76,11 @@ html, body {
   margin-top: 10px;
   color: lightseagreen; }
 
-#editCustomer, #editLocation, #editDest, #editEquip, #carrier_action_buttons, #newCarrierSubmit, #newLocationSubmit, #newEquipmentSubmit, #newCustomerSubmit {
+#editCustomer, #editLocation, #editDest, #editEquip, #carrier_action_buttons, #newCarrierSubmit, #newLocationSubmit, #newEquipmentSubmit, #newCustomerSubmit, #submit_new_note {
   margin-top: 10px; }
+
+.notes-class {
+  margin-bottom: 5px; }
 
 #customer-search, #origin-search, #delivery-search, #equipment-search, #carrier-search, #additional-search {
   background-color: lightgray; }

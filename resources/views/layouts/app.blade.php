@@ -84,6 +84,7 @@
                                 
                                 
                             </form> -->
+                            <li><a href="{{ URL::to('/notes') }}">Notes</a></li>
                             <li><a href="{{ URL::to('/displayLoads') }}">Loads</a></li>
                             <li><a href="{{ url('/home') }}">New Invoice</a></li>
                             <li><a href="{{ URL::to('/newLocation') }}">New Location</a></li>

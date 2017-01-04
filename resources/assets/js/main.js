@@ -587,7 +587,7 @@ $(document).ready(function() {
 $(document).ready(function() {
 
     var table = $('#mainTable').DataTable({
-        
+
 		 // scrollY:        "800px",
    //       scrollX:        true,
    //       scrollCollapse: true,
@@ -800,6 +800,16 @@ var n = d.getDate();
 var m = d.toLocaleTimeString();
 
 $('#quick_status_notes').val($('#quick_status_notes').val() + "Day " + n + " " + m + " " + user.name + " - ");
+
+});
+
+$(document).on('dblclick', '#time_name_stamp', function(){
+
+var d = new Date();
+var n = d.toDateString();
+var m = d.toLocaleTimeString();
+
+$('#time_name_stamp').val(n + " " + m + " " + user.name + " - ");
 
 });
 

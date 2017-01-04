@@ -24,6 +24,16 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Notes::class, function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+        'time_name_stamp' => $faker->name(),
+        'notes' => $faker->sentence(),
+        
+        ];
+});
+
 $factory->define(App\Location::class, function (Faker\Generator $faker) {
     static $password;
 

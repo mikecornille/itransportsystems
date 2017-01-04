@@ -94,12 +94,15 @@ $mainmarginleft: 50px;
     color: lightseagreen;
 }
 
-#editCustomer, #editLocation, #editDest, #editEquip, #carrier_action_buttons, #newCarrierSubmit, #newLocationSubmit, #newEquipmentSubmit, #newCustomerSubmit
+#editCustomer, #editLocation, #editDest, #editEquip, #carrier_action_buttons, #newCarrierSubmit, #newLocationSubmit, #newEquipmentSubmit, #newCustomerSubmit, #submit_new_note
 {
   margin-top: 10px;
 }
 
-
+.notes-class
+{
+  margin-bottom: 5px;
+}
 
 
 

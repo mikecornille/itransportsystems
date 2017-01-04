@@ -32,6 +32,8 @@ class DatabaseSeeder extends Seeder
 
         factory(App\Equipment::class,3)->create();
 
+        factory(App\Notes::class,3)->create();
+
         factory(App\Carrier::class,3)->create();
             }
 

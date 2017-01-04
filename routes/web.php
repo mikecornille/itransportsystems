@@ -75,6 +75,12 @@ Route::get('/findCarrier', function () {
     return view('/findCarrier');
 });
 
+Route::get('/displayLoads', function () {
+    return view('/displayLoads');
+});
+
+Route::get('/notes', 'NotesController@index');
+
 
 Route::get('/home', 'HomeController@index');
 Route::post('/new', 'LoadsController@store');
@@ -89,6 +95,8 @@ Route::post('/newCustomer', 'CustomersController@store');
 Route::post('/newLocation', 'LocationsController@store');
 Route::post('/newCarrier', 'CarriersController@store');
 Route::post('/newEquipment', 'EquipmentController@store');
+Route::post('/newNote', 'NotesController@store');
+
 
 //UPDATE DATABASES WITH AJAX
 Route::post('/updateCustomer', "CustomersController@updateCustomer");
