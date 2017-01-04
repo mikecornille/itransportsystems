@@ -143,9 +143,15 @@ class CarriersController extends Controller
 
            	$message->to($info['info']['colleague_email'])
 
-           	->subject('Check out this message from Carrier Data DOT # ' . $info['info']['mc_number']);
+           	->from(\Auth::user()->email, \Auth::user()->name)
+
+           	->replyTo(\Auth::user()->email, \Auth::user()->name)
+
+           	->subject('Check out this message from Carrier Data MC # ' . $info['info']['mc_number']);
           
-            $message->from(\Auth::user()->email, \Auth::user()->name);
+            // $message->from(\Auth::user()->email, \Auth::user()->name);
+
+            // $message->replyTo(\Auth::user()->email, \Auth::user()->name);
 
         });
 

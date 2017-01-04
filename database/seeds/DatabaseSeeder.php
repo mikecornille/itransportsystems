@@ -17,12 +17,12 @@ class DatabaseSeeder extends Seeder
 
     public function seedUser()
     {
-                DB::table('users')->insert([
-            'name' => 'Mike Cornille',
-            'email' => 'mikecornille@gmail.com',
-            'cell' => 6307501718,
-            'password' => bcrypt('password'),
-        ]);
+        //         DB::table('users')->insert([
+        //     'name' => 'Mike Cornille',
+        //     'email' => 'mikecornille@gmail.com',
+        //     'cell' => 6307501718,
+        //     'password' => bcrypt('password'),
+        // ]);
         
         factory(App\Location::class,3)->create();
 
