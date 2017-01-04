@@ -47,6 +47,81 @@ class Carrier extends Model
 
         ];
 
+        public function setCompanyAttribute($value)
+    {
+        $this->attributes['company'] = strtoupper($value);
+    }
+
+      public function setContactAttribute($value)
+    {
+        $this->attributes['contact'] = strtoupper($value);
+    }
+
+      public function setAddressAttribute($value)
+    {
+        $this->attributes['address'] = strtoupper($value);
+    }
+
+      public function setCityAttribute($value)
+    {
+        $this->attributes['city'] = strtoupper($value);
+    }
+
+      public function setStateAttribute($value)
+    {
+        $this->attributes['state'] = strtoupper($value);
+    }
+
+      public function setZipAttribute($value)
+    {
+        $this->attributes['zip'] = strtoupper($value);
+    }
+
+      public function setEmailAttribute($value)
+    {
+        $this->attributes['email'] = strtoupper($value);
+    }
+
+      public function setDriverNameAttribute($value)
+    {
+        $this->attributes['driver_name'] = strtoupper($value);
+    }
+
+     public function setRemitNameAttribute($value)
+    {
+        $this->attributes['remit_name'] = strtoupper($value);
+    }
+
+     public function setRemitAddressAttribute($value)
+    {
+        $this->attributes['remit_address'] = strtoupper($value);
+    }
+
+     public function setRemitCityAttribute($value)
+    {
+        $this->attributes['remit_city'] = strtoupper($value);
+    }
+
+     public function setRemitStateAttribute($value)
+    {
+        $this->attributes['remit_state'] = strtoupper($value);
+    }
+
+     public function setRemitZipAttribute($value)
+    {
+        $this->attributes['remit_zip'] = strtoupper($value);
+    }
+
+     public function setLoadInfoAttribute($value)
+    {
+        $this->attributes['load_info'] = strtoupper($value);
+    }
+
+     public function setPermanentNotesAttribute($value)
+    {
+        $this->attributes['permanent_notes'] = strtoupper($value);
+    }
+
         public static function getTrailers() {
         	return ['flatbed',
 			  'stepdeck',

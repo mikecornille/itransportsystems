@@ -125,6 +125,10 @@ table {
     <td>ADDRESS: {{ $info->pick_address }}</td>
     <td>ADDRESS: {{ $info->delivery_address }}</td>
   </tr>
+   <tr>
+    <td>{{ $info->pick_city . ', ' . $info->pick_state . ' ' . $info->pick_zip }}</td>
+    <td>{{ $info->delivery_city . ', ' . $info->delivery_state . ' ' . $info->delivery_zip }}</td>
+  </tr>
   <tr>
     <td>CONTACT: {{ $info->pick_contact }}</td>
     <td>CONTACT: {{ $info->delivery_contact }}</td>

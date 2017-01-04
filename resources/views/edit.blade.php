@@ -104,8 +104,10 @@
           <div class="col-xs-12">
             <label for="internal_email_address" class="label-control">Internal Email Recipient</label>
             <select name="internal_email_address" id="internal_email_address" class="form-control"> 
-              <option value="{{ $info->internal_email_address }}">{{ $info->internal_email_address }}</option>
-              <option value="Please Choose One">Please Choose One</option>
+              @if($info->internal_email_address)
+            <option value="{{ $info->internal_email_address }}">{{ $info->internal_email_address }}</option>
+          @endif
+              <option value="Choose">Choose</option>
               <option value="joem@itransys.com">joem@itransys.com</option>
               <option value="mikeb@itransys.com">mikeb@itransys.com</option>
               <option value="mattk@itransys.com">mattk@itransys.com</option>
@@ -201,8 +203,10 @@
   <div class="col-xs-6">
     <label for="trailer_type" class="label-control">Trailer Type</label>
     <select name="trailer_type" id="trailer_type" class="form-control">
-     <option value="{{ $info->trailer_type }}">{{ $info->trailer_type }}</option>
-     <option value="Please Choose One">Please Choose One</option>
+     @if($info->trailer_type)
+            <option value="{{ $info->trailer_type }}">{{ $info->trailer_type }}</option>
+          @endif
+     <option value="Choose">Choose</option>
      <option value="45/96 FLATBED">45/96 FLATBED</option>
      <option value="45/102 FLATBED">45/102 FLATBED</option>
      <option value="48/96 FLATBED">48/96 FLATBED</option>
@@ -240,7 +244,10 @@
  <div class="col-xs-6">
   <label for="trailer_for_search" class="label-control">Database Trailer</label>
   <select name="trailer_for_search" id="trailer_for_search" class="form-control">
-    <option value="{{ $info->trailer_for_search }}">{{ $info->trailer_for_search }}</option>
+    @if($info->trailer_for_search)
+            <option value="{{ $info->trailer_for_search }}">{{ $info->trailer_for_search }}</option>
+          @endif
+            <option value="Choose">Choose</option>
     <option value="Flatbed">Flatbed</option>
     <option value="Stepdeck">Stepdeck</option>
     <option value="Conestoga">Conestoga</option>
@@ -315,10 +322,13 @@
         <div class="col-xs-6">
           <label class="label-control text-danger" for="pick_time">Time</label>
           <select name="pick_time" id="pick_time" class="form-control">
+            @if($info->pick_time)
             <option value="{{ $info->pick_time }}">{{ $info->pick_time }}</option>
+          @endif
+            <option value="Choose">Choose</option>
             <option value="0600">0600</option>
             <option value="0630">0630</option>
-            <option value="0700" selected>0700</option>
+            <option value="0700">0700</option>
             <option value="0730">0730</option>
             <option value="0800">0800</option>
             <option value="0830">0830</option>
@@ -358,8 +368,10 @@
         <div class="col-xs-6">
          <label for="pick_status" class="label-control text-danger">Pick Status</label>
          <select name="pick_status" id="pick_status" class="form-control">
-           <option value="{{ $info->pick_status }}">{{ $info->pick_status }}</option>
-           <option value="Open">Open</option>
+           @if($info->pick_status)
+            <option value="{{ $info->pick_status }}">{{ $info->pick_status }}</option>
+          @endif
+          <option value="Open">Open</option>
            <option value="Booked">Booked</option>
            <option value="Loaded">Loaded</option>
            <option value="Hold">Hold</option>
@@ -427,10 +439,14 @@
         <div class="col-xs-6">
           <label class="label-control text-danger" for="delivery_time">Time</label>
           <select name="delivery_time" id="delivery_time" class="form-control">
+            
+          @if($info->delivery_time)
             <option value="{{ $info->delivery_time }}">{{ $info->delivery_time }}</option>
+          @endif
+            <option value="Choose">Choose</option>
             <option value="0600">0600</option>
             <option value="0630">0630</option>
-            <option value="0700" selected>0700</option>
+            <option value="0700">0700</option>
             <option value="0730">0730</option>
             <option value="0800">0800</option>
             <option value="0830">0830</option>
@@ -470,7 +486,9 @@
         <div class="col-xs-6">
           <label for="pick_status" class="label-control text-danger">Del Status</label>
           <select name="delivery_status" id="delivery_status" class="form-control">
+            @if($info->delivery_status)
             <option value="{{ $info->delivery_status }}">{{ $info->delivery_status }}</option>
+          @endif
             <option value="Open">Open</option>
             <option value="Delivered">Delivered</option>
             <option value="Towing">Towing</option>
@@ -1308,6 +1326,7 @@
                 <div class="col-xs-12">
                   <label class="label-control" for="car_load_info">LOAD INFORMATION</label>
                   <ul>
+                  <li>Load route</li>
                   <li>Carrier rate</li>
                   <li>Detailed trailer type and condition</li>
                   <li>Miles from current drop-off and/or miles from our pick</li>

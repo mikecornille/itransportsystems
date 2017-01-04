@@ -28,6 +28,7 @@ class CarriersController extends Controller
 			  'state' => 'required',
 			  'zip' => 'required',
 			  'mc_number' => 'required',
+			  'dot_number' => 'required',
 			  'phone' => 'required',
 			  'email' => 'required',
 			  'driver_name' => 'required',
