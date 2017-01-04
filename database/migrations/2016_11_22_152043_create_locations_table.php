@@ -28,6 +28,8 @@ class CreateLocationsTable extends Migration
             $table->text('location_notes');
             $table->timestamps();
         });
+
+        DB::update("ALTER TABLE locations AUTO_INCREMENT = 22000;");
     }
 
     /**

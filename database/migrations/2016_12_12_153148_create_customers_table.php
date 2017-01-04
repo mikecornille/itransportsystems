@@ -28,6 +28,8 @@ class CreateCustomersTable extends Migration
             $table->text('internal_notes');
             $table->timestamps();
         });
+
+        DB::update("ALTER TABLE customers AUTO_INCREMENT = 2500;");
     }
 
     /**

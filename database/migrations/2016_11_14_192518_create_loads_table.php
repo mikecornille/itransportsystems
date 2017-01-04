@@ -93,6 +93,8 @@ class CreateLoadsTable extends Migration
             $table->timestamps();
 
         });
+
+        DB::update("ALTER TABLE loads AUTO_INCREMENT = 8500;");
     }
 
     /**

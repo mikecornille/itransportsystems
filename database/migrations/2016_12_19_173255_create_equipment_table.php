@@ -25,6 +25,8 @@ class CreateEquipmentTable extends Migration
             $table->text('loading_instructions')->nullable();
             $table->timestamps();
         });
+
+        DB::update("ALTER TABLE equipment AUTO_INCREMENT = 1100;");
     }
 
     /**

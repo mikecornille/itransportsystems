@@ -52,6 +52,8 @@ class CreateCarriersTable extends Migration
             $table->string('email_colleague_carrier')->nullable();
             $table->timestamps();
         });
+
+        DB::update("ALTER TABLE carriers AUTO_INCREMENT = 36000;");
     }
 
     /**
