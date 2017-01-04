@@ -184,7 +184,7 @@ class PDFController extends Controller
 
             ->replyTo(\Auth::user()->email, \Auth::user()->name)
 
-            ->sender(\Auth::user()->email, \Auth::user()->name)
+            ->sender(\Auth::user()->email, \Auth::user()->name);
 
             $message->attachData($pdf->output(), 'BOL_' . $info['info']['id'] . '.pdf');
 
