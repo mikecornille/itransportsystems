@@ -20,7 +20,7 @@ class NotesController extends Controller
 		        'user' => \Auth::user(),
     ]);
 
-    	$posts = Notes::all();
+    	$posts = Notes::all()->sortByDesc("created_at");
 
         return view('notes', compact('posts'));
 
