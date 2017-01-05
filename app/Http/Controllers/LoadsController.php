@@ -41,7 +41,7 @@ class LoadsController extends Controller
 	public function tobedatatwo()
 	{
 		
-		$data = Load::where('pick_status', 'Loaded')->get();
+		$data = Load::where('pick_status', 'Loaded')->('delivery_status', 'Open')->get();
 		return(['data' => $data]);
 		
 	}
@@ -178,7 +178,11 @@ class LoadsController extends Controller
 
            	->subject('Internal Message on PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] .  ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
           
-            $message->from(\Auth::user()->email, \Auth::user()->name);
+            $message->from(\Auth::user()->email, \Auth::user()->name)
+
+            ->replyTo(\Auth::user()->email, \Auth::user()->name)
+
+           	->sender(\Auth::user()->email, \Auth::user()->name);
 
         });
 
