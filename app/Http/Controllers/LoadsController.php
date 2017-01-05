@@ -51,6 +51,8 @@ class LoadsController extends Controller
 	//Store a new record in database
 	 public function store(Request $request)
 	{
+
+		date_default_timezone_set("America/Chicago");
 		
 		 $this->validate($request, [
 

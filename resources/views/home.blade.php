@@ -2,6 +2,13 @@
 
 @section('content')
 
+<?php
+
+
+date_default_timezone_set("America/Chicago");
+
+?>
+
 @if (count($errors) > 0)
     <div class="alert alert-danger">
         <ul>

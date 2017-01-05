@@ -3,7 +3,7 @@
 @section('content')
 
 
-<h1 class="text-center">To Be Delivered (pick status = loaded)</h1>
+<h1 class="text-center">To Be Delivered (delivery status = En Route)</h1>
 
 <table id="mainTableThree" cellspacing="0" class="stripe row-border order-column hover" style="border-collapse: collapse; margin-left: 10px; font-size: 12px; table-layout: fixed; word-wrap:break-word;">
 
