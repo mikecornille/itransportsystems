@@ -41,7 +41,7 @@ class LoadsController extends Controller
 	public function tobedatatwo()
 	{
 		
-		$data = Load::where('pick_status', 'Loaded')->where('delivery_status', 'Open')->get();
+		$data = Load::where('delivery_status', 'En Route')->get();
 		return(['data' => $data]);
 		
 	}

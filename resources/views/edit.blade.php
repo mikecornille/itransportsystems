@@ -490,6 +490,7 @@
             <option value="{{ $info->delivery_status }}">{{ $info->delivery_status }}</option>
           @endif
             <option value="Open">Open</option>
+            <option value="En Route">En Route</option>
             <option value="Delivered">Delivered</option>
             <option value="Towing">Towing</option>
           </select>
