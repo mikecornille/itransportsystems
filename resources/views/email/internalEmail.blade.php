@@ -20,6 +20,7 @@
 <p>{{ $info->internal_notes }}</p>
 <h3>Additional Load Information</h3>
 <ul>
+<li><b>Customer:</b> {{ $info->customer_name }}</li>
 <li><b>Invoice Creator:</b> {{ $info->created_by }}</li>
 <li><b>PRO #:</b> {{ $info->id }}</li>
 <li><b>PO #:</b> {{ $info->po_number }}</li>

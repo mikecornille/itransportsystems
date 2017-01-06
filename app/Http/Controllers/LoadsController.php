@@ -149,10 +149,11 @@ class LoadsController extends Controller
             {
             	$load->rate_con_creator = strtoupper(\Auth::user()->email);
             }
-            else
-            {
-            	$load->rate_con_creator = NULL;
-            }
+           elseif ($request->pick_status === 'Open')
+           {
+           		$load->rate_con_creator = NULL;
+
+           }
         
         
 		$load->update($request->all());

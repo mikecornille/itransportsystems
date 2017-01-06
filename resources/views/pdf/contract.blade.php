@@ -167,7 +167,7 @@ table {
 <p>{{ $info->special_ins }}</p>
 </div>
 
-<h5 class="text-center"><b>ONCE DELIVERED 630-832-6900 TO PROVIDE THE NAME OF WHO SIGNED FOR THE SHIPMENT</b></h5>
+<h5 class="text-center"><b>ONCE DELIVERED CALL 630-832-6900 TO PROVIDE THE NAME OF WHO SIGNED FOR THE SHIPMENT</b></h5>
 <h4 class="text-center"><b><u>** DO NOT USE AS A DELIVERY RECEIPT / THIS IS NOT A BILL OF LADING **</u></b></h4>
 <p class="text-center"><i>Page 1 of 2</i></p>
 
