@@ -63,9 +63,6 @@ Route::get('/toBeDelivered', function () {
     return view('/toBeDelivered');
 });
 
-Route::get('/myStats', function () {
-    return view('/myStats');
-});
 
 Route::get('/findTrucks', function () {
     return view('/findTrucks');
@@ -80,6 +77,7 @@ Route::get('/displayLoads', function () {
 });
 
 Route::get('/notes', 'NotesController@index');
+Route::get('/myStats', 'NotesController@getBrokerStats');
 
 
 Route::get('/home', 'HomeController@index');

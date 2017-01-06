@@ -2,7 +2,15 @@
 
 use Carbon\Carbon;
 
-$toString = Carbon::parse($info->billed_date)->addDays(25)->toFormattedDateString();
+if($info->billed_date === NULL || empty($info->billed_date))
+{
+  $toString = NULL;
+}
+else
+{
+  $toString = Carbon::parse($info->billed_date)->addDays(25)->toFormattedDateString();
+}
+
 
 ?>
 

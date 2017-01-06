@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Notes;
 
+use App\Load;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -43,5 +45,22 @@ class NotesController extends Controller
 
 		return back();
 		
+	}
+
+	public function getBrokerStats()
+	{
+
+        
+		
+		$posts = Notes::where('time_name_stamp', 'LIKE', '%' . \Auth::user()->name . '%')->count();
+
+
+		$rateCons = Load::where('rate_con_creator', \Auth::user()->email)->count();
+
+		$invoices = Load::where('created_by', \Auth::user()->email)->count();
+
+		
+
+		return view('myStats')->with('posts', $posts)->with('rateCons', $rateCons)->with('invoices', $invoices);
 	}
 }

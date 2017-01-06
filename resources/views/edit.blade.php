@@ -525,6 +525,10 @@
           <input type="text" class="form-control datepicker" id="datepicker3" name="vendor_invoice_date" value="{{ $info->vendor_invoice_date }}">
         </div>
 
+      
+        @if(empty($info->remit_name))
+
+        @else
       <div class="col-xs-12">
       <ul id="remite_to_ul_style">
       <li><u><i>REMIT TO INFO</i></u></li>
@@ -534,6 +538,7 @@
       </ul>
 
     </div>
+    @endif
 
 
     <div class="btn-group" id="action_buttons">
