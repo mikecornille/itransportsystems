@@ -13,4 +13,10 @@
 <h3 class="text-left">{{ $invoices }} Invoices</h3>
 </div>
 
+<div style="margin-left: 300px;">
+@foreach ($unsigned as $unsign)
+    <h3 class="text-left">PRO # {{ $unsign->id }} is unsigned</h3>
+@endforeach
+</div>
+
 @endsection
