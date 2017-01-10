@@ -93,10 +93,6 @@ table {
     <td>CONTACT: {{ $info->delivery_contact }}</td>
   </tr>
   <tr>
-    <td>EMAIL: {{ $info->pick_email }}</td>
-    <td>EMAIL: {{ $info->delivery_email }}</td>
-  </tr>
-  <tr>
     <td>PHONE: {{ $info->pick_phone }}</td>
     <td>PHONE: {{ $info->delivery_phone }}</td>
   </tr>
@@ -108,7 +104,7 @@ table {
 <hr style="height: 10px;">
 
 <h5><u><b>SPECIAL NOTES</b></u></h5>
-<p>{{ $info->invoice_notes }}</p>
+<p>{{ $info->special_ins }}</p>
 
 <hr style="height: 10px;">
 
