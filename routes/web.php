@@ -41,12 +41,12 @@ Route::get('/newEquipment', function () {
     return view('/newEquipment');
 });
 
-Route::get('/admin', function () {
-	if ( ! Auth::user()->admin) {
-		return redirect('/home');
-	}
-    return view('/admin');
-});
+// Route::get('/admin', function () {
+// 	if ( ! Auth::user()->admin) {
+// 		return redirect('/home');
+// 	}
+//     return view('/admin');
+// });
 
 Route::get('/accounting', function () {
 	if ( ! Auth::user()->accounting) {
@@ -78,6 +78,7 @@ Route::get('/displayLoads', function () {
 
 Route::get('/notes', 'NotesController@index');
 Route::get('/myStats', 'NotesController@getBrokerStats');
+Route::get('/admin', 'NotesController@getAdminStats');
 
 
 Route::get('/home', 'HomeController@index');
