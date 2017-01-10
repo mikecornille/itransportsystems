@@ -59,7 +59,7 @@ class NotesController extends Controller
 
 		$invoices = Load::where('created_by', \Auth::user()->email)->count();
 
-		$unsigned = Load::where('rate_con_creator', \Auth::user()->email)->where('signed_rate_con', '=', NULL)->orWhere('signed_rate_con', '=', ' ')->get();
+		$unsigned = Load::where('rate_con_creator', \Auth::user()->email)->where('signed_rate_con', '!=', 'SIGNED')->orWhereNull('signed_rate_con')->get();
 
 		
 
