@@ -70,12 +70,12 @@ class NotesController extends Controller
 		return view('myStats')->with('posts', $posts)->with('rateCons', $rateCons)->with('invoices', $invoices)->with('unsigned', $unsigned);
 	}
 
-	public function getAdminStats()
-	{
+	//public function getAdminStats()
+	//{
 
-        $currentDate = date('m/d/Y')
+        //$currentDate = date('m/d/Y')
 		//Rate Confirmation Count
-		$rateConTotals = Load::where('rate_con_creation_date', $currentDate)->count();
+		//$rateConTotals = Load::where('rate_con_creation_date', $currentDate)->count();
 		// $posts = Notes::where('time_name_stamp', 'LIKE', '%' . \Auth::user()->name . '%')->count();
 
 
@@ -91,6 +91,6 @@ class NotesController extends Controller
 
 		
 
-		return view('admin')->with('rateConTotals', $rateConTotals);
-	}
+		//return view('admin')->with('rateConTotals', $rateConTotals);
+	//}
 }
