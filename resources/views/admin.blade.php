@@ -64,6 +64,15 @@
 	</ul>
 </div>
 
+<div style="margin-left: 300px;">
+	<ul style="list-style-type: none;">
+		<li class="text-left">AJ Mesik has posted {{ $ajNotes }} notes in month {{ $month }}. </li>
+		<li class="text-left">AJ Mesik has created {{ $ajRateCons }} Rate Confirmations in month {{ $month }}. </li>
+		<li class="text-left">AJ Mesik has created {{ $ajInvoices }} Invoices in month {{ $month }}. </li>
+		<li class="text-left">AJ Mesik has been responsible for ${{ $ajMoneyBilled }}.00 billed to customers and paid out ${{ $ajMoneyPaidOut }}.00 to carriers for a profit margin of {{ $ajPercent }}%.</li>
+	</ul>
+</div>
+
 
 
 

@@ -135,6 +135,28 @@ class NotesController extends Controller
 		$mkProfitMargin = 0;
 		$mkPercent = 0;
 		}
+
+		//AJ Mesik
+		$MesikName = "AJ Mesik";
+		$MesikEmail = "aj@itransys.com";
+		$ajNotes = Notes::where('time_name_stamp', 'LIKE', '%' . $MesikName . '%')->whereMonth('created_at', $month)->count();
+		$ajRateCons = Load::where('rate_con_creator', $MesikEmail)->whereMonth('created_at', $month)->count();
+		$ajInvoices = Load::where('created_by', $MesikEmail)->whereMonth('created_at', $month)->count();
+		$ajMoneyBilled = Load::where('rate_con_creator', $MesikEmail)->whereMonth('created_at', $month)->sum('amount_due');
+		$ajMoneyPaidOut = Load::where('rate_con_creator', $MesikEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
+		
+		if ($month !== NULL)
+		{
+		$ajDifference = $ajMoneyBilled - $ajMoneyPaidOut;
+		$ajProfitMargin = $ajDifference / $ajMoneyBilled;
+		$ajPercent = round((float)$ajProfitMargin * 100 );
+		}
+		else 
+		{
+		$ajDifference = 0;
+		$ajProfitMargin = 0;
+		$ajPercent = 0;
+		}
 		
 
 		// $rateCons = Load::where('rate_con_creator', \Auth::user()->email)->count();
@@ -160,6 +182,12 @@ class NotesController extends Controller
 			->with('mkMoneyBilled', $mkMoneyBilled)
 			->with('mkMoneyPaidOut', $mkMoneyPaidOut)
 			->with('mkPercent', $mkPercent)
-			->with('mkInvoices', $mkInvoices);
+			->with('mkInvoices', $mkInvoices)
+			->with('ajNotes', $ajNotes)
+			->with('ajRateCons', $ajRateCons)
+			->with('ajMoneyBilled', $ajMoneyBilled)
+			->with('ajMoneyPaidOut', $ajMoneyPaidOut)
+			->with('ajPercent', $ajPercent)
+			->with('ajInvoices', $ajInvoices);
 	}
 }
