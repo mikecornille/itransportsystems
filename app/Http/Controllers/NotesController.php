@@ -65,6 +65,6 @@ class NotesController extends Controller
 
 		
 
-		return view('myStats')->with('posts', $posts)->with('rateCons', $rateCons)->with('invoices', $invoices)->with('unsigned', $unsigned);
+		return view('myStats')->with('posts', $posts)->with('rateCons', $rateCons)->with('invoices', $invoices);
 	}
 }
