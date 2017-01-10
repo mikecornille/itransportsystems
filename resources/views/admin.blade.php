@@ -48,28 +48,41 @@
 
 <div style="margin-left: 300px;">
 	<ul style="list-style-type: none;">
-		<li class="text-left">Robert Bansberg has posted {{ $rbNotes }} notes in month {{ $month }}. </li>
-		<li class="text-left">Robert Bansberg has created {{ $rbRateCons }} Rate Confirmations in month {{ $month }}. </li>
-		<li class="text-left">Robert Bansberg has created {{ $rbInvoices }} Invoices in month {{ $month }}. </li>
-		<li class="text-left">Robert Bansberg has been responsible for ${{ $rbMoneyBilled }}.00 billed to customers and paid out ${{ $rbMoneyPaidOut }}.00 to carriers for a profit margin of {{ $rbPercent }}%.</li>
+	    <li class="text-left"><u>Robert Bansberg</u></li>
+		<li class="text-left">{{ $rbNotes }} notes in month {{ $month }}. </li>
+		<li class="text-left">{{ $rbRateCons }} Rate Confirmations in month {{ $month }}. </li>
+		<li class="text-left">{{ $rbInvoices }} Invoices in month {{ $month }}. </li>
+		<li class="text-left">Responsible for ${{ $rbMoneyBilled }}.00 billed to customers and paid out ${{ $rbMoneyPaidOut }}.00 to carriers for a profit margin of {{ $rbPercent }}%.</li>
 	</ul>
 </div>
 
 <div style="margin-left: 300px;">
 	<ul style="list-style-type: none;">
-		<li class="text-left">Matt King has posted {{ $mkNotes }} notes in month {{ $month }}. </li>
-		<li class="text-left">Matt King has created {{ $mkRateCons }} Rate Confirmations in month {{ $month }}. </li>
-		<li class="text-left">Matt King has created {{ $mkInvoices }} Invoices in month {{ $month }}. </li>
-		<li class="text-left">Matt King has been responsible for ${{ $mkMoneyBilled }}.00 billed to customers and paid out ${{ $mkMoneyPaidOut }}.00 to carriers for a profit margin of {{ $mkPercent }}%.</li>
+	    <li class="text-left"><u>Matt King</u></li>
+		<li class="text-left">{{ $mkNotes }} notes in month {{ $month }}. </li>
+		<li class="text-left">{{ $mkRateCons }} Rate Confirmations in month {{ $month }}. </li>
+		<li class="text-left">{{ $mkInvoices }} Invoices in month {{ $month }}. </li>
+		<li class="text-left">Responsible for ${{ $mkMoneyBilled }}.00 billed to customers and paid out ${{ $mkMoneyPaidOut }}.00 to carriers for a profit margin of {{ $mkPercent }}%.</li>
 	</ul>
 </div>
 
 <div style="margin-left: 300px;">
 	<ul style="list-style-type: none;">
-		<li class="text-left">AJ Mesik has posted {{ $ajNotes }} notes in month {{ $month }}. </li>
-		<li class="text-left">AJ Mesik has created {{ $ajRateCons }} Rate Confirmations in month {{ $month }}. </li>
-		<li class="text-left">AJ Mesik has created {{ $ajInvoices }} Invoices in month {{ $month }}. </li>
-		<li class="text-left">AJ Mesik has been responsible for ${{ $ajMoneyBilled }}.00 billed to customers and paid out ${{ $ajMoneyPaidOut }}.00 to carriers for a profit margin of {{ $ajPercent }}%.</li>
+	    <li class="text-left"><u>AJ Mesik</u></li>
+		<li class="text-left">{{ $ajNotes }} notes in month {{ $month }}. </li>
+		<li class="text-left">{{ $ajRateCons }} Rate Confirmations in month {{ $month }}. </li>
+		<li class="text-left">{{ $ajInvoices }} Invoices in month {{ $month }}. </li>
+		<li class="text-left">Responsible for ${{ $ajMoneyBilled }}.00 billed to customers and paid out ${{ $ajMoneyPaidOut }}.00 to carriers for a profit margin of {{ $ajPercent }}%.</li>
+	</ul>
+</div>
+
+<div style="margin-left: 300px;">
+	<ul style="list-style-type: none;">
+	    <li class="text-left"><u>Matt Carnahan</u></li>
+		<li class="text-left">{{ $mcNotes }} notes in month {{ $month }}. </li>
+		<li class="text-left">{{ $mcRateCons }} Rate Confirmations in month {{ $month }}. </li>
+		<li class="text-left">{{ $mcInvoices }} Invoices in month {{ $month }}. </li>
+		<li class="text-left">Responsible for ${{ $mcMoneyBilled }}.00 billed to customers and paid out ${{ $mcMoneyPaidOut }}.00 to carriers for a profit margin of {{ $mcPercent }}%.</li>
 	</ul>
 </div>
 

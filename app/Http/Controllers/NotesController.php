@@ -157,6 +157,28 @@ class NotesController extends Controller
 		$ajProfitMargin = 0;
 		$ajPercent = 0;
 		}
+
+		//Matt Carnahan
+		$carnName = "Matt Carnahan";
+		$carnEmail = "mattc@itransys.com";
+		$mcNotes = Notes::where('time_name_stamp', 'LIKE', '%' . $carnName . '%')->whereMonth('created_at', $month)->count();
+		$mcRateCons = Load::where('rate_con_creator', $carnEmail)->whereMonth('created_at', $month)->count();
+		$mcInvoices = Load::where('created_by', $carnEmail)->whereMonth('created_at', $month)->count();
+		$mcMoneyBilled = Load::where('rate_con_creator', $carnEmail)->whereMonth('created_at', $month)->sum('amount_due');
+		$mcMoneyPaidOut = Load::where('rate_con_creator', $carnEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
+		
+		if ($month !== NULL)
+		{
+		$mcDifference = $mcMoneyBilled - $mcMoneyPaidOut;
+		$mcProfitMargin = $mcDifference / $mcMoneyBilled;
+		$mcPercent = round((float)$mcProfitMargin * 100 );
+		}
+		else 
+		{
+		$mcDifference = 0;
+		$mcProfitMargin = 0;
+		$mcPercent = 0;
+		}
 		
 
 		// $rateCons = Load::where('rate_con_creator', \Auth::user()->email)->count();
@@ -188,6 +210,12 @@ class NotesController extends Controller
 			->with('ajMoneyBilled', $ajMoneyBilled)
 			->with('ajMoneyPaidOut', $ajMoneyPaidOut)
 			->with('ajPercent', $ajPercent)
-			->with('ajInvoices', $ajInvoices);
+			->with('ajInvoices', $ajInvoices)
+			->with('mcNotes', $mcNotes)
+			->with('mcRateCons', $mcRateCons)
+			->with('mcMoneyBilled', $mcMoneyBilled)
+			->with('mcMoneyPaidOut', $mcMoneyPaidOut)
+			->with('mcPercent', $mcPercent)
+			->with('mcInvoices', $mcInvoices);
 	}
 }
