@@ -63,20 +63,34 @@ class NotesController extends Controller
 
 		// ->where('signed_rate_con', '!=', 'SIGNED')->orWhereNull('signed_rate_con')->get();
 
-		
+		$currentDate = date('m/d/Y');
+		//Rate Confirmation Count
+		$rateConDailyTotals = Load::where('rate_con_creation_date', $currentDate)->count();
+
+		$invoiceDailyTotals = Load::where('creation_date', $currentDate)->count();
 
 		
 
-		return view('myStats')->with('posts', $posts)->with('rateCons', $rateCons)->with('invoices', $invoices)->with('unsigned', $unsigned);
+		
+
+		return view('myStats')->with('posts', $posts)
+		->with('rateCons', $rateCons)
+		->with('invoices', $invoices)
+		->with('unsigned', $unsigned)
+		->with('rateConDailyTotals', $rateConDailyTotals)
+		->with('invoiceDailyTotals', $invoiceDailyTotals)
+		->with('currentDate', $currentDate);
 	}
 
-	//public function getAdminStats()
-	//{
+	public function getAdminStats()
+	{
 
-        //$currentDate = date('m/d/Y')
+        $currentDate = date('m/d/Y');
 		//Rate Confirmation Count
-		//$rateConTotals = Load::where('rate_con_creation_date', $currentDate)->count();
-		// $posts = Notes::where('time_name_stamp', 'LIKE', '%' . \Auth::user()->name . '%')->count();
+		$rateConDailyTotals = Load::where('rate_con_creation_date', $currentDate)->count();
+
+		$invoiceDailyTotals = Load::where('creation_date', $currentDate)->count();
+		//$posts = Notes::where('time_name_stamp', 'LIKE', '%' . \Auth::user()->name . '%')->count();
 
 
 		// $rateCons = Load::where('rate_con_creator', \Auth::user()->email)->count();
@@ -91,6 +105,8 @@ class NotesController extends Controller
 
 		
 
-		//return view('admin')->with('rateConTotals', $rateConTotals);
-	//}
+		return view('admin')->with('rateConDailyTotals', $rateConDailyTotals)
+			->with('currentDate', $currentDate)
+			->with('invoiceDailyTotals', $invoiceDailyTotals);
+	}
 }
