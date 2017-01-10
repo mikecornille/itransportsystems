@@ -79,6 +79,7 @@ Route::get('/displayLoads', function () {
 Route::get('/notes', 'NotesController@index');
 Route::get('/myStats', 'NotesController@getBrokerStats');
 Route::get('/admin', 'NotesController@getAdminStats');
+Route::post('/admin', 'NotesController@getAdminStats'); 
 
 
 Route::get('/home', 'HomeController@index');
