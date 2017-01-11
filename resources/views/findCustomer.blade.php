@@ -14,6 +14,7 @@
 
             <div class="form-group">
         <div class="row">
+        <input type="hidden" id="cus_id" name="cus_id">
             <div class="col-xs-8">
                 <label class="label-control" for="name">CUSTOMER</label>
                 <input type="text" class="form-control" id="name" name="name">
@@ -77,7 +78,7 @@
 
               
               
-              <button type="button" id="editCarrier" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Update</button>
+              <button type="button" id="editFindCarrier" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Update</button>
               
               
 

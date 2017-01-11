@@ -196,16 +196,17 @@
                 minLength: 3,
                 select: function( event, ui ) {
                     window.customerRecord = ui;
-                    $('#customer_name').val(window.customerRecord.item.object.name);
+                    $('#name').val(window.customerRecord.item.object.name);
+                    $('#cus_id').val(window.customerRecord.item.object.id);
                     $('#location_number').val(window.customerRecord.item.object.location_number);
-                    $('#customer_address').val(window.customerRecord.item.object.address);
-                    $('#customer_city').val(window.customerRecord.item.object.city);
-                    $('#customer_state').val(window.customerRecord.item.object.state);
-                    $('#customer_zip').val(window.customerRecord.item.object.zip);
-                    $('#customer_contact').val(window.customerRecord.item.object.contact);
-                    $('#customer_email').val(window.customerRecord.item.object.email);
-                    $('#customer_phone').val(window.customerRecord.item.object.phone);
-                    $('#customer_fax').val(window.customerRecord.item.object.fax);
+                    $('#address').val(window.customerRecord.item.object.address);
+                    $('#city').val(window.customerRecord.item.object.city);
+                    $('#state').val(window.customerRecord.item.object.state);
+                    $('#zip').val(window.customerRecord.item.object.zip);
+                    $('#contact').val(window.customerRecord.item.object.contact);
+                    $('#email').val(window.customerRecord.item.object.email);
+                    $('#phone').val(window.customerRecord.item.object.phone);
+                    $('#fax').val(window.customerRecord.item.object.fax);
                     $('#internal_notes').val(window.customerRecord.item.object.internal_notes);
                     log( ui.item ?
                     "Selected: " + ui.item.label :

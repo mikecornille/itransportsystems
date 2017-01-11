@@ -311,6 +311,47 @@ $.ajax({
 });
 //END NOTES
 
+
+//GETS THE VALUES FROM THE FIND CUSTOMER FORM AND SUBMITS THEM TO COORESPONDING ID IN DATABASE
+$(document).on('click', '#editFindCustomer', function(){
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+  
+$.ajax({
+        method: 'POST',
+        url: './updateCustomer',
+        data: {
+
+            id: $("#cus_id").val(),
+            name: $("#name").val(),
+            location_number: $("#location_number").val(),   
+            address: $("#address").val(),
+            city: $("#city").val(),
+            state: $("#state").val(),
+            zip: $("#zip").val(),
+            fax: $("#fax").val(),
+            contact: $("#contact").val(),
+            phone: $("#phone").val(),
+            email: $("#email").val(),
+            internal_notes: $("#internal_notes").val(),
+            
+
+         },
+         success: function(result){
+                $("#success-alert-customer").removeClass('hidden');
+                $("#success-alert-customer").alert();
+                $("#success-alert-customer").text('The customer update has been saved.');
+                $("#success-alert-customer").fadeTo(4000, 500).slideUp(500);
+               
+}
+    });
+});
+// END NOTES
+
 // SENDS THE INFO TO THE DELIVERY MODAL FOR EDITING
 function goToDesEditPage() {
   $('#dest_name').val(window.deliveryRecord.item.object.location_name);
