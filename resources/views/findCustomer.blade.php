@@ -78,7 +78,7 @@
 
               
               
-              <button type="button" id="editFindCarrier" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Update</button>
+              <button type="button" id="editFindCustomer" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Update</button>
               
               
 
