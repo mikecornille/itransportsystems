@@ -97,6 +97,15 @@
 	</ul>
 </div>
 
+<div>
+	<ul style="list-style-type: none;">
+	    <li class="text-left"><u>Mike Bruschuk</u></li>
+	    <li class="text-left">{{ $mbInvoices }} Invoices in month {{ $month }}. </li>
+		<li class="text-left">{{ $mbRateCons }} Rate Confirmations in month {{ $month }}. </li>
+		<li class="text-left">Responsible for ${{ $mbMoneyBilled }}.00 billed to customers and paid out ${{ $mbMoneyPaidOut }}.00 to carriers for a profit margin of {{ $mbPercent }}%.</li>
+	</ul>
+</div>
+
 </div>
 
 
