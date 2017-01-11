@@ -2,12 +2,6 @@
 
 @section('content')
 
-<?php
-
-
-date_default_timezone_set("America/Chicago");
-
-?>
 
 @if (count($errors) > 0)
     <div class="alert alert-danger">
@@ -320,6 +314,9 @@ date_default_timezone_set("America/Chicago");
                 <th>Trailer</th>
                 <th>Signed</th>
                 <th>Created</th>
+                <th>Pick ST</th>
+                <th>Delivery ST</th>
+                <th>Con Creator</th>
                 
                 
                 
@@ -358,6 +355,9 @@ date_default_timezone_set("America/Chicago");
                 <th>Trailer</th>
                 <th>Signed</th>
                 <th>Created</th>
+                <th>Pick ST</th>
+                <th>Delivery ST</th>
+                <th>Con Creator</th>
               
                 
            

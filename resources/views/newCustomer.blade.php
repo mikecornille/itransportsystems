@@ -90,6 +90,24 @@
 		
 		</div>
 
+          <div class="row">
+              <div class="col-xs-12">
+            <label for="customer_ambassador" class="label-control">CUSTOMER AMBASSADOR</label>
+            <select name="customer_ambassador" id="customer_ambassador" class="form-control"> 
+              <option value="Open">Open</option>
+              <option value="ronc@itransys.com">ronc@itransys.com</option>
+              <option value="joem@itransys.com">joem@itransys.com</option>
+              <option value="mikec@itransys.com">mikec@itransys.com</option>
+              <option value="mikeb@itransys.com">mikeb@itransys.com</option>
+              <option value="mattk@itransys.com">mattk@itransys.com</option>
+              <option value="mattc@itransys.com">mattc@itransys.com</option>
+              <option value="robert@itransys.com">robert@itransys.com</option>
+              <option value="aj@itransys.com">aj@itransys.com</option>
+              <option value="wanda@itransys.com">wanda@itransys.com</option>
+            </select>
+          </div>
+          </div>
+
 		<button type="submit" class="btn btn-primary" id="newCustomerSubmit"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> NEW</button>
 
 		</div>

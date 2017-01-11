@@ -51,4 +51,16 @@ class CustomersController extends Controller
 
 
    }
+
+   //GET A LIST OF THE CUSTOMERS ASSIGNED TO THE USER
+	public function getAmbassadorStats() 
+	{
+    
+		
+		$getCustomers = Customer::where('customer_ambassador', \Auth::user()->email)->get();
+
+		return view('findCustomer', compact('getCustomers'));
+
+    }
+   
 }

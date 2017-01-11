@@ -338,6 +338,7 @@ $.ajax({
             phone: $("#phone").val(),
             email: $("#email").val(),
             internal_notes: $("#internal_notes").val(),
+            customer_ambassador: $("#customer_ambassador").val(),
             
 
          },
@@ -669,7 +670,10 @@ $(document).ready(function() {
             { "data": "carrier_rate"},
             { "data": "trailer_type"},
             { "data": "signed_rate_con"},
-            { "data": "creation_date" }
+            { "data": "creation_date" },
+            { "data": "pick_state"},
+            { "data": "delivery_state"},
+            { "data": "rate_con_creator"}
 
 
         ],
@@ -702,7 +706,10 @@ $(document).ready(function() {
       { "width": "40px", "targets": 23 }, //carrier rate
       { "width": "70px", "targets": 24 }, //trailer type
       { "width": "50px", "targets": 25 }, //signed
-      { "width": "50px", "targets": 26 } //creation date
+      { "width": "50px", "targets": 26 }, //creation date
+      { "width": "50px", "targets": 27 }, //pick state
+      { "width": "50px", "targets": 28 }, //delivery state
+      { "width": "50px", "targets": 29 } //rate con creator
      
     ]
 

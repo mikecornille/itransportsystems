@@ -67,6 +67,7 @@ $factory->define(App\Customer::class, function (Faker\Generator $faker) {
         'phone' => $faker->phoneNumber(),
         'email' => $faker->email(),
 		'internal_notes' => $faker->sentence(),
+        'customer_ambassador' => $faker->email(),
     ];
 });
 

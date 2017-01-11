@@ -72,9 +72,9 @@ Route::get('/findCarrier', function () {
     return view('/findCarrier');
 });
 
-Route::get('/findCustomer', function () {
-    return view('/findCustomer');
-});
+// Route::get('/findCustomer', function () {
+//     return view('/findCustomer');
+// });
 
 Route::get('/displayLoads', function () {
     return view('/displayLoads');
@@ -84,6 +84,7 @@ Route::get('/notes', 'NotesController@index');
 Route::get('/myStats', 'NotesController@getBrokerStats');
 Route::get('/admin', 'NotesController@getAdminStats');
 Route::post('/admin', 'NotesController@getAdminStats'); 
+Route::get('/findCustomer', 'CustomersController@getAmbassadorStats');
 
 
 Route::get('/home', 'HomeController@index');

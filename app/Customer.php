@@ -20,6 +20,7 @@ class Customer extends Model
 			  'phone',
 			  'email',
 			  'internal_notes',
+			  'customer_ambassador',
         ];
 
            public function setNameAttribute($value)

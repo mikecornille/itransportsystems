@@ -37,7 +37,9 @@
                 <th>Trailer</th>
                 <th>Signed</th>
                 <th>Created</th>
-                
+                <th>Pick ST</th>
+                <th>Delivery ST</th>
+                <th>Con Creator</th>
                 
                 
                 
@@ -75,6 +77,9 @@
                 <th>Trailer</th>
                 <th>Signed</th>
                 <th>Created</th>
+                <th>Pick ST</th>
+                <th>Delivery ST</th>
+                <th>Con Creator</th>
               
                 
            
