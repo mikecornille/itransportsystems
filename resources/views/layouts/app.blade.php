@@ -113,7 +113,7 @@
                                 <ul class="dropdown-menu" role="menu">
 
                                 <li><a href="{{ URL::to('/newCustomer') }}">New Customer</a></li>
-                                <li><a href="{{ URL::to('#') }}">Find Customer</a></li>
+                                <li><a href="{{ URL::to('/findCustomer') }}">Find Customer</a></li>
                                 
                                 
 

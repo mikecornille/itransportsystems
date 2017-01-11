@@ -72,6 +72,10 @@ Route::get('/findCarrier', function () {
     return view('/findCarrier');
 });
 
+Route::get('/findCustomer', function () {
+    return view('/findCustomer');
+});
+
 Route::get('/displayLoads', function () {
     return view('/displayLoads');
 });

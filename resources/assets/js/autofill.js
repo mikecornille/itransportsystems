@@ -172,6 +172,57 @@
             });
         });
 
+  //Find Customer Autofill
+  $(function() {
+            function log( message ) {
+                $( "<div>" ).text( message ).prependTo( "#log" );
+                $( "#log" ).scrollTop( 0 );
+            }
+            $( "#find-customer-search" ).autocomplete({
+                source: function( request, response ) {
+                    $.ajax({
+                        url: "/api/customer/" + request.term,
+                        dataType: "json",
+                        success: function( data ) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: '--NAME-- ' + item.name + ' --ADDRESS-- ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' --CONTACT-- ' + item.contact + ' --EMAIL-- ' + item.email + ' --PHONE-- ' + item.phone,
+                                    value: item.name + ' ' + item.address,
+                                    object: item
+                                }
+                        }));
+                    }});
+                },
+                minLength: 3,
+                select: function( event, ui ) {
+                    window.customerRecord = ui;
+                    $('#customer_name').val(window.customerRecord.item.object.name);
+                    $('#location_number').val(window.customerRecord.item.object.location_number);
+                    $('#customer_address').val(window.customerRecord.item.object.address);
+                    $('#customer_city').val(window.customerRecord.item.object.city);
+                    $('#customer_state').val(window.customerRecord.item.object.state);
+                    $('#customer_zip').val(window.customerRecord.item.object.zip);
+                    $('#customer_contact').val(window.customerRecord.item.object.contact);
+                    $('#customer_email').val(window.customerRecord.item.object.email);
+                    $('#customer_phone').val(window.customerRecord.item.object.phone);
+                    $('#customer_fax').val(window.customerRecord.item.object.fax);
+                    $('#internal_notes').val(window.customerRecord.item.object.internal_notes);
+                    log( ui.item ?
+                    "Selected: " + ui.item.label :
+                    "Nothing selected, input was " + this.value);
+                                        $('#location-search').val('test');
+
+                },
+                open: function() {
+                    $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+
+                },
+                close: function() {
+                    $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+                }
+            });
+        });
+
 
   //Equipment Autofill
   $(function() {

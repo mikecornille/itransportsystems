@@ -15,7 +15,7 @@
 <h3>Bill of Lading from ITS regarding PRO # {{ $info->id }}</h3>
 
 <p>Below is a Bill of Lading on the load from {{ $info->pick_city }}, {{ $info->pick_state }} to {{ $info->delivery_city }}, {{ $info->delivery_state }}</p>
-<p>Driver must use the attached Bill of Lading for the above load.  Mark the condition of the freight before loading and have the shipper sign off on it.  If the freight cannot be secured properly call 630-832-6900 immediately.  Upon delivery, driver must have the receiver sign the bill of lading.</p>
+<p>Driver must use the attached Bill of Lading for the above load.  If the freight cannot be secured properly call 630-832-6900 immediately.  Upon delivery, driver must have the receiver sign the bill of lading.</p>
 <ul>
 <li>Thank You,</li>
 <li>{{ \Auth::user()->name }}</li>
