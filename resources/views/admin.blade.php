@@ -47,6 +47,9 @@
 </form>
 
 <h2 class="text-center">Your team has created {{ $rateConDailyTotals }} Rate Confirmations and {{ $invoiceDailyTotals }} Invoices today.</h2>
+<h3 class="text-center">Total Billed Out: {{ $totalBilledForMonth }}</h3>
+<h3 class="text-center">Total Paid Out: {{ $totalPaidForMonth }}</h3>
+<h3 class="text-center">Total Profit: {{ $totalProfitForMonth }}</h3>
 
 <div>
 	<ul style="list-style-type: none;">

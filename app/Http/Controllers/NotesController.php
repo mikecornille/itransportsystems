@@ -91,7 +91,14 @@ class NotesController extends Controller
 		$rateConDailyTotals = Load::where('rate_con_creation_date', $currentDate)->count();
         //Invoice Count
 		$invoiceDailyTotals = Load::where('creation_date', $currentDate)->count();
-		
+		//Total billed out for the month
+		$totalBilledForMonth = Load::whereMonth('created_at', $month)->sum('amount_due');
+		//Total paid out for the month
+		$totalPaidForMonth = Load::whereMonth('created_at', $month)->sum('carrier_rate');
+		//Total profit for the month
+		$totalProfitForMonth = $totalBilledForMonth - $totalPaidForMonth;
+
+
 		//Robert Bansberg
 		$robertName = "Robert Bansberg";
 		$robertEmail = "robert@itransys.com";
@@ -267,7 +274,10 @@ class NotesController extends Controller
 			->with('mbMoneyBilled', $mbMoneyBilled)
 			->with('mbMoneyPaidOut', $mbMoneyPaidOut)
 			->with('mbPercent', $mbPercent)
-			->with('mbInvoices', $mbInvoices);
+			->with('mbInvoices', $mbInvoices)
+			->with('totalBilledForMonth', $totalBilledForMonth)
+			->with('totalPaidForMonth', $totalPaidForMonth)
+			->with('totalProfitForMonth', $totalProfitForMonth);
 
 	}
 }
