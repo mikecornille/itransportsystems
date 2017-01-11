@@ -76,7 +76,7 @@ html, body {
   margin-top: 10px;
   color: lightseagreen; }
 
-#editCustomer, #editLocation, #editDest, #editEquip, #carrier_action_buttons, #newCarrierSubmit, #newLocationSubmit, #newEquipmentSubmit, #newCustomerSubmit, #submit_new_note {
+#editCustomer, #editLocation, #editDest, #editEquip, #carrier_action_buttons, #newCarrierSubmit, #newLocationSubmit, #newEquipmentSubmit, #newCustomerSubmit, #submit_new_note, #editFindCustomer {
   margin-top: 10px; }
 
 .notes-class {
@@ -112,12 +112,12 @@ html, body {
   float: none;
   margin: 0 auto; }
 
-#find_carrier_wrapper {
+#find_carrier_wrapper, #find_customer_wrapper {
   width: 800px;
   float: none;
   margin: 0 auto; }
 
-#find-carrier-search {
+#find-carrier-search, #find-customer-search {
   width: 700px;
   height: 50px;
   float: none;
