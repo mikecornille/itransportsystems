@@ -180,6 +180,27 @@ class NotesController extends Controller
 		$mcPercent = 0;
 		}
 		
+		//Joe Mowrer
+		$mowrerEmail = "joem@itransys.com";
+		$jmInvoices = Load::where('created_by', $mowrerEmail)->whereMonth('created_at', $month)->count();
+		$jmRateCons = Load::where('rate_con_creator', $mowrerEmail)->whereMonth('created_at', $month)->count();
+		$jmMoneyBilled = Load::where('created_by', $mowrerEmail)->whereMonth('created_at', $month)->sum('amount_due');
+		$jmMoneyPaidOut = Load::where('created_by', $mowrerEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
+		
+		if ($month !== NULL)
+		{
+		$jmDifference = $jmMoneyBilled - $jmMoneyPaidOut;
+		$jmProfitMargin = $jmDifference / $jmMoneyBilled;
+		$jmPercent = round((float)$jmProfitMargin * 100 );
+		}
+		else 
+		{
+		$jmDifference = 0;
+		$jmProfitMargin = 0;
+		$jmPercent = 0;
+		}
+
+
 
 		// $rateCons = Load::where('rate_con_creator', \Auth::user()->email)->count();
 
@@ -216,6 +237,11 @@ class NotesController extends Controller
 			->with('mcMoneyBilled', $mcMoneyBilled)
 			->with('mcMoneyPaidOut', $mcMoneyPaidOut)
 			->with('mcPercent', $mcPercent)
-			->with('mcInvoices', $mcInvoices);
+			->with('mcInvoices', $mcInvoices)
+			->with('jmRateCons', $jmRateCons)
+			->with('jmMoneyBilled', $jmMoneyBilled)
+			->with('jmMoneyPaidOut', $jmMoneyPaidOut)
+			->with('jmPercent', $jmPercent)
+			->with('jmInvoices', $jmInvoices);
 	}
 }

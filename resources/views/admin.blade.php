@@ -2,10 +2,12 @@
 
 @section('content')
 
+<div class="container">
+
 <h1 class="text-center">Welcome, {{ \Auth::user()->name }}</h1>
 <h2 class="text-center">Today's Date is {{ $currentDate }}</h2>
 
-<div class="month"  style="padding-left:300px;">
+<div class="month">
 	<form role="form" class="form-horizontal" method="POST" action="/admin">
 
 		{{ csrf_field() }}
@@ -46,7 +48,7 @@
 
 <h2 class="text-center">Your team has created {{ $rateConDailyTotals }} Rate Confirmations and {{ $invoiceDailyTotals }} Invoices today.</h2>
 
-<div style="margin-left: 300px;">
+<div>
 	<ul style="list-style-type: none;">
 	    <li class="text-left"><u>Robert Bansberg</u></li>
 		<li class="text-left">{{ $rbNotes }} notes in month {{ $month }}. </li>
@@ -56,7 +58,7 @@
 	</ul>
 </div>
 
-<div style="margin-left: 300px;">
+<div>
 	<ul style="list-style-type: none;">
 	    <li class="text-left"><u>Matt King</u></li>
 		<li class="text-left">{{ $mkNotes }} notes in month {{ $month }}. </li>
@@ -66,7 +68,7 @@
 	</ul>
 </div>
 
-<div style="margin-left: 300px;">
+<div>
 	<ul style="list-style-type: none;">
 	    <li class="text-left"><u>AJ Mesik</u></li>
 		<li class="text-left">{{ $ajNotes }} notes in month {{ $month }}. </li>
@@ -76,7 +78,7 @@
 	</ul>
 </div>
 
-<div style="margin-left: 300px;">
+<div>
 	<ul style="list-style-type: none;">
 	    <li class="text-left"><u>Matt Carnahan</u></li>
 		<li class="text-left">{{ $mcNotes }} notes in month {{ $month }}. </li>
@@ -86,7 +88,16 @@
 	</ul>
 </div>
 
+<div>
+	<ul style="list-style-type: none;">
+	    <li class="text-left"><u>Joe Mowrer</u></li>
+	    <li class="text-left">{{ $jmInvoices }} Invoices in month {{ $month }}. </li>
+		<li class="text-left">{{ $jmRateCons }} Rate Confirmations in month {{ $month }}. </li>
+		<li class="text-left">Responsible for ${{ $jmMoneyBilled }}.00 billed to customers and paid out ${{ $jmMoneyPaidOut }}.00 to carriers for a profit margin of {{ $jmPercent }}%.</li>
+	</ul>
+</div>
 
+</div>
 
 
 @endsection
