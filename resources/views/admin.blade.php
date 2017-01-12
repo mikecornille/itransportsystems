@@ -109,6 +109,15 @@
 	</ul>
 </div>
 
+<div>
+	<ul style="list-style-type: none;">
+	    <li class="text-left"><u>Ron Cornille</u></li>
+	    <li class="text-left">{{ $rcInvoices }} Invoices in month {{ $month }}. </li>
+		<li class="text-left">{{ $rcRateCons }} Rate Confirmations in month {{ $month }}. </li>
+		<li class="text-left">Responsible for ${{ $rcMoneyBilled }}.00 billed to customers and paid out ${{ $rcMoneyPaidOut }}.00 to carriers for a profit margin of {{ $rcPercent }}%.</li>
+	</ul>
+</div>
+
 </div>
 
 
