@@ -345,6 +345,11 @@ class NotesController extends Controller
 			->with('mtcMoneyPaidOut', $mtcMoneyPaidOut)
 			->with('mtcPercent', $mtcPercent)
 			->with('mtcInvoices', $mtcInvoices)
+			->with('wgRateCons', $wgRateCons)
+			->with('wgMoneyBilled', $wgMoneyBilled)
+			->with('wgMoneyPaidOut', $wgMoneyPaidOut)
+			->with('wgPercent', $wgPercent)
+			->with('wgInvoices', $wgInvoices)
 			->with('totalBilledForMonth', $totalBilledForMonth)
 			->with('totalPaidForMonth', $totalPaidForMonth)
 			->with('totalProfitForMonth', $totalProfitForMonth);
