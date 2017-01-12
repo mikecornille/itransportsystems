@@ -267,7 +267,7 @@ class NotesController extends Controller
 		$mtcPercent = 0;
 		}
 
-		Wanda Giovingo
+		//Wanda Giovingo
 		$wandaEmail = "wanda@itransys.com";
 		$wgInvoices = Load::where('created_by', $wandaEmail)->whereMonth('created_at', $month)->count();
 		// $wgRateCons = Load::where('rate_con_creator', $wandaEmail)->whereMonth('created_at', $month)->count();
