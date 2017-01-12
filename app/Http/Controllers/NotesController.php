@@ -273,7 +273,7 @@ class NotesController extends Controller
 		// $wgRateCons = Load::where('rate_con_creator', $wandaEmail)->whereMonth('created_at', $month)->count();
 		$wgMoneyBilled = Load::where('created_by', $wandaEmail)->whereMonth('created_at', $month)->sum('amount_due');
 		$wgMoneyPaidOut = Load::where('created_by', $wandaEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
-		
+
 		if ($month !== NULL)
 		{
 		$wgDifference = $wgMoneyBilled - $wgMoneyPaidOut;
