@@ -80,6 +80,9 @@ Route::post('/admin', 'NotesController@getAdminStats');
 Route::get('/findCustomer', 'CustomersController@getAmbassadorStats');
 Route::get('/findTrucks', 'CarriersController@displayPage');
 Route::post('/findTrucks', 'CarriersController@findTrucksByStateAndType');
+Route::get('/findTrucksFromLoads', 'LoadsController@displayCarrierLoadsPage');
+Route::post('/findTrucksFromLoads', 'LoadsController@findTrucksFromLoads');
+
 
 
 Route::get('/home', 'HomeController@index');

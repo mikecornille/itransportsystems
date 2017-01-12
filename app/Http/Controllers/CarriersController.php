@@ -176,6 +176,8 @@ class CarriersController extends Controller
 
 		$trailerResults = Carrier::where('state', $state)->where($trailer_type, 1)->get();
 
+
+
 		return view('findTrucks', compact('trailerResults'));
 
 
@@ -184,10 +186,12 @@ class CarriersController extends Controller
 	public function displayPage()
 	{
 		$trailerResults = NULL;
+		
 		return view('findTrucks')->with('trailerResults', $trailerResults);
 		
 
 	}
+	
 	
 }
 

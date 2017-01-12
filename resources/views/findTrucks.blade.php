@@ -11,6 +11,7 @@
 
 
 		<div class="well">
+		<h2 class="text-center">Find Carriers From Carrier Data</h2>
 			<div class="form-group">
 				<div class="row">
 					<div class="col-xs-6">
@@ -94,8 +95,10 @@
 
 			</div>
 		</div>
-	</div>
+	
 </form>
+
+
 
 @if($trailerResults != NULL)
 	<h1>Company Results</h1>
@@ -119,6 +122,10 @@
 	@endforeach
 	</ul>
 @endif
+
+
+
+
 </div>
 
 

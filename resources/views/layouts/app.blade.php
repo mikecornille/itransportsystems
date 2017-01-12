@@ -98,7 +98,8 @@
 
                                 <li><a href="{{ URL::to('/newCarrier') }}">New Carrier</a></li>
                                 <li><a href="{{ URL::to('/findCarrier') }}">Find Carrier</a></li>
-                                <li><a href="{{ URL::to('/findTrucks') }}">Find Trucks</a></li>
+                                <li><a href="{{ URL::to('/findTrucks') }}">Find Trucks From Carriers</a></li>
+                                <li><a href="{{ URL::to('/findTrucksFromLoads') }}">Find Trucks From Loads</a></li>
                                 
 
                                 </ul>
