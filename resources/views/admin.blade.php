@@ -118,6 +118,15 @@
 	</ul>
 </div>
 
+<div>
+	<ul style="list-style-type: none;">
+	    <li class="text-left"><u>Mike Cornille</u></li>
+	    <li class="text-left">{{ $mtcInvoices }} Invoices in month {{ $month }}. </li>
+		<li class="text-left">{{ $mtcRateCons }} Rate Confirmations in month {{ $month }}. </li>
+		<li class="text-left">Responsible for ${{ $mtcMoneyBilled }}.00 billed to customers and paid out ${{ $mtcMoneyPaidOut }}.00 to carriers for a profit margin of {{ $mtcPercent }}%.</li>
+	</ul>
+</div>
+
 </div>
 
 
