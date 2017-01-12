@@ -247,6 +247,26 @@ class NotesController extends Controller
 		$rcPercent = 0;
 		}
 
+		//Mike Cornille
+		$mikeEmail = "mikec@itransys.com";
+		$mtcInvoices = Load::where('created_by', $mikeEmail)->whereMonth('created_at', $month)->count();
+		$mtcRateCons = Load::where('rate_con_creator', $mikeEmail)->whereMonth('created_at', $month)->count();
+		$mtcMoneyBilled = Load::where('created_by', $mikeEmail)->whereMonth('created_at', $month)->sum('amount_due');
+		$mtcMoneyPaidOut = Load::where('created_by', $mikeEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
+		
+		if ($month !== NULL)
+		{
+		$mtcDifference = $mtcMoneyBilled - $mtcMoneyPaidOut;
+		$mtcProfitMargin = $mtcDifference / $mtcMoneyBilled;
+		$mtcPercent = round((float)$mtcProfitMargin * 100 );
+		}
+		else 
+		{
+		$mtcDifference = 0;
+		$mtcProfitMargin = 0;
+		$mtcPercent = 0;
+		}
+
 
 
 		// $rateCons = Load::where('rate_con_creator', \Auth::user()->email)->count();
@@ -300,6 +320,11 @@ class NotesController extends Controller
 			->with('rcMoneyPaidOut', $rcMoneyPaidOut)
 			->with('rcPercent', $rcPercent)
 			->with('rcInvoices', $rcInvoices)
+			->with('mtcRateCons', $mtcRateCons)
+			->with('mtcMoneyBilled', $mtcMoneyBilled)
+			->with('mtcMoneyPaidOut', $mtcMoneyPaidOut)
+			->with('mtcPercent', $mtcPercent)
+			->with('mtcInvoices', $mtcInvoices)
 			->with('totalBilledForMonth', $totalBilledForMonth)
 			->with('totalPaidForMonth', $totalPaidForMonth)
 			->with('totalProfitForMonth', $totalProfitForMonth);
