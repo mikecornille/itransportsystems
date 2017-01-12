@@ -168,6 +168,26 @@ class CarriersController extends Controller
 
 	}
 
+	public function findTrucksByStateAndType(Request $request = NULL)
+	{
+
+		$state = $request->input('state');
+		$trailer_type = $request->input('trailer_type');
+
+		$trailerResults = Carrier::where('state', $state)->where($trailer_type, 1)->get();
+
+		return view('findTrucks', compact('trailerResults'));
+
+
+	}
+
+	public function displayPage()
+	{
+		$trailerResults = NULL;
+		return view('findTrucks')->with('trailerResults', $trailerResults);
+		
+
+	}
 	
 }
 

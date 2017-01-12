@@ -64,17 +64,10 @@ Route::get('/toBeDelivered', function () {
 });
 
 
-Route::get('/findTrucks', function () {
-    return view('/findTrucks');
-});
-
 Route::get('/findCarrier', function () {
     return view('/findCarrier');
 });
 
-// Route::get('/findCustomer', function () {
-//     return view('/findCustomer');
-// });
 
 Route::get('/displayLoads', function () {
     return view('/displayLoads');
@@ -85,6 +78,8 @@ Route::get('/myStats', 'NotesController@getBrokerStats');
 Route::get('/admin', 'NotesController@getAdminStats');
 Route::post('/admin', 'NotesController@getAdminStats'); 
 Route::get('/findCustomer', 'CustomersController@getAmbassadorStats');
+Route::get('/findTrucks', 'CarriersController@displayPage');
+Route::post('/findTrucks', 'CarriersController@findTrucksByStateAndType');
 
 
 Route::get('/home', 'HomeController@index');
