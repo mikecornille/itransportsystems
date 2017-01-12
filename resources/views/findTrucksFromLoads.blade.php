@@ -19,6 +19,7 @@
 					<div class="col-xs-4">
 						<label class="label-control" for="loads_pick_state">Pick State</label>
 						<select name="loads_pick_state" id="loads_pick_state" class="form-control">
+							<option value="Choose">Choose</option>
 							<option value="AL">Alabama</option>
 							<option value="AK">Alaska</option>
 							<option value="AZ">Arizona</option>
@@ -76,6 +77,7 @@
 					<div class="col-xs-4">
 						<label class="label-control" for="loads_delivery_state">Delivery State</label>
 						<select name="loads_delivery_state" id="loads_delivery_state" class="form-control">
+						    <option value="Choose">Choose</option>
 							<option value="AL">Alabama</option>
 							<option value="AK">Alaska</option>
 							<option value="AZ">Arizona</option>
@@ -133,6 +135,7 @@
 					<div class="col-xs-4">
 						<label class="label-control" for="loads_trailer_type">Trailer Type</label>
 						<select name="loads_trailer_type" id="loads_trailer_type" class="form-control">
+							<option value="Choose">Choose</option>
 							<option value="Flatbed">Flatbed</option>
 						    <option value="Stepdeck">Stepdeck</option>
 						    <option value="Conestoga">Conestoga</option>

@@ -17,6 +17,7 @@
 					<div class="col-xs-6">
 						<label class="label-control" for="state">State</label>
 						<select name="state" id="state" class="form-control">
+						    <option value="Choose">Choose</option>
 							<option value="AL">Alabama</option>
 							<option value="AK">Alaska</option>
 							<option value="AZ">Arizona</option>
@@ -74,6 +75,7 @@
 					<div class="col-xs-6">
 						<label class="label-control" for="trailer_type">Trailer Type</label>
 						<select name="trailer_type" id="trailer_type" class="form-control">
+						    <option value="Choose">Choose</option>
 							<option value="flatbed">Flatbeds</option>
 							<option value="stepdeck">Stepdecks</option>
 							<option value="conestoga">Conestogas</option>
