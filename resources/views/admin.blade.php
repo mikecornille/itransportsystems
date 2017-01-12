@@ -127,14 +127,13 @@
 	</ul>
 </div>
 
-<!-- <div>
+<div>
 	<ul style="list-style-type: none;">
 	    <li class="text-left"><u>Wanda Giovingo</u></li>
 	    <li class="text-left">{{ $wgInvoices }} Invoices in month {{ $month }}. </li>
-		<li class="text-left">{{ $wgRateCons }} Rate Confirmations in month {{ $month }}. </li>
 		<li class="text-left">Responsible for ${{ $wgMoneyBilled }}.00 billed to customers and paid out ${{ $wgMoneyPaidOut }}.00 to carriers for a profit margin of {{ $wgPercent }}%.</li>
 	</ul>
-</div> -->
+</div>
 </div>
 
 
