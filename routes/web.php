@@ -119,6 +119,7 @@ Route::get('/getContractPDF/{id}', 'PDFController@getContractPDF');
 
 //EMAILS SENT WITH LOAD DATA BUT NO ATTACHMENTS
 Route::get('/internal/{id}', 'LoadsController@internalEmail');
+Route::get('/emailLoadGroup/{id}', 'LoadsController@emailLoadGroup');
 Route::get('/status/{id}', 'LoadsController@getStatusEmail');
 Route::get('/pod/{id}', 'LoadsController@podRequestEmail');
 Route::get('/updateCustomer/{id}', 'LoadsController@updateCustomerEmail');

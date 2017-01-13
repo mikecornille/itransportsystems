@@ -561,6 +561,7 @@
         <li class="divider"></li>
         <li class="dropdown-header">EMAILS W/MESSAGE</li>
         <li><a href="{{ URL::to('/internal/' . $info->id) }}"><b>Email Internal</b></a></li>
+        <li><a href="{{ URL::to('/emailLoadGroup/' . $info->id) }}"><b>Email Load Group</b></a></li>
         <li><a href="{{ URL::to('/updateCustomer/' . $info->id) }}"><b>Email Customer</b></a></li>
         <li><a href="{{ URL::to('/emailCarrier/' . $info->id) }}"><b>Email Carrier</b></a></li>
         <li class="divider"></li>
