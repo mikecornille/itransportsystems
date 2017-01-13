@@ -283,6 +283,21 @@ class NotesController extends Controller
 		$wandaEmail = "wanda@itransys.com";
 		$wgAmbassador = Customer::where('customer_ambassador', $wandaEmail)->count();
 		$wgInvoices = Load::where('created_by', $wandaEmail)->whereMonth('created_at', $month)->count();
+		$wgMoneyBilled = Load::where('created_by', $wandaEmail)->whereMonth('created_at', $month)->sum('amount_due');
+		$wgMoneyPaidOut = Load::where('created_by', $wandaEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
+
+		if ($month !== NULL)
+		{
+		$wgDifference = $wgMoneyBilled - $wgMoneyPaidOut;
+		$wgProfitMargin = $wgDifference / $wgMoneyBilled;
+		$wgPercent = round((float)$wgProfitMargin * 100 );
+		}
+		else 
+		{
+		$wgDifference = 0;
+		$wgProfitMargin = 0;
+		$wgPercent = 0;
+		}
 		
 		
 		// $wgRateCons = Load::where('rate_con_creator', $wandaEmail)->whereMonth('created_at', $month)->count();
@@ -360,9 +375,9 @@ class NotesController extends Controller
 			->with('mtcMoneyPaidOut', $mtcMoneyPaidOut)
 			->with('mtcPercent', $mtcPercent)
 			->with('mtcInvoices', $mtcInvoices)
-			// ->with('wgMoneyBilled', $wgMoneyBilled)
-			// ->with('wgMoneyPaidOut', $wgMoneyPaidOut)
-			// ->with('wgPercent', $wgPercent)
+			->with('wgMoneyBilled', $wgMoneyBilled)
+			->with('wgMoneyPaidOut', $wgMoneyPaidOut)
+			->with('wgPercent', $wgPercent)
 			->with('wgInvoices', $wgInvoices)
 			->with('totalBilledForMonth', $totalBilledForMonth)
 			->with('totalPaidForMonth', $totalPaidForMonth)
