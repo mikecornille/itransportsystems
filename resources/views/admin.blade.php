@@ -66,6 +66,7 @@
 	<ul style="list-style-type: none;">
 	    <li class="text-left"><u>Matt King</u></li>
 		<li class="text-left">{{ $mkNotes }} notes in month {{ $month }}. </li>
+		<li class="text-left">Ambassador for {{ $mkAmbassador }} companies. </li>
 		<li class="text-left">{{ $mkRateCons }} Rate Confirmations in month {{ $month }}. </li>
 		<li class="text-left">{{ $mkInvoices }} Invoices in month {{ $month }}. </li>
 		<li class="text-left">Responsible for ${{ $mkMoneyBilled }}.00 billed to customers and paid out ${{ $mkMoneyPaidOut }}.00 to carriers for a profit margin of {{ $mkPercent }}%.</li>
@@ -76,6 +77,7 @@
 	<ul style="list-style-type: none;">
 	    <li class="text-left"><u>AJ Mesik</u></li>
 		<li class="text-left">{{ $ajNotes }} notes in month {{ $month }}. </li>
+		<li class="text-left">Ambassador for {{ $ajAmbassador }} companies. </li>
 		<li class="text-left">{{ $ajRateCons }} Rate Confirmations in month {{ $month }}. </li>
 		<li class="text-left">{{ $ajInvoices }} Invoices in month {{ $month }}. </li>
 		<li class="text-left">Responsible for ${{ $ajMoneyBilled }}.00 billed to customers and paid out ${{ $ajMoneyPaidOut }}.00 to carriers for a profit margin of {{ $ajPercent }}%.</li>
@@ -86,6 +88,7 @@
 	<ul style="list-style-type: none;">
 	    <li class="text-left"><u>Matt Carnahan</u></li>
 		<li class="text-left">{{ $mcNotes }} notes in month {{ $month }}. </li>
+		<li class="text-left">Ambassador for {{ $mcAmbassador }} companies. </li>
 		<li class="text-left">{{ $mcRateCons }} Rate Confirmations in month {{ $month }}. </li>
 		<li class="text-left">{{ $mcInvoices }} Invoices in month {{ $month }}. </li>
 		<li class="text-left">Responsible for ${{ $mcMoneyBilled }}.00 billed to customers and paid out ${{ $mcMoneyPaidOut }}.00 to carriers for a profit margin of {{ $mcPercent }}%.</li>
@@ -95,6 +98,7 @@
 <div>
 	<ul style="list-style-type: none;">
 	    <li class="text-left"><u>Joe Mowrer</u></li>
+	    <li class="text-left">Ambassador for {{ $jmAmbassador }} companies. </li>
 	    <li class="text-left">{{ $jmInvoices }} Invoices in month {{ $month }}. </li>
 		<li class="text-left">{{ $jmRateCons }} Rate Confirmations in month {{ $month }}. </li>
 		<li class="text-left">Responsible for ${{ $jmMoneyBilled }}.00 billed to customers and paid out ${{ $jmMoneyPaidOut }}.00 to carriers for a profit margin of {{ $jmPercent }}%.</li>
@@ -104,6 +108,7 @@
 <div>
 	<ul style="list-style-type: none;">
 	    <li class="text-left"><u>Mike Bruschuk</u></li>
+	    <li class="text-left">Ambassador for {{ $mbAmbassador }} companies. </li>
 	    <li class="text-left">{{ $mbInvoices }} Invoices in month {{ $month }}. </li>
 		<li class="text-left">{{ $mbRateCons }} Rate Confirmations in month {{ $month }}. </li>
 		<li class="text-left">Responsible for ${{ $mbMoneyBilled }}.00 billed to customers and paid out ${{ $mbMoneyPaidOut }}.00 to carriers for a profit margin of {{ $mbPercent }}%.</li>
@@ -113,6 +118,7 @@
 <div>
 	<ul style="list-style-type: none;">
 	    <li class="text-left"><u>Ron Cornille</u></li>
+	    <li class="text-left">Ambassador for {{ $rcAmbassador }} companies. </li>
 	    <li class="text-left">{{ $rcInvoices }} Invoices in month {{ $month }}. </li>
 		<li class="text-left">{{ $rcRateCons }} Rate Confirmations in month {{ $month }}. </li>
 		<li class="text-left">Responsible for ${{ $rcMoneyBilled }}.00 billed to customers and paid out ${{ $rcMoneyPaidOut }}.00 to carriers for a profit margin of {{ $rcPercent }}%.</li>
@@ -122,6 +128,7 @@
 <div>
 	<ul style="list-style-type: none;">
 	    <li class="text-left"><u>Mike Cornille</u></li>
+	    <li class="text-left">Ambassador for {{ $mtcAmbassador }} companies. </li>
 	    <li class="text-left">{{ $mtcInvoices }} Invoices in month {{ $month }}. </li>
 		<li class="text-left">{{ $mtcRateCons }} Rate Confirmations in month {{ $month }}. </li>
 		<li class="text-left">Responsible for ${{ $mtcMoneyBilled }}.00 billed to customers and paid out ${{ $mtcMoneyPaidOut }}.00 to carriers for a profit margin of {{ $mtcPercent }}%.</li>

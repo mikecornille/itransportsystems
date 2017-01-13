@@ -132,6 +132,7 @@ class NotesController extends Controller
 		$mkInvoices = Load::where('created_by', $kingEmail)->whereMonth('created_at', $month)->count();
 		$mkMoneyBilled = Load::where('rate_con_creator', $kingEmail)->whereMonth('created_at', $month)->sum('amount_due');
 		$mkMoneyPaidOut = Load::where('rate_con_creator', $kingEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
+		$mkAmbassador = Customer::where('customer_ambassador', $kingEmail)->count();
 		
 		if ($month !== NULL)
 		{
@@ -154,6 +155,7 @@ class NotesController extends Controller
 		$ajInvoices = Load::where('created_by', $MesikEmail)->whereMonth('created_at', $month)->count();
 		$ajMoneyBilled = Load::where('rate_con_creator', $MesikEmail)->whereMonth('created_at', $month)->sum('amount_due');
 		$ajMoneyPaidOut = Load::where('rate_con_creator', $MesikEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
+		$ajAmbassador = Customer::where('customer_ambassador', $MesikEmail)->count();
 		
 		if ($month !== NULL)
 		{
@@ -176,6 +178,7 @@ class NotesController extends Controller
 		$mcInvoices = Load::where('created_by', $carnEmail)->whereMonth('created_at', $month)->count();
 		$mcMoneyBilled = Load::where('rate_con_creator', $carnEmail)->whereMonth('created_at', $month)->sum('amount_due');
 		$mcMoneyPaidOut = Load::where('rate_con_creator', $carnEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
+		$mcAmbassador = Customer::where('customer_ambassador', $carnEmail)->count();
 		
 		if ($month !== NULL)
 		{
@@ -196,6 +199,7 @@ class NotesController extends Controller
 		$jmRateCons = Load::where('rate_con_creator', $mowrerEmail)->whereMonth('created_at', $month)->count();
 		$jmMoneyBilled = Load::where('created_by', $mowrerEmail)->whereMonth('created_at', $month)->sum('amount_due');
 		$jmMoneyPaidOut = Load::where('created_by', $mowrerEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
+		$jmAmbassador = Customer::where('customer_ambassador', $mowrerEmail)->count();
 		
 		if ($month !== NULL)
 		{
@@ -216,6 +220,7 @@ class NotesController extends Controller
 		$mbRateCons = Load::where('rate_con_creator', $brushEmail)->whereMonth('created_at', $month)->count();
 		$mbMoneyBilled = Load::where('created_by', $brushEmail)->whereMonth('created_at', $month)->sum('amount_due');
 		$mbMoneyPaidOut = Load::where('created_by', $brushEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
+		$mbAmbassador = Customer::where('customer_ambassador', $brushEmail)->count();
 		
 		if ($month !== NULL)
 		{
@@ -236,6 +241,7 @@ class NotesController extends Controller
 		$rcRateCons = Load::where('rate_con_creator', $ronEmail)->whereMonth('created_at', $month)->count();
 		$rcMoneyBilled = Load::where('created_by', $ronEmail)->whereMonth('created_at', $month)->sum('amount_due');
 		$rcMoneyPaidOut = Load::where('created_by', $ronEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
+		$rcAmbassador = Customer::where('customer_ambassador', $ronEmail)->count();
 		
 		if ($month !== NULL)
 		{
@@ -256,6 +262,7 @@ class NotesController extends Controller
 		$mtcRateCons = Load::where('rate_con_creator', $mikeEmail)->whereMonth('created_at', $month)->count();
 		$mtcMoneyBilled = Load::where('created_by', $mikeEmail)->whereMonth('created_at', $month)->sum('amount_due');
 		$mtcMoneyPaidOut = Load::where('created_by', $mikeEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
+		$mtcAmbassador = Customer::where('customer_ambassador', $mikeEmail)->count();
 		
 		if ($month !== NULL)
 		{
@@ -355,7 +362,15 @@ class NotesController extends Controller
 			->with('totalBilledForMonth', $totalBilledForMonth)
 			->with('totalPaidForMonth', $totalPaidForMonth)
 			->with('totalProfitForMonth', $totalProfitForMonth)
-			->with('rbAmbassador', $rbAmbassador);
+			->with('rbAmbassador', $rbAmbassador)
+			->with('mkAmbassador', $mkAmbassador)
+			->with('mcAmbassador', $mcAmbassador)
+			->with('mtcAmbassador', $mtcAmbassador)
+			->with('wgAmbassador', $wgAmbassador)
+			->with('ajAmbassador', $ajAmbassador)
+			->with('rcAmbassador', $rcAmbassador)
+			->with('jmAmbassador', $jmAmbassador)
+			->with('mbAmbassador', $mbAmbassador);
 
 	}
 }
