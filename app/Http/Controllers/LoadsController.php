@@ -245,7 +245,7 @@ class LoadsController extends Controller
 
         });
 
-    	return back()->with('status', 'Your Joe and Brush internal message has been sent.');
+    	return back()->with('status', 'Your Joe, Brush, and Rate Con Creator internal message has been sent.');
     }
 
 	//Request status email from a carrier 

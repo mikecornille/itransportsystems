@@ -167,7 +167,7 @@
 <ul style="list-style-type: none;">
 	@foreach ($trailerResultsFromLoads as $loads)
 	    		<li class="text-left"><u>COMPANY: {{ $loads->carrier_name . ' MC # ' . $loads->carrier_mc }}</u></li>
-	    		<li class="text-left">PRO #: {{ $loads->id }}</li>
+	    		<li class="text-left">PRO #: {{ $loads->id }} on {{ $loads->rate_con_creation_date }} for {{ $loads->carrier_rate }}</li>
 			    <li class="text-left">NAME/PHONE/EMAIL: {{ $loads->carrier_contact . ' ' . $loads->carrier_phone . ' ' . $loads->carrier_email }}</li>
 			    <li class="text-left">PREVIOUS LANE: {{ $loads->pick_city . ', ' . $loads->pick_state . ' to ' . $loads->delivery_city . ', ' . $loads->delivery_state }}</li>
 			    <li class="text-left">COMMODITY: {{ $loads->commodity }}</li>
