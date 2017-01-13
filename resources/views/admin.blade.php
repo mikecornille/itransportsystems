@@ -55,6 +55,7 @@
 	<ul style="list-style-type: none;">
 	    <li class="text-left"><u>Robert Bansberg</u></li>
 		<li class="text-left">{{ $rbNotes }} notes in month {{ $month }}. </li>
+		<li class="text-left">Ambassador for {{ $rbAmbassador }} companies. </li>
 		<li class="text-left">{{ $rbRateCons }} Rate Confirmations in month {{ $month }}. </li>
 		<li class="text-left">{{ $rbInvoices }} Invoices in month {{ $month }}. </li>
 		<li class="text-left">Responsible for ${{ $rbMoneyBilled }}.00 billed to customers and paid out ${{ $rbMoneyPaidOut }}.00 to carriers for a profit margin of {{ $rbPercent }}%.</li>

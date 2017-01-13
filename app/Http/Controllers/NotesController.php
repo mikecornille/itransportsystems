@@ -6,6 +6,8 @@ use App\Notes;
 
 use App\Load;
 
+use App\Customer;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -107,6 +109,7 @@ class NotesController extends Controller
 		$rbInvoices = Load::where('created_by', $robertEmail)->whereMonth('created_at', $month)->count();
 		$rbMoneyBilled = Load::where('rate_con_creator', $robertEmail)->whereMonth('created_at', $month)->sum('amount_due');
 		$rbMoneyPaidOut = Load::where('rate_con_creator', $robertEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
+		$rbAmbassador = Customer::where('customer_ambassador', $robertEmail)->count();
 		
 		if ($month !== NULL)
 		{
@@ -351,7 +354,8 @@ class NotesController extends Controller
 			// ->with('wgInvoices', $wgInvoices)
 			->with('totalBilledForMonth', $totalBilledForMonth)
 			->with('totalPaidForMonth', $totalPaidForMonth)
-			->with('totalProfitForMonth', $totalProfitForMonth);
+			->with('totalProfitForMonth', $totalProfitForMonth)
+			->with('rbAmbassador', $rbAmbassador);
 
 	}
 }
