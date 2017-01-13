@@ -135,6 +135,14 @@
 	</ul>
 </div>
 
+<div>
+	<ul style="list-style-type: none;">
+	    <li class="text-left"><u>Wanda Giovingo</u></li>
+	    <li class="text-left">Ambassador for {{ $wgAmbassador }} companies. </li>
+	    
+	</ul>
+</div>
+
 
 </div>
 

@@ -88,6 +88,8 @@ class NotesController extends Controller
 	{
 		$month = $request->input('month');
 
+	
+
         $currentDate = date('m/d/Y');
 		//Rate Confirmation Count
 		$rateConDailyTotals = Load::where('rate_con_creation_date', $currentDate)->count();
@@ -278,9 +280,11 @@ class NotesController extends Controller
 		}
 
 		//Wanda Giovingo
-		// $wandaEmail = "wanda@itransys.com";
-		// $wgInvoices = Load::where('created_by', $wandaEmail)->whereMonth('created_at', $month)->count();
-		// // $wgRateCons = Load::where('rate_con_creator', $wandaEmail)->whereMonth('created_at', $month)->count();
+		$wandaEmail = "wanda@itransys.com";
+		$wgAmbassador = Customer::where('customer_ambassador', $wandaEmail)->count();
+		
+		
+		// $wgRateCons = Load::where('rate_con_creator', $wandaEmail)->whereMonth('created_at', $month)->count();
 		// $wgMoneyBilled = Load::where('created_by', $wandaEmail)->whereMonth('created_at', $month)->sum('amount_due');
 		// $wgMoneyPaidOut = Load::where('created_by', $wandaEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
 
@@ -358,7 +362,7 @@ class NotesController extends Controller
 			// ->with('wgMoneyBilled', $wgMoneyBilled)
 			// ->with('wgMoneyPaidOut', $wgMoneyPaidOut)
 			// ->with('wgPercent', $wgPercent)
-			// ->with('wgInvoices', $wgInvoices)
+			//->with('wgInvoices', $wgInvoices)
 			->with('totalBilledForMonth', $totalBilledForMonth)
 			->with('totalPaidForMonth', $totalPaidForMonth)
 			->with('totalProfitForMonth', $totalProfitForMonth)
@@ -366,7 +370,7 @@ class NotesController extends Controller
 			->with('mkAmbassador', $mkAmbassador)
 			->with('mcAmbassador', $mcAmbassador)
 			->with('mtcAmbassador', $mtcAmbassador)
-			//->with('wgAmbassador', $wgAmbassador)
+			->with('wgAmbassador', $wgAmbassador)
 			->with('ajAmbassador', $ajAmbassador)
 			->with('rcAmbassador', $rcAmbassador)
 			->with('jmAmbassador', $jmAmbassador)
