@@ -366,7 +366,7 @@ class NotesController extends Controller
 			->with('mkAmbassador', $mkAmbassador)
 			->with('mcAmbassador', $mcAmbassador)
 			->with('mtcAmbassador', $mtcAmbassador)
-			->with('wgAmbassador', $wgAmbassador)
+			//->with('wgAmbassador', $wgAmbassador)
 			->with('ajAmbassador', $ajAmbassador)
 			->with('rcAmbassador', $rcAmbassador)
 			->with('jmAmbassador', $jmAmbassador)
