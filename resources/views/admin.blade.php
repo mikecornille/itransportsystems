@@ -139,6 +139,7 @@
 	<ul style="list-style-type: none;">
 	    <li class="text-left"><u>Wanda Giovingo</u></li>
 	    <li class="text-left">Ambassador for {{ $wgAmbassador }} companies. </li>
+	    <li class="text-left">{{ $wgInvoices }} Invoices in month {{ $month }}. </li>
 	    
 	</ul>
 </div>

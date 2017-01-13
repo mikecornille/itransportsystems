@@ -282,6 +282,7 @@ class NotesController extends Controller
 		//Wanda Giovingo
 		$wandaEmail = "wanda@itransys.com";
 		$wgAmbassador = Customer::where('customer_ambassador', $wandaEmail)->count();
+		$wgInvoices = Load::where('created_by', $wandaEmail)->whereMonth('created_at', $month)->count();
 		
 		
 		// $wgRateCons = Load::where('rate_con_creator', $wandaEmail)->whereMonth('created_at', $month)->count();
@@ -362,7 +363,7 @@ class NotesController extends Controller
 			// ->with('wgMoneyBilled', $wgMoneyBilled)
 			// ->with('wgMoneyPaidOut', $wgMoneyPaidOut)
 			// ->with('wgPercent', $wgPercent)
-			//->with('wgInvoices', $wgInvoices)
+			->with('wgInvoices', $wgInvoices)
 			->with('totalBilledForMonth', $totalBilledForMonth)
 			->with('totalPaidForMonth', $totalPaidForMonth)
 			->with('totalProfitForMonth', $totalProfitForMonth)
