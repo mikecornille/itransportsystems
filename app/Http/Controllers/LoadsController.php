@@ -220,7 +220,35 @@ class LoadsController extends Controller
     	return back()->with('status', 'Your group internal message has been sent.');
     }
 
-	//Request status email from a carrier
+    //Sends an email to Joe and Brush 
+
+    public function emailBrushJoe($id)
+	{
+        $info = Load::find($id);
+		
+		$info = ['info' => $info];
+        
+        Mail::send(['html'=>'email.internalEmail'], $info, function($message) use ($info){
+            
+            $recipients = ['joem@itransys.com', 'mikeb@itransys.com'];
+
+            
+           	$message->to($recipients)
+
+           	->subject('Internal Message on PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] .  ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name)
+
+            ->replyTo(\Auth::user()->email, \Auth::user()->name)
+
+           	->sender(\Auth::user()->email, \Auth::user()->name);
+
+        });
+
+    	return back()->with('status', 'Your Joe and Brush internal message has been sent.');
+    }
+
+	//Request status email from a carrier 
 
 	public function getStatusEmail($id)
 	{
