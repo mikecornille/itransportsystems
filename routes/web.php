@@ -94,9 +94,19 @@ Route::get('/getProfitReport', function() {
     return view('/getProfitReport');
 });
 
+Route::post('/getProfitReport/{type}', 'MaatwebsiteDemoController@getProfitReport');
+
+Route::post('/quickbooksExport/{type}', 'MaatwebsiteDemoController@quickbooksExport');
+
 Route::get('/quickbooksExport', function() {
     return view('/quickbooksExport');
 });
+
+Route::get('/exportCarrierBills', function() {
+    return view('/exportCarrierBills');
+});
+
+Route::post('/exportCarrierBills/{type}', 'MaatwebsiteDemoController@exportCarrierBills');
 
 
 

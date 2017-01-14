@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-<form role="form" class="form-horizontal" method="POST" action="/getProfitReport">
+<form role="form" class="form-horizontal" method="POST" action="/getProfitReport/csv">
 
 		{{ csrf_field() }}
 

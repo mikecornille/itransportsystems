@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-<form role="form" class="form-horizontal" method="POST" action="/quickbooksExport/csv">
+<form role="form" class="form-horizontal" method="POST" action="/exportCarrierBills/csv">
 
 		{{ csrf_field() }}
 
@@ -14,7 +14,7 @@
 				<div class="row">
 				<div class="col-xs-6">
 			   		<label class="label-control" for="import_date">Import Date</label>
-			   		<input type="text" class="form-control" id="datepicker_quickbooks" name="import_date">
+			   		<input type="text" class="form-control" id="datepicker_exportCarrierBills" name="import_date">
 			 	</div>
 			 	
 					

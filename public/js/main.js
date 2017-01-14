@@ -776,6 +776,10 @@ $('#datepicker_profit_end').datepicker();
 
 $('#datepicker_quickbooks').datepicker();
 
+$('#datepicker_exportCarrierBills').datepicker();
+
+
+
 $('#datepicker').on('changeDate', function(ev){
     $(this).datepicker('hide');
 });
@@ -831,6 +835,11 @@ $('#datepicker_profit_end').on('changeDate', function(ev){
 $('#datepicker_quickbooks').on('changeDate', function(ev){
     $(this).datepicker('hide');
 });
+
+$('#datepicker_exportCarrierBills').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
 
 
 
