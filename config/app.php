@@ -182,7 +182,10 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         Laravel\Scout\ScoutServiceProvider::class,
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
-        Spatie\Backup\BackupServiceProvider::class
+        Spatie\Backup\BackupServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class
+
+        
 
 
     ],
@@ -234,6 +237,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class
+
+        
 
 
     ],

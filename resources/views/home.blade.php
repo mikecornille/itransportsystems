@@ -3,6 +3,9 @@
 @section('content')
 
 
+
+
+
 @if (count($errors) > 0)
     <div class="alert alert-danger">
         <ul>
@@ -22,6 +25,8 @@
 @endif
 
 <div id="overall_form_div">
+
+
 
 <form role="form" class="form-horizontal" method="POST" action="/new">
         

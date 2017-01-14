@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Mail;
 use Twilio\Rest\Client;
 
 use PDF;
+
+use Excel;
+
 use App\Load;
 
 class PDFController extends Controller
@@ -238,6 +241,11 @@ class PDFController extends Controller
 
         return back()->with('status', 'The Text Message has been sent!');
     }
+
+   
+
+
+
 }
 
 	

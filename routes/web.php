@@ -68,6 +68,9 @@ Route::get('/findCarrier', function () {
     return view('/findCarrier');
 });
 
+Route::get('/importExport', function () {
+    return view('/importExport');
+});
 
 Route::get('/displayLoads', function () {
     return view('/displayLoads');
@@ -82,6 +85,18 @@ Route::get('/findTrucks', 'CarriersController@displayPage');
 Route::post('/findTrucks', 'CarriersController@findTrucksByStateAndType');
 Route::get('/findTrucksFromLoads', 'LoadsController@displayCarrierLoadsPage');
 Route::post('/findTrucksFromLoads', 'LoadsController@findTrucksFromLoads');
+
+//Route::get('/excel', 'PDFController@excel');
+
+Route::get('downloadExcel/{type}', 'MaatwebsiteDemoController@downloadExcel');
+
+Route::get('/getProfitReport', function() {
+    return view('/getProfitReport');
+});
+
+Route::get('/quickbooksExport', function() {
+    return view('/quickbooksExport');
+});
 
 
 

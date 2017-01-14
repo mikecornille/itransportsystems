@@ -770,6 +770,12 @@ $('#car_cargo_exp').datepicker();
 
 $('#car_bc_contract').datepicker();
 
+$('#datepicker_profit_start').datepicker();
+
+$('#datepicker_profit_end').datepicker();
+
+$('#datepicker_quickbooks').datepicker();
+
 $('#datepicker').on('changeDate', function(ev){
     $(this).datepicker('hide');
 });
@@ -811,6 +817,18 @@ $('#car_cargo_exp').on('changeDate', function(ev){
 });
 
 $('#car_bc_contract').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
+$('#datepicker_profit_start').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
+$('#datepicker_profit_end').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
+$('#datepicker_quickbooks').on('changeDate', function(ev){
     $(this).datepicker('hide');
 });
 

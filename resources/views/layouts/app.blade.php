@@ -138,7 +138,24 @@
 
                             </li>
                             @if (Auth::user()->admin)
-                                <li><a href="{{ url('/admin') }}">Admin</a></li>
+                                
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin <span class="caret"></span>
+                                    </a>
+
+                                <ul class="dropdown-menu" role="menu">
+
+                                <li><a href="{{ url('/admin') }}">Company Snapshot</a></li>
+                                <li><a href="{{ url('/getProfitReport') }}">Profit Report</a></li>
+                                <li><a href="{{ url('/quickbooksExport') }}">Quickbooks Export</a></li>
+                                
+                                
+
+                                </ul>
+
+
+                            </li>
 
                             @endif
                             
