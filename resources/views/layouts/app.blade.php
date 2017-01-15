@@ -148,7 +148,7 @@
 
                                 <li><a href="{{ url('/admin') }}">Company Snapshot</a></li>
                                 <li><a href="{{ url('/getProfitReport') }}">Profit Report</a></li>
-                                <li><a href="{{ url('/quickbooksExport') }}">Export Customer Invoices</a></li>
+                                <li><a href="{{ url('/exportCustomerInvoices') }}">Export Customer Invoices</a></li>
                                 <li><a href="{{ url('/exportCarrierBills') }}">Export Carrier Bills</a></li>
                                 
                                 

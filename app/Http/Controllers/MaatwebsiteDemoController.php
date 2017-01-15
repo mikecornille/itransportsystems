@@ -16,23 +16,6 @@ use App\Load;
 
 class MaatwebsiteDemoController extends Controller
 {
-	// public function importExport()
-	// {
-	// 	return view('importExport');
-	// }
-	public function downloadExcel($type)
-	{
-		 
-		//$data = Item::get()->toArray();
-		$loads = Load::select('billed_date', 'approved_carrier_invoice', 'its_group', 'id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'customer_name', 'amount_due', 'carrier_name', 'carrier_rate')->whereBetween('billed_date', ['01/01/2017', '01/20/2017'])->orderBy('billed_date', 'desc')->get();
-
-		return \Excel::create('itsolutionstuff_example', function($excel) use ($loads) {
-			$excel->sheet('mySheet', function($sheet) use ($loads)
-	        {
-				$sheet->fromArray($loads);
-	        });
-		})->download($type);
-	}
 
 	public function getProfitReport($type, Request $request)
 	{
@@ -50,7 +33,7 @@ class MaatwebsiteDemoController extends Controller
 		})->download($type);
 	}
 
-	public function quickbooksExport($type, Request $request)
+	public function exportCustomerInvoices($type, Request $request)
 	{
 		 //Customer Invoice Import
 		 $import_date = $request->input('import_date');

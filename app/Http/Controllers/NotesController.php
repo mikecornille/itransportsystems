@@ -88,6 +88,8 @@ class NotesController extends Controller
 	{
 		$month = $request->input('month');
 
+		//$year = $request->input('year');
+
 	
 
         $currentDate = date('m/d/Y');
@@ -97,13 +99,14 @@ class NotesController extends Controller
 		$invoiceDailyTotals = Load::where('creation_date', $currentDate)->count();
 		//Total billed out for the month
 		$totalBilledForMonth = Load::whereMonth('created_at', $month)->sum('amount_due');
+
 		//Total paid out for the month
 		$totalPaidForMonth = Load::whereMonth('created_at', $month)->sum('carrier_rate');
 		//Total profit for the month
 		$totalProfitForMonth = $totalBilledForMonth - $totalPaidForMonth;
 
 
-		//Robert Bansberg
+		
 		$robertName = "Robert Bansberg";
 		$robertEmail = "robert@itransys.com";
 		$rbNotes = Notes::where('time_name_stamp', 'LIKE', '%' . $robertName . '%')->whereMonth('created_at', $month)->count();
@@ -126,7 +129,7 @@ class NotesController extends Controller
 		$rbPercent = 0;
 		}
 
-		//Matt King
+		
 		$kingName = "Matt King";
 		$kingEmail = "mattk@itransys.com";
 		$mkNotes = Notes::where('time_name_stamp', 'LIKE', '%' . $kingName . '%')->whereMonth('created_at', $month)->count();
@@ -149,7 +152,7 @@ class NotesController extends Controller
 		$mkPercent = 0;
 		}
 
-		//AJ Mesik
+		
 		$MesikName = "AJ Mesik";
 		$MesikEmail = "aj@itransys.com";
 		$ajNotes = Notes::where('time_name_stamp', 'LIKE', '%' . $MesikName . '%')->whereMonth('created_at', $month)->count();
@@ -172,7 +175,7 @@ class NotesController extends Controller
 		$ajPercent = 0;
 		}
 
-		//Matt Carnahan
+		
 		$carnName = "Matt Carnahan";
 		$carnEmail = "mattc@itransys.com";
 		$mcNotes = Notes::where('time_name_stamp', 'LIKE', '%' . $carnName . '%')->whereMonth('created_at', $month)->count();
@@ -195,7 +198,7 @@ class NotesController extends Controller
 		$mcPercent = 0;
 		}
 		
-		//Joe Mowrer
+		
 		$mowrerEmail = "joem@itransys.com";
 		$jmInvoices = Load::where('created_by', $mowrerEmail)->whereMonth('created_at', $month)->count();
 		$jmRateCons = Load::where('rate_con_creator', $mowrerEmail)->whereMonth('created_at', $month)->count();
@@ -216,7 +219,7 @@ class NotesController extends Controller
 		$jmPercent = 0;
 		}
 
-		//Mike Bruschuk
+		
 		$brushEmail = "mikeb@itransys.com";
 		$mbInvoices = Load::where('created_by', $brushEmail)->whereMonth('created_at', $month)->count();
 		$mbRateCons = Load::where('rate_con_creator', $brushEmail)->whereMonth('created_at', $month)->count();
@@ -237,7 +240,7 @@ class NotesController extends Controller
 		$mbPercent = 0;
 		}
 
-		//Ron Cornille
+		
 		$ronEmail = "ronc@itransys.com";
 		$rcInvoices = Load::where('created_by', $ronEmail)->whereMonth('created_at', $month)->count();
 		$rcRateCons = Load::where('rate_con_creator', $ronEmail)->whereMonth('created_at', $month)->count();
@@ -258,7 +261,7 @@ class NotesController extends Controller
 		$rcPercent = 0;
 		}
 
-		//Mike Cornille
+		
 		$mikeEmail = "mikec@itransys.com";
 		$mtcInvoices = Load::where('created_by', $mikeEmail)->whereMonth('created_at', $month)->count();
 		$mtcRateCons = Load::where('rate_con_creator', $mikeEmail)->whereMonth('created_at', $month)->count();
@@ -279,7 +282,7 @@ class NotesController extends Controller
 		$mtcPercent = 0;
 		}
 
-		//Wanda Giovingo
+		
 		$wandaEmail = "wanda@itransys.com";
 		$wgAmbassador = Customer::where('customer_ambassador', $wandaEmail)->count();
 		$wgInvoices = Load::where('created_by', $wandaEmail)->whereMonth('created_at', $month)->count();

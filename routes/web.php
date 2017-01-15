@@ -68,9 +68,6 @@ Route::get('/findCarrier', function () {
     return view('/findCarrier');
 });
 
-Route::get('/importExport', function () {
-    return view('/importExport');
-});
 
 Route::get('/displayLoads', function () {
     return view('/displayLoads');
@@ -96,10 +93,10 @@ Route::get('/getProfitReport', function() {
 
 Route::post('/getProfitReport/{type}', 'MaatwebsiteDemoController@getProfitReport');
 
-Route::post('/quickbooksExport/{type}', 'MaatwebsiteDemoController@quickbooksExport');
+Route::post('/exportCustomerInvoices/{type}', 'MaatwebsiteDemoController@exportCustomerInvoices');
 
-Route::get('/quickbooksExport', function() {
-    return view('/quickbooksExport');
+Route::get('/exportCustomerInvoices', function() {
+    return view('/exportCustomerInvoices');
 });
 
 Route::get('/exportCarrierBills', function() {

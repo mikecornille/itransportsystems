@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-<form role="form" class="form-horizontal" method="POST" action="/quickbooksExport/csv">
+<form role="form" class="form-horizontal" method="POST" action="/exportCustomerInvoices/csv">
 
 		{{ csrf_field() }}
 
