@@ -298,20 +298,6 @@ class NotesController extends Controller
 
 		$wgAmbassador = Customer::where('customer_ambassador', $wandaEmail)->count();
 		
-		if (!isset($start_date) || $wgMoneyBilled === '')
-
-		{
-			$wgDifference = 0;
-			$wgProfitMargin = 0;
-			$wgPercent = 0;
-		}
-		else 
-		{
-			$wgDifference = $wgMoneyBilled - $wgMoneyPaidOut;
-			$wgProfitMargin = $wgDifference / $wgMoneyBilled;
-			$wgPercent = round((float)$wgProfitMargin * 100 );
-		}
-		
 		
 
 		return view('admin')->with('rateConDailyTotals', $rateConDailyTotals)
@@ -355,7 +341,7 @@ class NotesController extends Controller
 			->with('mbInvoices', $mbInvoices)
 			->with('wgMoneyBilled', $wgMoneyBilled)
 			->with('wgMoneyPaidOut', $wgMoneyPaidOut)
-			->with('wgPercent', $wgPercent)
+			// ->with('wgPercent', $wgPercent)
 			->with('wgInvoices', $wgInvoices)
 			->with('totalBilledForMonth', $totalBilledForMonth)
 			->with('totalPaidForMonth', $totalPaidForMonth)
