@@ -82,6 +82,26 @@
 		</ul>
     </div>
 
+     <div>
+		<ul style="list-style-type: none;">
+		    <li class="text-left"><u>Joe Mowrer</u></li>
+			<li class="text-left">Ambassador for {{ $jmAmbassador }} companies </li>
+			<li class="text-left">{{ $jmRateCons }} Rate Confirmations </li>
+			<li class="text-left">{{ $jmInvoices }} Invoices </li>
+			<li class="text-left">Responsible for ${{ $jmMoneyBilled }}.00 billed to customers and paid out ${{ $jmMoneyPaidOut }}.00 to carriers for a margin of {{ $jmPercent }}%</li>
+		</ul>
+    </div>
+
+    <div>
+		<ul style="list-style-type: none;">
+		    <li class="text-left"><u>Mike Bruschuk</u></li>
+			<li class="text-left">Ambassador for {{ $mbAmbassador }} companies </li>
+			<li class="text-left">{{ $mbRateCons }} Rate Confirmations </li>
+			<li class="text-left">{{ $mbInvoices }} Invoices </li>
+			<li class="text-left">Responsible for ${{ $mbMoneyBilled }}.00 billed to customers and paid out ${{ $mbMoneyPaidOut }}.00 to carriers for a margin of {{ $mbPercent }}%</li>
+		</ul>
+    </div>
+
 
 
 </div>

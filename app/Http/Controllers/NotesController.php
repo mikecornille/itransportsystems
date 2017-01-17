@@ -235,51 +235,61 @@ class NotesController extends Controller
 		}
 		
 		
-	
+		$mowrerEmail = "joem@itransys.com";
+		//How many rate cons employee typed up within a date range
+		$jmRateCons = Load::where('rate_con_creator', $mowrerEmail)->whereBetween('rate_con_creation_date', [$start_date, $end_date])->count();
+		//How many invoices employee typed up within a date range
+		$jmInvoices = Load::where('created_by', $mowrerEmail)->whereBetween('creation_date', [$start_date, $end_date])->count();
+		//How much money the employee was resposible that was billed to customers
+		$jmMoneyBilled = Load::where('created_by', $mowrerEmail)->whereBetween('billed_date', [$start_date, $end_date])->sum('amount_due');
+		//How much money the employee was resposible that was paid to carriers
+		$jmMoneyPaidOut = Load::where('created_by', $mowrerEmail)->whereBetween('billed_date', [$start_date, $end_date])->sum('carrier_rate');
+		
 
+		$jmAmbassador = Customer::where('customer_ambassador', $mowrerEmail)->count();
 		
-		// $carnName = "Matt Carnahan";
-		// $carnEmail = "mattc@itransys.com";
-		// $mcNotes = Notes::where('time_name_stamp', 'LIKE', '%' . $carnName . '%')->whereMonth('created_at', $month)->count();
-		// $mcRateCons = Load::where('rate_con_creator', $carnEmail)->whereMonth('created_at', $month)->count();
-		// $mcInvoices = Load::where('created_by', $carnEmail)->whereMonth('created_at', $month)->count();
-		// $mcMoneyBilled = Load::where('rate_con_creator', $carnEmail)->whereMonth('created_at', $month)->sum('amount_due');
-		// $mcMoneyPaidOut = Load::where('rate_con_creator', $carnEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
-		// $mcAmbassador = Customer::where('customer_ambassador', $carnEmail)->count();
+		if (!isset($start_date))
+		{
+			$jmDifference = 0;
+			$jmProfitMargin = 0;
+			$jmPercent = 0;
+		}
+		else 
+		{
+			$jmDifference = $jmMoneyBilled - $jmMoneyPaidOut;
+			$jmProfitMargin = $jmDifference / $jmMoneyBilled;
+			$jmPercent = round((float)$jmProfitMargin * 100 );
+		}
+
+		$brushEmail = "mikeb@itransys.com";
+		//How many rate cons employee typed up within a date range
+		$mbRateCons = Load::where('rate_con_creator', $brushEmail)->whereBetween('rate_con_creation_date', [$start_date, $end_date])->count();
+		//How many invoices employee typed up within a date range
+		$mbInvoices = Load::where('created_by', $brushEmail)->whereBetween('creation_date', [$start_date, $end_date])->count();
+		//How much money the employee was resposible that was billed to customers
+		$mbMoneyBilled = Load::where('created_by', $brushEmail)->whereBetween('billed_date', [$start_date, $end_date])->sum('amount_due');
+		//How much money the employee was resposible that was paid to carriers
+		$mbMoneyPaidOut = Load::where('created_by', $brushEmail)->whereBetween('billed_date', [$start_date, $end_date])->sum('carrier_rate');
 		
-		// if ($month !== NULL)
-		// {
-		// $mcDifference = $mcMoneyBilled - $mcMoneyPaidOut;
-		// $mcProfitMargin = $mcDifference / $mcMoneyBilled;
-		// $mcPercent = round((float)$mcProfitMargin * 100 );
-		// }
-		// else 
-		// {
-		// $mcDifference = 0;
-		// $mcProfitMargin = 0;
-		// $mcPercent = 0;
-		// }
+
+		$mbAmbassador = Customer::where('customer_ambassador', $brushEmail)->count();
+		
+		if (!isset($start_date))
+		{
+			$mbDifference = 0;
+			$mbProfitMargin = 0;
+			$mbPercent = 0;
+		}
+		else 
+		{
+			$mbDifference = $mbMoneyBilled - $mbMoneyPaidOut;
+			$mbProfitMargin = $mbDifference / $mbMoneyBilled;
+			$mbPercent = round((float)$mbProfitMargin * 100 );
+		}
+
+	
 		
 		
-		// $mowrerEmail = "joem@itransys.com";
-		// $jmInvoices = Load::where('created_by', $mowrerEmail)->whereMonth('created_at', $month)->count();
-		// $jmRateCons = Load::where('rate_con_creator', $mowrerEmail)->whereMonth('created_at', $month)->count();
-		// $jmMoneyBilled = Load::where('created_by', $mowrerEmail)->whereMonth('created_at', $month)->sum('amount_due');
-		// $jmMoneyPaidOut = Load::where('created_by', $mowrerEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
-		// $jmAmbassador = Customer::where('customer_ambassador', $mowrerEmail)->count();
-		
-		// if ($month !== NULL)
-		// {
-		// $jmDifference = $jmMoneyBilled - $jmMoneyPaidOut;
-		// $jmProfitMargin = $jmDifference / $jmMoneyBilled;
-		// $jmPercent = round((float)$jmProfitMargin * 100 );
-		// }
-		// else 
-		// {
-		// $jmDifference = 0;
-		// $jmProfitMargin = 0;
-		// $jmPercent = 0;
-		// }
 
 		
 		// $brushEmail = "mikeb@itransys.com";
@@ -395,16 +405,16 @@ class NotesController extends Controller
 			->with('mcMoneyPaidOut', $mcMoneyPaidOut)
 			->with('mcPercent', $mcPercent)
 			->with('mcInvoices', $mcInvoices)
-			// ->with('jmRateCons', $jmRateCons)
-			// ->with('jmMoneyBilled', $jmMoneyBilled)
-			// ->with('jmMoneyPaidOut', $jmMoneyPaidOut)
-			// ->with('jmPercent', $jmPercent)
-			// ->with('jmInvoices', $jmInvoices)
-			// ->with('mbRateCons', $mbRateCons)
-			// ->with('mbMoneyBilled', $mbMoneyBilled)
-			// ->with('mbMoneyPaidOut', $mbMoneyPaidOut)
-			// ->with('mbPercent', $mbPercent)
-			// ->with('mbInvoices', $mbInvoices)
+			->with('jmRateCons', $jmRateCons)
+			->with('jmMoneyBilled', $jmMoneyBilled)
+			->with('jmMoneyPaidOut', $jmMoneyPaidOut)
+			->with('jmPercent', $jmPercent)
+			->with('jmInvoices', $jmInvoices)
+			->with('mbRateCons', $mbRateCons)
+			->with('mbMoneyBilled', $mbMoneyBilled)
+			->with('mbMoneyPaidOut', $mbMoneyPaidOut)
+			->with('mbPercent', $mbPercent)
+			->with('mbInvoices', $mbInvoices)
 			// ->with('rcRateCons', $rcRateCons)
 			// ->with('rcMoneyBilled', $rcMoneyBilled)
 			// ->with('rcMoneyPaidOut', $rcMoneyPaidOut)
@@ -429,8 +439,8 @@ class NotesController extends Controller
 			// ->with('wgAmbassador', $wgAmbassador)
 			->with('ajAmbassador', $ajAmbassador)
 			// ->with('rcAmbassador', $rcAmbassador)
-			// ->with('jmAmbassador', $jmAmbassador)
-			//->with('mbAmbassador', $mbAmbassador)
+			->with('jmAmbassador', $jmAmbassador)
+			->with('mbAmbassador', $mbAmbassador)
 			;
 
 	}
