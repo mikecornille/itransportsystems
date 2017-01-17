@@ -7,157 +7,72 @@
 <h1 class="text-center">Welcome, {{ \Auth::user()->name }}</h1>
 <h2 class="text-center">Today's Date is {{ $currentDate }}</h2>
 
-<div class="month">
+<div class="date_range">
 	<form role="form" class="form-horizontal" method="POST" action="/admin">
 
 		{{ csrf_field() }}
 
-
-
-		<div class="well" style="width: 300px;">
+		<div class="well" style="width: 300px; margin: 0 auto;">
 			<div class="form-group">
 				<div class="row">
 					<div class="col-xs-6">
-						<label class="label-control" for="month">Choose Month</label>
-						<select name="month" id="month" class="form-control">
-							<option value="Choose">Choose</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-							<option value="11">11</option>
-							<option value="12">12</option>
-						</select>
-					</div>
-					<!-- <div class="col-xs-6">
-						<label class="label-control" for="year">Choose Year</label>
-						<select name="year" id="year" class="form-control">
-							<option value="Choose">Choose</option>
-							<option value="2016">2016</option>
-							<option value="2017">2017</option>
-							<option value="2018">2018</option>
-							<option value="2019">2019</option>
-							<option value="2020">2020</option>
-						</select>
-					</div> -->
+				   		<label class="label-control" for="start_date">Start Date</label>
+				   		<input type="text" class="form-control" id="datepicker_snapshot_start" name="start_date">
+				 	</div>
+				 	<div class="col-xs-6">
+				   		<label class="label-control" for="end_date">End Date</label>
+				   		<input type="text" class="form-control" id="datepicker_snapshot_end" name="end_date">
+				 	</div>
 				</div>
-
-
-
-				<button type="submit" style="margin-top: 10px;" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> NEW</button>
-
+						<button type="submit" style="margin-top: 10px;" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> GO</button>
 			</div>
 		</div>
-	</div>
-</form>
-
-<h2 class="text-center">Your team has created {{ $rateConDailyTotals }} Rate Confirmations and {{ $invoiceDailyTotals }} Invoices today.</h2>
-<h3 class="text-center">Total Billed Out: {{ $totalBilledForMonth }}</h3>
-<h3 class="text-center">Total Paid Out: {{ $totalPaidForMonth }}</h3>
-<h3 class="text-center">Total Profit: {{ $totalProfitForMonth }}</h3>
-
-<div>
-	<ul style="list-style-type: none;">
-	    <li class="text-left"><u>Robert Bansberg</u></li>
-		<li class="text-left">{{ $rbNotes }} notes in month {{ $month }}. </li>
-		<li class="text-left">Ambassador for {{ $rbAmbassador }} companies. </li>
-		<li class="text-left">{{ $rbRateCons }} Rate Confirmations in month {{ $month }}. </li>
-		<li class="text-left">{{ $rbInvoices }} Invoices in month {{ $month }}. </li>
-		<li class="text-left">Responsible for ${{ $rbMoneyBilled }}.00 billed to customers and paid out ${{ $rbMoneyPaidOut }}.00 to carriers for a profit margin of {{ $rbPercent }}%.</li>
-	</ul>
+	</form>
 </div>
+		
+	<h2 class="text-center">Your team has created {{ $rateConDailyTotals }} Rate Confirmations and {{ $invoiceDailyTotals }} Invoices today.</h2>
+	@if($start_date)
+	<h3 class="text-center">Your results are within: {{ $start_date . ' and ' . $end_date }}</h3>
+	@endif
+	<h3 class="text-center">Total Billed Out: {{ $totalBilledForMonth }}</h3>
+	<h3 class="text-center">Total Paid Out: {{ $totalPaidForMonth }}</h3>
+	<h3 class="text-center">Total Profit: {{ $totalProfitForMonth }}</h3>
 
-<div>
-	<ul style="list-style-type: none;">
-	    <li class="text-left"><u>Matt King</u></li>
-		<li class="text-left">{{ $mkNotes }} notes in month {{ $month }}. </li>
-		<li class="text-left">Ambassador for {{ $mkAmbassador }} companies. </li>
-		<li class="text-left">{{ $mkRateCons }} Rate Confirmations in month {{ $month }}. </li>
-		<li class="text-left">{{ $mkInvoices }} Invoices in month {{ $month }}. </li>
-		<li class="text-left">Responsible for ${{ $mkMoneyBilled }}.00 billed to customers and paid out ${{ $mkMoneyPaidOut }}.00 to carriers for a profit margin of {{ $mkPercent }}%.</li>
-	</ul>
-</div>
+	<div>
+		<ul style="list-style-type: none;">
+		    <li class="text-left"><u>Robert Bansberg</u></li>
+			<li class="text-left">{{ $rbNotes }} notes </li>
+			<li class="text-left">Ambassador for {{ $rbAmbassador }} companies </li>
+			<li class="text-left">{{ $rbRateCons }} Rate Confirmations </li>
+			<li class="text-left">{{ $rbInvoices }} Invoices </li>
+			<li class="text-left">Responsible for ${{ $rbMoneyBilled }}.00 billed to customers and paid out ${{ $rbMoneyPaidOut }}.00 to carriers for a margin of {{ $rbPercent }}%</li>
+		</ul>
+    </div>
 
-<div>
-	<ul style="list-style-type: none;">
-	    <li class="text-left"><u>AJ Mesik</u></li>
-		<li class="text-left">{{ $ajNotes }} notes in month {{ $month }}. </li>
-		<li class="text-left">Ambassador for {{ $ajAmbassador }} companies. </li>
-		<li class="text-left">{{ $ajRateCons }} Rate Confirmations in month {{ $month }}. </li>
-		<li class="text-left">{{ $ajInvoices }} Invoices in month {{ $month }}. </li>
-		<li class="text-left">Responsible for ${{ $ajMoneyBilled }}.00 billed to customers and paid out ${{ $ajMoneyPaidOut }}.00 to carriers for a profit margin of {{ $ajPercent }}%.</li>
-	</ul>
-</div>
+    <div>
+		<ul style="list-style-type: none;">
+		    <li class="text-left"><u>Matt King</u></li>
+			<li class="text-left">{{ $mkNotes }} notes </li>
+			<li class="text-left">Ambassador for {{ $mkAmbassador }} companies </li>
+			<li class="text-left">{{ $mkRateCons }} Rate Confirmations </li>
+			<li class="text-left">{{ $mkInvoices }} Invoices </li>
+			<li class="text-left">Responsible for ${{ $mkMoneyBilled }}.00 billed to customers and paid out ${{ $mkMoneyPaidOut }}.00 to carriers for a margin of {{ $mkPercent }}%</li>
+		</ul>
+    </div>
 
-<div>
-	<ul style="list-style-type: none;">
-	    <li class="text-left"><u>Matt Carnahan</u></li>
-		<li class="text-left">{{ $mcNotes }} notes in month {{ $month }}. </li>
-		<li class="text-left">Ambassador for {{ $mcAmbassador }} companies. </li>
-		<li class="text-left">{{ $mcRateCons }} Rate Confirmations in month {{ $month }}. </li>
-		<li class="text-left">{{ $mcInvoices }} Invoices in month {{ $month }}. </li>
-		<li class="text-left">Responsible for ${{ $mcMoneyBilled }}.00 billed to customers and paid out ${{ $mcMoneyPaidOut }}.00 to carriers for a profit margin of {{ $mcPercent }}%.</li>
-	</ul>
-</div>
 
-<div>
-	<ul style="list-style-type: none;">
-	    <li class="text-left"><u>Joe Mowrer</u></li>
-	    <li class="text-left">Ambassador for {{ $jmAmbassador }} companies. </li>
-	    <li class="text-left">{{ $jmInvoices }} Invoices in month {{ $month }}. </li>
-		<li class="text-left">{{ $jmRateCons }} Rate Confirmations in month {{ $month }}. </li>
-		<li class="text-left">Responsible for ${{ $jmMoneyBilled }}.00 billed to customers and paid out ${{ $jmMoneyPaidOut }}.00 to carriers for a profit margin of {{ $jmPercent }}%.</li>
-	</ul>
-</div>
 
-<div>
-	<ul style="list-style-type: none;">
-	    <li class="text-left"><u>Mike Bruschuk</u></li>
-	    <li class="text-left">Ambassador for {{ $mbAmbassador }} companies. </li>
-	    <li class="text-left">{{ $mbInvoices }} Invoices in month {{ $month }}. </li>
-		<li class="text-left">{{ $mbRateCons }} Rate Confirmations in month {{ $month }}. </li>
-		<li class="text-left">Responsible for ${{ $mbMoneyBilled }}.00 billed to customers and paid out ${{ $mbMoneyPaidOut }}.00 to carriers for a profit margin of {{ $mbPercent }}%.</li>
-	</ul>
-</div>
-
-<div>
-	<ul style="list-style-type: none;">
-	    <li class="text-left"><u>Ron Cornille</u></li>
-	    <li class="text-left">Ambassador for {{ $rcAmbassador }} companies. </li>
-	    <li class="text-left">{{ $rcInvoices }} Invoices in month {{ $month }}. </li>
-		<li class="text-left">{{ $rcRateCons }} Rate Confirmations in month {{ $month }}. </li>
-		<li class="text-left">Responsible for ${{ $rcMoneyBilled }}.00 billed to customers and paid out ${{ $rcMoneyPaidOut }}.00 to carriers for a profit margin of {{ $rcPercent }}%.</li>
-	</ul>
-</div>
-
-<div>
-	<ul style="list-style-type: none;">
-	    <li class="text-left"><u>Mike Cornille</u></li>
-	    <li class="text-left">Ambassador for {{ $mtcAmbassador }} companies. </li>
-	    <li class="text-left">{{ $mtcInvoices }} Invoices in month {{ $month }}. </li>
-		<li class="text-left">{{ $mtcRateCons }} Rate Confirmations in month {{ $month }}. </li>
-		<li class="text-left">Responsible for ${{ $mtcMoneyBilled }}.00 billed to customers and paid out ${{ $mtcMoneyPaidOut }}.00 to carriers for a profit margin of {{ $mtcPercent }}%.</li>
-	</ul>
-</div>
-
-<div>
-	<ul style="list-style-type: none;">
-	    <li class="text-left"><u>Wanda Giovingo</u></li>
-	    <li class="text-left">Ambassador for {{ $wgAmbassador }} companies. </li>
-	    <li class="text-left">{{ $wgInvoices }} Invoices in month {{ $month }}. </li>
-	    <li class="text-left">Responsible for ${{ $wgMoneyBilled }}.00 billed to customers and paid out ${{ $wgMoneyPaidOut }}.00 to carriers for a profit margin of {{ $wgPercent }}%.</li>
-	    
-	</ul>
 </div>
 
 
-</div>
+
+
+
+
+
+
+
+
 
 
 @endsection
