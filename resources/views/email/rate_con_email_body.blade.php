@@ -86,6 +86,10 @@ table {
     <td><b>ADDRESS:</b> {{ $info->delivery_address }}</td>
   </tr>
   <tr>
+    <td>{{ $info->pick_city . ', ' . $info->pick_state }}</td>
+    <td>{{ $info->delivery_city . ', ' . $info->delivery_state }}</td>
+  </tr>
+  <tr>
     <td><b>CONTACT:</b> {{ $info->pick_contact }}</td>
     <td><b>CONTACT:</b> {{ $info->delivery_contact }}</td>
   </tr>
