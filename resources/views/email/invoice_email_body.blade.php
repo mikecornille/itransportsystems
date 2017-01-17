@@ -13,7 +13,7 @@ ul {
 </style>
 </head>
 <body>
-<p>{{ $info->carrier_contact }},</p>
+<p>{{ $info->customer_contact }},</p>
 
 <p>International Transport Systems Invoice for PRO # {{ $info->id }} from {{ $info->pick_city }}, {{ $info->pick_state }} to {{ $info->delivery_city }}, {{ $info->delivery_state }}</p>
 
