@@ -298,7 +298,7 @@ class NotesController extends Controller
 
 		$wgAmbassador = Customer::where('customer_ambassador', $wandaEmail)->count();
 		
-		if (!isset($start_date) || $wgMoneyBilled === ''))
+		if (!isset($start_date) || $wgMoneyBilled === '')
 
 		{
 			$wgDifference = 0;
