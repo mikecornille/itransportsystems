@@ -287,92 +287,29 @@ class NotesController extends Controller
 			$mbPercent = round((float)$mbProfitMargin * 100 );
 		}
 
-	
-		
+		$wandaEmail = "wanda@itransys.com";
+		//How many invoices employee typed up within a date range
+		$wgInvoices = Load::where('created_by', $wandaEmail)->whereBetween('creation_date', [$start_date, $end_date])->count();
+		//How much money the employee was resposible that was billed to customers
+		$wgMoneyBilled = Load::where('created_by', $wandaEmail)->whereBetween('billed_date', [$start_date, $end_date])->sum('amount_due');
+		//How much money the employee was resposible that was paid to carriers
+		$wgMoneyPaidOut = Load::where('created_by', $wandaEmail)->whereBetween('billed_date', [$start_date, $end_date])->sum('carrier_rate');
 		
 
+		$wgAmbassador = Customer::where('customer_ambassador', $wandaEmail)->count();
 		
-		// $brushEmail = "mikeb@itransys.com";
-		// $mbInvoices = Load::where('created_by', $brushEmail)->whereMonth('created_at', $month)->count();
-		// $mbRateCons = Load::where('rate_con_creator', $brushEmail)->whereMonth('created_at', $month)->count();
-		// $mbMoneyBilled = Load::where('created_by', $brushEmail)->whereMonth('created_at', $month)->sum('amount_due');
-		// $mbMoneyPaidOut = Load::where('created_by', $brushEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
-		// $mbAmbassador = Customer::where('customer_ambassador', $brushEmail)->count();
-		
-		// if ($month !== NULL)
-		// {
-		// $mbDifference = $mbMoneyBilled - $mbMoneyPaidOut;
-		// $mbProfitMargin = $mbDifference / $mbMoneyBilled;
-		// $mbPercent = round((float)$mbProfitMargin * 100 );
-		// }
-		// else 
-		// {
-		// $mbDifference = 0;
-		// $mbProfitMargin = 0;
-		// $mbPercent = 0;
-		// }
-
-		
-		// $ronEmail = "ronc@itransys.com";
-		// $rcInvoices = Load::where('created_by', $ronEmail)->whereMonth('created_at', $month)->count();
-		// $rcRateCons = Load::where('rate_con_creator', $ronEmail)->whereMonth('created_at', $month)->count();
-		// $rcMoneyBilled = Load::where('created_by', $ronEmail)->whereMonth('created_at', $month)->sum('amount_due');
-		// $rcMoneyPaidOut = Load::where('created_by', $ronEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
-		// $rcAmbassador = Customer::where('customer_ambassador', $ronEmail)->count();
-		
-		// if ($month !== NULL)
-		// {
-		// $rcDifference = $rcMoneyBilled - $rcMoneyPaidOut;
-		// $rcProfitMargin = $rcDifference / $rcMoneyBilled;
-		// $rcPercent = round((float)$rcProfitMargin * 100 );
-		// }
-		// else 
-		// {
-		// $rcDifference = 0;
-		// $rcProfitMargin = 0;
-		// $rcPercent = 0;
-		// }
-
-		
-		// $mikeEmail = "mikec@itransys.com";
-		// $mtcInvoices = Load::where('created_by', $mikeEmail)->whereMonth('created_at', $month)->count();
-		// $mtcRateCons = Load::where('rate_con_creator', $mikeEmail)->whereMonth('created_at', $month)->count();
-		// $mtcMoneyBilled = Load::where('created_by', $mikeEmail)->whereMonth('created_at', $month)->sum('amount_due');
-		// $mtcMoneyPaidOut = Load::where('created_by', $mikeEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
-		// $mtcAmbassador = Customer::where('customer_ambassador', $mikeEmail)->count();
-		
-		// if ($month !== NULL)
-		// {
-		// $mtcDifference = $mtcMoneyBilled - $mtcMoneyPaidOut;
-		// $mtcProfitMargin = $mtcDifference / $mtcMoneyBilled;
-		// $mtcPercent = round((float)$mtcProfitMargin * 100 );
-		// }
-		// else 
-		// {
-		// $mtcDifference = 0;
-		// $mtcProfitMargin = 0;
-		// $mtcPercent = 0;
-		// }
-
-		
-		// $wandaEmail = "wanda@itransys.com";
-		// $wgAmbassador = Customer::where('customer_ambassador', $wandaEmail)->count();
-		// $wgInvoices = Load::where('created_by', $wandaEmail)->whereMonth('created_at', $month)->count();
-		// $wgMoneyBilled = Load::where('created_by', $wandaEmail)->whereMonth('created_at', $month)->sum('amount_due');
-		// $wgMoneyPaidOut = Load::where('created_by', $wandaEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
-
-		// if ($month !== NULL)
-		// {
-		// $wgDifference = $wgMoneyBilled - $wgMoneyPaidOut;
-		// $wgProfitMargin = $wgDifference / $wgMoneyBilled;
-		// $wgPercent = round((float)$wgProfitMargin * 100 );
-		// }
-		// else 
-		// {
-		// $wgDifference = 0;
-		// $wgProfitMargin = 0;
-		// $wgPercent = 0;
-		// }
+		if (!isset($start_date))
+		{
+			$wgDifference = 0;
+			$wgProfitMargin = 0;
+			$wgPercent = 0;
+		}
+		else 
+		{
+			$wgDifference = $wgMoneyBilled - $wgMoneyPaidOut;
+			$wgProfitMargin = $wgDifference / $wgMoneyBilled;
+			$wgPercent = round((float)$wgProfitMargin * 100 );
+		}
 		
 		
 
@@ -415,33 +352,20 @@ class NotesController extends Controller
 			->with('mbMoneyPaidOut', $mbMoneyPaidOut)
 			->with('mbPercent', $mbPercent)
 			->with('mbInvoices', $mbInvoices)
-			// ->with('rcRateCons', $rcRateCons)
-			// ->with('rcMoneyBilled', $rcMoneyBilled)
-			// ->with('rcMoneyPaidOut', $rcMoneyPaidOut)
-			// ->with('rcPercent', $rcPercent)
-			// ->with('rcInvoices', $rcInvoices)
-			// ->with('mtcRateCons', $mtcRateCons)
-			// ->with('mtcMoneyBilled', $mtcMoneyBilled)
-			// ->with('mtcMoneyPaidOut', $mtcMoneyPaidOut)
-			// ->with('mtcPercent', $mtcPercent)
-			// ->with('mtcInvoices', $mtcInvoices)
-			// ->with('wgMoneyBilled', $wgMoneyBilled)
-			// ->with('wgMoneyPaidOut', $wgMoneyPaidOut)
-			// ->with('wgPercent', $wgPercent)
-			// ->with('wgInvoices', $wgInvoices)
+			->with('wgMoneyBilled', $wgMoneyBilled)
+			->with('wgMoneyPaidOut', $wgMoneyPaidOut)
+			->with('wgPercent', $wgPercent)
+			->with('wgInvoices', $wgInvoices)
 			->with('totalBilledForMonth', $totalBilledForMonth)
 			->with('totalPaidForMonth', $totalPaidForMonth)
 			->with('totalProfitForMonth', $totalProfitForMonth)
 			->with('rbAmbassador', $rbAmbassador)
 			->with('mkAmbassador', $mkAmbassador)
 			->with('mcAmbassador', $mcAmbassador)
-			// ->with('mtcAmbassador', $mtcAmbassador)
-			// ->with('wgAmbassador', $wgAmbassador)
+			->with('wgAmbassador', $wgAmbassador)
 			->with('ajAmbassador', $ajAmbassador)
-			// ->with('rcAmbassador', $rcAmbassador)
 			->with('jmAmbassador', $jmAmbassador)
-			->with('mbAmbassador', $mbAmbassador)
-			;
+			->with('mbAmbassador', $mbAmbassador);
 
 	}
 }
