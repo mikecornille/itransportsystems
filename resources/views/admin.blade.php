@@ -60,6 +60,28 @@
 		</ul>
     </div>
 
+    <div>
+		<ul style="list-style-type: none;">
+		    <li class="text-left"><u>AJ Mesik</u></li>
+			<li class="text-left">{{ $ajNotes }} notes </li>
+			<li class="text-left">Ambassador for {{ $ajAmbassador }} companies </li>
+			<li class="text-left">{{ $ajRateCons }} Rate Confirmations </li>
+			<li class="text-left">{{ $ajInvoices }} Invoices </li>
+			<li class="text-left">Responsible for ${{ $ajMoneyBilled }}.00 billed to customers and paid out ${{ $ajMoneyPaidOut }}.00 to carriers for a margin of {{ $ajPercent }}%</li>
+		</ul>
+    </div>
+
+    <div>
+		<ul style="list-style-type: none;">
+		    <li class="text-left"><u>Matt Carnahan</u></li>
+			<li class="text-left">{{ $mcNotes }} notes </li>
+			<li class="text-left">Ambassador for {{ $mcAmbassador }} companies </li>
+			<li class="text-left">{{ $mcRateCons }} Rate Confirmations </li>
+			<li class="text-left">{{ $mcInvoices }} Invoices </li>
+			<li class="text-left">Responsible for ${{ $mcMoneyBilled }}.00 billed to customers and paid out ${{ $mcMoneyPaidOut }}.00 to carriers for a margin of {{ $mcPercent }}%</li>
+		</ul>
+    </div>
+
 
 
 </div>

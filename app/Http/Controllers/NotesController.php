@@ -175,51 +175,67 @@ class NotesController extends Controller
 			$mkProfitMargin = $mkDifference / $mkMoneyBilled;
 			$mkPercent = round((float)$mkProfitMargin * 100 );
 		}
-		
-		// $kingName = "Matt King";
-		// $kingEmail = "mattk@itransys.com";
-		// $mkNotes = Notes::where('time_name_stamp', 'LIKE', '%' . $kingName . '%')->whereMonth('created_at', $month)->count();
-		// $mkRateCons = Load::where('rate_con_creator', $kingEmail)->whereMonth('created_at', $month)->count();
-		// $mkInvoices = Load::where('created_by', $kingEmail)->whereMonth('created_at', $month)->count();
-		// $mkMoneyBilled = Load::where('rate_con_creator', $kingEmail)->whereMonth('created_at', $month)->sum('amount_due');
-		// $mkMoneyPaidOut = Load::where('rate_con_creator', $kingEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
-		// $mkAmbassador = Customer::where('customer_ambassador', $kingEmail)->count();
-		
-		// if ($month !== NULL)
-		// {
-		// $mkDifference = $mkMoneyBilled - $mkMoneyPaidOut;
-		// $mkProfitMargin = $mkDifference / $mkMoneyBilled;
-		// $mkPercent = round((float)$mkProfitMargin * 100 );
-		// }
-		// else 
-		// {
-		// $mkDifference = 0;
-		// $mkProfitMargin = 0;
-		// $mkPercent = 0;
-		// }
 
+		$MesikName = "AJ Mesik";
+		$MesikEmail = "aj@itransys.com";
+		//How many notes employee wrote in chosen month
+		$ajNotes = Notes::where('time_name_stamp', 'LIKE', '%' . $MesikName . '%')->whereMonth('created_at', $month["month"])->count();
+		//How many rate cons employee typed up within a date range
+		$ajRateCons = Load::where('rate_con_creator', $MesikEmail)->whereBetween('rate_con_creation_date', [$start_date, $end_date])->count();
+		//How many invoices employee typed up within a date range
+		$ajInvoices = Load::where('created_by', $MesikEmail)->whereBetween('creation_date', [$start_date, $end_date])->count();
+		//How much money the employee was resposible that was billed to customers
+		$ajMoneyBilled = Load::where('rate_con_creator', $MesikEmail)->whereBetween('billed_date', [$start_date, $end_date])->sum('amount_due');
+		//How much money the employee was resposible that was paid to carriers
+		$ajMoneyPaidOut = Load::where('rate_con_creator', $MesikEmail)->whereBetween('billed_date', [$start_date, $end_date])->sum('carrier_rate');
 		
-		// $MesikName = "AJ Mesik";
-		// $MesikEmail = "aj@itransys.com";
-		// $ajNotes = Notes::where('time_name_stamp', 'LIKE', '%' . $MesikName . '%')->whereMonth('created_at', $month)->count();
-		// $ajRateCons = Load::where('rate_con_creator', $MesikEmail)->whereMonth('created_at', $month)->count();
-		// $ajInvoices = Load::where('created_by', $MesikEmail)->whereMonth('created_at', $month)->count();
-		// $ajMoneyBilled = Load::where('rate_con_creator', $MesikEmail)->whereMonth('created_at', $month)->sum('amount_due');
-		// $ajMoneyPaidOut = Load::where('rate_con_creator', $MesikEmail)->whereMonth('created_at', $month)->sum('carrier_rate');
-		// $ajAmbassador = Customer::where('customer_ambassador', $MesikEmail)->count();
+
+		$ajAmbassador = Customer::where('customer_ambassador', $MesikEmail)->count();
 		
-		// if ($month !== NULL)
-		// {
-		// $ajDifference = $ajMoneyBilled - $ajMoneyPaidOut;
-		// $ajProfitMargin = $ajDifference / $ajMoneyBilled;
-		// $ajPercent = round((float)$ajProfitMargin * 100 );
-		// }
-		// else 
-		// {
-		// $ajDifference = 0;
-		// $ajProfitMargin = 0;
-		// $ajPercent = 0;
-		// }
+		if (!isset($start_date))
+		{
+			$ajDifference = 0;
+			$ajProfitMargin = 0;
+			$ajPercent = 0;
+		}
+		else 
+		{
+			$ajDifference = $ajMoneyBilled - $ajMoneyPaidOut;
+			$ajProfitMargin = $ajDifference / $ajMoneyBilled;
+			$ajPercent = round((float)$ajProfitMargin * 100 );
+		}
+
+		$carnName = "Matt Carnahan";
+		$carnEmail = "mattc@itransys.com";
+		//How many notes employee wrote in chosen month
+		$mcNotes = Notes::where('time_name_stamp', 'LIKE', '%' . $carnName . '%')->whereMonth('created_at', $month["month"])->count();
+		//How many rate cons employee typed up within a date range
+		$mcRateCons = Load::where('rate_con_creator', $carnEmail)->whereBetween('rate_con_creation_date', [$start_date, $end_date])->count();
+		//How many invoices employee typed up within a date range
+		$mcInvoices = Load::where('created_by', $carnEmail)->whereBetween('creation_date', [$start_date, $end_date])->count();
+		//How much money the employee was resposible that was billed to customers
+		$mcMoneyBilled = Load::where('rate_con_creator', $carnEmail)->whereBetween('billed_date', [$start_date, $end_date])->sum('amount_due');
+		//How much money the employee was resposible that was paid to carriers
+		$mcMoneyPaidOut = Load::where('rate_con_creator', $carnEmail)->whereBetween('billed_date', [$start_date, $end_date])->sum('carrier_rate');
+		
+
+		$mcAmbassador = Customer::where('customer_ambassador', $carnEmail)->count();
+		
+		if (!isset($start_date))
+		{
+			$mcDifference = 0;
+			$mcProfitMargin = 0;
+			$mcPercent = 0;
+		}
+		else 
+		{
+			$mcDifference = $mcMoneyBilled - $mcMoneyPaidOut;
+			$mcProfitMargin = $mcDifference / $mcMoneyBilled;
+			$mcPercent = round((float)$mcProfitMargin * 100 );
+		}
+		
+		
+	
 
 		
 		// $carnName = "Matt Carnahan";
@@ -367,18 +383,18 @@ class NotesController extends Controller
 			->with('mkMoneyPaidOut', $mkMoneyPaidOut)
 			->with('mkPercent', $mkPercent)
 			->with('mkInvoices', $mkInvoices)
-			// ->with('ajNotes', $ajNotes)
-			// ->with('ajRateCons', $ajRateCons)
-			// ->with('ajMoneyBilled', $ajMoneyBilled)
-			// ->with('ajMoneyPaidOut', $ajMoneyPaidOut)
-			// ->with('ajPercent', $ajPercent)
-			// ->with('ajInvoices', $ajInvoices)
-			// ->with('mcNotes', $mcNotes)
-			// ->with('mcRateCons', $mcRateCons)
-			// ->with('mcMoneyBilled', $mcMoneyBilled)
-			// ->with('mcMoneyPaidOut', $mcMoneyPaidOut)
-			// ->with('mcPercent', $mcPercent)
-			// ->with('mcInvoices', $mcInvoices)
+			->with('ajNotes', $ajNotes)
+			->with('ajRateCons', $ajRateCons)
+			->with('ajMoneyBilled', $ajMoneyBilled)
+			->with('ajMoneyPaidOut', $ajMoneyPaidOut)
+			->with('ajPercent', $ajPercent)
+			->with('ajInvoices', $ajInvoices)
+			->with('mcNotes', $mcNotes)
+			->with('mcRateCons', $mcRateCons)
+			->with('mcMoneyBilled', $mcMoneyBilled)
+			->with('mcMoneyPaidOut', $mcMoneyPaidOut)
+			->with('mcPercent', $mcPercent)
+			->with('mcInvoices', $mcInvoices)
 			// ->with('jmRateCons', $jmRateCons)
 			// ->with('jmMoneyBilled', $jmMoneyBilled)
 			// ->with('jmMoneyPaidOut', $jmMoneyPaidOut)
@@ -408,10 +424,10 @@ class NotesController extends Controller
 			->with('totalProfitForMonth', $totalProfitForMonth)
 			->with('rbAmbassador', $rbAmbassador)
 			->with('mkAmbassador', $mkAmbassador)
-			// ->with('mcAmbassador', $mcAmbassador)
+			->with('mcAmbassador', $mcAmbassador)
 			// ->with('mtcAmbassador', $mtcAmbassador)
 			// ->with('wgAmbassador', $wgAmbassador)
-			// ->with('ajAmbassador', $ajAmbassador)
+			->with('ajAmbassador', $ajAmbassador)
 			// ->with('rcAmbassador', $rcAmbassador)
 			// ->with('jmAmbassador', $jmAmbassador)
 			//->with('mbAmbassador', $mbAmbassador)
