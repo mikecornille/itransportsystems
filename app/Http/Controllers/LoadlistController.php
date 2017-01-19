@@ -38,6 +38,9 @@ class LoadlistController extends Controller
          ]);
 
         $newload = New Loadlist($request->all());
+
+        $newload->company_contact = "Dispatch";
+        $newload->contact_phone = "877-663-2200";
 		
 		
 		$newload->created_by = strtoupper(\Auth::user()->email);
@@ -65,5 +68,44 @@ class LoadlistController extends Controller
 		return view('editLoadlist', compact('loadlist'));
 
 	}
+
+	public function updateLoadlist(Request $request, Loadlist $loadlist) 
+	{
+    
+		$loadlist->update($request->all());
+		return back()->with('status', 'Your updates have been successfully saved!');
+
+
+   }
+
+   public function destroy($id) 
+	{
+
+    
+    	$load = Loadlist::find($id);
+
+		$load->delete();
+
+		return back()->with('status', 'Your deletion was successful.');
+
+
+   }
+
+   public function duplicate($id) 
+	{
+
+    
+    	$load = Loadlist::find($id);
+		$newLoad = $load->replicate();
+		$newLoad->save();
+
+		return back()->with('status', 'Your load was duplicated!');
+
+
+   }
+
+   
+
+
 
 }

@@ -106,11 +106,11 @@
                 <input type="text" class="form-control" id="pick_state" name="pick_state" value="{{ old('pick_state') }}">
             </div>
             <div class="col-xs-3">
-                <label class="label-control" for="datepicker_pick_loadlist">DATE</label>
+                <label class="label-control" for="datepicker_pick_loadlist">PICK DATE</label>
                 <input type="text" class="form-control" id="datepicker_pick_loadlist" name="pick_date" value="{{ old('pick_date') }}">
             </div>
             <div class="col-xs-3">
-                <label class="label-control" for="pick_time">TIME</label>
+                <label class="label-control" for="pick_time">PICK TIME</label>
                 <select name="pick_time" id="pick_time" class="form-control">
 		            <option value="Choose">Choose</option>
 		            <option value="0600">0600</option>
@@ -169,11 +169,11 @@
 	 				</div>           
             </div>
             <div class="col-xs-3">
-                <label class="label-control" for="datepicker_delivery_loadlist">DATE</label>
+                <label class="label-control" for="datepicker_delivery_loadlist">DELIVERY DATE</label>
                 <input type="text" class="form-control" id="datepicker_delivery_loadlist" name="delivery_date" value="{{ old('delivery_date') }}">
             </div>
             <div class="col-xs-3">
-                <label class="label-control" for="delivery_time">TIME</label>
+                <label class="label-control" for="delivery_time">DELIVERY TIME</label>
                 <select name="delivery_time" id="delivery_time" class="form-control">
 			            <option value="Choose">Choose</option>
 			            <option value="0600">0600</option>
@@ -252,24 +252,52 @@
                 <label class="label-control" for="miles">MILES</label>
                 <input type="text" class="form-control" id="miles" name="miles" value="{{ old('miles') }}">
             </div>
+            
+
             <div class="col-xs-3">
-                <label class="label-control" for="billing_money">BILLING MONEY</label>
-                <input type="text" class="form-control" id="billing_money" name="billing_money" value="{{ old('billing_money') }}">
-            </div>
-            <div class="col-xs-3">
-                <label class="label-control" for="offer_money">OFFER MONEY</label>
-                <input type="text" class="form-control" id="offer_money" name="offer_money" value="{{ old('offer_money') }}">
-            </div>
-            <div class="col-xs-3">
-                <label class="label-control" for="post_money">POST MONEY</label>
-                <input type="text" class="form-control" id="post_money" name="post_money" value="{{ old('post_money') }}">
-            </div>
+            	<label class="label-control" for="billing_money">BILLING MONEY</label>
+            		<div class="input-group">
+						<span class="input-group-addon">$</span>
+				  			<input type="text" class="form-control" id="billing_money" name="billing_money" value="{{ old('billing_money') }}" placeholder="Billing Amount">
+				  		<span class="input-group-addon">.00</span>
+					</div>
+			</div>
+
+			<div class="col-xs-3">
+            	<label class="label-control" for="offer_money">OFFER MONEY</label>
+            		<div class="input-group">
+						<span class="input-group-addon">$</span>
+				  			<input type="text" class="form-control" id="offer_money" name="offer_money" value="{{ old('offer_money') }}" placeholder="Offer Amount">
+				  		<span class="input-group-addon">.00</span>
+					</div>
+			</div>
+
+			<div class="col-xs-3">
+            	<label class="label-control" for="post_money">POST MONEY</label>
+            		<div class="input-group">
+						<span class="input-group-addon">$</span>
+				  			<input type="text" class="form-control" id="post_money" name="post_money" value="{{ old('post_money') }}" placeholder="Post Amount">
+				  		<span class="input-group-addon">.00</span>
+					</div>
+			</div>
         </div>
         
         
-		  <button type="submit" class="btn btn-primary" id="newCustomerSubmit"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> NEW</button>
-		  
-          
+		 
+
+          <!-- Split button -->
+			<div class="btn-group">
+			  <button type="submit" id="newCustomerSubmit" class="btn btn-primary"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> NEW</button>
+			  <button type="button" id="newCustomerSubmit" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    <span class="caret"></span>
+			    <span class="sr-only">Toggle Dropdown</span>
+			  </button>
+			  <ul class="dropdown-menu">
+			    <li><a href="{{ URL::to('/truckstopPost') }}">TRUCKSTOP</a></li>
+			    <li><a href="{{ URL::to('/datPost') }}">DAT</a></li>
+			    
+			  </ul>
+			</div>
 
 		
 
@@ -286,7 +314,7 @@
   <dt style="font-weight:normal;"><b>{{ $load->pick_city . ', ' . $load->pick_state . ' to ' . $load->delivery_city . ', ' . $load->delivery_state . ' (' . $load->miles . 'm) ' . $load->urgency . ' ' . $load->trailer_type }} <a href="#"><span class="glyphicon glyphicon-time" aria-hidden="true"></a> {{ date("m/d", strtotime($load->pick_date)) . ' ' . (date("g:ia", strtotime($load->pick_time))) }} <a href="#"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span></a> {{ date("m/d", strtotime($load->delivery_date)) . ' ' . (date("g:ia", strtotime($load->delivery_time))) . ' - ' . $load->special_instructions }}</b></dt>
 <dd><b>COMMODITY:</b> {{ $load->load_type . ' LOAD - ' . $load->commodity }} - {{ $load->length . 'ft x ' . $load->width . 'ft x ' . $load->height . 'ft ' . $load->weight . 'lbs' }}</dd>
   <dd><b>OFFERING: ${{ $load->offer_money }}</b> BILLING: ${{ $load->billing_money }} POSTED: ${{ $load->post_money }}</dd>
-  <dd><a href="{{ URL::to('/editLoadlist/' . $load->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></a> | <a href="#" title="{{ $load->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load->customer . ' ' . (date("m/d g:ia", strtotime($load->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="#" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="#" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></dd>
+  <dd><a href="{{ URL::to('/editLoadlist/' . $load->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></a> | <a href="#" title="{{ $load->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load->customer . ' ' . (date("m/d g:ia", strtotime($load->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $load->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/deleteLoadlist/' . $load->id) }}" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></dd>
   <br>
   @endforeach
 </dl>
@@ -296,6 +324,40 @@
 
 
 
+<!-- Modal -->
+  <div class="modal fade" id="noteModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Wrtie Note</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form" class="form-horizontal" method="POST" action="/newNote">
+				<input type="hidden" id="time_name_stamp" name="time_name_stamp" value="{{ date('m/d/Y g:ia') . ' ' . \Auth::user()->name }} -">
+        			{{ csrf_field() }}
+						<div class="well">
+      						<h2 class="text-center">ITS Notes</h2> 
+      							<div class="form-group">
+        							<div class="row">
+            							<div class="col-xs-12">
+                							<input type="text" class="form-control" id="notes" name="notes" value="{{ old('notes') }}" placeholder="Specify the location, first name, phone, and reason for call">
+            							</div>
+        							</div>
+											<button type="submit" class="btn btn-primary" id="submit_new_note"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> NEW</button>
+								</div>
+						</div>
+			</form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
 
 

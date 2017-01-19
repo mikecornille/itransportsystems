@@ -27,13 +27,15 @@
 
 <form role="form" class="form-horizontal" method="POST" action="/editLoadlist/{{ $loadlist->id }}">
         
+        {{ method_field('PATCH') }}
+
         {{ csrf_field() }}
 
 
     <div id="loadlist_div">
     
       <div class="form-group">
-      <input type="hidden" id="id" name="id">
+      <input type="hidden" id="id" name="id" value="{{ $loadlist->id }}">
       <div class="row">
             <div class="col-xs-3">
                 <label class="label-control" for="customer-search-loadlist">Customer Search</label>
@@ -56,6 +58,7 @@
             <div class="col-xs-3">
                 <label class="label-control" for="urgency">URGENCY</label>
                     <select name="urgency" id="urgency" class="form-control">
+                        <option value="{{ $loadlist->urgency }}">{{ $loadlist->urgency }}</option>
                         <option value="QUOTE">QUOTE</option>
                         <option value="OPEN">OPEN</option>
                         <option value="CALLER">CALLER</option>
@@ -67,6 +70,7 @@
             <div class="col-xs-3">
                 <label class="label-control" for="load_type">LOAD TYPE</label>
                 <select name="load_type" id="load_type" class="form-control">
+                    <option value="{{ $loadlist->load_type }}">{{ $loadlist->load_type }}</option>
                     <option value="FULL">FULL</option>
                     <option value="PARTIAL">PARTIAL</option>
                 </select>
@@ -74,6 +78,7 @@
             <div class="col-xs-3">
                 <label class="label-control" for="trailer_type">TRAILER TYPE</label>
                 <select name="trailer_type" id="trailer_type" class="form-control">
+                    <option value="{{ $loadlist->trailer_type }}">{{ $loadlist->trailer_type }}</option>
                     <option value="CONG">Conestoga</option>
                     <option value="DA">Drive Away</option>
                     <option value="DD">Double Drop</option>
@@ -113,7 +118,7 @@
             <div class="col-xs-3">
                 <label class="label-control" for="pick_time">TIME</label>
                 <select name="pick_time" id="pick_time" class="form-control">
-                    <option value="Choose">Choose</option>
+                    <option value="{{ $loadlist->pick_time }}">{{ $loadlist->pick_time }}</option>
                     <option value="0600">0600</option>
                     <option value="0630">0630</option>
                     <option value="0700">0700</option>
@@ -176,7 +181,7 @@
             <div class="col-xs-3">
                 <label class="label-control" for="delivery_time">TIME</label>
                 <select name="delivery_time" id="delivery_time" class="form-control">
-                        <option value="Choose">Choose</option>
+                        <option value="{{ $loadlist->delivery_time }}">{{ $loadlist->delivery_time }}</option>
                         <option value="0600">0600</option>
                         <option value="0630">0630</option>
                         <option value="0700">0700</option>

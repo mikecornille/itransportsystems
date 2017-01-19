@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Mail;
 
 use Input;
 use App\Item;
@@ -12,6 +13,7 @@ use DB;
 use Excel;
 use App\User;
 use App\Load;
+use App\Loadlist;
 
 
 class MaatwebsiteDemoController extends Controller
@@ -72,6 +74,29 @@ class MaatwebsiteDemoController extends Controller
 	        
 		})->download($type);
 	}
+
+	public function truckstopPost()
+	{	
+		$type = 'csv';
+		 
+		 
+		 
+		
+		$truckstop_post = Loadlist::select('pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'trailer_type', 'pick_date', 'load_type', 'length', 'width', 'height', 'weight', 'offer_money', 'special_instructions', 'company_contact', 'contact_phone')->where('urgency', 'OPEN')->orderBy('id', 'desc')->get();
+
+		return \Excel::create('itransys', function($excel) use ($truckstop_post) {
+			$excel->sheet('mySheet', function($sheet) use ($truckstop_post)
+	        {
+				$sheet->fromArray($truckstop_post);
+
+
+	        });
+	        
+		})->download($type);
+    
+	}
+
+	
 
 	
 

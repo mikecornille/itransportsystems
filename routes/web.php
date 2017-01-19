@@ -109,6 +109,10 @@ Route::get('/exportCarrierBills', function() {
 
 Route::post('/exportCarrierBills/{type}', 'MaatwebsiteDemoController@exportCarrierBills');
 
+Route::get('/truckstopPost', 'MaatwebsiteDemoController@truckstopPost');
+
+Route::get('/datPost', 'MaatwebsiteDemoController@datPost');
+
 
 
 Route::get('/home', 'HomeController@index');
@@ -140,6 +144,9 @@ Route::post('/updateCarrier', "CarriersController@updateCarrier");
 
 
 Route::get('/editLoadlist/{id}', "LoadlistController@editLoadlist");
+Route::patch('editLoadlist/{loadlist}', "LoadlistController@updateLoadlist");
+Route::get('deleteLoadlist/{id}', "LoadlistController@destroy");
+Route::get('duplicateLoadlist/{id}', "LoadlistController@duplicate");
 
 
 //PRINT THE INVOICE AND RATE CONFIRMATION
