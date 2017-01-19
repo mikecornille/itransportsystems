@@ -41,6 +41,8 @@ Route::get('/newEquipment', function () {
     return view('/newEquipment');
 });
 
+
+
 // Route::get('/admin', function () {
 // 	if ( ! Auth::user()->admin) {
 // 		return redirect('/home');
@@ -82,6 +84,8 @@ Route::get('/findTrucks', 'CarriersController@displayPage');
 Route::post('/findTrucks', 'CarriersController@findTrucksByStateAndType');
 Route::get('/findTrucksFromLoads', 'LoadsController@displayCarrierLoadsPage');
 Route::post('/findTrucksFromLoads', 'LoadsController@findTrucksFromLoads');
+Route::post('/loadlist', 'LoadlistController@store');
+Route::get('/loadlist', 'LoadlistController@index');
 
 //Route::get('/excel', 'PDFController@excel');
 
@@ -133,6 +137,9 @@ Route::post('/edit/updateEquipment', "EquipmentController@updateEquipment");
 Route::post('/edit/updateCarrier', "CarriersController@updateCarrier");
 //FROM THE FIND CARRIER PAGE
 Route::post('/updateCarrier', "CarriersController@updateCarrier");
+
+
+Route::get('/editLoadlist/{id}', "LoadlistController@editLoadlist");
 
 
 //PRINT THE INVOICE AND RATE CONFIRMATION

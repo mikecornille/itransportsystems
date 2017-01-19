@@ -782,6 +782,10 @@ $('#datepicker_snapshot_end').datepicker();
 
 $('#datepicker_snapshot_start').datepicker();
 
+$('#datepicker_delivery_loadlist').datepicker();
+
+$('#datepicker_pick_loadlist').datepicker();
+
 
 
 
@@ -850,6 +854,14 @@ $('#datepicker_snapshot_end').on('changeDate', function(ev){
 });
 
 $('#datepicker_snapshot_start').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
+$('#datepicker_delivery_loadlist').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
+$('#datepicker_pick_loadlist').on('changeDate', function(ev){
     $(this).datepicker('hide');
 });
 
@@ -951,3 +963,104 @@ $('#signed_rate_con').val('');
 
 
 });
+
+
+
+<!-- TAKES THE PICK ZIP AND FINDS THE COORESPONDING CITY, STATE AND PUTS THEM IN THE INPUT FIELDS -->
+
+$(document).ready(function(){
+  $('#pick_zip_loadlist_search').keyup(function() {
+    var zipCode = $(this).val();
+      if(zipCode.length === 5 && $.isNumeric(zipCode)) {
+
+
+     $.ajax({
+      type: "GET",
+      beforeSend: function(request) {
+        request.setRequestHeader("x-key", "7fdf923c5fb9dccddad8bdd98b828933e801fd73");
+      },
+      url: "https://zip.getziptastic.com/v3/US/"+zipCode,
+      success: function(data) {
+        //console.log(data[0].city);
+    $("#pick_city").val(data[0].city);
+    $("#pick_state").val(data[0].state_short);
+      }
+    });
+
+  }
+
+ });
+  });
+
+<!-- END -->
+
+<!-- TAKES THE DELIVERY ZIP AND FINDS THE COORESPONDING CITY, STATE AND PUTS THEM IN THE INPUT FIELDS, PULLS UP GOOGLE MAP ROUTE, PUTS MILEAGE IN THE INPUT FIELD -->
+
+$(document).ready(function(){
+  $('#delivery_zip_loadlist_search').keyup(function() {
+    var zipCode = $(this).val();
+      if(zipCode.length === 5 && $.isNumeric(zipCode)) {
+
+
+     $.ajax({
+      type: "GET",
+      beforeSend: function(request) {
+        request.setRequestHeader("x-key", "7fdf923c5fb9dccddad8bdd98b828933e801fd73");
+      },
+      url: "https://zip.getziptastic.com/v3/US/"+zipCode,
+      success: function(data) {
+        //console.log(data[0].city);
+    $("#delivery_city").val(data[0].city);
+    $("#delivery_state").val(data[0].state_short);
+
+
+    var pick_city = $("#pick_city").val();
+    var pick_state = $("#pick_state").val();
+    var delivery_city = $("#delivery_city").val();
+    var delivery_state = $("#delivery_state").val();
+
+    $('#loadlist_map_display').html("<iframe class='center-block' width='100%' height='400' frameborder='5' scrolling='no' marginheight='0' marginwidth='0' src='https://maps.google.com/maps?f=d&amp;source=s_d&amp;saddr="+pick_city+","+pick_state+"&amp;daddr="+delivery_city+","+delivery_state+"&amp;hl=en&amp;geocode=FWICfwIdGuDG-inty_TQPCwOiDEAwMAJrabgrw%3BFbpmTQIdlKqf-in5ju36qbTYhzFb4Lsiyuo5vg&amp;aq=&amp;sll=40.00132,-82.909012&amp;sspn=0.397649,0.98053&amp;mra=ls&amp;ie=UTF8&amp;t=m&amp;ll=40.25279,-88.91443&amp;spn=3.250649,2.569472&amp;output=embed'></iframe>");
+
+
+    //code block
+
+    var location1;
+  var location2;
+  var address1 = pick_city + "," + pick_state;
+  var address2 = delivery_city + "," + delivery_state;
+  var geocoder;
+  //var map;
+  var distance;
+
+
+
+    geocoder = new google.maps.Geocoder(); //  creating a new geocode object
+
+      }
+    });
+
+  }
+
+ });
+  });
+
+<!-- END - TAKES THE DELIVERY ZIP AND FINDS THE COORESPONDING CITY, STATE AND PUTS THEM IN THE INPUT FIELDS, PULLS UP GOOGLE MAP ROUTE, PUTS MILEAGE IN THE INPUT FIELD -->
+
+
+$(document).on('click', '#loadlist_map', function(){
+
+var pick_city = $("#pick_city").val();
+var pick_state = $("#pick_state").val();
+var delivery_city = $("#delivery_city").val();
+var delivery_state = $("#delivery_state").val();
+
+
+
+$('#loadlist_map_display').html("<iframe class='center-block' width='100%' height='400' frameborder='5' scrolling='no' marginheight='0' marginwidth='0' src='https://maps.google.com/maps?f=d&amp;source=s_d&amp;saddr="+pick_city+","+pick_state+"&amp;daddr="+delivery_city+","+delivery_state+"&amp;hl=en&amp;geocode=FWICfwIdGuDG-inty_TQPCwOiDEAwMAJrabgrw%3BFbpmTQIdlKqf-in5ju36qbTYhzFb4Lsiyuo5vg&amp;aq=&amp;sll=40.00132,-82.909012&amp;sspn=0.397649,0.98053&amp;mra=ls&amp;ie=UTF8&amp;t=m&amp;ll=40.25279,-88.91443&amp;spn=3.250649,2.569472&amp;output=embed'></iframe>");
+});
+
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
+
+

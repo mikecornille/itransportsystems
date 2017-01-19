@@ -225,6 +225,46 @@
             });
         });
 
+ //Find Customer Autofill Loadlist
+  $(function() {
+            function log( message ) {
+                $( "<div>" ).text( message ).prependTo( "#log" );
+                $( "#log" ).scrollTop( 0 );
+            }
+            $( "#customer-search-loadlist" ).autocomplete({
+                source: function( request, response ) {
+                    $.ajax({
+                        url: "/api/customer/" + request.term,
+                        dataType: "json",
+                        success: function( data ) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: '--NAME-- ' + item.name + ' --ADDRESS-- ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' --CONTACT-- ' + item.contact + ' --EMAIL-- ' + item.email + ' --PHONE-- ' + item.phone,
+                                    value: item.name,
+                                    object: item
+                                }
+                        }));
+                    }});
+                },
+                minLength: 3,
+                select: function( event, ui ) {
+                    window.customerRecord = ui;
+                    $('#customer_id').val(window.customerRecord.item.object.name);
+                    log( ui.item ?
+                    "Selected: " + ui.item.label :
+                    "Nothing selected, input was " + this.value);
+                                        $('#location-search').val('test');
+
+                },
+                open: function() {
+                    $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+
+                },
+                close: function() {
+                    $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+                }
+            });
+        });
 
   //Equipment Autofill
   $(function() {

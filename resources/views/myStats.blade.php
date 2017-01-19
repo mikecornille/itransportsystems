@@ -3,8 +3,8 @@
 @section('content')
 
 
-
 <h1 class="text-center">Welcome, {{ \Auth::user()->name }}</h1>
+
 
 <div style="margin-left: 300px;">
 <h3 class="text-left">Today's Date is {{ $currentDate }}</h3>

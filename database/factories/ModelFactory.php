@@ -212,4 +212,37 @@ $factory->define(App\Carrier::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Loadlist::class, function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+            'created_by' => $faker->name(),
+            'customer' => $faker->name(),
+            'urgency' => $faker->word(),
+            'load_type' => $faker->word(),
+            'trailer_type' => $faker->word(),
+            'pick_city' => $faker->city(),
+            'pick_state' => $faker->state(),
+            'pick_date' => $faker->date($format = 'm/d/Y', $max = 'now'),
+            'pick_time' => $faker->time(),
+            'delivery_city' => $faker->city(),
+            'delivery_state' => $faker->state(),
+            'delivery_date' => $faker->date($format = 'm/d/Y', $max = 'now'),
+            'delivery_time' => $faker->time(),
+            'commodity' => $faker->sentence(),
+            'special_instructions' => $faker->sentence(),
+            'length' => $faker->numberBetween($min = 5, $max = 40),
+            'width' => $faker->numberBetween($min = 4, $max = 9),
+            'height' => $faker->numberBetween($min = 4, $max = 11),
+            'weight' => $faker->numberBetween($min = 1000, $max = 40000),
+            'miles' => $faker->numberBetween($min = 200, $max = 2000),
+            'billing_money' => $faker->numberBetween($min = 200, $max = 2000),
+            'offer_money' => $faker->numberBetween($min = 200, $max = 2000),
+            'post_money' => $faker->numberBetween($min = 200, $max = 2000),
+        
+    ];
+});
+
+
+
 

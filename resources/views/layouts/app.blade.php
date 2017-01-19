@@ -72,18 +72,8 @@
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
                             
-                            <!-- <form id="search-pro-form" class="navbar-form navbar-left" action="{{ URL::to('searchPro') }}" method="POST">
-                            {{ csrf_field() }}
-                                <div class="form-group">
-                                    <div class="input-group">
-                                  <input type="text" class="form-control" id="pro_search_button" name="id" placeholder="PRO #">
-                                  <span class="input-group-btn"><button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button></span>
-                                  </div>
-                                
-                                </div>
-                                
-                                
-                            </form> -->
+                            
+                            <li><a href="{{ URL::to('/loadlist') }}">Load List</a></li>
                             <li><a href="{{ URL::to('/notes') }}">Notes</a></li>
                             <li><a href="{{ URL::to('/displayLoads') }}">Loads</a></li>
                             <li><a href="{{ url('/home') }}">New Invoice</a></li>
