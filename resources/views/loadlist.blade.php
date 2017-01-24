@@ -46,6 +46,21 @@
                 <label class="label-control" for="delivery_zip_loadlist_search">Delivery Zip</label>
                 <input type="text" class="form-control" id="delivery_zip_loadlist_search">
             </div>
+            <div class="col-xs-3">
+            	<div class="btn-group">
+			  <button type="submit" id="newCustomerSubmit" class="btn btn-primary"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> NEW</button>
+			  <button type="button" id="newCustomerSubmit" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    <span class="caret"></span>
+			    <span class="sr-only">Toggle Dropdown</span>
+			  </button>
+			  <ul class="dropdown-menu">
+			    <li><a href="{{ URL::to('/truckstopPost') }}">TRUCKSTOP</a></li>
+			    <li><a href="{{ URL::to('/datPost') }}">DAT</a></li>
+			    <li><a href="{{ URL::to('/searchLoadlist') }}">SEARCH LOADLIST</a></li>
+			    
+			  </ul>
+			</div>
+            </div>
         </div>
         <div class="row">
             <div class="col-xs-3">
@@ -283,22 +298,6 @@
         </div>
         
         
-		 
-
-          <!-- Split button -->
-			<div class="btn-group">
-			  <button type="submit" id="newCustomerSubmit" class="btn btn-primary"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> NEW</button>
-			  <button type="button" id="newCustomerSubmit" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			    <span class="caret"></span>
-			    <span class="sr-only">Toggle Dropdown</span>
-			  </button>
-			  <ul class="dropdown-menu">
-			    <li><a href="{{ URL::to('/truckstopPost') }}">TRUCKSTOP</a></li>
-			    <li><a href="{{ URL::to('/datPost') }}">DAT</a></li>
-			    
-			  </ul>
-			</div>
-
 		
 
 		</div>
@@ -311,14 +310,31 @@
 
  <dl style="font-weight:normal;">
   @foreach($open_loads as $load)
-  <dt style="font-weight:normal;"><b>{{ $load->pick_city . ', ' . $load->pick_state . ' to ' . $load->delivery_city . ', ' . $load->delivery_state . ' (' . $load->miles . 'm) ' . $load->urgency . ' ' . $load->trailer_type }} <a href="#"><span class="glyphicon glyphicon-time" aria-hidden="true"></a> {{ date("m/d", strtotime($load->pick_date)) . ' ' . (date("g:ia", strtotime($load->pick_time))) }} <a href="#"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span></a> {{ date("m/d", strtotime($load->delivery_date)) . ' ' . (date("g:ia", strtotime($load->delivery_time))) . ' - ' . $load->special_instructions }}</b></dt>
+
+<?php
+$billing_money = $load->billing_money;
+
+$offer_money = $load->offer_money;
+
+$difference = $billing_money - $offer_money;
+
+$margin = $difference / $billing_money;
+
+$profitMargin = round((float)$margin * 100 );
+?>
+<div class="loadlist_loads">
+
+  <dt style="font-weight:normal;"><span class="pick_and_delivery_displays">{{ $load->pick_city . ', ' . $load->pick_state . ' to ' . $load->delivery_city . ', ' . $load->delivery_state }}</span><b> ({{ $load->miles . 'm) ' . $load->urgency . ' ' . $load->trailer_type }} <a href="#"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></a> {{ date("m/d", strtotime($load->pick_date)) . ' ' . (date("g:ia", strtotime($load->pick_time))) }} <a href="#"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span></a> {{ date("m/d", strtotime($load->delivery_date)) . ' ' . (date("g:ia", strtotime($load->delivery_time))) . ' - ' . $load->special_instructions }}</b></dt>
 <dd><b>COMMODITY:</b> {{ $load->load_type . ' LOAD - ' . $load->commodity }} - {{ $load->length . 'ft x ' . $load->width . 'ft x ' . $load->height . 'ft ' . $load->weight . 'lbs' }}</dd>
-  <dd><b>OFFERING: ${{ $load->offer_money }}</b> BILLING: ${{ $load->billing_money }} POSTED: ${{ $load->post_money }}</dd>
-  <dd><a href="{{ URL::to('/editLoadlist/' . $load->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></a> | <a href="#" title="{{ $load->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load->customer . ' ' . (date("m/d g:ia", strtotime($load->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $load->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/deleteLoadlist/' . $load->id) }}" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></dd>
+  <dd><b>OFFERING: ${{ $load->offer_money }}</b> BILLING: ${{ $load->billing_money }} POSTED: ${{ $load->post_money }} PROFIT MARGIN: {{ $profitMargin }}%</dd>
+  <dd><a href="{{ URL::to('/editLoadlist/' . $load->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $load->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load->customer . ' ' . (date("m/d g:ia", strtotime($load->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $load->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $load->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/deleteLoadlist/' . $load->id) }}" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></dd>
   <br>
   @endforeach
 </dl>
+</div>
+</div>
 
+</div>
 
 </div>
 

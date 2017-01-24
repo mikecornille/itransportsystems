@@ -75,6 +75,11 @@ Route::get('/displayLoads', function () {
     return view('/displayLoads');
 });
 
+Route::get('/searchLoadlist', 'LoadlistController@searchLoadlistIndex');
+
+Route::post('/searchLoadlist', 'LoadlistController@searchLoadlist');
+
+
 Route::get('/notes', 'NotesController@index');
 Route::get('/myStats', 'NotesController@getBrokerStats');
 Route::get('/admin', 'NotesController@getAdminStats');
@@ -147,6 +152,8 @@ Route::get('/editLoadlist/{id}', "LoadlistController@editLoadlist");
 Route::patch('editLoadlist/{loadlist}', "LoadlistController@updateLoadlist");
 Route::get('deleteLoadlist/{id}', "LoadlistController@destroy");
 Route::get('duplicateLoadlist/{id}', "LoadlistController@duplicate");
+Route::get('newDateLoadlist/{id}', "LoadlistController@newDateLoadlist");
+
 
 
 //PRINT THE INVOICE AND RATE CONFIRMATION

@@ -76,52 +76,46 @@ class MaatwebsiteDemoController extends Controller
 	}
 
 	public function truckstopPost()
-	{	
-		$type = 'csv';
-		 
-		 
-		 
-		
-		$truckstop_post = Loadlist::select('pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'trailer_type', 'pick_date', 'load_type', 'length', 'width', 'height', 'weight', 'offer_money', 'special_instructions', 'company_contact', 'contact_phone')->where('urgency', 'OPEN')->orderBy('id', 'desc')->get();
-
-		return \Excel::create('itransys', function($excel) use ($truckstop_post) {
-			$excel->sheet('mySheet', function($sheet) use ($truckstop_post)
-	        {
-				$sheet->fromArray($truckstop_post);
+{   
+    $type = 'csv';
 
 
-	        });
-	        
-		})->download($type);
-    
-	}
+    $truckstop_post = Loadlist::select('pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'trailer_type', 'pick_date', 'load_type', 'length', 'width', 'height', 'weight', 'offer_money', 'special_instructions', 'company_contact', 'contact_phone')->where('urgency', 'OPEN')->orderBy('id', 'desc')->get();
 
-	
+    \Excel::create('itransys', function($excel) use ($truckstop_post) {
+        $excel->sheet('mySheet', function($sheet) use ($truckstop_post)
+        {
+            $sheet->fromArray($truckstop_post);
 
-	
+        });
 
-	//$users = User::select('id', 'name', 'email', 'created_at')->get();
-// Excel::create('users', function($excel) use($users) {
-//     $excel->sheet('Sheet 1', function($sheet) use($users) {
-//         $sheet->fromArray($users);
-//     });
-// })->export('xls');
-	// public function importExcel()
-	// {
-	// 	if(Input::hasFile('import_file')){
-	// 		$path = Input::file('import_file')->getRealPath();
-	// 		$data = Excel::load($path, function($reader) {
-	// 		})->get();
-	// 		if(!empty($data) && $data->count()){
-	// 			foreach ($data as $key => $value) {
-	// 				$insert[] = ['title' => $value->title, 'description' => $value->description];
-	// 			}
-	// 			if(!empty($insert)){
-	// 				DB::table('items')->insert($insert);
-	// 				dd('Insert Record successfully.');
-	// 			}
-	// 		}
-	// 	}
-	// 	return back();
-	// }
+        
+
+       $info = Load::find(8500);
+
+       $info = ['info'=>$info];
+
+
+       Mail::send(['html'=>'email.invoice_email_body'], $info, function($message) use ($info, $excel){
+
+        $message->to('mike@gmail.com')->subject('subject');
+
+        $message->from('mike@gmail.com', \Auth::user()->name);
+
+        $message->attachData($excel, 'Invoice.csv');
+
+        });
+
+
+        });
+
+    return back()->with('status', 'You Posted Truckstop!');
+
 }
+
+
+}
+
+
+
+
