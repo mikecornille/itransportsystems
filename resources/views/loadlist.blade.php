@@ -308,30 +308,77 @@
 
 
 
- <dl style="font-weight:normal;">
-  @foreach($open_loads as $load)
-
-<?php
-$billing_money = $load->billing_money;
-
-$offer_money = $load->offer_money;
-
-$difference = $billing_money - $offer_money;
-
-$margin = $difference / $billing_money;
-
-$profitMargin = round((float)$margin * 100 );
-?>
+ 
 
 
-  <dt style="font-weight:normal;"><span class="pick_and_delivery_displays">{{ $load->pick_city . ', ' . $load->pick_state . ' to ' . $load->delivery_city . ', ' . $load->delivery_state }}</span><b> ({{ $load->miles . 'm) ' . $load->urgency . ' ' . $load->trailer_type }} <a href="#"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></a> {{ date("m/d", strtotime($load->pick_date)) . ' ' . (date("g:ia", strtotime($load->pick_time))) }} <a href="#"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span></a> {{ date("m/d", strtotime($load->delivery_date)) . ' ' . (date("g:ia", strtotime($load->delivery_time))) }}</b> <a href="#coll{{ $load->id }}" data-toggle="collapse"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></dt>
-<div id="coll{{ $load->id }}" class="collapse"><dd><b>COMMODITY:</b> {{ $load->load_type . ' LOAD - ' . $load->commodity }} - {{ $load->length . 'ft x ' . $load->width . 'ft x ' . $load->height . 'ft ' . $load->weight . 'lbs - ' . $load->special_instructions }}</dd>
-  <dd><b>OFFERING: ${{ $load->offer_money }}</b> BILLING: ${{ $load->billing_money }} POSTED: ${{ $load->post_money }} PROFIT MARGIN: {{ $profitMargin }}%</dd>
-  <dd><a href="{{ URL::to('/editLoadlist/' . $load->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $load->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load->customer . ' ' . (date("m/d g:ia", strtotime($load->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $load->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $load->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/deleteLoadlist/' . $load->id) }}" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></dd></div>
-  <br>
-  @endforeach
-</dl>
+
+
+
+
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Route</th>
+        <th>Miles</th>
+        <th>Status</th>
+        <th>Trailer Type</th>
+        <th>Pick Date</th>
+        <th>Deliver Date</th>
+        <th>More</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach($open_loads as $load)
+      	<?php
+			$billing_money = $load->billing_money;
+
+			$offer_money = $load->offer_money;
+
+			$difference = $billing_money - $offer_money;
+
+			$margin = $difference / $billing_money;
+
+			$profitMargin = round((float)$margin * 100 );
+		?>
+      <tr>
+        <td>{{ $load->pick_city . ', ' . $load->pick_state . ' to ' . $load->delivery_city . ', ' . $load->delivery_state }}</td>
+        <td>{{ $load->miles }}mi</td>
+        <td>{{ $load->urgency }}</td>
+        <td>{{ $load->trailer_type }}</td>
+        <td>{{ date("m/d", strtotime($load->pick_date)) . ' ' . (date("g:ia", strtotime($load->pick_time))) }}</td>
+        <td>{{ date("m/d", strtotime($load->delivery_date)) . ' ' . (date("g:ia", strtotime($load->delivery_time))) }}</td>
+        <td><a href=".coll{{ $load->id }}" data-toggle="collapse"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></td>
+      </tr>
+
+      <tr class="collapse coll{{ $load->id }}">
+      	<td>{{ $load->load_type . ' LOAD - ' . $load->commodity }} - {{ $load->length . 'ft x ' . $load->width . 'ft x ' . $load->height . 'ft ' . $load->weight . 'lbs - ' . $load->special_instructions }}</td>
+      </tr>
+      <tr class="collapse coll{{ $load->id }}">
+      	<td>OFFERING: ${{ $load->offer_money }} BILLING: ${{ $load->billing_money }} POSTED: ${{ $load->post_money }} PROFIT MARGIN: {{ $profitMargin }}%</td>
+      </tr>
+      <tr class="collapse coll{{ $load->id }}">
+      	<td>
+      		<a href="{{ URL::to('/editLoadlist/' . $load->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $load->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load->customer . ' ' . (date("m/d g:ia", strtotime($load->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $load->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $load->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/deleteLoadlist/' . $load->id) }}" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      	</td>
+      </tr>
+     
+
+      
+       
+      @endforeach
+    </tbody>
+  </table>
+
+
+
+
 </div>
+
+
+
+
+
 
 
 
