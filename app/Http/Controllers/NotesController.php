@@ -6,6 +6,8 @@ use App\Notes;
 
 use App\Load;
 
+use App\Budget;
+
 use App\Customer;
 
 use Illuminate\Http\Request;
@@ -30,6 +32,16 @@ class NotesController extends Controller
 
     }
 
+    public function budgetIndex()
+    {
+    	$items = Budget::all()->sortByDesc("monthly_amount");
+
+    	$total = Budget::sum('monthly_amount');
+
+        return view('budget', compact('items', 'total'));
+
+    }
+
     public function store(Request $request)
 	{
 		
@@ -47,6 +59,23 @@ class NotesController extends Controller
 
 		return back();
 		
+	}
+
+	public function budgetStore(Request $request){
+		$this->validate($request, [
+
+		 	'description' => 'required',			  
+         	  'monthly_amount' => 'required',
+			  
+			  
+			]);
+
+		$new = New Budget($request->all());
+		
+		$new->save();
+
+		return back();
+
 	}
 
 	public function getBrokerStats()

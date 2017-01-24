@@ -118,6 +118,9 @@ Route::get('/truckstopPost', 'MaatwebsiteDemoController@truckstopPost');
 
 Route::get('/datPost', 'MaatwebsiteDemoController@datPost');
 
+Route::get('/budget', 'NotesController@budgetIndex');
+Route::post('/budget', 'NotesController@budgetStore');
+
 
 
 Route::get('/home', 'HomeController@index');

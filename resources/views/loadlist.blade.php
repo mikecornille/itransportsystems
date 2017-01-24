@@ -325,7 +325,7 @@
         <th>Trailer Type</th>
         <th>Pick Date</th>
         <th>Deliver Date</th>
-        <th>More</th>
+        <th>Info</th>
       </tr>
     </thead>
     <tbody>

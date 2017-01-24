@@ -140,6 +140,7 @@
                                 <li><a href="{{ url('/getProfitReport') }}">Profit Report</a></li>
                                 <li><a href="{{ url('/exportCustomerInvoices') }}">Export Customer Invoices</a></li>
                                 <li><a href="{{ url('/exportCarrierBills') }}">Export Carrier Bills</a></li>
+                                <li><a href="{{ url('/budget') }}">Monthly Budget</a></li>
                                 
                                 
 
