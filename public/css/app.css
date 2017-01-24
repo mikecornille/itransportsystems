@@ -393,6 +393,9 @@ textarea#commodity, textarea#special_ins, textarea#add_stops, textarea#invoice_n
 dt:hover, dd:hover {
   background-color: #C3E7FF; }
 
+dt {
+  font-size: large; }
+
 .pick_and_delivery_displays {
   color: #427F51;
   font-weight: bold; }
