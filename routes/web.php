@@ -158,6 +158,8 @@ Route::get('duplicateLoadlist/{id}', "LoadlistController@duplicate");
 Route::get('newDateLoadlist/{id}', "LoadlistController@newDateLoadlist");
 
 
+Route::get('/emailLoad/{id}', 'LoadlistController@emailLoad');
+
 
 //PRINT THE INVOICE AND RATE CONFIRMATION
 Route::get('/getInvoicePDF/{id}', 'PDFController@getInvoicePDF');

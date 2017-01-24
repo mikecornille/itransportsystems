@@ -319,7 +319,8 @@
 <table class="table table-hover">
     <thead>
       <tr>
-        <th>Route</th>
+        <th>Pick</th>
+        <th>Delivery</th>
         <th>Miles</th>
         <th>Status</th>
         <th>Trailer Type</th>
@@ -342,7 +343,8 @@
 			$profitMargin = round((float)$margin * 100 );
 		?>
       <tr>
-        <td>{{ $load->pick_city . ', ' . $load->pick_state . ' to ' . $load->delivery_city . ', ' . $load->delivery_state }}</td>
+        <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
+        <td>{{ $load->delivery_city . ', ' . $load->delivery_state }}</td>
         <td>{{ $load->miles }}mi</td>
         <td>{{ $load->urgency }}</td>
         <td>{{ $load->trailer_type }}</td>
@@ -352,14 +354,16 @@
       </tr>
 
       <tr class="collapse coll{{ $load->id }}">
-      	<td>{{ $load->load_type . ' LOAD - ' . $load->commodity }} - {{ $load->length . 'ft x ' . $load->width . 'ft x ' . $load->height . 'ft ' . $load->weight . 'lbs - ' . $load->special_instructions }}</td>
+      	<td>{{ $load->commodity }} - {{ $load->length . 'ft x ' . $load->width . 'ft x ' . $load->height . 'ft ' . $load->weight . 'lbs' }}</td>
+      	<td>{{ $load->special_instructions }}</td>
+      	<td>{{ $load->load_type }}</td>
       </tr>
       <tr class="collapse coll{{ $load->id }}">
-      	<td>OFFERING: ${{ $load->offer_money }} BILLING: ${{ $load->billing_money }} POSTED: ${{ $load->post_money }} PROFIT MARGIN: {{ $profitMargin }}%</td>
+      	<td><span class="offering_rate">OFFERING: ${{ $load->offer_money }}</span> BILLING: ${{ $load->billing_money }} POSTED: ${{ $load->post_money }} PROFIT MARGIN: {{ $profitMargin }}%</td>
       </tr>
       <tr class="collapse coll{{ $load->id }}">
       	<td>
-      		<a href="{{ URL::to('/editLoadlist/' . $load->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $load->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load->customer . ' ' . (date("m/d g:ia", strtotime($load->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $load->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $load->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/deleteLoadlist/' . $load->id) }}" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      		<a href="{{ URL::to('/editLoadlist/' . $load->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $load->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load->customer . ' ' . (date("m/d g:ia", strtotime($load->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $load->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $load->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailLoad/' . $load->id) }}" title="email"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a> | <a href="{{ URL::to('/deleteLoadlist/' . $load->id) }}" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
       	</td>
       </tr>
      

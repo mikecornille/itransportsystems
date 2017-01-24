@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Mail;
+
 use App\Loadlist;
 use DB;
 
@@ -177,6 +179,29 @@ class LoadlistController extends Controller
    		$load->save();
    		
    		return back()->with('status', 'Your load was posted for tomorrow and the pick up time was set for 7:00am!');
+
+   }
+
+   public function emailLoad($id){
+
+   		$info = Loadlist::find($id);
+		
+		$info = ['info' => $info];
+        
+        Mail::send(['html'=>'email.loadListEmail'], $info, function($message) use ($info){
+            
+            
+           	$message->to(\Auth::user()->email)
+
+           	->subject('goodbye hello');
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name);
+
+           
+
+        });
+
+    	return back()->with('status', 'Your Load List posting has been sent to you!');
 
    }
    
