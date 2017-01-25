@@ -193,7 +193,7 @@ class LoadlistController extends Controller
             
            	$message->to(\Auth::user()->email)
 
-           	->subject('goodbye hello');
+           	->subject('Quote for ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
           
             $message->from(\Auth::user()->email, \Auth::user()->name);
 

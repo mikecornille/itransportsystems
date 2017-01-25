@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Mail;
-
 use Input;
 use App\Item;
 use DB;
@@ -77,39 +76,66 @@ class MaatwebsiteDemoController extends Controller
 
 	public function truckstopPost()
 {   
-    $type = 'csv';
-
+    $savePath = storage_path('csv/' . 'itransys.csv');
 
     $truckstop_post = Loadlist::select('pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'trailer_type', 'pick_date', 'load_type', 'length', 'width', 'height', 'weight', 'offer_money', 'special_instructions', 'company_contact', 'contact_phone')->where('urgency', 'OPEN')->orderBy('id', 'desc')->get();
 
-    \Excel::create('itransys', function($excel) use ($truckstop_post) {
-        $excel->sheet('mySheet', function($sheet) use ($truckstop_post)
-        {
-            $sheet->fromArray($truckstop_post);
 
-        });
+        $fp = fopen($savePath, 'w');
 
-        
+        		$keys = array_keys($truckstop_post->first()->toArray());
+        	
 
+		fputcsv($fp,$keys);
+		foreach ($truckstop_post as $key => $value) {
+	        fputcsv($fp, $value->toArray());
+		}
+
+        fclose($fp);
        $info = Load::find(8500);
 
        $info = ['info'=>$info];
 
 
-       Mail::send(['html'=>'email.invoice_email_body'], $info, function($message) use ($info, $excel){
+       Mail::send(['html'=>'email.invoice_email_body'], $info, function($message) use ($info, $truckstop_post, $savePath){
 
-        $message->to('mike@gmail.com')->subject('subject');
+        $message->to('mikecornille@gmail.com')->subject('subject');
 
-        $message->from('mike@gmail.com', \Auth::user()->name);
+        $message->from('mikecornille@gmail.com', \Auth::user()->name);
 
-        $message->attachData($excel, 'Invoice.csv');
-
-        });
-
+        $message->attach($savePath);
 
         });
+
 
     return back()->with('status', 'You Posted Truckstop!');
+
+}
+
+public function datPost(\App\Transformers\DatTransformer $transformer) 
+{
+	    $savePath = storage_path('csv/' . 'itransys.csv');
+
+    $truckstop_post = Loadlist::select('pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'trailer_type', 'pick_date', 'load_type', 'length', 'width', 'height', 'weight', 'offer_money', 'special_instructions', 'company_contact', 'contact_phone')->where('urgency', 'OPEN')->orderBy('id', 'desc')->get();
+
+	$truckstop_post = $transformer->transformCollection($truckstop_post);
+$fp = fopen($savePath, 'w');
+
+        if ($truckstop_post instanceof Illuminate\Support\Collection) {
+        		$keys = array_keys($truckstop_post->first()->toArray());
+        	}	else {
+        		$keys = array_keys($truckstop_post[0]);
+        	}
+
+		fputcsv($fp,$keys);
+		foreach ($truckstop_post as $key => $value) {
+			
+	        fputcsv($fp, $value);
+		}
+
+        fclose($fp);
+
+            return response()->download($savePath);
 
 }
 

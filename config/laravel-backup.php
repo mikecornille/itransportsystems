@@ -153,8 +153,8 @@ return [
          * Here you can specify how emails should be sent.
          */
         'mail' => [
-            'from' => 'your@email.com',
-            'to'   => 'your@email.com',
+            'from' => 'Itrans Load Email',
+            'to'   => 'mikec@itransys.com',
         ],
 
         /*
