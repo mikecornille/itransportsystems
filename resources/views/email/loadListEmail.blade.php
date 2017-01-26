@@ -26,8 +26,8 @@ $newDateTime = date('A', strtotime($currentDateTime));
 <li>Lane: {{ $info->pick_city . ', ' . $info->pick_state . ' to ' . $info->delivery_city . ', ' . $info->delivery_state }}</li>
 <li>Commodity: {{ $info->commodity }}</li>
 <li>Dimensions: {{ $info->length . 'ft x ' . $info->width . 'ft x ' . $info->height . 'ft ' . $info->weight . 'lbs.'}}</li>
-<li>Pick Date: {{ $info->pick_date . ' ' . $info->pick_time }}</li>
-<li>Delivery Date: {{ $info->delivery_date . ' ' . $info->delivery_time }}</li>
+<li>Ready Date: {{ $info->pick_date . ' ' . $info->pick_time }}</li>
+<li>Deliver By Date: {{ $info->delivery_date . ' ' . $info->delivery_time }}</li>
 <li>Trailer Type: {{ $info->trailer_type }}</li>
 <li>Special Notes: {{ $info->special_instructions }}</li>
 <li><b>Rate: ${{ $info->billing_money }}.00 flat rate, no additional costs</b></li>

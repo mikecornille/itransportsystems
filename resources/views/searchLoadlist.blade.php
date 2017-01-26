@@ -23,13 +23,31 @@
       <h1 class="text-center">Search Load List</h1> 
       <div class="form-group">
         <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-4">
                 <label class="label-control" for="customer_search">CUSTOMER</label>
                 <input type="text" class="form-control" id="customer_search" name="customer" value="{{ old('customer') }}">
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-4">
                 <label class="label-control" for="commodity">COMMODITY</label>
                 <input type="text" class="form-control" id="commodity" name="commodity" value="{{ old('commodity') }}">
+            </div>
+            <div class="col-xs-2">
+                 <label class="label-control" for="urgency">URGENCY</label>
+                	<select name="urgency" id="urgency" class="form-control">
+                		<option></option>
+					    <option value="Has Time">Has Time</option>
+						<option value="Caller">Caller</option>
+						<option value="Hot">Hot</option>
+						<option value="Screaming">Screaming</option>
+						<option value="Booked">Booked</option>
+						<option value="Get Numbers">Get Numbers</option>
+						<option value="Quote">Quote</option>
+						<option value="Hold">Hold</option>
+					</select>
+            </div>
+            <div class="col-xs-2">
+                <label class="label-control" for="datepicker_search_loadlist">PICK DATE</label>
+                <input type="text" class="form-control" id="datepicker_search_loadlist" name="pick_date">
             </div>
         </div>
         <div class="row">

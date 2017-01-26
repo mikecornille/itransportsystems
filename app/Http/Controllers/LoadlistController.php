@@ -14,7 +14,7 @@ class LoadlistController extends Controller
      public function store(Request $request)
 	{
 
-		
+		date_default_timezone_set("America/Chicago");
 		
 		 $this->validate($request, [
 
@@ -36,6 +36,9 @@ class LoadlistController extends Controller
             'miles' => 'required',
             'billing_money' => 'required',
             'offer_money' => 'required',
+            'load_type' => 'required',
+            'trailer_type' => 'required',
+            'urgency' => 'required',
       
         
          ]);
@@ -63,11 +66,19 @@ class LoadlistController extends Controller
 	public function index()
 	{
 
-		$open_loads = Loadlist::all();
+		$open_loads = Loadlist::where('urgency', '=', 'Has Time')
+		->orWhere('urgency', '=', 'Hot')
+		->orWhere('urgency', '=', 'Screaming')
+		->orWhere('urgency', '=', 'Caller')
+		->orWhere('urgency', '=', 'Get Numbers')
+		->orWhere('urgency', '=', 'Hold')
+		->orderBy('pick_city', 'desc')->get();
 
-		
+		$quote_loads = Loadlist::where('urgency', '=', 'Quote')
+		->orderBy('created_at', 'desc')->get();
 
-		return view('loadlist', compact('open_loads'));
+	
+		return view('loadlist', compact('open_loads', 'quote_loads'));
 	
 	}
 
@@ -92,6 +103,8 @@ class LoadlistController extends Controller
 	public function updateLoadlist(Request $request, Loadlist $loadlist) 
 	{
     
+    	date_default_timezone_set("America/Chicago");
+
 		$loadlist->update($request->all());
 		return back()->with('status', 'Your updates have been successfully saved!');
 
@@ -114,6 +127,7 @@ class LoadlistController extends Controller
    public function duplicate($id) 
 	{
 
+		date_default_timezone_set("America/Chicago");
     
     	$load = Loadlist::find($id);
 		$newLoad = $load->replicate();
@@ -134,11 +148,11 @@ class LoadlistController extends Controller
     
 
     	if ($request->has('customer')){
-    		$loads->where('customer', $request->customer);
+    		$loads->where('customer', 'like', '%' . $request->customer . '%');
     	}
 
     	if ($request->has('commodity')){
-    		$loads->where('commodity', $request->commodity);
+    		$loads->where('commodity', 'like', '%' . $request->commodity . '%');
     	}
 
     	if ($request->has('pick_city')){
@@ -155,6 +169,14 @@ class LoadlistController extends Controller
 
     	if ($request->has('delivery_state')){
     		$loads->where('delivery_state', $request->delivery_state);
+    	}
+
+    	if ($request->has('urgency')){
+    		$loads->where('urgency', $request->urgency);
+    	}
+
+    	if ($request->has('pick_date')){
+    		$loads->where('pick_date', $request->pick_date);
     	}
 
 

@@ -59,12 +59,14 @@
                 <label class="label-control" for="urgency">URGENCY</label>
                     <select name="urgency" id="urgency" class="form-control">
                         <option value="{{ $loadlist->urgency }}">{{ $loadlist->urgency }}</option>
-                        <option value="QUOTE">QUOTE</option>
-                        <option value="OPEN">OPEN</option>
-                        <option value="CALLER">CALLER</option>
-                        <option value="BOOKED">BOOKED</option>
-                        <option value="GET NUMBERS">GET NUMBERS</option>
-                        <option value="HOLD">HOLD</option>
+                        <option value="Has Time">Has Time</option>
+                        <option value="Caller">Caller</option>
+                        <option value="Hot">Hot</option>
+                        <option value="Screaming">Screaming</option>
+                        <option value="Booked">Booked</option>
+                        <option value="Get Numbers">Get Numbers</option>
+                        <option value="Quote">Quote</option>
+                        <option value="Hold">Hold</option>
                     </select>
             </div>
             <div class="col-xs-3">
@@ -112,11 +114,11 @@
                 <input type="text" class="form-control" id="pick_state" name="pick_state" value="{{ $loadlist->pick_state }}">
             </div>
             <div class="col-xs-3">
-                <label class="label-control" for="datepicker_pick_loadlist">DATE</label>
+                <label class="label-control" for="datepicker_pick_loadlist">READY DATE</label>
                 <input type="text" class="form-control" id="datepicker_pick_loadlist" name="pick_date" value="{{ $loadlist->pick_date }}">
             </div>
             <div class="col-xs-3">
-                <label class="label-control" for="pick_time">TIME</label>
+                <label class="label-control" for="pick_time">READY TIME</label>
                 <select name="pick_time" id="pick_time" class="form-control">
                     <option value="{{ $loadlist->pick_time }}">{{ $loadlist->pick_time }}</option>
                     <option value="0600">0600</option>
@@ -175,11 +177,11 @@
                     </div>           
             </div>
             <div class="col-xs-3">
-                <label class="label-control" for="datepicker_delivery_loadlist">DATE</label>
+                <label class="label-control" for="datepicker_delivery_loadlist">DELIVERY BY DATE</label>
                 <input type="text" class="form-control" id="datepicker_delivery_loadlist" name="delivery_date" value="{{ $loadlist->delivery_date }}">
             </div>
             <div class="col-xs-3">
-                <label class="label-control" for="delivery_time">TIME</label>
+                <label class="label-control" for="delivery_time">DELIVERY BY TIME</label>
                 <select name="delivery_time" id="delivery_time" class="form-control">
                         <option value="{{ $loadlist->delivery_time }}">{{ $loadlist->delivery_time }}</option>
                         <option value="0600">0600</option>
@@ -260,15 +262,27 @@
             </div>
             <div class="col-xs-3">
                 <label class="label-control" for="billing_money">BILLING MONEY</label>
+                <div class="input-group">
+                        <span class="input-group-addon">$</span>
                 <input type="text" class="form-control" id="billing_money" name="billing_money" value="{{ $loadlist->billing_money }}">
+                <span class="input-group-addon">.00</span>
+                </div>
             </div>
             <div class="col-xs-3">
                 <label class="label-control" for="offer_money">OFFER MONEY</label>
+                <div class="input-group">
+                        <span class="input-group-addon">$</span>
                 <input type="text" class="form-control" id="offer_money" name="offer_money" value="{{ $loadlist->offer_money }}">
+                <span class="input-group-addon">.00</span>
+                </div>
             </div>
             <div class="col-xs-3">
                 <label class="label-control" for="post_money">POST MONEY</label>
+                <div class="input-group">
+                        <span class="input-group-addon">$</span>
                 <input type="text" class="form-control" id="post_money" name="post_money" value="{{ $loadlist->post_money }}">
+                <span class="input-group-addon">.00</span>
+                </div>
             </div>
         </div>
         
@@ -287,6 +301,9 @@
 
 
 </div>
+
+
+
 
 
 

@@ -786,6 +786,8 @@ $('#datepicker_delivery_loadlist').datepicker();
 
 $('#datepicker_pick_loadlist').datepicker();
 
+$('#datepicker_search_loadlist').datepicker();
+
 
 
 
@@ -864,6 +866,11 @@ $('#datepicker_delivery_loadlist').on('changeDate', function(ev){
 $('#datepicker_pick_loadlist').on('changeDate', function(ev){
     $(this).datepicker('hide');
 });
+
+$('#datepicker_search_loadlist').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
 
 
 
@@ -1063,6 +1070,67 @@ $(document).ready(function(){
     $('[data-toggle="popover"]').popover(); 
 });
 
+$(document).ready(function(){
+    $(".loadlist_row").hover(function(){
+        $(this).css("background-color", "#C3E3FF");
+        }, function(){
+        $(this).css("background-color", "");
+    });
+});
+
+
+$(document).ready(function(){
+
+$("#miles_loadlist").mouseover(function(){
+
+ 
+  var myString = $('#miles').val();
+
+  var fifty_cent = Math.ceil((myString * .50));
+        var sixty_five_cent = Math.ceil((myString * .65));
+        var seventy_five_cent = Math.ceil((myString * .75));
+        var ninety_cent = Math.ceil((myString * .90));
+        var dollar_ten = Math.ceil((myString * 1.10));
+        var dollar_twenty_five = Math.ceil((myString * 1.25));
+        var dollar_thirty_five = Math.ceil((myString * 1.35));
+        var dollar_fifty = Math.ceil((myString * 1.50));
+        var dollar_sixty_five = Math.ceil((myString * 1.65));
+        var dollar_seventy_five = Math.ceil((myString * 1.75));
+        var dollar_eighty_five = Math.ceil((myString * 1.85));
+        var dollar_ninety_five = Math.ceil((myString * 1.95));
+        var two_even = Math.ceil((myString * 2));
+        var two_fifteen = Math.ceil((myString * 2.15));
+        var two_twenty_five = Math.ceil((myString * 2.25));
+        var two_thirty_five = Math.ceil((myString * 2.35));
+        var two_fifty = Math.ceil((myString * 2.50));
+        var two_sevety_five = Math.ceil((myString * 2.75));
+        var three_even = Math.ceil((myString * 3));
+        var three_twenty_five = Math.ceil((myString * 3.25));
+        var three_fifty = Math.ceil((myString * 3.50));
+        var three_seventy_five = Math.ceil((myString * 3.75));
+        var four_even = Math.ceil((myString * 4));
+        var four_twenty_five = Math.ceil((myString * 4.25));
+        var four_fifty = Math.ceil((myString * 4.50));
+        var four_seventy_five = Math.ceil((myString * 4.75));
+        var five_even = Math.ceil((myString * 5));
+        var five_twenty_five = Math.ceil((myString * 5.25));
+        var five_fifty = Math.ceil((myString * 5.50));
+        var five_seventy_five = Math.ceil((myString * 5.75));
+
+
+        $('#mile_calc').html("<ul class='calc'><li><b>.50</b> per mile = $" + fifty_cent + "</li><li><b>.65</b> per mile = $" + sixty_five_cent + "</li><li><b>.75</b> per mile = $" + seventy_five_cent + "</li><li><b>.90</b> per mile = $" + ninety_cent + "</li><li><b>1.10</b> per mile = $" + dollar_ten + "</li><li><b>1.25</b> per mile = $" + dollar_twenty_five + "</li><li><b>1.35</b> per mile = $" + dollar_thirty_five + "</li><li><b>1.50</b> per mile = $" + dollar_fifty + "</li><li><b>1.65</b> per mile = $" + dollar_sixty_five + "</li><li><b>1.75</b> per mile = $" + dollar_seventy_five + "</li><li><b>1.85</b> per mile = $" + dollar_eighty_five + "</li><li><b>1.95</b> per mile = $" + dollar_ninety_five + "</li><li><b>2.00</b> per mile = $" + two_even + "</li><li><b>2.15</b> per mile = $" + two_fifteen + "</li><li><b>2.25</b> per mile = $" + two_twenty_five + "</li><li><b>2.35</b> per mile = $" + two_thirty_five + "</li><li><b>2.50</b> per mile = $" + two_fifty + "</li><li><b>2.75</b> per mile = $" + two_sevety_five + "</li><li><b>3.00</b> per mile = $" + three_even + "</li><li><b>3.25</b> per mile = $" + three_twenty_five + "</li><li><b>3.50</b> per mile = $" + three_fifty + "</li><li><b>3.75</b> per mile = $" + three_seventy_five + "</li><li><b>4.00</b> per mile = $" + four_even + "</li><li><b>4.25</b> per mile = $" + four_twenty_five + "</li><li><b>4.50</b> per mile = $" + four_fifty + "</li><li><b>4.75</b> per mile = $" + four_seventy_five + "</li><li><b>5.00</b> per mile = $" + five_even + "</li><li><b>5.25</b> per mile = $" + five_twenty_five + "</li><li><b>5.50</b> per mile = $" + five_fifty + "</li><li><b>5.75</b> per mile = $" + five_seventy_five + "</li></ul>");
+
+
+
+});
+
+
+
+$("#miles_loadlist").mouseleave(function(){
+        $("#mile_calc").empty();
+    });
+
+ });
 
 
 

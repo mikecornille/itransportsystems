@@ -2,6 +2,8 @@
 
 @section('content')
 
+
+ 
 <div class="container">
 
 @if (count($errors) > 0)
@@ -70,17 +72,21 @@
             <div class="col-xs-3">
                 <label class="label-control" for="urgency">URGENCY</label>
                 	<select name="urgency" id="urgency" class="form-control">
-					    <option value="QUOTE">QUOTE</option>
-						<option value="OPEN">OPEN</option>
-						<option value="CALLER">CALLER</option>
-						<option value="BOOKED">BOOKED</option>
-						<option value="GET NUMBERS">GET NUMBERS</option>
-						<option value="HOLD">HOLD</option>
+					    @if(old('urgency'))<option value="{{ old('urgency') }}">{{ old('urgency') }}</option> @else <option></option> @endif
+					    <option value="Has Time">Has Time</option>
+						<option value="Caller">Caller</option>
+						<option value="Hot">Hot</option>
+						<option value="Screaming">Screaming</option>
+						<option value="Booked">Booked</option>
+						<option value="Get Numbers">Get Numbers</option>
+						<option value="Quote">Quote</option>
+						<option value="Hold">Hold</option>
 					</select>
             </div>
             <div class="col-xs-3">
                 <label class="label-control" for="load_type">LOAD TYPE</label>
                 <select name="load_type" id="load_type" class="form-control">
+					@if(old('load_type'))<option value="{{ old('load_type') }}">{{ old('load_type') }}</option> @else <option></option> @endif
 					<option value="FULL">FULL</option>
 					<option value="PARTIAL">PARTIAL</option>
 				</select>
@@ -88,6 +94,7 @@
             <div class="col-xs-3">
                 <label class="label-control" for="trailer_type">TRAILER TYPE</label>
                 <select name="trailer_type" id="trailer_type" class="form-control">
+					@if(old('trailer_type'))<option value="{{ old('trailer_type') }}">{{ old('trailer_type') }}</option> @else <option></option> @endif
 					<option value="CONG">Conestoga</option>
 					<option value="DA">Drive Away</option>
 					<option value="DD">Double Drop</option>
@@ -121,13 +128,13 @@
                 <input type="text" class="form-control" id="pick_state" name="pick_state" value="{{ old('pick_state') }}">
             </div>
             <div class="col-xs-3">
-                <label class="label-control" for="datepicker_pick_loadlist">PICK DATE</label>
+                <label class="label-control" for="datepicker_pick_loadlist">READY DATE</label>
                 <input type="text" class="form-control" id="datepicker_pick_loadlist" name="pick_date" value="{{ old('pick_date') }}">
             </div>
             <div class="col-xs-3">
-                <label class="label-control" for="pick_time">PICK TIME</label>
+                <label class="label-control" for="pick_time">READY TIME</label>
                 <select name="pick_time" id="pick_time" class="form-control">
-		            <option value="Choose">Choose</option>
+		            @if(old('pick_time'))<option value="{{ old('pick_time') }}">{{ old('pick_time') }}</option> @else <option></option> @endif
 		            <option value="0600">0600</option>
 		            <option value="0630">0630</option>
 		            <option value="0700">0700</option>
@@ -184,13 +191,13 @@
 	 				</div>           
             </div>
             <div class="col-xs-3">
-                <label class="label-control" for="datepicker_delivery_loadlist">DELIVERY DATE</label>
+                <label class="label-control" for="datepicker_delivery_loadlist">DELIVERY BY DATE</label>
                 <input type="text" class="form-control" id="datepicker_delivery_loadlist" name="delivery_date" value="{{ old('delivery_date') }}">
             </div>
             <div class="col-xs-3">
-                <label class="label-control" for="delivery_time">DELIVERY TIME</label>
+                <label class="label-control" for="delivery_time">DELIVERY BY TIME</label>
                 <select name="delivery_time" id="delivery_time" class="form-control">
-			            <option value="Choose">Choose</option>
+			            @if(old('delivery_time'))<option value="{{ old('delivery_time') }}">{{ old('delivery_time') }}</option> @else <option></option> @endif
 			            <option value="0600">0600</option>
 			            <option value="0630">0630</option>
 			            <option value="0700">0700</option>
@@ -265,7 +272,12 @@
         <div class="row">
             <div class="col-xs-3">
                 <label class="label-control" for="miles">MILES</label>
+                <div class="input-group">
                 <input type="text" class="form-control" id="miles" name="miles" value="{{ old('miles') }}">
+                	<span class="input-group-btn">
+        				<button class="btn btn-default" id="miles_loadlist" type="button"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></button>
+      				</span>
+                </div>
             </div>
             
 
@@ -308,10 +320,10 @@
 
 
 
- 
+<div id="mile_calc" style="font-size: small;"></div>
 
 
-
+</div>
 
 
 
@@ -321,11 +333,14 @@
       <tr>
         <th>Pick</th>
         <th>Delivery</th>
+        <th>Customer</th>
         <th>Miles</th>
-        <th>Status</th>
+        <th>Urgency</th>
+        <th>Load Type</th>
+        <th>Creator</th>
         <th>Trailer Type</th>
-        <th>Pick Date</th>
-        <th>Deliver Date</th>
+        <th>Ready Date</th>
+        <th>Deliver By</th>
         <th>Info</th>
       </tr>
     </thead>
@@ -341,25 +356,37 @@
 			$margin = $difference / $billing_money;
 
 			$profitMargin = round((float)$margin * 100 );
+
+			$myvalue = $load->customer;
+			$arr = explode(' ',trim($myvalue));
+			
+			$name = explode("@", $load->created_by);
+			$email_prefix = $name[0];
 		?>
-      <tr>
+		
+      <tr class="loadlist_row">
         <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
         <td>{{ $load->delivery_city . ', ' . $load->delivery_state }}</td>
-        <td>{{ $load->miles }}mi</td>
+        <td>{{ $arr[0] }}</td>
+        <td>{{ $load->miles }}</td>
         <td>{{ $load->urgency }}</td>
+        <td>{{ $load->load_type }}</td>
+        <td>{{ $email_prefix }}</td>
         <td>{{ $load->trailer_type }}</td>
         <td>{{ date("m/d", strtotime($load->pick_date)) . ' ' . (date("g:ia", strtotime($load->pick_time))) }}</td>
         <td>{{ date("m/d", strtotime($load->delivery_date)) . ' ' . (date("g:ia", strtotime($load->delivery_time))) }}</td>
         <td><a href=".coll{{ $load->id }}" data-toggle="collapse"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></td>
       </tr>
+      
 
       <tr class="collapse coll{{ $load->id }}">
       	<td>{{ $load->commodity }} - {{ $load->length . 'ft x ' . $load->width . 'ft x ' . $load->height . 'ft ' . $load->weight . 'lbs' }}</td>
       	<td>{{ $load->special_instructions }}</td>
-      	<td>{{ $load->load_type }}</td>
       </tr>
       <tr class="collapse coll{{ $load->id }}">
-      	<td><span class="offering_rate">OFFERING: ${{ $load->offer_money }}</span> BILLING: ${{ $load->billing_money }} POSTED: ${{ $load->post_money }} PROFIT MARGIN: {{ $profitMargin }}%</td>
+      	<td class="offering_rate">OFFER: ${{ $load->offer_money }} POST: ${{ $load->post_money }}</td>
+      	<td class="margin">PM: {{ $profitMargin }}%</td>
+      	<td class="billing_rate">B: ${{ $load->billing_money }}</td>
       </tr>
       <tr class="collapse coll{{ $load->id }}">
       	<td>
@@ -374,14 +401,91 @@
     </tbody>
   </table>
 
+<h1 class="text-center">Recent Quotes</h1>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Pick</th>
+        <th>Delivery</th>
+        <th>Customer</th>
+        <th>Miles</th>
+        <th>Urgency</th>
+        <th>Load Type</th>
+        <th>Creator</th>
+        <th>Trailer Type</th>
+        <th>Ready Date</th>
+        <th>Deliver By</th>
+        <th>Info</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach($quote_loads as $quote)
+      	<?php
+			$billing_money = $quote->billing_money;
+
+			$offer_money = $quote->offer_money;
+
+			$difference = $billing_money - $offer_money;
+
+			$margin = $difference / $billing_money;
+
+			$profitMargin = round((float)$margin * 100 );
+
+			$myvalue = $quote->customer;
+			$arr = explode(' ',trim($myvalue));
+			
+			$name = explode("@", $load->created_by);
+			$email_prefix = $name[0];
+		?>
+		
+      <tr class="loadlist_row">
+        <td>{{ $quote->pick_city . ', ' . $quote->pick_state }}</td>
+        <td>{{ $quote->delivery_city . ', ' . $quote->delivery_state }}</td>
+        <td>{{ $arr[0] }}</td>
+        <td>{{ $quote->miles }}</td>
+        <td>{{ $quote->urgency }}</td>
+        <td>{{ $quote->load_type }}</td>
+        <td>{{ $email_prefix }}</td>
+        <td>{{ $quote->trailer_type }}</td>
+        <td>{{ date("m/d", strtotime($quote->pick_date)) . ' ' . (date("g:ia", strtotime($quote->pick_time))) }}</td>
+        <td>{{ date("m/d", strtotime($quote->delivery_date)) . ' ' . (date("g:ia", strtotime($quote->delivery_time))) }}</td>
+        <td><a href=".coll{{ $quote->id }}" data-toggle="collapse"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></td>
+      </tr>
+      
+
+      <tr class="collapse coll{{ $quote->id }}">
+      	<td>{{ $quote->commodity }} - {{ $quote->length . 'ft x ' . $quote->width . 'ft x ' . $quote->height . 'ft ' . $quote->weight . 'lbs' }}</td>
+      	<td>{{ $quote->special_instructions }}</td>
+      </tr>
+      <tr class="collapse coll{{ $quote->id }}">
+      	<td class="offering_rate">OFFER: ${{ $quote->offer_money }} POST: ${{ $quote->post_money }}</td>
+      	<td class="margin">PM: {{ $profitMargin }}%</td>
+      	<td class="billing_rate">B: ${{ $quote->billing_money }}</td>
+      </tr>
+      <tr class="collapse coll{{ $quote->id }}">
+      	<td>
+      		<a href="{{ URL::to('/editLoadlist/' . $quote->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $quote->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $quote->customer . ' ' . (date("m/d g:ia", strtotime($quote->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $quote->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $quote->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailLoad/' . $quote->id) }}" title="email"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a> | <a href="{{ URL::to('/deleteLoadlist/' . $quote->id) }}" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      	</td>
+      </tr>
+     
+
+      
+       
+      @endforeach
+    </tbody>
+  </table>
 
 
 
-</div>
 
+<?php
 
+date_default_timezone_set("America/Chicago");
 
+$notetimestamp = date('m/d/Y g:ia');
 
+?>
 
 
 
@@ -399,7 +503,7 @@
         </div>
         <div class="modal-body">
           <form role="form" class="form-horizontal" method="POST" action="/newNote">
-				<input type="hidden" id="time_name_stamp" name="time_name_stamp" value="{{ date('m/d/Y g:ia') . ' ' . \Auth::user()->name }} -">
+				<input type="hidden" id="time_name_stamp" name="time_name_stamp" value="{{ $notetimestamp . ' ' . \Auth::user()->name }} -">
         			{{ csrf_field() }}
 						<div class="well">
       						<h2 class="text-center">ITS Notes</h2> 

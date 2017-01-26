@@ -78,7 +78,7 @@ class MaatwebsiteDemoController extends Controller
 {   
     $savePath = storage_path('csv/' . 'itransys.csv');
 
-    $truckstop_post = Loadlist::select('pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'trailer_type', 'pick_date', 'load_type', 'length', 'width', 'height', 'weight', 'offer_money', 'special_instructions', 'company_contact', 'contact_phone')->where('urgency', 'OPEN')->orderBy('id', 'desc')->get();
+    $truckstop_post = Loadlist::select('pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'trailer_type', 'pick_date', 'load_type', 'length', 'width', 'height', 'weight', 'offer_money', 'special_instructions', 'company_contact', 'contact_phone')->where('urgency', '!=', 'Booked')->where('urgency', '!=', 'Quote')->where('urgency', '!=', 'Hold')->get();
 
 
         $fp = fopen($savePath, 'w');
@@ -92,12 +92,13 @@ class MaatwebsiteDemoController extends Controller
 		}
 
         fclose($fp);
-       $info = Load::find(8500);
+       
+       //$info = Load::find(8500);
 
-       $info = ['info'=>$info];
+       $info = ["foo" => "bar", "bar" => "foo",];
 
 
-       Mail::send(['html'=>'email.invoice_email_body'], $info, function($message) use ($info, $truckstop_post, $savePath){
+       Mail::send(['html'=>'email.body'], $info, function($message) use ($info, $truckstop_post, $savePath){
 
         $message->to('mikecornille@gmail.com')->subject('subject');
 
@@ -116,7 +117,7 @@ public function datPost(\App\Transformers\DatTransformer $transformer)
 {
 	    $savePath = storage_path('csv/' . 'itransys.csv');
 
-    $truckstop_post = Loadlist::select('pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'trailer_type', 'pick_date', 'load_type', 'length', 'width', 'height', 'weight', 'offer_money', 'special_instructions', 'company_contact', 'contact_phone')->where('urgency', 'OPEN')->orderBy('id', 'desc')->get();
+    $truckstop_post = Loadlist::select('pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'trailer_type', 'pick_date', 'load_type', 'length', 'width', 'height', 'weight', 'offer_money', 'special_instructions', 'company_contact', 'contact_phone')->where('urgency', '!=', 'Booked')->where('urgency', '!=', 'Quote')->where('urgency', '!=', 'Hold')->get();
 
 	$truckstop_post = $transformer->transformCollection($truckstop_post);
 $fp = fopen($savePath, 'w');
