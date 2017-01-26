@@ -77,8 +77,11 @@ class LoadlistController extends Controller
 		$quote_loads = Loadlist::where('urgency', '=', 'Quote')
 		->orderBy('created_at', 'desc')->get();
 
+		$personal_loads = Loadlist::where('created_by', '=', \Auth::user()->email)
+		->orderBy('urgency', 'desc')->get();
+
 	
-		return view('loadlist', compact('open_loads', 'quote_loads'));
+		return view('loadlist', compact('open_loads', 'quote_loads', 'personal_loads'));
 	
 	}
 
