@@ -100,9 +100,11 @@ class MaatwebsiteDemoController extends Controller
 
        Mail::send(['html'=>'email.body'], $info, function($message) use ($info, $truckstop_post, $savePath){
 
-        $message->to('mikecornille@gmail.com')->subject('subject');
+        
 
-        $message->from('mikecornille@gmail.com', \Auth::user()->name);
+       	$recipients = ['joem@itransys.com', 'mikeb@itransys.com', 'robert@itransys.com', 'loads@truckstop.com', 'mikec@itransys.com', 'mattc@itransys.com']];
+
+        $message->to($recipients)->subject('Truckstop Posted');
 
         $message->attach($savePath);
 
