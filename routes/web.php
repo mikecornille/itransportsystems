@@ -79,6 +79,10 @@ Route::get('/searchLoadlist', 'LoadlistController@searchLoadlistIndex');
 
 Route::post('/searchLoadlist', 'LoadlistController@searchLoadlist');
 
+Route::get('/emailTruckOffer/{id}', 'LoadlistController@emailTruckOffer');
+
+
+
 
 Route::get('/notes', 'NotesController@index');
 Route::get('/myStats', 'NotesController@getBrokerStats');

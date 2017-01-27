@@ -227,8 +227,8 @@
 
         <div class="row">
             <div class="col-xs-8">
-                <label class="label-control" for="commodity">COMMODITY</label>
-                <input type="text" class="form-control" id="commodity" name="commodity" value="{{ $loadlist->commodity }}">
+                <label class="label-control" for="equipment-search">COMMODITY</label>
+                <input type="text" class="form-control" id="equipment-search" name="commodity" value="{{ $loadlist->commodity }}">
             </div>
             <div class="col-xs-4">
                 <label class="label-control" for="special_instructions">SPECIAL INSTRUCTIONS</label>

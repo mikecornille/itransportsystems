@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 use App\Loadlist;
+
+use App\Carrier;
+
 use DB;
 
 class LoadlistController extends Controller
@@ -72,12 +75,12 @@ class LoadlistController extends Controller
 		->orWhere('urgency', '=', 'Caller')
 		->orWhere('urgency', '=', 'Get Numbers')
 		->orWhere('urgency', '=', 'Hold')
-		->orderBy('pick_city', 'desc')->get();
+		->orderBy('customer', 'desc')->orderBy('pick_city', 'desc')->get();
 
 		$quote_loads = Loadlist::where('urgency', '=', 'Quote')
 		->orderBy('created_at', 'desc')->get();
 
-		$personal_loads = Loadlist::where('created_by', '=', \Auth::user()->email)
+		$personal_loads = Loadlist::where('created_by', '=', \Auth::user()->email)->where('urgency', '!=', 'Quote')
 		->orderBy('urgency', 'desc')->get();
 
 	
@@ -231,6 +234,30 @@ class LoadlistController extends Controller
    }
    
 
+   public function emailTruckOffer($id) {
+
+   		$info = Loadlist::find($id);
+
+   		$carrier = Carrier::where('state', $info->pick_state)->get();
+		
+		$info = ['info' => $info, 'carrier' => $carrier];
+        
+        Mail::send(['html'=>'email.emailTruckOffer'], $info, function($message) use ($info){
+            
+            
+           	$message->to(\Auth::user()->email)
+
+           	->subject('Live Freight Offering from ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name);
+
+           
+
+        });
+
+    	return back()->with('status', 'An email containing the subject, body, and all emails have been sent to you!');
+
+   }
    
 
 
