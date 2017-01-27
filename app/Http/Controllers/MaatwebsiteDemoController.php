@@ -102,7 +102,7 @@ class MaatwebsiteDemoController extends Controller
 
         
 
-       	$recipients = ['joem@itransys.com', 'mikeb@itransys.com', 'robert@itransys.com', 'loads@truckstop.com', 'mikec@itransys.com', 'mattc@itransys.com']];
+       	$recipients = ['joem@itransys.com', 'mikeb@itransys.com', 'robert@itransys.com', 'loads@truckstop.com', 'mikec@itransys.com', 'mattc@itransys.com'];
 
         $message->to($recipients)->subject('Truckstop Posted');
 
