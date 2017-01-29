@@ -74,7 +74,6 @@ class LoadlistController extends Controller
 		->orWhere('urgency', '=', 'Screaming')
 		->orWhere('urgency', '=', 'Caller')
 		->orWhere('urgency', '=', 'Get Numbers')
-		->orWhere('urgency', '=', 'Hold')
 		->orderBy('customer', 'desc')->orderBy('pick_city', 'desc')->get();
 
 		$quote_loads = Loadlist::where('urgency', '=', 'Quote')
