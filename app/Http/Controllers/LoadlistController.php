@@ -69,6 +69,8 @@ class LoadlistController extends Controller
 	public function index()
 	{
 
+    $currentDay = date('d');
+
 		$open_loads = Loadlist::where('urgency', '=', 'Has Time')
 		->orWhere('urgency', '=', 'Hot')
 		->orWhere('urgency', '=', 'Screaming')
@@ -76,14 +78,14 @@ class LoadlistController extends Controller
 		->orWhere('urgency', '=', 'Get Numbers')
 		->orderBy('customer', 'desc')->orderBy('pick_city', 'desc')->get();
 
-		$quote_loads = Loadlist::where('urgency', '=', 'Quote')
+		$personal_loads = Loadlist::where('created_by', '=', \Auth::user()->email)->where('urgency', '!=', 'Quote')
+    ->orderBy('urgency', 'desc')->get();
+
+    $quote_loads = Loadlist::where('urgency', '=', 'Quote')->whereDay('created_at', $currentDay)
 		->orderBy('created_at', 'desc')->get();
 
-		$personal_loads = Loadlist::where('created_by', '=', \Auth::user()->email)->where('urgency', '!=', 'Quote')
-		->orderBy('urgency', 'desc')->get();
-
-	
-		return view('loadlist', compact('open_loads', 'quote_loads', 'personal_loads'));
+		
+    return view('loadlist', compact('open_loads', 'quote_loads', 'personal_loads'));
 	
 	}
 

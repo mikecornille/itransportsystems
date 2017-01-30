@@ -40,6 +40,7 @@ class CreateLoadlistsTable extends Migration
             $table->string('post_money')->nullable();
             $table->string('company_contact')->nullable();
             $table->string('contact_phone')->nullable();
+            $table->integer('user_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
