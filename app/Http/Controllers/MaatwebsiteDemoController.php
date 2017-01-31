@@ -74,26 +74,33 @@ class MaatwebsiteDemoController extends Controller
 		})->download($type);
 	}
 
-	public function truckstopPost()
+	public function truckstopPost(\App\Transformers\TruckstopTransformer $transformer)
 {   
     $savePath = storage_path('csv/' . 'itransys.csv');
 
     $truckstop_post = Loadlist::select('pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'trailer_type', 'pick_date', 'load_type', 'length', 'width', 'height', 'weight', 'offer_money', 'special_instructions', 'company_contact', 'contact_phone')->where('urgency', '!=', 'Booked')->where('urgency', '!=', 'Quote')->where('urgency', '!=', 'Hold')->get();
 
+    $truckstop_post = $transformer->transformCollection($truckstop_post);
 
-        $fp = fopen($savePath, 'w');
 
-        		$keys = array_keys($truckstop_post->first()->toArray());
+
+       $fp = fopen($savePath, 'w');
+
+        if ($truckstop_post instanceof Illuminate\Support\Collection) {
+
+        			$keys = array_keys($truckstop_post->first()->toArray());
+        	}	else {
+        		$keys = array_keys($truckstop_post[0]);
+        	}
         	
 
 		fputcsv($fp,$keys);
 		foreach ($truckstop_post as $key => $value) {
-	        fputcsv($fp, $value->toArray());
+	        fputcsv($fp, $value);
 		}
 
         fclose($fp);
-       
-       //$info = Load::find(8500);
+
 
        $info = ["foo" => "bar", "bar" => "foo"];
 
@@ -102,9 +109,9 @@ class MaatwebsiteDemoController extends Controller
 
         
 
-       	$recipients = ['joem@itransys.com', 'mikeb@itransys.com', 'robert@itransys.com', 'loads@truckstop.com', 'mikec@itransys.com', 'mattc@itransys.com'];
+       	//$recipients = ['joem@itransys.com', 'mikeb@itransys.com', 'robert@itransys.com', 'loads@truckstop.com', 'mikec@itransys.com', 'mattc@itransys.com'];
 
-        $message->to($recipients)->subject('Truckstop Posted');
+        $message->to('mikec@itransys.com')->subject('Truckstop Posted');
 
         $message->attach($savePath);
 
@@ -117,14 +124,16 @@ class MaatwebsiteDemoController extends Controller
 
 public function datPost(\App\Transformers\DatTransformer $transformer) 
 {
-	    $savePath = storage_path('csv/' . 'itransys.csv');
+	    $savePath = storage_path('csv/' . 'dat.csv');
 
     $truckstop_post = Loadlist::select('pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'trailer_type', 'pick_date', 'load_type', 'length', 'width', 'height', 'weight', 'offer_money', 'special_instructions', 'company_contact', 'contact_phone')->where('urgency', '!=', 'Booked')->where('urgency', '!=', 'Quote')->where('urgency', '!=', 'Hold')->get();
 
 	$truckstop_post = $transformer->transformCollection($truckstop_post);
-$fp = fopen($savePath, 'w');
+
+	$fp = fopen($savePath, 'w');
 
         if ($truckstop_post instanceof Illuminate\Support\Collection) {
+        		
         		$keys = array_keys($truckstop_post->first()->toArray());
         	}	else {
         		$keys = array_keys($truckstop_post[0]);
