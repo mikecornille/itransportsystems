@@ -20,7 +20,7 @@ class TruckstopTransformer extends Transformer {
 		'load_type' => $record->load_type,
 		'length' => $record->length,
 		'weight' => $record->weight,
-		'offering' => $record->offer_money,
+		'offering' => $record->post_money,
 		'special_instructions' => $record->special_instructions,
 		'contact_name' => $record->company_contact,
 		'contact_phone' => $record->contact_phone,
