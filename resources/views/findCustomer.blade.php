@@ -2,7 +2,13 @@
 
 @section('content')
 
-
+@if (session('status'))
+    <div class="alert alert-success alert-dismissible">
+        
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>{{ session('status') }}</strong> Click the X at the far right to close this notification.
+    </div>
+@endif
 
 <input type="text" class="form-control" id="find-customer-search" placeholder="Customer Search">
 
@@ -92,11 +98,19 @@
         </div>
       </div>
 
-
-      <button type="button" id="editFindCustomer" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Update</button>
-
+      <div class="btn-group" id="action_buttons">
+        <button type="button" id="editFindCustomer" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Update</button>
+        <button type="button" class="btn btn-primary">Actions</button>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li class="dropdown-header">CUSTOMER EMAILS</li>
+        <li><a href="{{ URL::to('/emailCustomerGeneral') }}"><b>Email General Info</b></a></li>
+      </ul>
+      </div>
     </div>
-  </div>
+</div>
 
   @foreach ($getCustomers as $customer)
     <ul style="list-style-type: none;">

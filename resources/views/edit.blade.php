@@ -603,16 +603,16 @@
    <input type="text" class="form-control" id="signed_rate_con" name="signed_rate_con" value="{{ $info->signed_rate_con }}">
  </div>
  <div class="col-xs-12">
-   <label class="label-control" for="rate_con_creation_date">Rate Con Create</label>
+   <label class="label-control" for="datepicker5">Rate Con Create</label>
    <input type="text" class="form-control datepicker" id="datepicker5" name="rate_con_creation_date" value="{{ $info->rate_con_creation_date }}">
  </div>
  <div class="col-xs-12">
-   <label class="label-control" for="billed_date">Billed Date</label>
-   <input type="text" class="form-control" id="datepicker6" name="billed_date" value="{{ $info->billed_date }}">
+   <label class="label-control" for="datepicker6">Billed Date</label>
+   <input type="text" class="form-control datepicker" id="datepicker6" name="billed_date" value="{{ $info->billed_date }}">
  </div>
  <div class="col-xs-12">
-   <label class="label-control" for="approved_carrier_invoice">APVD CRR INV</label>
-   <input type="text" class="form-control" id="datepicker7" name="approved_carrier_invoice" value="{{ $info->approved_carrier_invoice }}">
+   <label class="label-control" for="datepicker7">APVD CRR INV</label>
+   <input type="text" class="form-control datepicker" id="datepicker7" name="approved_carrier_invoice" value="{{ $info->approved_carrier_invoice }}">
  </div>
  <div class="col-xs-12 text-center" id="submit_button">
   <button type="submit"class="btn btn-success">Update</button>

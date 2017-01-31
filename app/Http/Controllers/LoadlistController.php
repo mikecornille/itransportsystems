@@ -22,7 +22,7 @@ class LoadlistController extends Controller
 		 $this->validate($request, [
 
          	
-			'customer' => 'required',
+			   'customer' => 'required',
             'pick_city' => 'required',
             'pick_state' => 'required',
             'pick_date' => 'required',
@@ -84,8 +84,10 @@ class LoadlistController extends Controller
     $quote_loads = Loadlist::where('urgency', '=', 'Quote')->whereDay('created_at', $currentDay)
 		->orderBy('created_at', 'desc')->get();
 
+    $manageloads_loads = Loadlist::where('user_id', '!=', NULL)->whereDay('created_at', $currentDay)->get();
+
 		
-    return view('loadlist', compact('open_loads', 'quote_loads', 'personal_loads'));
+    return view('loadlist', compact('open_loads', 'quote_loads', 'personal_loads', 'manageloads_loads'));
 	
 	}
 
@@ -239,7 +241,7 @@ class LoadlistController extends Controller
 
    		$info = Loadlist::find($id);
 
-   		$carrier = Carrier::where('state', $info->pick_state)->get();
+   		$carrier = Carrier::where('state', $info->pick_state)->where('email', '!=', '')->get();
 		
 		$info = ['info' => $info, 'carrier' => $carrier];
         

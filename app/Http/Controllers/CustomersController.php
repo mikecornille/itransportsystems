@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
+
 use App\Customer;
 
 use Illuminate\Http\Request;
@@ -62,5 +64,26 @@ class CustomersController extends Controller
 		return view('findCustomer', compact('getCustomers'));
 
     }
-   
+
+    public function emailCustomerGeneral()
+    {
+
+    	$info = ["foo" => "bar", "bar" => "foo",];
+        
+        Mail::send(['html'=>'email.generalInfoEmail'], $info, function($message){
+            
+            
+           	$message->to(\Auth::user()->email)
+
+           	->subject('International Transport Systems follow up to Phone Call');
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name);
+
+        });
+
+    	return back()->with('status', 'The general info email has been sent to you.');
+
+
+   	}
+
 }

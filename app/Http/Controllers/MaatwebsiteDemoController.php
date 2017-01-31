@@ -95,7 +95,7 @@ class MaatwebsiteDemoController extends Controller
        
        //$info = Load::find(8500);
 
-       $info = ["foo" => "bar", "bar" => "foo",];
+       $info = ["foo" => "bar", "bar" => "foo"];
 
 
        Mail::send(['html'=>'email.body'], $info, function($message) use ($info, $truckstop_post, $savePath){

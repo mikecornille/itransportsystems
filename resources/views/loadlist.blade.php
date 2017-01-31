@@ -325,7 +325,7 @@
 </div>
 
 
-
+<h1 class="text-center text-success">Available Loads</h1>
 
 <table class="table table-hover">
     <thead>
@@ -400,7 +400,84 @@
     </tbody>
   </table>
 
-  <h1 class="text-center">Personal Load List</h1>
+   <h1 class="text-center text-primary">Manageloads.com Load List</h1>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Pick</th>
+        <th>Delivery</th>
+        <th>Customer</th>
+        <th>Miles</th>
+        <th>Urgency</th>
+        <th>Load Type</th>
+        <th>Creator</th>
+        <th>Trailer Type</th>
+        <th>Ready Date</th>
+        <th>Deliver By</th>
+        <th>Info</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach($manageloads_loads as $manage)
+      	<?php
+			$billing_money = $manage->billing_money;
+
+			$offer_money = $manage->offer_money;
+
+			$difference = $billing_money - $offer_money;
+
+			$margin = $difference / $billing_money;
+
+			$profitMargin = round((float)$margin * 100 );
+
+			$myvalue = $manage->customer;
+			$arr = explode(' ',trim($myvalue));
+			
+			$name = explode("@", $manage->created_by);
+			$email_prefix = $name[0];
+		?>
+		
+      <tr class="loadlist_row">
+        <td>{{ $manage->pick_city . ', ' . $manage->pick_state }}</td>
+        <td>{{ $manage->delivery_city . ', ' . $manage->delivery_state }}</td>
+        <td>{{ $arr[0] }}</td>
+        <td>{{ $manage->miles }}</td>
+        <td>{{ $manage->urgency }}</td>
+        <td>{{ $manage->load_type }}</td>
+        <td>{{ $email_prefix }}</td>
+        <td>{{ $manage->trailer_type }}</td>
+        <td>{{ date("m/d", strtotime($manage->pick_date)) . ' ' . (date("g:ia", strtotime($manage->pick_time))) }}</td>
+        <td>{{ date("m/d", strtotime($manage->delivery_date)) . ' ' . (date("g:ia", strtotime($manage->delivery_time))) }}</td>
+        <td><a href=".coll{{ $manage->id }}" data-toggle="collapse"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></td>
+      </tr>
+      
+
+      <tr class="collapse coll{{ $manage->id }}">
+      	<td>{{ $manage->commodity }} - {{ $manage->length . 'ft x ' . $manage->width . 'ft x ' . $manage->height . 'ft ' . $manage->weight . 'lbs' }}</td>
+      	<td>{{ $manage->special_instructions }}</td>
+      </tr>
+      <tr class="collapse coll{{ $manage->id }}">
+      	<td class="offering_rate">OFFER: ${{ $manage->offer_money }} POST: ${{ $manage->post_money }}</td>
+      	<td class="margin">PM: {{ $profitMargin }}%</td>
+      	<td class="billing_rate">B: ${{ $manage->billing_money }}</td>
+      </tr>
+      <tr class="collapse coll{{ $manage->id }}">
+      	<td>
+      		<a href="{{ URL::to('/editLoadlist/' . $manage->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $manage->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $manage->customer . ' ' . (date("m/d g:ia", strtotime($manage->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $manage->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $manage->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailLoad/' . $manage->id) }}" title="email"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a> | <a href="{{ URL::to('/deleteLoadlist/' . $manage->id) }}" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      	</td>
+      </tr>
+     
+
+      
+       
+      @endforeach
+    </tbody>
+  </table>
+
+ 
+
+ <h1 class="text-center text-success">Personal Load List</h1>
 
 <table class="table table-hover">
     <thead>

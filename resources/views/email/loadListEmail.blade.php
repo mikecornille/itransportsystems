@@ -13,11 +13,8 @@
 </head>
 <body>
 
-<?php
-$currentDateTime = '08/04/2010 22:15:00';
-$newDateTime = date('A', strtotime($currentDateTime));
-?>
-<p>Good @if($newDateTime === 'PM') Afternoon @else Morning @endif [INSERT NAME],</p>
+
+<p>Good [Morning/Afternoon Name],</p>
 
 <p>Thank you for this opportunity, below is the quotation you requested containing all parameters unique to this shipment.</p>
 
