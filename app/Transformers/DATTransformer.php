@@ -72,14 +72,14 @@ class DatTransformer extends Transformer {
 				break;
 		}
 
-		$offer = $record->offer_money;
+		$offer = $record->post_money;
 			if ($offer == "0")
 				{
 					$offer = "";
 				}
 			else 
 				{
-					$offer = $record->offer_money;
+					$offer = $record->post_money;
 				}
 
 		return [
