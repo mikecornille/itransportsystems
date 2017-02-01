@@ -281,7 +281,7 @@
                             response($.map(data, function (item) {
                                 return {
                                     label: ' --MAKE-- ' + item.make + ' --MODEL-- ' + item.model + ' --DIMS-- ' + item.length + 'in. ' + item.width + 'in. ' + item.height + 'in. ' + item.weight + 'lbs. --LOADING INS-- ' + item.loading_instructions,
-                                    value: item.make + ' ' + item.model,
+                                    value: item.make + ' ' + item.model + ' ' + item.length + 'in. ' + item.width + 'in. ' + item.height + 'in. ' + item.weight + 'lbs.',
                                     object: item
                                 }
                         }));

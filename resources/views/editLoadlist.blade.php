@@ -258,7 +258,12 @@
         <div class="row">
             <div class="col-xs-3">
                 <label class="label-control" for="miles">MILES</label>
+                <div class="input-group">
                 <input type="text" class="form-control" id="miles" name="miles" value="{{ $loadlist->miles }}">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" id="miles_loadlist" type="button"><span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span></button>
+                    </span>
+                </div>
             </div>
             <div class="col-xs-3">
                 <label class="label-control" for="billing_money">BILLING MONEY</label>
@@ -299,6 +304,7 @@
 
 </form>
 
+<div id="mile_calc" style="font-size: small;"></div>
 
 </div>
 

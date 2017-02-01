@@ -76,18 +76,22 @@ class LoadlistController extends Controller
 		->orWhere('urgency', '=', 'Screaming')
 		->orWhere('urgency', '=', 'Caller')
 		->orWhere('urgency', '=', 'Get Numbers')
-		->orderBy('customer', 'desc')->orderBy('pick_city', 'desc')->get();
+		->orderBy('customer', 'desc')
+    ->orderBy('pick_city', 'desc')->get();
 
-		$personal_loads = Loadlist::where('created_by', '=', \Auth::user()->email)->where('urgency', '!=', 'Quote')
+		$personal_loads = Loadlist::where('created_by', '=', \Auth::user()->email)
+    ->where('urgency', '!=', 'Quote')
+    ->where('urgency', '!=', 'Booked')
     ->orderBy('urgency', 'desc')->get();
 
-    $quote_loads = Loadlist::where('urgency', '=', 'Quote')->whereDay('created_at', $currentDay)
+    $quote_loads = Loadlist::where('urgency', '=', 'Quote')
+    ->whereDay('created_at', $currentDay)
 		->orderBy('created_at', 'desc')->get();
 
-    $manageloads_loads = Loadlist::where('user_id', '!=', NULL)->whereDay('created_at', $currentDay)->get();
+    $manageloads_loads = Loadlist::where('user_id', '!=', NULL)
+    ->whereDay('created_at', $currentDay)->get();
 
-		
-    return view('loadlist', compact('open_loads', 'quote_loads', 'personal_loads', 'manageloads_loads'));
+		return view('loadlist', compact('open_loads', 'quote_loads', 'personal_loads', 'manageloads_loads'));
 	
 	}
 
@@ -190,7 +194,7 @@ class LoadlistController extends Controller
 
 
 
-    	$open_loads = $loads->get();
+    	$open_loads = $loads->orderBy('created_at', 'desc')->get();
 
 
     	return view('searchLoadlist', compact('open_loads'));

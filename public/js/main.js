@@ -952,7 +952,6 @@ $('#delivery_status').val('Open');
 $('#pick_status').val('Open');
 $('#delivery_time').val('0700');
 $('#pick_time').val('0700');
-//$('#factoring_company').val('');
 $('#quick_status_notes').val('');
 $('#datepicker6').val('');
 $('#datepicker7').val('');
@@ -964,8 +963,7 @@ $('#remit_zip').val('');
 $('#remit_name_display').text('');
 $('#remit_address_display').text('');
 $('#remit_citystatezip_display').text('');
-// $('#vendor_invoice_number').val('');
-// $('#vendor_invoice_date').val('');
+$('#carrier_mc').val('');
 $('#signed_rate_con').val('');
 
 

@@ -73,7 +73,7 @@ class CustomersController extends Controller
         Mail::send(['html'=>'email.generalInfoEmail'], $info, function($message){
             
             
-           	$message->to(\Auth::user()->email)
+           	$message->to('mikec@itransys.com')
 
            	->subject('International Transport Systems follow up to Phone Call');
           
