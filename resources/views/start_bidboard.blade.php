@@ -6,7 +6,7 @@
 
 <div class="container">
 
-	<div style="padding-bottom:20px;" id="loadlist_map_display"></div>
+	
 
 	<form role="form" class="form-horizontal" method="POST" action="/bidboard">
 
@@ -89,7 +89,7 @@
 
 
 
-	
+	<div style="padding-bottom:20px;" id="loadlist_map_display"></div>
 
 
 </div>

@@ -17,7 +17,7 @@
 	@endif
 
 
-	<div style="padding-bottom:20px;" id="loadlist_map_display"></div>
+	
 
 	<form role="form" class="form-horizontal" method="POST" action="/quote_loadlist">
 
@@ -97,7 +97,7 @@
 					</div>
 					<div class="col-xs-3">
 						<label class="label-control" for="customer-search-loadlist">CUSTOMER</label>
-						<input type="text" class="form-control" id="customer-search-loadlist" name="customer" value="{{ old('customer') }}">
+						<input type="text" class="form-control bid_customer" id="customer-search-loadlist" name="customer" value="{{ old('customer') }}">
 					</div>
 
 				</div>
@@ -138,20 +138,23 @@
 
 	</form>
 
-
+<iframe class='center-block' width='100%' height='400' frameborder='5' scrolling='no' marginheight='0' marginwidth='0' src='https://maps.google.com/maps?f=d&amp;source=s_d&amp;saddr="{{ $pick_city . ', ' . $pick_state }}"&amp;daddr="{{ $delivery_city . ', ' . $delivery_state }}"&amp;hl=en&amp;geocode=FWICfwIdGuDG-inty_TQPCwOiDEAwMAJrabgrw%3BFbpmTQIdlKqf-in5ju36qbTYhzFb4Lsiyuo5vg&amp;aq=&amp;sll=40.00132,-82.909012&amp;sspn=0.397649,0.98053&amp;mra=ls&amp;ie=UTF8&amp;t=m&amp;ll=40.25279,-88.91443&amp;spn=3.250649,2.569472&amp;output=embed'></iframe>
 
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Panel title</h3>
+    <h3 class="panel-title">Per Mile Rates</h3>
   </div>
   <div class="panel-body">
     
   <ul id="duel_columns" style="list-style-type: none;">
     <li>.50 = $<?php echo $miles * .50 ?></li>
     <li>.60 = $<?php echo $miles * .60 ?></li>
+    <li>.65 = $<?php echo $miles * .65 ?></li>
     <li>.70 = $<?php echo $miles * .70 ?></li>
+    <li>.75 = $<?php echo $miles * .75 ?></li>
     <li>.80 = $<?php echo $miles * .80 ?></li>
+    <li>.85 = $<?php echo $miles * .85 ?></li>
     <li>.90 = $<?php echo $miles * .90 ?></li>
     <li>.95 = $<?php echo $miles * .95 ?></li>
     <li>1.05 = $<?php echo $miles * 1.05 ?></li>
@@ -160,57 +163,53 @@
     <li>1.20 = $<?php echo $miles * 1.20 ?></li>
 	<li>1.25 = $<?php echo $miles * 1.25 ?></li>
     <li>1.30 = $<?php echo $miles * 1.30 ?></li>
+    <li>1.35 = $<?php echo $miles * 1.35 ?></li>
     <li>1.40 = $<?php echo $miles * 1.40 ?></li>
     <li>1.50 = $<?php echo $miles * 1.50 ?></li>
+    <li>1.55 = $<?php echo $miles * 1.55 ?></li>
     <li>1.60 = $<?php echo $miles * 1.60 ?></li>
+    <li>1.65 = $<?php echo $miles * 1.65 ?></li>
     <li>1.70 = $<?php echo $miles * 1.70 ?></li>
+    <li>1.75 = $<?php echo $miles * 1.75 ?></li>
     <li>1.80 = $<?php echo $miles * 1.80 ?></li>
+    <li>1.85 = $<?php echo $miles * 1.85 ?></li>
     <li>1.90 = $<?php echo $miles * 1.90 ?></li>
     <li>1.95 = $<?php echo $miles * 1.95 ?></li>
     <li>2.00 = $<?php echo $miles * 2.00 ?></li>
+    <li>2.05 = $<?php echo $miles * 2.05 ?></li>
     <li>2.10 = $<?php echo $miles * 2.10 ?></li>
+    <li>2.15 = $<?php echo $miles * 2.15 ?></li>
     <li>2.20 = $<?php echo $miles * 2.20 ?></li>
+    <li>2.25 = $<?php echo $miles * 2.25 ?></li>
     <li>2.30 = $<?php echo $miles * 2.30 ?></li>
+    <li>2.35 = $<?php echo $miles * 2.35 ?></li>
     <li>2.40 = $<?php echo $miles * 2.40 ?></li>
+    <li>2.45 = $<?php echo $miles * 2.45 ?></li>
     <li>2.50 = $<?php echo $miles * 2.50 ?></li>
     <li>2.60 = $<?php echo $miles * 2.60 ?></li>
     <li>2.70 = $<?php echo $miles * 2.70 ?></li>
+    <li>2.75 = $<?php echo $miles * 2.75 ?></li>
     <li>2.80 = $<?php echo $miles * 2.80 ?></li>
     <li>2.90 = $<?php echo $miles * 2.90 ?></li>
     <li>2.95 = $<?php echo $miles * 2.95 ?></li>
     <li>3.00 = $<?php echo $miles * 3.00 ?></li>
     <li>3.10 = $<?php echo $miles * 3.10 ?></li>
     <li>3.20 = $<?php echo $miles * 3.20 ?></li>
+    <li>3.25 = $<?php echo $miles * 3.25 ?></li>
     <li>3.30 = $<?php echo $miles * 3.30 ?></li>
     <li>3.40 = $<?php echo $miles * 3.40 ?></li>
     <li>3.50 = $<?php echo $miles * 3.50 ?></li>
-    <li>3.60 = $<?php echo $miles * 3.60 ?></li>
-    <li>3.70 = $<?php echo $miles * 3.70 ?></li>
-    <li>3.80 = $<?php echo $miles * 3.80 ?></li>
-    <li>3.90 = $<?php echo $miles * 3.90 ?></li>
-    <li>3.95 = $<?php echo $miles * 3.95 ?></li>
+    <li>3.75 = $<?php echo $miles * 3.75 ?></li>
     <li>4.00 = $<?php echo $miles * 4.00 ?></li>
-    <li>4.10 = $<?php echo $miles * 4.10 ?></li>
-    <li>4.20 = $<?php echo $miles * 4.20 ?></li>
-    <li>4.30 = $<?php echo $miles * 4.30 ?></li>
-    <li>4.40 = $<?php echo $miles * 4.40 ?></li>
+    <li>4.25 = $<?php echo $miles * 4.25 ?></li>
     <li>4.50 = $<?php echo $miles * 4.50 ?></li>
-    <li>4.60 = $<?php echo $miles * 4.60 ?></li>
-    <li>4.70 = $<?php echo $miles * 4.70 ?></li>
-    <li>4.80 = $<?php echo $miles * 4.80 ?></li>
-    <li>4.90 = $<?php echo $miles * 4.90 ?></li>
-    <li>4.95 = $<?php echo $miles * 4.95 ?></li>
+    <li>4.75 = $<?php echo $miles * 4.75 ?></li>
     <li>5.00 = $<?php echo $miles * 5.00 ?></li>
-    <li>5.10 = $<?php echo $miles * 5.10 ?></li>
-    <li>5.20 = $<?php echo $miles * 5.20 ?></li>
-    <li>5.30 = $<?php echo $miles * 5.30 ?></li>
-    <li>5.40 = $<?php echo $miles * 5.40 ?></li>
+    <li>5.25 = $<?php echo $miles * 5.25 ?></li>
     <li>5.50 = $<?php echo $miles * 5.50 ?></li>
-    <li>5.60 = $<?php echo $miles * 5.60 ?></li>
-    <li>5.70 = $<?php echo $miles * 5.70 ?></li>
-    <li>5.80 = $<?php echo $miles * 5.80 ?></li>
-    <li>5.90 = $<?php echo $miles * 5.90 ?></li>
-    <li>5.95 = $<?php echo $miles * 5.95 ?></li>
+    <li>5.75 = $<?php echo $miles * 5.75 ?></li>
+    <li>6.00 = $<?php echo $miles * 6.00 ?></li>
+    
 
     </ul>
   </div>

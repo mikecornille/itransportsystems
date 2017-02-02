@@ -78,7 +78,6 @@ class LoadlistController extends Controller
             'pick_state' => 'required',
             'delivery_city' => 'required',
             'delivery_state' => 'required',
-            'commodity' => 'required',
             'miles' => 'required',
             'billing_money' => 'required',
       ]);

@@ -928,6 +928,14 @@ $('#signed_rate_con').val(signed);
 
 });
 
+$(document).on('dblclick', '.bid_customer', function(){
+
+var signed = 'United Rentals';
+
+$('.bid_customer').val(signed);
+
+});
+
 <!-- CLEARS OUT CARRIER DATA -->
 
 $(document).on('click', '#clear_carrier', function(){
