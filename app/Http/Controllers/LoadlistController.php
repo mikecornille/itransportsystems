@@ -62,9 +62,80 @@ class LoadlistController extends Controller
 
 		return back()->with('status', 'New Load Posted!');
 
-		//create a dat loadlist call the instance of it, store these values in it but by calling unique
+		//crete a dat loadlist call the instance of it, store these values in it but by calling unique
 		
 	}
+
+
+     public function storeFromQuote(Request $request)
+  {
+
+    
+    
+     $this->validate($request, [
+
+            'pick_city' => 'required',
+            'pick_state' => 'required',
+            'delivery_city' => 'required',
+            'delivery_state' => 'required',
+            'commodity' => 'required',
+            'miles' => 'required',
+            'billing_money' => 'required',
+      ]);
+
+        $newload = New Loadlist($request->all());
+        $newload->created_by = strtoupper(\Auth::user()->email);
+        $newload->urgency = "Quote";
+        $newload->trailer_type = "";
+        $newload->pick_date = "";
+        $newload->pick_time = "";
+        $newload->delivery_date = "";
+        $newload->delivery_time = "";
+        $newload->special_instructions = "";
+        $newload->length = "";
+        $newload->width = "";
+        $newload->height = "";
+        $newload->weight = "";
+        $newload->offer_money = "0";
+        $newload->post_money = "0";
+        $newload->company_contact = "Dispatch";
+        $newload->contact_phone = "877-663-2200";
+        $newload->save();
+
+    return redirect('start_bidboard');
+}
+
+
+  public function startLoadList(Request $request)
+  {
+     $pick_city = $request->input('pick_city');
+     $pick_state = $request->input('pick_state');
+     $delivery_city = $request->input('delivery_city');
+     $delivery_state = $request->input('delivery_state');
+     $miles = $request->input('miles');
+
+     $matching_loads = Loadlist::where('pick_state', '=', $pick_state)
+     ->where('delivery_state', '=', $delivery_state)
+     ->orderBy('created_at', 'desc')->get();
+
+     return view('bidboard', compact('matching_loads'))
+     ->with('pick_city', $pick_city)
+     ->with('pick_state', $pick_state)
+     ->with('delivery_city', $delivery_city)
+     ->with('delivery_state', $delivery_state)
+     ->with('miles', $miles);
+
+    //  return view('budget', compact('items', 'total'));
+
+    //  return view('myStats')->with('posts', $posts)
+    // ->with('rateCons', $rateCons)
+    // ->with('invoices', $invoices)
+    // ->with('unsigned', $unsigned)
+    // ->with('rateConDailyTotals', $rateConDailyTotals)
+    // ->with('invoiceDailyTotals', $invoiceDailyTotals)
+    // ->with('currentDate', $currentDate);
+
+  }
 
 	public function index()
 	{

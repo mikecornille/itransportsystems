@@ -400,4 +400,9 @@ textarea#commodity, textarea#special_ins, textarea#add_stops, textarea#invoice_n
 .billing_rate {
   color: crimson; }
 
+#duel_columns {
+  columns: 7;
+  -webkit-columns: 7;
+  -moz-columns: 7; }
+
 /*# sourceMappingURL=app.css.map */

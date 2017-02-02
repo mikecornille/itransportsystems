@@ -71,14 +71,33 @@
                             <li><a href="{{ url('/login') }}">Login</a></li>
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
+
                             
-                            
+                            <li><a href="{{ URL::to('/start_bidboard') }}">Bid Board</a></li>
                             <li><a href="{{ URL::to('/loadlist') }}">Load List</a></li>
                             <li><a href="{{ URL::to('/notes') }}">Notes</a></li>
                             <li><a href="{{ URL::to('/displayLoads') }}">Loads</a></li>
-                            <li><a href="{{ url('/home') }}">New Invoice</a></li>
-                            <li><a href="{{ URL::to('/newLocation') }}">New Location</a></li>
-                            <li><a href="{{ URL::to('/newEquipment') }}">New Equipment</a></li>
+                            
+
+                            <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">New <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+
+                                <li><a href="{{ url('/home') }}">New Invoice</a></li>
+                                <li><a href="{{ URL::to('/newLocation') }}">New Location</a></li>
+                                <li><a href="{{ URL::to('/newEquipment') }}">New Equipment</a></li>
+                                
+
+                                </ul>
+
+
+                            </li>
+
+
+
+                            
                             
                             <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Carriers <span class="caret"></span>

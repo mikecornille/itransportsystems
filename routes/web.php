@@ -75,6 +75,17 @@ Route::get('/displayLoads', function () {
     return view('/displayLoads');
 });
 
+Route::get('/bidboard', function () {
+    return view('/bidboard');
+});
+
+Route::get('/start_bidboard', function () {
+    return view('/start_bidboard');
+});
+
+
+Route::post('/bidboard', 'LoadlistController@startLoadList');
+
 Route::get('/searchLoadlist', 'LoadlistController@searchLoadlistIndex');
 
 Route::post('/searchLoadlist', 'LoadlistController@searchLoadlist');
@@ -83,6 +94,7 @@ Route::get('/emailTruckOffer/{id}', 'LoadlistController@emailTruckOffer');
 
 Route::get('/emailCustomerGeneral', 'CustomersController@emailCustomerGeneral');
 
+Route::post('/quote_loadlist', 'LoadlistController@storeFromQuote');
 
 Route::get('/notes', 'NotesController@index');
 Route::get('/myStats', 'NotesController@getBrokerStats');
