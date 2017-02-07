@@ -26,7 +26,9 @@ class NotesController extends Controller
 		        'user' => \Auth::user(),
     ]);
 
-    	$posts = Notes::all()->sortByDesc("created_at");
+    	$month = date('m');
+    	$posts = Notes::whereMonth('created_at', $month)
+    	->sortByDesc("created_at");
 
         return view('notes', compact('posts'));
 
