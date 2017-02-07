@@ -24,7 +24,7 @@
 <div class="col-md-6">
 
 <div style="margin-left: 300px;">
-<h3 class="text-left">All Unsigned Rate Confirmations in Current Month</h3>
+<h3 class="text-left">All Unsigned Rate Confirmations in Current Month ({{ $unsigned_count }})</h3>
 	<ul style="list-style-type: none;">
 	@foreach ($unsigned as $unsign)
 	    <li class="text-left"><u>PRO # {{ $unsign->id }} is unsigned.</u></li>

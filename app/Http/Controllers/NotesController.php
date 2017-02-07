@@ -99,6 +99,10 @@ class NotesController extends Controller
 		->whereMonth('created_at', $currentMonth)
 		->orderBy('id', 'asc')->get();
 
+		$unsigned_count = Load::where('signed_rate_con', '!=', 'SIGNED')
+		->where('rate_con_creator', 'like', '%' . '@' . '%')
+		->whereMonth('created_at', $currentMonth)->count();
+
 		// ->where('signed_rate_con', '!=', 'SIGNED')->orWhereNull('signed_rate_con')->get();
 
 		$currentDate = date('m/d/Y');
@@ -118,6 +122,7 @@ class NotesController extends Controller
 		->with('rateConDailyTotals', $rateConDailyTotals)
 		->with('invoiceDailyTotals', $invoiceDailyTotals)
 		->with('personal_unsigned', $personal_unsigned)
+		->with('unsigned_count', $unsigned_count)
 		->with('currentDate', $currentDate);
 	}
 
