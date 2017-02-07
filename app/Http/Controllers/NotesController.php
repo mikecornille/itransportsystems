@@ -28,7 +28,7 @@ class NotesController extends Controller
 
     	$month = date('m');
     	$posts = Notes::whereMonth('created_at', $month)
-    	->sortByDesc("created_at");
+    	->orderBy('created_at', 'desc');
 
         return view('notes', compact('posts'));
 
