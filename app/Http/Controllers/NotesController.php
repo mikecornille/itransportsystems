@@ -90,9 +90,14 @@ class NotesController extends Controller
 
 		$invoices = Load::where('created_by', \Auth::user()->email)->count();
 
-		//$unsigned = Load::where('rate_con_creator', \Auth::user()->email)->where('signed_rate_con', '!=', 'SIGNED')->get();
+		$personal_unsigned = Load::where('rate_con_creator', \Auth::user()->email)->where('signed_rate_con', '!=', 'SIGNED')->get();
 
-		$unsigned = Load::where('signed_rate_con', '!=', 'SIGNED')->where('rate_con_creator', 'like', '%' . '@' . '%')->orderBy('id', 'asc')->get();
+		$currentMonth = date('m');
+
+		$unsigned = Load::where('signed_rate_con', '!=', 'SIGNED')
+		->where('rate_con_creator', 'like', '%' . '@' . '%')
+		->whereMonth('created_at', $currentMonth)
+		->orderBy('id', 'asc')->get();
 
 		// ->where('signed_rate_con', '!=', 'SIGNED')->orWhereNull('signed_rate_con')->get();
 
@@ -112,6 +117,7 @@ class NotesController extends Controller
 		->with('unsigned', $unsigned)
 		->with('rateConDailyTotals', $rateConDailyTotals)
 		->with('invoiceDailyTotals', $invoiceDailyTotals)
+		->with('personal_unsigned', $personal_unsigned)
 		->with('currentDate', $currentDate);
 	}
 
