@@ -24,30 +24,32 @@
 <div class="col-md-6">
 
 <div style="margin-left: 300px;">
-<h3 class="text-left">Unsigned Rate Confirmations</h3>
+<h3 class="text-left">All Unsigned Rate Confirmations in Current Month</h3>
 	<ul style="list-style-type: none;">
 	@foreach ($unsigned as $unsign)
 	    <li class="text-left"><u>PRO # {{ $unsign->id }} is unsigned.</u></li>
-	    <li class="text-left">Rate Con Creator: {{ $unsign->rate_con_creator }}</li>
+	    <li class="text-left text-primary">Rate Con Creator: {{ $unsign->rate_con_creator }}</li>
 	    <li class="text-left">Rate Con Creation Date: {{ $unsign->rate_con_creation_date }}</li>
 	    <li class="text-left">Short Status Note: {{ $unsign->quick_status_notes }}</li>
 	    <li class="text-left">Dispatcher Phone: {{ $unsign->carrier_contact }} at {{ $unsign->carrier_phone }}</li>
 	    <li class="text-left">Dispatcher Email: {{ $unsign->carrier_email }}</li>
+	    <br>
 	@endforeach
 	</ul>
 </div>
 </div>
 <div class="col-md-6">
 <div style="margin-left: 300px;">
-<h3 class="text-left">Personal Unsigned Rate Confirmations</h3>
+<h3 class="text-left">Personal Unsigned Rate Confirmations All Time</h3>
 	<ul style="list-style-type: none;">
 	@foreach ($personal_unsigned as $unsign)
 	    <li class="text-left"><u>PRO # {{ $unsign->id }} is unsigned.</u></li>
-	    <li class="text-left">Rate Con Creator: {{ $unsign->rate_con_creator }}</li>
+	    <li class="text-left text-primary">Rate Con Creator: {{ $unsign->rate_con_creator }}</li>
 	    <li class="text-left">Rate Con Creation Date: {{ $unsign->rate_con_creation_date }}</li>
 	    <li class="text-left">Short Status Note: {{ $unsign->quick_status_notes }}</li>
 	    <li class="text-left">Dispatcher Phone: {{ $unsign->carrier_contact }} at {{ $unsign->carrier_phone }}</li>
 	    <li class="text-left">Dispatcher Email: {{ $unsign->carrier_email }}</li>
+	    <br>
 	@endforeach
 	</ul>
 </div>
