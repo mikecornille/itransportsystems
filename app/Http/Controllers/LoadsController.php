@@ -25,7 +25,7 @@ class LoadsController extends Controller
     public function index()
 	{
 		
-		$data = Load::all();
+		$data = Load::orderBy('id', 'desc')->take(2000)->get();
 		return(['data' => $data]);
 		
 	}
