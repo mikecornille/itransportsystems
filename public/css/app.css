@@ -405,4 +405,7 @@ textarea#commodity, textarea#special_ins, textarea#add_stops, textarea#invoice_n
   -webkit-columns: 7;
   -moz-columns: 7; }
 
+.alt-colors:nth-child(8n+1) {
+  background: #E7E4E7; }
+
 /*# sourceMappingURL=app.css.map */
