@@ -516,7 +516,7 @@
 		
       <tr class="loadlist_row alt-colors">
         <td>{{ $personal->pick_city . ', ' . $personal->pick_state }}</td>
-        <td>{{ $personal->delivery_city . ', ' . $personal->delivery_state . ' (' . $load->miles . 'mi.)' }}</td>
+        <td>{{ $personal->delivery_city . ', ' . $personal->delivery_state . ' (' . $personal->miles . 'mi.)' }}</td>
         <td>{{ $arr[0] }}</td>
         <td>{{ $personal->urgency }}</td>
         <td>{{ $personal->load_type }}</td>
