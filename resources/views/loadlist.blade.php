@@ -332,7 +332,7 @@
       <tr>
         <th>Pick</th>
         <th>Delivery</th>
-        <th>Customer</th>
+        <th>Miles/Customer</th>
         <th>Urgency</th>
         <th>Load Type</th>
         <th>Commodity</th>
@@ -365,7 +365,7 @@
 		
       <tr class="loadlist_row">
         <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
-        <td>{{ $load->delivery_city . ', ' . $load->delivery_state }}</td>
+        <td>{{ $load->delivery_city . ', ' . $load->delivery_state . ' (' . $load->miles . 'mi.)' }}</td>
         <td>{{ $arr[0] }}</td>
         <td>{{ $load->urgency }}</td>
         <td>{{ $load->load_type }}</td>
@@ -516,7 +516,7 @@
 		
       <tr class="loadlist_row">
         <td>{{ $personal->pick_city . ', ' . $personal->pick_state }}</td>
-        <td>{{ $personal->delivery_city . ', ' . $personal->delivery_state }}</td>
+        <td>{{ $personal->delivery_city . ', ' . $personal->delivery_state . ' (' . $load->miles . 'mi.)' }}</td>
         <td>{{ $arr[0] }}</td>
         <td>{{ $personal->urgency }}</td>
         <td>{{ $personal->load_type }}</td>
