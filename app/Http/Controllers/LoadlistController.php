@@ -117,7 +117,10 @@ class LoadlistController extends Controller
      ->where('delivery_state', '=', $delivery_state)
      ->orderBy('created_at', 'desc')->get();
 
-     return view('bidboard', compact('matching_loads'))
+     $exact_loads = Loadlist::where('pick_city', '=', $pick_city)
+     ->orderBy('created_at', 'desc')->get();
+     
+    return view('bidboard', compact('matching_loads', 'exact_loads'))
      ->with('pick_city', $pick_city)
      ->with('pick_state', $pick_state)
      ->with('delivery_city', $delivery_city)
