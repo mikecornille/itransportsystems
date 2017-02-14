@@ -29,6 +29,16 @@ class LoadsController extends Controller
 		return(['data' => $data]);
 		
 	}
+	
+
+	public function deepLoads()
+	{
+		
+		
+		$data = Load::orderBy('id', 'desc')->skip(2000)->take(3000)->get();
+		return(['data' => $data]);
+		
+	}
 
 	public function indextwo()
 	{

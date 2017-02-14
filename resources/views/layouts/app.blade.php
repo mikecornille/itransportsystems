@@ -76,7 +76,24 @@
                             <li><a href="{{ URL::to('/start_bidboard') }}">Bid Board</a></li>
                             <li><a href="{{ URL::to('/loadlist') }}">Load List</a></li>
                             <li><a href="{{ URL::to('/notes') }}">Notes</a></li>
-                            <li><a href="{{ URL::to('/displayLoads') }}">Loads</a></li>
+                            
+
+
+                            <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Search Loads <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+
+                                <li><a href="{{ URL::to('/displayLoads') }}">Last 2000 Records</a></li>
+                                <li><a href="{{ URL::to('/deepSearchLoads') }}">Last 2000 through 5000</a></li>
+                                
+                                
+
+                                </ul>
+
+
+                            </li>
                             
 
                             <li class="dropdown">
