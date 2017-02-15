@@ -68,6 +68,13 @@
                 <input type="text" class="form-control" id="delivery_state" name="delivery_state" value="{{ old('delivery_state') }}">
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="label-control" for="created_by">CREATED BY</label>
+                <input type="text" class="form-control" id="created_by" name="created_by" value="{{ old('created_by') }}">
+            </div>
+        </div>
         
 
 		<button type="submit" class="btn btn-primary" id="newLocationSubmit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> SEARCH</button>

@@ -164,7 +164,16 @@ class LoadlistController extends Controller
     $manageloads_loads = Loadlist::where('user_id', '!=', NULL)
     ->whereDay('created_at', $currentDay)->get();
 
-		return view('loadlist', compact('open_loads', 'quote_loads', 'personal_loads', 'manageloads_loads'));
+    date_default_timezone_set("America/Chicago");
+    $currentDate = date('Y-m-d H:i:s');
+    $currentDateUnix = strtotime($currentDate);
+    $subTwoWeeks = $currentDateUnix - 907200;
+    date_default_timezone_set("America/Chicago");
+    $twoWeeksAgo = date('Y-m-d H:i:s', $subTwoWeeks);
+
+    $personal_booked_loads = Loadlist::where('urgency', '=', 'Booked')->whereBetween('created_at', [$twoWeeksAgo, $currentDate])->orderBy('created_at', 'desc')->get();
+
+		return view('loadlist', compact('open_loads', 'quote_loads', 'personal_loads', 'manageloads_loads', 'personal_booked_loads'));
 	
 	}
 
@@ -264,6 +273,10 @@ class LoadlistController extends Controller
     	if ($request->has('pick_date')){
     		$loads->where('pick_date', $request->pick_date);
     	}
+
+      if ($request->has('created_by')){
+        $loads->where('created_by', $request->created_by);
+      }
 
 
 
