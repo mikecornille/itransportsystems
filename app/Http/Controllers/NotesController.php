@@ -14,19 +14,26 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Carbon\Carbon;
+
 use Laracasts\Utilities\JavaScript\JavaScriptFacade as Javascript;
 
 class NotesController extends Controller
 {
     public function index()
+	{
+		
+		date_default_timezone_set("America/Chicago");
+		$currentDate = date('Y-m-d H:i:s');
+		$currentDateUnix = strtotime($currentDate);
+		$subTwoWeeks = $currentDateUnix - 907200;
+		$twoWeeksAgo = date('Y-m-d H:i:s', $subTwoWeeks);
 
-    {
-
-    	JavaScript::put([
+		JavaScript::put([
 		        'user' => \Auth::user(),
     ]);
 
-    	$posts = Notes::all()->sortByDesc("created_at");
+    	$posts = Notes::whereBetween('created_at', [$twoWeeksAgo, $currentDate])->orderBy('created_at', 'desc')->get();
 
         return view('notes', compact('posts'));
 
@@ -44,6 +51,8 @@ class NotesController extends Controller
 
     public function store(Request $request)
 	{
+
+		date_default_timezone_set("America/Chicago");
 		
 		$this->validate($request, [
 
