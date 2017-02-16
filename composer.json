@@ -17,7 +17,9 @@
         "guzzlehttp/guzzle": "^6.2",
         "laracasts/utilities": "^2.1",
         "league/flysystem-aws-s3-v3": "~1.0",
-        "maatwebsite/excel": "~2.1.0"
+        "maatwebsite/excel": "~2.1.0",
+        "laravelcollective/html": "~5.0"
+        
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

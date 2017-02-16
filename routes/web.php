@@ -25,6 +25,8 @@ Route::get('/twilio', function () {
 Route::group(['middleware' => 'auth'],function() {
 
 
+Route::resource('budget', 'BudgetController');
+
 Route::get('/newCarrier', function () {
     return view('/newCarrier');
 });
@@ -138,8 +140,7 @@ Route::get('/truckstopPost', 'MaatwebsiteDemoController@truckstopPost');
 
 Route::get('/datPost', 'MaatwebsiteDemoController@datPost');
 
-Route::get('/budget', 'NotesController@budgetIndex');
-Route::post('/budget', 'NotesController@budgetStore');
+
 
 
 
