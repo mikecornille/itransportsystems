@@ -85,7 +85,7 @@
 				<div class="row">
 					<div class="col-xs-6">
 						<label class="label-control" for="equipment-search">COMMODITY</label>
-						<input type="text" class="form-control" id="equipment-search" name="commodity" value="{{ old('commodity') }}" placeholder="Commodity Search" required>
+						<input type="text" class="form-control" id="equipment-search" name="commodity" value="{{ old('commodity') }}" placeholder="Commodity Search">
 					</div>
 					<div class="col-xs-3">
 						<label class="label-control" for="load_type">LOAD TYPE</label>
