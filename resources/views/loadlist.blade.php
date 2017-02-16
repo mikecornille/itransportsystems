@@ -367,8 +367,14 @@
         <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
         <td>{{ $load->delivery_city . ', ' . $load->delivery_state . ' (' . $load->miles . 'mi.)' }}</td>
         <td>{{ $arr[0] }}</td>
+        
+		@if ($load->urgency === 'Screaming')
+        <td class="text-danger">{{ $load->urgency }}</td>
+        @else
         <td>{{ $load->urgency }}</td>
-        <td>{{ $load->load_type }}</td>
+        @endif
+        
+		<td>{{ $load->load_type }}</td>
         <td>{{ substr($load->commodity, 0, 25) }} {{ strlen($load->commodity) > 25 ? "..." : "" }}</td>
         <td>{{ $load->trailer_type }}</td>
         <td>{{ date("m/d", strtotime($load->pick_date)) . ' ' . (date("g:ia", strtotime($load->pick_time))) }}</td>
