@@ -258,7 +258,7 @@
         <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
         <td>{{ $load->delivery_city . ', ' . $load->delivery_state . ' (' . $load->miles . 'mi.)' }}</td>
         <td>{{ $arr[0] }}</td>
-        <td>{{ $load->commodity }}</td>
+        <td>{{ substr($load->commodity, 0, 67) }} {{ strlen($load->commodity) > 67 ? "..." : "" }}</td>
         <td>{{ $load->load_type }}</td>
         <td>{{ $load->urgency }}</td>
         <td>{{ '$' . $load->billing_money }}</td>
@@ -308,7 +308,7 @@
         <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
         <td>{{ $load->delivery_city . ', ' . $load->delivery_state . ' (' . $load->miles . 'mi.)' }}</td>
         <td>{{ $arr[0] }}</td>
-        <td>{{ $load->commodity }}</td>
+        <td>{{ substr($load->commodity, 0, 67) }} {{ strlen($load->commodity) > 67 ? "..." : "" }}</td>
         <td>{{ $load->load_type }}</td>
         <td>{{ $load->urgency }}</td>
         <td>{{ '$' . $load->billing_money }}</td>
