@@ -85,11 +85,11 @@
 				<div class="row">
 					<div class="col-xs-6">
 						<label class="label-control" for="equipment-search">COMMODITY</label>
-						<input type="text" class="form-control" id="equipment-search" name="commodity" value="{{ old('commodity') }}" placeholder="Commodity Search">
+						<input type="text" class="form-control" id="equipment-search" name="commodity" value="{{ old('commodity') }}" placeholder="Commodity Search" required>
 					</div>
 					<div class="col-xs-3">
 						<label class="label-control" for="load_type">LOAD TYPE</label>
-						<select name="load_type" id="load_type" class="form-control">
+						<select name="load_type" id="load_type" class="form-control" required>
 							@if(old('load_type'))<option value="{{ old('load_type') }}">{{ old('load_type') }}</option> @else <option></option> @endif
 							<option value="FULL">FULL</option>
 							<option value="PARTIAL">PARTIAL</option>
@@ -97,7 +97,7 @@
 					</div>
 					<div class="col-xs-3">
 						<label class="label-control" for="customer-search-loadlist">CUSTOMER</label>
-						<input type="text" class="form-control bid_customer" id="customer-search-loadlist" name="customer" value="{{ old('customer') }}">
+						<input type="text" class="form-control bid_customer" id="customer-search-loadlist" name="customer" value="{{ old('customer') }}" required>
 					</div>
 
 				</div>
@@ -106,15 +106,15 @@
 					<div class="col-xs-3">
 						<label class="label-control" for="miles">MILES</label>
 						
-							<input type="text" class="form-control" id="miles" name="miles" value="{{ $miles }}">
+							<input type="text" class="form-control" id="miles" name="miles" value="{{ $miles }}" required>
 							
 						
 					</div>
 					<div class="col-xs-3">
-						<label class="label-control" for="billing_money">BILLING MONEY</label>
+						<label class="label-control" for="billing_money">BILLING (do not enter zero)</label>
 						<div class="input-group">
 							<span class="input-group-addon">$</span>
-							<input type="text" class="form-control" id="billing_money" name="billing_money" value="{{ old('billing_money') }}" placeholder="Billing Amount">
+							<input type="text" class="form-control" id="billing_money" name="billing_money" value="{{ old('billing_money') }}" placeholder="do not enter zero" required>
 							<span class="input-group-addon">.00</span>
 						</div>
 					</div>
