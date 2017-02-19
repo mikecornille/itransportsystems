@@ -15,16 +15,7 @@
 
         </div>
 
-        
-        
-
-
-        
-           
-       
-          
-
-    </div>
+        </div>
 
 
   <h2>Monthly Costs: {{ '$' . $postsSum . '.00' }}</h2>

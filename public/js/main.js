@@ -1260,5 +1260,48 @@ $("#miles_loadlist").mouseleave(function(){
 
 
 
+$(document).on('click', '#dot_number_find', function()
+
+{
+
+var dotNumber = $('#dot_number').val();
+
+$.ajax({
+  type: "GET",
+  url: "https://mobile.fmcsa.dot.gov/qc/services/carriers/" + dotNumber + "?webKey=6cff17b7a7de3e02e765ea6c85eef20a8f11c4a1",
+  success: function(data) {
+
+                          $("#company").val(data.content.carrier.legalName);
+                          $("#address").val(data.content.carrier.phyStreet);
+                          $("#city").val(data.content.carrier.phyCity);
+                          $("#state").val(data.content.carrier.phyState);
+                          $("#zip").val(data.content.carrier.phyZipcode);
+                          $("#phone").val(data.content.carrier.phone);
+                          $("#permanent_notes").val(
+
+                            "DBA NAME: " + data.content.carrier.dbaName +
+                            " -- ALLOWED TO OPERATE: " + data.content.carrier.allowedToOperate +
+                            " -- OPERATION: " + data.content.carrier.carrierOperation.carrierOperationDesc +
+                            " -- CRASH TOTAL: " + data.content.carrier.crashTotal +
+                            " -- DRIVER OOS FROM INSPECTION: " + data.content.carrier.driverOosInsp +
+                            " -- VEHILCE OOS FROM INSPECTION: " + data.content.carrier.vehicleOosInsp
+
+
+
+                            );
+                          
+
+
+
+                          }
+
+      });
+
+
+ });
+
+
+
+
 
 //# sourceMappingURL=main.js.map

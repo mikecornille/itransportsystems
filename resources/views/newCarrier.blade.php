@@ -40,10 +40,18 @@
                 <label class="label-control" for="mc_number">MC #</label>
                 <input type="text" class="form-control" id="mc_number" name="mc_number" value="{{ old('mc_number') }}">
             </div>
+            
+
             <div class="col-xs-3">
                 <label class="label-control" for="dot_number">DOT #</label>
-                <input type="text" class="form-control" id="dot_number" name="dot_number" value="{{ old('dot_number') }}">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="dot_number" name="dot_number" value="{{ old('dot_number') }}">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" id="dot_number_find" type="button">FIND</button>
+                            </span>
+                    </div>
             </div>
+
         </div>
         <div class="row">
             <div class="col-xs-9">
