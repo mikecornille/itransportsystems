@@ -18,7 +18,7 @@ class EmployeeController extends Controller
     public function index()
     {
         $posts = Employee::all();
-        $employees = User::all()->pluck('name','id');
+        $employees = User::all()->pluck('name','name');
 
         return view('employee', compact('posts', $posts, 'employees', $employees));
     }
