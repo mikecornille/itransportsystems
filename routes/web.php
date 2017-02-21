@@ -27,6 +27,8 @@ Route::group(['middleware' => 'auth'],function() {
 
 Route::resource('budget', 'BudgetController');
 
+Route::resource('employee', 'EmployeeController');
+
 Route::get('/newCarrier', function () {
     return view('/newCarrier');
 });
