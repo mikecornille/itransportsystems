@@ -15,7 +15,7 @@ class BudgetController extends Controller
      */
     public function index()
     {
-        $posts = Budget::all();
+        $posts = Budget::orderBy('monthly_amount', 'desc')->get();
 
         $postsSum = Budget::all()->sum('monthly_amount');
         
