@@ -15,6 +15,8 @@
       <p id="safety_3"></p>
       <p id="safety_4"></p>
       <p id="safety_5"></p>
+      <p id="more_safety_info"></p>
+      
             <div class="alert alert-success hidden" id="success-alert-carrier"></div>
             
             <div class="form-group">

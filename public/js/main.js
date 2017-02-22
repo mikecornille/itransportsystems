@@ -1378,12 +1378,42 @@ $.ajax({
                                   data.content[4].basic.seriousViolationFromInvestigationPast12MonthIndicator
 
                                 );
+
+
                           
                           
                           }
 
 
  });
+
+
+$.ajax({
+        type: "GET",
+        url: "https://mobile.fmcsa.dot.gov/qc/services/carriers/" + dotNumber + "?webKey=6cff17b7a7de3e02e765ea6c85eef20a8f11c4a1",
+        success: function(data) {
+
+                          
+                              $("#more_safety_info").text(
+
+                            "DBA NAME: " + data.content.carrier.dbaName +
+                            " -- ALLOWED TO OPERATE: " + data.content.carrier.allowedToOperate +
+                            " -- OPERATION: " + data.content.carrier.carrierOperation.carrierOperationDesc +
+                            " -- CRASH TOTAL: " + data.content.carrier.crashTotal +
+                            " -- DRIVER OOS FROM INSPECTION: " + data.content.carrier.driverOosInsp +
+                            " -- VEHILCE OOS FROM INSPECTION: " + data.content.carrier.vehicleOosInsp
+
+
+
+                            );
+                          
+
+
+
+                          }
+
+      }); //end first ajax
+
 
 
  });
