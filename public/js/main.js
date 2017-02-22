@@ -1263,13 +1263,12 @@ $("#miles_loadlist").mouseleave(function(){
 $(document).on('click', '#dot_number_find', function()
 
 {
+  var dotNumber = $('#dot_number').val();
 
-var dotNumber = $('#dot_number').val();
-
-$.ajax({
-  type: "GET",
-  url: "https://mobile.fmcsa.dot.gov/qc/services/carriers/" + dotNumber + "?webKey=6cff17b7a7de3e02e765ea6c85eef20a8f11c4a1",
-  success: function(data) {
+      $.ajax({
+        type: "GET",
+        url: "https://mobile.fmcsa.dot.gov/qc/services/carriers/" + dotNumber + "?webKey=6cff17b7a7de3e02e765ea6c85eef20a8f11c4a1",
+        success: function(data) {
 
                           $("#company").val(data.content.carrier.legalName);
                           $("#address").val(data.content.carrier.phyStreet);
@@ -1295,13 +1294,139 @@ $.ajax({
 
                           }
 
-      });
+      }); //end first ajax
+
+$.ajax({
+  type: "GET",
+  url: "https://mobile.fmcsa.dot.gov/qc/services/carriers/" + dotNumber + "/basics?webKey=6cff17b7a7de3e02e765ea6c85eef20a8f11c4a1",
+
+  success: function(data) {
+
+                               $("#safety_1").text(data.content[0].basic.basicsType.basicsCode + " serious violation past 12 months: " +
+
+                                  data.content[0].basic.seriousViolationFromInvestigationPast12MonthIndicator
+
+                                );
+
+                              $("#safety_2").text(data.content[1].basic.basicsType.basicsCode + " serious violation past 12 months: " +
+
+                                  data.content[1].basic.seriousViolationFromInvestigationPast12MonthIndicator
+
+                                );
+                              $("#safety_3").text(data.content[2].basic.basicsType.basicsCode + " serious violation past 12 months: " +
+
+                                  data.content[2].basic.seriousViolationFromInvestigationPast12MonthIndicator
+
+                                );
+                              $("#safety_4").text(data.content[3].basic.basicsType.basicsCode + " serious violation past 12 months: " +
+
+                                  data.content[3].basic.seriousViolationFromInvestigationPast12MonthIndicator
+
+                                );
+                              $("#safety_5").text(data.content[4].basic.basicsType.basicsCode + " serious violation past 12 months: " +
+
+                                  data.content[4].basic.seriousViolationFromInvestigationPast12MonthIndicator
+
+                                );
+                          
+                          
+                          }
+
+
+ });
 
 
  });
 
 
 
+$(document).on('click', '#DisplaySafetyInfo', function()
+
+{
+  var dotNumber = $('#car_dot_number').val();
+
+     
+$.ajax({
+  type: "GET",
+  url: "https://mobile.fmcsa.dot.gov/qc/services/carriers/" + dotNumber + "/basics?webKey=6cff17b7a7de3e02e765ea6c85eef20a8f11c4a1",
+
+  success: function(data) {
+
+                               $("#safety_1").text(data.content[0].basic.basicsType.basicsCode + " serious violation past 12 months: " +
+
+                                  data.content[0].basic.seriousViolationFromInvestigationPast12MonthIndicator
+
+                                );
+
+                              $("#safety_2").text(data.content[1].basic.basicsType.basicsCode + " serious violation past 12 months: " +
+
+                                  data.content[1].basic.seriousViolationFromInvestigationPast12MonthIndicator
+
+                                );
+                              $("#safety_3").text(data.content[2].basic.basicsType.basicsCode + " serious violation past 12 months: " +
+
+                                  data.content[2].basic.seriousViolationFromInvestigationPast12MonthIndicator
+
+                                );
+                              $("#safety_4").text(data.content[3].basic.basicsType.basicsCode + " serious violation past 12 months: " +
+
+                                  data.content[3].basic.seriousViolationFromInvestigationPast12MonthIndicator
+
+                                );
+                              $("#safety_5").text(data.content[4].basic.basicsType.basicsCode + " serious violation past 12 months: " +
+
+                                  data.content[4].basic.seriousViolationFromInvestigationPast12MonthIndicator
+
+                                );
+                          
+                          
+                          }
+
+
+ });
+
+
+ });
+
+$(document).on('click', '#OverwriteExistingInfo', function()
+
+{
+  var dotNumber = $('#car_dot_number').val();
+
+     $.ajax({
+        type: "GET",
+        url: "https://mobile.fmcsa.dot.gov/qc/services/carriers/" + dotNumber + "?webKey=6cff17b7a7de3e02e765ea6c85eef20a8f11c4a1",
+        success: function(data) {
+
+                          $("#car_company").val(data.content.carrier.legalName);
+                          $("#car_address").val(data.content.carrier.phyStreet);
+                          $("#car_city").val(data.content.carrier.phyCity);
+                          $("#car_state").val(data.content.carrier.phyState);
+                          $("#car_zip").val(data.content.carrier.phyZipcode);
+                          $("#car_phone").val(data.content.carrier.phone);
+                          $("#car_permanent_notes").val(
+
+                            "DBA NAME: " + data.content.carrier.dbaName +
+                            " -- ALLOWED TO OPERATE: " + data.content.carrier.allowedToOperate +
+                            " -- OPERATION: " + data.content.carrier.carrierOperation.carrierOperationDesc +
+                            " -- CRASH TOTAL: " + data.content.carrier.crashTotal +
+                            " -- DRIVER OOS FROM INSPECTION: " + data.content.carrier.driverOosInsp +
+                            " -- VEHILCE OOS FROM INSPECTION: " + data.content.carrier.vehicleOosInsp
+
+
+
+                            );
+                          
+
+
+
+                          }
+
+      }); //end first ajax
+
+
+
+ });
 
 
 //# sourceMappingURL=main.js.map

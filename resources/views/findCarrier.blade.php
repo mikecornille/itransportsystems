@@ -9,6 +9,12 @@
 
 <div id="find_carrier_wrapper">
           <div class="well">
+
+           <p id="safety_1"></p>
+      <p id="safety_2"></p>
+      <p id="safety_3"></p>
+      <p id="safety_4"></p>
+      <p id="safety_5"></p>
             <div class="alert alert-success hidden" id="success-alert-carrier"></div>
             
             <div class="form-group">
@@ -22,9 +28,24 @@
                   <label class="label-control" for="car_mc_number">MC #</label>
                   <input type="text" class="form-control" id="car_mc_number" name="car_mc_number">
                 </div>
+                
+
                 <div class="col-xs-3">
                   <label class="label-control" for="car_dot_number">DOT #</label>
-                  <input type="text" class="form-control" id="car_dot_number" name="car_dot_number">
+                  <div class="input-group">
+
+                  <input type="text" class="form-control" id="car_dot_number" name="car_dot_number" aria-label="...">
+                  <div class="input-group-btn">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li><a id="DisplaySafetyInfo">Display Safety Info</a></li>
+          <li><a id="OverwriteExistingInfo">Overwrite Existing Info</a></li>
+          
+        </ul>
+      </div><!-- /btn-group -->
+                  
+
+                  </div>
                 </div>
               </div>
               <div class="row">

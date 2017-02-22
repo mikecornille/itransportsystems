@@ -30,6 +30,13 @@
     <div class="well">
       
       <h1 class="text-center">New Carrier</h1> 
+
+      <p id="safety_1"></p>
+      <p id="safety_2"></p>
+      <p id="safety_3"></p>
+      <p id="safety_4"></p>
+      <p id="safety_5"></p>
+
       <div class="form-group">
         <div class="row">
             <div class="col-xs-6">
