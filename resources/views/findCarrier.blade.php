@@ -189,6 +189,10 @@
                   <label class="label-control" for="car_remit_address">REMIT ADDRESS</label>
                   <input type="text" class="form-control" id="car_remit_address" name="car_remit_address">
                 </div>
+                <div class="col-xs-4">
+                <label class="label-control" for="car-remit-search">FIND REMIT INFO</label>
+                <input type="text" class="form-control" id="car-remit-search" placeholder="Remit Search">
+                </div>
               </div>
 
               <div class="row">

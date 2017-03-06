@@ -472,6 +472,88 @@
 						'</div>';
 
 }( window.jQuery );
+     //Remit Autofill
+ $(function() {
+            
+            $( "#car-remit-search" ).autocomplete({
+                source: function( request, response ) {
+                    $.ajax({
+                        url: "/api/remit/" + request.term,
+                        dataType: "json",
+                        success: function( data ) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: '--NAME-- ' + item.name + ' --ADDRESS-- ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip,
+                                    value: item.name + ' ' + item.address,
+                                    object: item
+                                }
+                        }));
+                    }});
+                },
+                minLength: 3,
+                select: function( event, ui ) {
+                    window.originRecord = ui;
+                    $('#car_remit_name').val(window.originRecord.item.object.name);
+                    $('#car_remit_address').val(window.originRecord.item.object.address);
+                    $('#car_remit_city').val(window.originRecord.item.object.city);
+                    $('#car_remit_state').val(window.originRecord.item.object.state);
+                    $('#car_remit_zip').val(window.originRecord.item.object.zip);
+                    
+
+                },
+                open: function() {
+                    $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+
+                },
+                close: function() {
+                    $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+                }
+            });
+        });
+
+
+    //Remit Autofill
+ $(function() {
+            
+            $( "#remit-search" ).autocomplete({
+                source: function( request, response ) {
+                    $.ajax({
+                        url: "/api/remit/" + request.term,
+                        dataType: "json",
+                        success: function( data ) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: '--NAME-- ' + item.name + ' --ADDRESS-- ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip,
+                                    value: item.name + ' ' + item.address,
+                                    object: item
+                                }
+                        }));
+                    }});
+                },
+                minLength: 3,
+                select: function( event, ui ) {
+                    window.originRecord = ui;
+                    $('#remit_name').val(window.originRecord.item.object.name);
+                    $('#remit_address').val(window.originRecord.item.object.address);
+                    $('#remit_city').val(window.originRecord.item.object.city);
+                    $('#remit_state').val(window.originRecord.item.object.state);
+                    $('#remit_zip').val(window.originRecord.item.object.zip);
+                    
+
+                },
+                open: function() {
+                    $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+
+                },
+                close: function() {
+                    $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+                }
+            });
+        });
+
+
+
+
   //Additional Stops Autofill
  $(function() {
             

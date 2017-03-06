@@ -199,6 +199,14 @@
                 <label class="label-control" for="remit_address">REMIT ADDRESS</label>
                 <input type="text" class="form-control" id="remit_address" name="remit_address" value="{{ old('remit_address') }}">
             </div>
+            <div class="col-xs-4">
+               
+                <label class="label-control" for="remit-search">FIND REMIT INFO</label>
+                <input type="text" class="form-control" id="remit-search" placeholder="Remit Search">
+                
+            
+
+            </div>
         </div>
 
         <div class="row">

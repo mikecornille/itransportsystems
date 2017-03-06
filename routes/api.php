@@ -32,3 +32,7 @@ Route::get('/equipment/{query}', function($query) {
 Route::get('/carrier/{query}', function($query) {
 	return App\Carrier::search($query)->get();
 });
+
+Route::get('/remit/{query}', function($query) {
+	return App\Remit::search($query)->get();
+});

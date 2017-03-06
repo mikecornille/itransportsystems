@@ -24,6 +24,7 @@ Route::get('/twilio', function () {
 
 Route::group(['middleware' => 'auth'],function() {
 
+Route::resource('remit', 'RemitController');
 
 Route::resource('budget', 'BudgetController');
 

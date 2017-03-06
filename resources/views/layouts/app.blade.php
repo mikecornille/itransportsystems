@@ -126,6 +126,7 @@
                                 <li><a href="{{ URL::to('/findCarrier') }}">Find Carrier</a></li>
                                 <li><a href="{{ URL::to('/findTrucks') }}">Find Trucks From Carriers</a></li>
                                 <li><a href="{{ URL::to('/findTrucksFromLoads') }}">Find Trucks From Loads</a></li>
+                                <li><a href="{{ URL::to('/remit') }}">Remit Info</a></li>
                                 
 
                                 </ul>
