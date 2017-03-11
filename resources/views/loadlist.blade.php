@@ -332,14 +332,19 @@
       <tr>
         <th>Pick</th>
         <th>Delivery</th>
-        <th>Miles/Customer</th>
+        <th>Customer</th>
         <th>Urgency</th>
         <th>Load Type</th>
         <th>Commodity</th>
-        <th>Trailer Type</th>
+        <th>Notes</th>
+        <th>Dims</th>
+        <th>Trailer</th>
         <th>Ready Date</th>
         <th>Deliver By</th>
-        <th>More</th>
+        <th>Offer</th>
+        <th>Post</th>
+        <th>Billing</th>
+        <th>Margin</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -375,110 +380,25 @@
         @endif
         
 		<td>{{ $load->load_type }}</td>
-        <td>{{ substr($load->commodity, 0, 25) }} {{ strlen($load->commodity) > 25 ? "..." : "" }}</td>
+		<td><a href="#" class="inactiveLink" title="Commodity" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load->commodity }}">{{ substr($load->commodity, 0, 25) }} {{ strlen($load->commodity) > 25 ? "..." : "" }}</a></td>
+		<td>{{ $load->special_instructions }}</td>
+        <td>{{ $load->length . '\' x ' . $load->width . '\' x ' . $load->height . '\' ' . $load->weight . 'lbs' }}</td>
         <td>{{ $load->trailer_type }}</td>
         <td>{{ date("m/d", strtotime($load->pick_date)) . ' ' . (date("g:ia", strtotime($load->pick_time))) }}</td>
         <td>{{ date("m/d", strtotime($load->delivery_date)) . ' ' . (date("g:ia", strtotime($load->delivery_time))) }}</td>
-        <td><a href=".coll{{ $load->id }}" data-toggle="collapse"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></td>
-        <td><a href="{{ URL::to('/editLoadlist/' . $load->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $load->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load->customer . ' ' . (date("m/d g:ia", strtotime($load->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $load->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $load->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailLoad/' . $load->id) }}" title="email"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></td>
+        <td class="offering_rate">${{ $load->offer_money }}</td>
+        <td class="margin">${{ $load->post_money }}</td>
+        <td class="billing_rate">${{ $load->billing_money }}</td>
+        <td class="margin">{{ $profitMargin }}%</td>
+        <td><a href="{{ URL::to('/editLoadlist/' . $load->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $load->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load->customer . ' ' . (date("m/d g:ia", strtotime($load->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $load->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $load->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailLoad/' . $load->id) }}" title="email"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailTruckOffer/' . $load->id) }}" title="email truck template"><span class="glyphicon glyphicon-road" aria-hidden="true"></span></a> | <a href="{{ URL::to('/deleteLoadlist/' . $load->id) }}" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+
+
       </tr>
       
-
-      <tr class="collapse coll{{ $load->id }} alt-colors">
-      	<td>{{ $load->commodity }} - {{ $load->length . 'ft x ' . $load->width . 'ft x ' . $load->height . 'ft ' . $load->weight . 'lbs' }}</td>
-      	<td>{{ $load->special_instructions }}</td>
-      	<td>{{ $load->miles }}mi.</td>
-      </tr>
-      <tr class="collapse coll{{ $load->id }} alt-colors">
-      	<td class="offering_rate">OFFER: ${{ $load->offer_money }} POST: ${{ $load->post_money }}</td>
-      	<td class="margin">PM: {{ $profitMargin }}%</td>
-      	<td class="billing_rate">B: ${{ $load->billing_money }}</td>
-      </tr>
-      <tr class="collapse coll{{ $load->id }} alt-colors">
-      	<td>
-      		<a href="{{ URL::to('/editLoadlist/' . $load->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $load->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load->customer . ' ' . (date("m/d g:ia", strtotime($load->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $load->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $load->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailLoad/' . $load->id) }}" title="email"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailTruckOffer/' . $load->id) }}" title="email truck template"><span class="glyphicon glyphicon-road" aria-hidden="true"></span></a> | <a href="{{ URL::to('/deleteLoadlist/' . $load->id) }}" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-      	</td>
-      </tr>
-     
-
-      
-       
       @endforeach
     </tbody>
   </table>
 
-   <h1 class="text-center text-primary">Manageloads.com Load List</h1>
-
-<table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Pick</th>
-        <th>Delivery</th>
-        <th>Customer</th>
-        <th>Urgency</th>
-        <th>Load Type</th>
-        <th>Trailer Type</th>
-        <th>Ready Date</th>
-        <th>Deliver By</th>
-        <th>Info</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach($manageloads_loads as $manage)
-      	<?php
-			$billing_money = $manage->billing_money;
-
-			$offer_money = $manage->offer_money;
-
-			$difference = $billing_money - $offer_money;
-
-			$margin = $difference / $billing_money;
-
-			$profitMargin = round((float)$margin * 100 );
-
-			$myvalue = $manage->customer;
-			$arr = explode(' ',trim($myvalue));
-			
-			$name = explode("@", $manage->created_by);
-			$email_prefix = $name[0];
-		?>
-		
-      <tr class="loadlist_row">
-        <td>{{ $manage->pick_city . ', ' . $manage->pick_state }}</td>
-        <td>{{ $manage->delivery_city . ', ' . $manage->delivery_state }}</td>
-        <td>{{ $arr[0] }}</td>
-        <td>{{ $manage->miles }}</td>
-        <td>{{ $manage->urgency }}</td>
-        <td>{{ $manage->load_type }}</td>
-        <td>{{ $email_prefix }}</td>
-        <td>{{ $manage->trailer_type }}</td>
-        <td>{{ date("m/d", strtotime($manage->pick_date)) . ' ' . (date("g:ia", strtotime($manage->pick_time))) }}</td>
-        <td>{{ date("m/d", strtotime($manage->delivery_date)) . ' ' . (date("g:ia", strtotime($manage->delivery_time))) }}</td>
-        <td><a href=".coll{{ $manage->id }}" data-toggle="collapse"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></td>
-      </tr>
-      
-
-      <tr class="collapse coll{{ $manage->id }}">
-      	<td>{{ $manage->commodity }} - {{ $manage->length . 'ft x ' . $manage->width . 'ft x ' . $manage->height . 'ft ' . $manage->weight . 'lbs' }}</td>
-      	<td>{{ $manage->special_instructions }}</td>
-      </tr>
-      <tr class="collapse coll{{ $manage->id }}">
-      	<td class="offering_rate">OFFER: ${{ $manage->offer_money }} POST: ${{ $manage->post_money }}</td>
-      	<td class="margin">PM: {{ $profitMargin }}%</td>
-      	<td class="billing_rate">B: ${{ $manage->billing_money }}</td>
-      </tr>
-      <tr class="collapse coll{{ $manage->id }}">
-      	<td>
-      		<a href="{{ URL::to('/editLoadlist/' . $manage->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $manage->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $manage->customer . ' ' . (date("m/d g:ia", strtotime($manage->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $manage->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $manage->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailLoad/' . $manage->id) }}" title="email"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a> | <a href="{{ URL::to('/deleteLoadlist/' . $manage->id) }}" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-      	</td>
-      </tr>
-     
-
-      
-       
-      @endforeach
-    </tbody>
-  </table>
 
  
 
@@ -493,10 +413,15 @@
         <th>Urgency</th>
         <th>Load Type</th>
         <th>Commodity</th>
-        <th>Trailer Type</th>
+        <th>Notes</th>
+        <th>Dims</th>
+        <th>Trailer</th>
         <th>Ready Date</th>
         <th>Deliver By</th>
-        <th>More</th>
+        <th>Offer</th>
+        <th>Post</th>
+        <th>Billing</th>
+        <th>Margin</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -524,33 +449,28 @@
         <td>{{ $personal->pick_city . ', ' . $personal->pick_state }}</td>
         <td>{{ $personal->delivery_city . ', ' . $personal->delivery_state . ' (' . $personal->miles . 'mi.)' }}</td>
         <td>{{ $arr[0] }}</td>
+        
+		@if ($personal->urgency === 'Screaming')
+        <td class="text-danger">{{ $personal->urgency }}</td>
+        @else
         <td>{{ $personal->urgency }}</td>
-        <td>{{ $personal->load_type }}</td>
-        <td>{{ substr($personal->commodity, 0, 25) }} {{ strlen($personal->commodity) > 25 ? "..." : "" }}</td>
+        @endif
+        
+		<td>{{ $personal->load_type }}</td>
+		<td><a href="#" class="inactiveLink" title="Commodity" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $personal->commodity }}">{{ substr($personal->commodity, 0, 25) }} {{ strlen($personal->commodity) > 25 ? "..." : "" }}</a></td>
+		<td>{{ $personal->special_instructions }}</td>
+        <td>{{ $personal->length . '\' x ' . $personal->width . '\' x ' . $personal->height . '\' ' . $personal->weight . 'lbs' }}</td>
         <td>{{ $personal->trailer_type }}</td>
         <td>{{ date("m/d", strtotime($personal->pick_date)) . ' ' . (date("g:ia", strtotime($personal->pick_time))) }}</td>
         <td>{{ date("m/d", strtotime($personal->delivery_date)) . ' ' . (date("g:ia", strtotime($personal->delivery_time))) }}</td>
-        <td><a href=".coll{{ $personal->id }}" data-toggle="collapse"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></td>
-        <td><a href="{{ URL::to('/editLoadlist/' . $personal->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $personal->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $personal->customer . ' ' . (date("m/d g:ia", strtotime($personal->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $personal->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $personal->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailLoad/' . $personal->id) }}" title="email"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></td>
-      </tr>
-      
+        <td class="offering_rate">${{ $personal->offer_money }}</td>
+        <td class="margin">${{ $personal->post_money }}</td>
+        <td class="billing_rate">${{ $personal->billing_money }}</td>
+        <td class="margin">{{ $profitMargin }}%</td>
+        <td><a href="{{ URL::to('/editLoadlist/' . $personal->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $personal->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $personal->customer . ' ' . (date("m/d g:ia", strtotime($personal->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $personal->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $personal->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailLoad/' . $personal->id) }}" title="email"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailTruckOffer/' . $personal->id) }}" title="email truck template"><span class="glyphicon glyphicon-road" aria-hidden="true"></span></a> | <a href="{{ URL::to('/deleteLoadlist/' . $personal->id) }}" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
 
-      <tr class="collapse coll{{ $personal->id }} alt-colors">
-      	<td>{{ $personal->commodity }} - {{ $personal->length . 'ft x ' . $personal->width . 'ft x ' . $personal->height . 'ft ' . $personal->weight . 'lbs' }}</td>
-      	<td>{{ $personal->special_instructions }}</td>
-      	<td>{{ $personal->miles }}mi.</td>
+
       </tr>
-      <tr class="collapse coll{{ $personal->id }} alt-colors">
-      	<td class="offering_rate">OFFER: ${{ $personal->offer_money }} POST: ${{ $personal->post_money }}</td>
-      	<td class="margin">PM: {{ $profitMargin }}%</td>
-      	<td class="billing_rate">B: ${{ $personal->billing_money }}</td>
-      </tr>
-      <tr class="collapse coll{{ $personal->id }} alt-colors">
-      	<td>
-      		<a href="{{ URL::to('/editLoadlist/' . $personal->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $personal->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $personal->customer . ' ' . (date("m/d g:ia", strtotime($personal->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $personal->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $personal->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailLoad/' . $personal->id) }}" title="email"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailTruckOffer/' . $load->id) }}" title="email truck template"><span class="glyphicon glyphicon-road" aria-hidden="true"></span></a> | <a href="{{ URL::to('/deleteLoadlist/' . $personal->id) }}" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-      	</td>
-      </tr>
-     
 
       
        
@@ -569,10 +489,15 @@
         <th>Urgency</th>
         <th>Load Type</th>
         <th>Commodity</th>
-        <th>Trailer Type</th>
+        <th>Notes</th>
+        <th>Dims</th>
+        <th>Trailer</th>
         <th>Ready Date</th>
         <th>Deliver By</th>
-        <th>More</th>
+        <th>Offer</th>
+        <th>Post</th>
+        <th>Billing</th>
+        <th>Margin</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -596,37 +521,33 @@
 			$email_prefix = $name[0];
 		?>
 		
-      <tr class="loadlist_row alt-colors">
+      
+     <tr class="loadlist_row alt-colors">
         <td>{{ $personal->pick_city . ', ' . $personal->pick_state }}</td>
         <td>{{ $personal->delivery_city . ', ' . $personal->delivery_state . ' (' . $personal->miles . 'mi.)' }}</td>
         <td>{{ $arr[0] }}</td>
+        
+		@if ($personal->urgency === 'Screaming')
+        <td class="text-danger">{{ $personal->urgency }}</td>
+        @else
         <td>{{ $personal->urgency }}</td>
-        <td>{{ $personal->load_type }}</td>
-        <td>{{ substr($personal->commodity, 0, 25) }} {{ strlen($personal->commodity) > 25 ? "..." : "" }}</td>
+        @endif
+        
+		<td>{{ $personal->load_type }}</td>
+		<td><a href="#" class="inactiveLink" title="Commodity" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $personal->commodity }}">{{ substr($personal->commodity, 0, 25) }} {{ strlen($personal->commodity) > 25 ? "..." : "" }}</a></td>
+		<td>{{ $personal->special_instructions }}</td>
+        <td>{{ $personal->length . '\' x ' . $personal->width . '\' x ' . $personal->height . '\' ' . $personal->weight . 'lbs' }}</td>
         <td>{{ $personal->trailer_type }}</td>
         <td>{{ date("m/d", strtotime($personal->pick_date)) . ' ' . (date("g:ia", strtotime($personal->pick_time))) }}</td>
         <td>{{ date("m/d", strtotime($personal->delivery_date)) . ' ' . (date("g:ia", strtotime($personal->delivery_time))) }}</td>
-        <td><a href=".coll{{ $personal->id }}" data-toggle="collapse"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></td>
-        <td><a href="{{ URL::to('/editLoadlist/' . $personal->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $personal->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $personal->customer . ' ' . (date("m/d g:ia", strtotime($personal->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $personal->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $personal->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailLoad/' . $personal->id) }}" title="email"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></td>
-      </tr>
-      
+        <td class="offering_rate">${{ $personal->offer_money }}</td>
+        <td class="margin">${{ $personal->post_money }}</td>
+        <td class="billing_rate">${{ $personal->billing_money }}</td>
+        <td class="margin">{{ $profitMargin }}%</td>
+        <td><a href="{{ URL::to('/editLoadlist/' . $personal->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $personal->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $personal->customer . ' ' . (date("m/d g:ia", strtotime($personal->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $personal->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $personal->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailLoad/' . $personal->id) }}" title="email"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailTruckOffer/' . $personal->id) }}" title="email truck template"><span class="glyphicon glyphicon-road" aria-hidden="true"></span></a> | <a href="{{ URL::to('/deleteLoadlist/' . $personal->id) }}" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
 
-      <tr class="collapse coll{{ $personal->id }} alt-colors">
-      	<td>{{ $personal->commodity }} - {{ $personal->length . 'ft x ' . $personal->width . 'ft x ' . $personal->height . 'ft ' . $personal->weight . 'lbs' }}</td>
-      	<td>{{ $personal->special_instructions }}</td>
-      	<td>{{ $personal->miles }}mi.</td>
+
       </tr>
-      <tr class="collapse coll{{ $personal->id }} alt-colors">
-      	<td class="offering_rate">OFFER: ${{ $personal->offer_money }} POST: ${{ $personal->post_money }}</td>
-      	<td class="margin">PM: {{ $profitMargin }}%</td>
-      	<td class="billing_rate">B: ${{ $personal->billing_money }}</td>
-      </tr>
-      <tr class="collapse coll{{ $personal->id }} alt-colors">
-      	<td>
-      		<a href="{{ URL::to('/editLoadlist/' . $personal->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $personal->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $personal->customer . ' ' . (date("m/d g:ia", strtotime($personal->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $personal->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $personal->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailLoad/' . $personal->id) }}" title="email"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailTruckOffer/' . $load->id) }}" title="email truck template"><span class="glyphicon glyphicon-road" aria-hidden="true"></span></a> | <a href="{{ URL::to('/deleteLoadlist/' . $personal->id) }}" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-      	</td>
-      </tr>
-     
 
       
        
@@ -642,14 +563,19 @@
         <th>Pick</th>
         <th>Delivery</th>
         <th>Customer</th>
-        <th>Miles</th>
         <th>Urgency</th>
         <th>Load Type</th>
-        <th>Creator</th>
-        <th>Trailer Type</th>
+        <th>Commodity</th>
+        <th>Notes</th>
+        <th>Dims</th>
+        <th>Trailer</th>
         <th>Ready Date</th>
         <th>Deliver By</th>
-        <th>Info</th>
+        <th>Offer</th>
+        <th>Post</th>
+        <th>Billing</th>
+        <th>Margin</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -672,34 +598,31 @@
 			$email_prefix = $name[0];
 		?>
 		
-      <tr class="loadlist_row">
+      <tr class="loadlist_row alt-colors">
         <td>{{ $quote->pick_city . ', ' . $quote->pick_state }}</td>
-        <td>{{ $quote->delivery_city . ', ' . $quote->delivery_state }}</td>
+        <td>{{ $quote->delivery_city . ', ' . $quote->delivery_state . ' (' . $quote->miles . 'mi.)' }}</td>
         <td>{{ $arr[0] }}</td>
-        <td>{{ $quote->miles }}</td>
+        
+		@if ($quote->urgency === 'Screaming')
+        <td class="text-danger">{{ $quote->urgency }}</td>
+        @else
         <td>{{ $quote->urgency }}</td>
-        <td>{{ $quote->load_type }}</td>
-        <td>{{ $email_prefix }}</td>
+        @endif
+        
+		<td>{{ $quote->load_type }}</td>
+		<td><a href="#" class="inactiveLink" title="Commodity" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $quote->commodity }}">{{ substr($quote->commodity, 0, 25) }} {{ strlen($quote->commodity) > 25 ? "..." : "" }}</a></td>
+		<td>{{ $quote->special_instructions }}</td>
+        <td>{{ $quote->length . '\' x ' . $quote->width . '\' x ' . $quote->height . '\' ' . $quote->weight . 'lbs' }}</td>
         <td>{{ $quote->trailer_type }}</td>
         <td>{{ date("m/d", strtotime($quote->pick_date)) . ' ' . (date("g:ia", strtotime($quote->pick_time))) }}</td>
         <td>{{ date("m/d", strtotime($quote->delivery_date)) . ' ' . (date("g:ia", strtotime($quote->delivery_time))) }}</td>
-        <td><a href=".coll{{ $quote->id }}" data-toggle="collapse"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></td>
-      </tr>
-      
+        <td class="offering_rate">${{ $quote->offer_money }}</td>
+        <td class="margin">${{ $quote->post_money }}</td>
+        <td class="billing_rate">${{ $quote->billing_money }}</td>
+        <td class="margin">{{ $profitMargin }}%</td>
+        <td><a href="{{ URL::to('/editLoadlist/' . $quote->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $quote->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $quote->customer . ' ' . (date("m/d g:ia", strtotime($quote->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $quote->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $quote->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailLoad/' . $quote->id) }}" title="email"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailTruckOffer/' . $quote->id) }}" title="email truck template"><span class="glyphicon glyphicon-road" aria-hidden="true"></span></a> | <a href="{{ URL::to('/deleteLoadlist/' . $quote->id) }}" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
 
-      <tr class="collapse coll{{ $quote->id }}">
-      	<td>{{ $quote->commodity }} - {{ $quote->length . 'ft x ' . $quote->width . 'ft x ' . $quote->height . 'ft ' . $quote->weight . 'lbs' }}</td>
-      	<td>{{ $quote->special_instructions }}</td>
-      </tr>
-      <tr class="collapse coll{{ $quote->id }}">
-      	<td class="offering_rate">OFFER: ${{ $quote->offer_money }} POST: ${{ $quote->post_money }}</td>
-      	<td class="margin">PM: {{ $profitMargin }}%</td>
-      	<td class="billing_rate">B: ${{ $quote->billing_money }}</td>
-      </tr>
-      <tr class="collapse coll{{ $quote->id }}">
-      	<td>
-      		<a href="{{ URL::to('/editLoadlist/' . $quote->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $quote->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $quote->customer . ' ' . (date("m/d g:ia", strtotime($quote->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $quote->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $quote->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailLoad/' . $quote->id) }}" title="email"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a> | <a href="{{ URL::to('/deleteLoadlist/' . $quote->id) }}" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-      	</td>
+
       </tr>
      
 

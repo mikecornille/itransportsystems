@@ -510,6 +510,11 @@ textarea#commodity, textarea#special_ins, textarea#add_stops, textarea#invoice_n
   background: #B1D7E8;
 }
 
+.inactiveLink {
+   text-decoration: none !important;
+   cursor: default;
+}
+
 
             
 // Fonts

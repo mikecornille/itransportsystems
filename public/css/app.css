@@ -408,4 +408,8 @@ textarea#commodity, textarea#special_ins, textarea#add_stops, textarea#invoice_n
 .alt-colors:nth-child(8n+1) {
   background: #B1D7E8; }
 
+.inactiveLink {
+  text-decoration: none !important;
+  cursor: default; }
+
 /*# sourceMappingURL=app.css.map */
