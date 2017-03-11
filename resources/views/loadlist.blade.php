@@ -332,15 +332,17 @@
       <tr>
         <th>Pick</th>
         <th>Delivery</th>
+        <th>Trailer</th>
+        <th>Ready Date</th>
+        <th>Deliver By</th>
         <th>Customer</th>
         <th>Urgency</th>
         <th>Load Type</th>
         <th>Commodity</th>
         <th>Notes</th>
         <th>Dims</th>
-        <th>Trailer</th>
-        <th>Ready Date</th>
-        <th>Deliver By</th>
+        
+        
         <th>Offer</th>
         <th>Post</th>
         <th>Billing</th>
@@ -371,6 +373,9 @@
       <tr class="loadlist_row alt-colors">
         <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
         <td>{{ $load->delivery_city . ', ' . $load->delivery_state . ' (' . $load->miles . 'mi.)' }}</td>
+        <td>{{ $load->trailer_type }}</td>
+        <td>{{ date("m/d", strtotime($load->pick_date)) . ' ' . (date("g:ia", strtotime($load->pick_time))) }}</td>
+        <td>{{ date("m/d", strtotime($load->delivery_date)) . ' ' . (date("g:ia", strtotime($load->delivery_time))) }}</td>
         <td>{{ $arr[0] }}</td>
         
 		@if ($load->urgency === 'Screaming')
@@ -383,9 +388,8 @@
 		<td><a href="#" class="inactiveLink" title="Commodity" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load->commodity }}">{{ substr($load->commodity, 0, 25) }} {{ strlen($load->commodity) > 25 ? "..." : "" }}</a></td>
 		<td>{{ $load->special_instructions }}</td>
         <td>{{ $load->length . '\' x ' . $load->width . '\' x ' . $load->height . '\' ' . $load->weight . 'lbs' }}</td>
-        <td>{{ $load->trailer_type }}</td>
-        <td>{{ date("m/d", strtotime($load->pick_date)) . ' ' . (date("g:ia", strtotime($load->pick_time))) }}</td>
-        <td>{{ date("m/d", strtotime($load->delivery_date)) . ' ' . (date("g:ia", strtotime($load->delivery_time))) }}</td>
+        
+        
         <td class="offering_rate">${{ $load->offer_money }}</td>
         <td class="margin">${{ $load->post_money }}</td>
         <td class="billing_rate">${{ $load->billing_money }}</td>
