@@ -1029,6 +1029,13 @@ $('#datepicker_search_loadlist').on('changeDate', function(ev){
 
 <!-- INSERT TIMESTAMP IN UPDATE CUSTOMER MESSAGE TEXTAREA -->
 
+$(document).on('dblclick', '#dialed_out', function(){
+
+
+$('#dialed_out').val('Outgoing');
+
+});
+
 $(document).on('dblclick', '#update_customer_message', function(){
 
 var d = new Date();
@@ -1065,7 +1072,7 @@ var d = new Date();
 var n = d.toDateString();
 var m = d.toLocaleTimeString();
 
-$('#time_name_stamp').val(n + " " + m + " " + user.name + " - ");
+$('#time_name_stamp').val(n + " " + m + " " + user.name);
 
 });
 

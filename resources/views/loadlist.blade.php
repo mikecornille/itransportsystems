@@ -663,14 +663,17 @@ $notetimestamp = date('m/d/Y g:ia');
         </div>
         <div class="modal-body">
           <form role="form" class="form-horizontal" method="POST" action="/newNote">
-				<input type="hidden" id="time_name_stamp" name="time_name_stamp" value="{{ $notetimestamp . ' ' . \Auth::user()->name }} -">
+				<input type="hidden" id="time_name_stamp" name="time_name_stamp" value="{{ $notetimestamp . ' ' . \Auth::user()->name }}">
         			{{ csrf_field() }}
 						<div class="well">
       						<h2 class="text-center">ITS Notes</h2> 
       							<div class="form-group">
         							<div class="row">
-            							<div class="col-xs-12">
+            							<div class="col-xs-9">
                 							<input type="text" class="form-control" id="notes" name="notes" value="{{ old('notes') }}" placeholder="Specify the location, first name, phone, and reason for call">
+            							</div>
+            							<div class="col-xs-3">
+                							<input type="text" class="form-control" id="dialed_out" name="dialed_out" value="{{ old('dialed_out') }}" placeholder="Dialed/Emailed Out">
             							</div>
         							</div>
 											<button type="submit" class="btn btn-primary" id="submit_new_note"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> NEW</button>

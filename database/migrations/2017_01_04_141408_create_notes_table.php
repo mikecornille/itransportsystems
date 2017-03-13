@@ -17,6 +17,7 @@ class CreateNotesTable extends Migration
             $table->increments('id');
             $table->string('time_name_stamp');
             $table->string('notes');
+            $table->string('dialed_out')->nullable();
             $table->timestamps();
         });
     }

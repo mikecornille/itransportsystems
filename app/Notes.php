@@ -9,6 +9,7 @@ class Notes extends Model
     protected $fillable = [
 			  'time_name_stamp',
 			  'notes',
+			  'dialed_out',
 			  
 
 
