@@ -19,6 +19,7 @@
       
             <div class="alert alert-success hidden" id="success-alert-carrier"></div>
             
+            
             <div class="form-group">
               <div class="row">
                 <input type="hidden" id="car_id" name="car_id">
@@ -219,18 +220,49 @@
                 
               </div>
 
+              <hr>
+
+              <div class="alert alert-danger hidden" id="error"></div>
+
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="label-control" for="car_load_route">CURRENT LOAD ROUTE</label>
+                <input type="text" class="form-control" id="car_load_route" name="car_load_route">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="car_current_carrier_rate">CURRENT CARRIER RATE</label>
+                <input type="text" class="form-control" id="car_current_carrier_rate" name="car_current_carrier_rate">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="car_current_trailer_type">CURRENT TRAILER TYPE</label>
+                <input type="text" class="form-control" id="car_current_trailer_type" name="car_current_trailer_type">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-8">
+                <label class="label-control" for="car_current_city_location">CURRENT CITY LOCATION (EMPTY OR LOADED)</label>
+                <input type="text" class="form-control" id="car_current_city_location" name="car_current_city_location">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="car_current_miles_from_pick">MILES FROM PICK</label>
+                <input type="text" class="form-control" id="car_current_miles_from_pick" name="car_current_miles_from_pick">
+            </div>
+            
+        </div>
+
+        <div class="row">
+        <div class="col-xs-8">
+                <label class="label-control" for="car_delivery_schedule">DELIVERY SCHEDULE</label>
+                <input type="text" class="form-control" id="car_delivery_schedule" name="car_delivery_schedule">
+            </div>
+        </div>
+
               <div class="row">
                 
                 <div class="col-xs-12">
-                  <label class="label-control" for="car_load_info">LOAD INFORMATION</label>
-                  	<ul>
-                  	<li>Load route</li>
-                	<li>Carrier rate</li>
-                	<li>Detailed trailer type and condition</li>
-                	<li>Miles from current drop-off and/or miles from our pick</li>
-                	<li>Driver's plans for delivery (other drops, out of hours, etc)</li>
-                	<li>Delivery date and time</li>
-                	</ul>
+                  <label class="label-control" for="car_load_info">ADDITIONAL LOAD INFORMATION</label>
+                  	
                   <textarea name="car_internal_notes" id="car_load_info" class="form-control" rows="2"></textarea>
                 </div>
                 

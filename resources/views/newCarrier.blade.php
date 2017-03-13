@@ -200,12 +200,8 @@
                 <input type="text" class="form-control" id="remit_address" name="remit_address" value="{{ old('remit_address') }}">
             </div>
             <div class="col-xs-4">
-               
                 <label class="label-control" for="remit-search">FIND REMIT INFO</label>
                 <input type="text" class="form-control" id="remit-search" placeholder="Remit Search">
-                
-            
-
             </div>
         </div>
 
@@ -224,6 +220,8 @@
             </div>
         </div>
 
+        
+
         <div class="row">
 		
 		    <div class="col-xs-12">
@@ -233,18 +231,46 @@
 		
 		</div>
 
+        <hr>
+
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="label-control" for="load_route">CURRENT LOAD ROUTE</label>
+                <input type="text" class="form-control" id="load_route" name="load_route" value="{{ old('load_route') }}">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="current_carrier_rate">CURRENT CARRIER RATE</label>
+                <input type="text" class="form-control" id="current_carrier_rate" name="current_carrier_rate" value="{{ old('current_carrier_rate') }}">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="current_trailer_type">CURRENT TRAILER TYPE</label>
+                <input type="text" class="form-control" id="current_trailer_type" name="current_trailer_type" value="{{ old('current_trailer_type') }}">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-8">
+                <label class="label-control" for="current_city_location">CURRENT CITY LOCATION (EMPTY OR LOADED)</label>
+                <input type="text" class="form-control" id="current_city_location" name="current_city_location" value="{{ old('current_city_location') }}">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="current_miles_from_pick">MILES FROM PICK</label>
+                <input type="text" class="form-control" id="current_miles_from_pick" name="current_miles_from_pick" value="{{ old('current_miles_from_pick') }}">
+            </div>
+            
+        </div>
+
+        <div class="row">
+        <div class="col-xs-8">
+                <label class="label-control" for="delivery_schedule">DELIVERY SCHEDULE</label>
+                <input type="text" class="form-control" id="delivery_schedule" name="delivery_schedule" value="{{ old('delivery_schedule') }}">
+            </div>
+        </div>
+
 		<div class="row">
 		
 		    <div class="col-xs-12">
-		        <label class="label-control" for="load_info">LOAD INFORMATION</label>
-		        <ul>
-		            <li>Load route</li>
-                	<li>Carrier rate</li>
-                	<li>Detailed trailer type and condition</li>
-                	<li>Miles from current drop-off and/or miles from our pick</li>
-                	<li>Driver's plans for delivery (other drops, out of hours, etc)</li>
-                	<li>Delivery date and time</li>
-                	</ul>
+		        <label class="label-control" for="load_info">ADDITIONAL LOAD INFORMATION</label>
 		        <textarea name="load_info" id="load_info" class="form-control" rows="2">{{ old('load_info') }}</textarea>
 		    </div>
 		

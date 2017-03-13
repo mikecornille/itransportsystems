@@ -44,6 +44,12 @@ class Carrier extends Model
 			  'landoll',
 			  'towing',
 			  'email_colleague_carrier',
+        'load_route',
+        'current_carrier_rate',
+        'current_trailer_type',
+        'current_city_location',
+        'current_miles_from_pick',
+        'delivery_schedule',
 
         ];
 

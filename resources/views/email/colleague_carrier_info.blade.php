@@ -16,7 +16,16 @@
 <p>Hello {{ $info->colleague_email }},</p>
 
 <h3><u>Specific Load Notes</u></h3>
-<p>{{ $info->load_info }}</p>
+<ul>
+<li><b>Load Route:</b> {{ $info->load_route }}</li>
+<li><b>Carrier Rate:</b> {{ $info->current_carrier_rate }}</li>
+<li><b>Trailer Type:</b> {{ $info->current_trailer_type }}</li>
+<li><b>Current City:</b> {{ $info->current_city_location }}</li>
+<li><b>Miles From Pick:</b> {{ $info->current_miles_from_pick }}</li>
+<li><b>Delivery Schedule:</b> {{ $info->delivery_schedule }}</li>
+<li><b>Additional Notes:</b> {{ $info->load_info }}</li>
+</ul>
+
 
 <h3><u>Carrier Permanent Notes</u></h3>
 <p>{{ $info->permanent_notes }}</p>

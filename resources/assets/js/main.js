@@ -133,6 +133,12 @@ $.ajax({
             remit_state: $("#car_remit_state").val(),
             remit_zip: $("#car_remit_zip").val(),
             load_info: $("#car_load_info").val(),
+            load_route: $("#car_load_route").val(),
+            current_carrier_rate: $("#car_current_carrier_rate").val(),
+            current_trailer_type: $("#car_current_trailer_type").val(),
+            current_city_location: $("#car_current_city_location").val(),
+            current_miles_from_pick: $("#car_current_miles_from_pick").val(),
+            delivery_schedule: $("#car_delivery_schedule").val(),
             permanent_notes: $("#car_permanent_notes").val(),
             email_colleague_carrier: $("#email_colleague_carrier").val(),
             flatbed: $("#flatbed").is(':checked'),
@@ -478,11 +484,28 @@ $.ajax({
 //EMAIL LOAD INFO TO COLLEAGUE
 $(document).on('click', '#sendCarrierInfo', function(){
 
+var car_load_route = $("#car_load_route").val();
+var car_current_carrier_rate = $("#car_current_carrier_rate").val();
+var car_current_trailer_type = $("#car_current_trailer_type").val();
+var car_current_city_location = $("#car_current_city_location").val();
+var car_current_miles_from_pick = $("#car_current_miles_from_pick").val();
+var car_delivery_schedule = $("#car_delivery_schedule").val();
+  
+  if(car_load_route === "" || car_current_carrier_rate === "" || car_current_trailer_type === "" || car_current_city_location === "" || car_current_miles_from_pick === "" || car_delivery_schedule === ""){
+           $("#error").removeClass('hidden');
+           $("#error").alert();
+           $("#error").text('All specific load info is required before clicking Email Colleague');
+           $("#error").fadeTo(4000, 500).slideUp(500);
+           return false;
+        }
+
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
 });
+
+
   
 $.ajax({
         method: 'POST',
@@ -503,6 +526,12 @@ $.ajax({
             phone: $("#car_phone").val(),
             driver_name: $("#car_driver_name").val(),
             driver_phone: $("#car_driver_phone").val(),
+            load_route: $("#car_load_route").val(),
+            current_carrier_rate: $("#car_current_carrier_rate").val(),
+            current_trailer_type: $("#car_current_trailer_type").val(),
+            current_city_location: $("#car_current_city_location").val(),
+            current_miles_from_pick: $("#car_current_miles_from_pick").val(),
+            delivery_schedule: $("#car_delivery_schedule").val(),
             //GET PRETTY MUCH ALL THE INFO NEEDED FOR A ROBUST EMAIL
 
 

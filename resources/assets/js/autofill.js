@@ -498,6 +498,12 @@
                       $('#car_remit_city').val(window.carrierRecord.item.object.remit_city);
                       $('#car_remit_state').val(window.carrierRecord.item.object.remit_state);
                       $('#car_remit_zip').val(window.carrierRecord.item.object.remit_zip);
+                      $('#car_load_route').val(window.carrierRecord.item.object.load_route);
+                      $('#car_current_carrier_rate').val(window.carrierRecord.item.object.current_carrier_rate);
+                      $('#car_current_trailer_type').val(window.carrierRecord.item.object.current_trailer_type);
+                      $('#car_current_city_location').val(window.carrierRecord.item.object.current_city_location);
+                      $('#car_current_miles_from_pick').val(window.carrierRecord.item.object.current_miles_from_pick);
+                      $('#car_delivery_schedule').val(window.carrierRecord.item.object.delivery_schedule);
                       $('textarea#car_load_info').val(window.carrierRecord.item.object.load_info);
                       $('textarea#car_permanent_notes').val(window.carrierRecord.item.object.permanent_notes);
                       $('#flatbed').prop('checked', window.carrierRecord.item.object.flatbed);

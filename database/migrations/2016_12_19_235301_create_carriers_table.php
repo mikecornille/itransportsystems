@@ -49,6 +49,12 @@ class CreateCarriersTable extends Migration
             $table->string('remit_zip')->nullable();
             $table->text('load_info')->nullable();
             $table->text('permanent_notes')->nullable();
+            $table->string('load_route')->nullable();
+            $table->string('current_carrier_rate')->nullable();
+            $table->string('current_trailer_type')->nullable();
+            $table->string('current_city_location')->nullable();
+            $table->string('current_miles_from_pick')->nullable();
+            $table->string('delivery_schedule')->nullable();
             $table->string('email_colleague_carrier')->nullable();
             $table->timestamps();
         });
