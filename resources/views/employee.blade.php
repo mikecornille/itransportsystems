@@ -49,6 +49,7 @@
         <th>Commission</th>
         <th>Bonus</th>
         <th>Additional</th>
+        <th>Notes</th>
         <th>Created At</th>
         <th>Updated At</th>
         <th>Edit</th>
@@ -66,6 +67,7 @@
                 <td>${{ $post->commission }}</td>
                 <td>${{ $post->bonus }}</td>
                 <td>${{ $post->additional }}</td>
+                <td>{{ $post->employee_payout_notes }}</td>
 		        <td>{{ date('M j, Y g:ia', strtotime($post->created_at)) }}</td>
 		        <td>{{ date('M j, Y g:ia', strtotime($post->updated_at)) }}</td>
 		        <td>{!! Html::linkRoute('employee.edit', 'Edit', array($post->id), ['class' => 'btn btn-success btn-block']) !!}</td>

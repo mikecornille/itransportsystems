@@ -24,6 +24,7 @@ class CreateEmployeesTable extends Migration
             $table->bigInteger('commission')->nullable();
             $table->bigInteger('bonus')->nullable();
             $table->bigInteger('additional')->nullable();
+            $table->string('employee_payout_notes')->nullable();
             $table->timestamps();
         });
     }

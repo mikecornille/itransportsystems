@@ -85,7 +85,9 @@ class EmployeeController extends Controller
     {
         $post = Employee::findOrFail($id);
 
-         return view('editEmployee', compact('post', $post));
+        $employees = User::all()->pluck('name','name');
+
+         return view('editEmployee', compact('post', $post, 'employees', $employees));
     }
 
     /**

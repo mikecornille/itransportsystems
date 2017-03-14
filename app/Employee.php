@@ -17,6 +17,7 @@ class Employee extends Model
 			  'commission',
 			  'bonus',
 			  'additional',
+			  'employee_payout_notes',
 
     ];
 }
