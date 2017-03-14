@@ -48,7 +48,7 @@
 </form>
 
 <div style="margin-left: 200px;">
-<table class="table table-striped" style="width: 1300px;">
+<table class="table table-striped" style="width: 1700px;">
 <tr>
     <th>Creator</th>
     <th>Notes</th> 
