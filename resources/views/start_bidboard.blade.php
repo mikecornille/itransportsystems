@@ -89,7 +89,9 @@
 
 
 
-	<div style="padding-bottom:20px;" id="loadlist_map_display"></div>
+	
+
+	<div style="padding-bottom:20px;" id="new_loadlist_map_display"></div>
 
 
 </div>

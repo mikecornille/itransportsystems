@@ -1188,8 +1188,10 @@ $(document).ready(function(){
     var delivery_city = $("#delivery_city").val();
     var delivery_state = $("#delivery_state").val();
 
-    $('#loadlist_map_display').html("<iframe class='center-block' width='100%' height='400' frameborder='5' scrolling='no' marginheight='0' marginwidth='0' src='https://maps.google.com/maps?f=d&amp;source=s_d&amp;saddr="+pick_city+","+pick_state+"&amp;daddr="+delivery_city+","+delivery_state+"&amp;hl=en&amp;geocode=FWICfwIdGuDG-inty_TQPCwOiDEAwMAJrabgrw%3BFbpmTQIdlKqf-in5ju36qbTYhzFb4Lsiyuo5vg&amp;aq=&amp;sll=40.00132,-82.909012&amp;sspn=0.397649,0.98053&amp;mra=ls&amp;ie=UTF8&amp;t=m&amp;ll=40.25279,-88.91443&amp;spn=3.250649,2.569472&amp;output=embed'></iframe>");
+    // $('#loadlist_map_display').html("<iframe class='center-block' width='100%' height='400' frameborder='5' scrolling='no' marginheight='0' marginwidth='0' src='https://maps.google.com/maps?f=d&amp;source=s_d&amp;saddr="+pick_city+","+pick_state+"&amp;daddr="+delivery_city+","+delivery_state+"&amp;hl=en&amp;geocode=FWICfwIdGuDG-inty_TQPCwOiDEAwMAJrabgrw%3BFbpmTQIdlKqf-in5ju36qbTYhzFb4Lsiyuo5vg&amp;aq=&amp;sll=40.00132,-82.909012&amp;sspn=0.397649,0.98053&amp;mra=ls&amp;ie=UTF8&amp;t=m&amp;ll=40.25279,-88.91443&amp;spn=3.250649,2.569472&amp;output=embed'></iframe>");
 
+
+$('#new_loadlist_map_display').html("<iframe class='center-block' width='100%' height='400' frameborder='5' scrolling='no' marginheight='0' marginwidth='0' src='https://www.google.com/maps/embed/v1/directions?key=AIzaSyBsrHsyaDhAw8CupGAEd_6M3hnPjO89mQ8&origin="+pick_city+","+pick_state+"&destination="+delivery_city+","+delivery_state+"&mode=driving&units=imperial'></iframe>");
 
     //code block
 
@@ -1225,7 +1227,9 @@ var delivery_state = $("#delivery_state").val();
 
 
 
-$('#loadlist_map_display').html("<iframe class='center-block' width='100%' height='400' frameborder='5' scrolling='no' marginheight='0' marginwidth='0' src='https://maps.google.com/maps?f=d&amp;source=s_d&amp;saddr="+pick_city+","+pick_state+"&amp;daddr="+delivery_city+","+delivery_state+"&amp;hl=en&amp;geocode=FWICfwIdGuDG-inty_TQPCwOiDEAwMAJrabgrw%3BFbpmTQIdlKqf-in5ju36qbTYhzFb4Lsiyuo5vg&amp;aq=&amp;sll=40.00132,-82.909012&amp;sspn=0.397649,0.98053&amp;mra=ls&amp;ie=UTF8&amp;t=m&amp;ll=40.25279,-88.91443&amp;spn=3.250649,2.569472&amp;output=embed'></iframe>");
+$('#new_loadlist_map_display').html("<iframe class='center-block' width='100%' height='400' frameborder='5' scrolling='no' marginheight='0' marginwidth='0' src='https://www.google.com/maps/embed/v1/directions?key=AIzaSyBsrHsyaDhAw8CupGAEd_6M3hnPjO89mQ8&origin="+pick_city+","+pick_state+"&destination="+delivery_city+","+delivery_state+"&mode=driving&units=imperial'></iframe>");
+
+
 });
 
 $(document).ready(function(){
