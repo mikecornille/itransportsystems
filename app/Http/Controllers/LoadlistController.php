@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Mail;
 
-use Laracasts\Utilities\JavaScript\JavaScriptFacade as Javascript;
-
 use App\Loadlist;
 
 use App\Carrier;
@@ -109,11 +107,6 @@ class LoadlistController extends Controller
 
   public function startLoadList(Request $request)
   {
-
-    JavaScript::put([
-        'data' => \App\Loadlist::all()
-        ]);
-
      $pick_city = $request->input('pick_city');
      $pick_state = $request->input('pick_state');
      $delivery_city = $request->input('delivery_city');

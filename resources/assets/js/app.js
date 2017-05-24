@@ -1,11 +1,4 @@
-import Vue from 'vue'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-default/index.css'
-import locale from 'element-ui/lib/locale/lang/en'
-import {ServerTable, ClientTable, Event} from 'vue-tables-2';
 
-Vue.use(ClientTable);
-Vue.use(ElementUI, { locale })
 /**
  * First we will load all of this project's JavaScript dependencies which
  * include Vue and Vue Resource. This gives a great starting point for
