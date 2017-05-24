@@ -1,4 +1,11 @@
+import Vue from 'vue'
+import ElementUI from 'element-ui'
+import locale from 'element-ui/lib/locale/lang/en'
+import {ServerTable, ClientTable, Event} from 'vue-tables-2';
 
+Vue.use(ClientTable);
+Vue.use(ServerTable);
+Vue.use(ElementUI, { locale })
 /**
  * First we will load all of this project's JavaScript dependencies which
  * include Vue and Vue Resource. This gives a great starting point for
@@ -14,6 +21,7 @@
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('history-table', require('./components/HistoryTable.vue'));
 
 const app = new Vue({
     el: '#app'

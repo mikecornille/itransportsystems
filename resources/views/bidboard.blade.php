@@ -221,107 +221,10 @@
 
 </div>
 
-<h2 class="text-center text-success">Results: Exact Pick City</h2>
-
-<table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Pick</th>
-        <th>Delivery</th>
-        <th>Customer</th>
-        <th>Commodity</th>
-        <th>Load Type</th>
-        <th>Urgency</th>
-        <th>Billed</th>
-        <th>Per Mile</th>
-        <th>Created</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach($exact_loads as $load)
-      	<?php
-			
-			$billing_money = $load->billing_money;
-      		
-      		$miles = $load->miles;
-
-      		$per_mile = round($billing_money / $miles, 2);
-
-			$myvalue = $load->customer;
-			$arr = explode(' ',trim($myvalue));
-			
-			// $name = explode("@", $load->created_by);
-			// $email_prefix = $name[0];
-		?>
-		
-      <tr class="loadlist_row">
-        <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
-        <td>{{ $load->delivery_city . ', ' . $load->delivery_state . ' (' . $load->miles . 'mi.)' }}</td>
-        <td>{{ $arr[0] }}</td>
-        <td>{{ substr($load->commodity, 0, 67) }} {{ strlen($load->commodity) > 67 ? "..." : "" }}</td>
-        <td>{{ $load->load_type }}</td>
-        <td>{{ $load->urgency }}</td>
-        <td>{{ '$' . $load->billing_money }}</td>
-        <td>{{ $per_mile }}</td>
-        <td>{{ (date("m/d g:ia", strtotime($load->created_at))) }}</td>
-      </tr>
-     @endforeach
-    </tbody>
-  </table>
-
-
-
-<h2 class="text-center text-success">Results: ST to ST</h2>
-
-<table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Pick</th>
-        <th>Delivery</th>
-        <th>Customer</th>
-        <th>Commodity</th>
-        <th>Load Type</th>
-        <th>Urgency</th>
-        <th>Billed</th>
-        <th>Per Mile</th>
-        <th>Created</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach($matching_loads as $load)
-      	<?php
-			
-			$billing_money = $load->billing_money;
-      		
-      		$miles = $load->miles;
-
-      		$per_mile = round($billing_money / $miles, 2);
-
-			$myvalue = $load->customer;
-			$arr = explode(' ',trim($myvalue));
-			
-			// $name = explode("@", $load->created_by);
-			// $email_prefix = $name[0];
-		?>
-		
-      <tr class="loadlist_row">
-        <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
-        <td>{{ $load->delivery_city . ', ' . $load->delivery_state . ' (' . $load->miles . 'mi.)' }}</td>
-        <td>{{ $arr[0] }}</td>
-        <td>{{ substr($load->commodity, 0, 67) }} {{ strlen($load->commodity) > 67 ? "..." : "" }}</td>
-        <td>{{ $load->load_type }}</td>
-        <td>{{ $load->urgency }}</td>
-        <td>{{ '$' . $load->billing_money }}</td>
-        <td>{{ $per_mile }}</td>
-        <td>{{ (date("m/d g:ia", strtotime($load->created_at))) }}</td>
-      </tr>
-     @endforeach
-    </tbody>
-  </table>
-
-
+<history-table></history-table>
 
 
 
 
 @endsection
+@include('footer')

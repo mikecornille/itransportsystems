@@ -36,3 +36,4 @@ Route::get('/carrier/{query}', function($query) {
 Route::get('/remit/{query}', function($query) {
 	return App\Remit::search($query)->get();
 });
+Route::get('history', 'LoadlistController@quoteHistory');

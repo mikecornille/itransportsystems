@@ -21,4 +21,5 @@ elixir((mix) => {
        .webpack('app.js')
        .scripts('main.js')
        .scripts(['datepicker.js','autofill.js'])
+       .styles('../../../node_modules/element-ui/lib/theme-default/index.css','public/assets/index.css')
 });

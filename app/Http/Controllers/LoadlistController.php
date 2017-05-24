@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Mail;
 
+use Laracasts\Utilities\JavaScript\JavaScriptFacade as Javascript;
+
 use App\Loadlist;
 
 use App\Carrier;
@@ -107,6 +109,11 @@ class LoadlistController extends Controller
 
   public function startLoadList(Request $request)
   {
+
+    /*JavaScript::put([
+        'data' => \App\Loadlist::all()
+        ]);*/
+
      $pick_city = $request->input('pick_city');
      $pick_state = $request->input('pick_state');
      $delivery_city = $request->input('delivery_city');
@@ -138,6 +145,139 @@ class LoadlistController extends Controller
     // ->with('currentDate', $currentDate);
 
   }
+
+  public function  quoteHistory(Request $request) 
+  {
+
+    if($request->has('query.pick_city')) {
+      $pickCity = $request->get('query')['pick_city'];
+    } else {
+      $pickCity = '';
+    }
+
+    if($request->has('query.pick_state')) {
+      $pickState = $request->get('query')['pick_state'];
+    } else {
+      $pickState = '';
+    }
+
+    if($request->has('query.delivery_city')) {
+      $deliveryCity = $request->get('query')['delivery_city'];
+    } else {
+      $deliveryCity = '';
+    }
+    
+    if($request->has('query.delivery_state')) {
+      $deliveryState = $request->get('query')['delivery_state'];
+    } else {
+      $deliveryState = '';
+    }
+
+
+    if($request->has('query.load_type')) {
+      $loadType = $request->get('query')['load_type'];
+    } else {
+      $loadType = '';
+    }
+
+    if($request->has('query.commodity')) {
+      $commodity = $request->get('query')['commodity'];
+    } else {
+      $commodity = '';
+    }
+
+    if($request->has('query.miles')) {
+      $miles = $request->get('query')['miles'];
+    } else {
+      $miles = '';
+    }
+
+    if($request->has('query.length')) {
+      $length = $request->get('query')['length'];
+    } else {
+      $length = '';
+    }
+
+    if($request->has('query.width')) {
+      $width = $request->get('query')['width'];
+    } else {
+      $width = '';
+    }
+
+    if($request->has('query.height')) {
+      $height = $request->get('query')['height'];
+    } else {
+      $height = '';
+    }
+
+    if($request->has('query.weight')) {
+      $weight = $request->get('query')['weight'];
+    } else {
+      $weight = '';
+    }
+
+    if($request->has('query.customer')) {
+      $customer = $request->get('query')['customer'];
+    } else {
+      $customer = '';
+    }
+
+    if($request->has('query.urgency')) {
+      $urgency = $request->get('query')['urgency'];
+    } else {
+      $urgency = '';
+    }
+
+    if($request->has('query.billing_money')) {
+      $billingMoney = $request->get('query')['billing_money'];
+    } else {
+      $billingMoney = '';
+    }
+
+    if($request->has('query.offer_money')) {
+      $offerMoney = $request->get('query')['offer_money'];
+    } else {
+      $offerMoney = '';
+    }
+
+    if($request->has('query.created_at')) {
+      $createdAt = $request->get('query')['created_at'];
+    } else {
+      $createdAt = '';
+    }
+
+
+
+    
+        /*$pickState = $request->get('query')['pick_state'];
+        dd($pickState);*/
+
+        $data = Loadlist::where('pick_city', 'LIKE', '%'.$pickCity.'%')
+        ->where('pick_state', 'LIKE', '%'.$pickState.'%')
+        ->where('delivery_city', 'LIKE', '%'.$deliveryCity.'%')
+        ->where('delivery_state', 'LIKE', '%'.$deliveryState.'%')
+        ->where('load_type', 'LIKE', '%'.$loadType.'%')
+        ->where('commodity', 'LIKE', '%'.$commodity.'%')
+
+        ->where('miles', 'LIKE', '%'.$miles.'%')
+        ->where('length', 'LIKE', '%'.$length.'%')
+        ->where('width', 'LIKE', '%'.$width.'%')
+        ->where('height', 'LIKE', '%'.$height.'%')
+        ->where('weight', 'LIKE', '%'.$weight.'%')
+
+        ->where('customer', 'LIKE', '%'.$customer.'%')
+        ->where('urgency', 'LIKE', '%'.$urgency.'%')
+        ->where('billing_money', 'LIKE', '%'.$billingMoney.'%')
+        ->where('offer_money', 'LIKE', '%'.$offerMoney.'%')
+        ->where('created_at', 'LIKE', '%'.$createdAt.'%')
+
+        
+
+        ->orderBy('created_at', 'desc')->get();
+
+        return ['data' => $data];
+
+      }
 
 	public function index()
 	{
