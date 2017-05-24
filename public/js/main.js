@@ -1032,7 +1032,7 @@ $('#datepicker_search_loadlist').on('changeDate', function(ev){
 $(document).on('dblclick', '#dialed_out', function(){
 
 
-$('#dialed_out').val('Outgoing');
+$('#dialed_out').val('OutgoingMoreEdits');
 
 });
 
