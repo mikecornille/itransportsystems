@@ -39,6 +39,9 @@
 
 </head>
 <body>
+@include ('footer')
+<script src="/js/app.js"></script>
+<script src="/js/all.js"></script>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -221,10 +224,7 @@
 
         @yield('content')
     </div>
-@include ('footer')
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
-    <script src="/js/all.js"></script>
     <script src="/js/datepicker.js"></script>
     <script src="/js/main.js"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>

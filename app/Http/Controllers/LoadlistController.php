@@ -14,6 +14,8 @@ use App\Carrier;
 
 use DB;
 
+use Laracasts\Utilities\JavaScript\JavaScriptFacade as Javascript;
+
 class LoadlistController extends Controller
 {
      public function store(Request $request)
