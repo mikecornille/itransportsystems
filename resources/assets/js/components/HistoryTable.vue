@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <v-server-table :url="url" :columns="columns" :options="options"></v-server-table>
         </div>
