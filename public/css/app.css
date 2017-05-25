@@ -339,8 +339,6 @@ textarea#commodity, textarea#special_ins, textarea#add_stops, textarea#invoice_n
 .datepicker td.active:hover {
   color: #ffffff;
   background-color: #006dcc;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
-  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
   background-image: linear-gradient(to bottom, #0088cc, #0044cc);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
@@ -395,8 +393,6 @@ textarea#commodity, textarea#special_ins, textarea#add_stops, textarea#invoice_n
 .datepicker td span.active {
   color: #ffffff;
   background-color: #006dcc;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
-  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
   background-image: linear-gradient(to bottom, #0088cc, #0044cc);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
