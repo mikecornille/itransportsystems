@@ -119,12 +119,12 @@ class LoadlistController extends Controller
      $delivery_state = $request->input('delivery_state');
      $miles = $request->input('miles');
 
-     $matching_loads = Loadlist::where('pick_state', '=', $pick_state)
-     ->where('delivery_state', '=', $delivery_state)
-     ->orderBy('created_at', 'desc')->get();
+     // $matching_loads = Loadlist::where('pick_state', '=', $pick_state)
+     // ->where('delivery_state', '=', $delivery_state)
+     // ->orderBy('created_at', 'desc')->get();
 
-     $exact_loads = Loadlist::where('pick_city', '=', $pick_city)
-     ->orderBy('created_at', 'desc')->get();
+     // $exact_loads = Loadlist::where('pick_city', '=', $pick_city)
+     // ->orderBy('created_at', 'desc')->get();
      
     return view('bidboard', compact('matching_loads', 'exact_loads'))
      ->with('pick_city', $pick_city)
@@ -272,7 +272,7 @@ class LoadlistController extends Controller
 
         
 
-        ->orderBy('created_at', 'desc')->get();
+        ->orderBy('created_at', 'desc')->take(10000)->get();
 
         return ['data' => $data];
 
