@@ -13,7 +13,7 @@ use App\Loadlist;
 use App\Carrier;
 
 use DB;
-use Laracasts\Utilities\JavaScript\JavaScriptFacade as Javascript;
+
 
 class LoadlistController extends Controller
 {
@@ -111,9 +111,7 @@ class LoadlistController extends Controller
   public function startLoadList(Request $request)
   {
 
-    /*JavaScript::put([
-        'data' => \App\Loadlist::all()
-        ]);*/
+    
 
      $pick_city = $request->input('pick_city');
      $pick_state = $request->input('pick_state');
