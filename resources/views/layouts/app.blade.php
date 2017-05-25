@@ -7,14 +7,14 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+
 
     <title>{{ config('app.name', 'ITS Maker') }}</title>
 
     <!-- Styles -->
-    
-    
-    
+
+
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
     <link href="/css/app.css" rel="stylesheet">
@@ -29,7 +29,7 @@
     </script>
 
 
-    
+
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
@@ -73,11 +73,11 @@
                             <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
 
-                            
+
                             <li><a href="{{ URL::to('/start_bidboard') }}">Bid Board</a></li>
                             <li><a href="{{ URL::to('/loadlist') }}">Load List</a></li>
                             <li><a href="{{ URL::to('/notes') }}">Notes</a></li>
-                            
+
 
 
                             <li class="dropdown">
@@ -88,14 +88,14 @@
 
                                 <li><a href="{{ URL::to('/displayLoads') }}">Last 2000 Records</a></li>
                                 <li><a href="{{ URL::to('/deepSearchLoads') }}">Last 2000 through 5000</a></li>
-                                
-                                
+
+
 
                                 </ul>
 
 
                             </li>
-                            
+
 
                             <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">New <span class="caret"></span>
@@ -106,7 +106,7 @@
                                 <li><a href="{{ url('/home') }}">New Invoice</a></li>
                                 <li><a href="{{ URL::to('/newLocation') }}">New Location</a></li>
                                 <li><a href="{{ URL::to('/newEquipment') }}">New Equipment</a></li>
-                                
+
 
                                 </ul>
 
@@ -115,8 +115,8 @@
 
 
 
-                            
-                            
+
+
                             <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Carriers <span class="caret"></span>
                                 </a>
@@ -128,7 +128,7 @@
                                 <li><a href="{{ URL::to('/findTrucks') }}">Find Trucks From Carriers</a></li>
                                 <li><a href="{{ URL::to('/findTrucksFromLoads') }}">Find Trucks From Loads</a></li>
                                 <li><a href="{{ URL::to('/remit') }}">Remit Info</a></li>
-                                
+
 
                                 </ul>
 
@@ -143,8 +143,8 @@
 
                                 <li><a href="{{ URL::to('/newCustomer') }}">New Customer</a></li>
                                 <li><a href="{{ URL::to('/findCustomer') }}">Find Customer</a></li>
-                                
-                                
+
+
 
                                 </ul>
 
@@ -159,14 +159,14 @@
 
                                 <li><a href="{{ URL::to('/toBeLoaded') }}">To Be Loaded</a></li>
                                 <li><a href="{{ URL::to('/toBeDelivered') }}">To Be Delivered</a></li>
-                                
+
 
                                 </ul>
 
 
                             </li>
                             @if (Auth::user()->admin)
-                                
+
 
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin <span class="caret"></span>
@@ -180,8 +180,8 @@
                                 <li><a href="{{ url('/exportCarrierBills') }}">Export Carrier Bills</a></li>
                                 <li><a href="{{ url('/budget') }}">Monthly Budget</a></li>
                                 <li><a href="{{ url('/employee') }}">Employee Payouts</a></li>
-                                
-                                
+
+
 
                                 </ul>
 
@@ -189,10 +189,10 @@
                             </li>
 
                             @endif
-                            
-                            
-                            
-                            
+
+
+
+
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                  {{ Auth::user()->name }} <span class="caret"></span>
