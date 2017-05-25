@@ -6,14 +6,13 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Mail;
 
-use Laracasts\Utilities\JavaScript\JavaScriptFacade as Javascript;
+
 
 use App\Loadlist;
 
 use App\Carrier;
 
 use DB;
-
 use Laracasts\Utilities\JavaScript\JavaScriptFacade as Javascript;
 
 class LoadlistController extends Controller
