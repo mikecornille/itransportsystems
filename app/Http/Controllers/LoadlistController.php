@@ -272,7 +272,7 @@ class LoadlistController extends Controller
 
         
 
-        ->orderBy('created_at', 'desc')->take(10000)->get();
+        ->orderBy('created_at', 'desc')->take(5000)->get();
 
         return ['data' => $data];
 
