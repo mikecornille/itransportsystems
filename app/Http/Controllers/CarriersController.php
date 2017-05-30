@@ -127,7 +127,7 @@ class CarriersController extends Controller
 
            	$message->to($info['info']['email'])
 
-           	->subject('Set Up Packet from International Transport Systems, Inc.');
+           	->subject('Set Up Packet for MC # ' . $info['info']['mc_number'] . ' from International Transport Systems, Inc.');
           
             $message->from(\Auth::user()->email, \Auth::user()->name)
 
