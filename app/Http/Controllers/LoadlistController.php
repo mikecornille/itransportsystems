@@ -50,6 +50,8 @@ class LoadlistController extends Controller
          ]);
 
         $newload = New Loadlist($request->all());
+
+        
 		$newload->company_contact = "Dispatch";
         $newload->contact_phone = "877-663-2200";
 		$newload->created_by = strtoupper(\Auth::user()->email);
