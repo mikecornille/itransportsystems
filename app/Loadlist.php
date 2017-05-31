@@ -24,6 +24,7 @@ class Loadlist extends Model
             'delivery_time',
             'commodity',
             'special_instructions',
+            'handler',
             'length',
             'width',
             'height',
@@ -65,5 +66,9 @@ class Loadlist extends Model
     public function setSpecialInstructionsAttribute($value)
     {
         $this->attributes['special_instructions'] = strtoupper($value);
+    }
+    public function setHandlerAttribute($value)
+    {
+        $this->attributes['handler'] = strtoupper($value);
     }
 }

@@ -30,6 +30,7 @@ class CreateLoadlistsTable extends Migration
             $table->string('delivery_time')->nullable();
             $table->string('commodity')->nullable();
             $table->string('special_instructions')->nullable();
+            $table->string('handler')->nullable();
             $table->string('length')->nullable();
             $table->string('width')->nullable();
             $table->string('height')->nullable();

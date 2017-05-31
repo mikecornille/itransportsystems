@@ -231,6 +231,7 @@ $factory->define(App\Loadlist::class, function (Faker\Generator $faker) {
             'delivery_time' => $faker->time(),
             'commodity' => $faker->sentence(),
             'special_instructions' => $faker->sentence(),
+            'handler' => $faker->name(),
             'length' => $faker->numberBetween($min = 5, $max = 40),
             'width' => $faker->numberBetween($min = 4, $max = 9),
             'height' => $faker->numberBetween($min = 4, $max = 11),

@@ -49,6 +49,17 @@
                 <label class="label-control" for="delivery_zip_loadlist_search">Delivery Zip</label>
                 <input type="text" class="form-control" id="delivery_zip_loadlist_search">
             </div>
+            <div class="col-xs-3">
+                <label class="label-control" for="handler">Call-Email</label>
+                    <select name="handler" id="handler" class="form-control">
+                        <option value="{{ $loadlist->handler }}">{{ $loadlist->handler }}</option>
+                        <option value="Cornille">Cornille</option>
+                        <option value="King">King</option>
+                        <option value="Bansberg">Bansberg</option>
+                        <option value="Mesik">Mesik</option>
+                        <option value="Carnahan">Carnahan</option>
+                    </select>
+            </div>
         </div>
         <div class="row">
             <div class="col-xs-3">
