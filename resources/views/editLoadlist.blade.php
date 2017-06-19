@@ -58,6 +58,7 @@
                         <option value="Bansberg">Bansberg</option>
                         <option value="Mesik">Mesik</option>
                         <option value="Carnahan">Carnahan</option>
+                        <option value="Thompson">Thompson</option>
                     </select>
             </div>
         </div>
