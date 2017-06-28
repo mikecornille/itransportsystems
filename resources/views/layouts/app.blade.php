@@ -123,6 +123,7 @@
 
                                 <ul class="dropdown-menu" role="menu">
 
+                                <li><a href="{{ URL::to('/fastCarrierSetUp') }}">Fast Carrier Entry</a></li>
                                 <li><a href="{{ URL::to('/newCarrier') }}">New Carrier</a></li>
                                 <li><a href="{{ URL::to('/findCarrier') }}">Find Carrier</a></li>
                                 <li><a href="{{ URL::to('/findTrucks') }}">Find Trucks From Carriers</a></li>

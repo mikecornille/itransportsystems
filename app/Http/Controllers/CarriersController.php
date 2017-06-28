@@ -14,7 +14,25 @@ use PDF;
 
 class CarriersController extends Controller
 {
+	public function fast_carrier_setup(Request $request){
+
+		$this->validate($request, [
+
+			'state' => 'required',
+			  'email' => 'required|email',
+			  
+			  
+			  
+
+			  ]);
+
+		$newCarrier = New Carrier($request->all());
+		$newCarrier->save();
+
+		return back()->with('status', 'New Carrier Created!');
+	}
      //STORES A NEW CARRIER IN THE DATABASE
+	
 	public function store(Request $request)
 	{
 

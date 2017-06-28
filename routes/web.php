@@ -204,6 +204,8 @@ Route::post('/getInsurance', 'CarriersController@getInsurance');
 Route::post('/edit/sendCarrierInfo', 'CarriersController@sendCarrierInfo');
 //FROM THE FIND CARRIER PAGE
 Route::post('/sendCarrierInfo', 'CarriersController@sendCarrierInfo');
+Route::post('/fast_carrier_setup', 'CarriersController@fast_carrier_setup');
+
 
 
 //EMAILS SENT WITH PDF ATTACHMENTS
@@ -220,7 +222,9 @@ Route::get('/textLoadInfo/{id}', 'PDFController@textLoadInfo');
 
 
 //Route::post('/searchPro', 'LoadsController@searchPro');
-
+Route::get('/fastCarrierSetUp', function() {
+    return view('/fastCarrierSetUp');
+});
 
 
 });
