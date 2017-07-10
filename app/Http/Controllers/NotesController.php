@@ -99,7 +99,7 @@ class NotesController extends Controller
 
 		$invoices = Load::where('created_by', \Auth::user()->email)->count();
 
-		$personal_loads_status = Load::where('created_by', \Auth::user()->email)->where('pick_status', '=', 'Loaded')->orWhere('pick_status', '=', 'Booked')->get();
+		// $personal_loads_status = Load::where('created_by', \Auth::user()->email)->where('pick_status', '=', 'Loaded')->orWhere('pick_status', '=', 'Booked')->get();
 
 
 		$personal_unsigned = Load::where('rate_con_creator', \Auth::user()->email)->where('signed_rate_con', '!=', 'SIGNED')->get();
