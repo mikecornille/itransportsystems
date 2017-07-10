@@ -56,6 +56,14 @@ class LoadsController extends Controller
 		
 	}
 
+	public function personal_status_table()
+	{
+		
+		$data = Load::where('created_by', \Auth::user()->email)->where('pick_status', '=', 'Loaded')->orWhere('pick_status', '=', 'Booked')->get();
+		return(['data' => $data]);
+	}
+	
+
 	
 
 	//Store a new record in database
