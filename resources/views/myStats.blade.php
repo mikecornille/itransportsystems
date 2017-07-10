@@ -3,26 +3,25 @@
 @section('content')
 
 
-<h1 class="text-center">Welcome, {{ \Auth::user()->name }}</h1>
+<h1 class="text-center" style="font-family: serif;">Welcome, {{ \Auth::user()->name }}!</h1>
 
+<div class="container">
 
-<div style="margin-left: 300px;">
-<h3 class="text-left">Today's Date is {{ $currentDate }}</h3>
-<h3 class="text-left">There have been {{ $rateConDailyTotals }} Rate Confirmations and {{ $invoiceDailyTotals }} Invoices typed up today.</h3>
-
-</div>
-
-<div style="margin-left: 300px;">
-<h3 class="text-left">You've written...</h3>
-<h3 class="text-left">{{ $posts }} Notes</h3> 
-<h3 class="text-left">{{ $rateCons }} Rate Confirmations</h3>
-<h3 class="text-left">{{ $invoices }} Invoices</h3>
+<div class="row">
+  <h2 class="text-center" style="font-family: serif;">Totals for: {{ $currentDate }}</h2>
+  <div class="col-md-5 well" style="font-family: fantasy; background-color: aliceblue;">{{ $rateConDailyTotals }} Rate Confirmations Today</div>
+  <div class="col-md-5 col-md-offset-2 well" style="font-family: fantasy; background-color: aliceblue;">{{ $invoiceDailyTotals }} Invoices Today</div>
 </div>
 
 <div class="row">
+  <h2 class="text-center" style="font-family: serif;">Personal Totals All Time</h2>
+  <div class="col-md-2 well" style="font-family: fantasy; background-color: aliceblue;">{{ $posts }} Notes</div>
+  <div class="col-md-4 col-md-offset-1 well" style="font-family: fantasy; background-color: aliceblue;">{{ $rateCons }} Rate Confirmations</div>
+  <div class="col-md-4 col-md-offset-1 well" style="font-family: fantasy; background-color: aliceblue;">{{ $invoices }} Invoices</div>
+</div>
 
-<div class="container">
-<h1 class="text-center">Booked Not Loaded</h1>
+<div class="well">
+<h2 class="text-center" style="font-family: serif;">Booked Not Loaded</h2>
 <table id="personal_status" cellspacing="0" class="stripe row-border order-column hover" style="border-collapse: collapse; margin-left: 10px; font-size: 12px; table-layout: fixed; word-wrap:break-word;">
 
         <thead>
@@ -54,9 +53,8 @@
         </tfoot>  --> 
     </table>
 </div>
-
-<div class="container">
-<h1 class="text-center">Loaded Not Delivered</h1>
+<div class="well">
+<h2 class="text-center" style="font-family: serif;">Loaded Not Delivered</h2>
 <table id="personal_status_loaded" cellspacing="0" class="stripe row-border order-column hover" style="border-collapse: collapse; margin-left: 10px; font-size: 12px; table-layout: fixed; word-wrap:break-word;">
 
         <thead>
@@ -89,10 +87,10 @@
     </table>
 </div>
 
-<div class="col-md-6">
+    <div class="col-md-6">
 
-<div style="margin-left: 300px;">
-<h3 class="text-left">All Unsigned Rate Confirmations in Current Month ({{ $unsigned_count }})</h3>
+
+<h3 class="text-left" style="font-family: serif;">Unsigned Rate Cons Current Mo. ({{ $unsigned_count }})</h3>
 	<ul style="list-style-type: none;">
 	@foreach ($unsigned as $unsign)
 	    <li class="text-left"><u>PRO # {{ $unsign->id }} is unsigned.</u></li>
@@ -104,11 +102,11 @@
 	    <br>
 	@endforeach
 	</ul>
-</div>
+
 </div>
 <div class="col-md-6">
-<div style="margin-left: 300px;">
-<h3 class="text-left">Personal Unsigned Rate Confirmations All Time</h3>
+
+<h3 class="text-left" style="font-family: serif;">Personal Unsigned Rate Cons</h3>
 	<ul style="list-style-type: none;">
 	@foreach ($personal_unsigned as $unsign)
 	    <li class="text-left"><u>PRO # {{ $unsign->id }} is unsigned.</u></li>
@@ -121,8 +119,11 @@
 	@endforeach
 	</ul>
 </div>
+</div>
 
-</div>
-</div>
+
+
+
+
 
 @endsection
