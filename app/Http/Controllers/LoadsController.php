@@ -67,6 +67,20 @@ class LoadsController extends Controller
 
 		
 	}
+
+	
+
+	public function personal_status_loaded_table()
+	{
+		
+		$data = Load::where('rate_con_creator', \Auth::user()->email)->where('delivery_status', '<>', 'Delivered')->where('pick_status', '=', 'Loaded')->get();
+
+
+		return(['data' => $data]);
+
+
+		
+	}
 	
 
 	

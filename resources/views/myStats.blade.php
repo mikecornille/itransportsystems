@@ -22,7 +22,42 @@
 <div class="row">
 
 <div class="container">
+<h1 class="text-center">Booked Not Loaded</h1>
 <table id="personal_status" cellspacing="0" class="stripe row-border order-column hover" style="border-collapse: collapse; margin-left: 10px; font-size: 12px; table-layout: fixed; word-wrap:break-word;">
+
+        <thead>
+            <tr>
+            <th></th>
+                <th>Pro</th>
+                <th>Pick Status</th>
+                <th>Short Status</th>
+                <th>Pick Date</th>
+                <th>Pick Time</th>
+                <th>Pick City</th>
+                <th>Deliver Date</th>
+                <th>Deliver Time</th>
+                <th>Delivery City</th>
+                <th>Delivery Status</th>
+              </tr>
+        </thead>
+         <!-- <tfoot>
+            <tr>
+            <th></th>
+                <th>Pro</th>
+                <th>Status</th>
+                <th>Pick Date</th>
+                <th>Pick Time</th>
+                <th>Customer</th>
+                <th>Pick City</th>
+                <th>Delivery City</th>
+            </tr>
+        </tfoot>  --> 
+    </table>
+</div>
+
+<div class="container">
+<h1 class="text-center">Loaded Not Delivered</h1>
+<table id="personal_status_loaded" cellspacing="0" class="stripe row-border order-column hover" style="border-collapse: collapse; margin-left: 10px; font-size: 12px; table-layout: fixed; word-wrap:break-word;">
 
         <thead>
             <tr>

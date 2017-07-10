@@ -605,6 +605,66 @@ $(document).ready(function() {
 
 });
 
+//Personal Status Table Loaded Not Delivered
+
+$(document).ready(function() {
+
+
+
+    var table = $('#personal_status_loaded').DataTable({
+        
+         // scrollY:        "800px",
+   //       scrollX:        true,
+   //       scrollCollapse: true,
+   //       paging:         true,
+   //       fixedColumns: true,
+        "ajax": "/personal_status_loaded_table",
+        "columns": [
+            {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           'id',
+                "render": function ( data, type, full, meta ) {
+                return '<a href="/edit/url?id='+data+'">View</a>';}
+            },
+            
+            { "data": "id" },
+            { "data": "pick_status"},
+            { "data": "quick_status_notes"},
+            { "data": "pick_date"},
+            { "data": "pick_time"},
+            { "data": "pick_city"},
+            { "data": "delivery_date"},
+            { "data": "delivery_time"},
+            { "data": "delivery_city"},
+            { "data": "delivery_status"}
+
+
+            
+
+
+        ],
+        "order": [[4,'asc'],[5,'asc']],
+
+        "columnDefs": [
+      { "width": "20px", "targets": 0 }, //pro # button
+      { "width": "20px", "targets": 1 }, //pro #
+      { "width": "20px", "targets": 2 }, //pick status 
+      { "width": "150px", "targets": 3 }, //short status
+      { "width": "25px", "targets": 4 }, //pick date
+      { "width": "25px", "targets": 5 }, //pick time
+      { "width": "75px", "targets": 6 }, //pick city
+      { "width": "25px", "targets": 7 }, //del date
+      { "width": "25px", "targets": 8 }, //del time
+      { "width": "75px", "targets": 9 }, // del city
+      { "width": "20px", "targets": 10 }, // del status
+
+      ]
+
+});   
+
+});
+
 
 $(document).ready(function() {
 

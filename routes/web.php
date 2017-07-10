@@ -154,6 +154,7 @@ Route::get('/deepLoads', 'LoadsController@deepLoads');
 Route::get('/tobedata', 'LoadsController@indextwo'); //FOR DATATABLES
 Route::get('/tobedatatwo', 'LoadsController@tobedatatwo'); //FOR DATATABLES
 Route::get('/personal_status_table', 'LoadsController@personal_status_table'); //FOR DATATABLES
+Route::get('/personal_status_loaded_table', 'LoadsController@personal_status_loaded_table'); //FOR DATATABLES
 Route::get('/edit/{id}', 'LoadsController@edit');
 Route::patch('load/{load}', 'LoadsController@update');
 
