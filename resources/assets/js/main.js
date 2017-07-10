@@ -576,7 +576,8 @@ $(document).ready(function() {
             { "data": "pick_city"},
             { "data": "delivery_date"},
             { "data": "delivery_time"},
-            { "data": "delivery_city"}
+            { "data": "delivery_city"},
+            { "data": "delivery_status"}
 
 
             
@@ -596,6 +597,7 @@ $(document).ready(function() {
       { "width": "25px", "targets": 7 }, //del date
       { "width": "25px", "targets": 8 }, //del time
       { "width": "75px", "targets": 9 }, // del city
+      { "width": "20px", "targets": 10 }, // del status
 
       ]
 

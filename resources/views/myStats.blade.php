@@ -36,6 +36,7 @@
                 <th>Deliver Date</th>
                 <th>Deliver Time</th>
                 <th>Delivery City</th>
+                <th>Delivery Status</th>
               </tr>
         </thead>
          <!-- <tfoot>
