@@ -69,6 +69,6 @@ class Loadlist extends Model
     }
     public function setHandlerAttribute($value)
     {
-        $this->attributes['handler'] = strtoupper($value . ' ' . date("g:i A"));
+        $this->attributes['handler'] = strtoupper($value);
     }
 }
