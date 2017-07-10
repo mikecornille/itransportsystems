@@ -59,18 +59,7 @@ class LoadsController extends Controller
 	public function personal_status_table()
 	{
 		
-		
-
-		$data = Load::where([
-
-			['created_by', \Auth::user()->email],
-			['pick_status', 'Loaded'],
-			['pick_status', '=', 'Booked'],
-			['delivery_status', '!=', 'Delivered'],
-
-			])->get();
-		
-		
+		$data = Load::where('created_by', \Auth::user()->email)->where('pick_status', '=', 'Loaded')->orWhere('pick_status', '=', 'Booked')->where('delivery_status', '!=', 'Delivered')->get();
 
 
 		return(['data' => $data]);
