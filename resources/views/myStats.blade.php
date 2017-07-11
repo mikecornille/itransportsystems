@@ -9,15 +9,15 @@
 
 <div class="row">
   <h2 class="text-center" style="font-family: serif;">Totals for: {{ $currentDate }}</h2>
-  <div class="col-md-5 well" style="font-family: fantasy; background-color: aliceblue;">{{ $rateConDailyTotals }} Rate Confirmations Today</div>
-  <div class="col-md-5 col-md-offset-2 well" style="font-family: fantasy; background-color: aliceblue;">{{ $invoiceDailyTotals }} Invoices Today</div>
+  <div class="col-md-5 well" style="font-family: serif; background-color: aliceblue;">{{ $rateConDailyTotals }} Rate Confirmations Today</div>
+  <div class="col-md-5 col-md-offset-2 well" style="font-family: serif; background-color: aliceblue;">{{ $invoiceDailyTotals }} Invoices Today</div>
 </div>
 
 <div class="row">
   <h2 class="text-center" style="font-family: serif;">Personal Totals All Time</h2>
-  <div class="col-md-2 well" style="font-family: fantasy; background-color: aliceblue;">{{ $posts }} Notes</div>
-  <div class="col-md-4 col-md-offset-1 well" style="font-family: fantasy; background-color: aliceblue;">{{ $rateCons }} Rate Confirmations</div>
-  <div class="col-md-4 col-md-offset-1 well" style="font-family: fantasy; background-color: aliceblue;">{{ $invoices }} Invoices</div>
+  <div class="col-md-2 well" style="font-family: serif; background-color: aliceblue;">{{ $posts }} Notes</div>
+  <div class="col-md-4 col-md-offset-1 well" style="font-family: serif; background-color: aliceblue;">{{ $rateCons }} Rate Confirmations</div>
+  <div class="col-md-4 col-md-offset-1 well" style="font-family: serif; background-color: aliceblue;">{{ $invoices }} Invoices</div>
 </div>
 
 <div class="well">
