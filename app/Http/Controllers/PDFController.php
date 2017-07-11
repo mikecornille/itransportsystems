@@ -242,6 +242,77 @@ class PDFController extends Controller
         return back()->with('status', 'The Text Message has been sent!');
     }
 
+
+    //TEXTS ROLLBACK INFO 
+      public function textAndEmailRollbackInfo($id){
+        
+        $info = Load::find($id);
+
+        $info = ['info'=>$info];
+
+
+        // Step 2: set our AccountSid and AuthToken from https://twilio.com/console
+        $AccountSid = "ACf01e703e3d89fe05b97de8f8b103058e";
+        $AuthToken = "b71795afcc839bbd050ad1a513d1d871";
+
+        // Step 3: instantiate a new Twilio Rest Client
+        $client = new Client($AccountSid, $AuthToken);
+
+        // Step 4: make an array of people we know, to send them a message. 
+        // Feel free to change/add your own phone number and name here.
+        $people = array(
+        "+1" . $info['info']['carrier_driver_cell'] => "User"
+        );
+
+    // Step 5: Loop over all our friends. $number is a phone number above, and 
+    // $name is the name next to it
+    foreach ($people as $number => $name) {
+
+        $sms = $client->account->messages->create(
+
+            // the number we are sending to - Any phone number
+            $number,
+
+            array(
+                // Step 6: Change the 'From' number below to be a valid Twilio number 
+                // that you've purchased
+                'from' => "+14159697014", 
+                
+                // the sms body
+                'body' => "Important!  International Transport Systems will arrange a rollback to safely assist the unload on the shipment you are doing from " . $info['info']['pick_city'] . ", " . $info['info']['pick_state'] . " to " . $info['info']['delivery_city'] . ", " . $info['info']['delivery_state'] .   ".  Please allow for open and accurate communication so we can schedule accordingly if needed.  Towable boom lifts, by nature of their configuration, can be difficult to unload." . "\n\n" . "Call or text: " . \Auth::user()->cell . " with any questions or when you are 1 hour away from delivery" . "\n\n" . "Thanks, " . \Auth::user()->name
+            )
+        );
+    }
+
+
+
+        
+        Mail::send(['html'=>'email.rollbackEmail'], $info, function($message) use ($info){
+            
+            
+            $message->to($info['info']['carrier_email'])
+
+            ->subject('ITS Will Arrange Rollback For Offload On PRO # ' . $info['info']['id'] . ' from ' . $info['info']['pick_city'] .  ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name)
+
+            ->replyTo(\Auth::user()->email, \Auth::user()->name)
+
+            ->sender(\Auth::user()->email, \Auth::user()->name);
+
+        });
+
+
+
+
+
+
+
+
+
+        return back()->with('status', 'The Driver has been sent rollback info!');
+    }
+
    
 
 

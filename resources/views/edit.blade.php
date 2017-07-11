@@ -569,6 +569,7 @@
         <li class="divider"></li>
         <li class="dropdown-header">TEXT MESSAGE</li>
         <li><a href="{{ URL::to('/textLoadInfo/' . $info->id) }}"><b>Text Load You</b></a></li>
+        <li><a href="{{ URL::to('/textAndEmailRollbackInfo/' . $info->id) }}"><b>Rollback Info</b></a></li>
         
         
       </ul>

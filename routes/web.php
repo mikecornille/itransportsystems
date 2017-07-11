@@ -222,6 +222,8 @@ Route::post('/getPacket', 'CarriersController@getPacket');
 //TEXT LOAD INFO
 Route::get('/textLoadInfo/{id}', 'PDFController@textLoadInfo');
 
+//TEXT AND EMAIL ROLLBACK INFO
+Route::get('/textAndEmailRollbackInfo/{id}', 'PDFController@textAndEmailRollbackInfo');
 
 //Route::post('/searchPro', 'LoadsController@searchPro');
 Route::get('/fastCarrierSetUp', function() {
