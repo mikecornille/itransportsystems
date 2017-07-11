@@ -310,7 +310,7 @@ class PDFController extends Controller
 
 
 
-        return back()->with('status', 'The Driver has been sent rollback info!');
+        return back()->with('status', 'The Driver has been sent a Text and the Dispatcher an Email regarding the rollback info!');
     }
 
    
