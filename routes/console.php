@@ -25,8 +25,8 @@ Artisan::command('inspire', function () {
 })->describe('Display an inspiring quote');
 Artisan::command('generate', function () {
 	$type = 'csv';
-	$start_date = '06/01/2017';
-		 $end_date = '06/04/2017';
+	$start_date = Carbon\Carbon::now()->subWeek()->format('m/d/Y');
+	$end_date = Carbon\Carbon::now()->format('m/d/Y');
     $loads = Load::select('billed_date', 'approved_carrier_invoice', 'its_group', 'id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'customer_name', 'amount_due', 'carrier_name', 'carrier_rate')->whereBetween('billed_date', [$start_date, $end_date])->orderBy('id', 'asc')->get();
 
 		$data = \Excel::create('Profit_Report_' . $start_date . '_to_' . $end_date, function($excel) use ($loads) {
@@ -36,8 +36,12 @@ Artisan::command('generate', function () {
 	        });
 		});
 		        if ($loads instanceof Illuminate\Support\Collection) {
+if($loads->count()) {
+	        			$keys = array_keys($loads->first()->toArray());
 
-        			$keys = array_keys($loads->first()->toArray());
+	        		} else {
+	        			$keys = [];
+	        		}
         	}	else {
         		$keys = array_keys($loads[0]);
         	}
@@ -53,7 +57,6 @@ Artisan::command('generate', function () {
 
            Mail::send(['html'=>'email.body'], $info, function($message) use ($info, $savePath){
 
-        
 
        	$recipients = ['mikec@itransys.com'];
 
