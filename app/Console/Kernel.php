@@ -28,6 +28,7 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
         $schedule->command('backup:clean')->daily()->at('01:00');
         $schedule->command('backup:run')->daily()->at('02:00');
+        $schedule->command('generate')->weekly()->thursdays()->at('10:10');
         
     }
 
