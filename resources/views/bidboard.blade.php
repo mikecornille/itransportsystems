@@ -221,7 +221,7 @@
 
 </div>
 
-<history-table></history-table>
+<history-table pick_city_filter="{{ $pick_city }}"></history-table>
 
 
 

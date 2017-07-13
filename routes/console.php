@@ -25,7 +25,7 @@ Artisan::command('inspire', function () {
 })->describe('Display an inspiring quote');
 Artisan::command('generate', function () {
 	$type = 'csv';
-	$start_date = Carbon\Carbon::now()->subWeek()->format('m/d/Y');
+	$start_date = Carbon\Carbon::now()->subWeeks()->format('m/d/Y');
 	$end_date = Carbon\Carbon::now()->format('m/d/Y');
     $loads = Load::select('billed_date', 'approved_carrier_invoice', 'its_group', 'id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'customer_name', 'amount_due', 'carrier_name', 'carrier_rate')->whereBetween('billed_date', [$start_date, $end_date])->orderBy('id', 'asc')->get();
 
