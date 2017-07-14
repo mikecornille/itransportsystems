@@ -23,29 +23,39 @@ use App\Loadlist;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
-Artisan::command('generate', function () {
+Artisan::command('weeklyProfitReport', function () {
+	
 	$type = 'csv';
+	
 	$start_date = Carbon\Carbon::now()->subWeeks()->format('m/d/Y');
+	
 	$end_date = Carbon\Carbon::now()->format('m/d/Y');
+    
     $loads = Load::select('billed_date', 'approved_carrier_invoice', 'its_group', 'id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'customer_name', 'amount_due', 'carrier_name', 'carrier_rate')->whereBetween('billed_date', [$start_date, $end_date])->orderBy('id', 'asc')->get();
 
-		$data = \Excel::create('Profit_Report_' . $start_date . '_to_' . $end_date, function($excel) use ($loads) {
+	$data = \Excel::create('Weekly_Profit_Report_' . $start_date . '_to_' . $end_date, function($excel) use ($loads) {
 			$excel->sheet('mySheet', function($sheet) use ($loads)
 	        {
 				$sheet->fromArray($loads);
 	        });
 		});
-		        if ($loads instanceof Illuminate\Support\Collection) {
-if($loads->count()) {
-	        			$keys = array_keys($loads->first()->toArray());
+		        
+	if ($loads instanceof Illuminate\Support\Collection) {
+		if($loads->count()) {
+	        			
+	        					$keys = array_keys($loads->first()->toArray());
 
 	        		} else {
-	        			$keys = [];
+	        			
+	        					$keys = [];
+	        		
 	        		}
         	}	else {
+        		
         		$keys = array_keys($loads[0]);
         	}
-		$savePath = storage_path('csv/' . 'itransys_report.csv');
+
+		$savePath = storage_path('csv/' . 'weekly_profit_report.csv');
 		$fp = fopen($savePath, 'w');
 		fputcsv($fp,$keys);
 		foreach ($loads as $key => $value) {
@@ -53,14 +63,14 @@ if($loads->count()) {
 		}
 
         fclose($fp);
-       $info = ["foo" => "bar", "bar" => "foo"];
 
-           Mail::send(['html'=>'email.body'], $info, function($message) use ($info, $savePath){
+        $info = ["foo" => "bar", "bar" => "foo"];
 
+        Mail::send(['html'=>'email.body'], $info, function($message) use ($info, $savePath){
 
-       	$recipients = ['mikec@itransys.com'];
+		$recipients = ['mikec@itransys.com'];
 
-        $message->to($recipients)->subject('Truckstop Posted')
+        $message->to($recipients)->subject('Weekly Profit Report')
 			->from($recipients[0], $recipients[0])
 			->replyTo($recipients[0], $recipients[0])
 			->sender($recipients[0], $recipients[0]);
@@ -68,4 +78,4 @@ if($loads->count()) {
         	$message->attach($savePath);
         });
 
-})->describe('Generate report');
+})->describe('Generate Weekly Profit Report');
