@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
         $schedule->command('backup:clean')->daily()->at('01:00');
         $schedule->command('backup:run')->daily()->at('02:00');
-        $schedule->command('weeklyProfitReport')->weekly()->thursdays()->at('11:30')->timezone('America/Chicago');
+        $schedule->command('weeklyProfitReport')->weekly()->fridays()->at('11:40')->timezone('America/Chicago');
         
     }
 
