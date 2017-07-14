@@ -27,7 +27,7 @@ Artisan::command('weeklyProfitReport', function () {
 	
 	$type = 'csv';
 	
-	$start_date = Carbon\Carbon::now()->subWeeks()->format('m/d/Y');
+	$start_date = Carbon\Carbon::now()->subWeeks(1)->format('m/d/Y');
 	
 	$end_date = Carbon\Carbon::now()->format('m/d/Y');
     
