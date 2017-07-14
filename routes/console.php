@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Item;
 use App\User;
 use App\Load;
+use App\Carrier;
 use App\Loadlist;
 
 /*
@@ -79,3 +80,63 @@ Artisan::command('weeklyProfitReport', function () {
         });
 
 })->describe('Generate Weekly Profit Report');
+
+//Daily carrier set up
+
+Artisan::command('dailyCarriersSetUp', function () {
+	
+	$type = 'csv';
+	
+	$carrier_created = Carbon\Carbon::now()->format('Y-m-d');
+	
+	
+    $carriers = Carrier::select('company', 'mc_number', 'dot_number', 'state', 'phone', 'email')->whereDate('created_at', $carrier_created)->orderBy('id', 'asc')->get();
+
+    
+
+	$data = \Excel::create('Daily_Carrier_Report_' . $carrier_created, function($excel) use ($carriers) {
+			$excel->sheet('mySheet', function($sheet) use ($carriers)
+	        {
+				$sheet->fromArray($carriers);
+	        });
+		});
+		        
+	if ($carriers instanceof Illuminate\Support\Collection) {
+		if($carriers->count()) {
+	        			
+	        					$keys = array_keys($carriers->first()->toArray());
+
+	        		} else {
+	        			
+	        					$keys = [];
+	        		
+	        		}
+        	}	else {
+        		
+        		$keys = array_keys($carriers[0]);
+        	}
+
+		$savePath = storage_path('csv/' . 'daily_carrier_report.csv');
+		$fp = fopen($savePath, 'w');
+		fputcsv($fp,$keys);
+		foreach ($carriers as $key => $value) {
+	        fputcsv($fp, $value->toArray());
+		}
+
+        fclose($fp);
+
+        $info = ["foo" => "bar", "bar" => "foo"];
+
+        Mail::send(['html'=>'email.body'], $info, function($message) use ($info, $savePath){
+
+		$recipients = ['mikec@itransys.com'];
+
+        $message->to($recipients)->subject('Weekly Profit Report')
+			->from($recipients[0], $recipients[0])
+			->replyTo($recipients[0], $recipients[0])
+			->sender($recipients[0], $recipients[0]);
+
+        	$message->attach($savePath);
+        });
+
+})->describe('Generate New Carrier Report Daily');
