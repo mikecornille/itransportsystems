@@ -162,7 +162,7 @@ Artisan::command('screamerCheck', function () {
 
     Mail::send(['html'=>'email.screamerCheck'], $info, function($message) use ($info){
 
-		$recipients = ['mikec@itransys.com'];
+		$recipients = ['mikec@itransys.com', 'mattk@itransys.com', 'ronc@itransys.com', 'joem@itransys.com','mikeb@itransys.com', 'mattc@itransys.com'];
 
         $message->to($recipients)->subject("Current Screaming Loads")
 			->from($recipients[0], $recipients[0])
