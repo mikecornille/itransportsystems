@@ -172,3 +172,43 @@ Artisan::command('screamerCheck', function () {
         });
 
 })->describe('Get current screaming loads');
+
+//Daily check on the person assigned to the load in the call-email column
+
+Artisan::command('brokerCallEmail', function () {
+	
+	
+	// $brokers = ['luke@itransys.com', 'robert@itransys.com', 'aj@itransys.com', 'mattk@itransys.com'];
+
+	$brokers = array('mikec@itransys.com', 'mikecornille@gmail.com');
+
+	
+
+	foreach($brokers as $broker) { 
+
+	
+	date_default_timezone_set("America/Chicago");
+
+	$current_date = Carbon\Carbon::now()->format('m/d/Y');
+
+	$loads = Loadlist::select('pick_city', 'pick_state', 'customer', 'delivery_city', 'delivery_state', 'urgency', 'handler')->where('handler', $broker)->orderBy('id', 'asc')->get();
+
+
+   	$info = ['info' => $loads->toArray()];
+
+
+
+    Mail::send(['html'=>'email.brokerCallEmail'], $info, function($message) use ($info){
+
+		
+
+        $message->to($info['info'][0]['handler'])->subject("Call Email Updates")
+			->from('mikec@itransys.com')
+			->replyTo('mikec@itransys.com')
+			->sender('mikec@itransys.com');
+
+        });
+
+    }
+
+})->describe('Daily check on the person assigned to the load in the call-email column');
