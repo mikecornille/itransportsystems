@@ -200,6 +200,34 @@ class NotesController extends Controller
 			$rbPercent = round((float)$rbProfitMargin * 100 );
 		}
 
+		//Luke Thompson
+
+		$lukeName = "Luke Thompson";
+		$lukeEmail = "luke@itransys.com";
+		//How many notes employee wrote in chosen month
+		$ltNotes = Notes::where('time_name_stamp', 'LIKE', '%' . $lukeName . '%')->whereMonth('created_at', $month["month"])->count();
+		//How many rate cons employee typed up within a date range
+		$ltRateCons = Load::where('rate_con_creator', $lukeEmail)->whereBetween('rate_con_creation_date', [$start_date, $end_date])->count();
+		//How much money the employee was resposible that was billed to customers
+		$ltMoneyBilled = Load::where('rate_con_creator', $lukeEmail)->whereBetween('billed_date', [$start_date, $end_date])->sum('amount_due');
+		//How much money the employee was resposible that was paid to carriers
+		$ltMoneyPaidOut = Load::where('rate_con_creator', $lukeEmail)->whereBetween('billed_date', [$start_date, $end_date])->sum('carrier_rate');
+		
+		
+		if (!isset($start_date))
+		{
+			$ltDifference = 0;
+			$ltProfitMargin = 0;
+			$ltPercent = 0;
+		}
+		else 
+		{
+			$ltDifference = $ltMoneyBilled - $ltMoneyPaidOut;
+			$ltProfitMargin = $ltDifference / $ltMoneyBilled;
+			$ltPercent = round((float)$ltProfitMargin * 100 );
+		}
+
+		//Matt King
 
 		$kingName = "Matt King";
 		$kingEmail = "mattk@itransys.com";
@@ -371,6 +399,11 @@ class NotesController extends Controller
 			->with('mkMoneyPaidOut', $mkMoneyPaidOut)
 			->with('mkPercent', $mkPercent)
 			->with('mkInvoices', $mkInvoices)
+			->with('ltNotes', $ltNotes)
+			->with('ltRateCons', $ltRateCons)
+			->with('ltMoneyBilled', $ltMoneyBilled)
+			->with('ltMoneyPaidOut', $ltMoneyPaidOut)
+			->with('ltPercent', $ltPercent)
 			->with('ajNotes', $ajNotes)
 			->with('ajRateCons', $ajRateCons)
 			->with('ajMoneyBilled', $ajMoneyBilled)

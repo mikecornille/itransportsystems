@@ -73,12 +73,10 @@
 
     <div>
 		<ul style="list-style-type: none;">
-		    <li class="text-left"><u>Matt Carnahan</u></li>
-			<li class="text-left">{{ $mcNotes }} notes </li>
-			<li class="text-left">Ambassador for {{ $mcAmbassador }} companies </li>
-			<li class="text-left">{{ $mcRateCons }} Rate Confirmations </li>
-			<li class="text-left">{{ $mcInvoices }} Invoices </li>
-			<li class="text-left">Responsible for ${{ $mcMoneyBilled }}.00 billed to customers and paid out ${{ $mcMoneyPaidOut }}.00 to carriers for a margin of {{ $mcPercent }}%</li>
+		    <li class="text-left"><u>Luke Thompson</u></li>
+			<li class="text-left">{{ $ltNotes }} notes </li>
+			<li class="text-left">{{ $ltRateCons }} Rate Confirmations </li>
+			<li class="text-left">Responsible for ${{ $ltMoneyBilled }}.00 billed to customers and paid out ${{ $ltMoneyPaidOut }}.00 to carriers for a margin of {{ $ltPercent }}%</li>
 		</ul>
     </div>
 
