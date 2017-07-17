@@ -80,6 +80,16 @@
 		</ul>
     </div>
 
+    <div>
+		<ul style="list-style-type: none;">
+		    <li class="text-left"><u>Matt Carnahan</u></li>
+			<li class="text-left">Ambassador for {{ $mcAmbassador }} companies </li>
+			<li class="text-left">{{ $mcRateCons }} Rate Confirmations </li>
+			<li class="text-left">{{ $mcInvoices }} Invoices </li>
+			<li class="text-left">Responsible for ${{ $mcMoneyBilled }}.00 billed to customers and paid out ${{ $mcMoneyPaidOut }}.00 to carriers for a margin of {{ $mcPercent }}%</li>
+		</ul>
+    </div>
+
      <div>
 		<ul style="list-style-type: none;">
 		    <li class="text-left"><u>Joe Mowrer</u></li>
@@ -97,6 +107,16 @@
 			<li class="text-left">{{ $mbRateCons }} Rate Confirmations </li>
 			<li class="text-left">{{ $mbInvoices }} Invoices </li>
 			<li class="text-left">Responsible for ${{ $mbMoneyBilled }}.00 billed to customers and paid out ${{ $mbMoneyPaidOut }}.00 to carriers for a margin of {{ $mbPercent }}%</li>
+		</ul>
+    </div>
+
+    <div>
+		<ul style="list-style-type: none;">
+		    <li class="text-left"><u>Ron Cornille</u></li>
+			<li class="text-left">Ambassador for {{ $rcAmbassador }} companies </li>
+			<li class="text-left">{{ $rcRateCons }} Rate Confirmations </li>
+			<li class="text-left">{{ $rcInvoices }} Invoices </li>
+			<li class="text-left">Responsible for ${{ $rcMoneyBilled }}.00 billed to customers and paid out ${{ $rcMoneyPaidOut }}.00 to carriers for a margin of {{ $rcPercent }}%</li>
 		</ul>
     </div>
 
