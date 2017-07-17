@@ -85,58 +85,90 @@ Artisan::command('weeklyProfitReport', function () {
 
 Artisan::command('dailyCarriersSetUp', function () {
 	
+	date_default_timezone_set("America/Chicago");
+
 	$type = 'csv';
 	
 	$carrier_created = Carbon\Carbon::now()->format('Y-m-d');
+
+	
 	
 	
     $carriers = Carrier::select('company', 'mc_number', 'dot_number', 'state', 'phone', 'email')->whereDate('created_at', $carrier_created)->orderBy('id', 'asc')->get();
 
     
 
-	$data = \Excel::create('Daily_Carrier_Report_' . $carrier_created, function($excel) use ($carriers) {
-			$excel->sheet('mySheet', function($sheet) use ($carriers)
-	        {
-				$sheet->fromArray($carriers);
-	        });
-		});
+    
+
+	// $data = \Excel::create('Daily_Carrier_Report_' . $carrier_created, function($excel) use ($carriers) {
+	// 		$excel->sheet('mySheet', function($sheet) use ($carriers)
+	//         {
+	// 			$sheet->fromArray($carriers);
+	//         });
+	// 	});
 		        
-	if ($carriers instanceof Illuminate\Support\Collection) {
-		if($carriers->count()) {
+	// if ($carriers instanceof Illuminate\Support\Collection) {
+	// 	if($carriers->count()) {
 	        			
-	        					$keys = array_keys($carriers->first()->toArray());
+	//         					$keys = array_keys($carriers->first()->toArray());
 
-	        		} else {
+	//         		} else {
 	        			
-	        					$keys = [];
+	//         					$keys = [];
 	        		
-	        		}
-        	}	else {
+	//         		}
+ //        	}	else {
         		
-        		$keys = array_keys($carriers[0]);
-        	}
+ //        		$keys = array_keys($carriers[0]);
+ //        	}
 
-		$savePath = storage_path('csv/' . 'daily_carrier_report.csv');
-		$fp = fopen($savePath, 'w');
-		fputcsv($fp,$keys);
-		foreach ($carriers as $key => $value) {
-	        fputcsv($fp, $value->toArray());
-		}
+	// 	$savePath = storage_path('csv/' . 'daily_carrier_report.csv');
+	// 	$fp = fopen($savePath, 'w');
+	// 	fputcsv($fp,$keys);
+	// 	foreach ($carriers as $key => $value) {
+	//         fputcsv($fp, $value->toArray());
+	// 	}
 
-        fclose($fp);
+ //        fclose($fp);
 
-        $info = ["foo" => "bar", "bar" => "foo"];
 
-        Mail::send(['html'=>'email.body'], $info, function($message) use ($info, $savePath){
+        $info = ['info' => $carriers->toArray()];
+
+       Mail::send(['html'=>'email.dailyCarrierCountEmail'], $info, function($message) use ($info){
 
 		$recipients = ['mikec@itransys.com'];
 
-        $message->to($recipients)->subject('Weekly Profit Report')
+        $message->to($recipients)->subject("Today's New Carriers")
 			->from($recipients[0], $recipients[0])
 			->replyTo($recipients[0], $recipients[0])
 			->sender($recipients[0], $recipients[0]);
 
-        	$message->attach($savePath);
+        	// $message->attach($savePath);
         });
 
 })->describe('Generate New Carrier Report Daily');
+
+//Daily carrier set up
+
+Artisan::command('screamerCheck', function () {
+	
+	date_default_timezone_set("America/Chicago");
+
+	$current_date = Carbon\Carbon::now()->format('m/d/Y');
+
+	$loads = Loadlist::select('pick_city', 'pick_state', 'customer', 'delivery_city', 'delivery_state', 'created_by', 'urgency')->where('pick_date', $current_date)->where('urgency', 'Screaming')->orderBy('id', 'asc')->get();
+
+   	$info = ['info' => $loads->toArray()];
+
+    Mail::send(['html'=>'email.screamerCheck'], $info, function($message) use ($info){
+
+		$recipients = ['mikec@itransys.com'];
+
+        $message->to($recipients)->subject("Current Screaming Loads")
+			->from($recipients[0], $recipients[0])
+			->replyTo($recipients[0], $recipients[0])
+			->sender($recipients[0], $recipients[0]);
+
+        });
+
+})->describe('Get current screaming loads');
