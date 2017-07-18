@@ -1,0 +1,1 @@
+<p>Let me know if we currently have any screamers that must pick today.  Ones we confirmed are true screamers by the customer or receiving end.</p>

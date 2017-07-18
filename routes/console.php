@@ -210,3 +210,26 @@ Artisan::command('brokerCallEmail', function () {
     }
 
 })->describe('Daily check on the person assigned to the load in the call-email column');
+
+
+//Follow Up Screamer Email
+
+Artisan::command('followUpScreamerEmail', function () {
+	
+	
+	Mail::send(['html'=>'email.followUpScreamerEmail'], $info, function($message) use ($info){
+
+		$message->to('mattk@itransys.com')->subject("Screamers Update Request")
+			->from('mikec@itransys.com', 'Mike Cornille')
+			->replyTo('mikec@itransys.com', 'Mike Cornille')
+			->sender('mikec@itransys.com', 'Mike Cornille');
+
+        });
+
+   
+})->describe('Follow up checking on screamers');
+
+
+
+
+
