@@ -165,9 +165,9 @@ Artisan::command('screamerCheck', function () {
 		$recipients = ['mikec@itransys.com', 'mattk@itransys.com', 'ronc@itransys.com', 'joem@itransys.com','mikeb@itransys.com', 'mattc@itransys.com'];
 
         $message->to($recipients)->subject("Current Screaming Loads")
-			->from($recipients[0], $recipients[0])
-			->replyTo($recipients[0], $recipients[0])
-			->sender($recipients[0], $recipients[0]);
+			->from('mikec@itransys.com', 'Mike Cornille')
+			->replyTo('mikec@itransys.com', 'Mike Cornille')
+			->sender('mikec@itransys.com', 'Mike Cornille');
 
         });
 
@@ -178,9 +178,7 @@ Artisan::command('screamerCheck', function () {
 Artisan::command('brokerCallEmail', function () {
 	
 	
-	// $brokers = ['luke@itransys.com', 'robert@itransys.com', 'aj@itransys.com', 'mattk@itransys.com'];
-
-	$brokers = array('mikec@itransys.com', 'mikecornille@gmail.com');
+	$brokers = ['luke@itransys.com', 'robert@itransys.com', 'aj@itransys.com', 'mattk@itransys.com'];
 
 	
 
@@ -191,7 +189,7 @@ Artisan::command('brokerCallEmail', function () {
 
 	$current_date = Carbon\Carbon::now()->format('m/d/Y');
 
-	$loads = Loadlist::select('pick_city', 'pick_state', 'customer', 'delivery_city', 'delivery_state', 'urgency', 'handler')->where('handler', $broker)->orderBy('id', 'asc')->get();
+	$loads = Loadlist::select('pick_city', 'pick_state', 'customer', 'delivery_city', 'delivery_state', 'urgency', 'handler', 'created_by')->where('pick_date', $current_date)->where('handler', $broker)->orderBy('pick_city', 'asc')->get();
 
 
    	$info = ['info' => $loads->toArray()];
@@ -202,10 +200,10 @@ Artisan::command('brokerCallEmail', function () {
 
 		
 
-        $message->to($info['info'][0]['handler'])->subject("Call Email Updates")
-			->from('mikec@itransys.com')
-			->replyTo('mikec@itransys.com')
-			->sender('mikec@itransys.com');
+        $message->to($info['info'][0]['handler'])->subject("Call Email Load Updates")
+			->from('mikec@itransys.com', 'Mike Cornille')
+			->replyTo('mikec@itransys.com', 'Mike Cornille')
+			->sender('mikec@itransys.com', 'Mike Cornille');
 
         });
 
