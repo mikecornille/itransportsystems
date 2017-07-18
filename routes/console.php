@@ -156,7 +156,7 @@ Artisan::command('screamerCheck', function () {
 
 	$current_date = Carbon\Carbon::now()->format('m/d/Y');
 
-	$loads = Loadlist::select('pick_city', 'pick_state', 'customer', 'delivery_city', 'delivery_state', 'created_by', 'urgency')->where('pick_date', $current_date)->where('urgency', 'Screaming')->orderBy('id', 'asc')->get();
+	$loads = Loadlist::select('pick_city', 'pick_state', 'customer', 'delivery_city', 'delivery_state', 'created_by', 'urgency')->where('pick_date', $current_date)->where('urgency', 'Screaming')->orderBy('pick_city', 'asc')->get();
 
    	$info = ['info' => $loads->toArray()];
 

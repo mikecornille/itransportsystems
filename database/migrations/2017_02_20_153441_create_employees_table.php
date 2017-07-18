@@ -18,6 +18,7 @@ class CreateEmployeesTable extends Migration
             $table->string('name')->nullable();
             $table->string('month')->nullable();
             $table->string('year')->nullable();
+            $table->string('months_profit')->nullable();
             $table->string('employee_type')->nullable();
             $table->bigInteger('weekly_draw')->nullable();
             $table->bigInteger('ncm')->nullable();

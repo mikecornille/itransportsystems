@@ -44,6 +44,7 @@
         <th>Name</th>
         <th>Employee Type</th>
         <th>Month/Year</th>
+        <th>Months Profit</th>
         <th>Draw</th>
         <th>NCM</th>
         <th>Commission</th>
@@ -51,9 +52,8 @@
         <th>Additional</th>
         <th>Notes</th>
         <th>Created At</th>
-        <th>Updated At</th>
         <th>Edit</th>
-        <th>Destroy</th>
+        <!-- <th>Destroy</th> -->
       </tr>
     </thead>
     <tbody>
@@ -62,6 +62,7 @@
         		<td>{{ $post->name }}</td>
                 <td>{{ $post->employee_type }}</td>
                 <td>{{ $post->month . ' / ' . $post->year }}</td>
+                <td>{{ $post->months_profit }}</td>
                 <td>${{ $post->weekly_draw }}</td>
                 <td>{{ $post->ncm }}</td>
                 <td>${{ $post->commission }}</td>
@@ -69,11 +70,10 @@
                 <td>${{ $post->additional }}</td>
                 <td>{{ $post->employee_payout_notes }}</td>
 		        <td>{{ date('M j, Y g:ia', strtotime($post->created_at)) }}</td>
-		        <td>{{ date('M j, Y g:ia', strtotime($post->updated_at)) }}</td>
 		        <td>{!! Html::linkRoute('employee.edit', 'Edit', array($post->id), ['class' => 'btn btn-success btn-block']) !!}</td>
-		        <td>{!! Form::open(['route' => ['employee.destroy', $post->id], 'method' => 'DELETE']) !!}
+		        <!-- <td>{!! Form::open(['route' => ['employee.destroy', $post->id], 'method' => 'DELETE']) !!}
 		                    {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) !!}
-		                    {!! Form::close() !!}</td>
+		                    {!! Form::close() !!}</td> -->
       </tr>
       @endforeach
       

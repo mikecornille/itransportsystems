@@ -20,6 +20,9 @@
 {{ Form::label('year', 'Year') }}
 {{ Form::select('year', ['2017' => '2017', '2018' => '2018', '2019' => '2019'], null, ['placeholder' => 'Choose year...', 'class' => 'form-control']) }}
 
+{{ Form::label('months_profit', 'Months Profit') }}
+{{ Form::text('months_profit', null, ['class' => 'form-control']) }}
+
 {{ Form::label('employee_type', 'Employee Type') }}
 {{ Form::select('employee_type', ['commission' => 'Commission', 'hourly' => 'Hourly', 'salary' => 'Salary'], null, ['placeholder' => 'Choose type...', 'class' => 'form-control']) }}
 

@@ -11,6 +11,7 @@ class Employee extends Model
               'name',
 			  'month',
 			  'year',
+			  'months_profit',
 			  'employee_type',
 			  'weekly_draw',
 			  'ncm',
