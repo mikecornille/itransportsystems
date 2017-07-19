@@ -77,6 +77,7 @@
 						<option value="Caller">Caller</option>
 						<option value="Hot">Hot</option>
 						<option value="Screaming">Screaming</option>
+						<option value="Fossilized">Fossilized</option>
 						<option value="Booked">Booked</option>
 						<option value="Get Numbers">Get Numbers</option>
 						<option value="Quote">Quote</option>
@@ -381,6 +382,8 @@
         
 		@if ($load->urgency === 'Screaming')
         <td class="text-danger">{{ $load->urgency }}</td>
+        @elseif ($load->urgency === 'Fossilized')
+        <td class="text-warning">{{ $load->urgency }}</td>
         @else
         <td>{{ $load->urgency }}</td>
         @endif

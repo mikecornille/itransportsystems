@@ -216,6 +216,7 @@ Artisan::command('brokerCallEmail', function () {
 
 Artisan::command('followUpScreamerEmail', function () {
 	
+	$info = ["foo" => "bar", "bar" => "foo"];
 	
 	Mail::send(['html'=>'email.followUpScreamerEmail'], $info, function($message) use ($info){
 

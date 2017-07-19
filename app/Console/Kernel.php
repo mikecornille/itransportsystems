@@ -32,7 +32,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('dailyCarriersSetUp')->daily()->at('14:45')->timezone('America/Chicago');
         $schedule->command('screamerCheck')->daily()->at('11:15')->timezone('America/Chicago');
         $schedule->command('brokerCallEmail')->twiceDaily(10, 14)->timezone('America/Chicago');
-        $schedule->command('followUpScreamerEmail')->daily()->at('13:40')->timezone('America/Chicago');
+        $schedule->command('followUpScreamerEmail')->daily()->at('12:30')->timezone('America/Chicago');
 
         
     }
