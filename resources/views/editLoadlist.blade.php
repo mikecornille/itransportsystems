@@ -38,8 +38,20 @@
       <input type="hidden" id="id" name="id" value="{{ $loadlist->id }}">
       <div class="row">
             <div class="col-xs-3">
-                <label class="label-control" for="customer-search-loadlist">Customer Search</label>
-                <input type="text" class="form-control" id="customer-search-loadlist" placeholder="Customer Search">
+                <label class="label-control" for="created_by">Created By</label>
+                    <select name="created_by" id="created_by" class="form-control">
+                        <option value="{{ $loadlist->created_by }}">{{ $loadlist->created_by }}</option>
+                        <option value="ronc@itransys.com">ronc@itransys.com</option>
+                        <option value="joem@itransys.com">joem@itransys.com</option>
+                        <option value="mikeb@itransys.com">mikeb@itransys.com</option>
+                        <option value="mattc@itransys.com">mattc@itransys.com</option>
+                        <option value="mikec@itransys.com">mikec@itransys.com</option>
+                        <option value="mattk@itransys.com">mattk@itransys.com</option>
+                        <option value="wanda@itransys.com">wanda@itransys.com</option>
+                        <option value="robert@itransys.com">robert@itransys.com</option>
+                        <option value="aj@itransys.com">aj@itransys.com</option>
+                        <option value="luke@itransys.com">luke@itransys.com</option>
+                    </select>
             </div>
             <div class="col-xs-3">
                 <label class="label-control" for="pick_zip_loadlist_search">Pick Zip</label>

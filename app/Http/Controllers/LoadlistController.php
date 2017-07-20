@@ -342,7 +342,10 @@ class LoadlistController extends Controller
     
     	date_default_timezone_set("America/Chicago");
 
+      
+    
 		$loadlist->update($request->all());
+    
 		return redirect('loadlist')->with('status', 'Your updates have been successfully saved!');
 
 
