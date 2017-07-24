@@ -141,4 +141,39 @@ class Carrier extends Model
 			  'landoll',
 			  'towing',];
 			}
+
+            public static function validationRules($validateTrailerTypes = true) {
+                $validation_rules = [
+
+            'company' => 'required',              
+              'contact' => 'required',
+              'address' => 'required',
+              'city' => 'required',
+              'state' => 'required',
+              'zip' => 'required',
+              'mc_number' => 'required',
+              'dot_number' => 'required',
+              'phone' => 'required',
+              'email' => 'required',
+              'driver_name' => 'required',
+              'driver_phone' => 'required',
+              'cargo_exp' => 'required',
+              'cargo_amount' => 'required'
+
+              ];
+
+            if ($validateTrailerTypes) {
+                              $trailer_types = static::getTrailers();
+
+              foreach($trailer_types as $key => $trailer_type) {
+                    $trailer_types_filtered = $trailer_types;
+                    unset($trailer_types_filtered[$key]);
+                $validation_rules[$trailer_type] = 'bail|required_without_all:' . implode(',',$trailer_types_filtered);       
+                 }
+            }
+
+
+        
+                    return $validation_rules;
+            }
 }

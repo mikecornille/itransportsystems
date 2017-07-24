@@ -6,8 +6,17 @@
 
 <input type="text" class="form-control" id="find-carrier-search" placeholder="Carrier Search">
 
-
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <div id="find_carrier_wrapper">
+  <div id="find-carrier-errors"></div>
           <div class="well">
 
            <p id="safety_1"></p>
