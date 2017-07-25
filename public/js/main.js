@@ -98,28 +98,6 @@ $('#email_colleague_carrier').val(window.carrierRecord.item.object.email_colleag
 
 //GETS THE VALUES FROM THE CARRIER MODAL AND SUBMITS THEM TO COORESPONDING ID IN DATABASE
 $(document).on('click', '#editCarrier', function(){
-            
-            var selectedTrailers = [
-            $("#flatbed").is(':checked'),
-            $("#stepdeck").is(':checked'),
-            $("#conestoga").is(':checked'),
-            $("#hot_shot").is(':checked'),
-            $("#van").is(':checked'),
-            $("#power").is(':checked'),
-            $("#lowboy").is(':checked'),
-            $("#landoll").is(':checked'),
-            $("#towing").is(':checked'),
-            $("#auto_carrier").is(':checked'),
-            $("#straight_truck").is(':checked')
-          ].filter(function(trailer) {
-            return trailer == true;
-          }).length > 0;
-
-          if (!selectedTrailers) {
-            $('#find-carrier-errors').text('Select a trailer type')
-            return false;
-          }
-          
 
 $.ajaxSetup({
     headers: {
@@ -163,11 +141,20 @@ $.ajax({
             delivery_schedule: $("#car_delivery_schedule").val(),
             permanent_notes: $("#car_permanent_notes").val(),
             email_colleague_carrier: $("#email_colleague_carrier").val(),
- 
+            flatbed: $("#flatbed").is(':checked'),
+            stepdeck: $("#stepdeck").is(':checked'),
+            conestoga: $("#conestoga").is(':checked'),
+            hot_shot: $("#hot_shot").is(':checked'),
+            van: $("#van").is(':checked'),
+            power: $("#power").is(':checked'),
+            lowboy: $("#lowboy").is(':checked'),
+            landoll: $("#landoll").is(':checked'),
+            towing: $("#towing").is(':checked'),
+            auto_carrier: $("#auto_carrier").is(':checked'),
+            straight_truck: $("#straight_truck").is(':checked')
 
          },
          success: function(result){
-          $('#find-carrier-errors').text('');
                 $("#carrier_name").val($("#car_company").val());
                 $("#carrier_address").val($("#car_address").val());
                 $("#carrier_city").val($("#car_city").val());
@@ -193,9 +180,6 @@ $.ajax({
                 $("#success-alert-carrier").text('The carrier update has been saved.');
                 $("#success-alert-carrier").fadeTo(4000, 500).slideUp(500);
                
-}, error: function(result) {
-  $('#find-carrier-errors').text(result.responseText);
-  console.dir(result.responseJSON)
 }
     });
 });
