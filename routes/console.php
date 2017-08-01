@@ -180,8 +180,9 @@ Artisan::command('screamerCheck', function () {
 Artisan::command('brokerCallEmail', function () {
 	
 	
-	$brokers = ['luke@itransys.com', 'robert@itransys.com', 'aj@itransys.com', 'mattk@itransys.com'];
+	// $brokers = ['luke@itransys.com', 'robert@itransys.com', 'aj@itransys.com', 'mattk@itransys.com'];
 
+$brokers = ['mattk@itransys.com'];
 	
 
 	foreach($brokers as $broker) { 
@@ -191,7 +192,7 @@ Artisan::command('brokerCallEmail', function () {
 
 	$current_date = Carbon\Carbon::now()->format('m/d/Y');
 
-	$loads = Loadlist::select('pick_city', 'pick_state', 'customer', 'delivery_city', 'delivery_state', 'urgency', 'handler', 'created_by')->where('pick_date', $current_date)->where('handler', $broker)->orderBy('pick_city', 'asc')->get();
+	$loads = Loadlist::select('pick_city', 'pick_state', 'customer', 'delivery_city', 'delivery_state', 'urgency', 'handler', 'created_by')->where('pick_date', $current_date)->where('handler', $broker)->where('urgency', '!=', 'Booked')->orderBy('pick_city', 'asc')->get();
 
 
    	$info = ['info' => $loads->toArray()];
