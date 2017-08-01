@@ -229,10 +229,10 @@ class Load extends Model
         $this->attributes['invoice_notes'] = strtoupper($value);
     }
 
-     public function setUpdateCustomerMessageAttribute($value)
-    {
-        $this->attributes['update_customer_message'] = strtoupper($value);
-    }
+    //  public function setUpdateCustomerMessageAttribute($value)
+    // {
+    //     $this->attributes['update_customer_message'] = strtoupper($value);
+    // }
 
     public function setCarrierNameAttribute($value)
     {
@@ -317,10 +317,10 @@ class Load extends Model
     {
         $this->attributes['remit_zip'] = strtoupper($value);
     }
-     public function setCarrierMessageAttribute($value)
-    {
-        $this->attributes['carrier_message'] = strtoupper($value);
-    }
+    //  public function setCarrierMessageAttribute($value)
+    // {
+    //     $this->attributes['carrier_message'] = strtoupper($value);
+    // }
     public function setInternalMessageAttribute($value)
     {
         $this->attributes['internal_message'] = strtoupper($value);
