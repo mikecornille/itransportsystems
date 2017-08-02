@@ -765,6 +765,7 @@
                     $('#fax').val(window.customerRecord.item.object.fax);
                     $('#internal_notes').val(window.customerRecord.item.object.internal_notes);
                     $('#customer_ambassador').val(window.customerRecord.item.object.customer_ambassador);
+                    $('#weekly_email').val(window.customerRecord.item.object.weekly_email);
                     log( ui.item ?
                     "Selected: " + ui.item.label :
                     "Nothing selected, input was " + this.value);

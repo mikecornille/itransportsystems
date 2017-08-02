@@ -98,6 +98,16 @@
         </div>
       </div>
 
+      <div class="row">
+              <div class="col-xs-12">
+            <label for="weekly_email" class="label-control">WEEKLY EMAIL</label>
+            <select name="weekly_email" id="weekly_email" class="form-control"> 
+              <option value="Open">Open</option>
+              <option value="WEEKLY">WEEKLY</option>
+            </select>
+          </div>
+          </div>
+
       <div class="btn-group" id="action_buttons">
         <button type="button" id="editFindCustomer" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Update</button>
         <button type="button" class="btn btn-primary">Actions</button>

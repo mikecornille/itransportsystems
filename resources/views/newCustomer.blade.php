@@ -108,6 +108,16 @@
           </div>
           </div>
 
+          <div class="row">
+              <div class="col-xs-12">
+            <label for="weekly_email" class="label-control">WEEKLY EMAIL</label>
+            <select name="weekly_email" id="weekly_email" class="form-control"> 
+              <option value="Open">Open</option>
+              <option value="WEEKLY">WEEKLY</option>
+            </select>
+          </div>
+          </div>
+
 		<button type="submit" class="btn btn-primary" id="newCustomerSubmit"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> NEW</button>
 
 		</div>

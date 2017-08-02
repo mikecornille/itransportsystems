@@ -9,6 +9,7 @@ use App\User;
 use App\Load;
 use App\Carrier;
 use App\Loadlist;
+use App\Customer;
 
 /*
 |--------------------------------------------------------------------------
@@ -232,7 +233,45 @@ Artisan::command('followUpScreamerEmail', function () {
    
 })->describe('Follow up checking on screamers');
 
+//Weekly Customer Touch weeklyCustomerTouch
 
+Artisan::command('weeklyCustomerTouch', function () {
+	
+	//Get the customers emails
+	$customer_emails = Customer::select('email')->where('weekly_email', 'WEEKLY')->get();
+	
+	//Convert results to an array
+	$customer_emails = $customer_emails->toArray();
+
+	
+
+	//Loop through the array of emails
+	foreach($customer_emails as $email){
+
+		
+	//Get the customers records that should receive a weekly email
+	  $customer_records = Customer::where('weekly_email', 'WEEKLY')->where('email', $email['email'])->get();
+
+	//Convert customer records into an array for to pass into email
+	  $info = ['info' => $customer_records->toArray()];
+    
+	  Mail::send(['html'=>'email.weeklyCustomerTouch'], $info, function($message) use ($info, $email){
+
+		$message->to($email['email'])->subject("International Transport Systems, Inc - Outside Hauler Check In")
+			->from('mikec@itransys.com', 'Mike Cornille')
+			->replyTo('mikec@itransys.com', 'Mike Cornille')
+			->sender('mikec@itransys.com', 'Mike Cornille');
+
+        });
+	
+}
+
+
+
+	
+
+   
+})->describe('Weekly Customer Touch');
 
 
 

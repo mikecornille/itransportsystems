@@ -27,6 +27,7 @@ class CreateCustomersTable extends Migration
             $table->string('email')->nullable();
             $table->text('internal_notes')->nullable();
             $table->string('customer_ambassador')->nullable();
+            $table->string('weekly_email')->nullable();
             $table->timestamps();
         });
 

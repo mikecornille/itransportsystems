@@ -21,6 +21,7 @@ class Customer extends Model
 			  'email',
 			  'internal_notes',
 			  'customer_ambassador',
+              'weekly_email',
         ];
 
            public function setNameAttribute($value)

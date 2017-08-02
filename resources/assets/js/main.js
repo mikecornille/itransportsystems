@@ -344,7 +344,8 @@ $.ajax({
             phone: $("#phone").val(),
             email: $("#email").val(),
             internal_notes: $("#internal_notes").val(),
-            customer_ambassador: $("#customer_ambassador").val(),
+            customer_ambassador: $("#customer_ambassador").val(), 
+            weekly_email: $("#weekly_email").val(),
             
 
          },
