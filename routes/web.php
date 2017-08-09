@@ -233,3 +233,8 @@ Route::get('/fastCarrierSetUp', function() {
 
 });
 
+Route::get('test', function() {
+$info = App\Load::find(22222);
+
+    return view('pdf.invoice')->with('info', $info);
+});

@@ -171,10 +171,9 @@ table {
 
 @endif
 
-<h2 class="text-center" id="amount_due"><b>AMOUNT DUE ${{ $info->amount_due }}.00</b></h2>
+<h2 class="text-center" >AMOUNT DUE ${{ $info->amount_due }}.00</h2>
 <h3 class="text-center" id="due_date">Please Pay By {{ $toString }}</h3>
 <h4 class="text-center"><u>THANK YOU FOR YOUR BUSINESS!</u></h4>
-<!-- <h4 class="text-center"><u>HOME SITE <i>TRANSPORTLOAD.COM</i> CUSTOMER TOOL <i>MANAGELOADS.COM</i></u></h4> -->
 
 </body>
 </html>
