@@ -46,7 +46,7 @@ Route::get('/newEquipment', function () {
     return view('/newEquipment');
 });
 
-
+Route::get('biWeeklyCustomerEmailList', 'CustomersController@biWeeklyCustomerEmailList');
 
 // Route::get('/admin', function () {
 // 	if ( ! Auth::user()->admin) {

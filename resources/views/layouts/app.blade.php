@@ -144,6 +144,7 @@
 
                                 <li><a href="{{ URL::to('/newCustomer') }}">New Customer</a></li>
                                 <li><a href="{{ URL::to('/findCustomer') }}">Find Customer</a></li>
+                                <li><a href="{{ URL::to('/biWeeklyCustomerEmailList') }}">Customer Email List</a></li>
 
 
 

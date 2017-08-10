@@ -86,4 +86,11 @@ class CustomersController extends Controller
 
    	}
 
+   	public function biWeeklyCustomerEmailList()
+   	{
+   		$posts = Customer::where('weekly_email', 'WEEKLY')->orderBy('email', 'asc')->get();
+
+   		return view('biWeeklyCustomerEmailList', compact('posts', $posts));
+   	}
+
 }

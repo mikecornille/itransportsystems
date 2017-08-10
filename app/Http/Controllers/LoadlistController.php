@@ -476,8 +476,12 @@ class LoadlistController extends Controller
 
    		$info = Loadlist::find($id);
 
+
+
    		$carrier = Carrier::where('state', $info->pick_state)->where('email', '!=', '')->get();
 		
+  
+
 		$info = ['info' => $info, 'carrier' => $carrier];
         
         Mail::send(['html'=>'email.emailTruckOffer'], $info, function($message) use ($info){
