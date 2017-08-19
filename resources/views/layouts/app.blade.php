@@ -124,8 +124,11 @@
                                 <ul class="dropdown-menu" role="menu">
 
                                 <li><a href="{{ URL::to('/fastCarrierSetUp') }}">Fast Carrier Entry</a></li>
-                                <li><a href="{{ URL::to('/newCarrier') }}">New Carrier</a></li>
-                                <li><a href="{{ URL::to('/findCarrier') }}">Find Carrier</a></li>
+                                <li><a href="{{ URL::to('/hauler') }}">New Carrier</a></li>
+                                <li><a href="{{ URL::to('/findHauler') }}">Find Carrier</a></li>
+                                <!-- <li><a href="{{ URL::to('/newCarrier') }}">New Carrier</a></li>
+                                <li><a href="{{ URL::to('/newcar') }}">New</a></li>
+                                <li><a href="{{ URL::to('/findCarrier') }}">Find Carrier</a></li> -->
                                 <li><a href="{{ URL::to('/findTrucks') }}">Find Trucks From Carriers</a></li>
                                 <li><a href="{{ URL::to('/findTrucksFromLoads') }}">Find Trucks From Loads</a></li>
                                 <li><a href="{{ URL::to('/remit') }}">Remit Info</a></li>

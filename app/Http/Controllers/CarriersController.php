@@ -14,6 +14,14 @@ use PDF;
 
 class CarriersController extends Controller
 {
+	
+	
+
+
+
+
+
+
 	public function fast_carrier_setup(Request $request){
 
 		$this->validate($request, [

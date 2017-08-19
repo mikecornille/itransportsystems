@@ -1434,20 +1434,38 @@ $(document).on('click', '#dot_number_find', function()
                           $("#state").val(data.content.carrier.phyState);
                           $("#zip").val(data.content.carrier.phyZipcode);
                           $("#phone").val(data.content.carrier.phone);
-                          $("#permanent_notes").val(
 
-                            "DBA NAME: " + data.content.carrier.dbaName +
-                            " -- ALLOWED TO OPERATE: " + data.content.carrier.allowedToOperate +
-                            " -- OPERATION: " + data.content.carrier.carrierOperation.carrierOperationDesc +
-                            " -- CRASH TOTAL: " + data.content.carrier.crashTotal +
-                            " -- DRIVER OOS FROM INSPECTION: " + data.content.carrier.driverOosInsp +
-                            " -- VEHILCE OOS FROM INSPECTION: " + data.content.carrier.vehicleOosInsp
+                          $("#oos_driver_national").val(data.content.carrier.driverOosRateNationalAverage);
+                          $("#oos_driver_company").val(Math.round(data.content.carrier.driverOosRate));
+                          $("#oos_vehicle_national").val(data.content.carrier.vehicleOosRateNationalAverage);
+                          $("#oos_vehicle_company").val(Math.round(data.content.carrier.vehicleOosRate));
 
+                          $("#allowed_to_operate").val(data.content.carrier.allowedToOperate);
+                          $("#operation_type").val(data.content.carrier.carrierOperation.carrierOperationDesc);
 
+                          $("#crashes").val(data.content.carrier.crashTotal);
+                          $("#fatal_crashes").val(data.content.carrier.fatalCrash);
 
-                            );
+                          $("#number_of_drivers").val(data.content.carrier.totalDrivers);
+                          $("#number_of_power").val(data.content.carrier.totalPowerUnits);
+
                           
 
+                          
+                          var dt = new Date();
+                          var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+
+                          
+
+                          var month = dt.getMonth()+1;
+                          var day = dt.getDate();
+
+                          var output = dt.getFullYear() + '/' +
+                          ((''+month).length<2 ? '0' : '') + month + '/' +
+                          ((''+day).length<2 ? '0' : '') + day;
+
+
+                          $("#fmcsa_time").val(time + ' ' + output);
 
 
                           }

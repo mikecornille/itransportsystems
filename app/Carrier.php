@@ -32,17 +32,9 @@ class Carrier extends Model
 			  'remit_zip',
 			  'load_info',
 			  'permanent_notes',
-			  'flatbed',
-			  'stepdeck',
-			  'conestoga',
-			  'van',
-			  'power',
-			  'hot_shot',
-			  'straight_truck',
-			  'auto_carrier',
-			  'lowboy',
-			  'landoll',
-			  'towing',
+			  'trailer_type_1',
+			  'trailer_type_2',
+			  'trailer_type_3',
 			  'email_colleague_carrier',
         'load_route',
         'current_carrier_rate',
@@ -50,6 +42,20 @@ class Carrier extends Model
         'current_city_location',
         'current_miles_from_pick',
         'delivery_schedule',
+        'active',
+        'google_carrier',
+        'oos_driver_national',
+        'oos_driver_company',
+        'oos_vehicle_national',
+        'oos_vehicle_company',
+        'allowed_to_operate',
+        'operation_type',
+        'crashes',
+        'fatal_crashes',
+        'number_of_drivers',
+        'number_of_power',
+        'insurance_company_email',
+        'fmcsa_time'
 
         ];
 
@@ -128,52 +134,52 @@ class Carrier extends Model
         $this->attributes['permanent_notes'] = strtoupper($value);
     }
 
-        public static function getTrailers() {
-        	return ['flatbed',
-			  'stepdeck',
-			  'conestoga',
-			  'van',
-			  'power',
-			  'hot_shot',
-			  'straight_truck',
-			  'auto_carrier',
-			  'lowboy',
-			  'landoll',
-			  'towing',];
-			}
+        // public static function getTrailers() {
+   //      	return ['flatbed',
+			//   'stepdeck',
+			//   'conestoga',
+			//   'van',
+			//   'power',
+			//   'hot_shot',
+			//   'straight_truck',
+			//   'auto_carrier',
+			//   'lowboy',
+			//   'landoll',
+			//   'towing',];
+			// }
 
-            public static function validationRules($validateTrailerTypes = true) {
-                $validation_rules = [
+   //          public static function validationRules($validateTrailerTypes = true) {
+   //              $validation_rules = [
 
-            'company' => 'required',              
-              'contact' => 'required',
-              'address' => 'required',
-              'city' => 'required',
-              'state' => 'required',
-              'zip' => 'required',
-              'mc_number' => 'required',
-              'dot_number' => 'required',
-              'phone' => 'required',
-              'email' => 'required',
-              'driver_name' => 'required',
-              'driver_phone' => 'required',
-              'cargo_exp' => 'required',
-              'cargo_amount' => 'required'
+   //          'company' => 'required',              
+   //            'contact' => 'required',
+   //            'address' => 'required',
+   //            'city' => 'required',
+   //            'state' => 'required',
+   //            'zip' => 'required',
+   //            'mc_number' => 'required',
+   //            'dot_number' => 'required',
+   //            'phone' => 'required',
+   //            'email' => 'required',
+   //            'driver_name' => 'required',
+   //            'driver_phone' => 'required',
+   //            'cargo_exp' => 'required',
+   //            'cargo_amount' => 'required'
 
-              ];
+   //            ];
 
-            if ($validateTrailerTypes) {
-                              $trailer_types = static::getTrailers();
+   //          if ($validateTrailerTypes) {
+   //                            $trailer_types = static::getTrailers();
 
-              foreach($trailer_types as $key => $trailer_type) {
-                    $trailer_types_filtered = $trailer_types;
-                    unset($trailer_types_filtered[$key]);
-                $validation_rules[$trailer_type] = 'bail|required_without_all:' . implode(',',$trailer_types_filtered);       
-                 }
-            }
+   //            foreach($trailer_types as $key => $trailer_type) {
+   //                  $trailer_types_filtered = $trailer_types;
+   //                  unset($trailer_types_filtered[$key]);
+   //              $validation_rules[$trailer_type] = 'bail|required_without_all:' . implode(',',$trailer_types_filtered);       
+   //               }
+   //          }
 
 
         
-                    return $validation_rules;
-            }
+   //                  return $validation_rules;
+   //          }
 }

@@ -24,6 +24,8 @@ Route::get('/twilio', function () {
 
 Route::group(['middleware' => 'auth'],function() {
 
+Route::resource('hauler', 'HaulerController');
+
 Route::resource('remit', 'RemitController');
 
 Route::resource('budget', 'BudgetController');
@@ -32,6 +34,12 @@ Route::resource('employee', 'EmployeeController');
 
 Route::get('/newCarrier', function () {
     return view('/newCarrier');
+});
+
+Route::post('/haulerEdit', 'HaulerController@editForm');
+
+Route::get('/findHauler', function () {
+    return view('/findHauler');
 });
 
 Route::get('/newCustomer', function () {
@@ -229,6 +237,12 @@ Route::get('/textAndEmailRollbackInfo/{id}', 'PDFController@textAndEmailRollback
 Route::get('/fastCarrierSetUp', function() {
     return view('/fastCarrierSetUp');
 });
+//EMAILS FROM NEW CARRIER DATA HAULER
+Route::get('/certInsuranceCompany/{id}', 'HaulerController@certInsuranceCompany');
+Route::get('/certCarrier/{id}', 'HaulerController@certCarrier');
+Route::get('/emailColleagueHauler/{id}', 'HaulerController@emailColleagueHauler');
+Route::get('/sendBrokerCarrierPacket/{id}', 'HaulerController@sendBrokerCarrierPacket');
+
 
 
 });
