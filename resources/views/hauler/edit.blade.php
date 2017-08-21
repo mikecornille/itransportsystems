@@ -2,30 +2,30 @@
 
 @section('content')
 
+
 <div class="container">
   <div class="row">
     <div class="col-md-10">
 
-      @if (count($errors) > 0)
-      <div class="alert alert-danger">
-        <ul>
-          @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>
-          @endforeach
-        </ul>
+      @if (!empty($error_message))
+      <div class="alert alert-danger alert-dismissible">
+
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>{{ $error_message }}</strong> Click the X at the far right to close this notification.
       </div>
       @endif
 
-      @if (session('status'))
+      @if (isset($flash_message))
       <div class="alert alert-success alert-dismissible">
-        
+
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>{{ session('status') }}</strong> Click the X at the far right to close this notification.
+        <strong>{{ $flash_message }}</strong> Click the X at the far right to close this notification.
       </div>
       @endif
 
       <h3 class="text-center"><b>FMCSA LAST UPDATED: {{ $gethauler->fmcsa_time }}</b></h3>
       {!! Form::model($gethauler, ['route' => ['hauler.update', $gethauler->id], 'method' => 'PUT']) !!}
+       <input type="hidden" name="fmcsa_time" id="fmcsa_time" value="{{ $gethauler->fmcsa_time }}">
       @include('partials.carrierForm', ['submitButtonText' => 'Update Carrier with No Actions'])
       {!! Form::close() !!}
 

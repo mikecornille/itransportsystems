@@ -15,7 +15,7 @@
 @endif
 
     {!! Form::open(['route' => 'hauler.store']) !!}
-      <input type="hidden" name="fmcsa_time" id="fmcsa_time" value="">
+      <input type="hidden" name="fmcsa_time" id="fmcsa_time" value="Get Updated Info">
       @include('partials.carrierForm', ['submitButtonText' => 'New Carrier'])
     {!! Form::close() !!}
   </div>

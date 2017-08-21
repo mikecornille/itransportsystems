@@ -39,7 +39,9 @@ Route::get('/newCarrier', function () {
 Route::post('/haulerEdit', 'HaulerController@editForm');
 
 Route::get('/findHauler', function () {
-    return view('/findHauler');
+    
+    $id = "";
+    return view('/findHauler', compact($id, 'id'));
 });
 
 Route::get('/newCustomer', function () {

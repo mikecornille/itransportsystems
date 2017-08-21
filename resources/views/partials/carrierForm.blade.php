@@ -1,3 +1,5 @@
+	
+
 	<div class="row">
 	  	<div class="col-md-3">
 	  		{{ Form::label('active', 'Do Not Load', ['class' => 'text-danger', 'style' => 'font-size:20px;']) }}
@@ -233,7 +235,7 @@
 	  		{{ Form::text('number_of_power', null, ['class' => 'form-control']) }}
 		</div>
 		<div class="col-md-6">
-	  		{{ Form::label('google_carrier', 'GOOGLE RESULTS') }}
+	  		{{ Form::label('google_carrier', 'GOOGLE RESULTS (ENTER DATE OF ENTRY)') }}
 	  		{{ Form::text('google_carrier', null, ['class' => 'form-control']) }}
 		</div>
 	</div>
@@ -261,7 +263,7 @@
 	</div>
 	<div class="row">
 	  	<div class="col-md-4">
-	  		{{ Form::label('current_city_location', 'Current City Location') }}
+	  		{{ Form::label('current_city_location', 'Current City (EMPTY OR LOADED?)') }}
 	  		{{ Form::text('current_city_location', null, ['class' => 'form-control']) }}
 		</div>
 		<div class="col-md-4">
