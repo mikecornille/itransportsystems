@@ -193,12 +193,12 @@ class HaulerController extends Controller
               $request->number_of_drivers,
               $request->number_of_power
             );
-        
+
             //Loop through the fields to see if errors are true
             for ($x = 0; $x <= count($fields); $x++){
                 foreach($fields as $field){
                     if(empty($field)){
-                        $error_message = "There is a missing field in the form!  (this error will display if a field is empty or 0 value) ";
+                        $error_message = "There is a missing field in the form!  (this error will display if a field is empty or 0 value)";
                     }
                 }
             }
@@ -275,7 +275,7 @@ class HaulerController extends Controller
             
             $message->to($info['info']['email'])
 
-            ->subject('Cargo Insurance Certificate Holder Request');
+            ->subject('Cargo Insurance Certificate Holder Request for DOT # ' . $info['info']['dot_number']);
           
             $message->from(\Auth::user()->email, \Auth::user()->name)
 

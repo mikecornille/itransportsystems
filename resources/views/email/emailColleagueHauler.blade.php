@@ -27,6 +27,7 @@
 <h3><u>Carrier Data Information</u></h3>
 <ul>
 <li><b>Company Name:</b> {{ $info->company }}</li>
+<li><b>DOT #:</b> {{ $info->dot_number }}</li>
 <li><b>Operation Type:</b> {{ $info->operation_type }}</li>
 <li><b>Number of Drivers:</b> {{ $info->number_of_drivers }}</li>
 <li><b>Number of Trucks:</b> {{ $info->number_of_power }}</li>

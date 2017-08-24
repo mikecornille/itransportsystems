@@ -33,6 +33,7 @@
 <h3><u>Carrier Data Information</u></h3>
 <ul>
 <li><b>Company Name:</b> {{ $info->company }}</li>
+<li><b>DOT #:</b> {{ $info->dot_number }}</li>
 <li><b>MC #:</b> {{ $info->mc_number }}</li>
 <li><b>Address:</b> {{ $info->address }} - {{ $info->city }}, {{ $info->state }} {{ $info->zip }}</li>
 <li><b>Contact Name:</b> {{ $info->name }}</li>

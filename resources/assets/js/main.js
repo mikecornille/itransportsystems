@@ -1634,3 +1634,10 @@ $(document).on('click', '#OverwriteExistingInfo', function()
 
  });
 
+function googleCarrier(carrier) {
+
+    window.open("https://www.google.com/#q=" + carrier);
+
+    
+}
+

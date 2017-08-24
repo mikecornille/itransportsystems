@@ -48,10 +48,10 @@
           <li class="divider"></li>
           <li class="dropdown-header">SEND PACKET</li>
           <li><a href="{{ URL::to('/sendBrokerCarrierPacket/' . $gethauler->id) }}"><b>Broker/Carrier Contract</b></a></li>
-
-
-
         </ul>
+      </div>
+      <div style="margin-top: 10px;" >
+      <a onclick="googleCarrier('{{ $gethauler->company }}')">GOOGLE CARRIER</a>
       </div>
     </div>
   </div>
