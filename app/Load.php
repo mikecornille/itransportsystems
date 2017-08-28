@@ -80,6 +80,7 @@ class Load extends Model
               'internal_message',
               'trailer_for_search',
               'carrier_mc',
+              'carrier_id',
 
 
 			  ];

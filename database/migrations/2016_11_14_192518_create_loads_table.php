@@ -90,6 +90,7 @@ class CreateLoadsTable extends Migration
             $table->string('rate_con_creator')->nullable();
             $table->string('trailer_for_search')->nullable();
             $table->string('carrier_mc')->nullable();
+            $table->bigInteger('carrier_id')->nullable();
             $table->timestamps();
 
         });

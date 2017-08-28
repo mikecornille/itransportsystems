@@ -157,9 +157,13 @@
         </span>
       </div>
     </div>
-    <div class="col-xs-12">
+    <div class="col-xs-8">
      <label class="label-control" for="carrier_address">Address</label>
      <input type="text" class="form-control" id="carrier_address" name="carrier_address" value="{{ $info->carrier_address }}">
+   </div>
+   <div class="col-xs-4">
+     <label class="label-control" for="carrier_id">ID #</label>
+     <input type="text" class="form-control" id="carrier_id" name="carrier_id" value="{{ $info->carrier_id }}">
    </div>
    <div class="col-xs-6">
      <label class="label-control" for="carrier_city">City</label>

@@ -890,6 +890,7 @@
                 minLength: 3,
                 select: function( event, ui ) {
                     window.carrierRecord = ui;
+                    $('#carrier_id').val(window.carrierRecord.item.object.id);
                     $('#carrier_name').val(window.carrierRecord.item.object.company);
                     $('#carrier_address').val(window.carrierRecord.item.object.address);
                     $('#carrier_city').val(window.carrierRecord.item.object.city);

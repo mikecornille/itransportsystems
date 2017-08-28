@@ -275,3 +275,46 @@ Artisan::command('weeklyCustomerTouch', function () {
 
 
 
+Artisan::command('currentCarrierInspection', function () {
+	
+	 //Get the count of loads that are currently booked
+	 $loadCount = Load::where('pick_status', 'Booked')->count();
+
+	 $loadCount = $loadCount - 1;
+
+	 //Get the carrier id of the loads that are currently booked
+	 $carrierId = Load::select('carrier_id')->where('pick_status', 'Booked')->get()->toArray();
+	 
+	 //Init an empty array
+	 $data = array();
+
+	 //Loop all the carrier id's find their info then stuff them all into 1 array
+	 for ($x = 0; $x <= $loadCount; $x++) {
+    	
+    	//Find the carrier info based on the id #
+    	$carrierInfo = Carrier::where('id', $carrierId[$x])->get()->toArray();
+
+    	//Build up the array
+    	$data[] = $carrierInfo;
+
+	 } 
+
+	//Convert customer records into an array for to pass into email
+	  $info = ['info' => $data];
+    
+	  Mail::send(['html'=>'email.currentCarrierInspection'], $info, function($message) use ($info){
+
+		$message->to('mikec@itransys.com')->subject("currentCarrierInspection")
+			->from('mikec@itransys.com', 'Mike Cornille')
+			->replyTo('mikec@itransys.com', 'Mike Cornille')
+			->sender('mikec@itransys.com', 'Mike Cornille');
+
+        });
+
+	 
+
+
+	 
+   
+})->describe('Get a daily report on the carriers we are currently working with');
+
