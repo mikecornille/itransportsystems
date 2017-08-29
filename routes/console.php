@@ -277,7 +277,9 @@ Artisan::command('weeklyCustomerTouch', function () {
 
 Artisan::command('currentCarrierInspection', function () {
 	
-	 //Get the count of loads that are currently booked
+	 //TO BE LOADED CODE
+
+	 //Get the count of loads that are currently booked then subtract 1
 	 $loadCount = Load::where('pick_status', 'Booked')->count();
 
 	 $loadCount = $loadCount - 1;
@@ -299,22 +301,40 @@ Artisan::command('currentCarrierInspection', function () {
 
 	 } 
 
-	//Convert customer records into an array for to pass into email
-	  $info = ['info' => $data];
+	 //END TO BE LOADED CODE
+
+	 //TO BE DELIVERED CODE
+
+	 //See above
+	 $loadCountLoaded = Load::where('pick_status', 'Loaded')->count();
+
+	 $loadCountLoaded = $loadCountLoaded - 1;
+
+     $carrierIdLoaded = Load::select('carrier_id')->where('pick_status', 'Loaded')->get()->toArray();
+	 
+	 $dataLoaded = array();
+
+	 	for ($x = 0; $x <= $loadCountLoaded; $x++) {
+    	
+    		$carrierInfoLoaded = Carrier::where('id', $carrierIdLoaded[$x])->get()->toArray();
+
+    		$dataLoaded[] = $carrierInfoLoaded;
+	} 
+	 
+	 //END TO BE DELIVERED CODE
+	 
+	  $info = ['info' => $data, 'loaded' => $dataLoaded];
     
 	  Mail::send(['html'=>'email.currentCarrierInspection'], $info, function($message) use ($info){
 
-		$message->to('mikec@itransys.com')->subject("currentCarrierInspection")
+	  	$recipients = ['mikec@itransys.com', 'mikecornille@gmail.com'];
+
+		$message->to($recipients)->subject("Our Current Carriers on the Road")
 			->from('mikec@itransys.com', 'Mike Cornille')
 			->replyTo('mikec@itransys.com', 'Mike Cornille')
 			->sender('mikec@itransys.com', 'Mike Cornille');
 
         });
 
-	 
-
-
-	 
-   
 })->describe('Get a daily report on the carriers we are currently working with');
 
