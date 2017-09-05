@@ -298,7 +298,7 @@ Artisan::command('currentCarrierInspection', function () {
 
     	//Build up the array
     	$data[] = $carrierInfo;
-
+    	
 	 } 
 
 	 //END TO BE LOADED CODE

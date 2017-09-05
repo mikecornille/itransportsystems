@@ -1247,7 +1247,7 @@ $('#remit_address_display').text('');
 $('#remit_citystatezip_display').text('');
 $('#carrier_mc').val('');
 $('#signed_rate_con').val('');
-
+$('#carrier_id').val('1');
 
 });
 
