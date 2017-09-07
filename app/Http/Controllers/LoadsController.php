@@ -177,6 +177,7 @@ class LoadsController extends Controller
 			  'delivery_phone' => 'required',
 			  'amount_due' => 'required',
 			  'commodity' => 'required',
+			  'carrier_id' => 'required',
         
          ]);
 
