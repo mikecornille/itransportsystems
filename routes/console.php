@@ -280,12 +280,12 @@ Artisan::command('currentCarrierInspection', function () {
 	 //TO BE LOADED CODE
 
 	 //Get the count of loads that are currently booked then subtract 1
-	 $loadCount = Load::where('pick_status', 'Booked')->where('carrier_id', '!=', '1')->count();
+	 $loadCount = Load::where('pick_status', 'Booked')->count();
 
 	 $loadCount = $loadCount - 1;
 
 	 //Get the carrier id of the loads that are currently booked
-	 $carrierId = Load::select('carrier_id')->where('pick_status', 'Booked')->where('carrier_id', '!=', '1')->get()->toArray();
+	 $carrierId = Load::select('carrier_id')->where('pick_status', 'Booked')->get()->toArray();
 	 
 	 //Init an empty array
 	 $data = array();
