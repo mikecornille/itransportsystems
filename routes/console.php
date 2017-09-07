@@ -280,50 +280,52 @@ Artisan::command('currentCarrierInspection', function () {
 	 //TO BE LOADED CODE
 
 	 //Get the count of loads that are currently booked then subtract 1
-	 //$loadCount = Load::where('pick_status', 'Booked')->where('carrier_id', '!=', '1')->count();
+	 $loadCount = Load::where('pick_status', 'Booked')->where('carrier_id', '!=', '1')->count();
 
-	 //$loadCount = $loadCount - 1;
+	 $loadCount = $loadCount - 1;
 
 	 //Get the carrier id of the loads that are currently booked
-	 //$carrierId = Load::select('carrier_id')->where('pick_status', 'Booked')->where('carrier_id', '!=', '1')->get()->toArray();
+	 $carrierId = Load::select('carrier_id')->where('pick_status', 'Booked')->where('carrier_id', '!=', '1')->get()->toArray();
 	 
 	 //Init an empty array
-	 //$data = array();
+	 $data = array();
 
 	 //Loop all the carrier id's find their info then stuff them all into 1 array
-	 //for ($x = 0; $x <= $loadCount; $x++) {
+	 for ($x = 0; $x <= $loadCount; $x++) {
     	
     	//Find the carrier info based on the id #
-    	//$carrierInfo = Carrier::where('id', $carrierId[$x])->get()->toArray();
+    	$carrierInfo = Carrier::where('id', $carrierId[$x])->get()->toArray();
 
     	//Build up the array
-    	//$data[] = $carrierInfo;
+    	$data[] = $carrierInfo;
     	
-	 //} 
+	 } 
 
 	 //END TO BE LOADED CODE
 
 	 //TO BE DELIVERED CODE
 
 	 //See above
-	 $loadCountLoaded = Load::where('pick_status', 'Loaded')->where('carrier_id', '!=', '1')->count();
+	//  $loadCountLoaded = Load::where('pick_status', 'Loaded')->where('carrier_id', '!=', '1')->count();
 
-	 $loadCountLoaded = $loadCountLoaded - 1;
+	//  $loadCountLoaded = $loadCountLoaded - 1;
 
-     $carrierIdLoaded = Load::select('carrier_id')->where('pick_status', 'Loaded')->where('carrier_id', '!=', '1')->get()->toArray();
+ //     $carrierIdLoaded = Load::select('carrier_id')->where('pick_status', 'Loaded')->where('carrier_id', '!=', '1')->get()->toArray();
 	 
-	 $dataLoaded = array();
+	//  $dataLoaded = array();
 
-	 	for ($x = 0; $x <= $loadCountLoaded; $x++) {
+	//  	for ($x = 0; $x <= $loadCountLoaded; $x++) {
     	
-    		$carrierInfoLoaded = Carrier::where('id', $carrierIdLoaded[$x])->get()->toArray();
+ //    		$carrierInfoLoaded = Carrier::where('id', $carrierIdLoaded[$x])->get()->toArray();
 
-    		$dataLoaded[] = $carrierInfoLoaded;
-	} 
+ //    		$dataLoaded[] = $carrierInfoLoaded;
+	// } 
 	 
 	 //END TO BE DELIVERED CODE
+
+	 //removed  'loaded' => $dataLoaded
 	 
-	  $info = ['info' => $data, 'loaded' => $dataLoaded];
+	  $info = ['info' => $data];
     
 	  Mail::send(['html'=>'email.currentCarrierInspection'], $info, function($message) use ($info){
 
