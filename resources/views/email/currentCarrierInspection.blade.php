@@ -4,9 +4,6 @@ $count = count($info);
 
 $count = $count - 1;
 
-$countloaded = count($loaded);
-
-$countloaded = $countloaded - 1;
 
 @endphp
 
@@ -51,27 +48,7 @@ ul {
 @endfor
 </ul>
 
-<h2>To Be Delivered</h2>
 
-<ul>
-@for ($i = 0; $i <= $countloaded; $i++)
-    
-<li>Company: {{ $loaded[$i][0]['company'] }}</li>
-<li>Allowed to Operate: {{ $loaded[$i][0]['allowed_to_operate'] }}</li>
-<li>Operation Type: {{ $loaded[$i][0]['operation_type'] }}</li>
-<li>FMCSA Last Updated: {{ $loaded[$i][0]['fmcsa_time'] }}</li>
-<li>Crashes: {{ $loaded[$i][0]['crashes'] }}</li>
-<li>Fatal Crashes: {{ $loaded[$i][0]['fatal_crashes'] }}</li>
-<li>Number of Drivers: {{ $loaded[$i][0]['number_of_drivers'] }}</li>
-<li>Number of Power: {{ $loaded[$i][0]['number_of_power'] }}</li>
-<li>OOS Driver: {{ $loaded[$i][0]['oos_driver_company'] }}</li>
-<li>OOS Vehicle: {{ $loaded[$i][0]['oos_vehicle_company'] }}</li>
-<li>Google Results: {{ $loaded[$i][0]['google_carrier'] }}</li>
-<br><br>
-    
-
-@endfor
-</ul>
 
 
 </body>
