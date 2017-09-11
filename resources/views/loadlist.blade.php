@@ -389,8 +389,15 @@
         @endif
         
 		<td>{{ $load->load_type }}</td>
+		
+
 		<td><a href="#" class="inactiveLink" title="Commodity" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load->commodity }}">{{ substr($load->commodity, 0, 25) }} {{ strlen($load->commodity) > 25 ? "..." : "" }}</a></td>
-		<td>{{ $load->special_instructions }}</td>
+		
+		<td><a href="#" class="inactiveLink" title="Special Instructions" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load->special_instructions }}">{{ substr($load->special_instructions, 0, 25) }} {{ strlen($load->special_instructions) > 25 ? "..." : "" }}</a></td>
+
+		
+		
+
 		<td class="text-warning">{{ $load->handler !== NULL ? $load->handler : 'unassigned' }}</td>
         <td>{{ $load->length . '\' x ' . $load->width . '\' x ' . $load->height . '\' ' . $load->weight . 'lbs' }}</td>
         

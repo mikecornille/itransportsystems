@@ -51,11 +51,11 @@ class LoadlistController extends Controller
 
         $newload = New Loadlist($request->all());
 
-        
-		$newload->company_contact = "Dispatch";
+        $newload->special_instructions = $request->special_instructions . ' call or email operations@itransys.com';
+		    $newload->company_contact = "Dispatch";
         $newload->contact_phone = "877-663-2200";
-		$newload->created_by = strtoupper(\Auth::user()->email);
-		$newload->save();
+		    $newload->created_by = strtoupper(\Auth::user()->email);
+		    $newload->save();
 
 
 		DB::table('notes')->insert(

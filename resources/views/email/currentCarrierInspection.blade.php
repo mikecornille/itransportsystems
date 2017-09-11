@@ -32,6 +32,8 @@ ul {
 @for ($i = 0; $i <= $count; $i++)
     
 <li>Company: {{ $info[$i][0]['company'] }}</li>
+<li>ID #: {{ $info[$i][0]['id'] }}</li>
+<li>DOT #: {{ $info[$i][0]['dot_number'] }}</li>
 <li>Allowed to Operate: {{ $info[$i][0]['allowed_to_operate'] }}</li>
 <li>Operation Type: {{ $info[$i][0]['operation_type'] }}</li>
 <li>FMCSA Last Updated: {{ $info[$i][0]['fmcsa_time'] }}</li>
