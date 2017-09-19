@@ -239,12 +239,16 @@ Route::get('/textAndEmailRollbackInfo/{id}', 'PDFController@textAndEmailRollback
 Route::get('/fastCarrierSetUp', function() {
     return view('/fastCarrierSetUp');
 });
+
+Route::get('/emailSetUp', function() {
+    return view('/emailSetUp');
+});
+Route::post('/emailSetUp', 'HaulerController@emailSetUp');
 //EMAILS FROM NEW CARRIER DATA HAULER
 Route::get('/certInsuranceCompany/{id}', 'HaulerController@certInsuranceCompany');
 Route::get('/certCarrier/{id}', 'HaulerController@certCarrier');
 Route::get('/emailColleagueHauler/{id}', 'HaulerController@emailColleagueHauler');
 Route::get('/sendBrokerCarrierPacket/{id}', 'HaulerController@sendBrokerCarrierPacket');
-
 
 
 });

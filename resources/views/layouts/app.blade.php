@@ -122,7 +122,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
-
+                                <li><a href="{{ URL::to('/emailSetUp') }}">Set Up Form</a></li>
                                 <li><a href="{{ URL::to('/fastCarrierSetUp') }}">Fast Carrier Entry</a></li>
                                 <li><a href="{{ URL::to('/hauler') }}">New Carrier</a></li>
                                 <li><a href="{{ URL::to('/findHauler') }}">Find Carrier</a></li>

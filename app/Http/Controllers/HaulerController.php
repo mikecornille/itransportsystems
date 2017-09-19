@@ -356,5 +356,36 @@ class HaulerController extends Controller
 
         return $this->goBackWithData($current_record, $flash_message, $error_message);
     }
+
+    public function emailSetUp(Request $request)
+    {
+      
+      $tempPhone = $request->input('tempPhone');
+      $tempEmail = $request->input('tempEmail');
+      $tempLane = $request->input('tempLane');
+      $tempRate = $request->input('tempRate');
+
+      $info = [$tempPhone, $tempEmail, $tempLane, $tempRate];
+
+
+      Mail::send(['html'=>'email.emailSetUp'], $info, function($message) use ($info){
+            
+          
+           
+           $message->to($info[1], \Auth::user()->email)
+
+            ->subject('Final Steps to Haul Shipment: ' . $info[2] . ' $' . $info[3] . ' PH: ' . $info[0] . ' Email: ' . $info[1]);
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name)
+
+            ->replyTo(\Auth::user()->email, \Auth::user()->name)
+
+            ->sender(\Auth::user()->email, \Auth::user()->name);
+
+        });
+
+return back()->with('status', 'Your email was sent!');
+
+    }
     
 }
