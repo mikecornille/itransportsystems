@@ -53,6 +53,9 @@
       <div style="margin-top: 10px;" >
       <a onclick="googleCarrier('{{ $gethauler->company }}')">GOOGLE CARRIER</a>
       </div>
+      <div style="margin-top: 10px;" >
+      <a onclick="fmcsaCarrier('{{ $gethauler->dot_number }}')">FMCSA PROFILE</a>
+      </div>
     </div>
   </div>
   

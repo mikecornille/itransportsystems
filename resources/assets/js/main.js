@@ -1641,3 +1641,10 @@ function googleCarrier(carrier) {
     
 }
 
+function fmcsaCarrier(carrier) {
+
+    window.open("https://ai.fmcsa.dot.gov/SMS/Carrier/" + carrier + "/Overview.aspx");
+
+    
+}
+
