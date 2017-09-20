@@ -372,7 +372,9 @@ class HaulerController extends Controller
             
           
            
-           $message->to($info[1], \Auth::user()->email)
+           $message->to($info[1], "Carrier")
+
+           ->cc(\Auth::user()->email, \Auth::user()->name)
 
             ->subject('Final Steps to Haul Shipment: ' . $info[2] . ' $' . $info[3] . ' PH: ' . $info[0] . ' Email: ' . $info[1]);
           
