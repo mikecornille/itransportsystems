@@ -39,7 +39,8 @@
 <ul>
 <li>What city is your driver currently in:</li>
 <li>Is he/she empty or do they need to get off loaded:</li>
-<li>What trailer type will you use for this load:</li>
+<li>What time could they pick up:</li>
+<li>What trailer type will you use for this load (please specify length of trailer and type):</li>
 <li>How many chains does the driver have:</li>
 <li>Does the driver have Personal Protective Equipment (PPE):</li>
 <li>When do you plan on delivering this shipment:</li>
