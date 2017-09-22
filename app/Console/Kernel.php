@@ -35,7 +35,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('followUpScreamerEmail')->weekdays()->at('12:30')->timezone('America/Chicago');
         $schedule->command('weeklyCustomerTouch')->weekly()->thursdays()->at('10:00')->timezone('America/Chicago');
         $schedule->command('currentCarrierInspection')->daily()->at('14:15')->timezone('America/Chicago');
-
+        $schedule->command('biddersCheckOnTheRoad')->weekdays()->at('11:45')->timezone('America/Chicago');
+        $schedule->command('brokersCheckMyStats')->weekdays()->at('11:15')->timezone('America/Chicago');
         
 
         

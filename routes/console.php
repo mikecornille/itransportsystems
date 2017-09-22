@@ -340,3 +340,65 @@ Artisan::command('currentCarrierInspection', function () {
 
 })->describe('Get a daily report on the carriers we are currently working with');
 
+//Daily check for the brokers to check the my stats page
+
+Artisan::command('brokersCheckMyStats', function () {
+	
+	
+	$brokers = ['luke@itransys.com', 'robert@itransys.com', 'aj@itransys.com', 'mattk@itransys.com', 'mikec@itransys.com'];
+
+	
+
+	foreach($brokers as $broker) { 
+
+
+   	$info = ['broke' => $broker ];
+
+
+
+    Mail::send(['html'=>'email.brokersCheckMyStats'], $info, function($message) use ($info){
+
+
+		
+
+        $message->to($info['broke'])->subject("Please Take A Minute To Check Your My Stats Page")
+			->from('mikec@itransys.com', 'Mike Cornille')
+			->replyTo('mikec@itransys.com', 'Mike Cornille')
+			->sender('mikec@itransys.com', 'Mike Cornille');
+
+        });
+
+    }
+
+})->describe('Daily check for the brokers to check the my stats page');
+
+//Daily check for the bidders to check the to be loaded and to be delivered pages
+
+Artisan::command('biddersCheckOnTheRoad', function () {
+	
+	
+	$bidders = ['joem@itransys.com', 'ronc@itransys.com', 'mikeb@itransys.com', 'mikec@itransys.com', 'mattc@itransys.com'];
+
+	foreach($bidders as $bidder) { 
+
+
+   	$info = ['bid' => $bidder ];
+
+
+
+    Mail::send(['html'=>'email.biddersCheckOnTheRoad'], $info, function($message) use ($info){
+
+
+		
+
+        $message->to($info['bid'])->subject("Please take a minute to check the To Be Loaded and To Be Delivered pages ")
+			->from('mikec@itransys.com', 'Mike Cornille')
+			->replyTo('mikec@itransys.com', 'Mike Cornille')
+			->sender('mikec@itransys.com', 'Mike Cornille');
+
+        });
+
+    }
+
+})->describe('Daily check for the bidders to check the to be loaded and to be delivered pages');
+
