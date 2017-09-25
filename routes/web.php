@@ -249,6 +249,7 @@ Route::get('/certInsuranceCompany/{id}', 'HaulerController@certInsuranceCompany'
 Route::get('/certCarrier/{id}', 'HaulerController@certCarrier');
 Route::get('/emailColleagueHauler/{id}', 'HaulerController@emailColleagueHauler');
 Route::get('/sendBrokerCarrierPacket/{id}', 'HaulerController@sendBrokerCarrierPacket');
+Route::get('/carrierLoadDetails/{id}', 'HaulerController@carrierLoadDetails');
 
 
 });

@@ -389,5 +389,39 @@ class HaulerController extends Controller
 return back()->with('status', 'Your email was sent!');
 
     }
+
+    public function carrierLoadDetails($id)
+    {
+
+      $info = Carrier::find($id);
+
+        $current_record = $id;
+        
+        $info = ['info' => $info];
+        
+        Mail::send(['html'=>'email.carrierLoadDetails'], $info, function($message) use ($info){
+            
+            
+            $message->to($info['info']['email'], "Carrier")
+
+            ->cc(\Auth::user()->email, \Auth::user()->name)
+
+            ->subject('Final Steps to Haul Shipment: ' . $info['info']['load_route'] . ' DOT # ' . $info['info']['dot_number'] . ' RATE $' . $info['info']['current_carrier_rate']);
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name)
+
+            ->replyTo(\Auth::user()->email, \Auth::user()->name)
+
+            ->sender(\Auth::user()->email, \Auth::user()->name);
+
+        });
+
+        $error_message = "";
+
+        $flash_message = "The request has been sent to you and the carrier!";
+
+        return $this->goBackWithData($current_record, $flash_message, $error_message);
+
+    }
     
 }

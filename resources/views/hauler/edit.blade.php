@@ -48,6 +48,10 @@
           <li class="divider"></li>
           <li class="dropdown-header">SEND PACKET</li>
           <li><a href="{{ URL::to('/sendBrokerCarrierPacket/' . $gethauler->id) }}"><b>Broker/Carrier Contract</b></a></li>
+
+          <li class="divider"></li>
+          <li class="dropdown-header">REQUEST INFO</li>
+          <li><a href="{{ URL::to('/carrierLoadDetails/' . $gethauler->id) }}"><b>Carrier Load Details</b></a></li>
         </ul>
       </div>
       <div style="margin-top: 10px;" >
