@@ -480,16 +480,25 @@ class LoadlistController extends Controller
 
    		$carrier = Carrier::where('state', $info->pick_state)->where('email', '!=', '')->get();
 		
+    $addresses = $carrier->transform(function($record) {
+      return [
+        'email' => $record->email,
+        'name' => $record->name
+      ];
+    });
   
 
-		$info = ['info' => $info, 'carrier' => $carrier];
+		$info = ['info' => $info];
         
-        Mail::send(['html'=>'email.emailTruckOffer'], $info, function($message) use ($info){
+        Mail::send(['html'=>'email.emailTruckOffer'], $info, function($message) use ($info, $addresses){
             
-            
-           	$message->to(\Auth::user()->email)
+           	$message = $message->to(\Auth::user()->email);
+                foreach($addresses as $address) {
+                  $message = $message->bcc($address['email'], $address['name']);
 
-           	->subject('Live Freight Offering from ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+                }
+
+           	$message->subject('Live Freight Offering from ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
           
             $message->from(\Auth::user()->email, \Auth::user()->name);
 

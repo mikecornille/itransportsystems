@@ -238,12 +238,10 @@ Artisan::command('followUpScreamerEmail', function () {
 Artisan::command('weeklyCustomerTouch', function () {
 	
 	//Get the customers emails
-	$customer_emails = Customer::select('email')->where('weekly_email', 'WEEKLY')->get();
+	$customer_emails = Customer::select('contact as name','email')->where('weekly_email', 'WEEKLY')->get();
 	
 	//Convert results to an array
 	$customer_emails = $customer_emails->toArray();
-
-	
 
 	//Loop through the array of emails
 	foreach($customer_emails as $email){
@@ -254,10 +252,10 @@ Artisan::command('weeklyCustomerTouch', function () {
 
 	//Convert customer records into an array for to pass into email
 	  $info = ['info' => $customer_records->toArray()];
-    
-	  Mail::send(['html'=>'email.weeklyCustomerTouch'], $info, function($message) use ($info, $email){
 
-		$message->to($email['email'])->subject("International Transport Systems, Inc - Outside Hauler Check In")
+	  Mail::send(['html'=>'email.weeklyCustomerTouch'], $info, function($message) use ($info, $email, $customer_emails){
+
+		$message->to('mikec@itransys.com')->bcc($customer_emails)->subject("International Transport Systems, Inc - Outside Hauler Check In")
 			->from('mikec@itransys.com', 'Mike Cornille')
 			->replyTo('mikec@itransys.com', 'Mike Cornille')
 			->sender('mikec@itransys.com', 'Mike Cornille');

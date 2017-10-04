@@ -331,6 +331,11 @@
             <option value="{{ $info->pick_time }}">{{ $info->pick_time }}</option>
           @endif
             <option value="Choose">Choose</option>
+            <option value="0100">0100</option>
+            <option value="0200">0200</option>
+            <option value="0300">0300</option>
+            <option value="0400">0400</option>
+            <option value="0500">0500</option>
             <option value="0600">0600</option>
             <option value="0630">0630</option>
             <option value="0700">0700</option>
@@ -449,6 +454,11 @@
             <option value="{{ $info->delivery_time }}">{{ $info->delivery_time }}</option>
           @endif
             <option value="Choose">Choose</option>
+            <option value="0100">0100</option>
+            <option value="0200">0200</option>
+            <option value="0300">0300</option>
+            <option value="0400">0400</option>
+            <option value="0500">0500</option>
             <option value="0600">0600</option>
             <option value="0630">0630</option>
             <option value="0700">0700</option>
