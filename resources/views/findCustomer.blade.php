@@ -122,6 +122,16 @@
     </div>
 </div>
 
+<div>
+<h3>Insurance Requests</h3>
+<ul>
+<li>dawn.funk@usi.com - Contingent Cargo</li>
+<li>taylor@dukanefinancial.com - Workmans Comp</li> 
+<li>carol.stassen@stasseninsurance.com - General Liability</li>
+<li>carol.stassen@stasseninsurance.com; taylor@dukanefinancial.com; dawn.funk@usi.com;</li>   
+</ul>
+</div>
+
   @foreach ($getCustomers as $customer)
     <ul style="list-style-type: none;">
       <li><u>CUSTOMER: {{ $customer->name }}</u></li>
