@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<h4>Thank you for your interest in this shipment!  Please answer the questions below and a representitive will call you back shortly.  You can copy and paste the below template and fill in the answers.</h4>
+<h4>Thank you for your interest in this shipment!  Please answer the questions below and a representitive will call you back shortly.  Also, fill out the 3rd page of the Broker/Carrier contract found in the attachments and email back.  You can copy and paste the below template and fill in the answers.</h4>
 
 <h3>Company Info</h3>
 <ul>

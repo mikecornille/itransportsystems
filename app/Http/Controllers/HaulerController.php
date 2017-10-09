@@ -370,7 +370,10 @@ class HaulerController extends Controller
 
       Mail::send(['html'=>'email.emailSetUp'], $info, function($message) use ($info){
             
-          
+          $pathToFile = 'Broker_Carrier_Contract.pdf';
+            
+
+             $message->attach($pathToFile);
            
            $message->to($info[1], "Carrier")
 
