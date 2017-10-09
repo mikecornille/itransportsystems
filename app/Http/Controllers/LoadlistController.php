@@ -474,39 +474,56 @@ class LoadlistController extends Controller
 
    public function emailTruckOffer($id) {
 
-   		$info = Loadlist::find($id);
-
-
-
-   		$carrier = Carrier::where('state', $info->pick_state)->where('email', '!=', '')->get();
-		
-    $addresses = $carrier->transform(function($record) {
-      return [
-        'email' => $record->email,
-        'name' => $record->name
-      ];
-    });
+    $info = Loadlist::find($id);
+      $carrier = Carrier::where('state', $info->pick_state)->where('email', '!=', '')->get();
+    
   
-
-		$info = ['info' => $info];
+    $info = ['info' => $info, 'carrier' => $carrier];
         
-        Mail::send(['html'=>'email.emailTruckOffer'], $info, function($message) use ($info, $addresses){
+        Mail::send(['html'=>'email.emailTruckOffer'], $info, function($message) use ($info){
             
-           	$message = $message->to(\Auth::user()->email);
-                foreach($addresses as $address) {
-                  $message = $message->bcc($address['email'], $address['name']);
-
-                }
-
-           	$message->subject('Live Freight Offering from ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+            
+            $message->to(\Auth::user()->email)
+            ->subject('Live Freight Offering from ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
           
             $message->from(\Auth::user()->email, \Auth::user()->name);
+           
+        });
+      return back()->with('status', 'An email containing the subject, body, and all emails have been sent to you!');
+
+  //  		$info = Loadlist::find($id);
+
+
+
+  //  		$carrier = Carrier::where('state', $info->pick_state)->where('email', '!=', '')->get();
+		
+  //   $addresses = $carrier->transform(function($record) {
+  //     return [
+  //       'email' => $record->email,
+  //       'name' => $record->name
+  //     ];
+  //   });
+  
+
+		// $info = ['info' => $info];
+        
+  //       Mail::send(['html'=>'email.emailTruckOffer'], $info, function($message) use ($info, $addresses){
+            
+  //          	$message = $message->to(\Auth::user()->email);
+  //               foreach($addresses as $address) {
+  //                 $message = $message->bcc($address['email'], $address['name']);
+
+  //               }
+
+  //          	$message->subject('Live Freight Offering from ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+          
+  //           $message->from(\Auth::user()->email, \Auth::user()->name);
 
            
 
-        });
+  //       });
 
-    	return back()->with('status', 'An email containing the subject, body, and all emails have been sent to you!');
+  //   	return back()->with('status', 'An email containing the subject, body, and all emails have been sent to you!');
 
    }
    

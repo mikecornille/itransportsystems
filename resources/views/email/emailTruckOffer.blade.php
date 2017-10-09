@@ -15,6 +15,11 @@
 
 <h3>CUT AND PASTE THE EMAILS BELOW IN THE BCC FIELD AND DELETE FROM BODY OF MESSAGE</h3>
 
+@foreach($carrier as $car)
+
+{{ $car->email }};
+
+@endforeach
 
 <p>You did a load for us in the past so I wanted to offer this one to you.</p>
 
