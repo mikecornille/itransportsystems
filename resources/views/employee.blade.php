@@ -68,7 +68,7 @@
                 <td>${{ $post->commission }}</td>
                 <td>${{ $post->bonus }}</td>
                 <td>${{ $post->additional }}</td>
-                <td>{{ $post->employee_payout_notes }}</td>
+                <td>{{ substr($post->employee_payout_notes, 0, 25) }} {{ strlen($post->employee_payout_notes) > 25 ? "..." : "" }}</td>
 		        <td>{{ date('M j, Y g:ia', strtotime($post->created_at)) }}</td>
 		        <td>{!! Html::linkRoute('employee.edit', 'Edit', array($post->id), ['class' => 'btn btn-success btn-block']) !!}</td>
 		        <!-- <td>{!! Form::open(['route' => ['employee.destroy', $post->id], 'method' => 'DELETE']) !!}

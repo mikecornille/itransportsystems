@@ -44,6 +44,6 @@
 {{ Form::text('additional', null, ['class' => 'form-control']) }}
 
 {{ Form::label('employee_payout_notes', 'Notes') }}
-{{ Form::text('employee_payout_notes', null, ['class' => 'form-control']) }}
+{{ Form::textarea('employee_payout_notes', null, ['class' => 'form-control']) }}
 
 {{ Form::submit($submitButtonText, ['class' => 'form-control btn btn-primary']) }}

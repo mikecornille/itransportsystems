@@ -49,8 +49,8 @@ class LoadlistController extends Controller
         
          ]);
 
-        $newload = New Loadlist($request->all());
 
+        $newload = New Loadlist($request->all());
         $newload->special_instructions = $request->special_instructions . ' call or email operations@itransys.com';
 		    $newload->company_contact = "Dispatch";
         $newload->contact_phone = "877-663-2200";

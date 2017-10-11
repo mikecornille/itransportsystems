@@ -36,7 +36,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/272207c0c4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+    
 </head>
 <body>
 @include ('footer')

@@ -407,8 +407,11 @@ class LoadsController extends Controller
 		$delivery_state = $request->input('loads_delivery_state');
 		$trailer_type = $request->input('loads_trailer_type');
 
+		
+
 		$trailerResultsFromLoads = Load::where('pick_state', $pick_state)->where('delivery_state', $delivery_state)->where('trailer_for_search', $trailer_type)->get();
 
+		
 		
 
 		return view('findTrucksFromLoads', compact('trailerResultsFromLoads'));
