@@ -92,7 +92,7 @@
 					<option value="PARTIAL">PARTIAL</option>
 				</select>
 			</div>
-           <!--  <div class="col-xs-3">
+            <div class="col-xs-3">
                 <label class="label-control" for="trailer_type">TRAILER TYPE</label>
                 <select name="trailer_type" id="trailer_type" class="form-control">
 					@if(old('trailer_type'))<option value="{{ old('trailer_type') }}">{{ old('trailer_type') }}</option> @else <option></option> @endif
@@ -116,12 +116,9 @@
 					<option value="V">Van</option>
 					<option value="LAF">Landoll</option>
 				</select>
-            </div> -->
-
-            <div class="col-xs-3">
-                <label class="label-control" for="trailer_type">TRAILER TYPE</label>
-                <input type="text" class="form-control" id="trailer_type" name="trailer_type" value="{{ old('trailer_type') }}">
             </div>
+
+            
         </div>
 
         <div class="row">
