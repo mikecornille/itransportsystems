@@ -573,6 +573,8 @@
         <li class="dropdown-header">AUTO EMAILS</li>
         <li><a href="{{ URL::to('/status/' . $info->id) }}"><b>Get Status</b></a></li>
         <li><a href="{{ URL::to('/pod/' . $info->id) }}"><b>POD Request</b></a></li>
+        <li><a href="{{ URL::to('/ur_safety/' . $info->id) }}"><b>No Touch - UR Safety Info</b></a></li>
+        <li><a href="{{ URL::to('/ur_safety_help/' . $info->id) }}"><b>Hands Held - UR Safety Info</b></a></li>
         <li class="divider"></li>
         <li class="dropdown-header">EMAILS W/MESSAGE</li>
         <li><a href="{{ URL::to('/internal/' . $info->id) }}"><b>Email Internal</b></a></li>

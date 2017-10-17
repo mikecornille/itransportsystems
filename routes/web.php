@@ -208,6 +208,8 @@ Route::get('/emailLoadGroup/{id}', 'LoadsController@emailLoadGroup');
 Route::get('/emailBrushJoe/{id}', 'LoadsController@emailBrushJoe');
 Route::get('/status/{id}', 'LoadsController@getStatusEmail');
 Route::get('/pod/{id}', 'LoadsController@podRequestEmail');
+Route::get('/ur_safety/{id}', 'LoadsController@ur_safety');
+Route::get('/ur_safety_help/{id}', 'LoadsController@ur_safety_help');
 Route::get('/updateCustomer/{id}', 'LoadsController@updateCustomerEmail');
 Route::get('/emailCarrier/{id}', 'LoadsController@emailCarrier');
 Route::post('/edit/getInsurance', 'CarriersController@getInsurance');

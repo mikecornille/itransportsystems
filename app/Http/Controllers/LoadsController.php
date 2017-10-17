@@ -338,6 +338,59 @@ class LoadsController extends Controller
     	return back()->with('status', 'Your POD request has been sent.');
     }
 
+    
+
+    //UR Safety Info No Touch
+
+	public function ur_safety($id)
+	{
+        $info = Load::find($id);
+		
+		$info = ['info' => $info];
+        
+        Mail::send(['html'=>'email.ur_safety'], $info, function($message) use ($info){
+            
+            
+           	$message->to($info['info']['carrier_email'])
+
+           	->subject('United Rentals Safety Info for ' . $info['info']['carrier_name']);
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name)
+
+            ->replyTo(\Auth::user()->email, \Auth::user()->name)
+
+           	->sender(\Auth::user()->email, \Auth::user()->name);
+
+        });
+
+    	return back()->with('status', 'The No Touch United Rentals Safety Info Has Been Sent!');
+    }
+
+//UR Safety Info Hands Held
+
+	public function ur_safety_help($id)
+	{
+        $info = Load::find($id);
+		
+		$info = ['info' => $info];
+        
+        Mail::send(['html'=>'email.ur_safety_help'], $info, function($message) use ($info){
+            
+            
+           	$message->to($info['info']['carrier_email'])
+
+           	->subject('United Rentals Safety Info for ' . $info['info']['carrier_name']);
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name)
+
+            ->replyTo(\Auth::user()->email, \Auth::user()->name)
+
+           	->sender(\Auth::user()->email, \Auth::user()->name);
+
+        });
+
+    	return back()->with('status', 'The Hands Held United Rentals Safety Info Has Been Sent!');
+    }
 	
     //Update customer email
 	
@@ -411,7 +464,7 @@ class LoadsController extends Controller
 
 		$trailerResultsFromLoads = Load::where('pick_state', $pick_state)->where('delivery_state', $delivery_state)->where('trailer_for_search', $trailer_type)->get();
 
-		
+
 		
 
 		return view('findTrucksFromLoads', compact('trailerResultsFromLoads'));
