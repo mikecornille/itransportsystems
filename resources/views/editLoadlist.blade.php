@@ -86,6 +86,7 @@
                         <option value="Hot">Hot</option>
                         <option value="Screaming">Screaming</option>
                         <option value="Fossilized">Fossilized</option>
+                        <option value="Stabber">Stabber</option>
                         <option value="Booked">Booked</option>
                         <option value="Get Numbers">Get Numbers</option>
                         <option value="Quote">Quote</option>

@@ -291,6 +291,7 @@ class LoadlistController extends Controller
 		->orWhere('urgency', '=', 'Caller')
 		->orWhere('urgency', '=', 'Get Numbers')
     ->orWhere('urgency', '=', 'Fossilized')
+    ->orWhere('urgency', '=', 'Stabber')
 		->orderBy('customer', 'desc')
     ->orderBy('pick_city', 'desc')->get();
 
