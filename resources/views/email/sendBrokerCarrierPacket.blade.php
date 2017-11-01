@@ -14,7 +14,7 @@
 <body>
 <p>{{ $info->contact }},</p>
 <p>DOT # {{ $info->dot_number }}</p>
-<p>Attached you will find the Broker/Carrier Contract from International Transport Systems, Inc.  Please fill out the Broker Agreement on the 3rd page and send it back along with your Updated Cargo Insurance showing International Transport Systems as certificate holder (address below), Authority, and W9 by email to {{ \Auth::user()->email }}</p>
+<p>Attached you will find the Broker/Carrier Contract from International Transport Systems, Inc.  Please fill out the Broker Agreement on page 3 and 8 and send it back along with your Updated Cargo Insurance showing International Transport Systems as certificate holder (address below), Authority, and W9 by email to {{ \Auth::user()->email }}</p>
 
 <ul>
 <li>Thank You,</li>
