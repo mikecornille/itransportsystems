@@ -120,7 +120,7 @@
               <option value="lianey@itransys.com">lianey@itransys.com</option>
               <option value="jennifer@itransys.com">jennifer@itransys.com</option>
               <option value="molly@itransys.com">molly@itransys.com</option>
-              <option value="wanda@itransys.com">wanda@itransys.com</option>
+              <option value="danielle@itransys.com">danielle@itransys.com</option>
             </select>
           </div>
         </div> 
