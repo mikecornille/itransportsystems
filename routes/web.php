@@ -256,4 +256,14 @@ Route::get('/carrierLoadDetails/{id}', 'HaulerController@carrierLoadDetails');
 Route::get('countIncomingCalls/{id}', "LoadlistController@countIncomingCalls");
 Route::get('countOutgoingCalls/{id}', "LoadlistController@countOutgoingCalls");
 
+Route::get('/generateTextList', function() {
+    return view('/generateTextList');
+});
+
+Route::get('bookedTextList', "HaulerController@bookedTextList");
+Route::get('loadedTextList', "HaulerController@loadedTextList");
+
+
+
+
 });

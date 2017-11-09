@@ -106,6 +106,8 @@ class LoadlistController extends Controller
         $newload->post_money = "0";
         $newload->company_contact = "Dispatch";
         $newload->contact_phone = "877-663-2200";
+        $newload->countIncomingCalls = 0;
+        $newload->countOutgoingCalls = 0;
         $newload->save();
 
     return redirect('start_bidboard');

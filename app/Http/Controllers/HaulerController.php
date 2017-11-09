@@ -426,5 +426,16 @@ return back()->with('status', 'Your email was sent!');
         return $this->goBackWithData($current_record, $flash_message, $error_message);
 
     }
+
+    public function bookedTextList(){
+
+      dd('hit');
+    }
+
+    public function loadedTextList(){
+
+      dd('hit');
+    }
+    
     
 }
