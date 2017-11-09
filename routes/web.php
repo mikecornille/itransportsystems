@@ -253,5 +253,7 @@ Route::get('/emailColleagueHauler/{id}', 'HaulerController@emailColleagueHauler'
 Route::get('/sendBrokerCarrierPacket/{id}', 'HaulerController@sendBrokerCarrierPacket');
 Route::get('/carrierLoadDetails/{id}', 'HaulerController@carrierLoadDetails');
 
+Route::get('countIncomingCalls/{id}', "LoadlistController@countIncomingCalls");
+Route::get('countOutgoingCalls/{id}', "LoadlistController@countOutgoingCalls");
 
 });

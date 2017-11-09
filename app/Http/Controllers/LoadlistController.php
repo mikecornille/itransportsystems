@@ -54,6 +54,8 @@ class LoadlistController extends Controller
         $newload->special_instructions = $request->special_instructions . ' call or email operations@itransys.com';
 		    $newload->company_contact = "Dispatch";
         $newload->contact_phone = "877-663-2200";
+        $newload->countIncomingCalls = 0;
+        $newload->countOutgoingCalls = 0;
 		    $newload->created_by = strtoupper(\Auth::user()->email);
 		    $newload->save();
 
@@ -526,6 +528,34 @@ class LoadlistController extends Controller
 
   //   	return back()->with('status', 'An email containing the subject, body, and all emails have been sent to you!');
 
+   }
+
+   public function countIncomingCalls($id){
+
+
+      
+      $load = Loadlist::find($id);
+
+      $load->countIncomingCalls = $load->countIncomingCalls + 1;
+
+      $load->save();
+
+      return back()->with('status', '+1 for incoming calls');
+      
+   
+   }
+
+   public function countOutgoingCalls($id){
+
+      $load = Loadlist::find($id);
+
+      $load->countOutgoingCalls = $load->countOutgoingCalls + 1;
+
+      $load->save();
+
+      return back()->with('status', '+1 for outbound calls');
+
+   
    }
    
 

@@ -344,10 +344,8 @@
         <th>Load Type</th>
         <th>Commodity</th>
         <th>Notes</th>
-        <th>Call-Email</th>
+        <th>In | Out</th>
         <th>Dims</th>
-        
-        
         <th>Offer</th>
         <th>Post</th>
         <th>Billing</th>
@@ -403,7 +401,9 @@
 		
 		
 
-		<td class="text-warning">{{ $load->handler !== NULL ? $load->handler : 'unassigned' }}</td>
+		<td><a href="{{ URL::to('/countIncomingCalls/' . $load->id) }}" title="edit">{{ $load->countIncomingCalls }}</a> | <a href="{{ URL::to('/countOutgoingCalls/' . $load->id) }}" title="edit">{{ $load->countOutgoingCalls }}</a></td>
+        
+
         <td>{{ $load->length . '\' x ' . $load->width . '\' x ' . $load->height . '\' ' . $load->weight . 'lbs' }}</td>
         
         
