@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon; 
 use App\Carrier;
 use App\User;
+use App\Load;
 use Illuminate\Support\Facades\Mail;
 use PDF;
 
@@ -429,13 +430,20 @@ return back()->with('status', 'Your email was sent!');
 
     public function bookedTextList(){
 
-      dd('hit');
+      
+      //Booked
+      $loads = Load::where('pick_status', '=', 'Booked')->get();
+
+      //Loaded
+      $picked = Load::where('pick_status', '=', 'Loaded')->where('delivery_status', '=', 'En Route')->get();
+    
+
+      return view('generateTextList', compact($loads, 'loads', $picked, 'picked'));
+
+      
     }
 
-    public function loadedTextList(){
-
-      dd('hit');
-    }
+    
     
     
 }
