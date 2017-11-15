@@ -295,6 +295,9 @@ class HaulerController extends Controller
 
     public function emailColleagueHauler($id)
     {
+
+
+        
         $info = Carrier::find($id);
 
         $current_record = $id;
@@ -303,10 +306,13 @@ class HaulerController extends Controller
         
         Mail::send(['html'=>'email.emailColleagueHauler'], $info, function($message) use ($info){
             
+            date_default_timezone_set("America/Chicago");
+        
+        $currentDate = date('m-d-Y H:i:s');
             
             $message->to($info['info']['email_colleague_carrier'])
 
-            ->subject('Check out this message from Carrier Data DOT # ' . $info['info']['dot_number']);
+            ->subject('Check out this message from Carrier Data DOT # ' . $info['info']['dot_number'] . ' / ' . $currentDate);
           
             $message->from(\Auth::user()->email, \Auth::user()->name)
 

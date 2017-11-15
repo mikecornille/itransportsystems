@@ -653,7 +653,7 @@
   </div>
   <div class="form-group">
     <label for="commodity">Commodity</label>
-    <textarea name="commodity" id="commodity" class="form-control" rows="2">{{ $info->commodity }}</textarea>
+    <textarea name="commodity" id="commodity" class="form-control" rows="4">{{ $info->commodity }}</textarea>
   </div>
 </div>
 
@@ -662,7 +662,7 @@
 <div class="well" id="special_ins_div">
   <div class="form-group">
     <label for="special_ins">Special Instructions (Appear on Rate Con)</label>
-    <textarea name="special_ins" id="special_ins" class="form-control" rows="2">{{ $info->special_ins }}</textarea>
+    <textarea name="special_ins" id="special_ins" class="form-control" rows="4">{{ $info->special_ins }}</textarea>
   </div>
 </div>
 
@@ -672,38 +672,38 @@
 </div>
   <div class="form-group">
     <label for="add_stops">Additional Stops</label>
-    <textarea name="add_stops" id="add_stops" class="form-control" rows="2">{{ $info->add_stops }}</textarea>
+    <textarea name="add_stops" id="add_stops" class="form-control" rows="4">{{ $info->add_stops }}</textarea>
   </div>
 </div>
 <div class="well" id="invoice_notes_div">
   <div class="form-group">
     <label for="invoice_notes">Invoice Notes (Appear on Invoice)</label>
-    <textarea name="invoice_notes" id="invoice_notes" class="form-control" rows="2">{{ $info->invoice_notes }}</textarea>
+    <textarea name="invoice_notes" id="invoice_notes" class="form-control" rows="4">{{ $info->invoice_notes }}</textarea>
   </div>
 </div>
 
 <div class="well" id="internal_notes_div">
   <div class="form-group">
     <label for="internal_notes">Internal Notes (ITS eyes only)</label>
-    <textarea name="internal_notes" id="internal_notes" class="form-control" rows="2">{{ $info->internal_notes }}</textarea>
+    <textarea name="internal_notes" id="internal_notes" class="form-control" rows="4">{{ $info->internal_notes }}</textarea>
   </div>
 </div>
 <div class="well" id="email_internal_section">
   <div class="form-group">
     <label for="internal_message">Email Colleague</label>
-    <textarea name="internal_message" id="internal_message" class="form-control" rows="2">{{ $info->internal_message }}</textarea>
+    <textarea name="internal_message" id="internal_message" class="form-control" rows="4">{{ $info->internal_message }}</textarea>
   </div>
 </div>
 <div class="well" id="message_customer_section">
   <div class="form-group">
     <label for="update_customer_message">Email Customer</label>
-    <textarea name="update_customer_message" id="update_customer_message" class="form-control" rows="2">{{ $info->update_customer_message }}</textarea>
+    <textarea name="update_customer_message" id="update_customer_message" class="form-control" rows="4">{{ $info->update_customer_message }}</textarea>
   </div>
 </div>
 <div class="well" id="message_carrier_section">
   <div class="form-group">
     <label for="carrier_message">Email Carrier</label>
-    <textarea name="carrier_message" id="carrier_message" class="form-control" rows="2">{{ $info->carrier_message }}</textarea>
+    <textarea name="carrier_message" id="carrier_message" class="form-control" rows="4">{{ $info->carrier_message }}</textarea>
   </div>
 </div>
 

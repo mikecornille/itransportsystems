@@ -240,7 +240,7 @@
 </div>
     <div class="form-group">
       <label for="commodity">Commodity</label>
-      <textarea name="commodity" id="commodity" class="form-control" rows="2">{{ old('commodity') }}</textarea>
+      <textarea name="commodity" id="commodity" class="form-control" rows="4">{{ old('commodity') }}</textarea>
     </div>
   </div>
 
@@ -250,7 +250,7 @@
 <div class="well" id="special_ins_div">
     <div class="form-group">
         <label for="special_ins">Special Instructions (Appear on Rate Con)</label>
-        <textarea name="special_ins" id="special_ins" class="form-control" rows="2">{{ old('special_ins') }}</textarea>
+        <textarea name="special_ins" id="special_ins" class="form-control" rows="4">{{ old('special_ins') }}</textarea>
     </div>
 </div>
 
@@ -260,21 +260,21 @@
 </div>
     <div class="form-group">
         <label for="add_stops">Additional Stops</label>
-        <textarea name="add_stops" id="add_stops" class="form-control" rows="2">{{ old('add_stops') }}</textarea>
+        <textarea name="add_stops" id="add_stops" class="form-control" rows="4">{{ old('add_stops') }}</textarea>
     </div>
 </div>
 
 <div class="well" id="internal_notes_div">
     <div class="form-group">
         <label for="internal_notes">Internal Notes (ITS eyes only)</label>
-        <textarea name="internal_notes" id="internal_notes" class="form-control" rows="2">{{ old('internal_notes') }}</textarea>
+        <textarea name="internal_notes" id="internal_notes" class="form-control" rows="4">{{ old('internal_notes') }}</textarea>
     </div>
 </div>
 
 <div class="well" id="invoice_notes_div">
     <div class="form-group">
         <label for="invoice_notes">Invoice Notes (Appear on Invoice)</label>
-        <textarea name="invoice_notes" id="invoice_notes" class="form-control" rows="2">{{ old('invoice_notes') }}</textarea>
+        <textarea name="invoice_notes" id="invoice_notes" class="form-control" rows="4">{{ old('invoice_notes') }}</textarea>
     </div>
 </div>
 
