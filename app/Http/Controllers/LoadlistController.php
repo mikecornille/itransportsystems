@@ -56,7 +56,7 @@ class LoadlistController extends Controller
         $newload->contact_phone = "877-663-2200";
         $newload->countIncomingCalls = 0;
         $newload->countOutgoingCalls = 0;
-        $newload->emailedOut = "N";
+        $newload->emailedOut = 0;
 		    $newload->created_by = strtoupper(\Auth::user()->email);
 		    $newload->save();
 
@@ -109,7 +109,7 @@ class LoadlistController extends Controller
         $newload->contact_phone = "877-663-2200";
         $newload->countIncomingCalls = 0;
         $newload->countOutgoingCalls = 0;
-        $newload->emailedOut = "N";
+        $newload->emailedOut = 0;
         $newload->save();
 
     return redirect('start_bidboard');
@@ -566,11 +566,11 @@ class LoadlistController extends Controller
 
       $load = Loadlist::find($id);
 
-      $load->emailedOut = "Y";
+      $load->emailedOut = $load->emailedOut + 1;
 
       $load->save();
 
-      return back()->with('status', 'Thank you for emailing out!');
+      return back()->with('status', '+1 You added a state');
 
    
    }
