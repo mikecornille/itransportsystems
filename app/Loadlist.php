@@ -34,7 +34,8 @@ class Loadlist extends Model
             'offer_money',
             'post_money',
             'countIncomingCalls',
-            'countOutgoingCalls'
+            'countOutgoingCalls',
+            'emailedOut'
         ];
 
         public function setCreatedByAttribute($value)

@@ -344,7 +344,7 @@
         <th>Load Type</th>
         <th>Commodity</th>
         <th>Notes</th>
-        <th>In | Out</th>
+        <th>In | Out | Ema</th>
         <th>Dims</th>
         <th>Offer</th>
         <th>Post</th>
@@ -401,7 +401,7 @@
 		
 		
 
-		<td><a href="{{ URL::to('/countIncomingCalls/' . $load->id) }}" title="edit">{{ $load->countIncomingCalls }}</a> | <a href="{{ URL::to('/countOutgoingCalls/' . $load->id) }}" title="edit">{{ $load->countOutgoingCalls }}</a></td>
+		<td><a href="{{ URL::to('/countIncomingCalls/' . $load->id) }}" title="edit">{{ $load->countIncomingCalls }}</a> | <a href="{{ URL::to('/countOutgoingCalls/' . $load->id) }}" title="edit">{{ $load->countOutgoingCalls }}</a> | <a href="{{ URL::to('/emailedOut/' . $load->id) }}" title="edit">{{ $load->emailedOut }}</a></td>
         
 
         <td>{{ $load->length . '\' x ' . $load->width . '\' x ' . $load->height . '\' ' . $load->weight . 'lbs' }}</td>
