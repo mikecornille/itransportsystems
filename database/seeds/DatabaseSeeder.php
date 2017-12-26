@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
     {
                  DB::table('users')->insert([
              'name' => 'Mike Cornille',
+             'cell' => '6307501718',
              'email' => 'mikecornille@gmail.com',
-             'cell' => 6307501718,
              'password' => bcrypt('password'),
              'remember_token' => 'SMDvF3btchRMWIHKVWcEjVKvpHrIvCr6FCtwSVsBvkQct39lY5eCibZrgqxW'
          ]);
@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
 
         factory(App\Customer::class,3)->create();
 
-        factory(App\Load::class,3)->create();
+        factory(App\Load::class,6)->create();
 
         factory(App\Equipment::class,3)->create();
 

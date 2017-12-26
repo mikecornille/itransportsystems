@@ -23,8 +23,15 @@ class MaatwebsiteDemoController extends Controller
 		 $start_date = $request->input('start_date');
 		 $end_date = $request->input('end_date');
 
+
 		//$data = Item::get()->toArray();
-		$loads = Load::select('billed_date', 'approved_carrier_invoice', 'its_group', 'id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'customer_name', 'amount_due', 'carrier_name', 'carrier_rate')->whereBetween('billed_date', [$start_date, $end_date])->orderBy('id', 'asc')->get();
+		$loads = Load::select('billed_date', 'approved_carrier_invoice', 'its_group', 'id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'customer_name', 'amount_due', 'carrier_name', 'carrier_rate')
+		->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') > STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+		->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') < STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+		->get();
+
+		//->whereBetween('billed_date', [$start, $end])->orderBy('id', 'asc')->get();
+
 
 		return \Excel::create('Profit_Report_' . $start_date . '_to_' . $end_date, function($excel) use ($loads) {
 			$excel->sheet('mySheet', function($sheet) use ($loads)
