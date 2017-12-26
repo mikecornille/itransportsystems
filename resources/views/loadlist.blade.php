@@ -116,6 +116,7 @@
 					<option value="SDRG">Step Deck or Removable Gooseneck</option>
 					<option value="V">Van</option>
 					<option value="LAF">Landoll</option>
+					<option value="AUTO">Auto Carrier</option>
 				</select>
             </div>
 

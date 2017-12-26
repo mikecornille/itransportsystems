@@ -22,6 +22,9 @@ class DatTransformer extends Transformer {
 			case 'FSD':
 				$trailer = 'FD';
 				break;
+			case 'AUTO':
+				$trailer = 'AC';
+				break;
 			case 'FSDV':
 				$trailer = 'VF';
 				break;
