@@ -345,7 +345,8 @@
         <th>Load Type</th>
         <th>Commodity</th>
         <th>Notes</th>
-        <th>In | Out | Ema</th>
+        <th>I | O | E</th>
+        <th>Name</th>
         <th>Dims</th>
         <th>Offer</th>
         <th>Post</th>
@@ -403,6 +404,24 @@
 		
 
 		<td><a href="{{ URL::to('/countIncomingCalls/' . $load->id) }}" title="edit">{{ $load->countIncomingCalls }}</a> | <a href="{{ URL::to('/countOutgoingCalls/' . $load->id) }}" title="edit">{{ $load->countOutgoingCalls }}</a> | <a href="{{ URL::to('/emailedOut/' . $load->id) }}" title="edit">{{ $load->emailedOut }}</a></td>
+
+		@if ($load->handler === 'AM')
+        <td style="color: #65267F">{{ $load->handler }}</td>
+        
+        @elseif ($load->handler === 'MK')
+        <td style="color: #FA7708">{{ $load->handler }}</td>
+        
+        @elseif ($load->handler === 'LT')
+        <td style="color: #26597F">{{ $load->handler }}</td>
+     
+        
+        @elseif ($load->handler === 'RB')
+        <td style="color: #277F40">{{ $load->handler }}</td>
+
+        @else
+
+        <td class="text-danger">??</td>
+        @endif
         
 
         <td>{{ $load->length . '\' x ' . $load->width . '\' x ' . $load->height . '\' ' . $load->weight . 'lbs' }}</td>

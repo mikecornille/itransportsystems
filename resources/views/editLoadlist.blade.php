@@ -65,10 +65,10 @@
                 <label class="label-control" for="handler">Call-Email</label>
                     <select name="handler" id="handler" class="form-control">
                         <option value="{{ $loadlist->handler }}">{{ $loadlist->handler }}</option>
-                        <option value="mattk@itransys.com">mattk@itransys.com</option>
-                        <option value="robert@itransys.com">robert@itransys.com</option>
-                        <option value="aj@itransys.com">aj@itransys.com</option>
-                        <option value="luke@itransys.com">luke@itransys.com</option>
+                        <option value="MK">MK</option>
+                        <option value="RB">RB</option>
+                        <option value="AM">AM</option>
+                        <option value="LT">LT</option>
                     </select>
             </div>
         </div>
