@@ -181,7 +181,7 @@ Artisan::command('screamerCheck', function () {
 Artisan::command('brokerCallEmail', function () {
 	
 	
-	$brokers = ['luke@itransys.com', 'robert@itransys.com', 'aj@itransys.com', 'mattk@itransys.com'];
+	$brokers = ['LT', 'RB', 'AM', 'MK'];
 
 	
 

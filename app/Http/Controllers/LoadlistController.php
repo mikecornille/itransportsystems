@@ -58,6 +58,11 @@ class LoadlistController extends Controller
         $newload->countOutgoingCalls = 0;
         $newload->emailedOut = 0;
 		    $newload->created_by = strtoupper(\Auth::user()->email);
+
+        $a=array("AM","LT","MK","RB");
+        $random_key=array_rand($a,1);
+        $newload->handler = $a[$random_key];
+
 		    $newload->save();
 
 
