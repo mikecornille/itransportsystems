@@ -182,6 +182,7 @@ Artisan::command('brokerCallEmail', function () {
 	
 	
 	$brokers = ['LT', 'RB', 'AM', 'MK'];
+	
 
 
 	foreach($brokers as $broker) {
@@ -191,6 +192,8 @@ Artisan::command('brokerCallEmail', function () {
 	date_default_timezone_set("America/Chicago");
 
 	$current_date = Carbon\Carbon::now()->format('m/d/Y');
+
+
 
 	$loads = Loadlist::select('pick_city', 'pick_state', 'customer', 'delivery_city', 'delivery_state', 'urgency', 'handler', 'created_by')->where('pick_date', $current_date)->where('handler', $broker)->where('urgency', '!=', 'Booked')->orderBy('pick_city', 'asc')->get();
 
@@ -217,6 +220,8 @@ Artisan::command('brokerCallEmail', function () {
 		    default:
 		        echo "Your favorite color is neither red, blue, nor green!";
 		}
+
+		
 
 
 
