@@ -1648,5 +1648,24 @@ function fmcsaCarrier(carrier) {
     
 }
 
+$(document).on('click', '#push_to_remit', function(){
+
+
+var company = $('#company').val();
+var address = $('#address').val();
+var city = $('#city').val();
+var state = $('#state').val();
+var zip = $('#zip').val();
+
+$('#remit_name').val(company);
+$('#remit_address').val(address); 
+$('#remit_city').val(city); 
+$('#remit_state').val(state); 
+$('#remit_zip').val(zip); 
+
+});
+
+
+
 
 //# sourceMappingURL=main.js.map

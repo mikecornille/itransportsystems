@@ -20,6 +20,8 @@
 			{{ Form::label('mc_number', 'MC #') }}
 	  		{{ Form::text('mc_number', null, ['class' => 'form-control']) }}
 		</div>
+		
+
 		<div class="col-md-3">
 			{{ Form::label('dot_number', 'DOT #') }}
 			<div class="input-group">
@@ -29,13 +31,24 @@
 	  		</span>
 	  		</div>
 		</div>
+
+
 	</div>
 
 	<div class="row">
+	  	
 	  	<div class="col-md-9">
 	  		{{ Form::label('address', 'Address') }}
+	  		<div class="input-group">
 	  		{{ Form::text('address', null, ['class' => 'form-control']) }}
+	  		<span class="input-group-btn">
+	  		<button class="btn btn-primary" id="push_to_remit" type="button">PUSH TO REMIT</button>
+	  		</span>
+	  		</div>
 		</div>
+
+
+
 		<div class="col-md-3">
 			{{ Form::label('contact', 'Contact') }}
 	  		{{ Form::text('contact', null, ['class' => 'form-control']) }}
