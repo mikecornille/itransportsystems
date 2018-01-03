@@ -186,7 +186,21 @@ Artisan::command('brokerCallEmail', function () {
 
 	foreach($brokers as $broker) {
 
-		switch ($broker) 
+		
+
+	date_default_timezone_set("America/Chicago");
+
+	$current_date = Carbon\Carbon::now()->format('m/d/Y');
+
+	$loads = Loadlist::select('pick_city', 'pick_state', 'customer', 'delivery_city', 'delivery_state', 'urgency', 'handler', 'created_by')->where('pick_date', $current_date)->where('handler', $broker)->where('urgency', '!=', 'Booked')->orderBy('pick_city', 'asc')->get();
+
+
+   	
+
+
+   	$info = ['info' => $loads->toArray()];
+
+   	switch ($broker) 
 		{
 		    case "AM":
 		        $broker = 'aj@itransys.com';
@@ -204,22 +218,13 @@ Artisan::command('brokerCallEmail', function () {
 		        echo "Your favorite color is neither red, blue, nor green!";
 		}
 
-	date_default_timezone_set("America/Chicago");
-
-	$current_date = Carbon\Carbon::now()->format('m/d/Y');
-
-	$loads = Loadlist::select('pick_city', 'pick_state', 'customer', 'delivery_city', 'delivery_state', 'urgency', 'handler', 'created_by')->where('pick_date', $current_date)->where('handler', $broker)->where('urgency', '!=', 'Booked')->orderBy('pick_city', 'asc')->get();
-
-
-   	$info = ['info' => $loads->toArray()];
-
 
 
     Mail::send(['html'=>'email.brokerCallEmail'], $info, function($message) use ($info){
 
 		
 
-        $message->to($info['info'][0]['handler'])->subject("Call Email Load Updates")
+        $message->to($broker)->subject("Call Email Load Updates")
 			->from('mikec@itransys.com', 'Mike Cornille')
 			->replyTo('mikec@itransys.com', 'Mike Cornille')
 			->sender('mikec@itransys.com', 'Mike Cornille');
