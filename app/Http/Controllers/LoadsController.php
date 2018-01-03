@@ -133,6 +133,20 @@ class LoadsController extends Controller
 		
 	}
 
+	public function duplicateInvoice($id)
+	{
+
+		date_default_timezone_set("America/Chicago");
+    
+    	$load = Load::find($id);
+		$newLoad = $load->replicate();
+		$newLoad->save();
+
+		return back()->with('status', 'Your load was duplicated!');
+
+
+	}
+
 	
 
 	

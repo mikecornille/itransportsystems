@@ -586,8 +586,15 @@
         <li class="dropdown-header">TEXT MESSAGE</li>
         <li><a href="{{ URL::to('/textLoadInfo/' . $info->id) }}"><b>Text Load You</b></a></li>
         <li><a href="{{ URL::to('/textAndEmailRollbackInfo/' . $info->id) }}"><b>Rollback Info</b></a></li>
-        
-        
+
+        @if($info->carrier_name == NULL)
+
+        <li class="divider"></li>
+        <li class="dropdown-header">DUPLICATE INVOICE</li>
+        <li><a onclick="return confirm('YOU ARE DUPLICATING AN INVOICE, ARE YOU SURE?  THIS CANNOT BE UNDONE.')" href="{{ URL::to('/duplicateInvoice/' . $info->id) }}"><b>Duplicate Invoice</b></a></li>
+      
+        @endif
+      
       </ul>
     </div>
 

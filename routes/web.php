@@ -167,6 +167,7 @@ Route::get('/personal_status_table', 'LoadsController@personal_status_table'); /
 Route::get('/personal_status_loaded_table', 'LoadsController@personal_status_loaded_table'); //FOR DATATABLES
 Route::get('/edit/{id}', 'LoadsController@edit');
 Route::patch('load/{load}', 'LoadsController@update');
+Route::get('duplicateInvoice/{id}', "LoadsController@duplicateInvoice");
 
 //CREATE NEW DATABASE RECORDS
 Route::post('/newCustomer', 'CustomersController@store');
@@ -193,6 +194,8 @@ Route::patch('editLoadlist/{loadlist}', "LoadlistController@updateLoadlist");
 Route::get('deleteLoadlist/{id}', "LoadlistController@destroy");
 Route::get('duplicateLoadlist/{id}', "LoadlistController@duplicate");
 Route::get('newDateLoadlist/{id}', "LoadlistController@newDateLoadlist");
+
+
 
 
 Route::get('/emailLoad/{id}', 'LoadlistController@emailLoad');
