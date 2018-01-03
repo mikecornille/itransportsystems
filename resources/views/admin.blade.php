@@ -56,6 +56,7 @@
 			<li class="text-left">Ambassador for {{ $mkAmbassador }} companies </li>
 			<li class="text-left">{{ $mkRateCons }} Rate Confirmations </li>
 			<li class="text-left">{{ $mkInvoices }} Invoices </li>
+			<li class="text-left">{{ $mkCalledOut }} Calls Out </li>
 			<li class="text-left">Responsible for ${{ $mkMoneyBilled }}.00 billed to customers and paid out ${{ $mkMoneyPaidOut }}.00 to carriers for a margin of {{ $mkPercent }}%</li>
 		</ul>
     </div>
@@ -117,15 +118,6 @@
 			<li class="text-left">{{ $rcRateCons }} Rate Confirmations </li>
 			<li class="text-left">{{ $rcInvoices }} Invoices </li>
 			<li class="text-left">Responsible for ${{ $rcMoneyBilled }}.00 billed to customers and paid out ${{ $rcMoneyPaidOut }}.00 to carriers for a margin of {{ $rcPercent }}%</li>
-		</ul>
-    </div>
-
-     <div>
-		<ul style="list-style-type: none;">
-		    <li class="text-left"><u>Wanda Giovingo</u></li>
-			<li class="text-left">Ambassador for {{ $wgAmbassador }} companies </li>
-			<li class="text-left">{{ $wgInvoices }} Invoices </li>
-			<li class="text-left">Responsible for ${{ $wgMoneyBilled }}.00 billed to customers and paid out ${{ $wgMoneyPaidOut }}.00 to carriers</li>
 		</ul>
     </div>
 

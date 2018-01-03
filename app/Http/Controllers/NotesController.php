@@ -6,6 +6,8 @@ use App\Notes;
 
 use App\Load;
 
+use App\Loadlist;
+
 use App\Budget;
 
 use App\Customer;
@@ -241,6 +243,7 @@ class NotesController extends Controller
 		$mkMoneyBilled = Load::where('rate_con_creator', $kingEmail)->whereBetween('billed_date', [$start_date, $end_date])->sum('amount_due');
 		//How much money the employee was resposible that was paid to carriers
 		$mkMoneyPaidOut = Load::where('rate_con_creator', $kingEmail)->whereBetween('billed_date', [$start_date, $end_date])->sum('carrier_rate');
+		$mkCalledOut = Loadlist::where('handler', 'MK')->whereMonth('created_at', $month["month"])->sum('countOutgoingCalls');
 		
 
 		$mkAmbassador = Customer::where('customer_ambassador', $kingEmail)->count();
@@ -429,6 +432,7 @@ class NotesController extends Controller
 			->with('mkMoneyPaidOut', $mkMoneyPaidOut)
 			->with('mkPercent', $mkPercent)
 			->with('mkInvoices', $mkInvoices)
+			->with('mkCalledOut', $mkCalledOut)
 			->with('ltNotes', $ltNotes)
 			->with('ltRateCons', $ltRateCons)
 			->with('ltMoneyBilled', $ltMoneyBilled)
@@ -460,16 +464,11 @@ class NotesController extends Controller
 			->with('mbMoneyPaidOut', $mbMoneyPaidOut)
 			->with('mbPercent', $mbPercent)
 			->with('mbInvoices', $mbInvoices)
-			->with('wgMoneyBilled', $wgMoneyBilled)
-			->with('wgMoneyPaidOut', $wgMoneyPaidOut)
-			// ->with('wgPercent', $wgPercent)
-			->with('wgInvoices', $wgInvoices)
 			->with('totalBilledForMonth', $totalBilledForMonth)
 			->with('totalPaidForMonth', $totalPaidForMonth)
 			->with('totalProfitForMonth', $totalProfitForMonth)
 			->with('rbAmbassador', $rbAmbassador)
 			->with('mkAmbassador', $mkAmbassador)
-			->with('wgAmbassador', $wgAmbassador)
 			->with('ajAmbassador', $ajAmbassador)
 			->with('jmAmbassador', $jmAmbassador)
 			->with('mcAmbassador', $mcAmbassador)
