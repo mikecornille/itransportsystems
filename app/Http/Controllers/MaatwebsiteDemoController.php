@@ -116,7 +116,7 @@ class MaatwebsiteDemoController extends Controller
 
         
 
-       	$recipients = ['joem@itransys.com', 'mikeb@itransys.com', 'robert@itransys.com', 'loads@truckstop.com', 'mikec@itransys.com', 'mattc@itransys.com'];
+       	$recipients = ['joem@itransys.com', 'mikeb@itransys.com', 'robert@itransys.com', 'loads@truckstop.com', 'mikec@itransys.com', 'mattc@itransys.com', 'mattk@itransys.com', 'luke@itransys.com', 'aj@itransys.com'];
 
         $message->to($recipients)->subject('Truckstop Posted')
 			->from(\Auth::user()->email, \Auth::user()->name)
