@@ -220,7 +220,7 @@ Artisan::command('brokerCallEmail', function () {
 
 
 
-    Mail::send(['html'=>'email.brokerCallEmail'], $info, function($message) use ($info){
+    Mail::send(['html'=>'email.brokerCallEmail'], $info, function($message) use ($info, $broker){
 
 		
 
