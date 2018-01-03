@@ -45,6 +45,7 @@
 			<li class="text-left">Ambassador for {{ $rbAmbassador }} companies </li>
 			<li class="text-left">{{ $rbRateCons }} Rate Confirmations </li>
 			<li class="text-left">{{ $rbInvoices }} Invoices </li>
+			<li class="text-left">{{ $rbCalledOut }} Calls Out </li>
 			<li class="text-left">Responsible for ${{ $rbMoneyBilled }}.00 billed to customers and paid out ${{ $rbMoneyPaidOut }}.00 to carriers for a margin of {{ $rbPercent }}%</li>
 		</ul>
     </div>
@@ -68,6 +69,7 @@
 			<li class="text-left">Ambassador for {{ $ajAmbassador }} companies </li>
 			<li class="text-left">{{ $ajRateCons }} Rate Confirmations </li>
 			<li class="text-left">{{ $ajInvoices }} Invoices </li>
+			<li class="text-left">{{ $ajCalledOut }} Calls Out </li>
 			<li class="text-left">Responsible for ${{ $ajMoneyBilled }}.00 billed to customers and paid out ${{ $ajMoneyPaidOut }}.00 to carriers for a margin of {{ $ajPercent }}%</li>
 		</ul>
     </div>
@@ -77,6 +79,7 @@
 		    <li class="text-left"><u>Luke Thompson</u></li>
 			<li class="text-left">{{ $ltNotes }} notes </li>
 			<li class="text-left">{{ $ltRateCons }} Rate Confirmations </li>
+			<li class="text-left">{{ $ltCalledOut }} Calls Out </li>
 			<li class="text-left">Responsible for ${{ $ltMoneyBilled }}.00 billed to customers and paid out ${{ $ltMoneyPaidOut }}.00 to carriers for a margin of {{ $ltPercent }}%</li>
 		</ul>
     </div>

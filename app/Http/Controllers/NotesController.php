@@ -185,6 +185,7 @@ class NotesController extends Controller
 		$rbMoneyBilled = Load::where('rate_con_creator', $robertEmail)->whereBetween('billed_date', [$start_date, $end_date])->sum('amount_due');
 		//How much money the employee was resposible that was paid to carriers
 		$rbMoneyPaidOut = Load::where('rate_con_creator', $robertEmail)->whereBetween('billed_date', [$start_date, $end_date])->sum('carrier_rate');
+		$rbCalledOut = Loadlist::where('handler', 'RB')->whereMonth('created_at', $month["month"])->sum('countOutgoingCalls');
 		
 
 		$rbAmbassador = Customer::where('customer_ambassador', $robertEmail)->count();
@@ -214,6 +215,7 @@ class NotesController extends Controller
 		$ltMoneyBilled = Load::where('rate_con_creator', $lukeEmail)->whereBetween('billed_date', [$start_date, $end_date])->sum('amount_due');
 		//How much money the employee was resposible that was paid to carriers
 		$ltMoneyPaidOut = Load::where('rate_con_creator', $lukeEmail)->whereBetween('billed_date', [$start_date, $end_date])->sum('carrier_rate');
+		$ltCalledOut = Loadlist::where('handler', 'LT')->whereMonth('created_at', $month["month"])->sum('countOutgoingCalls');
 		
 		
 		if (!isset($start_date))
@@ -273,6 +275,7 @@ class NotesController extends Controller
 		$ajMoneyBilled = Load::where('rate_con_creator', $MesikEmail)->whereBetween('billed_date', [$start_date, $end_date])->sum('amount_due');
 		//How much money the employee was resposible that was paid to carriers
 		$ajMoneyPaidOut = Load::where('rate_con_creator', $MesikEmail)->whereBetween('billed_date', [$start_date, $end_date])->sum('carrier_rate');
+		$ajCalledOut = Loadlist::where('handler', 'AM')->whereMonth('created_at', $month["month"])->sum('countOutgoingCalls');
 		
 
 		$ajAmbassador = Customer::where('customer_ambassador', $MesikEmail)->count();
@@ -433,6 +436,9 @@ class NotesController extends Controller
 			->with('mkPercent', $mkPercent)
 			->with('mkInvoices', $mkInvoices)
 			->with('mkCalledOut', $mkCalledOut)
+			->with('ajCalledOut', $ajCalledOut)
+			->with('rbCalledOut', $rbCalledOut)
+			->with('ltCalledOut', $ltCalledOut)
 			->with('ltNotes', $ltNotes)
 			->with('ltRateCons', $ltRateCons)
 			->with('ltMoneyBilled', $ltMoneyBilled)
