@@ -183,11 +183,27 @@ Artisan::command('brokerCallEmail', function () {
 	
 	$brokers = ['LT', 'RB', 'AM', 'MK'];
 
-	
 
-	foreach($brokers as $broker) { 
+	foreach($brokers as $broker) {
 
-	
+		switch ($broker) 
+		{
+		    case "AM":
+		        $broker = 'aj@itransys.com';
+		        break;
+		    case "LT":
+		        $broker = 'luke@itransys.com';
+		        break;
+		    case "MK":
+		        $broker = 'mattk@itransys.com';
+		        break;
+		    case "RB":
+		        $broker = 'robert@itransys.com';
+		        break;
+		    default:
+		        echo "Your favorite color is neither red, blue, nor green!";
+		}
+
 	date_default_timezone_set("America/Chicago");
 
 	$current_date = Carbon\Carbon::now()->format('m/d/Y');
