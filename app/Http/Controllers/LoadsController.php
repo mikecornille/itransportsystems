@@ -12,7 +12,10 @@ use Illuminate\Support\Collection;
 
 use PDF;
 
+use Carbon\Carbon; 
+
 use Illuminate\Support\Facades\Mail;
+
 
 use Laracasts\Utilities\JavaScript\JavaScriptFacade as Javascript;
 
@@ -139,7 +142,9 @@ class LoadsController extends Controller
 		date_default_timezone_set("America/Chicago");
     
     	$load = Load::find($id);
+    	$load->creation_date = Carbon::now()->format('m/d/Y');
 		$newLoad = $load->replicate();
+		
 		$newLoad->save();
 
 		return back()->with('status', 'Your load was duplicated!');
