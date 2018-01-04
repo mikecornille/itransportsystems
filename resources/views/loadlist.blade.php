@@ -350,6 +350,7 @@
         <th>Dims</th>
         <th>Offer</th>
         <th>Post</th>
+        <th>Mile</th>
         <th>Billing</th>
         <th>Margin</th>
         <th>Actions</th>
@@ -382,6 +383,11 @@
 			$total_fuel_cost = $diesel_fuel_gallon * $number_of_gallons;
 
 			$total_fuel_cost_rounded = round((float)$total_fuel_cost * 1 );
+
+
+			$per_mile = $load->offer_money / $load->miles;
+			$rounded_per_mile = round($per_mile, 2);
+
 		?>
 		
       <tr class="loadlist_row alt-colors">
@@ -438,6 +444,7 @@
         
         <td class="offering_rate">${{ $load->offer_money }}</td>
         <td class="margin">${{ $load->post_money }}</td>
+        <td class="per_mile">${{ $rounded_per_mile }}</td>
         <td class="billing_rate">${{ $load->billing_money }}</td>
         <td class="margin">{{ $profitMargin }}%</td>
         <td><a href="{{ URL::to('/editLoadlist/' . $load->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $load->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load->customer . ' ' . (date("m/d g:ia", strtotime($load->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $load->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="#" data-toggle="modal" data-target="#noteModal" title="make note"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $load->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailLoad/' . $load->id) }}" title="email"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailTruckOffer/' . $load->id) }}" title="email truck template"><span class="glyphicon glyphicon-road" aria-hidden="true"></span></a> | <a onclick="return confirm('Are you sure?')" href="{{ URL::to('/deleteLoadlist/' . $load->id) }}" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
