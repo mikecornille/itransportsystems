@@ -373,11 +373,20 @@
 			
 			$name = explode("@", $load->created_by);
 			$email_prefix = $name[0];
+
+
+			$diesel_fuel_gallon = 2.90;
+			$miles_per_gallon = 7; 
+			
+			$number_of_gallons = $load->miles / $miles_per_gallon;
+			$total_fuel_cost = $diesel_fuel_gallon * $number_of_gallons;
+
+			$total_fuel_cost_rounded = round((float)$total_fuel_cost * 1 );
 		?>
 		
       <tr class="loadlist_row alt-colors">
         <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
-        <td>{{ $load->delivery_city . ', ' . $load->delivery_state . ' (' . $load->miles . 'mi.)' }}</td>
+        <td>{{ $load->delivery_city . ', ' . $load->delivery_state . ' (' . $load->miles . 'mi : ' . '$' . $total_fuel_cost_rounded . ')' }}</td>
         <td>{{ $load->trailer_type }}</td>
         <td>{{ date("m/d", strtotime($load->pick_date)) . ' ' . (date("g:ia", strtotime($load->pick_time))) }}</td>
         <td>{{ date("m/d", strtotime($load->delivery_date)) . ' ' . (date("g:ia", strtotime($load->delivery_time))) }}</td>
