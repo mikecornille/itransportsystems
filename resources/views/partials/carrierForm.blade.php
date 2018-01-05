@@ -18,7 +18,12 @@
 		</div>
 		<div class="col-md-3">
 			{{ Form::label('mc_number', 'MC #') }}
+			<div class="input-group">
 	  		{{ Form::text('mc_number', null, ['class' => 'form-control']) }}
+	  		<span class="input-group-btn">
+	  		<button class="btn btn-primary" id="new_carrier_fmcsa" type="button">DOT LINK</button>
+	  		</span>
+	  		</div>
 		</div>
 		
 
@@ -29,6 +34,7 @@
 	  		<span class="input-group-btn">
 	  		<button class="btn btn-primary" id="dot_number_find" type="button">FIND</button>
 	  		</span>
+	  		
 	  		</div>
 		</div>
 

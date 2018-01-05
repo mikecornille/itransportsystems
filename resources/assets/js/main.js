@@ -1665,5 +1665,14 @@ $('#remit_zip').val(zip);
 
 });
 
+$(document).on('click', '#new_carrier_fmcsa', function(){
+
+
+var dot_number = $('#dot_number').val();
+
+window.open("https://ai.fmcsa.dot.gov/SMS/Carrier/" + dot_number + "/Overview.aspx");
+
+});
+
 
 
