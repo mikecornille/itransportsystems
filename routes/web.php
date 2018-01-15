@@ -151,6 +151,8 @@ Route::post('/exportCarrierBills/{type}', 'MaatwebsiteDemoController@exportCarri
 
 Route::get('/truckstopPost', 'MaatwebsiteDemoController@truckstopPost');
 
+Route::get('/truckerPathPost', 'MaatwebsiteDemoController@truckerPathPost');
+
 Route::get('/datPost', 'MaatwebsiteDemoController@datPost');
 
 

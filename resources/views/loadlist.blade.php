@@ -58,6 +58,7 @@
 			  <ul class="dropdown-menu">
 			    <li><a href="{{ URL::to('/truckstopPost') }}">TRUCKSTOP</a></li>
 			    <li><a href="{{ URL::to('/datPost') }}">DAT</a></li>
+			    <li><a href="{{ URL::to('/truckerPathPost') }}">TRUCKER PATH</a></li>
 			    <li><a href="{{ URL::to('/searchLoadlist') }}">SEARCH LOADLIST</a></li>
 			    
 			  </ul>
