@@ -187,6 +187,24 @@ public function truckerPathPost(\App\Transformers\TruckerPathTransformer $transf
 
         fclose($fp);
 
+         $info = ["foo" => "bar", "bar" => "foo"];
+
+
+       Mail::send(['html'=>'email.body'], $info, function($message) use ($info){
+
+        
+
+       	$recipients = ['mikec@itransys.com'];
+
+        $message->to($recipients)->subject('Truck Path has been Clicked')
+			->from(\Auth::user()->email, \Auth::user()->name)
+			->replyTo(\Auth::user()->email, \Auth::user()->name)
+			->sender(\Auth::user()->email, \Auth::user()->name);
+
+        	
+
+        });
+
             return response()->download($savePath);
 
 }
