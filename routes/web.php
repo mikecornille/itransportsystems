@@ -218,6 +218,7 @@ Route::get('/ur_safety_help/{id}', 'LoadsController@ur_safety_help');
 Route::get('/updateCustomer/{id}', 'LoadsController@updateCustomerEmail');
 Route::get('/emailCarrier/{id}', 'LoadsController@emailCarrier');
 Route::post('/edit/getInsurance', 'CarriersController@getInsurance');
+Route::get('/emailShipper/{id}', 'LoadsController@emailShipper');
 //FROM THE FIND CARRIER PAGE
 Route::post('/getInsurance', 'CarriersController@getInsurance');
 Route::post('/edit/sendCarrierInfo', 'CarriersController@sendCarrierInfo');

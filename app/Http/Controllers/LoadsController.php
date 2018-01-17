@@ -472,6 +472,31 @@ class LoadsController extends Controller
 		// return view('/edit/url?id=' . $request->input('id'))
   //   }
 
+    public function emailShipper($id)
+    {
+    	$info = Load::find($id);
+		
+		$info = ['info' => $info];
+
+		Mail::send(['html'=>'email.emailShipper'], $info, function($message) use ($info){
+            
+            
+           	$message->to(\Auth::user()->email)
+
+           	->subject('Carrier Info on Shipment from ' . $info['info']['pick_city'] .  ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state'] . ' BOL # ' . $info['info']['bol_number']);
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name)
+
+            ->replyTo(\Auth::user()->email, \Auth::user()->name)
+
+           	->sender(\Auth::user()->email, \Auth::user()->name);
+
+        });
+
+    	return back()->with('status', 'Your carrier has been emailed.');
+
+    }
+
     public function findTrucksFromLoads(Request $request = NULL)
 	{
 

@@ -582,6 +582,7 @@
         <li><a href="{{ URL::to('/emailBrushJoe/' . $info->id) }}"><b>Email Joe, Brush, RC Creator</b></a></li>
         <li><a href="{{ URL::to('/updateCustomer/' . $info->id) }}"><b>Email Customer</b></a></li>
         <li><a href="{{ URL::to('/emailCarrier/' . $info->id) }}"><b>Email Carrier</b></a></li>
+        <li><a href="{{ URL::to('/emailShipper/' . $info->id) }}"><b>Generate Email Shipper/Consignee</b></a></li>
         <li class="divider"></li>
         <li class="dropdown-header">TEXT MESSAGE</li>
         <li><a href="{{ URL::to('/textLoadInfo/' . $info->id) }}"><b>Text Load You</b></a></li>
