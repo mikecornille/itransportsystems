@@ -481,7 +481,7 @@ class LoadsController extends Controller
 		Mail::send(['html'=>'email.emailShipper'], $info, function($message) use ($info){
             
             
-           	$message->to(\Auth::user()->email)
+           	$message->to(\Auth::user()->email)->cc('mikec@itransys.com')
 
            	->subject('Carrier Info on Shipment from ' . $info['info']['pick_city'] .  ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state'] . ' BOL # ' . $info['info']['bol_number']);
           
