@@ -88,6 +88,10 @@
     <td><b>PHONE:</b> {{ $info->pick_phone }}</td>
     <td><b>PHONE:</b> {{ $info->delivery_phone }}</td>
   </tr>
+  <tr>
+    <td><b>EMAIL:</b> {{ $info->pick_email }}</td>
+    <td><b>EMAIL:</b> {{ $info->delivery_email }}</td>
+  </tr>
 </table>
 
 
