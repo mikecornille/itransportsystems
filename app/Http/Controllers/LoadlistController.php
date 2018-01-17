@@ -115,6 +115,11 @@ class LoadlistController extends Controller
         $newload->countIncomingCalls = 0;
         $newload->countOutgoingCalls = 0;
         $newload->emailedOut = 0;
+
+        $a=array("AM","LT","MK","RB");
+        $random_key=array_rand($a,1);
+        $newload->handler = $a[$random_key];
+        
         $newload->save();
 
     return redirect('start_bidboard');
