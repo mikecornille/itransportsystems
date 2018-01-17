@@ -493,7 +493,7 @@ class LoadsController extends Controller
 
         });
 
-    	return back()->with('status', 'Your carrier has been emailed.');
+    	return back()->with('status', 'You have been emailed, please edit and forward to shipper/consignee.');
 
     }
 
