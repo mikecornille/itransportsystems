@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Load;
 
+use App\Text;
+
 use App\Loadlist;
 
 use Illuminate\Http\Request;
