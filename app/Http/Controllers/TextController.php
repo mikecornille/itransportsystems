@@ -93,14 +93,15 @@ class TextController extends Controller
     public function receive(Request $request)
     {
         $phoneNumber = substr($request->input('From'),-10);
+
+        $load = \App\Load::where('carrier_driver_cell', 'LIKE', '%' . $phoneNumber . '%')->first();
         
-
-
         $text = \App\Text::create([
             'message' => $request->input('Body'),
             'fromCell' => $phoneNumber,
             'sentAt' => date("Y-m-d H:i:s"),
-            'toCell' => "14159697014"
+            'toCell' => "14159697014",
+            'pro' => $load->id
         ]);
     }
 }
