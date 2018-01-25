@@ -719,13 +719,11 @@
 
 
 <div>
-
+<ul>
 @foreach($text_message as $text)
-
-{{ $text->message . ' ' . $text->sentAt }}
-
+  <li>Body: {{ $text->message . ' Sent At: ' . $text->sentAt }}</li>
 @endforeach
-
+</ul>
 </div>
 
 

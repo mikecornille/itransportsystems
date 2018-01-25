@@ -172,7 +172,7 @@ class LoadsController extends Controller
 
 		$info = Load::find($request->input('id'));
 
-		$text_message = Text::where('pro', $request->input('id'))->get();
+		$text_message = Text::where('pro', $request->input('id'))->orderBy('sentAt', 'asc')->get();
 		
 		return view('edit', compact('info', 'text_message'));	
 		
