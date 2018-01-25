@@ -718,7 +718,15 @@
 </form>
 
 
+<div>
 
+@foreach($text_message as $text)
+
+{{ $text->message . ' ' . $text->sentAt }}
+
+@endforeach
+
+</div>
 
 
 <div class="container-fluid">

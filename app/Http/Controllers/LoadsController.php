@@ -125,6 +125,9 @@ class LoadsController extends Controller
 
         $newload = New Load($request->all());
 		
+
+
+
 		$newload->its_group = "ITS";
 		$newload->pick_status = "Open";
 		$newload->delivery_status = "Open";
@@ -166,7 +169,10 @@ class LoadsController extends Controller
     ]);
 
 		$info = Load::find($request->input('id'));
-		return view('edit', compact('info'));	
+
+		$text_message = Text::find($request->input('id'));
+		
+		return view('edit', compact('info', 'text_message'));	
 		
 	}
 
