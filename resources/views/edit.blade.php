@@ -720,11 +720,7 @@
 
 <div>
 
-@foreach($text_message as $text)
-
-{{ $text->message . ' ' . $text->sentAt }}
-
-@endforeach
+  
 
 </div>
 
