@@ -721,7 +721,7 @@
 <div>
 <ul>
 @foreach($text_message as $text)
-  <li>Body: {{ $text->message . ' Sent At: ' . $text->sentAt }}</li>
+  <li>Body: {{ $text->message . ' Sent At: ' . $text->sentAt . ' From: ' . $text->fromCell }}</li>
 @endforeach
 </ul>
 </div>
