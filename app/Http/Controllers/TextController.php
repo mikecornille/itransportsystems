@@ -100,7 +100,7 @@ class TextController extends Controller
             'message' => $request->input('Body'),
             'fromCell' => $phoneNumber,
             'sentAt' => date("Y-m-d H:i:s"),
-            'toCell' => "14159697014";
+            'toCell' => "14159697014"
         ]);
     }
 }
