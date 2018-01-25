@@ -93,14 +93,13 @@ class TextController extends Controller
         $phoneNumber = substr($request->input('From'),-10);
         
 
-        $loadAssociatedWith = Load::where('carrier_driver_cell', 'LIKE', '%' . $phoneNumber . '%')->get();
+        $newload = New Text();
+        
+        $newload->fromCell = $phoneNumber;
+        $newload->message = $request->input('Body');
+        
+        $newload->creation_date = date('m/d/Y');
 
-        $text = Text::create([
-            'message' => $request->input('Body'),
-            'toCell' => "14159697014",
-            'fromCell' => $request->input('From'),
-            'pro' => $loadAssociatedWith->id,
-            'sentAt' => date("Y-m-d H:i:s")
-        ]);
+        $newload->save();
     }
 }
