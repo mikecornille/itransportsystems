@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Text;
+
+use App\Load;
+
 class TextController extends Controller
 {
     /**
@@ -89,9 +93,9 @@ class TextController extends Controller
         $phoneNumber = substr($request->input('From'),-10);
         
 
-        $loadAssociatedWith = \App\Load::where('carrier_driver_cell', 'LIKE', '%' . $phoneNumber . '%')->where('delivery_status', '!=', 'Delivered')->first();
+        $loadAssociatedWith = Load::where('carrier_driver_cell', 'LIKE', '%' . $phoneNumber . '%')->get();
 
-        $text = \App\Text::create([
+        $text = Text::create([
             'message' => $request->input('Body'),
             'toCell' => "14159697014",
             'fromCell' => $request->input('From'),

@@ -15,11 +15,11 @@ class CreateTextsTable extends Migration
     {
         Schema::create('texts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('message');
-            $table->string('toCell');
-            $table->integer('pro');
-            $table->string('fromCell');
-            $table->dateTime('sentAt');
+            $table->string('message')->nullable();
+            $table->string('toCell')->nullable();
+            $table->integer('pro')->nullable();
+            $table->string('fromCell')->nullable();
+            $table->dateTime('sentAt')->nullable();
             $table->timestamps();
         });
     }
