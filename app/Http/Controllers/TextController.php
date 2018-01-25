@@ -94,11 +94,12 @@ class TextController extends Controller
     {
         $phoneNumber = substr($request->input('From'),-10);
         
-        dd($phoneNumber);
+
 
         $text = \App\Text::create([
             'message' => $request->input('Body'),
-            'fromCell' => $request->input('From')
+            'fromCell' => $phoneNumber,
+            'sentAt' => date("Y-m-d H:i:s")
         ]);
     }
 }
