@@ -92,6 +92,9 @@ class TextController extends Controller
 
     public function receive(Request $request)
     {
+
+        date_default_timezone_set("America/Chicago");
+        
         $phoneNumber = substr($request->input('From'),-10);
 
         $load = \App\Load::where('carrier_driver_cell', 'LIKE', '%' . $phoneNumber . '%')->first();
