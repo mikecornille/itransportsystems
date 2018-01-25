@@ -92,18 +92,12 @@ class TextController extends Controller
 
     public function receive(Request $request)
     {
-        date_default_timezone_set("America/Chicago");
-        //Get the incoming phone number to query the db correctly
         $phoneNumber = substr($request->input('From'),-10);
         
 
-        $newload = New Text();
-        
-        $newload->fromCell = $phoneNumber;
-        $newload->message = $request->input('Body');
-        
-        $newload->creation_date = date('m/d/Y');
-
-        $newload->save();
+        $text = \App\Text::create([
+            'message' => $request->input('Body'),
+            'fromCell' => $request->input('From')
+        ]);
     }
 }
