@@ -99,7 +99,8 @@ class TextController extends Controller
         $text = \App\Text::create([
             'message' => $request->input('Body'),
             'fromCell' => $phoneNumber,
-            'sentAt' => date("Y-m-d H:i:s")
+            'sentAt' => date("Y-m-d H:i:s"),
+            'toCell' => "14159697014";
         ]);
     }
 }
