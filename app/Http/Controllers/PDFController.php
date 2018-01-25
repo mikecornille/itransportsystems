@@ -13,6 +13,8 @@ use Excel;
 
 use App\Load;
 
+use App\Text;
+
 class PDFController extends Controller
 {
     //use helpers\Mailer;
@@ -311,6 +313,66 @@ class PDFController extends Controller
 
 
         return back()->with('status', 'The Driver has been sent a Text and the Dispatcher an Email regarding the rollback info!');
+    }
+
+   public function textDriver($id)
+   {
+
+    date_default_timezone_set("America/Chicago");
+
+     $info = Load::find($id);
+
+        $info = ['info'=>$info];
+
+
+        $newText = New Text();
+        
+        $newText->message = $info['info']['carrier_message'];
+        $newText->toCell = $info['info']['carrier_driver_cell'];
+        $newText->pro = $info['info']['id'];
+        $newText->fromCell = "14159697014";
+        $newText->sentAt = date("Y-m-d H:i:s");
+        
+
+        $newText->save();
+
+        //I need to save the message, from number, pro number, time of day cst into my new model
+
+
+        // Step 2: set our AccountSid and AuthToken from https://twilio.com/console
+        $AccountSid = "ACf01e703e3d89fe05b97de8f8b103058e";
+        $AuthToken = "b71795afcc839bbd050ad1a513d1d871";
+
+        // Step 3: instantiate a new Twilio Rest Client
+        $client = new Client($AccountSid, $AuthToken);
+
+        // Step 4: make an array of people we know, to send them a message. 
+        // Feel free to change/add your own phone number and name here.
+        $people = array(
+        $info['info']['carrier_driver_cell'] => "User"
+        );
+
+    // Step 5: Loop over all our friends. $number is a phone number above, and 
+    // $name is the name next to it
+    foreach ($people as $number => $name) {
+
+        $sms = $client->account->messages->create(
+
+            // the number we are sending to - Any phone number
+            $number,
+
+            array(
+                // Step 6: Change the 'From' number below to be a valid Twilio number 
+                // that you've purchased
+                'from' => "+14159697014", 
+                
+                // the sms body
+                'body' => $info['info']['carrier_message']
+            )
+        );
+    }
+
+        return back()->with('status', 'The Text Message has been sent!');
     }
 
    

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Load;
 
+use App\Loadlist;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -211,16 +213,51 @@ class LoadsController extends Controller
            		$load->rate_con_creator = NULL;
 
            }
+
+           //This is shere we check if its delivered then send load out
+           if($request->delivery_status === 'Delivered')
+           {
+
+           	//Get the state the carrier just delivered to
+           	$delivery_state = $request->delivery_state;
+           	//Find loads where the pick state equals the recently delivered state
+           	$loadlist_info = Loadlist::where('pick_state', '=', $delivery_state)
+           	->where('urgency', '!=', 'Quote')
+           	->where('urgency', '!=', 'Booked')
+           	->where('urgency', '!=', 'Hold')
+    		->where('urgency', '!=', 'Get Numbers')
+           	->get();
+		
+			$info = ['info' => $loadlist_info];
+
+			Mail::send(['html'=>'email.emailCarriersLoadsStateDelivered'], $info, function($message) use ($info){
+            
+            
+           	$message->to('mikec@itransys.com')->cc('mikec@itransys.com')
+
+           	->subject('We found another load for you!');
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name)
+
+            ->replyTo(\Auth::user()->email, \Auth::user()->name)
+
+           	->sender(\Auth::user()->email, \Auth::user()->name);
+
+        	});
+
+    		return back()->with('status', 'You have been emailed, please edit and forward to shipper/consignee.');
+
+           }
         
         
 		$load->update($request->all());
+
+
 		return back()->with('status', 'Your updates have been successfully saved!');
 
 
 
 
-
-		
 	}
 
 	//Send internal email to fellow employee

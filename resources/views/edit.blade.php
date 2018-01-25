@@ -585,6 +585,7 @@
         <li><a href="{{ URL::to('/emailShipper/' . $info->id) }}"><b>Generate Email Shipper/Consignee</b></a></li>
         <li class="divider"></li>
         <li class="dropdown-header">TEXT MESSAGE</li>
+        <li><a href="{{ URL::to('/textDriver/' . $info->id) }}"><b>Text Driver</b></a></li>
         <li><a href="{{ URL::to('/textLoadInfo/' . $info->id) }}"><b>Text Load You</b></a></li>
         <li><a href="{{ URL::to('/textAndEmailRollbackInfo/' . $info->id) }}"><b>Rollback Info</b></a></li>
 
@@ -714,9 +715,6 @@
     <textarea name="carrier_message" id="carrier_message" class="form-control" rows="4">{{ $info->carrier_message }}</textarea>
   </div>
 </div>
-
-
-
 </form>
 
 
