@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<h3>You received a Text Message on ITS PRO # {{ $info->id }}</h3>
+<h3>You received a Text Message on ITS PRO # {{ $load->id }}</h3>
 
 
 
@@ -21,7 +21,7 @@
 
 
 <h3>Current Short Status:</h3>
-<p>{{ $info->quick_status_notes }}</p>
+<p>{{ $load->quick_status_notes }}</p>
 <ul>
 
 </body>
