@@ -94,12 +94,13 @@ class TextController extends Controller
     {
 
         date_default_timezone_set("America/Chicago");
-        
+
         $phoneNumber = substr($request->input('From'),-10);
 
-        $load = \App\Load::where('carrier_driver_cell', 'LIKE', '%' . $phoneNumber . '%')->first();
         
-        $text = \App\Text::create([
+        $load = Load::where('carrier_driver_cell', 'LIKE', '%' . $phoneNumber . '%')->where('delivery_status', '!=', 'Delivered')->first();
+        
+        $text = Text::create([
             'message' => $request->input('Body'),
             'fromCell' => $phoneNumber,
             'sentAt' => date("Y-m-d H:i:s"),

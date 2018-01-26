@@ -711,7 +711,7 @@
 </div>
 <div class="well" id="message_carrier_section">
   <div class="form-group">
-    <label for="carrier_message">Email Carrier</label>
+    <label for="carrier_message">Email/Text Carrier</label>
     <textarea name="carrier_message" id="carrier_message" class="form-control" rows="4">{{ $info->carrier_message }}</textarea>
   </div>
 </div>
