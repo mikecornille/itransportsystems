@@ -585,7 +585,9 @@
         <li><a href="{{ URL::to('/emailShipper/' . $info->id) }}"><b>Generate Email Shipper/Consignee</b></a></li>
         <li class="divider"></li>
         <li class="dropdown-header">TEXT MESSAGE</li>
-        <li><a href="{{ URL::to('/textDriver/' . $info->id) }}"><b>Text Driver</b></a></li>
+        <li><a href="{{ URL::to('/textDriver/' . $info->id) }}"><b>Text Driver Custom Message</b></a></li>
+        <li><a href="{{ URL::to('/textDriverPickStatus/' . $info->id) }}"><b>Text Driver For Pick Status</b></a></li>
+        <li><a href="{{ URL::to('/textDriverDeliveryStatus/' . $info->id) }}"><b>Text Driver For Delivery Status</b></a></li>
         <li><a href="{{ URL::to('/textLoadInfo/' . $info->id) }}"><b>Text Load You</b></a></li>
         <li><a href="{{ URL::to('/textAndEmailRollbackInfo/' . $info->id) }}"><b>Rollback Info</b></a></li>
 
