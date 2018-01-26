@@ -382,7 +382,7 @@ class PDFController extends Controller
 
         $info = ['info'=>$info];
 
-        $initial_message = "Good Morning this is " . \Auth::user()->name . " with International Transport Systems, I was checking to see how you are looking for pick up at " . $info['info']['pick_company'] . " in " . $info['info']['pick_city'] . ", " . $info['info']['pick_state'] . "?" . " PRO # " . $info['info']['id']
+        $initial_message = "Good Morning this is " . \Auth::user()->name . " with International Transport Systems, I was checking to see how you are looking for pick up at " . $info['info']['pick_company'] . " in " . $info['info']['pick_city'] . ", " . $info['info']['pick_state'] . "?" . " PRO # " . $info['info']['id'];
 
 
         $newText = New Text();
@@ -432,6 +432,65 @@ class PDFController extends Controller
 
 
         return back()->with('status', 'The Driver has been sent a Text asking the pick up status');
+
+    }
+
+    public function textDriverDeliveryStatus($id)
+    {
+        $info = Load::find($id);
+
+        $info = ['info'=>$info];
+
+        $initial_message = "Good Morning this is " . \Auth::user()->name . " with International Transport Systems, I was checking to see how you are looking for delivery at " . $info['info']['delivery_company'] . " in " . $info['info']['delivery_city'] . ", " . $info['info']['delivery_state'] . "?" . " PRO # " . $info['info']['id'];
+
+
+        $newText = New Text();
+        
+        $newText->message = $initial_message;
+        $newText->toCell = $info['info']['carrier_driver_cell'];
+        $newText->pro = $info['info']['id'];
+        $newText->fromCell = "14159697014";
+        $newText->sentAt = date("Y-m-d H:i:s");
+        
+
+        $newText->save();
+
+
+        // Step 2: set our AccountSid and AuthToken from https://twilio.com/console
+        $AccountSid = "ACf01e703e3d89fe05b97de8f8b103058e";
+        $AuthToken = "b71795afcc839bbd050ad1a513d1d871";
+
+        // Step 3: instantiate a new Twilio Rest Client
+        $client = new Client($AccountSid, $AuthToken);
+
+        // Step 4: make an array of people we know, to send them a message. 
+        // Feel free to change/add your own phone number and name here.
+        $people = array(
+        "+1" . $info['info']['carrier_driver_cell'] => "User"
+        );
+
+    // Step 5: Loop over all our friends. $number is a phone number above, and 
+    // $name is the name next to it
+    foreach ($people as $number => $name) {
+
+        $sms = $client->account->messages->create(
+
+            // the number we are sending to - Any phone number
+            $number,
+
+            array(
+                // Step 6: Change the 'From' number below to be a valid Twilio number 
+                // that you've purchased
+                'from' => "+14159697014", 
+                
+                // the sms body
+                'body' => "Good Morning this is " . \Auth::user()->name . " with International Transport Systems, I was checking to see how you are looking for delivery at " . $info['info']['delivery_company'] . " in " . $info['info']['delivery_city'] . ", " . $info['info']['delivery_state'] . "?" . " PRO # " . $info['info']['id']
+            )
+        );
+    }
+
+
+        return back()->with('status', 'The Driver has been sent a Text asking the delivery status');
 
     }
 
