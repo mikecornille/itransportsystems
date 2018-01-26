@@ -98,7 +98,7 @@ class TextController extends Controller
         $phoneNumber = substr($request->input('From'),-10);
 
         //How do I get the correct PRO # associated with this incoiming text? where delivery status != delivered
-        $load = Load::where('carrier_driver_cell', 'LIKE', '%' . $phoneNumber . '%')->first();
+        $load = Load::where('carrier_driver_cell', 'LIKE', '%' . $phoneNumber . '%')->latest()->first();
         
         $text = Text::create([
             'message' => $request->input('Body'),
