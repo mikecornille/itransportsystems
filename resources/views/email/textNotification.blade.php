@@ -16,7 +16,7 @@
 <h3>You received a Text Message on ITS PRO # {{ $load->id }}</h3>
 
 
-<a href="http://itransportsystems.com/edit/url?id=91770">Click to here to jump to load</a>
+<a href="http://itransportsystems.com/edit/url?id={{$load->id}}">Click to here to jump to load</a>
 
 
 
