@@ -15,7 +15,6 @@
 
 <h3>You received a Text Message on ITS PRO # {{ $info->id }}</h3>
 
-<a href="{{ 'http://itransportsystems.com/edit/url?id=' . $info->id }}" />
 
 
 
