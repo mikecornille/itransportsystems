@@ -378,6 +378,8 @@ class PDFController extends Controller
 
     public function textDriverPickStatus($id)
     {
+        date_default_timezone_set("America/Chicago");
+
         $info = Load::find($id);
 
         $info = ['info'=>$info];
@@ -437,6 +439,8 @@ class PDFController extends Controller
 
     public function textDriverDeliveryStatus($id)
     {
+        date_default_timezone_set("America/Chicago");
+        
         $info = Load::find($id);
 
         $info = ['info'=>$info];
