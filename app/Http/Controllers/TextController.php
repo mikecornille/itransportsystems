@@ -98,7 +98,7 @@ class TextController extends Controller
         $phoneNumber = substr($request->input('From'),-10);
 
         
-        $load = Load::where('carrier_driver_cell', 'LIKE', '%' . $phoneNumber . '%')->where('delivery_status', '!=', 'Delivered')->first();
+        $load = Load::where('carrier_driver_cell', 'LIKE', '%' . $phoneNumber . '%')->first();
         
         $text = Text::create([
             'message' => $request->input('Body'),
