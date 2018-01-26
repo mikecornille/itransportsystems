@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Mail;
+
 use Twilio\Rest\Client;
 
 use Twilio\Twiml;
@@ -107,5 +109,23 @@ class TextController extends Controller
             'toCell' => "14159697014",
             'pro' => $load->id
         ]);
+
+
+        
+
+        $load = ['load'=>$load];
+        
+
+        Mail::send(['html'=>'email.textNotification'], $load, function($message) use ($load){
+            
+            
+            $message->to($load['load']['rate_con_creator'])
+
+            ->subject('You Received a Text Message!');
+          
+            $message->from('operations@itransys.com', 'Do Not Reply');
+
+
+        });
     }
 }
