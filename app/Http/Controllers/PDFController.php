@@ -104,8 +104,8 @@ class PDFController extends Controller
         });
 
         // Step 2: set our AccountSid and AuthToken from https://twilio.com/console
-        $AccountSid = "ACf01e703e3d89fe05b97de8f8b103058e";
-        $AuthToken = "b71795afcc839bbd050ad1a513d1d871";
+        $AccountSid = env('TWILIO_ACCOUNTSID', 'false');
+        $AuthToken = env('TWILIO_AUTHTOKEN', 'false');
 
         // Step 3: instantiate a new Twilio Rest Client
         $client = new Client($AccountSid, $AuthToken);
@@ -209,8 +209,8 @@ class PDFController extends Controller
 
 
         // Step 2: set our AccountSid and AuthToken from https://twilio.com/console
-        $AccountSid = "ACf01e703e3d89fe05b97de8f8b103058e";
-        $AuthToken = "b71795afcc839bbd050ad1a513d1d871";
+        $AccountSid = env('TWILIO_ACCOUNTSID', 'false');
+        $AuthToken = env('TWILIO_AUTHTOKEN', 'false');
 
         // Step 3: instantiate a new Twilio Rest Client
         $client = new Client($AccountSid, $AuthToken);
@@ -254,8 +254,8 @@ class PDFController extends Controller
 
 
         // Step 2: set our AccountSid and AuthToken from https://twilio.com/console
-        $AccountSid = "ACf01e703e3d89fe05b97de8f8b103058e";
-        $AuthToken = "b71795afcc839bbd050ad1a513d1d871";
+        $AccountSid = env('TWILIO_ACCOUNTSID', 'false');
+        $AuthToken = env('TWILIO_AUTHTOKEN', 'false');
 
         // Step 3: instantiate a new Twilio Rest Client
         $client = new Client($AccountSid, $AuthToken);
@@ -340,8 +340,13 @@ class PDFController extends Controller
 
 
         // Step 2: set our AccountSid and AuthToken from https://twilio.com/console
-        $AccountSid = "ACf01e703e3d89fe05b97de8f8b103058e";
-        $AuthToken = "b71795afcc839bbd050ad1a513d1d871";
+        // $AccountSid = "ACf01e703e3d89fe05b97de8f8b103058e";
+        // $AuthToken = "b71795afcc839bbd050ad1a513d1d871";
+
+        
+
+        $AccountSid = env('TWILIO_ACCOUNTSID', 'false');
+        $AuthToken = env('TWILIO_AUTHTOKEN', 'false');
 
         // Step 3: instantiate a new Twilio Rest Client
         $client = new Client($AccountSid, $AuthToken);
@@ -400,8 +405,8 @@ class PDFController extends Controller
 
 
         // Step 2: set our AccountSid and AuthToken from https://twilio.com/console
-        $AccountSid = "ACf01e703e3d89fe05b97de8f8b103058e";
-        $AuthToken = "b71795afcc839bbd050ad1a513d1d871";
+        $AccountSid = env('TWILIO_ACCOUNTSID', 'false');
+        $AuthToken = env('TWILIO_AUTHTOKEN', 'false');
 
         // Step 3: instantiate a new Twilio Rest Client
         $client = new Client($AccountSid, $AuthToken);
@@ -440,7 +445,7 @@ class PDFController extends Controller
     public function textDriverDeliveryStatus($id)
     {
         date_default_timezone_set("America/Chicago");
-        
+
         $info = Load::find($id);
 
         $info = ['info'=>$info];
@@ -461,8 +466,8 @@ class PDFController extends Controller
 
 
         // Step 2: set our AccountSid and AuthToken from https://twilio.com/console
-        $AccountSid = "ACf01e703e3d89fe05b97de8f8b103058e";
-        $AuthToken = "b71795afcc839bbd050ad1a513d1d871";
+        $AccountSid = env('TWILIO_ACCOUNTSID', 'false');
+        $AuthToken = env('TWILIO_AUTHTOKEN', 'false');
 
         // Step 3: instantiate a new Twilio Rest Client
         $client = new Client($AccountSid, $AuthToken);

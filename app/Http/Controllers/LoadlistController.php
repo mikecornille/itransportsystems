@@ -57,6 +57,7 @@ class LoadlistController extends Controller
         $newload->countIncomingCalls = 0;
         $newload->countOutgoingCalls = 0;
         $newload->emailedOut = 0;
+        $newload->group_id = uniqid();
 		    $newload->created_by = strtoupper(\Auth::user()->email);
 
         $a=array("AM","LT","MK","RB");
@@ -301,14 +302,14 @@ class LoadlistController extends Controller
 
     $currentDay = date('d');
 
-		$open_loads = Loadlist::where('urgency', '=', 'Has Time')
-		->orWhere('urgency', '=', 'Hot')
-		->orWhere('urgency', '=', 'Screaming')
-		->orWhere('urgency', '=', 'Caller')
-		->orWhere('urgency', '=', 'Get Numbers')
+    $open_loads = Loadlist::where('urgency', '=', 'Has Time')
+    ->orWhere('urgency', '=', 'Hot')
+    ->orWhere('urgency', '=', 'Screaming')
+    ->orWhere('urgency', '=', 'Caller')
+    ->orWhere('urgency', '=', 'Get Numbers')
     ->orWhere('urgency', '=', 'Fossilized')
     ->orWhere('urgency', '=', 'Stabber')
-		->orderBy('customer', 'desc')
+    ->orderBy('customer', 'desc')
     ->orderBy('pick_city', 'desc')->get();
 
 		$personal_loads = Loadlist::where('created_by', '=', \Auth::user()->email)
