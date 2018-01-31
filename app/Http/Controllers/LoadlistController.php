@@ -57,7 +57,6 @@ class LoadlistController extends Controller
         $newload->countIncomingCalls = 0;
         $newload->countOutgoingCalls = 0;
         $newload->emailedOut = 0;
-        $newload->group_id = uniqid();
 		    $newload->created_by = strtoupper(\Auth::user()->email);
 
         $a=array("AM","LT","MK","RB");
