@@ -247,6 +247,8 @@ Route::get('/textAndEmailRollbackInfo/{id}', 'PDFController@textAndEmailRollback
 Route::get('/textDriver/{id}', 'PDFController@textDriver');
 Route::get('/textDriverDeliveryStatus/{id}', 'PDFController@textDriverDeliveryStatus');
 Route::get('/textDriverPickStatus/{id}', 'PDFController@textDriverPickStatus');
+Route::get('/textDriverLoadInfo/{id}', 'PDFController@textDriverLoadInfo');
+
 
 //Route::post('/searchPro', 'LoadsController@searchPro');
 Route::get('/fastCarrierSetUp', function() {
