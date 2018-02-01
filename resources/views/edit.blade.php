@@ -102,7 +102,7 @@
             <input type="text" class="form-control" id="quick_status_notes" name="quick_status_notes" value="{{ $info->quick_status_notes }}">
           </div>
           <div class="col-xs-12">
-            <label for="internal_email_address" class="label-control">Internal Email Recipient</label>
+            <label for="internal_email_address" class="label-control">Internal Email / Text Recipient</label>
             <select name="internal_email_address" id="internal_email_address" class="form-control"> 
               @if($info->internal_email_address)
             <option value="{{ $info->internal_email_address }}">{{ $info->internal_email_address }}</option>
