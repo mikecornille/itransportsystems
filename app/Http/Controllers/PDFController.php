@@ -503,7 +503,7 @@ class PDFController extends Controller
 
     }
 
-    public function textDriverLoadInfo()
+    public function textDriverLoadInfo($id)
     {
 
         $info = Load::find($id);
