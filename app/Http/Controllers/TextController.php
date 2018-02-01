@@ -111,17 +111,13 @@ class TextController extends Controller
         ]);
 
 
-        
-
         $load = ['load'=>$load];
 
-        $load['user_email'] = \Auth::user()->email;
-        
 
         Mail::send(['html'=>'email.textNotification'], $load, function($message) use ($load){
             
             
-            $message->to($load['load']['user_email'])
+            $message->to($load['load']['internal_email_address'])
 
             ->subject('You Received a Text Message!');
           
