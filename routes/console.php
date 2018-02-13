@@ -426,3 +426,58 @@ Artisan::command('biddersCheckOnTheRoad', function () {
 
 })->describe('Daily check for the bidders to check the to be loaded and to be delivered pages');
 
+Artisan::command('import:inspections {filename}', function($filename) {
+	$file = fopen(storage_path('imports/' . $filename),"r");
+
+	$count = 0;
+	while (($data = fgetcsv($file)) !== FALSE) {
+		$count ++;
+		if($count == 1) {
+			continue;
+		}
+
+		\DB::table('imported_inspections')->insert([
+			'UNIQUE_ID' => $data[0],
+			'REPORT_NUMBER' => $data[1],
+			'REPORT_STATE' => $data[2],
+			'DOT_NUMBER' => $data[3],
+			'INSP_DATE' => Carbon\Carbon::parse($data[4])->toDateString(),
+			'INSP_LEVEL_ID' => $data[5],
+			'COUNTY_CODE_STATE' => $data[6],
+			'TIME_WEIGHT' => $data[7],
+			'DRIVER_OOS_TOTAL' => $data[8],
+			'VEHICLE_OOS_TOTAL' => $data[9],
+			'TOTAL_HAZMAT_SENT' => $data[10],
+			'OOS_TOTAL' => $data[11],
+			'HAZMAT_OOS_TOTAL' => $data[12],
+			'HAZMAT_PLACARD_REQ' => $data[13],
+			'UNIT_TYPE_DESC' => $data[14],
+			'UNIT_MAKE' => $data[15],
+			'UNIT_LICENSE' => $data[16],
+			'UNIT_LICENSE_STATE' => $data[17],
+			'VIN' => $data[18],
+			'UNIT_DECAL_NUMBER' => (integer)$data[19],
+			'UNIT_TYPE_DESC2' => $data[20],
+			'UNIT_MAKE2' => $data[21],
+			'UNIT_LICENSE2' => $data[22],
+			'UNIT_LICENSE_STATE2' => $data[23],
+			'VIN2' => $data[24],
+			'UNIT_DECAL_NUMBER2' => (integer)$data[25],
+			'UNSAFE_INSP' => $data[26],
+			'FATIGUED_INSP' => $data[27],
+			'DR_FITNESS_INSP' => $data[28],
+			'SUBT_ALCOHOL_INSP' => $data[29],
+			'VH_MAINT_INSP' => $data[30],
+			'HM_INSP' => $data[31],
+			'BASIC_VIOL' => $data[32],
+			'UNSAFE_VIOL' => $data[33],
+			'FATIGUED_VIOL' => $data[34],
+			'DR_FITNESS_VIOL' => $data[35],
+			'SUBT_ALCOHOL_VIOL' => $data[36],
+			'VH_MAINT_VIOL' => $data[37],
+			'HM_VIOL' => (integer)$data[38],
+
+		]);
+	}
+	fclose($file);
+});
