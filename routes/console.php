@@ -481,3 +481,50 @@ Artisan::command('import:inspections {filename}', function($filename) {
 	}
 	fclose($file);
 });
+
+Artisan::command('import:fmcsa_census {filename}', function($filename) {
+	$file = fopen(storage_path('imports/' . $filename),"r");
+
+	$count = 0;
+	while (($data = fgetcsv($file)) !== FALSE) {
+		$count ++;
+		if($count == 1) {
+			continue;
+		}
+
+		\DB::table('fmcsa_census')->insert([
+				'DOT_NUMBER' => (integer)$data[0],
+			    'LEGAL_NAME' => $data[1],
+			    'DBA_NAME' => $data[2],
+			    'CARRIER_OPERATION' => $data[3],
+			    'HM_FLAG' => $data[4],
+			    'PC_FLAG' => $data[5],
+			    'PHY_STREET' => $data[6],
+			    'PHY_CITY' => $data[7],
+			    'PHY_STATE' => $data[8],
+			    'PHY_ZIP' => $data[9],
+			    'PHY_COUNTRY' => $data[10],
+			    'MAILING_STREET' => $data[11],
+			    'MAILING_CITY' => $data[12],
+			    'MAILING_STATE' => $data[13],
+			    'MAILING_ZIP' => $data[14],
+			    'MAILING_COUNTRY' => $data[15],
+			    'TELEPHONE' => $data[16],
+			    'FAX' => $data[17],
+			    'EMAIL_ADDRESS' => $data[18],
+			    'MCS150_DATE' => Carbon\Carbon::parse($data[19])->toDateString(),
+			    'MCS150_MILEAGE' => (integer)$data[20],
+			    'MCS150_MILEAGE_YEAR' => (integer)$data[21],
+			    'ADD_DATE' => Carbon\Carbon::parse($data[22])->toDateString(),
+			    'OIC_STATE' => $data[23],
+			    'NBR_POWER_UNIT' => (integer)$data[24],
+			    
+
+		]);
+	}
+	fclose($file);
+});
+
+
+
+
