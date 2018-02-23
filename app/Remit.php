@@ -9,5 +9,5 @@ class Remit extends Model
 
 {
 	use Searchable;
-    protected $fillable = ['name', 'address', 'city', 'state', 'zip'];
+    protected $fillable = ['name', 'address', 'city', 'state', 'zip', 'contact', 'email', 'phone', 'routing_number', 'checking_number'];
 }

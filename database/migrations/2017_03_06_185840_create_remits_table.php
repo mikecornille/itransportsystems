@@ -20,6 +20,11 @@ class CreateRemitsTable extends Migration
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('zip')->nullable();
+            $table->string('contact')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('routing_number')->nullable();
+            $table->string('checking_number')->nullable();
             $table->timestamps();
         });
     }

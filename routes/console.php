@@ -11,6 +11,7 @@ use App\Carrier;
 use App\Loadlist;
 use App\Customer;
 
+
 /*
 |--------------------------------------------------------------------------
 | Console Routes
@@ -492,7 +493,9 @@ Artisan::command('import:fmcsa_census {filename}', function($filename) {
 			continue;
 		}
 
-		\DB::table('fmcsa_census')->insert([
+		if($data[19] !== "KS" && $data[22] !== "KS"){
+
+	\DB::table('fmcsa_census')->insert([
 				'DOT_NUMBER' => (integer)$data[0],
 			    'LEGAL_NAME' => $data[1],
 			    'DBA_NAME' => $data[2],
@@ -521,6 +524,8 @@ Artisan::command('import:fmcsa_census {filename}', function($filename) {
 			    
 
 		]);
+}
+
 	}
 	fclose($file);
 });
