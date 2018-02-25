@@ -497,6 +497,8 @@ Artisan::command('import:fmcsa_census {filename}', function($filename) {
 
 if($data[19] !== "CA" && $data[22] !== "CA"){
 
+	if (strpos($data[18], "\'") == FALSE){
+
 	\DB::table('fmcsa_census')->insert([
 				'DOT_NUMBER' => (integer)$data[0],
 			    'LEGAL_NAME' => $data[1],
@@ -526,6 +528,7 @@ if($data[19] !== "CA" && $data[22] !== "CA"){
 			    
 
 		]);
+}
 }
 }
 
