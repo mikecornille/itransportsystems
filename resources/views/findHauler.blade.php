@@ -2,6 +2,9 @@
 
 @section('content')
 
+@php
+$latest_id = "";
+@endphp
 
 
 <div class="container">
@@ -21,8 +24,12 @@
 			<form role="form" class="form-horizontal" method="POST" action="/haulerEdit">
 				{{ csrf_field() }}
 				<label class="label-control" for="findcar_id">COMPANY ID #</label>
-				<input type="text" class="form-control" id="findcar_id" name="findcar_id" value="{{ $id }}">
 				
+					@if($latest_id)
+				<input type="text" class="form-control" id="findcar_id" name="findcar_id" value="{{ $latest_id }}">
+					@else
+				<input type="text" class="form-control" id="findcar_id" name="findcar_id">
+					@endif
 				<button style="margin-top: 15px;" type="submit" class="btn btn-primary" id="findHaulerSubmit"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> GO</button>
 
 			</form>

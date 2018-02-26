@@ -53,11 +53,37 @@ class HaulerController extends Controller
         $store->remit_state = $find_record[0]->MAILING_STATE;
         $store->remit_zip = $find_record[0]->MAILING_ZIP;
 
-        $store->operation_type = $find_record[0]->CARRIER_OPERATION;
+        
+
+        $operation_type = $find_record[0]->CARRIER_OPERATION;
+
+        switch ($operation_type) {
+            case "A":
+                $store->operation_type = "Interstate";
+                break;
+            case "B":
+                $store->operation_type = "Intrastate Hazmat";
+                break;
+            case "C":
+                $store->operation_type = "Intrastate Non-Hazmat";
+                break;
+            default:
+                $store->operation_type = "Not Listed";
+        }
+
+
+        $store->number_of_drivers = $find_record[0]->DRIVER_TOTAL;
+
+        $store->number_of_power = $find_record[0]->NBR_POWER_UNIT;
 
         $store->save();
 
-        return back();
+        $latest_id = $store->id;
+
+        return $this->editFormFromDOT($latest_id);
+
+
+        
 
 
 
@@ -159,6 +185,23 @@ class HaulerController extends Controller
     {
             //This input comes from a form to find a carrier ID #
             $hauler = $request->input('findcar_id');
+
+            //Find the carrier
+            $gethauler = Carrier::findOrFail($hauler);
+
+            //Get all the employees to use for a select dropdown
+            $employees = User::all()->pluck('email','email');
+
+            //Init the error message variable
+            $error_message = "";
+
+            return view('hauler.edit', compact('gethauler', $gethauler, 'employees', $employees, 'error_message', $error_message));
+    }
+
+    public function editFormFromDOT($id)
+    {
+            //This input comes from a form to find a carrier ID #
+            $hauler = $id;
 
             //Find the carrier
             $gethauler = Carrier::findOrFail($hauler);
