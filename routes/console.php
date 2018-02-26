@@ -499,6 +499,8 @@ if($data[19] !== "CA" && $data[22] !== "CA"){
 
 	if (strpos($data[18], "\'") == FALSE){
 
+		if($data[8] !== "PR"){
+
 	\DB::table('fmcsa_census')->insert([
 				'DOT_NUMBER' => (integer)$data[0],
 			    'LEGAL_NAME' => $data[1],
@@ -528,6 +530,7 @@ if($data[19] !== "CA" && $data[22] !== "CA"){
 			    
 
 		]);
+}
 }
 }
 }
