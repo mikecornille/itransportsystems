@@ -24,6 +24,10 @@ Route::get('/twilio', function () {
 
 Route::group(['middleware' => 'auth'],function() {
 
+
+Route::post('insertDOT', 'HaulerController@insertDOT');
+
+
 Route::resource('hauler', 'HaulerController');
 
 Route::resource('remit', 'RemitController');
@@ -46,6 +50,12 @@ Route::get('/findHauler', function () {
 
 Route::get('/newCustomer', function () {
     return view('/newCustomer');
+});
+
+
+
+Route::get('/createFromDOT', function () {
+    return view('/createFromDOT');
 });
 
 Route::get('/newLocation', function () {

@@ -10,6 +10,10 @@
 			<label class="label-control" for="find-carrier-search-new">SEARCH</label>
 			<input type="text" class="form-control" id="find-carrier-search-new" placeholder="Carrier Search">
 		</div>
+		<div class="col-md-6">
+			<a href="createFromDOT">Create New Record</a>
+		</div>
+
 	</div>
 
 	<div class="row">

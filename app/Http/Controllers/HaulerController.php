@@ -25,6 +25,47 @@ class HaulerController extends Controller
         return view('hauler', compact($employees, 'employees'));
     }
 
+    public function insertDOT(Request $request)
+    {
+        $dot_number = $request->input('insertDOT');
+
+        $find_record = \DB::table('fmcsa_census')->where('DOT_NUMBER', $dot_number)->get();
+
+        
+
+        $store = New Carrier();
+
+        $store->company = $find_record[0]->LEGAL_NAME;
+        $store->dot_number = $find_record[0]->DOT_NUMBER;
+        $store->address = $find_record[0]->PHY_STREET;
+
+        $store->city = $find_record[0]->PHY_CITY;
+        $store->state = $find_record[0]->PHY_STATE;
+        $store->zip = $find_record[0]->PHY_ZIP;
+
+        $store->phone = $find_record[0]->TELEPHONE;
+        $store->fax = $find_record[0]->FAX;
+        $store->email = $find_record[0]->EMAIL_ADDRESS;
+
+        $store->remit_name = $find_record[0]->LEGAL_NAME;
+        $store->remit_address = $find_record[0]->MAILING_STREET;
+        $store->remit_city = $find_record[0]->MAILING_CITY;
+        $store->remit_state = $find_record[0]->MAILING_STATE;
+        $store->remit_zip = $find_record[0]->MAILING_ZIP;
+
+        $store->operation_type = $find_record[0]->CARRIER_OPERATION;
+
+        $store->save();
+
+        return back();
+
+
+
+
+
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *

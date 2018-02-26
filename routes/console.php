@@ -527,6 +527,7 @@ if($data[19] !== "CA" && $data[22] !== "CA"){
 			    'ADD_DATE' => Carbon\Carbon::parse($data[22])->toDateString(),
 			    'OIC_STATE' => $data[23],
 			    'NBR_POWER_UNIT' => (integer)$data[24],
+			    'DRIVER_TOTAL' => (integer)$data[25],
 			    
 
 		]);
