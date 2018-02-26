@@ -497,7 +497,7 @@ Artisan::command('import:fmcsa_census {filename}', function($filename) {
 
 if($data[19] !== "CA" && $data[22] !== "CA"){
 
-	if (strpos($data[18], "\'") == FALSE){
+	if ($data[5] !== "Y"){
 
 		if($data[8] !== "PR"){
 
