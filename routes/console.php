@@ -540,6 +540,45 @@ if($data[19] !== "CA" && $data[22] !== "CA"){
 	fclose($file);
 });
 
+Artisan::command('import:sms {filename}', function($filename) {
+	$file = fopen(storage_path('imports/' . $filename),"r");
+
+	$count = 0;
+	while (($data = fgetcsv($file)) !== FALSE) {
+		$count ++;
+		if($count == 1) {
+			continue;
+		}
+
+		\DB::table('sms')->insert([
+			'DOT_NUMBER' => $data[0],
+			'INSP_TOTAL' => $data[1],
+			'DRIVER_INSP_TOTAL' => $data[2],
+			'DRIVER_OOS_INSP_TOTAL' => $data[3],
+			'VEHICLE_INSP_TOTAL' => $data[4],
+			'VEHICLE_OOS_INSP_TOTAL' => $data[5],
+			'UNSAFE_DRIV_INSP_W_VIOL' => $data[6],
+			'UNSAFE_DRIV_MEASURE' => (float)$data[7],
+			'UNSAFE_DRIV_AC' => $data[8],
+			'HOS_DRIV_INSP_W_VIOL' => $data[9],
+			'HOS_DRIV_MEASURE' => (float)$data[10],
+			'HOS_DRIV_AC' => $data[11],
+			'DRIV_FIT_INSP_W_VIOL' => $data[12],
+			'DRIV_FIT_MEASURE' => (float)$data[13],
+			'DRIV_FIT_AC' => $data[14],
+			'CONTR_SUBST_INSP_W_VIOL' => $data[15],
+			'CONTR_SUBST_MEASURE' => (float)$data[16],
+			'CONTR_SUBST_AC' => $data[17],
+			'VEH_MAINT_INSP_W_VIOL' => $data[18],
+			'VEH_MAINT_MEASURE' => (float)$data[19],
+			'VEH_MAINT_AC' => $data[20],
+			
+
+		]);
+	}
+	fclose($file);
+});
+
 
 
 
