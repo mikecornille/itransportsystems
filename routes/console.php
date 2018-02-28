@@ -579,6 +579,30 @@ Artisan::command('import:sms {filename}', function($filename) {
 	fclose($file);
 });
 
+Artisan::command('import:crash {filename}', function($filename) {
+	$file = fopen(storage_path('imports/' . $filename),"r");
+
+	$count = 0;
+	while (($data = fgetcsv($file)) !== FALSE) {
+		$count ++;
+		if($count == 1) {
+			continue;
+		}
+
+		\DB::table('crash')->insert([
+			'DOT_NUMBER' => (integer)$data[2],
+			'REPORT_DATE' => Carbon\Carbon::parse($data[3])->toDateString(),
+			'FATALITIES' => (integer)$data[5],
+			'INJURIES' => (integer)$data[6],
+			'TOW_AWAY' => $data[7],
+
+			
+
+		]);
+	}
+	fclose($file);
+});
+
 
 
 
