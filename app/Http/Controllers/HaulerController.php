@@ -37,7 +37,7 @@ class HaulerController extends Controller
 
         $store = New Carrier();
 
-        
+        $store->mc_number = 0;
         $store->company = $find_record[0]->LEGAL_NAME;
         $store->dot_number = $find_record[0]->DOT_NUMBER;
         $store->address = $find_record[0]->PHY_STREET;
@@ -73,7 +73,7 @@ class HaulerController extends Controller
         $store->number_of_drivers = $find_record[0]->DRIVER_TOTAL;
         $store->number_of_power = $find_record[0]->NBR_POWER_UNIT;
 
-        $store->
+        
 
         $store->save();
 
