@@ -1,6 +1,6 @@
 	
 
-	<div class="row">
+	<!-- <div class="row">
 	  	<div class="col-md-3">
 	  		{{ Form::label('active', 'Do Not Load', ['class' => 'text-danger', 'style' => 'font-size:20px;']) }}
 	  		{{ Form::radio('active', 'noload', null, ['style' => 'margin-left:15px;']) }}
@@ -9,7 +9,7 @@
 			{{ Form::label('active', 'Active', ['class' => 'text-success', 'style' => 'font-size:20px;']) }}
 	  		{{ Form::radio('active', 'active', null, ['style' => 'margin-left:15px;']) }}
 		</div>
-	</div>
+	</div> -->
 
 	<div class="row">
 	  	<div class="col-md-6">
@@ -18,24 +18,24 @@
 		</div>
 		<div class="col-md-3">
 			{{ Form::label('mc_number', 'MC #') }}
-			<div class="input-group">
+			<!-- <div class="input-group"> -->
 	  		{{ Form::text('mc_number', null, ['class' => 'form-control']) }}
-	  		<span class="input-group-btn">
+	  		<!-- <span class="input-group-btn">
 	  		<button class="btn btn-primary" id="new_carrier_fmcsa" type="button">DOT LINK</button>
 	  		</span>
-	  		</div>
+	  		</div> -->
 		</div>
 		
 
 		<div class="col-md-3">
 			{{ Form::label('dot_number', 'DOT #') }}
-			<div class="input-group">
+			<!-- <div class="input-group"> -->
 			{{ Form::text('dot_number', null, ['class' => 'form-control']) }}
-	  		<span class="input-group-btn">
+	  		<!-- <span class="input-group-btn">
 	  		<button class="btn btn-primary" id="dot_number_find" type="button">FIND</button>
 	  		</span>
 	  		
-	  		</div>
+	  		</div> -->
 		</div>
 
 
@@ -45,12 +45,12 @@
 	  	
 	  	<div class="col-md-9">
 	  		{{ Form::label('address', 'Address') }}
-	  		<div class="input-group">
+	  		<!-- <div class="input-group"> -->
 	  		{{ Form::text('address', null, ['class' => 'form-control']) }}
-	  		<span class="input-group-btn">
+	  		<!-- <span class="input-group-btn">
 	  		<button class="btn btn-primary" id="push_to_remit" type="button">PUSH TO REMIT</button>
 	  		</span>
-	  		</div>
+	  		</div> -->
 		</div>
 
 
@@ -207,7 +207,7 @@
 	  		{{ Form::text('remit_zip', null, ['class' => 'form-control']) }}
 		</div>
 	</div>
-	<div class="row">
+	<!-- <div class="row">
 	  	<div class="col-md-3">
 	  		{{ Form::label('oos_driver_national', 'OOS DRIVER NATIONAL') }}
 	  		{{ Form::text('oos_driver_national', null, ['class' => 'form-control']) }}
@@ -242,9 +242,9 @@
 	  		{{ Form::label('operation_type', 'OPERATION TYPE') }}
 	  		{{ Form::text('operation_type', null, ['class' => 'form-control']) }}
 		</div>
-	</div>
+	</div> -->
 
-	<div class="row">
+	<!-- <div class="row">
 	  	<div class="col-md-3">
 	  		{{ Form::label('number_of_drivers', 'NUMBER OF DRIVERS') }}
 	  		{{ Form::text('number_of_drivers', null, ['class' => 'form-control']) }}
@@ -257,7 +257,7 @@
 	  		{{ Form::label('google_carrier', 'GOOGLE RESULTS (ENTER DATE OF ENTRY)') }}
 	  		{{ Form::text('google_carrier', null, ['class' => 'form-control']) }}
 		</div>
-	</div>
+	</div> -->
 
 	<div class="row">
 	  	<div class="col-md-12">

@@ -4,6 +4,79 @@
 
 
 <div class="container">
+
+
+<div class="well col-md-10" style="background: white;">
+
+  <h3>Crash Totals: {{ $getCrashCount }}</h3>
+  <div class="row">
+    <div class="col-md-3">
+      <p>Last Crash Date: {{ $getLastDate->REPORT_DATE }}</p>
+    </div>
+
+    <div class="col-md-3">
+      <p style="color: red;">Fatal Totals: {{ $getFatalityCount }}</p>
+    </div>
+
+    <div class="col-md-3">
+      <p>Injury Totals: {{ $getInjuryCount }}</p>
+    </div>
+
+    <div class="col-md-3">
+      <p>Tow-Away Totals: {{ $getTowTotals }}</p>
+    </div>
+
+
+
+    </div>
+</div>
+
+
+<div class="well col-md-10" style="background: white;">
+
+  <h3>Inspection Totals (past 2 years): {{ $getSMS[0]->INSP_TOTAL }}</h3>
+  <div class="row">
+    <div class="col-md-4">
+      <p>Driver OOS Totals: {{ $getSMS[0]->DRIVER_OOS_INSP_TOTAL }}</p>
+    </div>
+
+    <div class="col-md-4">
+      <p>Vehicle OOS Totals: {{ $getSMS[0]->VEHICLE_OOS_INSP_TOTAL }}</p>
+    </div>
+
+    <div class="col-md-4">
+      <p>Unsafe Driving Violations: {{ $getSMS[0]->UNSAFE_DRIV_INSP_W_VIOL }}</p>
+    </div>
+
+    
+
+
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-4">
+      <p>Hours of Service Violations: {{ $getSMS[0]->HOS_DRIV_INSP_W_VIOL }}</p>
+    </div>
+
+    <div class="col-md-4">
+      <p>Controlled Substance Violations: {{ $getSMS[0]->CONTR_SUBST_INSP_W_VIOL }}</p>
+    </div>
+
+    <div class="col-md-4">
+      <p>Vehicle Maintenance Violations: {{ $getSMS[0]->VEH_MAINT_INSP_W_VIOL }}</p>
+    </div>
+
+
+
+    </div>
+</div>
+
+
+
+
+
   <div class="row">
     <div class="col-md-10">
 
@@ -23,9 +96,9 @@
       </div>
       @endif
 
-      <h3 class="text-center"><b>FMCSA LAST UPDATED: {{ $gethauler->fmcsa_time }}</b></h3>
+      <!-- <h3 class="text-center"><b>FMCSA LAST UPDATED: {{ $gethauler->fmcsa_time }}</b></h3> -->
       {!! Form::model($gethauler, ['route' => ['hauler.update', $gethauler->id], 'method' => 'PUT']) !!}
-       <input type="hidden" name="fmcsa_time" id="fmcsa_time" value="{{ $gethauler->fmcsa_time }}">
+       <!-- <input type="hidden" name="fmcsa_time" id="fmcsa_time" value="{{ $gethauler->fmcsa_time }}"> -->
       @include('partials.carrierForm', ['submitButtonText' => 'Update Carrier with No Actions'])
       {!! Form::close() !!}
 

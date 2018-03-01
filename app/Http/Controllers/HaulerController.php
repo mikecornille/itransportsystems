@@ -130,21 +130,21 @@ class HaulerController extends Controller
               'remit_city' => 'required',
               'remit_state' => 'required',
               'remit_zip' => 'required',
-              'trailer_type_1' => 'required',
-              'active' => 'required',
-              'google_carrier' => 'required',
-              'oos_driver_national' => 'required',
-              'oos_driver_company' => 'required',
-              'oos_vehicle_national' => 'required',
-              'oos_vehicle_company' => 'required',
-              'allowed_to_operate' => 'required',
-              'operation_type' => 'required',
-              'crashes' => 'required',
-              'fatal_crashes' => 'required',
-              'number_of_drivers' => 'required',
-              'number_of_power' => 'required',
-              'insurance_company_email' => 'required|email',
-              'fmcsa_time' => 'required'
+              'trailer_type_1' => 'required'
+              // 'active' => 'required',
+              // 'google_carrier' => 'required',
+              // 'oos_driver_national' => 'required',
+              // 'oos_driver_company' => 'required',
+              // 'oos_vehicle_national' => 'required',
+              // 'oos_vehicle_company' => 'required',
+              // 'allowed_to_operate' => 'required',
+              // 'operation_type' => 'required',
+              // 'crashes' => 'required',
+              // 'fatal_crashes' => 'required',
+              // 'number_of_drivers' => 'required',
+              // 'number_of_power' => 'required',
+              // 'insurance_company_email' => 'required|email',
+              // 'fmcsa_time' => 'required'
 
         ]);
 
@@ -188,13 +188,31 @@ class HaulerController extends Controller
             //Find the carrier
             $gethauler = Carrier::findOrFail($hauler);
 
+            //Get SMS data
+            $getSMS = \DB::table('sms')->where('DOT_NUMBER', $gethauler->dot_number)->get();
+
+            //Get crash data
+            $getCrashCount = \DB::table('crash')->where('DOT_NUMBER', $gethauler->dot_number)->count();
+
+            //Get fatality totals
+            $getFatalityCount = \DB::table('crash')->where('DOT_NUMBER', $gethauler->dot_number)->sum('FATALITIES');
+
+            //Get injury totals
+            $getInjuryCount = \DB::table('crash')->where('DOT_NUMBER', $gethauler->dot_number)->sum('INJURIES');
+
+            //Get tow totals
+            $getTowTotals = \DB::table('crash')->where('DOT_NUMBER', $gethauler->dot_number)->where('TOW_AWAY', "Y")->count();
+
+            //Get the latest date
+            $getLastDate = \DB::table('crash')->where('DOT_NUMBER', $gethauler->dot_number)->orderBy('REPORT_DATE', 'DESC')->first();
+
             //Get all the employees to use for a select dropdown
             $employees = User::all()->pluck('email','email');
 
             //Init the error message variable
             $error_message = "";
 
-            return view('hauler.edit', compact('gethauler', $gethauler, 'employees', $employees, 'error_message', $error_message));
+            return view('hauler.edit', compact('gethauler', $gethauler, 'employees', $employees, 'error_message', $error_message, 'getSMS', $getSMS, 'getCrashCount', $getCrashCount, 'getFatalityCount', $getFatalityCount, 'getInjuryCount', $getInjuryCount, 'getTowTotals', $getTowTotals, 'getLastDate', $getLastDate));
     }
 
     public function editFormFromDOT($id)
@@ -205,13 +223,31 @@ class HaulerController extends Controller
             //Find the carrier
             $gethauler = Carrier::findOrFail($hauler);
 
+            //Get SMS data
+            $getSMS = \DB::table('sms')->where('DOT_NUMBER', $gethauler->dot_number)->get();
+
+            //Get crash data
+            $getCrashCount = \DB::table('crash')->where('DOT_NUMBER', $gethauler->dot_number)->count();
+
+            //Get fatality totals
+            $getFatalityCount = \DB::table('crash')->where('DOT_NUMBER', $gethauler->dot_number)->sum('FATALITIES');
+
+            //Get injury totals
+            $getInjuryCount = \DB::table('crash')->where('DOT_NUMBER', $gethauler->dot_number)->sum('INJURIES');
+
+            //Get tow totals
+            $getTowTotals = \DB::table('crash')->where('DOT_NUMBER', $gethauler->dot_number)->where('TOW_AWAY', "Y")->count();
+
+            //Get the latest date
+            $getLastDate = \DB::table('crash')->where('DOT_NUMBER', $gethauler->dot_number)->orderBy('REPORT_DATE', 'DESC')->first();
+
             //Get all the employees to use for a select dropdown
             $employees = User::all()->pluck('email','email');
 
             //Init the error message variable
             $error_message = "";
 
-            return view('hauler.edit', compact('gethauler', $gethauler, 'employees', $employees, 'error_message', $error_message));
+            return view('hauler.edit', compact('gethauler', $gethauler, 'employees', $employees, 'error_message', $error_message, 'getSMS', $getSMS, 'getCrashCount', $getCrashCount, 'getFatalityCount', $getFatalityCount, 'getInjuryCount', $getInjuryCount, 'getTowTotals', $getTowTotals, 'getLastDate', $getLastDate));
     }
 
     public function goBackWithData($id, $flash_message, $error_message)
@@ -222,7 +258,28 @@ class HaulerController extends Controller
             //Get all the employees to use for a select dropdown
             $employees = User::all()->pluck('email','email');
 
-            return view('hauler.edit', compact('gethauler', $gethauler, 'employees', $employees, 'flash_message', $flash_message, 'error_message', $error_message));
+            //Get SMS data
+            $getSMS = \DB::table('sms')->where('DOT_NUMBER', $gethauler->dot_number)->get();
+
+            //Get crash data
+            $getCrashCount = \DB::table('crash')->where('DOT_NUMBER', $gethauler->dot_number)->count();
+
+            //Get fatality totals
+            $getFatalityCount = \DB::table('crash')->where('DOT_NUMBER', $gethauler->dot_number)->sum('FATALITIES');
+
+            //Get injury totals
+            $getInjuryCount = \DB::table('crash')->where('DOT_NUMBER', $gethauler->dot_number)->sum('INJURIES');
+
+            //Get tow totals
+            $getTowTotals = \DB::table('crash')->where('DOT_NUMBER', $gethauler->dot_number)->where('TOW_AWAY', "Y")->count();
+
+            //Get the latest date
+            $getLastDate = \DB::table('crash')->where('DOT_NUMBER', $gethauler->dot_number)->orderBy('REPORT_DATE', 'DESC')->first();
+
+
+
+
+            return view('hauler.edit', compact('gethauler', $gethauler, 'employees', $employees, 'flash_message', $flash_message, 'error_message', $error_message, 'getSMS', $getSMS, 'getCrashCount', $getCrashCount, 'getFatalityCount', $getFatalityCount, 'getInjuryCount', $getInjuryCount, 'getTowTotals', $getTowTotals, 'getLastDate', $getLastDate));
     }
 
     /**
@@ -263,19 +320,19 @@ class HaulerController extends Controller
               $request->remit_state,
               $request->remit_zip,
               $request->permanent_notes,
-              $request->trailer_type_1,
-              $request->active,
-              $request->google_carrier,
-              $request->oos_driver_national,
-              $request->oos_driver_company,
-              $request->oos_vehicle_national,
-              $request->oos_vehicle_company,
-              $request->allowed_to_operate,
-              $request->operation_type,
-              $request->crashes,
-              $request->fatal_crashes,
-              $request->number_of_drivers,
-              $request->number_of_power
+              $request->trailer_type_1
+              // $request->active,
+              // $request->google_carrier,
+              // $request->oos_driver_national,
+              // $request->oos_driver_company,
+              // $request->oos_vehicle_national,
+              // $request->oos_vehicle_company,
+              // $request->allowed_to_operate,
+              // $request->operation_type,
+              // $request->crashes,
+              // $request->fatal_crashes,
+              // $request->number_of_drivers,
+              // $request->number_of_power
             );
 
             //Loop through the fields to see if errors are true
