@@ -7,8 +7,8 @@
 
 
 <div class="well col-md-10" style="background: white;">
-
-  <h3>Crash Totals: {{ $getCrashCount }}</h3>
+  <h3 class="text-center">Operation: {{ $gethauler->operation_type }} -- Drivers: {{ $gethauler->number_of_drivers }} -- Trucks: {{ $gethauler->number_of_power }}</h3>
+  <h4>Crash Totals: {{ $getCrashCount }}</h4>
   <div class="row">
     <div class="col-md-3">
       <p>Last Crash Date: {{ $singleDate }}</p>
@@ -36,7 +36,7 @@
 
 <div class="well col-md-10" style="background: white;">
 
-  <h3>Inspection Totals (past 2 years): {{ $getSMS[0]->INSP_TOTAL }}</h3>
+  <h4>Inspection Totals (past 2 years): {{ $getSMS[0]->INSP_TOTAL }}</h4>
   <div class="row">
     <div class="col-md-4">
       <p>Driver OOS Totals: {{ $getSMS[0]->DRIVER_OOS_INSP_TOTAL }}</p>
