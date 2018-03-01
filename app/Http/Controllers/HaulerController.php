@@ -188,7 +188,6 @@ class HaulerController extends Controller
             //Find the carrier
             $gethauler = Carrier::findOrFail($hauler);
 
-            //Get SMS data
             $getSMS = \DB::table('sms')->where('DOT_NUMBER', $gethauler->dot_number)->get();
 
             //Get crash data
@@ -206,13 +205,25 @@ class HaulerController extends Controller
             //Get the latest date
             $getLastDate = \DB::table('crash')->where('DOT_NUMBER', $gethauler->dot_number)->orderBy('REPORT_DATE', 'DESC')->first();
 
+            if($getLastDate !== null)
+            { 
+            $singleDate = $getLastDate->REPORT_DATE;
+            }
+            else
+            {
+              $singleDate = "No Incident";
+            }
+            
+
             //Get all the employees to use for a select dropdown
             $employees = User::all()->pluck('email','email');
 
             //Init the error message variable
             $error_message = "";
 
-            return view('hauler.edit', compact('gethauler', $gethauler, 'employees', $employees, 'error_message', $error_message, 'getSMS', $getSMS, 'getCrashCount', $getCrashCount, 'getFatalityCount', $getFatalityCount, 'getInjuryCount', $getInjuryCount, 'getTowTotals', $getTowTotals, 'getLastDate', $getLastDate));
+            return view('hauler.edit', compact('gethauler', $gethauler, 'employees', $employees, 'error_message', $error_message, 'getCrashCount', $getCrashCount, 'getFatalityCount', $getFatalityCount, 'getInjuryCount', $getInjuryCount, 'getTowTotals', $getTowTotals, 'singleDate', $singleDate, 'getSMS', $getSMS));
+
+          
     }
 
     public function editFormFromDOT($id)
@@ -226,7 +237,7 @@ class HaulerController extends Controller
             //Get SMS data
             
 
-            $getSMS = \DB::table('sms')->where('DOT_NUMBER', $gethauler->dot_number)->get();
+             $getSMS = \DB::table('sms')->where('DOT_NUMBER', $gethauler->dot_number)->get();
 
             //Get crash data
             $getCrashCount = \DB::table('crash')->where('DOT_NUMBER', $gethauler->dot_number)->count();
@@ -243,13 +254,22 @@ class HaulerController extends Controller
             //Get the latest date
             $getLastDate = \DB::table('crash')->where('DOT_NUMBER', $gethauler->dot_number)->orderBy('REPORT_DATE', 'DESC')->first();
 
+            if($getLastDate !== null)
+            { 
+            $singleDate = $getLastDate->REPORT_DATE;
+            }
+            else
+            {
+              $singleDate = "No Incident";
+            }
+
             //Get all the employees to use for a select dropdown
             $employees = User::all()->pluck('email','email');
 
             //Init the error message variable
             $error_message = "";
 
-            return view('hauler.edit', compact('gethauler', $gethauler, 'employees', $employees, 'error_message', $error_message, 'getSMS', $getSMS, 'getCrashCount', $getCrashCount, 'getFatalityCount', $getFatalityCount, 'getInjuryCount', $getInjuryCount, 'getTowTotals', $getTowTotals, 'getLastDate', $getLastDate));
+            return view('hauler.edit', compact('gethauler', $gethauler, 'employees', $employees, 'error_message', $error_message, 'getCrashCount', $getCrashCount, 'getFatalityCount', $getFatalityCount, 'getInjuryCount', $getInjuryCount, 'getTowTotals', $getTowTotals, 'singleDate', $singleDate, 'getSMS', $getSMS));
     }
 
     public function goBackWithData($id, $flash_message, $error_message)
@@ -260,8 +280,7 @@ class HaulerController extends Controller
             //Get all the employees to use for a select dropdown
             $employees = User::all()->pluck('email','email');
 
-            //Get SMS data
-            $getSMS = \DB::table('sms')->where('DOT_NUMBER', $gethauler->dot_number)->get();
+                $getSMS = \DB::table('sms')->where('DOT_NUMBER', $gethauler->dot_number)->get();
 
             //Get crash data
             $getCrashCount = \DB::table('crash')->where('DOT_NUMBER', $gethauler->dot_number)->count();
@@ -278,10 +297,16 @@ class HaulerController extends Controller
             //Get the latest date
             $getLastDate = \DB::table('crash')->where('DOT_NUMBER', $gethauler->dot_number)->orderBy('REPORT_DATE', 'DESC')->first();
 
+            if($getLastDate !== null)
+            { 
+            $singleDate = $getLastDate->REPORT_DATE;
+            }
+            else
+            {
+              $singleDate = "No Incident";
+            }
 
-
-
-            return view('hauler.edit', compact('gethauler', $gethauler, 'employees', $employees, 'flash_message', $flash_message, 'error_message', $error_message, 'getSMS', $getSMS, 'getCrashCount', $getCrashCount, 'getFatalityCount', $getFatalityCount, 'getInjuryCount', $getInjuryCount, 'getTowTotals', $getTowTotals, 'getLastDate', $getLastDate));
+            return view('hauler.edit', compact('gethauler', $gethauler, 'employees', $employees, 'error_message', $error_message, 'getCrashCount', $getCrashCount, 'getFatalityCount', $getFatalityCount, 'getInjuryCount', $getInjuryCount, 'getTowTotals', $getTowTotals, 'singleDate', $singleDate, 'getSMS', $getSMS, 'flash_message', $flash_message));
     }
 
     /**
