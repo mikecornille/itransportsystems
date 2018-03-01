@@ -6,7 +6,7 @@
 <div class="container">
 
 
-<div class="well col-md-10" style="background: white;">
+<!-- <div class="well col-md-10" style="background: white;">
 
   <h3>Crash Totals: {{ $getCrashCount }}</h3>
   <div class="row">
@@ -29,10 +29,10 @@
 
 
     </div>
-</div>
+</div> -->
 
 
-<div class="well col-md-10" style="background: white;">
+<!-- <div class="well col-md-10" style="background: white;">
 
   <h3>Inspection Totals (past 2 years): {{ $getSMS[0]->INSP_TOTAL }}</h3>
   <div class="row">
@@ -71,7 +71,7 @@
 
 
     </div>
-</div>
+</div> -->
 
 
 

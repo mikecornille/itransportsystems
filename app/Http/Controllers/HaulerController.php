@@ -224,6 +224,8 @@ class HaulerController extends Controller
             $gethauler = Carrier::findOrFail($hauler);
 
             //Get SMS data
+            
+
             $getSMS = \DB::table('sms')->where('DOT_NUMBER', $gethauler->dot_number)->get();
 
             //Get crash data
