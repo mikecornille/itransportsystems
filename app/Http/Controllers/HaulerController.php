@@ -180,6 +180,51 @@ class HaulerController extends Controller
         //
     }
 
+    
+    public function accountingUpdate(Request $request, $id)
+    {
+
+      //Set the date to central time
+        date_default_timezone_set("America/Chicago");
+
+        $error_message = "";
+       
+        //Find the record in the database with matching ID #
+        $post = Carrier::findOrFail($id);
+
+        //Get current record ID # to pass through to the view to re-display all info to user
+        $current_record = $post->id;
+
+        //Message to send user upon successful update
+        $flash_message = "The record has been updated!";
+
+        //Save data to database
+        $post->update($request->all());
+
+        $gethauler = $post;
+
+        return view('hauler.accounting_edit', compact('gethauler', $gethauler, 'error_message', $error_message));
+      
+    }
+
+    
+
+    public function hauler_edit_accounting(Request $request)
+    {
+            //This input comes from a form to find a carrier ID #
+            $hauler = $request->input('findcar_id');
+
+            //Find the carrier
+            $gethauler = Carrier::findOrFail($hauler);
+
+            //Init the error message variable
+            $error_message = "";
+
+            return view('hauler.accounting_edit', compact('gethauler', $gethauler, 'error_message', $error_message));
+
+          
+    }
+
     public function editForm(Request $request)
     {
             //This input comes from a form to find a carrier ID #

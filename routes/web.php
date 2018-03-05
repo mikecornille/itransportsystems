@@ -28,7 +28,11 @@ Route::group(['middleware' => 'auth'],function() {
 Route::post('insertDOT', 'HaulerController@insertDOT');
 
 
+Route::put('hauler/accountingUpdate/{hauler}', 'HaulerController@accountingUpdate')->name('hauler.accounting');
+
 Route::resource('hauler', 'HaulerController');
+
+
 
 Route::resource('remit', 'RemitController');
 
@@ -41,6 +45,10 @@ Route::get('/newCarrier', function () {
 });
 
 Route::post('/haulerEdit', 'HaulerController@editForm');
+
+Route::post('/hauler_edit_accounting', 'HaulerController@hauler_edit_accounting');
+
+
 
 Route::get('/findHauler', function () {
     
@@ -75,11 +83,11 @@ Route::get('biWeeklyCustomerEmailList', 'CustomersController@biWeeklyCustomerEma
 //     return view('/admin');
 // });
 
-Route::get('/accounting', function () {
+Route::get('/carrier_accounting', function () {
 	if ( ! Auth::user()->accounting) {
 		return redirect('/home');
 	}
-    return view('/accounting');
+    return view('/carrier_accounting');
 });
 
 Route::get('/toBeLoaded', function () {
