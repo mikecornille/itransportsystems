@@ -1,3 +1,5 @@
+<h2>Company Info</h2>
+
 <div class="row">
 	  	<div class="col-md-6">
 	  		{{ Form::label('company', 'Company') }}
@@ -67,6 +69,8 @@
 	
 	<hr>
 
+	<h2>Check Payment Info</h2>
+
 	<div class="row">
 	  	<div class="col-md-4">
 	  		{{ Form::label('remit_name', 'Remit Name') }}
@@ -95,6 +99,45 @@
 	  		{{ Form::text('remit_zip', null, ['class' => 'form-control']) }}
 		</div>
 	</div>
+
+	<hr>
+
+	<h2>ACH Payment Info</h2>
+
+	<div class="row">
+	  	<div class="col-md-4">
+	  		{{ Form::label('bank_name', 'Bank Name') }}
+	  		{{ Form::text('bank_name', null, ['class' => 'form-control']) }}
+		</div>
+		<div class="col-md-4">
+			{{ Form::label('routing_number', 'Routing Number') }}
+	  		{{ Form::text('routing_number', null, ['class' => 'form-control']) }}
+		</div>
+		<div class="col-md-4">
+			{{ Form::label('account_number', 'Account Number') }}
+	  		{{ Form::text('account_number', null, ['class' => 'form-control']) }}
+		</div>
+	</div>
+
+	<div class="row">
+	  	<div class="col-md-4">
+	  		{{ Form::label('account_type', 'Account Type') }}
+	  		{{ Form::select('account_type', 
+				[
+	  		 		'checking' => 'checking',
+			  		'savings' => 'savings',
+				], null, ['placeholder' => 'Pick an account type...', 'class' => 'form-control']) }}
+		</div>
+		<div class="col-md-4">
+			{{ Form::label('accounting_email', 'Accounting Email') }}
+	  		{{ Form::text('accounting_email', null, ['class' => 'form-control']) }}
+		</div>
+		<div class="col-md-4">
+			{{ Form::label('accounting_phone', 'Accounting Phone') }}
+	  		{{ Form::text('accounting_phone', null, ['class' => 'form-control']) }}
+		</div>
+	</div>
+
 	
 
 	<div class="row">

@@ -42,20 +42,27 @@ class Carrier extends Model
         'current_city_location',
         'current_miles_from_pick',
         'delivery_schedule',
-        'active',
-        'google_carrier',
-        'oos_driver_national',
-        'oos_driver_company',
-        'oos_vehicle_national',
-        'oos_vehicle_company',
-        'allowed_to_operate',
-        'operation_type',
-        'crashes',
-        'fatal_crashes',
-        'number_of_drivers',
-        'number_of_power',
         'insurance_company_email',
-        'fmcsa_time'
+        'bank_name',
+        'routing_number',
+        'account_number',
+        'account_type',
+        'accounting_email',
+        'accounting_phone'
+        
+        // 'fmcsa_time'
+        // 'active',
+        // 'google_carrier',
+        // 'oos_driver_national',
+        // 'oos_driver_company',
+        // 'oos_vehicle_national',
+        // 'oos_vehicle_company',
+        // 'allowed_to_operate',
+        // 'operation_type',
+        // 'crashes',
+        // 'fatal_crashes',
+        // 'number_of_drivers',
+        // 'number_of_power',
 
         ];
 

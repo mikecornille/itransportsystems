@@ -203,7 +203,7 @@ class HaulerController extends Controller
 
         $gethauler = $post;
 
-        return view('hauler.accounting_edit', compact('gethauler', $gethauler, 'error_message', $error_message));
+        return view('hauler.accounting_edit', compact('gethauler', $gethauler, 'error_message', $error_message, 'flash_message', $flash_message));
       
     }
 

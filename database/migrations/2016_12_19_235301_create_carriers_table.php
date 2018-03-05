@@ -48,25 +48,26 @@ class CreateCarriersTable extends Migration
             $table->string('current_miles_from_pick')->nullable();
             $table->string('delivery_schedule')->nullable();
             $table->string('email_colleague_carrier')->nullable();
-            $table->string('active')->nullable();
-            $table->string('google_carrier')->nullable();
-            
-            $table->string('oos_driver_national')->nullable();
-                $table->string('oos_driver_company')->nullable();
-                $table->string('oos_vehicle_national')->nullable();
-                $table->string('oos_vehicle_company')->nullable();                         
-                $table->string('allowed_to_operate')->nullable();
-                $table->string('operation_type')->nullable();                         
-                $table->string('crashes')->nullable();
-                $table->string('fatal_crashes')->nullable();                          
-                $table->string('number_of_drivers')->nullable();
-                $table->string('number_of_power')->nullable();
-
-                $table->string('insurance_company_email')->nullable();
-                $table->string('fmcsa_time')->nullable();
-                
-
-
+            $table->string('bank_name')->nullable();
+            $table->string('routing_number')->nullable();
+            $table->string('account_number')->nullable();
+            $table->string('account_type')->nullable();
+            $table->string('accounting_email')->nullable();
+            $table->string('accounting_phone')->nullable();
+            $table->string('insurance_company_email')->nullable();
+            //$table->string('active')->nullable();
+            //$table->string('google_carrier')->nullable();
+            // $table->string('oos_driver_national')->nullable();
+            //     $table->string('oos_driver_company')->nullable();
+            //     $table->string('oos_vehicle_national')->nullable();
+            //     $table->string('oos_vehicle_company')->nullable();                         
+            //     $table->string('allowed_to_operate')->nullable();
+            //     $table->string('operation_type')->nullable();                         
+            //     $table->string('crashes')->nullable();
+            //     $table->string('fatal_crashes')->nullable();                          
+            //     $table->string('number_of_drivers')->nullable();
+            //     $table->string('number_of_power')->nullable();
+            //$table->string('fmcsa_time')->nullable();
             $table->timestamps();
         });
 
