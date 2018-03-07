@@ -104,10 +104,15 @@
 	
 
 	<div class="row">
+		<div class="col-md-6">
+	  		{{ Form::label('accounting_email', 'Accounting Email') }}
+	  		{{ Form::text('accounting_email', null, ['class' => 'form-control']) }}
+		</div>
 	  	<div class="col-md-6">
 	  		{{ Form::label('insurance_company_email', 'Insurance Company Email') }}
 	  		{{ Form::text('insurance_company_email', null, ['class' => 'form-control']) }}
 		</div>
+		
 	</div>
 
 	<div class="row">
@@ -127,6 +132,7 @@
 	<hr>
 	<div class="row">
 	  	<div class="col-md-4">
+	  		{{ Form::label('trailer_type_1', 'Primary Trailer Type') }}
 	  		{{ Form::select('trailer_type_1', 
 				[
 	  		 		'flatbed' => 'flatbed',
@@ -144,6 +150,7 @@
 	  	</div>
 
 	  	<div class="col-md-4">
+	  		{{ Form::label('trailer_type_2', 'Secondary Trailer Type') }}
 	  		{{ Form::select('trailer_type_2', 
 				[
 	  		 		'flatbed' => 'flatbed',
@@ -161,39 +168,18 @@
 	  	</div>
 
 	  	<div class="col-md-4">
-	  		{{ Form::select('trailer_type_3', 
+	  		{{ Form::label('security', 'Security Clearance') }}
+	  		{{ Form::select('security', 
 				[
-	  		 		'flatbed' => 'flatbed',
-			  		'stepdeck' => 'stepdeck',
-			  		'conestoga' => 'conestoga',
-			  		'hot_shot' => 'hot_shot',
-			  		'van' => 'van',
-			  		'power' => 'power',
-			  		'lowboy' => 'lowboy',
-			  		'landoll' => 'landoll',
-			  		'towing' => 'towing',
-			  		'auto_carrier' => 'auto_carrier',
-			  		'straight_truck' => 'straight_truck'
-				], null, ['placeholder' => 'Pick a trailer type...', 'class' => 'form-control']) }}
-	  	</div>
+	  		 		'TSA' => 'TSA',
+			  		'HAZMAT' => 'HAZMAT',
+			  		'TWIC' => 'TWIC'
+				], null, ['placeholder' => 'security clearance', 'class' => 'form-control']) }}
+		</div>
 	</div>
 	<hr>
 
-	<div class="row">
-	  	<div class="col-md-4">
-	  		{{ Form::label('remit_name', 'Remit Name') }}
-	  		{{ Form::text('remit_name', null, ['class' => 'form-control']) }}
-		</div>
-		<div class="col-md-4">
-			{{ Form::label('remit_address', 'Remit Address') }}
-	  		{{ Form::text('remit_address', null, ['class' => 'form-control']) }}
-		</div>
-		<div class="col-md-4">
-			{{ Form::label('remit-search', 'Remit Search') }}
-	  		{{ Form::text('remit-search', null, ['class' => 'form-control', 'placeholder' => 'Remit Search']) }}
-		</div>
-	</div>
-	<div class="row">
+	<!-- <div class="row">
 	  	<div class="col-md-4">
 	  		{{ Form::label('remit_city', 'Remit City') }}
 	  		{{ Form::text('remit_city', null, ['class' => 'form-control']) }}
@@ -206,7 +192,7 @@
 			{{ Form::label('remit_zip', 'Remit Zip') }}
 	  		{{ Form::text('remit_zip', null, ['class' => 'form-control']) }}
 		</div>
-	</div>
+	</div> -->
 	<!-- <div class="row">
 	  	<div class="col-md-3">
 	  		{{ Form::label('oos_driver_national', 'OOS DRIVER NATIONAL') }}

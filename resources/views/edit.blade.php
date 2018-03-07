@@ -541,17 +541,20 @@
           <input type="text" class="form-control datepicker" id="datepicker3" name="vendor_invoice_date" value="{{ $info->vendor_invoice_date }}">
         </div>
 
-      
-        
-      <div class="col-xs-12">
-      <ul id="remite_to_ul_style">
-      <li><u><i>REMIT TO INFO</i></u></li>
-      <li id="remit_name_display">{{ $info->remit_name }}</li>
-      <li id="remit_address_display">{{ $info->remit_address }}</li>
-      <li id="remit_citystatezip_display">{{ $info->remit_city . ', ' . $info->remit_state . ' ' . $info->remit_zip }}</li>
-      </ul>
 
-    </div>
+        <div class="col-xs-12">
+          <label class="label-control text-primary" for="payment_method">Payment Method</label>
+          <select name="payment_method" id="payment_method" class="form-control">
+            
+          @if($info->payment_method)
+            <option value="{{ $info->payment_method }}">{{ $info->payment_method }}</option>
+          @endif
+            <option value="Choose">Choose</option>
+            <option value="ACH">ACH</option>
+            <option value="CHECK">CHECK</option>
+            
+          </select>
+        </div>
     
 
 

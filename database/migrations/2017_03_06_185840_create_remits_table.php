@@ -23,8 +23,13 @@ class CreateRemitsTable extends Migration
             $table->string('contact')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
+            $table->string('bank_name')->nullable();
+            $table->string('account_name')->nullable();
             $table->string('routing_number')->nullable();
-            $table->string('checking_number')->nullable();
+            $table->string('account_number')->nullable();
+            $table->string('account_type')->nullable();
+            $table->string('accounting_email')->nullable();
+            $table->string('accounting_phone')->nullable();
             $table->timestamps();
         });
     }

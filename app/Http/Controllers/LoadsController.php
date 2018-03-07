@@ -8,6 +8,8 @@ use App\Text;
 
 use App\Loadlist;
 
+use App\Carrier;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -222,6 +224,38 @@ class LoadsController extends Controller
 
            }
 
+           
+       		if (!empty($request->vendor_invoice_number) && !empty($request->vendor_invoice_date) && !empty($request->approved_carrier_invoice) && !empty($request->payment_method))
+       		{
+       			//Verify if this requiers an ACH payment or Check
+       			if ($request->payment_method == "ACH")
+       			{
+       				//Get the carrier record that pertains to the carrier id of the load
+       				$carrierPaymentInfo = Carrier::findOrFail($load->carrier_id);
+       				//Insert the ACH payment info into the loads table
+       				$load->routing_number = $carrierPaymentInfo->routing_number;
+       				$load->account_number = $carrierPaymentInfo->account_number;
+       				$load->account_type = $carrierPaymentInfo->account_type;
+       				$load->account_name = $carrierPaymentInfo->account_name;
+
+       			}
+
+       			elseif ($request->payment_method == "Checking")
+       			{
+       				//Get the carrier record that pertains to the carrier id of the load
+       				$carrierPaymentInfo = Carrier::findOrFail($load->carrier_id);
+       				//Insert the remit payment info into the loads table
+       				$load->remit_name = $carrierPaymentInfo->remit_name;
+       				$load->remit_address = $carrierPaymentInfo->remit_address;
+       				$load->remit_city = $carrierPaymentInfo->remit_city;
+       				$load->remit_state = $carrierPaymentInfo->remit_state;
+       				$load->remit_zip = $carrierPaymentInfo->remit_zip;
+
+       			}
+
+
+       			
+       		}
            
         
         

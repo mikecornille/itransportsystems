@@ -44,11 +44,14 @@ class Carrier extends Model
         'delivery_schedule',
         'insurance_company_email',
         'bank_name',
+        'account_name',
         'routing_number',
         'account_number',
         'account_type',
         'accounting_email',
-        'accounting_phone'
+        'accounting_phone',
+        'security',
+        'ach_token',
         
         // 'fmcsa_time'
         // 'active',
@@ -139,6 +142,17 @@ class Carrier extends Model
      public function setPermanentNotesAttribute($value)
     {
         $this->attributes['permanent_notes'] = strtoupper($value);
+    }
+
+    public function makeAchToken()
+    {
+      $this->ach_token = str_random(60);
+    }
+
+    public function saveAchToken()
+    {
+      $this->makeAchToken();
+      $this->save();
     }
 
         // public static function getTrailers() {

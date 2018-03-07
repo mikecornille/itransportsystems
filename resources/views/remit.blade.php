@@ -5,6 +5,14 @@
 <div class="container">
 
 
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    
+
+
 
     <div class="row">
         <div class="col-md-12">
@@ -23,8 +31,12 @@
         <th>Name</th>
         <th>Address</th>
         <th>City</th>
-        <th>State</th>
-        <th>Zip</th>
+        <th>Bank Name</th>
+        <th>Account Name</th>
+        <th>Routing #</th>
+        <th>Account #</th>
+        <th>Act. Type</th>
+        <th>Act. Email</th>
         <th>Edit</th>
       </tr>
     </thead>
@@ -34,8 +46,12 @@
         <td>{{ $post->name }}</td>
         <td>{{ $post->address }}</td>
         <td>{{ $post->city }}</td>
-        <td>{{ $post->state }}</td>
-        <td>{{ $post->zip }}</td>
+        <td>{{ $post->bank_name }}</td>
+        <td>{{ $post->account_name }}</td>
+        <td>{{ $post->routing_number }}</td>
+        <td>{{ $post->account_number }}</td>
+        <td>{{ $post->account_type }}</td>
+        <td>{{ $post->accounting_email }}</td>
         <td>{!! Html::linkRoute('remit.edit', 'Edit', array($post->id), ['class' => 'btn btn-success btn-block']) !!}</td>
       </tr>
       @endforeach

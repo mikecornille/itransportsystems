@@ -661,6 +661,68 @@ return back()->with('status', 'Your email was sent!');
       
     }
 
+    public function achForm(Request $request, $token)
+    {
+      try {
+          $carrier = Carrier::whereNotNull('ach_token')
+          ->where('ach_token', $token)
+          ->firstOrFail();
+          return view('hauler.ach')->with('carrier', $carrier);
+      } catch(\Exception $exception) {
+          return Response('no carrier found', 404);
+      }
+    }
+
+        public function achProcess(Request $request)
+    {
+      $this->validate($request, [
+      'bank_name' => 'required',
+      'routing_number' => 'required',
+      'account_number' => 'required',
+      'account_type' => 'required',
+      'token' => 'required|exists:carriers,ach_token'
+      ]);
+        $carrier = Carrier::whereNotNull('ach_token')
+          ->where('ach_token', $request->token)
+          ->firstOrFail()
+          ->update([
+            'bank_name' => $request->bank_name,
+            'routing_number' => $request->routing_number,
+            'account_number' => $request->account_number,
+            'account_type' => $request->account_type,
+            'ach_token' => null
+          ]);
+
+          return 'success';
+      
+    }
+
+    public function ach_email($id)
+    {
+        $info = Carrier::find($id);
+
+        $info->saveAchToken();
+    
+        $info = ['info' => $info];
+        
+        Mail::send(['html'=>'email.ach_form'], $info, function($message) use ($info){
+            
+            
+            $message->to($info['info']['accounting_email'])
+
+            ->subject('ACH Info for ' . $info['info']['company']);
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name)
+
+            ->replyTo(\Auth::user()->email, \Auth::user()->name)
+
+            ->sender(\Auth::user()->email, \Auth::user()->name);
+
+        });
+
+      return back()->with('status', 'Your ACH Payment Form has been sent');
+    }
+
     
     
     

@@ -197,6 +197,7 @@ $factory->define(App\Carrier::class, function (Faker\Generator $faker) {
             'remit_zip' => $faker->postcode(),
             'load_info' => $faker->sentence(),
             'permanent_notes' => $faker->sentence(),
+            'ach_token' => str_random(60),
         
     ];
 });

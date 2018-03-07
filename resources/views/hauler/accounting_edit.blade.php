@@ -23,7 +23,6 @@
         <strong>{{ $flash_message }}</strong> Click the X at the far right to close this notification.
       </div>
       @endif
-
       
       {!! Form::model($gethauler, ['route' => ['hauler.accounting', $gethauler->id], 'method' => 'PUT']) !!}
         @include('partials.accountingCarrierForm', ['submitButtonText' => 'Update Carrier with No Actions'])
@@ -38,7 +37,7 @@
         </button>
         <ul class="dropdown-menu" role="menu">
           <li class="dropdown-header">Send ACH Request</li>
-          <li><a href="{{ URL::to('/certInsuranceCompany/' . $gethauler->id) }}"><b>Send ACH Request</b></a></li>
+          <li><a href="{{ URL::to('/ach_email/' . $gethauler->id) }}"><b>Send ACH Request</b></a></li>
         </ul>
       </div>
       

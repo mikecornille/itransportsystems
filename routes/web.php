@@ -21,12 +21,18 @@ Route::get('/twilio', function () {
     return view('twilio');
 });
 
+Route::get('hauler/ach/{token}', 'HaulerController@achForm')->name('hauler.ach.form');
+Route::post('hauler/ach', 'HaulerController@achProcess')->name('hauler.ach.process');
 
 Route::group(['middleware' => 'auth'],function() {
 
 
+
+
+
 Route::post('insertDOT', 'HaulerController@insertDOT');
 
+Route::get('ach_email/{id}', 'HaulerController@ach_email');
 
 Route::put('hauler/accountingUpdate/{hauler}', 'HaulerController@accountingUpdate')->name('hauler.accounting');
 
@@ -290,7 +296,6 @@ Route::get('emailedOut/{id}', "LoadlistController@emailedOut");
 
 
 Route::get('generateTextList', "HaulerController@bookedTextList");
-
 
 
 

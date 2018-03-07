@@ -42,11 +42,10 @@ class RemitController extends Controller
         
         $this->validate($request, [
 
-            'name' => 'required',
-            'address' => 'required',
-            'city' => 'required', 
-            'state' => 'required', 
-            'zip' => 'required',
+            'name' => 'required|max:39',
+            'address' => 'max:50',
+            'email' => 'email', 
+            'accounting_email' => 'email', 
 
         ]);
 

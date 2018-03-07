@@ -538,6 +538,13 @@
                     $('#remit_city').val(window.originRecord.item.object.city);
                     $('#remit_state').val(window.originRecord.item.object.state);
                     $('#remit_zip').val(window.originRecord.item.object.zip);
+                    $('#bank_name').val(window.originRecord.item.object.bank_name);
+                    $('#account_name').val(window.originRecord.item.object.account_name);
+                    $('#routing_number').val(window.originRecord.item.object.routing_number);
+                    $('#account_number').val(window.originRecord.item.object.account_number);
+                    $('#account_type').val(window.originRecord.item.object.account_type);
+                    $('#accounting_email').val(window.originRecord.item.object.accounting_email);
+                    $('#accounting_phone').val(window.originRecord.item.object.accounting_phone);
                     
 
                 },

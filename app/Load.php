@@ -81,6 +81,11 @@ class Load extends Model
               'trailer_for_search',
               'carrier_mc',
               'carrier_id',
+              'routing_number',
+              'account_number',
+              'account_type',
+              'account_name',
+              'payment_method'
 
 
 			  ];

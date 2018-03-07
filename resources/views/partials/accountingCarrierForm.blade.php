@@ -102,7 +102,7 @@
 
 	<hr>
 
-	<h2>ACH Payment Info</h2>
+	<h2>ACH Payment Info (no canadian carriers)</h2>
 
 	<div class="row">
 	  	<div class="col-md-4">
@@ -136,6 +136,15 @@
 			{{ Form::label('accounting_phone', 'Accounting Phone') }}
 	  		{{ Form::text('accounting_phone', null, ['class' => 'form-control']) }}
 		</div>
+	</div>
+
+	<div class="row">
+	  	
+		<div class="col-md-4">
+			{{ Form::label('account_name', 'Account Name') }}
+	  		{{ Form::text('account_name', null, ['class' => 'form-control']) }}
+		</div>
+		
 	</div>
 
 	

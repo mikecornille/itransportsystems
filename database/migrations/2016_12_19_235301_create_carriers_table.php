@@ -49,12 +49,15 @@ class CreateCarriersTable extends Migration
             $table->string('delivery_schedule')->nullable();
             $table->string('email_colleague_carrier')->nullable();
             $table->string('bank_name')->nullable();
+            $table->string('account_name')->nullable();
             $table->string('routing_number')->nullable();
             $table->string('account_number')->nullable();
             $table->string('account_type')->nullable();
             $table->string('accounting_email')->nullable();
             $table->string('accounting_phone')->nullable();
             $table->string('insurance_company_email')->nullable();
+            $table->string('security')->nullable();
+            $table->string('ach_token')->nullable();
             //$table->string('active')->nullable();
             //$table->string('google_carrier')->nullable();
             // $table->string('oos_driver_national')->nullable();
