@@ -173,6 +173,12 @@ Route::get('/exportCarrierBills', function() {
 
 Route::post('/exportCarrierBills/{type}', 'MaatwebsiteDemoController@exportCarrierBills');
 
+Route::get('/achCSV', function() {
+    return view('/achCSV');
+});
+
+Route::post('/achCSV/{type}', 'MaatwebsiteDemoController@achCSV');
+
 Route::get('/truckstopPost', 'MaatwebsiteDemoController@truckstopPost');
 
 Route::get('/truckerPathPost', 'MaatwebsiteDemoController@truckerPathPost');

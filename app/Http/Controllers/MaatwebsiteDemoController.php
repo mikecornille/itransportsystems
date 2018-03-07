@@ -41,6 +41,30 @@ class MaatwebsiteDemoController extends Controller
 		})->download($type);
 	}
 
+	
+
+	public function achCSV($type, Request $request)
+	{
+		 //Customer Invoice Import
+		 $import_date = $request->input('upload_ach_csv');
+		 
+		 
+		
+		$carrier_invoices = Load::select('routing_number', 'account_number', 'amount_due', 'account_type', 'account_name', 'id')->where('approved_carrier_invoice', $import_date)->where('payment_method', "ACH")->orderBy('id', 'desc')->get();
+
+		return \Excel::create('ACH_Upload_' . $import_date, function($excel) use ($carrier_invoices) {
+			$excel->sheet('mySheet', function($sheet) use ($carrier_invoices)
+	        {
+				$sheet->fromArray($carrier_invoices);
+
+
+	        });
+
+		})->download($type);
+	}
+
+
+
 	public function exportCustomerInvoices($type, Request $request)
 	{
 		 //Customer Invoice Import
