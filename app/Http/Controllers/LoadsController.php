@@ -152,6 +152,11 @@ class LoadsController extends Controller
     
     	$load = Load::find($id);
     	$load->creation_date = Carbon::now()->format('m/d/Y');
+    	$load->routing_number = NULL;
+    	$load->account_number = NULL;
+    	$load->account_type = NULL;
+    	$load->account_name = NULL;
+    	$load->payment_method = "Choose";
 		$newLoad = $load->replicate();
 		
 		$newLoad->save();
@@ -256,11 +261,10 @@ class LoadsController extends Controller
 
        			
        		}
-           
         
         
 		$load->update($request->all());
-
+		
 
 		return back()->with('status', 'Your updates have been successfully saved!');
 

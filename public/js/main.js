@@ -1248,6 +1248,13 @@ $('#remit_citystatezip_display').text('');
 $('#carrier_mc').val('');
 $('#signed_rate_con').val('');
 $('#carrier_id').val('1');
+$('#vendor_invoice_number').val('');
+$('#datepicker3').val('');
+$('#payment_method').val('Choose');
+$('#billed_date').val('');
+$('#approved_carrier_invoice').val('');
+$('#rate_con_creation_date').val('');
+
 
 });
 

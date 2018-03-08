@@ -23,6 +23,13 @@ Route::get('/twilio', function () {
 
 Route::get('hauler/ach/{token}', 'HaulerController@achForm')->name('hauler.ach.form');
 Route::post('hauler/ach', 'HaulerController@achProcess')->name('hauler.ach.process');
+Route::get('/ach_success', function () {
+    return view('/ach_success');
+});
+Route::get('/ach_no_carrier_found', function () {
+    return view('/ach_no_carrier_found');
+});
+
 
 Route::group(['middleware' => 'auth'],function() {
 

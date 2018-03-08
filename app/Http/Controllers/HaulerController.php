@@ -669,16 +669,17 @@ return back()->with('status', 'Your email was sent!');
           ->firstOrFail();
           return view('hauler.ach')->with('carrier', $carrier);
       } catch(\Exception $exception) {
-          return Response('no carrier found', 404);
+          return view('ach_no_carrier_found');
       }
     }
 
         public function achProcess(Request $request)
     {
       $this->validate($request, [
-      'bank_name' => 'required',
-      'routing_number' => 'required',
-      'account_number' => 'required',
+      'bank_name' => 'required|max:40',
+      'account_name' => 'required|max:40',
+      'routing_number' => 'required|max:9',
+      'account_number' => 'required|max:12',
       'account_type' => 'required',
       'token' => 'required|exists:carriers,ach_token'
       ]);
@@ -690,10 +691,11 @@ return back()->with('status', 'Your email was sent!');
             'routing_number' => $request->routing_number,
             'account_number' => $request->account_number,
             'account_type' => $request->account_type,
+            'account_name' => $request->account_name,
             'ach_token' => null
           ]);
 
-          return 'success';
+          return view('ach_success');
       
     }
 
@@ -710,7 +712,7 @@ return back()->with('status', 'Your email was sent!');
             
             $message->to($info['info']['accounting_email'])
 
-            ->subject('ACH Info for ' . $info['info']['company']);
+            ->subject('ACH Info to Pay ' . $info['info']['company'] . ' DOT # ' . $info['info']['dot_number']);
           
             $message->from(\Auth::user()->email, \Auth::user()->name)
 
@@ -720,7 +722,9 @@ return back()->with('status', 'Your email was sent!');
 
         });
 
-      return back()->with('status', 'Your ACH Payment Form has been sent');
+
+
+      return view('carrier_accounting');
     }
 
     

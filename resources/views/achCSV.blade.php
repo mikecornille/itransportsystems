@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container">
-
 	<h2>ACH File Generator</h2>
 <form role="form" class="form-horizontal" method="POST" action="/achCSV/csv">
 
@@ -15,10 +13,13 @@
 			<div class="form-group">
 				<div class="row">
 				<div class="col-xs-6">
-			   		<label class="label-control" for="upload_ach_csv">Import Date</label>
-			   		<input type="text" class="form-control" id="datepicker_quickbooks" name="upload_ach_csv">
+			   		<label class="label-control" for="start_date">Start Date</label>
+			   		<input type="text" class="form-control" id="datepicker_profit_start" name="start_date">
 			 	</div>
-			 	
+			 	<div class="col-xs-6">
+			   		<label class="label-control" for="end_date">End Date</label>
+			   		<input type="text" class="form-control" id="datepicker_profit_end" name="end_date">
+			 	</div>
 					
 				</div>
 
@@ -26,9 +27,8 @@
 
 			</div>
 		</div>
-	</div>
+	
 </form>
 </div>
-
 
 @endsection

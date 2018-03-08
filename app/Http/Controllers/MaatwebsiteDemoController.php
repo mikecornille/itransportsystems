@@ -45,23 +45,58 @@ class MaatwebsiteDemoController extends Controller
 
 	public function achCSV($type, Request $request)
 	{
-		 //Customer Invoice Import
-		 $import_date = $request->input('upload_ach_csv');
+	
+		 $start_date = $request->input('start_date');
+		 $end_date = $request->input('end_date');
 		 
-		 
-		
-		$carrier_invoices = Load::select('routing_number', 'account_number', 'amount_due', 'account_type', 'account_name', 'id')->where('approved_carrier_invoice', $import_date)->where('payment_method', "ACH")->orderBy('id', 'desc')->get();
+		 $carrier_invoices = Load::select('routing_number', 'account_number', 'amount_due', 'account_type', 'account_name', 'id')
+		 ->where('payment_method', "ACH")
+		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') > STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') < STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+		 ->get();
 
-		return \Excel::create('ACH_Upload_' . $import_date, function($excel) use ($carrier_invoices) {
+
+		 $carrier_invoices->transform(function($carrier_invoices) {
+			
+			$carrier_invoices->amount_due = $carrier_invoices->amount_due . ".01";
+
+			if($carrier_invoices->account_type == "Checking")
+			{
+				$carrier_invoices->account_type = "C";
+			}
+			elseif($carrier_invoices->account_type == "Saving")
+			{
+				$carrier_invoices->account_type = "S";
+			}
+			 
+			 return $carrier_invoices;
+			});
+			
+
+		 //Todays Date
+		 date_default_timezone_set("America/Chicago");
+        
+        $currentDate = date('m-d-Y');
+
+		return \Excel::create('ACH_Uploaded_On_' . $currentDate, function($excel) use ($carrier_invoices) {
 			$excel->sheet('mySheet', function($sheet) use ($carrier_invoices)
 	        {
+	        	
 				$sheet->fromArray($carrier_invoices);
 
-
-	        });
+			});
 
 		})->download($type);
 	}
+
+
+// 	Load::select('routing_number', 'account_number', 'amount_due', 'account_type', 'account_name', 'id')->where('approved_carrier_invoice', $import_date)->where('payment_method', "ACH")->orderBy('id', 'desc')->get();
+
+// This line should be returning a collection so you should be able to add the following after the get
+// ->transform(function($load) {
+// $load->amount_due = $load->amount_due . '.00';
+// return $load;
+// });
 
 
 

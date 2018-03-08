@@ -28,9 +28,9 @@
 <ul>
 <li><b>Company Name:</b> {{ $info->company }}</li>
 <li><b>DOT #:</b> {{ $info->dot_number }}</li>
-<li><b>Operation Type:</b> {{ $info->operation_type }}</li>
+<!-- <li><b>Operation Type:</b> {{ $info->operation_type }}</li>
 <li><b>Number of Drivers:</b> {{ $info->number_of_drivers }}</li>
-<li><b>Number of Trucks:</b> {{ $info->number_of_power }}</li>
+<li><b>Number of Trucks:</b> {{ $info->number_of_power }}</li> -->
 <li><b>MC #:</b> {{ $info->mc_number }}</li>
 <li><b>Address:</b> {{ $info->address }} - {{ $info->city }}, {{ $info->state }} {{ $info->zip }}</li>
 <li><b>Contact Name:</b> {{ $info->contact }}</li>
@@ -39,7 +39,7 @@
 <li><b>Driver Name:</b> {{ $info->driver_name }}</li>
 <li><b>Driver Phone:</b> {{ $info->driver_phone }}</li>
 </ul>
-<h3><u>!!!IMPORTANT CARRIER SAFETY INFO!!!</u></h3>
+<!-- <h3><u>!!!IMPORTANT CARRIER SAFETY INFO!!!</u></h3>
 <ul>
 <li><b>ITS Pulled Data (should always be same day you are viewing this email):</b> {{ $info->fmcsa_time }}</li>
 <li><b>ITS Active Status:</b> {{ $info->active }}</li>
@@ -51,7 +51,7 @@
 <li><b>OOS Driver Carrier:</b> {{ $info->oos_driver_company }}</li>
 <li><b>OOS Vehicle National Avg:</b> {{ $info->oos_vehicle_national }}</li>
 <li><b>OOS Vehicle Carrier:</b> {{ $info->oos_vehicle_company }}</li>
-</ul>
+</ul> -->
 <h3><u>Carrier Permanent Notes</u></h3>
 <p>{{ $info->permanent_notes }}</p>
 <ul>
