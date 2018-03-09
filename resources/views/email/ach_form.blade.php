@@ -23,7 +23,7 @@
 <li><b>City:</b> {{ $info->city }}</li>
 <li><b>State:</b> {{ $info->state }}</li>
 <li><b>Zip:</b> {{ $info->zip }}</li>
-<li><b>Your Form:</b><a href="{{ route('hauler.ach.form', $info->ach_token) }}">ACH Info Form Link</li>
+<li><b>Your Form:</b><a href="{{ route('hauler.ach.form', $info->ach_token) }}"> ACH Info Form Link</li>
 
 </ul>
 
