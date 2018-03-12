@@ -712,6 +712,7 @@
                     window.customerRecord = ui;
                     $('#customer_name').val(window.customerRecord.item.object.name);
                     $('#customer_address').val(window.customerRecord.item.object.address);
+                    $('#customer_id').val(window.customerRecord.item.object.id);
                     $('#customer_city').val(window.customerRecord.item.object.city);
                     $('#customer_state').val(window.customerRecord.item.object.state);
                     $('#customer_zip').val(window.customerRecord.item.object.zip);

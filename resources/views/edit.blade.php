@@ -65,9 +65,13 @@
 
 
 
-          <div class="col-xs-12">
+          <div class="col-xs-8">
             <label class="label-control" for="customer_address">Address</label>
             <input type="text" class="form-control" id="customer_address" name="customer_address" value="{{ $info->customer_address }}">
+          </div>
+          <div class="col-xs-4">
+            <label class="label-control" for="customer_id">ID #</label>
+            <input type="text" class="form-control" id="customer_id" name="customer_id" value="{{ $info->customer_id }}">
           </div>
           <div class="col-xs-12">
             <label class="label-control" for="customer_city">City</label>
@@ -521,6 +525,22 @@
     <div class="form-group">
       <div class="row">
         <div class="col-xs-12">
+       <label class="label-control" for="amount_due">Amount Due</label>
+       <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <input type="text" class="form-control" id="amount_due" name="amount_due" value="{{ $info->amount_due }}">
+        <span class="input-group-addon">.00</span>
+      </div>
+    </div>
+    <div class="col-xs-12">
+     <label class="label-control" for="carrier_rate">Carrier Rate</label>
+     <div class="input-group">
+      <span class="input-group-addon">$</span>
+      <input type="text" class="form-control" id="carrier_rate" name="carrier_rate" value="{{ $info->carrier_rate }}">
+      <span class="input-group-addon">.00</span>
+    </div>
+  </div>
+        <div class="col-xs-12">
           <label class="label-control" for="po_number">PO #</label>
           <input type="text" class="form-control" id="po_number" name="po_number" value="{{ $info->po_number }}">
         </div>
@@ -532,29 +552,25 @@
           <label class="label-control" for="bol_number">BOL #</label>
           <input type="text" class="form-control" id="bol_number" name="bol_number" value="{{ $info->bol_number }}">
         </div>
-        <div class="col-xs-12">
-          <label class="label-control" for="vendor_invoice_number">Vendor Invoice #</label>
-          <input type="text" class="form-control" id="vendor_invoice_number" name="vendor_invoice_number" value="{{ $info->vendor_invoice_number }}">
-        </div>
-        <div class="col-xs-12">
-          <label class="label-control" for="vendor_invoice_date">Vendor Invoice Date</label>
-          <input type="text" class="form-control datepicker" id="datepicker3" name="vendor_invoice_date" value="{{ $info->vendor_invoice_date }}">
-        </div>
+        
+  <div class="col-xs-12">
+   <label class="label-control" for="signed_rate_con">Signed Rate Con</label>
+   <input type="text" class="form-control" id="signed_rate_con" name="signed_rate_con" value="{{ $info->signed_rate_con }}">
+ </div>
+ <div class="col-xs-12">
+   <label class="label-control" for="datepicker5">Rate Con Create</label>
+   <input type="text" class="form-control datepicker" id="datepicker5" name="rate_con_creation_date" value="{{ $info->rate_con_creation_date }}">
+ </div>
+
+  <div class="col-xs-12" id="submit_button">
+  <button class="btn btn-success form-control" type="submit">Update</button>
+</div>
 
 
-        <div class="col-xs-12">
-          <label class="label-control text-primary" for="payment_method">Payment Method</label>
-          <select name="payment_method" id="payment_method" class="form-control">
-            
-          @if($info->payment_method)
-            <option value="{{ $info->payment_method }}">{{ $info->payment_method }}</option>
-          @endif
-            <option value="Choose">Choose</option>
-            <option value="ACH">ACH</option>
-            <option value="CHECK">CHECK</option>
-            
-          </select>
-        </div>
+        <!-- $table->string('paid_amount_from_customer')->nullable();
+            $table->string('payment_method_from_customer')->nullable();
+            $table->string('ref_or_check_num_from_customer')->nullable();
+            $table->string('deposit_date')->nullable(); -->
     
 
 
@@ -612,52 +628,104 @@
 </div> 
 </div>  
 
+@if (Auth::user()->accounting)
+
 <div id="accounting">
   <div class="well">
     <div class="form-group">
-     <div class="row">
-      <div class="col-xs-12">
-       <label class="label-control" for="amount_due">Amount Due</label>
-       <div class="input-group">
+      <div class="row">
+        <div class="col-xs-12">
+          <label class="label-control text-success" for="paid_amount_from_customer">CUSTOMER PAID</label>
+          <div class="input-group">
         <span class="input-group-addon">$</span>
-        <input type="text" class="form-control" id="amount_due" name="amount_due" value="{{ $info->amount_due }}">
-        <span class="input-group-addon">.00</span>
+          <input type="text" class="form-control" id="paid_amount_from_customer" name="paid_amount_from_customer" value="{{ $info->paid_amount_from_customer }}">
+          <span class="input-group-addon">.00</span>
       </div>
-    </div>
-    <div class="col-xs-12">
-     <label class="label-control" for="carrier_rate">Carrier Rate</label>
-     <div class="input-group">
-      <span class="input-group-addon">$</span>
-      <input type="text" class="form-control" id="carrier_rate" name="carrier_rate" value="{{ $info->carrier_rate }}">
-      <span class="input-group-addon">.00</span>
-    </div>
-  </div>
-  <div class="col-xs-12">
-   <label class="label-control" for="signed_rate_con">Signed Rate Con</label>
-   <input type="text" class="form-control" id="signed_rate_con" name="signed_rate_con" value="{{ $info->signed_rate_con }}">
+        </div>
+
+
+        <div class="col-xs-12">
+          <label class="label-control text-success" for="payment_method_from_customer">PAYMENT METHOD</label>
+          <select name="payment_method_from_customer" id="payment_method_from_customer" class="form-control">
+            
+          @if($info->payment_method_from_customer)
+            <option value="{{ $info->payment_method_from_customer }}">{{ $info->payment_method_from_customer }}</option>
+          @endif
+            <option value="Choose">Choose</option>
+            <option value="ACH">ACH</option>
+            <option value="CHECK">CHECK</option>
+            <option value="CREDIT">CREDIT</option>
+            <option value="CASH">CASH</option>
+            <option value="WIRE">WIRE</option>
+            
+          </select>
+        </div>
+
+         <div class="col-xs-12">
+          <label class="label-control text-success" for="ref_or_check_num_from_customer">REF OR CHECK #</label>
+          <input type="text" class="form-control" id="ref_or_check_num_from_customer" name="ref_or_check_num_from_customer" value="{{ $info->ref_or_check_num_from_customer }}">
+</div>
+
+        
+<div class="col-xs-12">
+   <label class="label-control text-success" for="datepicker_deposit_date">DEPOSIT DATE</label>
+   <input type="text" class="form-control datepicker" id="datepicker_deposit_date" name="deposit_date" value="{{ $info->deposit_date }}">
  </div>
+
  <div class="col-xs-12">
-   <label class="label-control" for="datepicker5">Rate Con Create</label>
-   <input type="text" class="form-control datepicker" id="datepicker5" name="rate_con_creation_date" value="{{ $info->rate_con_creation_date }}">
- </div>
- <div class="col-xs-12">
-   <label class="label-control" for="datepicker6">Billed Date</label>
+   <label class="label-control text-success" for="datepicker6">BILLED DATE</label>
    <input type="text" class="form-control datepicker" id="datepicker6" name="billed_date" value="{{ $info->billed_date }}">
  </div>
+
+         <div class="col-xs-12">
+          <label class="label-control text-primary" for="payment_method">PAYMENT METHOD</label>
+          <select name="payment_method" id="payment_method" class="form-control">
+            
+          @if($info->payment_method)
+            <option value="{{ $info->payment_method }}">{{ $info->payment_method }}</option>
+          @endif
+            <option value="Choose">Choose</option>
+            <option value="ACH">ACH</option>
+            <option value="CHECK">CHECK</option>
+            
+          </select>
+        </div>
+
+
+        <div class="col-xs-12">
+          <label class="label-control text-primary" for="vendor_invoice_number">VENDOR INVOICE #</label>
+          <input type="text" class="form-control" id="vendor_invoice_number" name="vendor_invoice_number" value="{{ $info->vendor_invoice_number }}">
+        </div>
+        <div class="col-xs-12">
+          <label class="label-control text-primary" for="vendor_invoice_date">VENDOR DATE</label>
+          <input type="text" class="form-control datepicker" id="datepicker3" name="vendor_invoice_date" value="{{ $info->vendor_invoice_date }}">
+        </div>
+
+
+       
+ 
+ 
+ 
  <div class="col-xs-12">
-   <label class="label-control" for="datepicker7">APVD CRR INV</label>
+   <label class="label-control text-primary" for="datepicker7">APVD CRR INV</label>
    <input type="text" class="form-control datepicker" id="datepicker7" name="approved_carrier_invoice" value="{{ $info->approved_carrier_invoice }}">
  </div>
- <div class="col-xs-12 text-center" id="submit_button">
-  <button type="submit"class="btn btn-success">Update</button>
-</div>
+ 
+
+
+
+ 
+
+
+
+
+
 </div>
 </div>
 </div>
 </div>
 
-
-
+@endif
 
 <div class="well" id="commodity_div">
   <div class="col-xs-12">

@@ -22,7 +22,24 @@ class Customer extends Model
 			  'internal_notes',
 			  'customer_ambassador',
               'weekly_email',
+              'accounting_email',
+              'accounting_phone',
+              'accounting_name'
         ];
+
+              public function setAccountingEmailAttribute($value)
+    {
+        $this->attributes['accounting_email'] = strtoupper($value);
+    }
+
+      public function setAccountingPhoneAttribute($value)
+    {
+        $this->attributes['accounting_phone'] = strtoupper($value);
+    }
+              public function setAccountingNameAttribute($value)
+    {
+        $this->attributes['accounting_name'] = strtoupper($value);
+    }
 
            public function setNameAttribute($value)
     {

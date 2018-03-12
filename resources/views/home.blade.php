@@ -51,9 +51,13 @@
                     
             </div>
             
-            <div class="col-xs-12">
+            <div class="col-xs-8">
                 <label class="label-control" for="customer_address">Address</label>
                 <input type="text" class="form-control" id="customer_address" name="customer_address" value="{{ old('customer_address') }}">
+            </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="customer_id">ID #</label>
+                <input type="text" class="form-control" id="customer_id" name="customer_id" value="{{ old('customer_id') }}">
             </div>
             <div class="col-xs-12">
                 <label class="label-control" for="customer_city">City</label>

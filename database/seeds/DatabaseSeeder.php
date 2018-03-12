@@ -22,7 +22,9 @@ class DatabaseSeeder extends Seeder
              'cell' => '6307501718',
              'email' => 'mikecornille@gmail.com',
              'password' => bcrypt('password'),
-             'remember_token' => 'SMDvF3btchRMWIHKVWcEjVKvpHrIvCr6FCtwSVsBvkQct39lY5eCibZrgqxW'
+             'remember_token' => 'SMDvF3btchRMWIHKVWcEjVKvpHrIvCr6FCtwSVsBvkQct39lY5eCibZrgqxW',
+             'admin' => 1,
+             'accounting' => 1
          ]);
         
         factory(App\Location::class,3)->create();

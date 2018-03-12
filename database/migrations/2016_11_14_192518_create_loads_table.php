@@ -95,7 +95,12 @@ class CreateLoadsTable extends Migration
             $table->string('account_type')->nullable();
             $table->string('account_name')->nullable();
             $table->string('payment_method')->nullable();
+            $table->string('paid_amount_from_customer')->nullable();
+            $table->string('payment_method_from_customer')->nullable();
+            $table->string('ref_or_check_num_from_customer')->nullable();
+            $table->string('deposit_date')->nullable();
             $table->bigInteger('carrier_id')->nullable();
+            $table->bigInteger('customer_id')->nullable();
             $table->timestamps();
 
         });

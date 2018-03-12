@@ -123,9 +123,9 @@ $factory->define(App\Load::class, function (Faker\Generator $faker) {
             'bol_number' => $faker->word(),
             'created_by' => $faker->email(),
             'its_group' => $faker->word(),
-            'amount_due' => $faker->numberBetween($min = 1000, $max = 9000),
+            'amount_due' => 950,
             'carrier_rate' => $faker->numberBetween($min = 1000, $max = 9000),
-            'billed_date' => $faker->date($format = 'm/d/Y', $max = 'now'),
+            'billed_date' => "03/12/2018",
             'approved_carrier_invoice' => $faker->date($format = 'm/d/Y', $max = 'now'),
             'commodity' => "5 Forklifts and 6 scissor lifts",
             'special_ins' => $faker->word(),
@@ -149,6 +149,15 @@ $factory->define(App\Load::class, function (Faker\Generator $faker) {
             'internal_email_address' => "mikec@itransys.com",
             'internal_message' => $faker->sentence(),
             'creation_date' => $faker->date($format = 'm/d/Y', $max = 'now'),
+            'routing_number' => $faker->numberBetween($min = 100000000, $max = 800000000),
+            'account_number' => $faker->numberBetween($min = 100000, $max = 800000),
+            'account_type' => "Checking",
+            'account_name' => "First Third National Trust",
+            'payment_method' => "ACH",
+            'paid_amount_from_customer' => NULL,
+            'payment_method_from_customer' => "CHECK",
+            'ref_or_check_num_from_customer' => NULL,
+            'deposit_date' => NULL,
     ];
 });
 

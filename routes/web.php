@@ -96,6 +96,11 @@ Route::get('biWeeklyCustomerEmailList', 'CustomersController@biWeeklyCustomerEma
 //     return view('/admin');
 // });
 
+
+
+
+Route::get('accounts_receivable', 'LoadsController@accounts_receivable');
+
 Route::get('/carrier_accounting', function () {
 	if ( ! Auth::user()->accounting) {
 		return redirect('/home');
@@ -202,6 +207,7 @@ Route::get('/loads', 'LoadsController@index');
 Route::get('/deepLoads', 'LoadsController@deepLoads');
 Route::get('/tobedata', 'LoadsController@indextwo'); //FOR DATATABLES
 Route::get('/tobedatatwo', 'LoadsController@tobedatatwo'); //FOR DATATABLES
+Route::get('/accountsReceivable', 'LoadsController@accountsReceivable'); //FOR DATATABLES
 Route::get('/personal_status_table', 'LoadsController@personal_status_table'); //FOR DATATABLES
 Route::get('/personal_status_loaded_table', 'LoadsController@personal_status_loaded_table'); //FOR DATATABLES
 Route::get('/edit/{id}', 'LoadsController@edit');

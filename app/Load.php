@@ -85,7 +85,12 @@ class Load extends Model
               'account_number',
               'account_type',
               'account_name',
-              'payment_method'
+              'payment_method',
+            'paid_amount_from_customer',
+            'payment_method_from_customer',
+            'ref_or_check_num_from_customer',
+            'deposit_date',
+            'customer_id'
 
 
 			  ];

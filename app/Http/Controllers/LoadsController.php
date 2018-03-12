@@ -245,7 +245,7 @@ class LoadsController extends Controller
 
        			}
 
-       			elseif ($request->payment_method == "Checking")
+       			elseif ($request->payment_method == "CHECK")
        			{
        				//Get the carrier record that pertains to the carrier id of the load
        				$carrierPaymentInfo = Carrier::findOrFail($load->carrier_id);
@@ -264,7 +264,7 @@ class LoadsController extends Controller
         
         
 		$load->update($request->all());
-		
+
 
 		return back()->with('status', 'Your updates have been successfully saved!');
 
@@ -573,6 +573,69 @@ class LoadsController extends Controller
 		return view('findTrucksFromLoads')->with('trailerResultsFromLoads', $trailerResultsFromLoads);
 		
 
+	}
+
+	public function accounts_receivable()
+	{
+		$owed = Load::sum('amount_due');
+		
+		return view('accounts_receivable')->with('owed', $owed);
+	}
+
+
+
+	public function accountsReceivable()
+	{
+		
+		$data = Load::where('paid_amount_from_customer', NULL)
+		->where('ref_or_check_num_from_customer', NULL)
+		->where('deposit_date', NULL)->get();
+
+		$data->map(function ($data) {
+    			$data['plus_thirty'] = '';
+    			return $data;
+			});
+
+		$data->map(function ($data) {
+    			$data['aging'] = '';
+    			return $data;
+			});
+
+		
+
+		$data->transform(function($data) {
+			
+			//Do +30 days from billed date
+			$date = Carbon::createFromFormat('m/d/Y', $data->billed_date);
+			$plusThirty = (string)$date->addDays(30)->format('m/d/Y');
+			$data->plus_thirty = $plusThirty;
+
+			
+
+
+			//Get todays date to do math
+			$today_raw = Carbon::now('America/Chicago');
+			//Get the billed date
+			$billed_date = Carbon::createFromFormat('m/d/Y', $data->billed_date);
+			//Get the object of the billed date +30
+			$plusThirtyForMath = $billed_date->addDays(30);
+			//Send to datatable
+			$data->aging = (string)$plusThirtyForMath->diffInDays($today_raw, false);
+
+
+			
+
+
+
+
+			
+
+			return $data;
+		});
+		
+
+		return(['data' => $data]);
+		
 	}
 	
 }

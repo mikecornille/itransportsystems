@@ -770,6 +770,73 @@ $(document).ready(function() {
 });
 
 
+//ACCOUNTS RECEIVABLE
+
+$(document).ready(function() {
+
+
+
+    var table = $('#mainTableAccountsReceivable').DataTable({
+        
+         // scrollY:        "800px",
+   //       scrollX:        true,
+   //       scrollCollapse: true,
+   //       paging:         true,
+   //       fixedColumns: true,
+        "ajax": "/accountsReceivable",
+        "columns": [
+            {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           'id',
+                "render": function ( data, type, full, meta ) {
+                return '<a href="/edit/url?id='+data+'">View</a>';}
+            },
+            
+            
+            { "data": "id"},
+            { "data": "customer_name"},
+            { "data": "billed_date"},
+            { "data": "plus_thirty"},
+            { "data": "aging"}
+
+
+        ],
+        "order": [[0,'asc'],[1,'asc']],
+
+
+
+       
+
+});   
+
+});
+
+$(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#mainTableAccountsReceivable tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="'+title+'" />' );
+    } );
+ 
+    // DataTable
+    var table = $('#mainTableAccountsReceivable').DataTable();
+ 
+    // Apply the search
+    table.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+} );
+
+
 
 //GET THE CONTENT FOR THE DATATABLE
 
@@ -1055,6 +1122,8 @@ $('#datepicker_pick_loadlist').datepicker();
 
 $('#datepicker_search_loadlist').datepicker();
 
+$('#datepicker_deposit_date').datepicker();
+
 
 
 
@@ -1135,6 +1204,10 @@ $('#datepicker_pick_loadlist').on('changeDate', function(ev){
 });
 
 $('#datepicker_search_loadlist').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
+$('#datepicker_deposit_date').on('changeDate', function(ev){
     $(this).datepicker('hide');
 });
 
