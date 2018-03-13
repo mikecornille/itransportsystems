@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Mail;
 
 use App\Customer;
 
+use App\Load;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -91,6 +93,26 @@ class CustomersController extends Controller
    		$posts = Customer::where('weekly_email', 'WEEKLY')->orderBy('email', 'asc')->get();
 
    		return view('biWeeklyCustomerEmailList', compact('posts', $posts));
+   	}
+
+   	public function customerAccoutingEdit(Request $request)
+   	{
+   			$customer = $request->input('findcus_id');
+
+            //Find the customer
+            $getCustomer = Customer::findOrFail($customer);
+
+            //Find all the loads for that customer
+            $getCustomerLoads = Load::where('customer_id', $customer)->get();
+
+
+
+            return view('customer_accounting_edit', compact('getCustomer', $getCustomer, 'getCustomerLoads', $getCustomerLoads));
+   	}
+
+   	public function CustomerAccountingUpdate($id)
+   	{
+   		dd($id);
    	}
 
 }

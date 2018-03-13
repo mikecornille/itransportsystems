@@ -35,7 +35,11 @@ Route::group(['middleware' => 'auth'],function() {
 
 
 
+Route::post('/customerAccoutingEdit', 'CustomersController@customerAccoutingEdit');
 
+
+
+Route::put('/customer_accounting_update/{id}', 'CustomersController@CustomerAccountingUpdate')->name('customer_accounting_update');
 
 Route::post('insertDOT', 'HaulerController@insertDOT');
 
@@ -106,6 +110,13 @@ Route::get('/carrier_accounting', function () {
 		return redirect('/home');
 	}
     return view('/carrier_accounting');
+});
+
+Route::get('/customer_accounting', function () {
+    if ( ! Auth::user()->accounting) {
+        return redirect('/home');
+    }
+    return view('/customer_accounting');
 });
 
 Route::get('/toBeLoaded', function () {
