@@ -41,6 +41,11 @@
   <input type="hidden" id="remit_state" name="remit_state" value="{{ $info->remit_state }}">
   <input type="hidden" id="remit_zip" name="remit_zip" value="{{ $info->remit_zip }}">
 
+  <input type="hidden" id="routing_number" name="routing_number" value="{{ $info->routing_number }}">
+  <input type="hidden" id="account_number" name="account_number" value="{{ $info->account_number }}">
+  <input type="hidden" id="account_type" name="account_type" value="{{ $info->account_type }}">
+  <input type="hidden" id="account_name" name="account_name" value="{{ $info->account_name }}">
+
   <div id="customer">
     <div class="well">
       <div class="form-group">
@@ -799,6 +804,23 @@
   <li>{{ $text->message . ' Sent At: ' . $text->sentAt . ' From: ' . $text->fromCell }}</li>
 @endforeach
 </ul>
+
+@if (Auth::user()->accounting)
+<ul>
+  <li>Remit Name: {{ $info->remit_name }}</li>
+  <li>Remit Address: {{ $info->remit_address }}</li>
+  <li>Remit City: {{ $info->remit_city }}</li>
+  <li>Remit State: {{ $info->remit_state }}</li>
+  <li>Remit Zip: {{ $info->remit_zip }}</li>
+</ul>
+
+<ul>
+  <li>Routing Number: {{ $info->routing_number }}</li>
+  <li>Account Number: {{ $info->account_number }}</li>
+  <li>Account Name: {{ $info->account_name }}</li>
+  <li>Account Type: {{ $info->account_type }}</li>
+</ul>
+@endif
 </div>
 
 

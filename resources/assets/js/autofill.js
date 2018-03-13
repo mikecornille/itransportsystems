@@ -442,9 +442,13 @@
                     $('#remit_state').val(window.carrierRecord.item.object.remit_state);
                     $('#remit_zip').val(window.carrierRecord.item.object.remit_zip);
                     $('#carrier_mc').val(window.carrierRecord.item.object.mc_number);
-                    $('#remit_name_display').text(window.carrierRecord.item.object.remit_name);
-                    $('#remit_address_display').text(window.carrierRecord.item.object.remit_address);
-                    $('#remit_citystatezip_display').text(window.carrierRecord.item.object.remit_city + ', ' + window.carrierRecord.item.object.remit_state + ' ' + window.carrierRecord.item.object.remit_zip);
+
+                    $('#account_name').val(window.carrierRecord.item.object.account_name);
+                    $('#routing_number').val(window.carrierRecord.item.object.routing_number);
+                    $('#account_number').val(window.carrierRecord.item.object.account_number);
+                    $('#account_type').val(window.carrierRecord.item.object.account_type);
+                    
+
                     log( ui.item ?
                     "Selected: " + ui.item.label :
                     "Nothing selected, input was " + this.value);
