@@ -204,7 +204,7 @@ class HaulerController extends Controller
         $gethauler = $post;
 
         //Get the carriers loads they completed
-        $getCarrierLoads = Load::where('carrier_id', $gethauler->id)->get();
+        $getCarrierLoads = Load::where('carrier_id', $gethauler->id)->orderBy('id', 'desc')->get();
 
         $sumPaidOutToCarrier = Load::where('carrier_id', $gethauler->id)->whereNotNull('approved_carrier_invoice')->sum('carrier_rate');
 
@@ -228,7 +228,7 @@ class HaulerController extends Controller
             $error_message = "";
 
             //Get the carriers loads they completed
-            $getCarrierLoads = Load::where('carrier_id', $gethauler->id)->get();
+            $getCarrierLoads = Load::where('carrier_id', $gethauler->id)->orderBy('id', 'desc')->get();
 
             $sumPaidOutToCarrier = Load::where('carrier_id', $gethauler->id)->whereNotNull('approved_carrier_invoice')->sum('carrier_rate');
 
