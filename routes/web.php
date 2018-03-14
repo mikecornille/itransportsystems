@@ -37,7 +37,7 @@ Route::group(['middleware' => 'auth'],function() {
 
 Route::post('/customerAccoutingEdit', 'CustomersController@customerAccoutingEdit');
 
-
+Route::get('/customerAccoutingEditFromAccountsReceivablePage/{id}', 'CustomersController@customerAccoutingEditFromAccountsReceivablePage');
 
 Route::put('/customer_accounting_update/{id}', 'CustomersController@CustomerAccountingUpdate')->name('customer_accounting_update');
 

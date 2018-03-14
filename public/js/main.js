@@ -796,6 +796,22 @@ $(document).ready(function() {
             
             { "data": "id"},
             { "data": "customer_name"},
+
+
+
+            
+            {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           'customer_id',
+                "render": function ( data, type, full, meta ) {
+                return '<a href="/customerAccoutingEditFromAccountsReceivablePage/'+data+'">View Customer</a>';}
+            },
+
+
+
+
+
             { "data": "billed_date"},
             { "data": "plus_thirty"},
             { "data": "aging"}

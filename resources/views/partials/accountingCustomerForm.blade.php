@@ -105,41 +105,6 @@
 	{{ Form::submit($submitButtonText, ['class' => 'form-control btn btn-primary', 'style' => 'margin-top: 15px;']) }}
 
 
-<table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Pro</th>
-        <th>Pick</th>
-        <th>Delivery</th>
-        <th>Billed Date</th>
-        <!-- <th>Due Date</th>
-        <th>Aging</th>
-        <th>Amount Due</th>
-        <th>Amount Paid</th>
-        <th>Payment Method</th>
-        <th>Reference #</th>
-        <th>Deposit Date</th> -->
-      </tr>
-    </thead>
-    <tbody>
-      @foreach($getCustomerLoads as $load)
-      	<?php
-			
 
-		?>
-		
-      <tr class="loadlist_row alt-colors">
-      	<td>{{ $load->id }}</td>
-        <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
-        <td>{{ $load->delivery_city . ', ' . $load->delivery_state }}</td>
-        <td>{{ $load->billed_date }}</td>
-        
-
-
-      </tr>
-      
-      @endforeach
-    </tbody>
-  </table>
 	
 

@@ -110,9 +110,34 @@ class CustomersController extends Controller
             return view('customer_accounting_edit', compact('getCustomer', $getCustomer, 'getCustomerLoads', $getCustomerLoads));
    	}
 
-   	public function CustomerAccountingUpdate($id)
+   	public function customerAccoutingEditFromAccountsReceivablePage($id)
    	{
-   		dd($id);
+   			
+
+            //Find the customer
+            $getCustomer = Customer::findOrFail($id);
+
+            //Find all the loads for that customer
+            $getCustomerLoads = Load::where('customer_id', $id)->get();
+
+
+			return view('customer_accounting_edit', compact('getCustomer', $getCustomer, 'getCustomerLoads', $getCustomerLoads));
+   	}
+
+   	public function CustomerAccountingUpdate(Request $request, $id)
+   	{
+   		
+
+   		$customer = Customer::where('id', '=', $id)->first();
+   		$customer->update($request->all());
+
+   		
+
+   		return view('customer_accounting');
+   		
+   		
+
+   		
    	}
 
 }

@@ -9,6 +9,7 @@ $id = "";
 
 
 <div class="container">
+	<h3>Carrier Accounting Profiles</h3>
 	<div class="row">
 		<div class="col-md-6">
 			<label class="label-control" for="find-carrier-search-new">SEARCH</label>

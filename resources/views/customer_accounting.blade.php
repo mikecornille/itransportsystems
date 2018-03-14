@@ -9,10 +9,11 @@ $id = "";
 
 
 <div class="container">
+	<h3>Customer Accounting Profiles</h3>
 	<div class="row">
 		<div class="col-md-6">
 			<label class="label-control" for="find-customer-search-new">SEARCH</label>
-			<input type="text" class="form-control" id="find-customer-search-new" placeholder="Carrier Search">
+			<input type="text" class="form-control" id="find-customer-search-new" placeholder="Customer Search">
 		</div>
 
 	</div>

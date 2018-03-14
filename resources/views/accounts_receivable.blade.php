@@ -12,6 +12,7 @@
             <th></th>
                 <th>Pro</th>
                 <th>Customer Name</th>
+                <th>Customer Link</th>
                 <th>Billed Date</th>
                 <th>Due Date</th>
                 <th>Aging</th>
@@ -23,6 +24,7 @@
             <th></th>
                 <th>Pro</th>
                 <th>Customer Name</th>
+                <th>Customer Link</th>
                 <th>Billed Date</th>
                 <th>Due Date</th>
                 <th>Aging</th>

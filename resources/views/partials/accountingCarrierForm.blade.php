@@ -1,5 +1,3 @@
-<h2>Company Info</h2>
-
 <div class="row">
 	  	<div class="col-md-6">
 	  		{{ Form::label('company', 'Company') }}
@@ -124,8 +122,8 @@
 	  		{{ Form::label('account_type', 'Account Type') }}
 	  		{{ Form::select('account_type', 
 				[
-	  		 		'checking' => 'checking',
-			  		'savings' => 'savings',
+	  		 		'Checking' => 'Checking',
+			  		'Saving' => 'Saving',
 				], null, ['placeholder' => 'Pick an account type...', 'class' => 'form-control']) }}
 		</div>
 		<div class="col-md-4">
