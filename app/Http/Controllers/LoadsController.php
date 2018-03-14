@@ -576,6 +576,8 @@ class LoadsController extends Controller
 			});
 
 		
+		if(isset($data->billed_date))
+		{
 
 		$data->transform(function($data) {
 			
@@ -600,6 +602,8 @@ class LoadsController extends Controller
 			
 			return $data;
 		});
+
+	}
 		
 
 		return(['data' => $data]);
