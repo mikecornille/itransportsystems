@@ -100,8 +100,10 @@ class CreateLoadsTable extends Migration
             $table->string('ref_or_check_num_from_customer')->nullable();
             $table->string('deposit_date')->nullable();
             $table->bigInteger('carrier_id')->nullable();
-            $table->bigInteger('customer_id')->nullable();
+            $table->string('customer_id')->nullable();
             $table->string('vendor_check_number')->nullable();
+            $table->string('carrierPayStatus')->nullable();
+            $table->string('customerPayStatus')->nullable();
             $table->timestamps();
 
         });

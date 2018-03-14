@@ -818,7 +818,7 @@ $(document).ready(function() {
 
 
         ],
-        "order": [[0,'asc'],[1,'asc']],
+        "order": [[2,'asc'],[1,'asc']],
 
 
 

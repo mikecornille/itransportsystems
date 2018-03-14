@@ -91,7 +91,9 @@ class Load extends Model
             'ref_or_check_num_from_customer',
             'deposit_date',
             'customer_id',
-            'vendor_check_number'
+            'vendor_check_number',
+            'carrierPayStatus',
+            'customerPayStatus'
 
 
 			  ];

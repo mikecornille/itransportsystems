@@ -103,11 +103,11 @@ class CustomersController extends Controller
             $getCustomer = Customer::findOrFail($customer);
 
             //Find all the loads for that customer
-            $getCustomerLoads = Load::where('customer_id', $customer)->get();
+            $getCustomerLoadsPaid = Load::where('customer_id', $customer)->isNotEmpty('paid_amount_from_customer')->get();
 
+            $getCustomerLoadsNotPaid = Load::where('customer_id', $customer)->isEmpty('paid_amount_from_customer')->get();
 
-
-            return view('customer_accounting_edit', compact('getCustomer', $getCustomer, 'getCustomerLoads', $getCustomerLoads));
+            return view('customer_accounting_edit', compact('getCustomer', $getCustomer, 'getCustomerLoadsPaid', $getCustomerLoadsPaid, 'getCustomerLoadsNotPaid', $getCustomerLoadsNotPaid));
    	}
 
    	public function customerAccoutingEditFromAccountsReceivablePage($id)
@@ -131,7 +131,7 @@ class CustomersController extends Controller
    		$customer = Customer::where('id', '=', $id)->first();
    		$customer->update($request->all());
 
-   		
+
 
    		return view('customer_accounting');
    		

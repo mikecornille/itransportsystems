@@ -482,9 +482,4 @@ textarea#commodity, textarea#special_ins, textarea#add_stops, textarea#invoice_n
   cursor: default;
 }
 
-input[type='radio'] {
-  -webkit-transform: scale(3);
-  transform: scale(3);
-}
-
 /*# sourceMappingURL=app.css.map */

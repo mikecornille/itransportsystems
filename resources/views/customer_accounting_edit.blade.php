@@ -36,6 +36,7 @@
 
 </div>
 
+<h1 class="text-center">Open Invoices</h1>
 <table class="table table-hover">
     <thead>
       <tr>
@@ -51,7 +52,49 @@
       </tr>
     </thead>
     <tbody>
-      @foreach($getCustomerLoads as $load)
+      @foreach($getCustomerLoadsPaid as $load)
+      	<?php
+			
+
+		?>
+		
+      <tr class="loadlist_row alt-colors">
+      	<td><a href="/edit/url?id={{ $load->id }}">{{ $load->id }}</a></td>
+        <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
+        <td>{{ $load->delivery_city . ', ' . $load->delivery_state }}</td>
+        <td>{{ $load->billed_date }}</td>
+		<td>{{ $load->amount_due }}</td>
+        <td>{{ $load->paid_amount_from_customer }}</td>
+        <td>{{ $load->payment_method_from_customer }}</td>
+        <td>{{ $load->ref_or_check_num_from_customer }}</td>
+        <td>{{ $load->deposit_date }}</td>
+        
+
+
+      </tr>
+      
+      @endforeach
+    </tbody>
+  </table>
+
+
+  <h1 class="text-center">Paid Invoices</h1>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Pro</th>
+        <th>Pick</th>
+        <th>Delivery</th>
+        <th>Billed Date</th>
+        <th>Amount Due</th>
+        <th>Amount Paid</th>
+        <th>Payment Method</th>
+        <th>Reference #</th>
+        <th>Deposit Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach($getCustomerLoadsNotPaid as $load)
       	<?php
 			
 

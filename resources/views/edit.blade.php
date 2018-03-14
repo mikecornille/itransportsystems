@@ -683,17 +683,16 @@
    <input type="text" class="form-control datepicker" id="datepicker6" name="billed_date" value="{{ $info->billed_date }}">
  </div>
 
+  <div class="col-xs-12">
+   <label class="radio-inline"><input type="radio" name="customerPayStatus" value="PAID">PAID</label>
+   <label class="radio-inline"><input type="radio" name="customerPayStatus" value="OPEN">OPEN</label>
+ </div>
+
+ <div class="col-xs-12">
+   <p class="text-success">PAY STATUS: {{ $info->customerPayStatus }}</p>
+ </div>
+
          
- 
-
-
-
- 
-
-
-
-
-
 </div>
 </div>
 </div>
@@ -748,6 +747,17 @@
    <label class="label-control text-primary" for="vendor_check_number">VENDOR CHECK #</label>
    <input type="text" class="form-control" id="vendor_check_number" name="vendor_check_number" value="{{ $info->vendor_check_number }}">
  </div>
+
+ <div class="col-xs-12">
+   <label class="radio-inline"><input type="radio" name="carrierPayStatus" value="PAID">PAID</label>
+   <label class="radio-inline"><input type="radio" name="carrierPayStatus" value="OPEN">OPEN</label>
+ </div>
+
+ <div class="col-xs-12">
+   <p class="text-primary">PAY STATUS: {{ $info->carrierPayStatus }}</p>
+ </div>
+
+ 
  
 
 
