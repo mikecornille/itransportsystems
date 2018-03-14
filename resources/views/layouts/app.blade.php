@@ -131,7 +131,6 @@
                                 <li><a href="{{ URL::to('/findCarrier') }}">Find Carrier</a></li> -->
                                 <li><a href="{{ URL::to('/findTrucks') }}">Find Trucks From Carriers</a></li>
                                 <li><a href="{{ URL::to('/findTrucksFromLoads') }}">Find Trucks From Loads</a></li>
-                                <li><a href="{{ URL::to('/remit') }}">Remit Info</a></li>
                                 <li><a href="{{ URL::to('/generateTextList') }}">Generate Text List</a></li>
 
 
@@ -208,8 +207,9 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="{{ url('/accounts_receivable') }}">Accounts Receivable</a></li>
-                                    <li><a href="{{ url('/carrier_accounting') }}">Carrier Search</a></li>
                                     <li><a href="{{ url('/customer_accounting') }}">Customer Search</a></li>
+                                    <li><a href="{{ url('/carrier_accounting') }}">Carrier Search</a></li>
+                                    <li><a href="{{ URL::to('/remit') }}">Remit Info</a></li>
                                </ul>
                             </li>
 
