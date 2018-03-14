@@ -563,7 +563,7 @@ class LoadsController extends Controller
 	public function accountsReceivable()
 	{
 		
-		$data = Load::where('paid_amount_from_customer', '=', '')->orWhereNull('paid_amount_from_customer')->take(2000)->get();
+		$data = Load::whereNotNull('billed_date')->take(2000)->get();
 
 		$data->map(function ($data) {
     			$data['plus_thirty'] = '';
