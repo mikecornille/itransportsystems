@@ -60,7 +60,7 @@
         <th>Carrier Rate</th>
         <th>Invoice Number</th>
         <th>Invoice Date</th>
-        <th>Approved Invoice Date</th>
+        <th>Vendor Pay Date</th>
         <th>Payment Method</th>
         
       </tr>

@@ -637,6 +637,7 @@
 
 <div id="accounting">
   <div class="well">
+    <h4 class="text-success"><b><i>CUSTOMER</i></b></h4>
     <div class="form-group">
       <div class="row">
         <div class="col-xs-12">
@@ -682,6 +683,33 @@
    <input type="text" class="form-control datepicker" id="datepicker6" name="billed_date" value="{{ $info->billed_date }}">
  </div>
 
+         
+ 
+
+
+
+ 
+
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+@endif
+
+@if (Auth::user()->accounting)
+
+<div id="accounting">
+  <div class="well">
+    <h4 class="text-primary"><b><i>CARRIER</i></b></h4>
+    <div class="form-group">
+      <div class="row">
+        
+
          <div class="col-xs-12">
           <label class="label-control text-primary" for="payment_method">PAYMENT METHOD</label>
           <select name="payment_method" id="payment_method" class="form-control">
@@ -712,8 +740,13 @@
  
  
  <div class="col-xs-12">
-   <label class="label-control text-primary" for="datepicker7">APVD CRR INV</label>
+   <label class="label-control text-primary" for="datepicker7">VENDOR PAY DATE</label>
    <input type="text" class="form-control datepicker" id="datepicker7" name="approved_carrier_invoice" value="{{ $info->approved_carrier_invoice }}">
+ </div>
+
+  <div class="col-xs-12">
+   <label class="label-control text-primary" for="vendor_check_number">VENDOR CHECK #</label>
+   <input type="text" class="form-control" id="vendor_check_number" name="vendor_check_number" value="{{ $info->vendor_check_number }}">
  </div>
  
 

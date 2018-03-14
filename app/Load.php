@@ -90,7 +90,8 @@ class Load extends Model
             'payment_method_from_customer',
             'ref_or_check_num_from_customer',
             'deposit_date',
-            'customer_id'
+            'customer_id',
+            'vendor_check_number'
 
 
 			  ];
