@@ -15,7 +15,7 @@ class RemitController extends Controller
      */
     public function index()
     {
-         $posts = Remit::all();
+         $posts = Remit::orderBy('name', 'asc')->get();
         
         return view('remit', compact('posts', $posts));
     }
