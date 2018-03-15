@@ -174,6 +174,7 @@ class CustomersController extends Controller
 	   				$findLoad->deposit_date = NULL;
 	   				$findLoad->ref_or_check_num_from_customer = NULL;
 	   				$findLoad->payment_method_from_customer = NULL;
+	   				$findLoad->paid_amount_from_customer = NULL;
 	   				$findLoad->customerPayStatus = $request->customerPayStatus[$id];
 	   				$findLoad->update();
 
@@ -184,6 +185,7 @@ class CustomersController extends Controller
    				$findLoad->deposit_date = $request->deposit_date;
    				$findLoad->ref_or_check_num_from_customer = $request->ref_or_check_num_from_customer;
    				$findLoad->payment_method_from_customer = $request->payment_method_from_customer;
+   				$findLoad->paid_amount_from_customer = $request->paid_amount_from_customer[$id];
    				$findLoad->customerPayStatus = $request->customerPayStatus[$id];
    				$findLoad->update();
    				}
