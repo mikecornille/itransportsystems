@@ -35,6 +35,8 @@ Route::group(['middleware' => 'auth'],function() {
 
 Route::get('payMultipleRecordForm/{id}', 'CustomersController@payMultipleRecordForm');
 
+Route::patch('payMultipleRecordForm', 'CustomersController@payMultipleRecordFormPost');
+
 Route::post('/customerAccoutingEdit', 'CustomersController@customerAccoutingEdit');
 
 Route::get('/customerAccoutingEditFromAccountsReceivablePage/{id}', 'CustomersController@customerAccoutingEditFromAccountsReceivablePage');

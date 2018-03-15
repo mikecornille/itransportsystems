@@ -161,4 +161,35 @@ class CustomersController extends Controller
    		return view('/payMultipleRecordForm', compact('open_loads', $open_loads, 'customer', $customer));
    	}
 
+   	public function payMultipleRecordFormPost(Request $request)
+   	{
+   			
+
+
+   			foreach($request->id as $id)
+   			{
+   				if($request->customerPayStatus[$id] === "OPEN")
+   				{
+   					$findLoad = Load::findOrFail($id);
+	   				$findLoad->deposit_date = NULL;
+	   				$findLoad->ref_or_check_num_from_customer = NULL;
+	   				$findLoad->payment_method_from_customer = NULL;
+	   				$findLoad->customerPayStatus = $request->customerPayStatus[$id];
+	   				$findLoad->update();
+
+   				}
+   				elseif($request->customerPayStatus[$id] === "PAID")
+   				{
+   				$findLoad = Load::findOrFail($id);
+   				$findLoad->deposit_date = $request->deposit_date;
+   				$findLoad->ref_or_check_num_from_customer = $request->ref_or_check_num_from_customer;
+   				$findLoad->payment_method_from_customer = $request->payment_method_from_customer;
+   				$findLoad->customerPayStatus = $request->customerPayStatus[$id];
+   				$findLoad->update();
+   				}
+   			}
+
+   		return view('customer_accounting');
+   	}
+
 }
