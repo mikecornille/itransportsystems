@@ -137,7 +137,8 @@ class LoadsController extends Controller
 		$newload->delivery_status = "Open";
 		$newload->created_by = strtoupper(\Auth::user()->email);
 		$newload->creation_date = date('m/d/Y');
-		
+		$newload->carrierPayStatus = "OPEN";
+		$newload->customerPayStatus = "OPEN";
 
 		$newload->save();
 

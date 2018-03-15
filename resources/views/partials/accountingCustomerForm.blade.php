@@ -1,4 +1,4 @@
-<h2>Customer Info</h2>
+<h2>Customer ID # {{ $getCustomer->id }}</h2>
 
 <div class="row">
 	  	<div class="col-md-8">

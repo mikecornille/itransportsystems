@@ -24,7 +24,7 @@
       </div>
       @endif
 
-      <h3>Carrier ID # {{ $gethauler->id }} - Amount Paid : ${{ $sumPaidOutToCarrier }} Amount Owed: ${{ $owedToCarrier }}</h3>
+      <h3>Carrier ID # {{ $gethauler->id }}</h3>
       
       {!! Form::model($gethauler, ['route' => ['hauler.accounting', $gethauler->id], 'method' => 'PUT']) !!}
         @include('partials.accountingCarrierForm', ['submitButtonText' => 'Update Carrier with No Actions'])
@@ -49,10 +49,12 @@
 
 </div>
 
+<h3 class="text-center"><u>Open Invoices - Total Due: ${{ $sumOwedtToCarrier }}</u></h3>
 <table class="table table-hover">
     <thead>
       <tr>
         <th>Pro</th>
+        <th>Carrier ID</th>
         <th>Pick</th>
         <th>Delivery</th>
         <th>Delivery Date</th>
@@ -62,6 +64,7 @@
         <th>Invoice Date</th>
         <th>Vendor Pay Date</th>
         <th>Payment Method</th>
+        <th>Payment Status</th>
         
       </tr>
     </thead>
@@ -74,6 +77,7 @@
     
       <tr class="loadlist_row alt-colors">
         <td><a href="/edit/url?id={{ $load->id }}">{{ $load->id }}</a></td>
+        <td>{{ $load->carrier_id }}</td>
         <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
         <td>{{ $load->delivery_city . ', ' . $load->delivery_state }}</td>
         <td>{{ $load->delivery_date }}</td>
@@ -83,6 +87,7 @@
         <td>{{ $load->vendor_invoice_date }}</td>
         <td>{{ $load->approved_carrier_invoice }}</td>
         <td>{{ $load->payment_method }}</td>
+        <td>{{ $load->carrierPayStatus }}</td>
 
         
       </tr>
@@ -90,5 +95,54 @@
       @endforeach
     </tbody>
   </table>
+
+  <h3 class="text-center"><u>Paid Invoices - Total Paid: ${{ $sumPaidOutToCarrier }}</u></h3>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Pro</th>
+        <th>Carrier ID</th>
+        <th>Pick</th>
+        <th>Delivery</th>
+        <th>Delivery Date</th>
+        <th>Delivery Status</th>
+        <th>Carrier Rate</th>
+        <th>Invoice Number</th>
+        <th>Invoice Date</th>
+        <th>Vendor Pay Date</th>
+        <th>Payment Method</th>
+        <th>Payment Status</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      @foreach($paidToCarrier as $load)
+        <?php
+      
+
+    ?>
+    
+      <tr class="loadlist_row alt-colors">
+        <td><a href="/edit/url?id={{ $load->id }}">{{ $load->id }}</a></td>
+        <td>{{ $load->carrier_id }}</td>
+        <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
+        <td>{{ $load->delivery_city . ', ' . $load->delivery_state }}</td>
+        <td>{{ $load->delivery_date }}</td>
+        <td>{{ $load->delivery_status }}</td>
+        <td>{{ $load->carrier_rate }}</td>
+        <td>{{ $load->vendor_invoice_number }}</td>
+        <td>{{ $load->vendor_invoice_date }}</td>
+        <td>{{ $load->approved_carrier_invoice }}</td>
+        <td>{{ $load->payment_method }}</td>
+        <td>{{ $load->carrierPayStatus }}</td>
+
+        
+      </tr>
+      
+      @endforeach
+    </tbody>
+  </table>
+
+ 
 
 @endsection

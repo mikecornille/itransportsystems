@@ -203,14 +203,17 @@ class HaulerController extends Controller
 
         $gethauler = $post;
 
-        //Get the carriers loads they completed
-        $getCarrierLoads = Load::where('carrier_id', $gethauler->id)->orderBy('id', 'desc')->get();
+        //Get the carriers loads they need to be paid on
+        $getCarrierLoads = Load::where('carrier_id', $gethauler->id)->where('carrierPayStatus', '=', "OPEN")->get();
 
-        $sumPaidOutToCarrier = Load::where('carrier_id', $gethauler->id)->whereNotNull('approved_carrier_invoice')->sum('carrier_rate');
+        $sumPaidOutToCarrier = Load::where('carrier_id', $gethauler->id)->where('carrierPayStatus', '=', "PAID")->sum('carrier_rate');
 
-        $owedToCarrier = Load::where('carrier_id', $gethauler->id)->whereNull('approved_carrier_invoice')->sum('carrier_rate');
+        $sumOwedtToCarrier = Load::where('carrier_id', $gethauler->id)->where('carrierPayStatus', '=', "OPEN")->sum('carrier_rate');
 
-        return view('hauler.accounting_edit', compact('gethauler', $gethauler, 'error_message', $error_message, 'flash_message', $flash_message, 'sumPaidOutToCarrier', $sumPaidOutToCarrier, 'owedToCarrier', $owedToCarrier, 'getCarrierLoads', $getCarrierLoads));
+        //Get the loads the carrier has been paid on
+        $paidToCarrier = Load::where('carrier_id', $gethauler->id)->where('carrierPayStatus', '=', "PAID")->get();
+
+        return view('hauler.accounting_edit', compact('gethauler', $gethauler, 'error_message', $error_message, 'flash_message', $flash_message, 'sumPaidOutToCarrier', $sumPaidOutToCarrier, 'paidToCarrier', $paidToCarrier, 'getCarrierLoads', $getCarrierLoads, 'sumOwedtToCarrier', $sumOwedtToCarrier));
       
     }
 
@@ -227,14 +230,17 @@ class HaulerController extends Controller
             //Init the error message variable
             $error_message = "";
 
-            //Get the carriers loads they completed
-            $getCarrierLoads = Load::where('carrier_id', $gethauler->id)->orderBy('id', 'desc')->get();
+            //Get the carriers loads they need to be paid on
+            $getCarrierLoads = Load::where('carrier_id', $gethauler->id)->where('carrierPayStatus', '=', "OPEN")->get();
 
-            $sumPaidOutToCarrier = Load::where('carrier_id', $gethauler->id)->whereNotNull('approved_carrier_invoice')->sum('carrier_rate');
+            $sumPaidOutToCarrier = Load::where('carrier_id', $gethauler->id)->where('carrierPayStatus', '=', "PAID")->sum('carrier_rate');
 
-            $owedToCarrier = Load::where('carrier_id', $gethauler->id)->whereNull('approved_carrier_invoice')->sum('carrier_rate');
+            $sumOwedtToCarrier = Load::where('carrier_id', $gethauler->id)->where('carrierPayStatus', '=', "OPEN")->sum('carrier_rate');
 
-            return view('hauler.accounting_edit', compact('gethauler', $gethauler, 'error_message', $error_message, 'getCarrierLoads', $getCarrierLoads, 'sumPaidOutToCarrier', $sumPaidOutToCarrier, 'owedToCarrier', $owedToCarrier));
+            //Get the loads the carrier has been paid on
+            $paidToCarrier = Load::where('carrier_id', $gethauler->id)->where('carrierPayStatus', '=', "PAID")->get();
+
+            return view('hauler.accounting_edit', compact('gethauler', $gethauler, 'error_message', $error_message, 'getCarrierLoads', $getCarrierLoads, 'sumPaidOutToCarrier', $sumPaidOutToCarrier, 'paidToCarrier', $paidToCarrier, 'sumOwedtToCarrier', $sumOwedtToCarrier));
 
           
     }

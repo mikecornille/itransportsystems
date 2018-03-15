@@ -33,7 +33,7 @@ Route::get('/ach_no_carrier_found', function () {
 
 Route::group(['middleware' => 'auth'],function() {
 
-
+Route::get('payMultipleRecordForm/{id}', 'CustomersController@payMultipleRecordForm');
 
 Route::post('/customerAccoutingEdit', 'CustomersController@customerAccoutingEdit');
 

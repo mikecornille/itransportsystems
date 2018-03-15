@@ -102,12 +102,16 @@ class CustomersController extends Controller
             //Find the customer
             $getCustomer = Customer::findOrFail($customer);
 
-            //Find all the loads for that customer
-            $getCustomerLoadsPaid = Load::where('customer_id', $customer)->isNotEmpty('paid_amount_from_customer')->get();
+            //Find all the loads for the customer that need to be paid
+            $getCustomerLoadsNotPaid = Load::where('customer_id', "=", $getCustomer->id)->where('customerPayStatus', "=", "OPEN")->get();
 
-            $getCustomerLoadsNotPaid = Load::where('customer_id', $customer)->isEmpty('paid_amount_from_customer')->get();
+            $getCustomerLoadsPaid = Load::where('customer_id', "=", $getCustomer->id)->where('customerPayStatus', "=", "PAID")->get();
 
-            return view('customer_accounting_edit', compact('getCustomer', $getCustomer, 'getCustomerLoadsPaid', $getCustomerLoadsPaid, 'getCustomerLoadsNotPaid', $getCustomerLoadsNotPaid));
+            $sumPaidFromCustomer = Load::where('customer_id', $customer)->where('customerPayStatus', '=', "PAID")->sum('paid_amount_from_customer');
+
+            $sumOwedFromCustomer = Load::where('customer_id', $customer)->where('customerPayStatus', '=', "OPEN")->sum('amount_due');
+
+            return view('customer_accounting_edit', compact('getCustomer', $getCustomer, 'getCustomerLoadsPaid', $getCustomerLoadsPaid, 'getCustomerLoadsNotPaid', $getCustomerLoadsNotPaid, 'sumPaidFromCustomer', $sumPaidFromCustomer, 'sumOwedFromCustomer', $sumOwedFromCustomer));
    	}
 
    	public function customerAccoutingEditFromAccountsReceivablePage($id)
@@ -117,11 +121,17 @@ class CustomersController extends Controller
             //Find the customer
             $getCustomer = Customer::findOrFail($id);
 
-            //Find all the loads for that customer
-            $getCustomerLoads = Load::where('customer_id', $id)->get();
+            //Find all the loads for the customer that need to be paid
+            $getCustomerLoadsNotPaid = Load::where('customer_id', "=", $getCustomer->id)->where('customerPayStatus', "=", "OPEN")->get();
+
+            $getCustomerLoadsPaid = Load::where('customer_id', "=", $getCustomer->id)->where('customerPayStatus', "=", "PAID")->get();
+
+            $sumPaidFromCustomer = Load::where('customer_id', $id)->where('customerPayStatus', '=', "PAID")->sum('paid_amount_from_customer');
+
+            $sumOwedFromCustomer = Load::where('customer_id', $id)->where('customerPayStatus', '=', "OPEN")->sum('amount_due');
 
 
-			return view('customer_accounting_edit', compact('getCustomer', $getCustomer, 'getCustomerLoads', $getCustomerLoads));
+			return view('customer_accounting_edit', compact('getCustomer', $getCustomer, 'sumPaidFromCustomer', $sumPaidFromCustomer, 'sumOwedFromCustomer', $sumOwedFromCustomer, 'getCustomerLoadsNotPaid', $getCustomerLoadsNotPaid, 'getCustomerLoadsPaid', $getCustomerLoadsPaid));
    	}
 
    	public function CustomerAccountingUpdate(Request $request, $id)
@@ -138,6 +148,17 @@ class CustomersController extends Controller
    		
 
    		
+   	}
+
+   	public function payMultipleRecordForm($id)
+   	{
+   		//Get all the open loads
+   		$open_loads = Load::where('customer_id', "=", $id)->where('customerPayStatus', '=', "OPEN")->get();
+
+   		//Get the customer
+   		$customer = Customer::findOrFail($id);
+
+   		return view('/payMultipleRecordForm', compact('open_loads', $open_loads, 'customer', $customer));
    	}
 
 }

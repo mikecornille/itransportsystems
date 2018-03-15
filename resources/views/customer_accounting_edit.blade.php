@@ -24,6 +24,8 @@
         <strong>{{ $flash_message }}</strong> Click the X at the far right to close this notification.
       </div>
       @endif
+
+      <a href="{{ URL::to('/payMultipleRecordForm/' . $getCustomer->id) }}"><b>Pay Multiple Records</b></a>
       
       {!! Form::model($getCustomer, ['route' => ['customer_accounting_update', $getCustomer->id], 'method' => 'PUT']) !!}
         @include('partials.accountingCustomerForm', ['submitButtonText' => 'Update Customer with No Actions'])
@@ -36,11 +38,12 @@
 
 </div>
 
-<h1 class="text-center">Open Invoices</h1>
+<h3 class="text-center"><u>Open Invoices - Total Owed: ${{ $sumOwedFromCustomer }}</u></h3>
 <table class="table table-hover">
     <thead>
       <tr>
         <th>Pro</th>
+        <th>Customer ID #</th>
         <th>Pick</th>
         <th>Delivery</th>
         <th>Billed Date</th>
@@ -49,48 +52,7 @@
         <th>Payment Method</th>
         <th>Reference #</th>
         <th>Deposit Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach($getCustomerLoadsPaid as $load)
-      	<?php
-			
-
-		?>
-		
-      <tr class="loadlist_row alt-colors">
-      	<td><a href="/edit/url?id={{ $load->id }}">{{ $load->id }}</a></td>
-        <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
-        <td>{{ $load->delivery_city . ', ' . $load->delivery_state }}</td>
-        <td>{{ $load->billed_date }}</td>
-		<td>{{ $load->amount_due }}</td>
-        <td>{{ $load->paid_amount_from_customer }}</td>
-        <td>{{ $load->payment_method_from_customer }}</td>
-        <td>{{ $load->ref_or_check_num_from_customer }}</td>
-        <td>{{ $load->deposit_date }}</td>
-        
-
-
-      </tr>
-      
-      @endforeach
-    </tbody>
-  </table>
-
-
-  <h1 class="text-center">Paid Invoices</h1>
-<table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Pro</th>
-        <th>Pick</th>
-        <th>Delivery</th>
-        <th>Billed Date</th>
-        <th>Amount Due</th>
-        <th>Amount Paid</th>
-        <th>Payment Method</th>
-        <th>Reference #</th>
-        <th>Deposit Date</th>
+        <th>Pay Status</th>
       </tr>
     </thead>
     <tbody>
@@ -102,6 +64,7 @@
 		
       <tr class="loadlist_row alt-colors">
       	<td><a href="/edit/url?id={{ $load->id }}">{{ $load->id }}</a></td>
+      	<td>{{ $load->customer_id }}</td>
         <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
         <td>{{ $load->delivery_city . ', ' . $load->delivery_state }}</td>
         <td>{{ $load->billed_date }}</td>
@@ -110,6 +73,7 @@
         <td>{{ $load->payment_method_from_customer }}</td>
         <td>{{ $load->ref_or_check_num_from_customer }}</td>
         <td>{{ $load->deposit_date }}</td>
+        <td>{{ $load->customerPayStatus }}</td>
         
 
 
@@ -118,6 +82,54 @@
       @endforeach
     </tbody>
   </table>
+
+  <h3 class="text-center"><u>Paid Invoices - Total Paid: ${{ $sumPaidFromCustomer }}</u></h3>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Pro</th>
+        <th>Customer ID #</th>
+        <th>Pick</th>
+        <th>Delivery</th>
+        <th>Billed Date</th>
+        <th>Amount Due</th>
+        <th>Amount Paid</th>
+        <th>Payment Method</th>
+        <th>Reference #</th>
+        <th>Deposit Date</th>
+        <th>Pay Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach($getCustomerLoadsPaid as $load)
+      	<?php
+			
+
+		?>
+		
+      <tr class="loadlist_row alt-colors">
+      	<td><a href="/edit/url?id={{ $load->id }}">{{ $load->id }}</a></td>
+      	<td>{{ $load->customer_id }}</td>
+        <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
+        <td>{{ $load->delivery_city . ', ' . $load->delivery_state }}</td>
+        <td>{{ $load->billed_date }}</td>
+		<td>{{ $load->amount_due }}</td>
+        <td>{{ $load->paid_amount_from_customer }}</td>
+        <td>{{ $load->payment_method_from_customer }}</td>
+        <td>{{ $load->ref_or_check_num_from_customer }}</td>
+        <td>{{ $load->deposit_date }}</td>
+        <td>{{ $load->customerPayStatus }}</td>
+        
+
+
+      </tr>
+      
+      @endforeach
+    </tbody>
+  </table>
+
+
+
 
 
 
