@@ -853,6 +853,68 @@ $(document).ready(function() {
 } );
 
 
+//GENERAL LEDGER
+
+$(document).ready(function() {
+
+
+
+    var table = $('#generalLedger').DataTable({
+        
+         // scrollY:        "800px",
+   //       scrollX:        true,
+   //       scrollCollapse: true,
+   //       paging:         true,
+   //       fixedColumns: true,
+        "ajax": "/generalLedger",
+        "columns": [
+            {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           'id',
+                "render": function ( data, type, full, meta ) {
+                return '<a href="/edit/url?id='+data+'">View</a>';}
+            },
+            
+            
+      
+            { "data": "customer_name"}
+
+
+        ],
+        "order": [[0,'asc'],[1,'asc']],
+
+
+
+       
+
+});   
+
+});
+
+$(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#generalLedger tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="'+title+'" />' );
+    } );
+ 
+    // DataTable
+    var table = $('#generalLedger').DataTable();
+ 
+    // Apply the search
+    table.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+} );
 
 //GET THE CONTENT FOR THE DATATABLE
 

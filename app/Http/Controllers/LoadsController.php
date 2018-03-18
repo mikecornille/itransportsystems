@@ -190,6 +190,8 @@ class LoadsController extends Controller
 	public function update(Request $request, Load $load)
 	{
 
+
+
             $this->validate($request, [
 
 		 	  'customer_name' => 'required',			  
@@ -230,15 +232,6 @@ class LoadsController extends Controller
 
            }
 
-           
-      
-
-       			
-
-
-       			
-       		
-        
         
 		$load->update($request->all());
 
@@ -559,6 +552,15 @@ class LoadsController extends Controller
 		return view('accounts_receivable')->with('owed', $owed);
 	}
 
+	public function general_ledger()
+	{
+		
+		
+		return view('general_ledger');
+	}
+
+	
+
 
 
 	public function accountsReceivable()
@@ -609,6 +611,16 @@ class LoadsController extends Controller
 
 		return(['data' => $data]);
 		
+	}
+
+	public function generalLedger()
+	{
+		$data = Load::where('carrierPayStatus', '=', 'PAID')->orWhere('customerPayStatus', '=', 'PAID')->get();
+
+
+		
+
+		return(['data' => $data]);
 	}
 	
 }

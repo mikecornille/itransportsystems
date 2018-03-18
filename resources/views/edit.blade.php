@@ -640,6 +640,8 @@
     <h4 class="text-success"><b><i>CUSTOMER</i></b></h4>
     <div class="form-group">
       <div class="row">
+        
+
         <div class="col-xs-12">
           <label class="label-control text-success" for="paid_amount_from_customer">CUSTOMER PAID</label>
           <div class="input-group">
@@ -648,6 +650,17 @@
           <span class="input-group-addon">.00</span>
       </div>
         </div>
+
+        <div class="col-xs-12">
+          <label class="label-control text-success" for="totalCheckAmountFromCustomer">TOTAL CHECK AMOUNT</label>
+          <div class="input-group">
+        <span class="input-group-addon">$</span>
+          <input type="text" class="form-control" id="totalCheckAmountFromCustomer" name="totalCheckAmountFromCustomer" value="{{ $info->totalCheckAmountFromCustomer }}">
+          <span class="input-group-addon">.00</span>
+      </div>
+        </div>
+
+        
 
 
         <div class="col-xs-12">

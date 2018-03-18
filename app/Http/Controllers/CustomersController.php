@@ -152,6 +152,7 @@ class CustomersController extends Controller
 
    	public function payMultipleRecordForm($id)
    	{
+
    		//Get all the open loads
    		$open_loads = Load::where('customer_id', "=", $id)->where('customerPayStatus', '=', "OPEN")->get();
 
@@ -164,31 +165,35 @@ class CustomersController extends Controller
    	public function payMultipleRecordFormPost(Request $request)
    	{
    			
-
-
+   			
+   			
+   			
    			foreach($request->id as $id)
    			{
-   				if($request->customerPayStatus[$id] === "OPEN")
+   				if($request->customerPayStatus[$id] === "OPEN" && $request->has('customerPayStatus'))
    				{
    					$findLoad = Load::findOrFail($id);
 	   				$findLoad->deposit_date = NULL;
 	   				$findLoad->ref_or_check_num_from_customer = NULL;
 	   				$findLoad->payment_method_from_customer = NULL;
-	   				$findLoad->paid_amount_from_customer = NULL;
+	   				$findLoad->totalCheckAmountFromCustomer = $request->totalCheckAmountFromCustomer;
+	   				$findLoad->paid_amount_from_customer = $request->paid_amount_from_customer[$id];
 	   				$findLoad->customerPayStatus = $request->customerPayStatus[$id];
 	   				$findLoad->update();
 
    				}
-   				elseif($request->customerPayStatus[$id] === "PAID")
+   				elseif($request->customerPayStatus[$id] === "PAID" && $request->has('customerPayStatus'))
    				{
    				$findLoad = Load::findOrFail($id);
    				$findLoad->deposit_date = $request->deposit_date;
    				$findLoad->ref_or_check_num_from_customer = $request->ref_or_check_num_from_customer;
    				$findLoad->payment_method_from_customer = $request->payment_method_from_customer;
+   				$findLoad->totalCheckAmountFromCustomer = $request->totalCheckAmountFromCustomer;
    				$findLoad->paid_amount_from_customer = $request->paid_amount_from_customer[$id];
    				$findLoad->customerPayStatus = $request->customerPayStatus[$id];
    				$findLoad->update();
    				}
+   				
    			}
 
    		return view('customer_accounting');

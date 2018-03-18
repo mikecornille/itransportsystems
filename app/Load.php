@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Carbon\Carbon;
+
 class Load extends Model
 {
     protected $table = 'loads';
@@ -93,10 +95,37 @@ class Load extends Model
             'customer_id',
             'vendor_check_number',
             'carrierPayStatus',
-            'customerPayStatus'
+            'customerPayStatus',
+            'totalCheckAmountFromCustomer'
 
 
 			  ];
+
+    public function setDepositDateAttribute($value)
+    {
+      $date = Carbon::createFromFormat('m/d/Y', $value, "America/Chicago");
+           
+      $this->attributes['deposit_date'] = $date;
+    }
+
+    public function getDepositDateAttribute($value)
+    {
+      return $this->attributes['deposit_date'] = date("m/d/Y", strtotime($value));
+           
+    }
+
+    public function setApprovedCarrierInvoiceAttribute($value)
+    {
+      $date = Carbon::createFromFormat('m/d/Y', $value, "America/Chicago");
+           
+      $this->attributes['approved_carrier_invoice'] = $date;
+    }
+
+    public function getApprovedCarrierInvoiceAttribute($value)
+    {
+      return $this->attributes['approved_carrier_invoice'] = date("m/d/Y", strtotime($value));
+           
+    }
   
   	public function setCustomerNameAttribute($value)
     {

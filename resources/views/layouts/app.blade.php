@@ -206,6 +206,7 @@
                                     </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{ url('/general_ledger') }}">General Ledger</a></li>
                                     <li><a href="{{ url('/accounts_receivable') }}">Accounts Receivable</a></li>
                                     <li><a href="{{ url('/customer_accounting') }}">Customer Search</a></li>
                                     <li><a href="{{ url('/carrier_accounting') }}">Carrier Search</a></li>
