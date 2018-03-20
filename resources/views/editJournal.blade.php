@@ -5,60 +5,24 @@
 <div class="container">
 
 
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    
-
-
-
-    <div class="row">
-        <div class="col-md-12">
-
-            {!! Form::open(['route' => 'journal.store']) !!}
-                @include('partials.journalForm', ['submitButtonText' => 'New Journal Entry'])
+         <div class="row">
+        <div class="col-md-8">
+            {!! Form::model($post, ['route' => ['journal.update', $post->id], 'method' => 'PUT']) !!}
+                @include('partials.journalForm', ['submitButtonText' => 'Update Journal'])
             {!! Form::close() !!}
-
         </div>
 
+        <div class="col-md-4">
+            
+
+            {!! Html::linkRoute('journal.index', 'Back', array(), ['class' => 'btn btn-warning btn-block']) !!}
         </div>
+    </div>
              
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Name</th>
-        <th>Name ID #</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Reference #</th>
-        <th>Memo</th>
-        <th>Payment Amount</th>
-        <th>Deposit Amount</th>
-      </tr>
-    </thead>
-    <tbody>
-    @foreach($journal_entries as $entry)
-      <tr>
-        <td>{{ $entry->created_at }}</td>
-        <td>{{ $entry->account_name }}</td>
-        <td>{{ $entry->account_id }}</td>
-        <td>{{ $entry->type }}</td>
-        <td>{{ $entry->type_description }}</td>
-        <td>{{ $entry->reference_number }}</td>
-        <td><a href="#" class="inactiveLink" title="Memo" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $entry->memo }}">{{ substr($entry->memo, 0, 25) }} {{ strlen($entry->memo) > 25 ? "..." : "" }}</a></td>
-        <td>{{ $entry->payment_amount }}</td>
-        <td>{{ $entry->deposit_amount }}</td>
-        <td>{!! Html::linkRoute('journal.edit', 'Edit', array($entry->id), ['class' => 'btn btn-success btn-block']) !!}</td>
-      </tr>
-      @endforeach
-      
-    </tbody>
-  </table>
+  
 
 </div>
+
 <script>
 $(function() {
             function log( message ) {

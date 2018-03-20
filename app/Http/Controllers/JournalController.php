@@ -38,7 +38,24 @@ class JournalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        date_default_timezone_set("America/Chicago");
+        
+        $this->validate($request, [
+
+            'account_name' => 'required|max:39',
+            'account_id' => 'required',
+            'type_description' => 'required'
+             
+
+        ]);
+
+        $store = New Journal($request->all());
+
+        $store->type = "GENJRN";
+        
+        $store->save();
+
+        return back();
     }
 
     /**
@@ -60,7 +77,9 @@ class JournalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Journal::findOrFail($id);
+
+         return view('editJournal', compact('post', $post));
     }
 
     /**
@@ -72,7 +91,23 @@ class JournalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        date_default_timezone_set("America/Chicago");
+        
+        $this->validate($request, [
+
+             'account_name' => 'required|max:39',
+            'account_id' => 'required',
+            'type_description' => 'required'           
+              
+        ]);
+
+        $post = Journal::findOrFail($id);
+
+        $post->update($request->all());
+
+       
+
+        return redirect()->route('journal.index');
     }
 
     /**
