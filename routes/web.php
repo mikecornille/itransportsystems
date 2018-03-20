@@ -33,9 +33,9 @@ Route::get('/ach_no_carrier_found', function () {
 
 Route::group(['middleware' => 'auth'],function() {
 
-
+Route::resource('journal', 'JournalController');
     
-Route::get('general_ledger', 'LoadsController@general_ledger');
+Route::get('general_ledger', 'LoadsController@generalLedger');
 
 Route::get('payMultipleRecordForm/{id}', 'CustomersController@payMultipleRecordForm');
 
@@ -55,7 +55,7 @@ Route::put('hauler/accountingUpdate/{hauler}', 'HaulerController@accountingUpdat
 
 Route::resource('hauler', 'HaulerController');
 
-
+Route::resource('ledger', 'LedgerController');
 
 Route::resource('remit', 'RemitController');
 
@@ -111,7 +111,7 @@ Route::get('biWeeklyCustomerEmailList', 'CustomersController@biWeeklyCustomerEma
 
 Route::get('accounts_receivable', 'LoadsController@accounts_receivable');
 
-Route::get('general_ledger', 'LoadsController@general_ledger');
+
 
 
 
@@ -231,7 +231,7 @@ Route::get('/deepLoads', 'LoadsController@deepLoads');
 Route::get('/tobedata', 'LoadsController@indextwo'); //FOR DATATABLES
 Route::get('/tobedatatwo', 'LoadsController@tobedatatwo'); //FOR DATATABLES
 Route::get('/accountsReceivable', 'LoadsController@accountsReceivable'); //FOR DATATABLES
-Route::get('/generalLedger', 'LoadsController@generalLedger');
+//Route::get('/generalLedger', 'LoadsController@generalLedger');
 Route::get('/personal_status_table', 'LoadsController@personal_status_table'); //FOR DATATABLES
 Route::get('/personal_status_loaded_table', 'LoadsController@personal_status_loaded_table'); //FOR DATATABLES
 Route::get('/edit/{id}', 'LoadsController@edit');

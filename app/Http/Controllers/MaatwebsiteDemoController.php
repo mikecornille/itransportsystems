@@ -60,14 +60,14 @@ class MaatwebsiteDemoController extends Controller
 			
 			$carrier_invoices->amount_due = $carrier_invoices->amount_due . ".01";
 
-			// if($carrier_invoices->account_type == "Checking")
-			// {
-			// 	$carrier_invoices->account_type = "C";
-			// }
-			// elseif($carrier_invoices->account_type == "Saving")
-			// {
-			// 	$carrier_invoices->account_type = "S";
-			// }
+			if($carrier_invoices->account_type == "Checking")
+			{
+				$carrier_invoices->account_type = "C";
+			}
+			elseif($carrier_invoices->account_type == "Saving")
+			{
+				$carrier_invoices->account_type = "S";
+			}
 			 
 			 return $carrier_invoices;
 			});

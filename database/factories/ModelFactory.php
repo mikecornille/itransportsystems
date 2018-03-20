@@ -124,7 +124,7 @@ $factory->define(App\Load::class, function (Faker\Generator $faker) {
             'created_by' => $faker->email(),
             'its_group' => $faker->word(),
             'amount_due' => 950,
-            'carrier_rate' => $faker->numberBetween($min = 1000, $max = 9000),
+            'carrier_rate' => 850,
             'billed_date' => "03/12/2018",
             'approved_carrier_invoice' => $faker->date($format = 'm/d/Y', $max = 'now'),
             'commodity' => "5 Forklifts and 6 scissor lifts",
@@ -154,10 +154,20 @@ $factory->define(App\Load::class, function (Faker\Generator $faker) {
             'account_type' => "Checking",
             'account_name' => "First Third National Trust",
             'payment_method' => "ACH",
-            'paid_amount_from_customer' => NULL,
+            'paid_amount_from_customer' => "950",
             'payment_method_from_customer' => "CHECK",
             'ref_or_check_num_from_customer' => NULL,
-            'deposit_date' => NULL,
+            'carrierPayStatus' => "PAID",
+            'customerPayStatus' => "PAID",
+            'carrier_id' => 36000,
+            'customer_id' => "2500",
+            'totalCheckAmountFromCustomer' => "950",
+            'deposit_date' => "03/15/2018",
+            
+            
+            
+            // 'vendor_check_number' => NULL,
+
     ];
 });
 
@@ -242,6 +252,7 @@ $factory->define(App\Loadlist::class, function (Faker\Generator $faker) {
         
     ];
 });
+
 
 
 

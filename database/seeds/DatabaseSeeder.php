@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $this->call(LocationSeeder::class);
+         
          $this->seedUser();
     }
 
@@ -31,15 +31,19 @@ class DatabaseSeeder extends Seeder
 
         factory(App\Customer::class,3)->create();
 
-        factory(App\Load::class,6)->create();
+       
 
-        factory(App\Equipment::class,3)->create();
+         factory(App\Equipment::class,3)->create();
 
         factory(App\Notes::class,3)->create();
 
         factory(App\Carrier::class,3)->create();
 
         factory(App\Loadlist::class,6)->create();
+
+         factory(App\Load::class,6)->create();
+
+        
             }
 
         

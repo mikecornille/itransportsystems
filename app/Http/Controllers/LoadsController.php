@@ -10,6 +10,8 @@ use App\Loadlist;
 
 use App\Carrier;
 
+use App\Ledger;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -615,12 +617,17 @@ class LoadsController extends Controller
 
 	public function generalLedger()
 	{
-		$data = Load::where('carrierPayStatus', '=', 'PAID')->orWhere('customerPayStatus', '=', 'PAID')->get();
-
-
 		
+		//This will pull from a new table called ledger
+		$general_ledger = Ledger::orderBy('date', 'asc')->get();
 
-		return(['data' => $data]);
+		$payment_amount_totals = Ledger::sum('payment_amount');
+
+		$deposit_amount_totals = Ledger::sum('deposit_amount');
+
+		$balance = $deposit_amount_totals - $payment_amount_totals;
+
+		return view('general_ledger', compact('general_ledger',$general_ledger,'balance', $balance));
 	}
 	
 }

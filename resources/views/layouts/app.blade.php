@@ -210,6 +210,7 @@
                                     <li><a href="{{ url('/accounts_receivable') }}">Accounts Receivable</a></li>
                                     <li><a href="{{ url('/customer_accounting') }}">Customer Search</a></li>
                                     <li><a href="{{ url('/carrier_accounting') }}">Carrier Search</a></li>
+                                    <li><a href="{{ url('/journal_entry') }}">Journal Entry</a></li>
                                     <li><a href="{{ URL::to('/remit') }}">Remit Info</a></li>
                                </ul>
                             </li>

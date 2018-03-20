@@ -603,6 +603,50 @@ Artisan::command('import:crash {filename}', function($filename) {
 	fclose($file);
 });
 
+Artisan::command('insertLedgerRecords', function () {
+	
+	//Delete whatever is in the table
+    DB::table('ledgers')->delete();
+	//Get all loads where customerPayStatus = PAID
+	$customer_paid = Load::where('customerPayStatus', 'PAID')->get();
+	//Get all loads where carrierPayStatus = PAID
+	$carrier_paid = Load::where('carrierPayStatus', 'PAID')->get();
+	
+
+	foreach($customer_paid as $customer)
+	{
+		\DB::table('ledgers')->insert([
+			'pro_number' => $customer->id,
+			'type' => "PMT",
+			'type_description' => "Accounts Receivable",
+			'date' => $customer->getAttributes()['deposit_date'],
+			'reference_number' => $customer->ref_or_check_num_from_customer,
+			'account_name' => $customer->customer_name,
+			'account_id' => $customer->customer_id,
+			'memo' => $customer->ref_or_check_num_from_customer,
+			'deposit_amount' => $customer->paid_amount_from_customer,
+		]);
+	}
+
+	foreach($carrier_paid as $carrier)
+	{
+		\DB::table('ledgers')->insert([
+			'pro_number' => $carrier->id,
+			'type' => "BILLPMT",
+			'type_description' => "Accounts Payable",
+			'date' => $carrier->getAttributes()['approved_carrier_invoice'],
+			'reference_number' => $carrier->vendor_check_number,
+			'account_name' => $carrier->carrier_name,
+			'account_id' => $carrier->carrier_id,
+			'memo' => $carrier->quick_status_notes,
+			'payment_amount' => $carrier->carrier_rate,
+		]);
+	}
+	
+	
+
+})->describe('This will loop through the loads table and populate the ledger table');
+
 
 
 
