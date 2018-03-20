@@ -10,6 +10,7 @@ use App\Load;
 use App\Carrier;
 use App\Loadlist;
 use App\Customer;
+use App\Journal;
 
 
 /*
@@ -611,6 +612,8 @@ Artisan::command('insertLedgerRecords', function () {
 	$customer_paid = Load::where('customerPayStatus', 'PAID')->get();
 	//Get all loads where carrierPayStatus = PAID
 	$carrier_paid = Load::where('carrierPayStatus', 'PAID')->get();
+
+	$general_journal = Journal::all();
 	
 
 	foreach($customer_paid as $customer)
@@ -640,6 +643,21 @@ Artisan::command('insertLedgerRecords', function () {
 			'account_id' => $carrier->carrier_id,
 			'memo' => $carrier->quick_status_notes,
 			'payment_amount' => $carrier->carrier_rate,
+		]);
+	}
+
+	foreach($general_journal as $journal)
+	{
+		\DB::table('ledgers')->insert([
+			'type' => $journal->type,
+			'type_description' => $journal->type_description,
+			'date' => $journal->created_at,
+			'reference_number' => $journal->reference_number,
+			'account_name' => $journal->account_name,
+			'account_id' => $journal->account_id,
+			'memo' => $journal->memo,
+			'payment_amount' => $journal->payment_amount,
+			'deposit_amount' => $journal->deposit_amount,
 		]);
 	}
 	
