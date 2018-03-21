@@ -56,6 +56,9 @@ class LoadlistController extends Controller
         $newload->emailedOut = 0;
 		    $newload->created_by = strtoupper(\Auth::user()->email);
 
+        $random_load_id = uniqid();
+        $newload->group_number = $random_load_id;
+
         $a=array("AM","LT","MK","RB");
         $random_key=array_rand($a,1);
         $newload->handler = $a[$random_key];
@@ -298,6 +301,18 @@ class LoadlistController extends Controller
 
     $currentDay = date('d');
 
+    $short_list_open_loads = Loadlist::where('urgency', '=', 'Has Time')
+    ->orWhere('urgency', '=', 'Hot')
+    ->orWhere('urgency', '=', 'Screaming')
+    ->orWhere('urgency', '=', 'Caller')
+    ->orWhere('urgency', '=', 'Get Numbers')
+    ->orWhere('urgency', '=', 'Fossilized')
+    ->orWhere('urgency', '=', 'Stabber')
+    ->orderBy('customer', 'desc')
+    ->get();
+
+    $grouped = $short_list_open_loads->groupBy('group_number');
+
     $open_loads = Loadlist::where('urgency', '=', 'Has Time')
     ->orWhere('urgency', '=', 'Hot')
     ->orWhere('urgency', '=', 'Screaming')
@@ -329,7 +344,7 @@ class LoadlistController extends Controller
 
     $personal_booked_loads = Loadlist::where('urgency', '=', 'Booked')->where('created_by', '=', \Auth::user()->email)->whereBetween('created_at', [$twoWeeksAgo, $currentDate])->orderBy('created_at', 'desc')->get();
 
-		return view('loadlist', compact('open_loads', 'quote_loads', 'personal_loads', 'manageloads_loads', 'personal_booked_loads'));
+		return view('loadlist', compact('open_loads', 'quote_loads', 'personal_loads', 'manageloads_loads', 'personal_booked_loads', 'grouped'));
 	
 	}
 

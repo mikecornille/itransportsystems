@@ -45,6 +45,7 @@ class CreateLoadlistsTable extends Migration
             $table->integer('countIncomingCalls')->nullable();
             $table->integer('countOutgoingCalls')->nullable();
             $table->integer('emailedOut')->nullable();
+            $table->string('group_number')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
