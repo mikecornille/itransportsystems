@@ -752,7 +752,7 @@
  
  
  <div class="col-xs-12">
-   <label class="label-control text-primary" for="datepicker7">VENDOR PAY DATE</label>
+   <label class="label-control text-primary" for="datepicker7">APP CRR INV</label>
    <input type="text" class="form-control datepicker" id="datepicker7" name="approved_carrier_invoice" value="{{ $info->approved_carrier_invoice }}">
  </div>
 
