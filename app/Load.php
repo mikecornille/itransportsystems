@@ -123,6 +123,7 @@ class Load extends Model
 
     public function getApprovedCarrierInvoiceAttribute($value)
     {
+      
       return $this->attributes['approved_carrier_invoice'] = date("m/d/Y", strtotime($value));
            
     }
