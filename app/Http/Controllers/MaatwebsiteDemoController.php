@@ -56,20 +56,30 @@ class MaatwebsiteDemoController extends Controller
 		 ->get();
 
 
-		 $carrier_invoices->transform(function($carrier_invoices) {
+		 // $carrier_invoices->transform(function($carrier_invoices) {
 			
-			$carrier_invoices->amount_due = $carrier_invoices->amount_due . ".01";
+			// $carrier_invoices->amount_due = $carrier_invoices->amount_due . ".01";
 
-			if($carrier_invoices->account_type == "Checking")
-			{
-				$carrier_invoices->account_type = "C";
-			}
-			elseif($carrier_invoices->account_type == "Saving")
-			{
-				$carrier_invoices->account_type = "S";
-			}
+			// if($carrier_invoices->account_type == "Checking")
+			// {
+			// 	$carrier_invoices->account_type = "C";
+			// }
+			// elseif($carrier_invoices->account_type == "Saving")
+			// {
+			// 	$carrier_invoices->account_type = "S";
+			// }
 			 
-			 return $carrier_invoices;
+			//  return $carrier_invoices;
+			// });
+
+		 $carrier_invoices->map(function ($carrier_invoices) {
+    			$carrier_invoices['addenda'] = 'This payment is from Intl Transport Systems on our PRO # ' . $carrier_invoices['id'];
+    			return $carrier_invoices;
+			});
+
+		 $carrier_invoices->map(function ($carrier_invoices) {
+    			$carrier_invoices['addenda_type'] = 'FRF';
+    			return $carrier_invoices;
 			});
 			
 
