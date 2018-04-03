@@ -45,6 +45,7 @@
   <input type="hidden" id="account_number" name="account_number" value="{{ $info->account_number }}">
   <input type="hidden" id="account_type" name="account_type" value="{{ $info->account_type }}">
   <input type="hidden" id="account_name" name="account_name" value="{{ $info->account_name }}">
+  <input type="hidden" id="accounting_email" name="accounting_email" value="{{ $info->accounting_email }}">
 
   <div id="customer">
     <div class="well">
@@ -875,6 +876,7 @@
   <li>Account Number: {{ $info->account_number }}</li>
   <li>Account Name: {{ $info->account_name }}</li>
   <li>Account Type: {{ $info->account_type }}</li>
+  <li>Account Email: {{ $info->accounting_email }}</li>
 </ul>
 @endif
 </div>

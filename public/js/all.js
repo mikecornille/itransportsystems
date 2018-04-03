@@ -921,6 +921,7 @@
                     $('#routing_number').val(window.carrierRecord.item.object.routing_number);
                     $('#account_number').val(window.carrierRecord.item.object.account_number);
                     $('#account_type').val(window.carrierRecord.item.object.account_type);
+                    $('#accounting_email').val(window.carrierRecord.item.object.accounting_email);
                     
 
                     log( ui.item ?
