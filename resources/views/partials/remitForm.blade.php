@@ -57,8 +57,8 @@
 			{{ Form::label('account_type', 'Account Type') }}
 	  		{{ Form::select('account_type', 
 				[
-	  		 		'checking' => 'checking',
-			  		'savings' => 'savings',
+	  		 		'Checking' => 'Checking',
+			  		'Saving' => 'Saving',
 				], null, ['placeholder' => 'Pick an account type...', 'class' => 'form-control']) }}
 		</div>
 	</div>
