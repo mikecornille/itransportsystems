@@ -49,6 +49,76 @@ class MaatwebsiteDemoController extends Controller
 	
 		 $start_date = $request->input('start_date');
 		 $end_date = $request->input('end_date');
+
+		  //For the emails
+		$loads = Load::where('payment_method', "ACH")
+		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') > STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') < STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+		 ->get();
+	
+
+	//Loop through each load and email the accounting department
+
+	foreach($loads as $load) 
+	{ 
+	
+		if ($load->accounting_email !== null)
+		{
+			$info = ['info' => $load ];
+
+			Mail::send(['html'=>'email.sendEmailToVendorReceivingACH'], $info, function($message) use ($info){
+
+			$message->to($info['info']['accounting_email'])->subject("ACH Payment Notice from ITS for PRO # " . $info['info']['id'])
+			->from('lianey@itransys.com', 'Liane')
+			->replyTo('lianey@itransys.com', 'Liane')
+			->sender('lianey@itransys.com', 'Liane');
+
+        	});
+		}
+    }
+		 
+		 $carrier_invoices = Load::select('routing_number', 'account_number', 'carrier_rate', 'account_type', 'account_name', 'id')
+		 ->where('payment_method', "ACH")
+		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') > STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') < STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+		 ->get();
+
+
+
+		$carrier_invoices->map(function ($carrier_invoices) {
+    			$carrier_invoices['addenda'] = 'This payment is from Intl Transport Systems on our PRO # ' . $carrier_invoices['id'];
+    			return $carrier_invoices;
+			});
+
+		 $carrier_invoices->map(function ($carrier_invoices) {
+    			$carrier_invoices['addenda_type'] = 'FRF';
+    			return $carrier_invoices;
+			});
+			
+
+		 //Todays Date
+		 date_default_timezone_set("America/Chicago");
+        
+        $currentDate = date('m-d-Y');
+
+		return \Excel::create('ACH_Uploaded_On_' . $currentDate, function($excel) use ($carrier_invoices) {
+			$excel->sheet('mySheet', function($sheet) use ($carrier_invoices)
+	        {
+	        	
+				$sheet->fromArray($carrier_invoices);
+
+			});
+
+		})->download($type);
+
+			
+	}
+
+	public function sampleACHCSV($type, Request $request)
+	{
+	
+		 $start_date = $request->input('start_date');
+		 $end_date = $request->input('end_date');
 		 
 		 $carrier_invoices = Load::select('routing_number', 'account_number', 'carrier_rate', 'account_type', 'account_name', 'id')
 		 ->where('payment_method', "ACH")

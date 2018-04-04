@@ -216,6 +216,8 @@ Route::get('/achCSV', function() {
 
 Route::post('/achCSV/{type}', 'MaatwebsiteDemoController@achCSV');
 
+Route::post('/sampleACHCSV/{type}', 'MaatwebsiteDemoController@sampleACHCSV');
+
 Route::get('/truckstopPost', 'MaatwebsiteDemoController@truckstopPost');
 
 Route::get('/truckerPathPost', 'MaatwebsiteDemoController@truckerPathPost');
