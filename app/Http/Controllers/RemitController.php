@@ -45,7 +45,8 @@ class RemitController extends Controller
             'name' => 'required|max:39',
             'address' => 'max:50',
             'email' => 'email', 
-            'accounting_email' => 'email', 
+            'accounting_email' => 'email',
+            'account_name' => 'max:21',
 
         ]);
 
@@ -94,11 +95,11 @@ class RemitController extends Controller
         
         $this->validate($request, [
 
-             'name' => 'required',
-            'address' => 'required',
-            'city' => 'required', 
-            'state' => 'required', 
-            'zip' => 'required',           
+             'name' => 'required|max:39',
+            'address' => 'max:50',
+            'email' => 'email', 
+            'accounting_email' => 'email',
+            'account_name' => 'max:21',          
               
         ]);
 

@@ -5,6 +5,13 @@
 <div class="container">
 
 
+    <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+
+
          <div class="row">
         <div class="col-md-8">
             {!! Form::model($post, ['route' => ['remit.update', $post->id], 'method' => 'PUT']) !!}
