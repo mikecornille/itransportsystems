@@ -1211,6 +1211,10 @@ $('#datepicker_search_loadlist').datepicker();
 
 $('#datepicker_deposit_date').datepicker();
 
+$('#datepicker_ach_start').datepicker();
+
+$('#datepicker_ach_end').datepicker();
+
 
 
 
@@ -1295,6 +1299,14 @@ $('#datepicker_search_loadlist').on('changeDate', function(ev){
 });
 
 $('#datepicker_deposit_date').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
+$('#datepicker_ach_start').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
+$('#datepicker_ach_end').on('changeDate', function(ev){
     $(this).datepicker('hide');
 });
 

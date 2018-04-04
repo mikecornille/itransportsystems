@@ -51,7 +51,7 @@ class MaatwebsiteDemoController extends Controller
 		 $end_date = $request->input('end_date');
 
 		  //For the emails
-		$loads = Load::where('payment_method', "ACH")
+		$loads = Load::where('payment_method', "ACH")->where('carrierPayStatus', "PAID")
 		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') > STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
 		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') < STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
 		 ->get();
@@ -78,7 +78,7 @@ class MaatwebsiteDemoController extends Controller
     }
 		 
 		 $carrier_invoices = Load::select('routing_number', 'account_number', 'carrier_rate', 'account_type', 'account_name', 'id')
-		 ->where('payment_method', "ACH")
+		 ->where('payment_method', "ACH")->where('carrierPayStatus', "PAID")
 		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') > STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
 		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') < STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
 		 ->get();
@@ -121,10 +121,11 @@ class MaatwebsiteDemoController extends Controller
 		 $end_date = $request->input('end_date');
 		 
 		 $carrier_invoices = Load::select('routing_number', 'account_number', 'carrier_rate', 'account_type', 'account_name', 'id')
-		 ->where('payment_method', "ACH")
+		 ->where('payment_method', "ACH")->where('carrierPayStatus', "PAID")
 		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') > STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
 		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') < STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
 		 ->get();
+
 
 
 		 // $carrier_invoices->transform(function($carrier_invoices) {

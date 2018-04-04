@@ -758,7 +758,7 @@
  </div>
 
   <div class="col-xs-12">
-   <label class="label-control text-primary" for="vendor_check_number">VENDOR CHECK #</label>
+   <label class="label-control text-primary" for="vendor_check_number">VENDOR PAYMENT #</label>
    <input type="text" class="form-control" id="vendor_check_number" name="vendor_check_number" value="{{ $info->vendor_check_number }}">
  </div>
 

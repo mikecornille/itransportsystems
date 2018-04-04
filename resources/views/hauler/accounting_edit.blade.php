@@ -61,8 +61,8 @@
         <th>Delivery Status</th>
         <th>Carrier Rate</th>
         <th>Invoice Number</th>
-        <th>Invoice Date</th>
-        <th>Vendor Pay Date</th>
+        <th>Vendor Invoice Date</th>
+        <th>Approved Carrier Inv</th>
         <th>Payment Method</th>
         <th>Payment Status</th>
         
@@ -108,8 +108,8 @@
         <th>Delivery Status</th>
         <th>Carrier Rate</th>
         <th>Invoice Number</th>
-        <th>Invoice Date</th>
-        <th>Vendor Pay Date</th>
+        <th>Vendor Invoice Date</th>
+        <th>Approved Carrier Inv</th>
         <th>Payment Method</th>
         <th>Payment Status</th>
         

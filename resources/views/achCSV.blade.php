@@ -41,11 +41,11 @@
 								<div class="row">
 									<div class="col-xs-6">
 			   							<label class="label-control" for="start_date">Start Date</label>
-			   							<input type="text" class="form-control" id="datepicker_profit_start" name="start_date">
+			   							<input type="text" class="form-control" id="datepicker_ach_start" name="start_date">
 			 						</div>
 			 						<div class="col-xs-6">
 			   							<label class="label-control" for="end_date">End Date</label>
-			   							<input type="text" class="form-control" id="datepicker_profit_end" name="end_date">
+			   							<input type="text" class="form-control" id="datepicker_ach_end" name="end_date">
 			 						</div>
 								</div>
 
