@@ -13,6 +13,7 @@ use Excel;
 use App\User;
 use App\Load;
 use App\Loadlist;
+use Carbon\Carbon;
 
 
 class MaatwebsiteDemoController extends Controller
@@ -132,12 +133,23 @@ class MaatwebsiteDemoController extends Controller
 
 	public function exportCarrierBills($type, Request $request)
 	{
+		 //Set timezone
+		 date_default_timezone_set("America/Chicago");
+
 		 //Customer Invoice Import
 		 $import_date = $request->input('import_date');
 		 
+		 //Convert time
+		 $import_date = Carbon::createFromFormat('m/d/Y', $import_date);
+
+		 $import_date = $import_date->toDateString();
 		 
+
+
 		
-		$carrier_bills = Load::select('id', 'carrier_name', 'vendor_invoice_date', 'vendor_invoice_number', 'carrier_rate', 'quick_status_notes', 'remit_name', 'remit_address', 'remit_city', 'remit_state', 'remit_zip')->where('approved_carrier_invoice', $import_date)->orderBy('id', 'desc')->get();
+		$carrier_bills = Load::select('id', 'carrier_name', 'vendor_invoice_date', 'vendor_invoice_number', 'carrier_rate', 'quick_status_notes', 'remit_name', 'remit_address', 'remit_city', 'remit_state', 'remit_zip')->whereDate('approved_carrier_invoice', $import_date)->orderBy('id', 'desc')->get();
+
+	
 
 		return \Excel::create('Carrier_Bills_' . $import_date, function($excel) use ($carrier_bills) {
 			$excel->sheet('mySheet', function($sheet) use ($carrier_bills)
