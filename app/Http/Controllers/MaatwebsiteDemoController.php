@@ -62,6 +62,9 @@ class MaatwebsiteDemoController extends Controller
 	foreach($loads as $load) 
 	{ 
 	
+		
+
+
 		if ($load->accounting_email !== null)
 		{
 			$info = ['info' => $load ];
@@ -94,7 +97,21 @@ class MaatwebsiteDemoController extends Controller
     			$carrier_invoices['addenda_type'] = 'FRF';
     			return $carrier_invoices;
 			});
-			
+
+
+		 $updates = Load::where('payment_method', "ACH")->where('carrierPayStatus', "PAID")
+		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') > STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') < STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+		 ->get();
+
+
+		 foreach ($updates as $update)
+		 {
+		 //UPDATE WHERE ID = LOAD
+		\DB::table('loads')->where('id', $update->id)->update([
+			'carrierPayStatus' => "COMPLETED"
+		]);
+		}	
 
 		 //Todays Date
 		 date_default_timezone_set("America/Chicago");
