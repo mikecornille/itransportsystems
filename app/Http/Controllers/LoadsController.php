@@ -281,7 +281,7 @@ class LoadsController extends Controller
         
         Mail::send(['html'=>'email.internalEmail'], $info, function($message) use ($info){
             
-            $recipients = [$info['info']['created_by'], $info['info']['rate_con_creator']];
+            $recipients = [$info['info']['created_by'], $info['info']['rate_con_creator'], 'danielle@itransys.com'];
 
             
            	$message->to($recipients)

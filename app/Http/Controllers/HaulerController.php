@@ -697,7 +697,7 @@ return back()->with('status', 'Your email was sent!');
     {
       $this->validate($request, [
       'bank_name' => 'required|max:40',
-      'account_name' => 'required|max:40',
+      'account_name' => 'required|max:21',
       'routing_number' => 'required|max:9',
       'account_number' => 'required|max:12',
       'account_type' => 'required',
