@@ -770,6 +770,9 @@
  <div class="col-xs-12">
    <p class="text-primary">PAY STATUS: {{ $info->carrierPayStatus }}</p>
  </div>
+ <div class="col-xs-12">
+   <p class="text-primary">UPLOAD: {{ $info->upload_date }}</p>
+ </div>
 
  
  
