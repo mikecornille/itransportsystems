@@ -104,25 +104,29 @@ class MaatwebsiteDemoController extends Controller
 		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') < STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
 		 ->get();
 
+		 //Todays Date
+		 date_default_timezone_set("America/Chicago");
+        
+        $currentDate = date('m-d-Y');
 
 		 foreach ($updates as $update)
 		 {
 		 //UPDATE WHERE ID = LOAD
 		\DB::table('loads')->where('id', $update->id)->update([
-			'carrierPayStatus' => "COMPLETED"
+			'carrierPayStatus' => "COMPLETED",
+			'upload_date' => $currentDate
 		]);
 		}	
 
-		 //Todays Date
-		 date_default_timezone_set("America/Chicago");
-        
-        $currentDate = date('m-d-Y');
+		 
 
 		return \Excel::create('ACH_Uploaded_On_' . $currentDate, function($excel) use ($carrier_invoices) {
 			$excel->sheet('mySheet', function($sheet) use ($carrier_invoices)
 	        {
 	        	
 				$sheet->fromArray($carrier_invoices);
+
+				$sheet->setColumnFormat(array('A'=>'0000'));
 
 			});
 
@@ -180,8 +184,13 @@ class MaatwebsiteDemoController extends Controller
 		return \Excel::create('ACH_Uploaded_On_' . $currentDate, function($excel) use ($carrier_invoices) {
 			$excel->sheet('mySheet', function($sheet) use ($carrier_invoices)
 	        {
+
 	        	
 				$sheet->fromArray($carrier_invoices);
+
+				$sheet->setColumnFormat(array('A'=>'0000'));
+
+				
 
 			});
 

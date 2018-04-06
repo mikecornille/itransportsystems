@@ -106,6 +106,7 @@ class CreateLoadsTable extends Migration
             $table->string('customerPayStatus')->nullable();
             $table->string('totalCheckAmountFromCustomer')->nullable();
             $table->string('accounting_email')->nullable();
+            $table->string('upload_date')->nullable();
             $table->timestamps();
 
         });

@@ -611,7 +611,7 @@ Artisan::command('insertLedgerRecords', function () {
 	//Get all loads where customerPayStatus = PAID
 	$customer_paid = Load::where('customerPayStatus', 'PAID')->get();
 	//Get all loads where carrierPayStatus = PAID
-	$carrier_paid = Load::where('carrierPayStatus', 'PAID')->get();
+	$carrier_paid = Load::where('carrierPayStatus', 'COMPLETED')->get();
 
 	$general_journal = Journal::all();
 	
