@@ -83,6 +83,9 @@ class PDFController extends Controller
 
         Mail::send(['html'=>'email.rate_con_email_body'], $info, function($message) use ($info){
             
+            
+            $pathToFile = 'ACHPaymentAuthorization.pdf';
+
             $pdf = PDF::loadView('pdf.contract', $info);
 
             $message->to($info['info']['carrier_email'])
@@ -98,7 +101,8 @@ class PDFController extends Controller
             ->sender(\Auth::user()->email, \Auth::user()->name);
 
             $message->attachData($pdf->output(), 'Load_Confirmation_' . $info['info']['id'] . '.pdf');
-
+            
+            $message->attach($pathToFile);
             
 
         });

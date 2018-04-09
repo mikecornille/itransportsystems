@@ -573,9 +573,13 @@ class HaulerController extends Controller
             
            
             $pathToFile = 'ITS_BROKER_CARRIER_AGREEMENT.pdf';
+
+            $pathToACHFile = 'ACHPaymentAuthorization.pdf';
             
 
              $message->attach($pathToFile);
+
+             $message->attach($pathToACHFile);
 
             $message->to($info['info']['email'])
 
