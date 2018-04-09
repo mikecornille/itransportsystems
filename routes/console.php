@@ -643,6 +643,7 @@ Artisan::command('insertLedgerRecords', function () {
 			'account_id' => $carrier->carrier_id,
 			'memo' => $carrier->quick_status_notes,
 			'payment_amount' => $carrier->carrier_rate,
+			'upload_date' => $carrier->upload_date,
 		]);
 	}
 

@@ -10,6 +10,7 @@
     <thead>
       <tr>
         <th>Date</th>
+        <th>Upload Date</th>
         <th>Reference #</th>
         <th>Type</th>
         <th>Type Description</th>
@@ -27,6 +28,7 @@
 		
       <tr class="loadlist_row alt-colors">
         <td>{{ $ledger->date }}</td>
+        <td>{{ $ledger->upload_date }}</td>
         <td>{{ $ledger->reference_number }}</td>
         <td>{{ $ledger->type }}</td>
         <td>{{ $ledger->type_description }}</td>
