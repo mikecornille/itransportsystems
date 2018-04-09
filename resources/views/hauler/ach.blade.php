@@ -53,7 +53,7 @@
     </div>
 @endif
 
-<h3>Secure ACH Payment Information Form</h3>
+<h3 class="text-center"><u>Secure ACH Payment Information Form</u></h3>
 
     {!! Form::open(['url' => route('hauler.ach.process', ['token' => $carrier->ach_token])]) !!}
     
@@ -64,15 +64,15 @@
             {{ Form::text('bank_name', null, ['class' => 'form-control']) }}
         </div>
         <div class="col-md-4">
-            {{ Form::label('account_name', 'Account Name') }}
+            {{ Form::label('account_name', 'Account Name (full name used with bank)') }}
             {{ Form::text('account_name', null, ['class' => 'form-control']) }}
         </div>
         <div class="col-md-4">
             {{ Form::label('account_type', 'Account Type') }}
             {{ Form::select('account_type', 
                 [
-                    'checking' => 'checking',
-                    'savings' => 'savings',
+                    'Checking' => 'Checking',
+                    'Saving' => 'Saving',
                 ], null, ['placeholder' => 'Pick an account type...', 'class' => 'form-control']) }}
         </div>
     </div>
@@ -91,6 +91,10 @@
    {{ Form::submit('Submit', ['class' => 'form-control btn btn-primary', 'style' => 'margin-top: 15px;']) }}
 
     {!! Form::close() !!}
+
+
+    <h3 class="text-center">ACH PAYMENT AUTHORIZATION</h3>
+    <p>I hereby authorize International Transport Systems, Inc. (hereinafter referred to as the ITS) to initiate credit entries and to initiate, if necessary, debit entries and adjustments for any credit entry originated in error, to my (our) account at the financial institution named below, hereinafter called DEPOSITORY, to credit and/or debit the same to such amount. This authority shall remain in full force and effect until ITS has received written notification from you (or either of us) of its termination in such time and in such manner as to afford ITS and DEPOSITORY a reasonable opportunity to act upon it. If the banking information changes please contact us immediately at 630-833-1618 or lianey@itransys.com.</p>
 
 
 </div>
