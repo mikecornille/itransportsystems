@@ -165,11 +165,13 @@ class CustomersController extends Controller
    	public function payMultipleRecordFormPost(Request $request)
    	{
    			
-   			
+   		
    			
    			
    			foreach($request->id as $id)
    			{
+
+
    				if($request->customerPayStatus[$id] === "OPEN" && $request->has('customerPayStatus'))
    				{
    					$findLoad = Load::findOrFail($id);

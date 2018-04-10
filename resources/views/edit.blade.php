@@ -617,6 +617,9 @@
         <li><a href="{{ URL::to('/textDriverDeliveryStatus/' . $info->id) }}"><b>Text Driver For Delivery Status</b></a></li>
         <li><a href="{{ URL::to('/textLoadInfo/' . $info->id) }}"><b>Text Load To You</b></a></li>
         <li><a href="{{ URL::to('/textAndEmailRollbackInfo/' . $info->id) }}"><b>Rollback Info</b></a></li>
+        <li class="divider"></li>
+        <li class="dropdown-header">ACCOUNTING</li>
+        @if (Auth::user()->accounting)<li><a href="{{ URL::to('/printCheck/' . $info->id) }}"><b>Print Check</b></a></li>@endif
 
         @if($info->carrier_name == NULL)
 

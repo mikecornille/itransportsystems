@@ -42,6 +42,18 @@ class PDFController extends Controller
 	
 	}
 
+    //Prints the check
+    public function printCheck($id)
+    {
+    
+        $info = Load::find($id);
+
+        $pdf = PDF::loadView('pdf.check',['info'=>$info]);
+    
+        return $pdf->stream('check.pdf');
+    
+    }
+
 	//Emails an Invoice attachment
       public function emailInvoicePDF($id){
         

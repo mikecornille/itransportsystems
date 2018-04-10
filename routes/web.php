@@ -31,6 +31,15 @@ Route::get('/ach_no_carrier_found', function () {
 });
 
 
+ Route::group(['middleware' => ['auth', 'admin']],function() {
+         Route::get('/admin-test', 'NotesController@getAdminStats');
+     });
+
+ Route::group(['middleware' => ['auth', 'accounting']],function() {
+         Route::get('/accounting-test', 'NotesController@HaulerController@hauler_edit_accounting');
+     });
+
+
 Route::group(['middleware' => 'auth'],function() {
 
 Route::resource('journal', 'JournalController');
@@ -178,8 +187,9 @@ Route::post('/quote_loadlist', 'LoadlistController@storeFromQuote');
 
 Route::get('/notes', 'NotesController@index');
 Route::get('/myStats', 'NotesController@getBrokerStats');
-Route::get('/admin', 'NotesController@getAdminStats');
+
 Route::post('/admin', 'NotesController@getAdminStats'); 
+Route::get('/admin', 'NotesController@getAdminStats');
 Route::get('/findCustomer', 'CustomersController@getAmbassadorStats');
 Route::get('/findTrucks', 'CarriersController@displayPage');
 Route::post('/findTrucks', 'CarriersController@findTrucksByStateAndType');
@@ -274,9 +284,10 @@ Route::get('newDateLoadlist/{id}', "LoadlistController@newDateLoadlist");
 Route::get('/emailLoad/{id}', 'LoadlistController@emailLoad');
 
 
-//PRINT THE INVOICE AND RATE CONFIRMATION
+//PRINT THE INVOICE AND RATE CONFIRMATION AND CHECK
 Route::get('/getInvoicePDF/{id}', 'PDFController@getInvoicePDF');
 Route::get('/getContractPDF/{id}', 'PDFController@getContractPDF');
+Route::get('/printCheck/{id}', 'PDFController@printCheck');
 
 //EMAILS SENT WITH LOAD DATA BUT NO ATTACHMENTS
 Route::get('/internal/{id}', 'LoadsController@internalEmail');
