@@ -45,6 +45,18 @@ class PDFController extends Controller
     //Prints the check
     public function printCheck($id)
     {
+
+        //Todays Date
+         date_default_timezone_set("America/Chicago");
+        
+        $currentDate = date('m-d-Y');
+
+         //UPDATE WHERE ID = LOAD
+        \DB::table('loads')->where('id', $id)->update([
+            'carrierPayStatus' => "COMPLETED",
+            'upload_date' => $currentDate
+        ]);
+        
     
         $info = Load::find($id);
 
