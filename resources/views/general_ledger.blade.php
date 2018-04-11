@@ -9,7 +9,7 @@
 <table class="table table-hover">
     <thead>
       <tr>
-        <th>Date</th>
+        <th>App Crr Inv/Deposit Date</th>
         <th>Upload Date</th>
         <th>Reference #</th>
         <th>Type</th>
