@@ -659,6 +659,7 @@ Artisan::command('insertLedgerRecords', function () {
 			'memo' => $journal->memo,
 			'payment_amount' => $journal->payment_amount,
 			'deposit_amount' => $journal->deposit_amount,
+			'journal_entry_number' => $journal->id,
 		]);
 	}
 	

@@ -171,13 +171,16 @@ class CustomersController extends Controller
    			foreach($request->id as $id)
    			{
 
+          
+
+          if(!empty($request->customerPayStatus[$id])){
 
    				if($request->customerPayStatus[$id] === "OPEN" && $request->has('customerPayStatus'))
    				{
    					$findLoad = Load::findOrFail($id);
-	   				$findLoad->deposit_date = NULL;
-	   				$findLoad->ref_or_check_num_from_customer = NULL;
-	   				$findLoad->payment_method_from_customer = NULL;
+	   				$findLoad->deposit_date = $request->deposit_date;
+	   				$findLoad->ref_or_check_num_from_customer = $request->ref_or_check_num_from_customer;
+	   				$findLoad->payment_method_from_customer = $request->payment_method_from_customer;
 	   				$findLoad->totalCheckAmountFromCustomer = $request->totalCheckAmountFromCustomer;
 	   				$findLoad->paid_amount_from_customer = $request->paid_amount_from_customer[$id];
 	   				$findLoad->customerPayStatus = $request->customerPayStatus[$id];
@@ -195,6 +198,9 @@ class CustomersController extends Controller
    				$findLoad->customerPayStatus = $request->customerPayStatus[$id];
    				$findLoad->update();
    				}
+
+        }
+          
    				
    			}
 

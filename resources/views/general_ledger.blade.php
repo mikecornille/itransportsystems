@@ -14,6 +14,7 @@
         <th>Reference #</th>
         <th>Type</th>
         <th>Type Description</th>
+        <th>Journal Entry #</th>
         <th>PRO #</th>
         <th>Account Name</th>
         <th>Account ID #</th>
@@ -32,8 +33,16 @@
         <td>{{ $ledger->reference_number }}</td>
         <td>{{ $ledger->type }}</td>
         <td>{{ $ledger->type_description }}</td>
+
+        
+        
+        
+        <td><a href="{{ URL::to('/journal/' . $ledger->journal_entry_number  . '/edit') }}" title="edit">{{ $ledger->journal_entry_number }}</a></td>
         <td><a href="{{ URL::to('/edit/url?id=' . $ledger->pro_number) }}" title="edit">{{ $ledger->pro_number }}</a></td>
-		<td>{{ $ledger->account_name }}</td>
+		    
+
+
+        <td>{{ $ledger->account_name }}</td>
         <td>{{ $ledger->account_id }}</td>
         <td><a href="#" class="inactiveLink" title="Memo" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $ledger->memo }}">{{ substr($ledger->memo, 0, 25) }} {{ strlen($ledger->memo) > 25 ? "..." : "" }}</a></td>
         <td>{{ $ledger->payment_amount }}</td>
