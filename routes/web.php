@@ -42,6 +42,14 @@ Route::get('/ach_no_carrier_found', function () {
 
 Route::group(['middleware' => 'auth'],function() {
 
+Route::get('newJournalEntry', function() {
+
+    return view('newJournalEntry');
+
+});
+
+Route::post('submitNewJournalVendor', 'JournalController@submitNewJournalVendor');
+
 Route::resource('journal', 'JournalController');
     
 Route::get('general_ledger', 'LoadsController@generalLedger');

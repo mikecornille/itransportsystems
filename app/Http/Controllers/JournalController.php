@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Journal;
 
+use App\Carrier;
+
 class JournalController extends Controller
 {
     /**
@@ -18,6 +20,21 @@ class JournalController extends Controller
         $journal_entries = Journal::orderBy('id', 'asc')->get();
         
         return view('journal', compact('journal_entries', $journal_entries));
+    }
+
+    public function submitNewJournalVendor(Request $request)
+    {
+        $vendor_name = $request->input('vendor_name');
+
+        $store = New Carrier();
+
+        $store->company = $vendor_name;
+
+        $store->save();
+
+        return redirect('journal');
+
+
     }
 
     /**

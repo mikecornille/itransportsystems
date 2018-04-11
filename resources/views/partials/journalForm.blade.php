@@ -1,6 +1,12 @@
 <div class="container">
-	<h3>Journal Entry</h3>
-
+	<div class="row">
+		<div class="col-md-6">
+			<h3>Journal Entry</h3>
+		</div>
+		<div class="col-md-6">
+			<a href="newJournalEntry">Create New Vendor</a>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-md-4">
 			{{ Form::label('vendorSearchJournal', 'Vendor Search') }}
