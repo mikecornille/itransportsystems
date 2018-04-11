@@ -68,6 +68,8 @@ Route::post('insertDOT', 'HaulerController@insertDOT');
 
 Route::get('ach_email/{id}', 'HaulerController@ach_email');
 
+Route::get('agingReport/{id}', 'CustomersController@agingReport');
+
 Route::put('hauler/accountingUpdate/{hauler}', 'HaulerController@accountingUpdate')->name('hauler.accounting');
 
 Route::resource('hauler', 'HaulerController');

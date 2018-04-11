@@ -32,6 +32,20 @@
       {!! Form::close() !!}
 
     </div>
+
+    <div class="col-md-2">
+      <div class="btn-group" id="action_buttons">
+        <button type="button" class="btn btn-primary">Actions</button>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li class="dropdown-header">Aging Report</li>
+          <li><a href="{{ URL::to('/agingReport/' . $getCustomer->id) }}"><b>Aging Report</b></a></li>
+        </ul>
+      </div>
+      
+    </div>
     
   </div>
   

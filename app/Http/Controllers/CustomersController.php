@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Mail;
-
 use App\Customer;
-
 use App\Load;
-
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use Input;
+use DB;
+use Excel;
+use Carbon\Carbon;
 
 class CustomersController extends Controller
 {
@@ -200,5 +200,46 @@ class CustomersController extends Controller
 
    		return view('customer_accounting');
    	}
+
+    public function agingReport($id)
+    {
+        
+        date_default_timezone_set("America/Chicago");
+        
+        $currentDate = date('m-d-Y');
+
+    //$data = Item::get()->toArray();
+    $loads = Load::select('id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'delivery_date', 'amount_due', 'billed_date')
+    ->where('customer_id', $id)->where('customerPayStatus', 'OPEN')
+    ->get();
+
+    $loads->map(function ($data) {
+          $loads['aging'] = '';
+          return $loads;
+      });
+
+
+    $loads->transform(function($loads) {
+      
+      //Get todays date to do math
+      $today_raw = Carbon::now('America/Chicago');
+      //Get the billed date
+      $billed_date = Carbon::createFromFormat('m/d/Y', $loads->billed_date);
+      //Send to datatable
+      $loads->aging = (string)$billed_date->diffInDays($today_raw, false);
+
+      return $loads;
+    });
+
+    //->whereBetween('billed_date', [$start, $end])->orderBy('id', 'asc')->get();
+
+
+    return \Excel::create('Aging_Report_' . $currentDate, function($excel) use ($loads) {
+      $excel->sheet('mySheet', function($sheet) use ($loads)
+          {
+        $sheet->fromArray($loads);
+          });
+    })->download('csv');
+    }
 
 }
