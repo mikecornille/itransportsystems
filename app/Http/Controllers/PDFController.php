@@ -53,6 +53,7 @@ class PDFController extends Controller
 
          //UPDATE WHERE ID = LOAD
         \DB::table('loads')->where('id', $id)->update([
+            'payment_method' => "CHECK",
             'carrierPayStatus' => "COMPLETED",
             'upload_date' => $currentDate
         ]);
