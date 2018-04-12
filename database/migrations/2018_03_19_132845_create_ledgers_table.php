@@ -18,6 +18,7 @@ class CreateLedgersTable extends Migration
             $table->bigInteger('pro_number')->nullable();
             $table->string('type')->nullable();
             $table->string('type_description')->nullable();
+            $table->string('type_description_sub')->nullable();
             $table->string('journal_entry_number')->nullable();
             $table->string('date')->nullable();
             $table->string('reference_number')->nullable();

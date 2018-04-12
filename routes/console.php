@@ -652,6 +652,7 @@ Artisan::command('insertLedgerRecords', function () {
 		\DB::table('ledgers')->insert([
 			'type' => $journal->type,
 			'type_description' => $journal->type_description,
+			'type_description_sub' => $journal->type_description_sub,
 			'date' => $journal->created_at,
 			'reference_number' => $journal->reference_number,
 			'account_name' => $journal->account_name,
