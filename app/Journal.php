@@ -10,6 +10,7 @@ class Journal extends Model
             public $fillable = [
             	'type',
             	'type_description',
+                  'type_description_sub',
             	'date',
             	'reference_number',
             	'account_name',

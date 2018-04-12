@@ -34,15 +34,17 @@
 
 
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-6">
 			{{ Form::label('memo', 'Memo') }}
 			{{ Form::text('memo', null, ['class' => 'form-control']) }}
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-6">
 			{{ Form::label('reference_number', 'Reference #') }}
 			{{ Form::text('reference_number', null, ['class' => 'form-control']) }}
 		</div>
-		<div class="col-md-4">
+	</div>
+	<div class="row">
+		<div class="col-md-6">
 			{{ Form::label('type_description', 'Type Description') }}
 	  		{{ Form::select('type_description', 
 				[
@@ -64,6 +66,36 @@
 	  		
 				], null, ['placeholder' => 'Pick a description type...', 'class' => 'form-control']) }}
 		</div>
+
+		<div class="col-md-6">
+			{{ Form::label('type_description_sub', 'Type Description Sub Category') }}
+	  		{{ Form::select('type_description_sub', 
+				[
+
+					'Automobile Expense' => 'Automobile Expense',
+					'Automobile Lease' => 'Automobile Lease',
+					'Bank Service Charges' => 'Bank Service Charges',
+					'Computer Supplies' => 'Computer Supplies',
+					'Dues and Subscriptions' => 'Dues and Subscriptions',
+					'Auto Insurance' => 'Auto Insurance',
+					'Health Insurance' => 'Health Insurance',
+					'Insurance Other' => 'Insurance Other',
+					'Office Supplies' => 'Office Supplies',
+					'Payroll Service' => 'Payroll Service',
+					'Postage and Delivery' => 'Postage and Delivery',
+					'Printing and Reproduction' => 'Printing and Reproduction',
+					'Rent' => 'Rent',
+					'Telephone' => 'Telephone',
+					'Meals' => 'Meals',
+					'Travel and Ent' => 'Travel and Ent',
+					'Gas and Electric' => 'Gas and Electric',
+					'Utilities Other' => 'Utilities - Other',
+					
+	  		
+				], null, ['placeholder' => 'Pick a sub description type...', 'class' => 'form-control']) }}
+		</div>
+		
 	</div>
+	
 
 {{ Form::submit($submitButtonText, ['class' => 'form-control btn btn-primary', 'style' => 'margin-top: 15px;']) }}

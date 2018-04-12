@@ -17,6 +17,7 @@ class CreateJournalsTable extends Migration
             $table->increments('id');
             $table->string('type')->nullable();
             $table->string('type_description')->nullable();
+            $table->string('type_description_sub')->nullable();
             $table->string('reference_number')->nullable();
             $table->string('account_name')->nullable();
             $table->bigInteger('account_id')->nullable();

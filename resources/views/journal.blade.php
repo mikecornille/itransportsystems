@@ -33,6 +33,7 @@
         <th>Name ID #</th>
         <th>Type</th>
         <th>Description</th>
+        <th>Sub Desc</th>
         <th>Reference #</th>
         <th>Memo</th>
         <th>Payment Amount</th>
@@ -47,6 +48,7 @@
         <td>{{ $entry->account_id }}</td>
         <td>{{ $entry->type }}</td>
         <td>{{ $entry->type_description }}</td>
+        <td>{{ $entry->type_description_sub }}</td>
         <td>{{ $entry->reference_number }}</td>
         <td><a href="#" class="inactiveLink" title="Memo" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $entry->memo }}">{{ substr($entry->memo, 0, 25) }} {{ strlen($entry->memo) > 25 ? "..." : "" }}</a></td>
         <td>{{ $entry->payment_amount }}</td>
