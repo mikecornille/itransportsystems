@@ -568,7 +568,7 @@ class LoadsController extends Controller
 	public function accountsReceivable()
 	{
 		
-		$data = Load::whereNotNull('billed_date')->take(2000)->get();
+		$data = Load::whereNotNull('billed_date')->where('customerPayStatus', 'OPEN')->take(2000)->get();
 
 		$data->map(function ($data) {
     			$data['plus_thirty'] = '';
@@ -581,11 +581,20 @@ class LoadsController extends Controller
 			});
 
 		
-		if(isset($data->billed_date))
-		{
+		
 
 		$data->transform(function($data) {
 			
+			//IF THERE IS AN EMPTY BILLED DATE THEN ENTER IN 'NO BILLED DATE WHATS UP?'
+			if($data->billed_date == '')
+			{
+				$data->plus_thirty = 'No Billed Date Set';
+
+				$data->aging = 'No Billed Date Set';
+			}
+			else
+			{
+
 			//Do +30 days from billed date
 			$date = Carbon::createFromFormat('m/d/Y', $data->billed_date);
 			$plusThirty = (string)$date->addDays(30)->format('m/d/Y');
@@ -602,13 +611,13 @@ class LoadsController extends Controller
 			$plusThirtyForMath = $billed_date->addDays(30);
 			//Send to datatable
 			$data->aging = (string)$plusThirtyForMath->diffInDays($today_raw, false);
-
+			}
 
 			
 			return $data;
 		});
 
-	}
+	
 		
 
 		return(['data' => $data]);
