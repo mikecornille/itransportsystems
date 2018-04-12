@@ -549,7 +549,7 @@ class LoadsController extends Controller
 
 	public function accounts_receivable()
 	{
-		$owed = Load::sum('amount_due');
+		$owed = Load::whereNotNull('billed_date')->where('customerPayStatus', 'OPEN')->sum('amount_due');
 		
 		return view('accounts_receivable')->with('owed', $owed);
 	}
@@ -630,9 +630,9 @@ class LoadsController extends Controller
 		//This will pull from a new table called ledger
 		$general_ledger = Ledger::orderBy('date', 'asc')->get();
 
-		$payment_amount_totals = Ledger::whereNotNull('billed_date')->where('customerPayStatus', 'OPEN')->sum('payment_amount');
+		$payment_amount_totals = Ledger::sum('payment_amount');
 
-		$deposit_amount_totals = Ledger::whereNotNull('billed_date')->where('customerPayStatus', 'OPEN')->sum('deposit_amount');
+		$deposit_amount_totals = Ledger::sum('deposit_amount');
 
 		$balance = $deposit_amount_totals - $payment_amount_totals;
 
