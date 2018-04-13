@@ -56,7 +56,16 @@ Route::get('general_ledger', 'LoadsController@generalLedger');
 
 Route::get('payMultipleRecordForm/{id}', 'CustomersController@payMultipleRecordForm');
 
-Route::patch('payMultipleRecordForm', 'CustomersController@payMultipleRecordFormPost');
+
+
+
+
+ Route::group(['middleware' => ['multiplepay']],function() {
+         Route::patch('payMultipleRecordForm', 'CustomersController@payMultipleRecordFormPost');
+     });
+
+
+
 
 Route::post('/customerAccoutingEdit', 'CustomersController@customerAccoutingEdit');
 

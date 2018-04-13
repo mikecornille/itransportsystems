@@ -49,6 +49,7 @@ class Kernel extends HttpKernel
         'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         'admin' => \App\Http\Middleware\Admin::class,
         'accounting' => \App\Http\Middleware\Accounting::class,
+        'multiplepay' => \App\Http\Middleware\AddMultiplePay::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,

@@ -96,7 +96,7 @@
     </tbody>
   </table>
 
-  <h3 class="text-center"><u>Paid Invoices - Total Paid: ${{ $sumPaidOutToCarrier }}</u></h3>
+  <h3 class="text-center"><u>Completed Invoices - Total Paid: ${{ $sumPaidOutToCarrier }}</u></h3>
 <table class="table table-hover">
     <thead>
       <tr>

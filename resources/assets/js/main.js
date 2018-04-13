@@ -1,3 +1,4 @@
+
 //SENDS THE INFO TO THE EQUIPMENT MODAL FOR EDITING
 function goToEquipmentEditPage() {
   $('#equip_id').val(window.equipmentRecord.item.object.id);

@@ -159,7 +159,9 @@ class CustomersController extends Controller
    		//Get the customer
    		$customer = Customer::findOrFail($id);
 
-   		return view('/payMultipleRecordForm', compact('open_loads', $open_loads, 'customer', $customer));
+      $offAmount = "";
+
+   		return view('/payMultipleRecordForm', compact('open_loads', $open_loads, 'customer', $customer, 'offAmount', $offAmount));
    	}
 
    	public function payMultipleRecordFormPost(Request $request)
