@@ -6,8 +6,6 @@
 
 <h1 class="text-center">Pay Multiple Invoices</h1>
 
-
-
 @if($errors->any())
 <h4>You are off by: {{ $errors->first() }}</h4>
 @endif
