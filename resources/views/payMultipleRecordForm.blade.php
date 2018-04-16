@@ -8,8 +8,11 @@
 
 @if($errors->any())
 <h4>You are off by: {{ $errors->first() }}</h4>
-@endif
 
+@endif
+<div class="page-header">
+  <h1>Running Total: <small id="subtotal"></small></h1>
+</div>
 <form role="form" class="form-horizontal" method="POST" action="/payMultipleRecordForm">
     
   
@@ -66,7 +69,7 @@
         <td>{{ $load->id }}</td>
         <td>{{ $load->amount_due }}</td>
         <td><input type="text" class="form-control" id="paid_amount_from_customer" name="paid_amount_from_customer[{{ $load->id }}]" value="{{ $load->amount_due }}"></td>
-        <td><label class="radio-inline"><input type="radio" id="{{ $load->id }}" name="customerPayStatus[{{ $load->id }}]" value="PAID">PAID</label>
+        <td><label class="radio-inline"><input class="radio-buttons" type="radio" id="{{ $load->id }}" data-amount="{{ $load->amount_due }}" name="customerPayStatus[{{ $load->id }}]" value="PAID">PAID</label>
         <label class="radio-inline"><input type="radio" name="customerPayStatus[{{ $load->id }}]" value="OPEN">OPEN</label></td>
         <td>{{ $load->customerPayStatus }}</td>
 </tr>

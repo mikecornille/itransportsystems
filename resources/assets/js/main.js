@@ -1,4 +1,14 @@
 
+var total = 0;
+
+$('.radio-buttons').on('click', function(){ 
+
+  total += parseInt($(this).attr('data-amount')); 
+  $('#subtotal').html(total);
+  
+});
+
+
 //SENDS THE INFO TO THE EQUIPMENT MODAL FOR EDITING
 function goToEquipmentEditPage() {
   $('#equip_id').val(window.equipmentRecord.item.object.id);
