@@ -73,7 +73,7 @@ div.dollar {
 
 div.memo {
     position: fixed;
-    bottom: 570;
+    bottom: 565;
     left: 40;
     width: 500px;
     
@@ -112,7 +112,7 @@ div.checkDate {
 
 div.remitToAddress {
 	position: fixed;
-    bottom: 635;
+    bottom: 630;
     right: 500;
     width: 300px;
 }
@@ -166,7 +166,7 @@ div.lowTable {
 </div>
 
 <div class="sig">
-	<img src="images/sig.png">
+	<img src="images/liane.png">
 </div>
 
 <div class="midTable">
