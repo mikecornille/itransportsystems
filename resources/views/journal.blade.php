@@ -1,5 +1,13 @@
 @extends('layouts.app')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   
+    <link href="/css/app.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
+    
+    <script src="/js/main.js"></script>
+    
+    <script src="https://cdn.datatables.net/fixedcolumns/3.2.2/js/dataTables.fixedColumns.min.js"></script>
 @section('content')
 
 <div class="container">
@@ -29,6 +37,8 @@
     <thead>
       <tr>
         <th>Date</th>
+        <th>Upload Date</th>
+        <th>Invoice Date</th>
         <th>Name</th>
         <th>Name ID #</th>
         <th>Type</th>
@@ -44,6 +54,8 @@
     @foreach($journal_entries as $entry)
       <tr>
         <td>{{ $entry->created_at }}</td>
+        <td>{{ $entry->upload_date }}</td>
+        <td>{{ $entry->invoice_date_journal }}</td>
         <td>{{ $entry->account_name }}</td>
         <td>{{ $entry->account_id }}</td>
         <td>{{ $entry->type }}</td>
@@ -61,6 +73,7 @@
   </table>
 
 </div>
+<script src="/js/datepicker.js"></script>
 <script>
 $(function() {
             function log( message ) {
@@ -104,6 +117,16 @@ $(function() {
                     $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
                 }
             });
+
+
+
+
         });
+$(function() {
+$('#invoice_date_journal').datepicker();
+  $('#invoice_date_journal').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+  });
 </script>
 @endsection

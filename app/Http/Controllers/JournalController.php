@@ -8,6 +8,8 @@ use App\Journal;
 
 use App\Carrier;
 
+use Carbon\Carbon;
+
 class JournalController extends Controller
 {
     /**
@@ -67,8 +69,6 @@ class JournalController extends Controller
         ]);
 
         $store = New Journal($request->all());
-
-        $store->type = "GENJRN";
         
         $store->save();
 

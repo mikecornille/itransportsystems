@@ -1229,6 +1229,11 @@ $('#datepicker_ach_end').datepicker();
 
 
 
+
+
+
+
+
 $('#datepicker').on('changeDate', function(ev){
     $(this).datepicker('hide');
 });
@@ -1320,6 +1325,9 @@ $('#datepicker_ach_start').on('changeDate', function(ev){
 $('#datepicker_ach_end').on('changeDate', function(ev){
     $(this).datepicker('hide');
 });
+
+
+
 
 
 

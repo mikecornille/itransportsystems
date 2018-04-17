@@ -13,6 +13,8 @@ use Excel;
 
 use App\Load;
 
+use App\Journal;
+
 use App\Text;
 
 use Carbon\Carbon;
@@ -69,6 +71,37 @@ class PDFController extends Controller
         $info = Load::find($id);
 
         $pdf = PDF::loadView('pdf.check',['info'=>$info]);
+    
+        return $pdf->stream('check.pdf');
+    
+    }
+
+    
+
+     //Prints the check from journal
+    public function printCheckFromJournal($id)
+    {
+
+        //Todays Date
+         date_default_timezone_set("America/Chicago");
+        
+        $currentDate = date('m-d-Y');
+
+
+        $now = Carbon::now();
+
+       
+
+         //UPDATE WHERE ID = LOAD
+        \DB::table('journals')->where('id', $id)->update([
+            'payment_method' => "CHECK",
+            'upload_date' => $now
+        ]);
+        
+    
+        $info = Journal::find($id);
+
+        $pdf = PDF::loadView('pdf.checkFromJournal',['info'=>$info]);
     
         return $pdf->stream('check.pdf');
     

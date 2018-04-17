@@ -43,8 +43,21 @@
 			{{ Form::text('reference_number', null, ['class' => 'form-control']) }}
 		</div>
 	</div>
+	
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-4">
+			{{ Form::label('type', 'Type') }}
+	  		{{ Form::select('type', 
+				[
+
+					'PMT' => 'PMT',
+					'BILLPMT' => 'BILLPMT',
+					'GENJRN' => 'GENJRN'
+					
+	  		
+				], null, ['placeholder' => 'Pick a type...', 'class' => 'form-control']) }}
+		</div>
+		<div class="col-md-4">
 			{{ Form::label('type_description', 'Type Description') }}
 	  		{{ Form::select('type_description', 
 				[
@@ -64,10 +77,10 @@
 					'Other Expense' => 'Other Expense',
 					'Non Positng' => 'Non Positng'
 	  		
-				], null, ['placeholder' => 'Pick a description type...', 'class' => 'form-control']) }}
+				], null, ['placeholder' => 'Pick a description...', 'class' => 'form-control']) }}
 		</div>
 
-		<div class="col-md-6">
+		<div class="col-md-4">
 			{{ Form::label('type_description_sub', 'Type Description Sub Category') }}
 	  		{{ Form::select('type_description_sub', 
 				[
@@ -92,10 +105,77 @@
 					'Utilities Other' => 'Utilities - Other',
 					
 	  		
-				], null, ['placeholder' => 'Pick a sub description type...', 'class' => 'form-control']) }}
+				], null, ['placeholder' => 'Pick a sub description...', 'class' => 'form-control']) }}
 		</div>
 		
 	</div>
+	<div class="row">
+		<div class="col-md-3">
+			{{ Form::label('address', 'Address') }}
+			{{ Form::text('address', null, ['class' => 'form-control']) }}
+
+		</div>
+		<div class="col-md-3">
+			{{ Form::label('city', 'City') }}
+			{{ Form::text('city', null, ['class' => 'form-control']) }}
+
+		</div>
+		<div class="col-md-3">
+			{{ Form::label('state', 'State') }}
+			{{ Form::text('state', null, ['class' => 'form-control']) }}
+
+		</div>
+		<div class="col-md-3">
+			{{ Form::label('zip', 'Zip') }}
+			{{ Form::text('zip', null, ['class' => 'form-control']) }}
+
+		</div>
+		
+	</div>
+
+	<div class="row">
+		<div class="col-md-4">
+			{{ Form::label('name_on_check', 'Name on Check') }}
+			{{ Form::text('name_on_check', null, ['class' => 'form-control']) }}
+
+		</div>
+		<div class="col-md-4">
+			{{ Form::label('payment_number', 'Payment Number') }}
+			{{ Form::text('payment_number', null, ['class' => 'form-control']) }}
+
+		</div>
+		<div class="col-md-4">
+			{{ Form::label('invoice_date_journal', 'Invoice Date') }}
+			{{ Form::text('invoice_date_journal', null, ['class' => 'form-control']) }}
+
+		</div>
+		<div class="col-md-4">
+			{{ Form::label('payment_method', 'Payment Method') }}
+			{{ Form::select('payment_method', 
+				[
+
+					'CHECK' => 'CHECK',
+					'ACH' => 'ACH',
+					'CREDIT' => 'CREDIT',
+	
+					
+	  		
+				], null, ['placeholder' => 'Pick a payment method...', 'class' => 'form-control']) }}
+
+		</div>
+		
+	</div>
+
+	<div class="row">
+		<div class="col-md-4">
+			{{ Form::submit($submitButtonText, ['class' => 'form-control btn btn-primary', 'style' => 'margin-top: 15px;']) }}
+		</div>
+		
+		@if(isset($post->id) !== false)
+		<div class="col-md-4" style="margin-top: 30px;">
+			<a href="{{ URL::to('/printCheckFromJournal/' . $post->id) }}"><b>Print Check</b></a>
+		</div>
+		@endif
+	</div>
 	
 
-{{ Form::submit($submitButtonText, ['class' => 'form-control btn btn-primary', 'style' => 'margin-top: 15px;']) }}

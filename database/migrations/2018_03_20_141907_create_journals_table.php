@@ -24,6 +24,15 @@ class CreateJournalsTable extends Migration
             $table->string('memo')->nullable();
             $table->string('payment_amount')->nullable();
             $table->string('deposit_amount')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('zip')->nullable();
+            $table->string('name_on_check')->nullable();
+            $table->string('payment_number')->nullable();
+            $table->string('invoice_date_journal')->nullable();
+            $table->string('upload_date')->nullable();
+            $table->string('address')->nullable();
+            $table->string('payment_method')->nullable();
             $table->timestamps();
         });
     }

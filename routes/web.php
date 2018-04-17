@@ -307,6 +307,8 @@ Route::get('/emailLoad/{id}', 'LoadlistController@emailLoad');
 Route::get('/getInvoicePDF/{id}', 'PDFController@getInvoicePDF');
 Route::get('/getContractPDF/{id}', 'PDFController@getContractPDF');
 Route::get('/printCheck/{id}', 'PDFController@printCheck');
+Route::get('/printCheckFromJournal/{id}', 'PDFController@printCheckFromJournal');
+
 
 //EMAILS SENT WITH LOAD DATA BUT NO ATTACHMENTS
 Route::get('/internal/{id}', 'LoadsController@internalEmail');
