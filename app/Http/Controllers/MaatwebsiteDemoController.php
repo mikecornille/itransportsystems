@@ -107,7 +107,7 @@ class MaatwebsiteDemoController extends Controller
 		 //Todays Date
 		 date_default_timezone_set("America/Chicago");
         
-        $currentDate = date('m-d-Y');
+        $currentDate = Carbon::now();
 
 		 foreach ($updates as $update)
 		 {
