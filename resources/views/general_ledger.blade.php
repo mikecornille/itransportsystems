@@ -19,6 +19,7 @@
         <th>Account Name</th>
         <th>Account ID #</th>
         <th>Memo</th>
+        <th>Payment Method</th>
         <th>Payment Amount</th>
         <th>Deposit Amount</th>
         
@@ -45,6 +46,7 @@
         <td>{{ $ledger->account_name }}</td>
         <td>{{ $ledger->account_id }}</td>
         <td><a href="#" class="inactiveLink" title="Memo" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $ledger->memo }}">{{ substr($ledger->memo, 0, 25) }} {{ strlen($ledger->memo) > 25 ? "..." : "" }}</a></td>
+        <td>{{ $ledger->payment_method }}</td>
         <td>{{ $ledger->payment_amount }}</td>
         <td>{{ $ledger->deposit_amount }}</td>
         
