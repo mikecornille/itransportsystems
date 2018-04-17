@@ -15,6 +15,8 @@ use App\Load;
 
 use App\Text;
 
+use Carbon\Carbon;
+
 class PDFController extends Controller
 {
     //use helpers\Mailer;
@@ -51,10 +53,16 @@ class PDFController extends Controller
         
         $currentDate = date('m-d-Y');
 
+
+        $now = Carbon::now();
+
+       
+
          //UPDATE WHERE ID = LOAD
         \DB::table('loads')->where('id', $id)->update([
             'payment_method' => "CHECK",
-            'carrierPayStatus' => "COMPLETED"
+            'carrierPayStatus' => "COMPLETED",
+            'upload_date' => $now
         ]);
         
     
