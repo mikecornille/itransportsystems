@@ -60,9 +60,9 @@ Route::get('payMultipleRecordForm/{id}', 'CustomersController@payMultipleRecordF
 
 
 
- Route::group(['middleware' => ['multiplepay']],function() {
+ //Route::group(['middleware' => ['multiplepay']],function() {
          Route::patch('payMultipleRecordForm', 'CustomersController@payMultipleRecordFormPost');
-     });
+ //    });
 
 
 
