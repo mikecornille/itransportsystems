@@ -154,7 +154,7 @@ div.lowTable {
 </div>
 
 <div class="dollarSpelledOut">
- {{ $rateSpelledOut . ' and 00/100'}}
+ {{ $rateSpelledOut . ' and 00/100*****************'}}
 </div>
 
 <div class="memo">
@@ -162,7 +162,7 @@ div.lowTable {
 </div>
 
 <div class="dollar">
-{{ $info->payment_amount }}.00
+**{{ $info->payment_amount }}.00
 </div>
 
 <div class="sig">
