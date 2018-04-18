@@ -650,7 +650,12 @@ Artisan::command('insertLedgerRecords', function () {
 	}
 
 	foreach($general_journal as $journal)
+	
+	if($journal->payment_cents == "") 
 	{
+		$payment = $journal->payment_amount;
+
+		{
 		\DB::table('ledgers')->insert([
 			'type' => $journal->type,
 			'type_description' => $journal->type_description,
@@ -660,13 +665,40 @@ Artisan::command('insertLedgerRecords', function () {
 			'account_name' => $journal->account_name,
 			'account_id' => $journal->account_id,
 			'memo' => $journal->memo,
-			'payment_amount' => $journal->payment_amount,
+			'payment_amount' => $payment,
 			'deposit_amount' => $journal->deposit_amount,
 			'journal_entry_number' => $journal->id,
 			'upload_date' => $journal->upload_date,
 			'payment_method' => $journal->payment_method
 		]);
 	}
+	}
+	else
+	{ 
+		$payment = $journal->payment_amount . '.' . $journal->payment_cents; 
+
+		{
+		\DB::table('ledgers')->insert([
+			'type' => $journal->type,
+			'type_description' => $journal->type_description,
+			'type_description_sub' => $journal->type_description_sub,
+			'date' => $journal->created_at,
+			'reference_number' => $journal->reference_number,
+			'account_name' => $journal->account_name,
+			'account_id' => $journal->account_id,
+			'memo' => $journal->memo,
+			'payment_amount' => $payment,
+			'deposit_amount' => $journal->deposit_amount,
+			'journal_entry_number' => $journal->id,
+			'upload_date' => $journal->upload_date,
+			'payment_method' => $journal->payment_method
+		]);
+	}
+	}
+	
+
+
+	
 	
 	
 
