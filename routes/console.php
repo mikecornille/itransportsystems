@@ -663,6 +663,8 @@ Artisan::command('insertLedgerRecords', function () {
 			'payment_amount' => $journal->payment_amount,
 			'deposit_amount' => $journal->deposit_amount,
 			'journal_entry_number' => $journal->id,
+			'upload_date' => $journal->upload_date,
+			'payment_method' => $journal->payment_method
 		]);
 	}
 	
