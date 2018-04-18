@@ -628,7 +628,7 @@ Artisan::command('insertLedgerRecords', function () {
 			'account_id' => $customer->customer_id,
 			'memo' => $customer->ref_or_check_num_from_customer,
 			'deposit_amount' => $customer->paid_amount_from_customer,
-			'payment_method' => $customer->payment_method_from_customer,
+			'payment_method' => $customer->payment_method_from_customer
 		]);
 	}
 
@@ -645,7 +645,7 @@ Artisan::command('insertLedgerRecords', function () {
 			'memo' => $carrier->quick_status_notes,
 			'payment_amount' => $carrier->carrier_rate,
 			'upload_date' => $carrier->upload_date,
-			'payment_method' => $carrier->payment_method,
+			'payment_method' => $carrier->payment_method
 		]);
 	}
 

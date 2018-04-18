@@ -27,6 +27,14 @@
 			{{ Form::text('payment_amount', null, ['class' => 'form-control']) }}
 		</div>
 		<div class="col-md-3">
+		{{ Form::label('payment_cents', 'Cents') }}
+			{{ Form::text('payment_cents', null, ['class' => 'form-control']) }}
+		</div>
+		
+	</div>
+
+	<div class="row">
+		<div class="col-md-3">
 			{{ Form::label('deposit_amount', 'Deposit Amount') }}
 			{{ Form::text('deposit_amount', null, ['class' => 'form-control']) }}
 		</div>

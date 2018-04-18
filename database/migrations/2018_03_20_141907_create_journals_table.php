@@ -33,6 +33,7 @@ class CreateJournalsTable extends Migration
             $table->string('upload_date')->nullable();
             $table->string('address')->nullable();
             $table->string('payment_method')->nullable();
+            $table->string('payment_cents')->nullable();
             $table->timestamps();
         });
     }

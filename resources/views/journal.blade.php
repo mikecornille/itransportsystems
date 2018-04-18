@@ -10,7 +10,7 @@
     <script src="https://cdn.datatables.net/fixedcolumns/3.2.2/js/dataTables.fixedColumns.min.js"></script>
 @section('content')
 
-<div class="container">
+<!-- <div class="container"> -->
 
 
         <ul>
@@ -36,6 +36,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
+        <th></th>
         <th>Date</th>
         <th>Upload Date</th>
         <th>Invoice Date</th>
@@ -53,6 +54,7 @@
     <tbody>
     @foreach($journal_entries as $entry)
       <tr>
+        <td></td>
         <td>{{ $entry->created_at }}</td>
         <td>{{ $entry->upload_date }}</td>
         <td>{{ $entry->invoice_date_journal }}</td>
@@ -72,7 +74,7 @@
     </tbody>
   </table>
 
-</div>
+<!-- </div> -->
 <script src="/js/datepicker.js"></script>
 <script>
 $(function() {

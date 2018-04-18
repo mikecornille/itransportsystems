@@ -153,17 +153,38 @@ div.lowTable {
 {{ $today }}
 </div>
 
+
+@if($info->payment_cents == "")
 <div class="dollarSpelledOut">
  {{ $rateSpelledOut . ' and 00/100*****************'}}
 </div>
+@else
+
+<div class="dollarSpelledOut">
+ {{ $rateSpelledOut . ' and ' . $info->payment_cents . '/100*****************'}}
+</div>
+
+@endif
+
 
 <div class="memo">
 {{ $info->memo }}
 </div>
 
+
+
+@if($info->payment_cents == "")
 <div class="dollar">
 **{{ $info->payment_amount }}.00
 </div>
+@else
+<div class="dollar">
+**{{ $info->payment_amount . '.' . $info->payment_cents }}
+</div>
+@endif
+
+
+
 
 <div class="sig">
 	<img src="images/liane.png">

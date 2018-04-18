@@ -27,7 +27,8 @@ class Journal extends Model
                   'invoice_date_journal',
                   'upload_date',
                   'payment_method',
-                  'address'
+                  'address',
+                  'payment_cents'
 
 
             ];
