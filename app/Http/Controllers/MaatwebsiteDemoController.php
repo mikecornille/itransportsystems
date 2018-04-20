@@ -13,6 +13,7 @@ use Excel;
 use App\User;
 use App\Load;
 use App\Loadlist;
+use App\Ledger;
 use Carbon\Carbon;
 
 
@@ -41,6 +42,92 @@ class MaatwebsiteDemoController extends Controller
 	        });
 		})->download($type);
 	}
+
+	
+
+	public function generalLedgerExcel($type, Request $request)
+	{
+		$start = $request->input('start_date');
+		$end = $request->input('end_date');
+
+		$start = Carbon::createFromFormat('m/d/Y', $start, "America/Chicago");
+	    $end = Carbon::createFromFormat('m/d/Y', $end, "America/Chicago");
+
+	    $start = date("Y-m-d", strtotime($start));
+
+	    $end = date("Y-m-d", strtotime($end));
+
+
+
+		$loads = Ledger::select('date', 'upload_date', 'reference_number', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->orderBy('id', 'asc')->get();
+		
+		$payment_amount_total = Ledger::whereBetween('date', [$start, $end])->sum('payment_amount');
+
+		$deposit_amount_total = Ledger::whereBetween('date', [$start, $end])->sum('deposit_amount');
+
+
+
+		return \Excel::create('GL ' . $start . ' to ' . $end . ' PA ' . $payment_amount_total . ' DA ' . $deposit_amount_total, function($excel) use ($loads) {
+			$excel->sheet('mySheet', function($sheet) use ($loads)
+	        {
+				$sheet->fromArray($loads);
+	        });
+		})->download($type);
+	}
+
+	public function generalLedgerTargetType($type, Request $request)
+	{
+		$start = $request->input('start_date');
+		$end = $request->input('end_date');
+		$type_selected = $request->input('type_selected');
+
+		$start = Carbon::createFromFormat('m/d/Y', $start, "America/Chicago");
+	    $end = Carbon::createFromFormat('m/d/Y', $end, "America/Chicago");
+
+	    $start = date("Y-m-d", strtotime($start));
+		$end = date("Y-m-d", strtotime($end));
+
+		$total = "";
+
+		
+
+		
+		
+		
+		if($type_selected === 'BILLPMT')
+		{
+			$loads = Ledger::select('date', 'upload_date', 'reference_number', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('type', $type_selected)->orderBy('id', 'asc')->get();
+			
+			$total = Ledger::whereBetween('date', [$start, $end])->where('type', $type_selected)->sum('payment_amount');
+		}
+		elseif($type_selected === 'PMT')
+		{
+			$loads = Ledger::select('date', 'upload_date', 'reference_number', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('type', $type_selected)->orderBy('id', 'asc')->get();
+
+			$total = Ledger::whereBetween('date', [$start, $end])->where('type', $type_selected)->sum('deposit_amount');
+		}
+		elseif($type_selected === 'GENJRN')
+		{
+			$loads = Ledger::select('date', 'upload_date', 'reference_number', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('type', $type_selected)->orderBy('id', 'asc')->get();
+
+			$total = "unanswered";
+
+		}
+		
+		
+
+		
+
+
+		return \Excel::create('GL ' . $start . ' to ' . $end . ' Total ' . $total, function($excel) use ($loads) {
+			$excel->sheet('mySheet', function($sheet) use ($loads)
+	        {
+				$sheet->fromArray($loads);
+	        });
+		})->download($type);
+	}
+
+	
 
 	
 

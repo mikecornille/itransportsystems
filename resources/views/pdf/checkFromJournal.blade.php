@@ -1,7 +1,5 @@
 @PHP
 
-
-
 function convertNumberToWord($num = false)
 {
     $num = str_replace(array(',', ' '), '' , trim($num));
@@ -45,24 +43,20 @@ function convertNumberToWord($num = false)
     }
     return ucwords(implode(' ', $words));
 }
-
 $rateSpelledOut = convertNumberToWord($info->payment_amount);
-
 date_default_timezone_set("America/Chicago");
 $today = date("n/j/Y"); 
-
 @ENDPHP
 
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title></title>
-	<!-- Latest compiled and minified CSS -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 <style>
-
 div.dollar {
     position: fixed;
     bottom: 673;
@@ -70,7 +64,6 @@ div.dollar {
     width: 100px;
     
 }
-
 div.memo {
     position: fixed;
     bottom: 565;
@@ -78,7 +71,6 @@ div.memo {
     width: 500px;
     
 }
-
 div.payTo {
     position: fixed;
     bottom: 677;
@@ -86,14 +78,12 @@ div.payTo {
     width: 500px;
     
 }
-
 div.dollarSpelledOut {
     position: fixed;
     bottom: 650;
     width: 500px;
     
 }
-
 div.sig {
     position: fixed;
     bottom: 605;
@@ -101,7 +91,6 @@ div.sig {
     width: 200px;
     
 }
-
 div.checkDate {
     position: fixed;
     bottom: 700;
@@ -109,26 +98,22 @@ div.checkDate {
     width: 100px;
     
 }
-
 div.remitToAddress {
-	position: fixed;
+    position: fixed;
     bottom: 630;
     right: 500;
     width: 300px;
 }
-
 div.midTable {
 position: fixed;
     bottom: 490;
     width: 800px;
 }
-
 div.lowTable {
-	position: fixed;
+    position: fixed;
     bottom: 210;
     width: 800px;
 }
-
 </style>
 
 </head>
@@ -138,11 +123,11 @@ div.lowTable {
 
 <div class="remitToAddress">
 <ul style="list-style-type: none;">
-	<li>{{ $info->name_on_check }}</li>
-	<li>{{ $info->address }}</li>
-	<li>{{ $info->city . ', ' . $info->state . ' ' . $info->zip  }}</li>
+    <li>{{ $info->name_on_check }}</li>
+    <li>{{ $info->address }}</li>
+    <li>{{ $info->city . ', ' . $info->state . ' ' . $info->zip  }}</li>
 </ul>
-	
+    
 </div>
 
 <div class="payTo">
@@ -187,7 +172,7 @@ div.lowTable {
 
 
 <div class="sig">
-	<img src="images/liane.png">
+    <img src="images/liane.png">
 </div>
 
 <div class="midTable">

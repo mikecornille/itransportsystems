@@ -1226,9 +1226,13 @@ $('#datepicker_ach_start').datepicker();
 
 $('#datepicker_ach_end').datepicker();
 
+$('#datepicker_balance_sheet').datepicker();
 
+$('#datepicker_balance_sheet_end').datepicker();
 
+$('#datepicker_type1').datepicker();
 
+$('#datepicker_type2').datepicker();
 
 
 
@@ -1323,6 +1327,22 @@ $('#datepicker_ach_start').on('changeDate', function(ev){
 });
 
 $('#datepicker_ach_end').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
+$('#datepicker_balance_sheet').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
+$('#datepicker_balance_sheet_end').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
+$('#datepicker_type1').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
+$('#datepicker_type2').on('changeDate', function(ev){
     $(this).datepicker('hide');
 });
 

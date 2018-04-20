@@ -638,7 +638,7 @@ Artisan::command('insertLedgerRecords', function () {
 			'pro_number' => $carrier->id,
 			'type' => "BILLPMT",
 			'type_description' => "Accounts Payable",
-			'date' => $carrier->getAttributes()['approved_carrier_invoice'],
+			'date' => $carrier->upload_date,
 			'reference_number' => $carrier->vendor_check_number,
 			'account_name' => $carrier->carrier_name,
 			'account_id' => $carrier->carrier_id,

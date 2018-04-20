@@ -221,6 +221,11 @@ Route::get('/loadlist', 'LoadlistController@index');
 
 Route::get('downloadExcel/{type}', 'MaatwebsiteDemoController@downloadExcel');
 
+Route::post('generalLedgerExcel/{type}', 'MaatwebsiteDemoController@generalLedgerExcel');
+
+Route::post('generalLedgerTargetType/{type}', 'MaatwebsiteDemoController@generalLedgerTargetType');
+
+
 Route::get('/getProfitReport', function() {
     return view('/getProfitReport');
 });
