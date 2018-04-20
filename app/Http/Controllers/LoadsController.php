@@ -630,6 +630,17 @@ class LoadsController extends Controller
 		//This will pull from a new table called ledger
 		$general_ledger = Ledger::orderBy('date', 'asc')->get();
 
+		$general_ledger->map(function ($general_ledger) {
+    			
+				$payment_amount_totals = Ledger::where('date', '<=', $general_ledger->date)->sum('payment_amount');
+
+				$deposit_amount_totals = Ledger::where('date', '<=', $general_ledger->date)->sum('deposit_amount');
+    			
+    			$general_ledger['running_total'] = $deposit_amount_totals - $payment_amount_totals;
+    			
+    			return $general_ledger;
+			});
+
 		$payment_amount_totals = Ledger::sum('payment_amount');
 
 		$deposit_amount_totals = Ledger::sum('deposit_amount');

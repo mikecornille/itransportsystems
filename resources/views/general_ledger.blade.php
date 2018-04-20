@@ -130,6 +130,7 @@
         <th>Payment Method</th>
         <th>Payment Amount</th>
         <th>Deposit Amount</th>
+        <th>Running Total</th>
         
       </tr>
     </thead>
@@ -157,6 +158,7 @@
         <td>{{ $ledger->payment_method }}</td>
         <td>{{ $ledger->payment_amount }}</td>
         <td>{{ $ledger->deposit_amount }}</td>
+        <td>{{ $ledger->running_total }}</td>
         
 
 
