@@ -89,7 +89,7 @@
 
             <div class="col-md-3">
                 <h2>Profit / Loss</h2>
-                    <form role="form" class="form-horizontal" method="POST" action="/achCSV/xlsx">
+                    <form role="form" class="form-horizontal" method="POST" action="/profitLoss">
 
                         {{ csrf_field() }}
 

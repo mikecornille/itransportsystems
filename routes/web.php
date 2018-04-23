@@ -35,8 +35,21 @@ Route::get('/ach_no_carrier_found', function () {
          Route::get('/admin-test', 'NotesController@getAdminStats');
      });
 
+// All accounting routes
  Route::group(['middleware' => ['auth', 'accounting']],function() {
-         Route::get('/accounting-test', 'NotesController@HaulerController@hauler_edit_accounting');
+
+         Route::get('general_ledger', 'LoadsController@generalLedger');
+         Route::get('accounts_receivable', 'LoadsController@accounts_receivable');
+
+         Route::post('/customerAccoutingEdit', 'CustomersController@customerAccoutingEdit');
+         Route::get('/customerAccoutingEditFromAccountsReceivablePage/{id}', 'CustomersController@customerAccoutingEditFromAccountsReceivablePage');
+         Route::put('/customer_accounting_update/{id}', 'CustomersController@CustomerAccountingUpdate')->name('customer_accounting_update');
+
+         Route::resource('employee', 'EmployeeController');
+
+         Route::resource('budget', 'BudgetController');
+     
+
      });
 
 
@@ -52,7 +65,7 @@ Route::post('submitNewJournalVendor', 'JournalController@submitNewJournalVendor'
 
 Route::resource('journal', 'JournalController');
     
-Route::get('general_ledger', 'LoadsController@generalLedger');
+
 
 Route::get('payMultipleRecordForm/{id}', 'CustomersController@payMultipleRecordForm');
 
@@ -67,11 +80,7 @@ Route::get('payMultipleRecordForm/{id}', 'CustomersController@payMultipleRecordF
 
 
 
-Route::post('/customerAccoutingEdit', 'CustomersController@customerAccoutingEdit');
 
-Route::get('/customerAccoutingEditFromAccountsReceivablePage/{id}', 'CustomersController@customerAccoutingEditFromAccountsReceivablePage');
-
-Route::put('/customer_accounting_update/{id}', 'CustomersController@CustomerAccountingUpdate')->name('customer_accounting_update');
 
 Route::post('insertDOT', 'HaulerController@insertDOT');
 
@@ -87,9 +96,9 @@ Route::resource('ledger', 'LedgerController');
 
 Route::resource('remit', 'RemitController');
 
-Route::resource('budget', 'BudgetController');
 
-Route::resource('employee', 'EmployeeController');
+
+
 
 Route::get('/newCarrier', function () {
     return view('/newCarrier');
@@ -139,7 +148,7 @@ Route::get('biWeeklyCustomerEmailList', 'CustomersController@biWeeklyCustomerEma
 
 
 
-Route::get('accounts_receivable', 'LoadsController@accounts_receivable');
+
 
 
 
@@ -224,6 +233,8 @@ Route::get('downloadExcel/{type}', 'MaatwebsiteDemoController@downloadExcel');
 Route::post('generalLedgerExcel/{type}', 'MaatwebsiteDemoController@generalLedgerExcel');
 
 Route::post('generalLedgerTargetType/{type}', 'MaatwebsiteDemoController@generalLedgerTargetType');
+
+Route::post('profitLoss', 'PDFController@profitLoss');
 
 
 Route::get('/getProfitReport', function() {

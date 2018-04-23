@@ -139,8 +139,8 @@
 	<div class="row">
 	  	
 		<div class="col-md-4">
-			{{ Form::label('account_name', 'Account Name') }}
-	  		{{ Form::text('account_name', null, ['class' => 'form-control']) }}
+			{{ Form::label('account_name', 'Account Name (NOT EXCEED 22 CHAR OR CONTAIN A COMMA)') }}
+	  		{{ Form::text('account_name', null, ['class' => 'form-control', 'maxlength' => '22', 'placeholder' => 'No Commas']) }}
 		</div>
 		
 	</div>

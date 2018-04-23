@@ -766,7 +766,7 @@
  </div>
 
  <div class="col-xs-12">
-   <label class="radio-inline"><input type="radio" name="carrierPayStatus" value="PAID">PAID</label>
+   <label class="radio-inline"><input type="radio" name="carrierPayStatus" value="APPRVD">APPRVD</label>
    <label class="radio-inline"><input type="radio" name="carrierPayStatus" value="OPEN">OPEN</label>
  </div>
 

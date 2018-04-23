@@ -17,6 +17,8 @@ use App\Journal;
 
 use App\Text;
 
+use App\Ledger;
+
 use Carbon\Carbon;
 
 class PDFController extends Controller
@@ -104,6 +106,41 @@ class PDFController extends Controller
         $pdf = PDF::loadView('pdf.checkFromJournal',['info'=>$info]);
     
         return $pdf->stream('check.pdf');
+    
+    }
+
+    
+
+     //Prints the check from journal
+    public function profitLoss(Request $request)
+    {
+
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+
+        $start_date = Carbon::createFromFormat('m/d/Y', $start_date, "America/Chicago");
+        $end_date = Carbon::createFromFormat('m/d/Y', $end_date, "America/Chicago");
+
+        
+
+        //Todays date
+        date_default_timezone_set("America/Chicago");
+        $now = Carbon::now();
+
+        
+        //Freight Sales
+        $freight_sales = Ledger::whereBetween('date', [$start_date, $end_date])->sum('deposit_amount');
+        //Freight Cost
+        $freight_cost = Ledger::whereBetween('date', [$start_date, $end_date])->sum('payment_amount');
+        //Difference
+        $difference_sales_cost = $freight_sales - $freight_cost;
+
+        $dues_and_sub = Ledger::where('type_description_sub', 'Dues and Subscriptions')->whereBetween('date', [$start_date, $end_date])->sum('payment_amount');
+
+
+        $pdf = PDF::loadView('pdf.profitloss',['freight_sales'=>$freight_sales, 'freight_cost'=>$freight_cost, 'difference_sales_cost'=>$difference_sales_cost, 'dues_and_sub'=>$dues_and_sub]);
+    
+        return $pdf->stream('ProfitLoss.pdf');
     
     }
 
