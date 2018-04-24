@@ -192,6 +192,10 @@ Route::get('/deepSearchLoads', function () {
     return view('/deepSearchLoads');
 });
 
+Route::get('/deepDeepSearchLoads', function () {
+    return view('/deepDeepSearchLoads');
+});
+
 Route::get('/bidboard', function () {
     return view('/bidboard');
 });
@@ -277,6 +281,7 @@ Route::get('/home', 'HomeController@index');
 Route::post('/new', 'LoadsController@store');
 Route::get('/loads', 'LoadsController@index');
 Route::get('/deepLoads', 'LoadsController@deepLoads');
+Route::get('/deepDeepLoads', 'LoadsController@deepDeepLoads');
 Route::get('/tobedata', 'LoadsController@indextwo'); //FOR DATATABLES
 Route::get('/tobedatatwo', 'LoadsController@tobedatatwo'); //FOR DATATABLES
 Route::get('/accountsReceivable', 'LoadsController@accountsReceivable'); //FOR DATATABLES

@@ -27,9 +27,19 @@
                                      <div class="col-xs-4">
                                         <label class="label-control" for="type_selected">Type</label>
                                         <select class="form-control" id="type_selected" name="type_selected">
-                                          <option value="PMT">PMT</option>
-                                          <option value="BILLPMT">BILLPMT</option>
-                                          <option value="GENJRN">GENJRN</option>
+                                            <option value="Accounts Receivable">Accounts Receivable</option>
+                                            <option value="Accounts Payable">Accounts Payable</option>
+                                            <option value="Bank">Bank</option>
+                                            <option value="Cost Of Goods Sold">Cost Of Goods Sold</option>
+                                            <option value="Equity">Equity</option>
+                                            <option value="Expense">Expense</option>
+                                            <option value="Fixed Asset">Fixed Asset</option>
+                                            <option value="Income">Income</option>
+                                            <option value="Other Current Asset">Other Current Asset</option>
+                                            <option value="Other Asset">Other Asset</option>
+                                            <option value="Other Current Liability">Other Current Liability</option>
+                                            <option value="Other Income">Other Income</option>
+                                            <option value="Other Expense">Other Expense</option>
                                         </select>
                                     </div>
                                 </div>

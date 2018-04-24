@@ -51,6 +51,15 @@ class LoadsController extends Controller
 		
 	}
 
+	public function deepDeepLoads()
+	{
+		
+		
+		$data = Load::orderBy('id', 'desc')->skip(5000)->take(5000)->get();
+		return(['data' => $data]);
+		
+	}
+
 	public function indextwo()
 	{
 		

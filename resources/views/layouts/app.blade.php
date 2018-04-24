@@ -88,6 +88,7 @@
 
                                 <li><a href="{{ URL::to('/displayLoads') }}">Last 2000 Records</a></li>
                                 <li><a href="{{ URL::to('/deepSearchLoads') }}">Last 2000 through 5000</a></li>
+                                <li><a href="{{ URL::to('/deepDeepSearchLoads') }}">Last 5000 through 10000</a></li>
 
 
 

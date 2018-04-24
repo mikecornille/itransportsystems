@@ -94,32 +94,17 @@ class MaatwebsiteDemoController extends Controller
 		
 		
 		
-		if($type_selected === 'BILLPMT')
-		{
-			$loads = Ledger::select('date', 'upload_date', 'reference_number', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('type', $type_selected)->orderBy('id', 'asc')->get();
+		
+			$loads = Ledger::select('date', 'upload_date', 'reference_number', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('type_description', $type_selected)->orderBy('id', 'asc')->get();
 			
-			$total = Ledger::whereBetween('date', [$start, $end])->where('type', $type_selected)->sum('payment_amount');
-		}
-		elseif($type_selected === 'PMT')
-		{
-			$loads = Ledger::select('date', 'upload_date', 'reference_number', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('type', $type_selected)->orderBy('id', 'asc')->get();
-
-			$total = Ledger::whereBetween('date', [$start, $end])->where('type', $type_selected)->sum('deposit_amount');
-		}
-		elseif($type_selected === 'GENJRN')
-		{
-			$loads = Ledger::select('date', 'upload_date', 'reference_number', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('type', $type_selected)->orderBy('id', 'asc')->get();
-
-			$total = "unanswered";
-
-		}
+			
 		
 		
 
 		
 
 
-		return \Excel::create('GL ' . $start . ' to ' . $end . ' Total ' . $total, function($excel) use ($loads) {
+		return \Excel::create('GeneralLedger_' . $start . '_to_' . $end . '_Type_' . $type_selected, function($excel) use ($loads) {
 			$excel->sheet('mySheet', function($sheet) use ($loads)
 	        {
 				$sheet->fromArray($loads);

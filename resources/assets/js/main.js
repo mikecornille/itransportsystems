@@ -1178,6 +1178,127 @@ $(document).ready(function() {
 } );
 
 
+
+//GET THE CONTENT FOR THE DATATABLE
+
+$(document).ready(function() {
+
+    var table = $('#mainTableDeepDeep').DataTable({
+
+     // scrollY:        "800px",
+   //       scrollX:        true,
+   //       scrollCollapse: true,
+   //       paging:         true,
+   //       fixedColumns: true,
+    "ajax": "/deepDeepLoads",
+        "columns": [
+      {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           'id',
+                "render": function ( data, type, full, meta ) {
+            return '<a href="/edit/url?id='+data+'">View</a>';}
+        },
+      
+      { "data": "id" },
+            { "data": "pick_status"},
+            { "data": "pick_date"},
+            { "data": "pick_time"},
+            { "data": "delivery_status"},
+            { "data": "delivery_date"},
+            { "data": "delivery_time"},
+            { "data": "billed_date"},
+            { "data": "ref_number"},
+            { "data": "customer_name" },
+            { "data": "carrier_name" },
+            { "data": "pick_company"},
+            { "data": "pick_city"},
+            { "data": "delivery_company"},
+            { "data": "delivery_city"},
+            { "data": "po_number"},
+            { "data": "bol_number"},
+            { "data": "commodity"},
+            { "data": "rate_con_creation_date"},
+            { "data": "created_by"},
+            { "data": "its_group"},
+            { "data": "amount_due"},
+            { "data": "carrier_rate"},
+            { "data": "trailer_type"},
+            { "data": "signed_rate_con"},
+            { "data": "creation_date" },
+            { "data": "pick_state"},
+            { "data": "delivery_state"},
+            { "data": "rate_con_creator"}
+
+
+        ],
+        "order": [[1,'desc']],
+
+        "columnDefs": [
+      { "width": "20px", "targets": 0 }, //pro # button
+      { "width": "40px", "targets": 1 }, //pro #
+      { "width": "50px", "targets": 2 }, //pick status 
+      { "width": "50px", "targets": 3 }, //pick date
+      { "width": "25px", "targets": 4 }, //pick time
+      { "width": "50px", "targets": 5 }, //delivery status 
+      { "width": "50px", "targets": 6 }, //delivery date
+      { "width": "25px", "targets": 7 }, //delivery time
+      { "width": "50px", "targets": 8 }, //billed date
+      { "width": "50px", "targets": 9 }, //reference number
+      { "width": "100px", "targets": 10 }, //customer
+      { "width": "100px", "targets": 11 }, //carrier
+      { "width": "100px", "targets": 12 }, //pick company
+      { "width": "100px", "targets": 13 }, //pick city
+      { "width": "100px", "targets": 14 }, //delivery company
+      { "width": "100px", "targets": 15 }, //delivery city
+      { "width": "50px", "targets": 16 }, //po number
+      { "width": "50px", "targets": 17 }, //bol number
+      { "width": "200px", "targets": 18 }, //commodity
+      { "width": "50px", "targets": 19 }, //rate con date
+      { "width": "50px", "targets": 20 }, //created by
+      { "width": "50px", "targets": 21 }, //group
+      { "width": "40px", "targets": 22 }, //amount due
+      { "width": "40px", "targets": 23 }, //carrier rate
+      { "width": "70px", "targets": 24 }, //trailer type
+      { "width": "50px", "targets": 25 }, //signed
+      { "width": "50px", "targets": 26 }, //creation date
+      { "width": "50px", "targets": 27 }, //pick state
+      { "width": "50px", "targets": 28 }, //delivery state
+      { "width": "50px", "targets": 29 } //rate con creator
+     
+    ]
+
+});   
+
+});
+
+
+//MAKE EACH COLUMN SEARCHABLE AND SORTABLE
+
+$(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#mainTableDeepDeep tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="'+title+'" />' );
+    } );
+ 
+    // DataTable
+    var table = $('#mainTableDeepDeep').DataTable();
+ 
+    // Apply the search
+    table.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+} );
+
 //DATEPICKERS
 
 $('#datepicker').datepicker();
