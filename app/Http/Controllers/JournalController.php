@@ -63,7 +63,10 @@ class JournalController extends Controller
 
             'account_name' => 'required|max:39',
             'account_id' => 'required',
-            'type_description' => 'required'
+            'type' => 'required',
+            'type_description_sub' => 'required',
+            'type_description' => 'required',
+            'memo' => 'required'
              
 
         ]);

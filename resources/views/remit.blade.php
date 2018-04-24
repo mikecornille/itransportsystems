@@ -18,7 +18,7 @@
         <div class="col-md-12">
 
             {!! Form::open(['route' => 'remit.store']) !!}
-                @include('partials.remitForm', ['submitButtonText' => 'New Remit'])
+                @include('partials.remitForm', ['submitButtonText' => 'New Factoring Company'])
             {!! Form::close() !!}
 
         </div>

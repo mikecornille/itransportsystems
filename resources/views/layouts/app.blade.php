@@ -185,7 +185,7 @@
                                 <li><a href="{{ url('/exportCustomerInvoices') }}">Export Customer Invoices</a></li>
                                 <li><a href="{{ url('/exportCarrierBills') }}">Export Carrier Bills</a></li>
                                 <li><a href="{{ url('/budget') }}">Monthly Budget</a></li>
-                                <li><a href="{{ url('/achCSV') }}">Create ACH File</a></li>
+                                
                                 
 
 
@@ -211,7 +211,8 @@
                                     <li><a href="{{ url('/customer_accounting') }}">Customer Search</a></li>
                                     <li><a href="{{ url('/carrier_accounting') }}">Carrier Search</a></li>
                                     <li><a href="{{ url('/journal') }}">Journal Entry</a></li>
-                                    <li><a href="{{ URL::to('/remit') }}">Remit Info</a></li>
+                                    <li><a href="{{ URL::to('/remit') }}">Factoring Info</a></li>
+                                    <li><a href="{{ url('/achCSV') }}">Create ACH File</a></li>
                                </ul>
                             </li>
 

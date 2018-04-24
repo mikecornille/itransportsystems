@@ -37,11 +37,11 @@
     <thead>
       <tr>
         <th></th>
-        <th>Date</th>
-        <th>Upload Date</th>
+        <th>Created</th>
+        <th>Check Print</th>
         <th>Invoice Date</th>
-        <th>Name</th>
-        <th>Name ID #</th>
+        <th>Account</th>
+        <th>Account ID #</th>
         <th>Type</th>
         <th>Description</th>
         <th>Sub Desc</th>
@@ -90,8 +90,8 @@ $(function() {
                         success: function( data ) {
                             response($.map(data, function (item) {
                                 return {
-                                    label: '--NAME-- ' + item.company + '--CONTACT-- ' + item.contact + ' --ADDRESS-- ' + item.address + ' --EMAIL-- ' + item.email,
-                                    value: item.company + ' ' + item.address,
+                                    label: '--NAME-- ' + item.company + ' --ACCOUNT ID-- ' + item.id,
+                                    value: item.company,
                                     object: item
                                 }
                         }));
