@@ -32,7 +32,7 @@ class PDFController extends Controller
 
 		$pdf = PDF::loadView('pdf.invoice',['info'=>$info]);
     
-		return $pdf->stream('invoice.pdf');
+		return $pdf->stream($info->id . '_' . $info->customer_id . '.pdf');
 	
 	}
 
@@ -128,7 +128,7 @@ class PDFController extends Controller
         $now = Carbon::now();
 
         
-        //Freight Sales
+        //Freight Sales all open and billed date - 
         $freight_sales = Ledger::whereBetween('date', [$start_date, $end_date])->sum('deposit_amount');
         //Freight Cost
         $freight_cost = Ledger::whereBetween('date', [$start_date, $end_date])->sum('payment_amount');
