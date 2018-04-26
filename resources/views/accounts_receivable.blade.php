@@ -3,7 +3,7 @@
 @section('content')
 
 
-<h1 class="text-center">Accounts Receivable - ${{ $owed }}</h1>
+<h1 class="text-center">Accounts Receivable - ${{ $owed }} <small>billed date = not null, not empty, customer pay status = open</small></h1>
 
 <table id="mainTableAccountsReceivable" cellspacing="0" class="stripe row-border order-column hover" style="border-collapse: collapse; margin-left: 10px; font-size: 12px; table-layout: fixed; word-wrap:break-word;">
 

@@ -3,7 +3,7 @@
 @section('content')
 
 
-<h1 class="text-center">General Ledger</h1>
+<h1 class="text-center">General Ledger <small>all journal entries, customer pay status = paid, carrier pay status = completed</small></h1>
 
 
     <div class="well">
