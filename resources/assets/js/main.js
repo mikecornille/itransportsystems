@@ -1,4 +1,5 @@
 
+//PAYING MULTIPLE BILLS
 var total = 0;
 
 $('.radio-buttons').on('click', function(){ 
@@ -822,7 +823,7 @@ $(document).ready(function() {
 
 
 
-
+            { "data": "amount_due"},
             { "data": "billed_date"},
             { "data": "plus_thirty"},
             { "data": "aging"}
@@ -848,6 +849,89 @@ $(document).ready(function() {
  
     // DataTable
     var table = $('#mainTableAccountsReceivable').DataTable();
+ 
+    // Apply the search
+    table.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+} );
+
+
+//ACCOUNTS RECEIVABLE
+
+$(document).ready(function() {
+
+
+
+    var table = $('#mainTableAccountsPayable').DataTable({
+        
+         // scrollY:        "800px",
+   //       scrollX:        true,
+   //       scrollCollapse: true,
+   //       paging:         true,
+   //       fixedColumns: true,
+        "ajax": "/accountsPayable",
+        "columns": [
+            {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           'id',
+                "render": function ( data, type, full, meta ) {
+                return '<a href="/edit/url?id='+data+'">View</a>';}
+            },
+            
+            
+            { "data": "id"},
+            { "data": "carrier_name"},
+
+
+
+            
+            // {
+            //     "className":      'details-control',
+            //     "orderable":      false,
+            //     "data":           'carrier_id',
+            //     "render": function ( data, type, full, meta ) {
+            //     return '<a href="/carrierAccoutingEditFromAccountsPayablePage/'+data+'">View Carrier</a>';}
+            // },
+
+
+
+
+            { "data": "carrier_rate"},
+            { "data": "vendor_invoice_date"},
+            { "data": "plus_thirty"},
+            { "data": "aging"}
+
+
+        ],
+        "order": [[2,'asc'],[1,'asc']],
+
+
+
+       
+
+});   
+
+});
+
+$(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#mainTableAccountsPayable tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="'+title+'" />' );
+    } );
+ 
+    // DataTable
+    var table = $('#mainTableAccountsPayable').DataTable();
  
     // Apply the search
     table.columns().every( function () {

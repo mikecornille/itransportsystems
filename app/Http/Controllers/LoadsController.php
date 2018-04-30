@@ -558,9 +558,16 @@ class LoadsController extends Controller
 
 	public function accounts_receivable()
 	{
-		$owed = Load::whereNotNull('billed_date')->where('customerPayStatus', 'OPEN')->sum('amount_due');
+		$owed = Load::whereNotNull('billed_date')->where('customerPayStatus', 'OPEN')->where('billed_date', '!=', '')->sum('amount_due');
 		
 		return view('accounts_receivable')->with('owed', $owed);
+	}
+
+	public function accounts_payable()
+	{
+		$owed = Load::whereNotNull('vendor_invoice_date')->where('carrierPayStatus', 'APPRVD')->where('vendor_invoice_date', '!=', '')->sum('carrier_rate');
+		
+		return view('accounts_payable')->with('owed', $owed);
 	}
 
 	public function general_ledger()
@@ -618,6 +625,65 @@ class LoadsController extends Controller
 			$billed_date = Carbon::createFromFormat('m/d/Y', $data->billed_date);
 			//Get the object of the billed date +30
 			$plusThirtyForMath = $billed_date->addDays(30);
+			//Send to datatable
+			$data->aging = (string)$plusThirtyForMath->diffInDays($today_raw, false);
+			}
+
+			
+			return $data;
+		});
+
+	
+		
+
+		return(['data' => $data]);
+		
+	}
+
+	public function accountsPayable()
+	{
+		
+		$data = Load::whereNotNull('vendor_invoice_date')->where('carrierPayStatus', 'APPRVD')->where('vendor_invoice_date', '!=', '')->take(2000)->get();
+
+		$data->map(function ($data) {
+    			$data['plus_thirty'] = '';
+    			return $data;
+			});
+
+		$data->map(function ($data) {
+    			$data['aging'] = '';
+    			return $data;
+			});
+
+		
+		
+
+		$data->transform(function($data) {
+			
+			//IF THERE IS AN EMPTY BILLED DATE THEN ENTER IN 'NO BILLED DATE WHATS UP?'
+			if($data->vendor_invoice_date == '')
+			{
+				$data->plus_thirty = 'No Invoice Date Set';
+
+				$data->aging = 'No Invoice Date Set';
+			}
+			else
+			{
+
+			//Do +30 days from billed date
+			$date = Carbon::createFromFormat('m/d/Y', $data->vendor_invoice_date);
+			$plusThirty = (string)$date->addDays(30)->format('m/d/Y');
+			$data->plus_thirty = $plusThirty;
+
+			
+
+
+			//Get todays date to do math
+			$today_raw = Carbon::now('America/Chicago');
+			//Get the billed date
+			$vendor_invoice_date = Carbon::createFromFormat('m/d/Y', $data->vendor_invoice_date);
+			//Get the object of the billed date +30
+			$plusThirtyForMath = $vendor_invoice_date->addDays(30);
 			//Send to datatable
 			$data->aging = (string)$plusThirtyForMath->diffInDays($today_raw, false);
 			}

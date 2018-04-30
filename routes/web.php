@@ -40,9 +40,14 @@ Route::get('/ach_no_carrier_found', function () {
 
          Route::get('general_ledger', 'LoadsController@generalLedger');
          Route::get('accounts_receivable', 'LoadsController@accounts_receivable');
+         Route::get('accounts_payable', 'LoadsController@accounts_payable');
+
+         Route::get('/accountsReceivable', 'LoadsController@accountsReceivable'); //FOR DATATABLES
+         Route::get('/accountsPayable', 'LoadsController@accountsPayable'); //FOR DATATABLES
 
          Route::post('/customerAccoutingEdit', 'CustomersController@customerAccoutingEdit');
          Route::get('/customerAccoutingEditFromAccountsReceivablePage/{id}', 'CustomersController@customerAccoutingEditFromAccountsReceivablePage');
+         Route::get('/carrierAccoutingEditFromAccountsPayablePage/{id}', 'HaulerController@carrierAccoutingEditFromAccountsPayablePage');
          Route::put('/customer_accounting_update/{id}', 'CustomersController@CustomerAccountingUpdate')->name('customer_accounting_update');
 
          Route::resource('employee', 'EmployeeController');
@@ -284,7 +289,7 @@ Route::get('/deepLoads', 'LoadsController@deepLoads');
 Route::get('/deepDeepLoads', 'LoadsController@deepDeepLoads');
 Route::get('/tobedata', 'LoadsController@indextwo'); //FOR DATATABLES
 Route::get('/tobedatatwo', 'LoadsController@tobedatatwo'); //FOR DATATABLES
-Route::get('/accountsReceivable', 'LoadsController@accountsReceivable'); //FOR DATATABLES
+
 //Route::get('/generalLedger', 'LoadsController@generalLedger');
 Route::get('/personal_status_table', 'LoadsController@personal_status_table'); //FOR DATATABLES
 Route::get('/personal_status_loaded_table', 'LoadsController@personal_status_loaded_table'); //FOR DATATABLES

@@ -707,39 +707,34 @@ Artisan::command('insertLedgerRecords', function () {
 
 
 
-// Artisan::command('sendEmailToVendorReceivingACH', function () {
-	
-// 	//Get Thursday's Date
-// 	date_default_timezone_set("America/Chicago");
-// 	$today = Carbon\Carbon::now()->format('Y-m-d');
-	
-	
-// 	//Get all the loads where approved_carrier_invoice = $today and where carrierPayStatus = PAID
-// 	$loads = Load::whereDate('approved_carrier_invoice', $today)->where('carrierPayStatus', 'PAID')->get();
 
-// 	//Loop through each load and email the accounting department
+Artisan::command('import:opencarrierinvoices {filename}', function($filename) {
+	$file = fopen(storage_path('imports/' . $filename),"r");
 
-// 	foreach($loads as $load) 
-// 	{ 
-	
-// 		if ($load->accounting_email !== null)
-// 		{
-// 			$info = ['info' => $load ];
+	$count = 0;
+	while (($data = fgetcsv($file)) !== FALSE) {
+		$count ++;
+		
+			\DB::table('loads')->where('vendor_invoice_number', $data[0])->update([
+            'carrierPayStatus' => "APPRVD"
+        
+        ]);
+	}
+	fclose($file);
+});
 
-// 			Mail::send(['html'=>'email.sendEmailToVendorReceivingACH'], $info, function($message) use ($info){
+Artisan::command('import:accountsR {filename}', function($filename) {
+	$file = fopen(storage_path('imports/' . $filename),"r");
 
-// 			$message->to($info['info']['accounting_email'])->subject("ACH Payment Notice from ITS for PRO # " . $info['info']['id'])
-// 			->from('lianey@itransys.com', 'Liane')
-// 			->replyTo('lianey@itransys.com', 'Liane')
-// 			->sender('lianey@itransys.com', 'Liane');
-
-//         	});
-// 		}
-//     }
-
-
-	
-	
-
-// })->describe('This will send an email to all the vendors receiving an ACH payment that day');
+	$count = 0;
+	while (($data = fgetcsv($file)) !== FALSE) {
+		$count ++;
+		
+			\DB::table('loads')->where('id', $data[0])->update([
+            'customerPayStatus' => "OPEN"
+        
+        ]);
+	}
+	fclose($file);
+});
 

@@ -751,6 +751,26 @@ return back()->with('status', 'Your email was sent!');
       return view('carrier_accounting');
     }
 
+
+    public function carrierAccoutingEditFromAccountsPayablePage($id)
+    {
+        
+
+            //Find the carrier
+            $getCarrier = Carrier::findOrFail($id);
+
+            //Find all the loads for the carrier that need to be paid
+            $getCarrierLoadsNotPaid = Load::where('carrier_id', "=", $getCarrier->id)->where('carrierPayStatus', "=", "APPRVD")->get();
+
+            $getCarrierLoadsPaid = Load::where('carrier_id', "=", $getCarrier->id)->where('carrierPayStatus', "=", "COMPLETED")->get();
+
+            $sumPaidToCarrier = Load::where('carrier_id', $id)->where('carrierPayStatus', '=', "COMPLETED")->sum('carrier_rate');
+
+            $sumOwedToCarrier = Load::where('carrier_id', $id)->where('carrierPayStatus', '=', "APPRVD")->sum('carrier_rate');
+
+
+      return view('hauler_edit_accounting', compact('getCarrier', $getCarrier, 'sumPaidToCarrier', $sumPaidToCarrier, 'sumOwedToCarrier', $sumOwedToCarrier, 'getCarrierLoadsNotPaid', $getCarrierLoadsNotPaid, 'getCarrierLoadsPaid', $getCarrierLoadsPaid));
+    }
     
     
     
