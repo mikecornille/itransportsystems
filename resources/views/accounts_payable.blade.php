@@ -11,6 +11,7 @@
             <tr>
             <th></th>
                 <th>Pro</th>
+                <th>Payment Method</th>
                 <th>Carrier Name</th>
                 <th>Carrier Rate</th>
                 <th>Invoice Date</th>
@@ -25,6 +26,7 @@
             <tr>
             <th></th>
                 <th>Pro</th>
+                <th>Payment Method</th>
                 <th>Carrier Name</th>
                 <th>Carrier Rate</th>
                 <th>Invoice Date</th>

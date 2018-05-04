@@ -890,6 +890,7 @@ $(document).ready(function() {
             
             
             { "data": "id"},
+            { "data": "payment_method"},
             { "data": "carrier_name"},
 
 
