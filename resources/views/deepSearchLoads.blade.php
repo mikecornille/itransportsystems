@@ -40,6 +40,7 @@
                 <th>Pick ST</th>
                 <th>Delivery ST</th>
                 <th>Con Creator</th>
+                <th>Vendor Inv #</th>
                 
                 
                 
@@ -80,6 +81,7 @@
                 <th>Pick ST</th>
                 <th>Delivery ST</th>
                 <th>Con Creator</th>
+                <th>Vendor Inv #</th>
               
                 
            

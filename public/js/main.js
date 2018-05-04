@@ -908,6 +908,7 @@ $(document).ready(function() {
 
             { "data": "carrier_rate"},
             { "data": "vendor_invoice_date"},
+            { "data": "vendor_invoice_number"},
             { "data": "plus_thirty"},
             { "data": "aging"}
 
@@ -1069,7 +1070,8 @@ $(document).ready(function() {
             { "data": "creation_date" },
             { "data": "pick_state"},
             { "data": "delivery_state"},
-            { "data": "rate_con_creator"}
+            { "data": "rate_con_creator"},
+            { "data": "vendor_invoice_number"}
 
 
         ],
@@ -1105,7 +1107,8 @@ $(document).ready(function() {
       { "width": "50px", "targets": 26 }, //creation date
       { "width": "50px", "targets": 27 }, //pick state
       { "width": "50px", "targets": 28 }, //delivery state
-      { "width": "50px", "targets": 29 } //rate con creator
+      { "width": "50px", "targets": 29 }, //rate con creator
+      { "width": "50px", "targets": 30 } //vendor invoice number
      
     ]
 
@@ -1190,7 +1193,8 @@ $(document).ready(function() {
             { "data": "creation_date" },
             { "data": "pick_state"},
             { "data": "delivery_state"},
-            { "data": "rate_con_creator"}
+            { "data": "rate_con_creator"},
+            { "data": "vendor_invoice_number"}
 
 
         ],
@@ -1227,6 +1231,7 @@ $(document).ready(function() {
       { "width": "50px", "targets": 27 }, //pick state
       { "width": "50px", "targets": 28 }, //delivery state
       { "width": "50px", "targets": 29 } //rate con creator
+      { "width": "50px", "targets": 30 } //vendor invoice number
      
     ]
 
@@ -1312,7 +1317,8 @@ $(document).ready(function() {
             { "data": "creation_date" },
             { "data": "pick_state"},
             { "data": "delivery_state"},
-            { "data": "rate_con_creator"}
+            { "data": "rate_con_creator"},
+            { "data": "vendor_invoice_number"}
 
 
         ],
@@ -1348,7 +1354,8 @@ $(document).ready(function() {
       { "width": "50px", "targets": 26 }, //creation date
       { "width": "50px", "targets": 27 }, //pick state
       { "width": "50px", "targets": 28 }, //delivery state
-      { "width": "50px", "targets": 29 } //rate con creator
+      { "width": "50px", "targets": 29 }, //rate con creator
+      { "width": "50px", "targets": 30 } //vendor invoice number
      
     ]
 
