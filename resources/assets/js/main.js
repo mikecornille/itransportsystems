@@ -1230,7 +1230,7 @@ $(document).ready(function() {
       { "width": "50px", "targets": 26 }, //creation date
       { "width": "50px", "targets": 27 }, //pick state
       { "width": "50px", "targets": 28 }, //delivery state
-      { "width": "50px", "targets": 29 } //rate con creator
+      { "width": "50px", "targets": 29 }, //rate con creator
       { "width": "50px", "targets": 30 } //vendor invoice number
      
     ]
