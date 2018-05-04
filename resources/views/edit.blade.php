@@ -736,6 +736,7 @@
             <option value="Choose">Choose</option>
             <option value="ACH">ACH</option>
             <option value="CHECK">CHECK</option>
+            <option value="CREDIT">CREDIT</option>
             
           </select>
         </div>
