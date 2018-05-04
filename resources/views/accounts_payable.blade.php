@@ -15,6 +15,7 @@
                 <th>Carrier Rate</th>
                 <th>Invoice Date</th>
                 <th>Invoice Number</th>
+                <th>Pay Status</th>
                 <th>Due Date</th>
                 <th>Aging</th>
                 
@@ -28,6 +29,7 @@
                 <th>Carrier Rate</th>
                 <th>Invoice Date</th>
                 <th>Invoice Number</th>
+                <th>Pay Status</th>
                 <th>Due Date</th>
                 <th>Aging</th>
               

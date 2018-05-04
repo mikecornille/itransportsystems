@@ -909,6 +909,7 @@ $(document).ready(function() {
             { "data": "carrier_rate"},
             { "data": "vendor_invoice_date"},
             { "data": "vendor_invoice_number"},
+            { "data": "carrierPayStatus"},
             { "data": "plus_thirty"},
             { "data": "aging"}
 
