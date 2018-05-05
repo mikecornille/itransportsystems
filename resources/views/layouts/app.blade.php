@@ -215,6 +215,7 @@
                                     <li><a href="{{ url('/journal') }}">Journal Entry</a></li>
                                     <li><a href="{{ URL::to('/remit') }}">Factoring Info</a></li>
                                     <li><a href="{{ url('/achCSV') }}">Create ACH File</a></li>
+                                    <li><a href="{{ url('/positivePay') }}">Create Positive Pay</a></li>
                                </ul>
                             </li>
 

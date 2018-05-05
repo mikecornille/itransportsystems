@@ -53,6 +53,15 @@ Route::get('/ach_no_carrier_found', function () {
          Route::resource('employee', 'EmployeeController');
 
          Route::resource('budget', 'BudgetController');
+
+         
+
+         Route::get('/positivePay', function() {
+            return view('/positivePay');
+        });
+
+         
+         Route::post('exportPositivePay/{type}', 'MaatwebsiteDemoController@exportPositivePay');
      
 
      });

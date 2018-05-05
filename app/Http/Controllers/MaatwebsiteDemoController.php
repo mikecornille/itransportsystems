@@ -61,13 +61,9 @@ class MaatwebsiteDemoController extends Controller
 
 		$loads = Ledger::select('date', 'upload_date', 'reference_number', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->orderBy('id', 'asc')->get();
 		
-		$payment_amount_total = Ledger::whereBetween('date', [$start, $end])->sum('payment_amount');
-
-		$deposit_amount_total = Ledger::whereBetween('date', [$start, $end])->sum('deposit_amount');
 
 
-
-		return \Excel::create('GL ' . $start . ' to ' . $end . ' PA ' . $payment_amount_total . ' DA ' . $deposit_amount_total, function($excel) use ($loads) {
+		return \Excel::create('General_Ledger_' . $start . '_to_' . $end, function($excel) use ($loads) {
 			$excel->sheet('mySheet', function($sheet) use ($loads)
 	        {
 				$sheet->fromArray($loads);
@@ -282,6 +278,29 @@ class MaatwebsiteDemoController extends Controller
 
 	public function exportCustomerInvoices($type, Request $request)
 	{
+		 //Customer Invoice Import
+		 $import_date = $request->input('import_date');
+		 
+		 
+		
+		$customer_invoices = Load::select('id', 'customer_name', 'customer_address', 'customer_city', 'customer_state', 'customer_zip', 'billed_date', 'po_number', 'amount_due', 'its_group', 'commodity')->where('billed_date', $import_date)->orderBy('id', 'desc')->get();
+
+		return \Excel::create('Customer_Invoices_' . $import_date, function($excel) use ($customer_invoices) {
+			$excel->sheet('mySheet', function($sheet) use ($customer_invoices)
+	        {
+				$sheet->fromArray($customer_invoices);
+
+
+	        });
+
+		})->download($type);
+	}
+
+	//exportPositivePay
+
+	public function exportPositivePay($type, Request $request)
+	{
+		dd('it works');
 		 //Customer Invoice Import
 		 $import_date = $request->input('import_date');
 		 
