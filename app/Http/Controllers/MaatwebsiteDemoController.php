@@ -300,18 +300,22 @@ class MaatwebsiteDemoController extends Controller
 
 	public function exportPositivePay($type, Request $request)
 	{
-		dd('it works');
+		
 		 //Customer Invoice Import
-		 $import_date = $request->input('import_date');
-		 
+		 $positivePayDate = $request->input('positivePay');
+
+		 //Convert time
+		 $positivePayDate = Carbon::createFromFormat('m/d/Y', $positivePayDate);
+
+		 $positivePayDate = $positivePayDate->toDateString();
 		 
 		
-		$customer_invoices = Load::select('id', 'customer_name', 'customer_address', 'customer_city', 'customer_state', 'customer_zip', 'billed_date', 'po_number', 'amount_due', 'its_group', 'commodity')->where('billed_date', $import_date)->orderBy('id', 'desc')->get();
+		$positivePayResults = Load::select('id', 'customer_name', 'po_number', 'amount_due', 'its_group', 'commodity')->whereDate('upload_date', $positivePayDate)->where('payment_method', 'CHECK')->orderBy('id', 'desc')->get();
 
-		return \Excel::create('Customer_Invoices_' . $import_date, function($excel) use ($customer_invoices) {
-			$excel->sheet('mySheet', function($sheet) use ($customer_invoices)
+		return \Excel::create('Positive_Pay_' . $positivePayDate, function($excel) use ($positivePayResults) {
+			$excel->sheet('mySheet', function($sheet) use ($positivePayResults)
 	        {
-				$sheet->fromArray($customer_invoices);
+				$sheet->fromArray($positivePayResults);
 
 
 	        });

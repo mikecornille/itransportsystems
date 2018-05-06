@@ -13,8 +13,8 @@
 			<div class="form-group">
 				<div class="row">
 				<div class="col-xs-6">
-			   		<label class="label-control" for="import_date">Import Date</label>
-			   		<input type="text" class="form-control" id="datepicker_exportCarrierBills" name="import_date">
+			   		<label class="label-control" for="positivePay">Positive Pay Date</label>
+			   		<input type="text" class="form-control" id="datepickerPositivePay" name="positivePay">
 			 	</div>
 			 	
 					

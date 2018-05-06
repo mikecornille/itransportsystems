@@ -1448,6 +1448,8 @@ $('#datepicker_type1').datepicker();
 
 $('#datepicker_type2').datepicker();
 
+$('#datepickerPositivePay').datepicker();
+
 
 
 
@@ -1560,6 +1562,9 @@ $('#datepicker_type2').on('changeDate', function(ev){
     $(this).datepicker('hide');
 });
 
+$('#datepickerPositivePay').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
 
 
 
