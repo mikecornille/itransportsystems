@@ -310,7 +310,32 @@ class MaatwebsiteDemoController extends Controller
 		 $positivePayDate = $positivePayDate->toDateString();
 		 
 		
-		$positivePayResults = Load::select('id', 'customer_name', 'po_number', 'amount_due', 'its_group', 'commodity')->whereDate('upload_date', $positivePayDate)->where('payment_method', 'CHECK')->orderBy('id', 'desc')->get();
+		$positivePayResults = Load::select('vendor_check_number', 'upload_date', 'carrier_name', 'carrier_rate')->whereDate('upload_date', $positivePayDate)->where('payment_method', 'CHECK')->orderBy('id', 'desc')->get();
+
+		
+		$positivePayResults->transform(function($positivePayResults) {
+			
+			$positivePayResults->carrier_rate = $positivePayResults->carrier_rate . "00";
+
+			//convert to mm/dd/yy
+
+
+
+
+$positivePayResults->upload_date = Carbon::parse($positivePayResults->upload_date)->format('m/d/y');
+
+
+
+
+			
+
+			
+
+			
+			 
+			 return $positivePayResults;
+			});
+
 
 		return \Excel::create('Positive_Pay_' . $positivePayDate, function($excel) use ($positivePayResults) {
 			$excel->sheet('mySheet', function($sheet) use ($positivePayResults)
