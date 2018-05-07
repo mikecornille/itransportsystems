@@ -585,7 +585,12 @@
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu">
-        @if (Auth::user()->accounting)<li class="dropdown-header">ACCOUNTING</li><li><a href="{{ URL::to('/printCheck/' . $info->id) }}"><b>Print Check</b></a></li><li class="divider"></li>@endif
+        @if (Auth::user()->accounting)
+        <li class="dropdown-header">ACCOUNTING</li>
+        <li><a href="{{ URL::to('/printCheck/' . $info->id) }}"><b>Print Check</b></a></li>
+        <li><a href="{{ URL::to('/achEmailNotify/' . $info->id) }}"><b>ACH Notify Email</b></a></li>
+        <li class="divider"></li>
+        @endif
         <li class="dropdown-header">EMAILS WITH PDF</li>
         <li><a href="{{ URL::to('/emailRateConPDF/' . $info->id) }}"><b>Email Rate Con</b></a></li>
         <li><a href="{{ URL::to('/emailBOLYou/' . $info->id) }}"><b>Email BOL You</b></a></li>

@@ -109,6 +109,24 @@ class MaatwebsiteDemoController extends Controller
 	}
 
 	
+	public function achEmailNotify($id)
+	{
+		
+		$load = Load::findOrFail($id);
+
+		$info = ['info' => $load ];
+
+			Mail::send(['html'=>'email.sendEmailToVendorReceivingACH'], $info, function($message) use ($info){
+
+			$message->to($info['info']['accounting_email'])->subject("ACH Payment Notice from ITS for PRO # " . $info['info']['id'])
+			->from('lianey@itransys.com', 'Liane')
+			->replyTo('lianey@itransys.com', 'Liane')
+			->sender('lianey@itransys.com', 'Liane');
+
+        	});
+
+        return back()->with('status', 'Your ACH email notification has been sent!');
+	}
 
 	
 
