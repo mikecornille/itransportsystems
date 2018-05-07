@@ -207,15 +207,20 @@
                                     </a>
 
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ url('/general_ledger') }}">General Ledger</a></li>
+                                    
                                     <li><a href="{{ url('/accounts_receivable') }}">Accounts Receivable</a></li>
                                     <li><a href="{{ url('/accounts_payable') }}">Accounts Payable</a></li>
                                     <li><a href="{{ url('/customer_accounting') }}">Customer Search</a></li>
                                     <li><a href="{{ url('/carrier_accounting') }}">Carrier Search</a></li>
-                                    <li><a href="{{ url('/journal') }}">Journal Entry</a></li>
                                     <li><a href="{{ URL::to('/remit') }}">Factoring Info</a></li>
+                                    
+                                    @if (Auth::user()->email == 'mikec@itransys.com' || Auth::user()->email == 'lianey@itransys.com')
+                                    <li><a href="{{ url('/general_ledger') }}">General Ledger</a></li>
+                                    <li><a href="{{ url('/journal') }}">Journal Entry</a></li>
                                     <li><a href="{{ url('/achCSV') }}">Create ACH File</a></li>
                                     <li><a href="{{ url('/positivePay') }}">Create Positive Pay</a></li>
+                                    @endif
+                               
                                </ul>
                             </li>
 
