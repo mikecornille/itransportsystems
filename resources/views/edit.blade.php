@@ -123,7 +123,6 @@
               <option value="mattk@itransys.com">mattk@itransys.com</option>
               <option value="mattc@itransys.com">mattc@itransys.com</option>
               <option value="mikec@itransys.com">mikec@itransys.com</option>
-              <option value="ron@itransys.com">ron@itransys.com</option>
               <option value="robert@itransys.com">robert@itransys.com</option>
               <option value="aj@itransys.com">aj@itransys.com</option>
               <option value="luke@itransys.com">luke@itransys.com</option>
@@ -586,6 +585,7 @@
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu">
+        @if (Auth::user()->accounting)<li class="dropdown-header">ACCOUNTING</li><li><a href="{{ URL::to('/printCheck/' . $info->id) }}"><b>Print Check</b></a></li><li class="divider"></li>@endif
         <li class="dropdown-header">EMAILS WITH PDF</li>
         <li><a href="{{ URL::to('/emailRateConPDF/' . $info->id) }}"><b>Email Rate Con</b></a></li>
         <li><a href="{{ URL::to('/emailBOLYou/' . $info->id) }}"><b>Email BOL You</b></a></li>
@@ -618,8 +618,8 @@
         <li><a href="{{ URL::to('/textLoadInfo/' . $info->id) }}"><b>Text Load To You</b></a></li>
         <li><a href="{{ URL::to('/textAndEmailRollbackInfo/' . $info->id) }}"><b>Rollback Info</b></a></li>
         <li class="divider"></li>
-        <li class="dropdown-header">ACCOUNTING</li>
-        @if (Auth::user()->accounting)<li><a href="{{ URL::to('/printCheck/' . $info->id) }}"><b>Print Check</b></a></li>@endif
+        
+        
 
         @if($info->carrier_name == NULL)
 

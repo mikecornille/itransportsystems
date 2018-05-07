@@ -159,7 +159,6 @@
         
         <td><a href="{{ URL::to('/journal/' . $ledger->journal_entry_number  . '/edit') }}" title="edit">{{ $ledger->journal_entry_number }}</a></td>
         <td><a href="{{ URL::to('/edit/url?id=' . $ledger->pro_number) }}" title="edit">{{ $ledger->pro_number }}</a></td>
-		    
 
 
         <td>{{ $ledger->account_name }}</td>
