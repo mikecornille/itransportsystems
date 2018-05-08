@@ -67,9 +67,14 @@
 					'Insurance' => 'Insurance',
 					'Subscriptions and Services' => 'Subscriptions and Services',
 					'Rent' => 'Rent',
-					'Travel and Entertainment' => 'Travel and Entertainment',
+					'Travel' => 'Travel',
+					'Entertainment' => 'Entertainment',
 					'Utilities' => 'Utilities',
-					'Checking' => 'Checking'
+					'Checking' => 'Checking',
+					'Meals' => 'Meals',
+					'Postage' => 'Postage',
+					'Distributions' => 'Distributions',
+					'Employee Payroll' => 'Employee Payroll'
 					
 	  		
 				], null, ['placeholder' => 'Pick a sub description...', 'class' => 'form-control']) }}
