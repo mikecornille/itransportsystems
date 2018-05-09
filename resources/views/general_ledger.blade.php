@@ -5,10 +5,10 @@
 
 <h1 class="text-center">General Ledger <small>all journal entries, customer pay status = paid, carrier pay status = completed</small></h1>
 
-
+<div class="container">
     <div class="well">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <h2>Target Type</h2>
                     <form role="form" class="form-horizontal" method="POST" action="/generalLedgerTargetType/xlsx">
 
@@ -24,7 +24,9 @@
                                         <label class="label-control" for="end_date">End Date</label>
                                         <input type="text" class="form-control" id="datepicker_type2" name="end_date">
                                     </div>
-                                     <div class="col-xs-4">
+                                </div>
+                                <div class="row">
+                                     <div class="col-xs-8">
                                         <label class="label-control" for="type_selected">Type</label>
                                         <select class="form-control" id="type_selected" name="type_selected">
                                             <option value="Accounts Receivable">Accounts Receivable</option>
@@ -43,12 +45,13 @@
                                         </select>
                                     </div>
                                 </div>
+                                
 
                             <button type="submit" style="margin-top: 10px;" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> GO</button>
                             </div>
                     </form>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4 col-md-offset-4">
                 <h2>All Data Excel</h2>
                     <form role="form" class="form-horizontal" method="POST" action="/generalLedgerExcel/xlsx">
 
@@ -73,7 +76,7 @@
             
             
             
-            <div class="col-md-3">
+           <!--  <div class="col-md-3">
                 <h2>Balance Sheet</h2>
                     <form role="form" class="form-horizontal" method="POST" action="/sampleACHCSV/xlsx">
 
@@ -94,10 +97,10 @@
                             <button type="submit" style="margin-top: 10px;" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> GO</button>
                             </div>
                     </form>
-            </div>
+            </div> -->
 
 
-            <div class="col-md-3">
+            <!-- <div class="col-md-3">
                 <h2>Profit / Loss</h2>
                     <form role="form" class="form-horizontal" method="POST" action="/profitLoss">
 
@@ -118,10 +121,11 @@
                             <button type="submit" style="margin-top: 10px;" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> GO</button>
                             </div>
                     </form>
-            </div>
+            </div> -->
             
         </div> <!-- End row -->
     </div> <!-- End well -->
+</div>
 
 
 
