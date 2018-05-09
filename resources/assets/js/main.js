@@ -802,11 +802,10 @@ $(document).ready(function() {
                 "orderable":      false,
                 "data":           'id',
                 "render": function ( data, type, full, meta ) {
-                return '<a href="/edit/url?id='+data+'">View</a>';}
+                return '<a href="/edit/url?id='+data+'">'+data+'</a>';}
             },
             
             
-            { "data": "id"},
             { "data": "customer_name"},
 
 
@@ -817,7 +816,7 @@ $(document).ready(function() {
                 "orderable":      false,
                 "data":           'customer_id',
                 "render": function ( data, type, full, meta ) {
-                return '<a href="/customerAccoutingEditFromAccountsReceivablePage/'+data+'">View Customer</a>';}
+                return '<a href="/customerAccoutingEditFromAccountsReceivablePage/'+data+'">'+data+'</a>';}
             },
 
 

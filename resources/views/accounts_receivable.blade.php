@@ -9,7 +9,7 @@
 
         <thead>
             <tr>
-            <th></th>
+            
                 <th>Pro</th>
                 <th>Customer Name</th>
                 <th>Customer Link</th>
@@ -22,7 +22,7 @@
         </thead>
         <tfoot>
             <tr>
-            <th></th>
+            
                 <th>Pro</th>
                 <th>Customer Name</th>
                 <th>Customer Link</th>
