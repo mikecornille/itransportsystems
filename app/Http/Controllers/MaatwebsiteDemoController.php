@@ -538,6 +538,7 @@ public function accountsPayableExcelFile($type, Request $request)
 		$loads = Load::select('id', 'payment_method', 'carrier_name', 'carrier_rate', 'vendor_invoice_date', 'vendor_invoice_number', 'carrierPayStatus')
 						->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start}', '%m/%d/%Y')")
 						->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end}', '%m/%d/%Y')")
+						->where('carrierPayStatus', 'APPRVD')
 						->orderBy('id', 'asc')->get();
 
 
