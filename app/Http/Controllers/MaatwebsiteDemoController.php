@@ -545,7 +545,10 @@ public function accountsPayableExcelFile($type, Request $request)
 		return \Excel::create('Accounts_Payable_' . $start . '_to_' . $end, function($excel) use ($loads) {
 			$excel->sheet('mySheet', function($sheet) use ($loads)
 	        {
+	        
 				$sheet->fromArray($loads);
+
+
 	        });
 		})->download($type);
 
