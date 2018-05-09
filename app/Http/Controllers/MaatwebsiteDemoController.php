@@ -28,8 +28,8 @@ class MaatwebsiteDemoController extends Controller
 
 		//$data = Item::get()->toArray();
 		$loads = Load::select('billed_date', 'approved_carrier_invoice', 'its_group', 'id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'customer_name', 'amount_due', 'carrier_name', 'carrier_rate')
-		->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') > STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
-		->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') < STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+		->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+		->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
 		->get();
 
 		//->whereBetween('billed_date', [$start, $end])->orderBy('id', 'asc')->get();
@@ -138,8 +138,8 @@ class MaatwebsiteDemoController extends Controller
 
 		  //For the emails
 		$loads = Load::where('payment_method', "ACH")->where('carrierPayStatus', "APPRVD")
-		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') > STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
-		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') < STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
 		 ->get();
 	
 
@@ -168,8 +168,8 @@ class MaatwebsiteDemoController extends Controller
 		 
 		 $carrier_invoices = Load::select('routing_number', 'account_number', 'carrier_rate', 'account_type', 'account_name', 'id')
 		 ->where('payment_method', "ACH")->where('carrierPayStatus', "APPRVD")
-		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') > STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
-		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') < STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
 		 ->get();
 
 
@@ -186,8 +186,8 @@ class MaatwebsiteDemoController extends Controller
 
 
 		 $updates = Load::where('payment_method', "ACH")->where('carrierPayStatus', "APPRVD")
-		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') > STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
-		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') < STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
 		 ->get();
 
 		 //Todays Date
@@ -229,8 +229,8 @@ class MaatwebsiteDemoController extends Controller
 		 
 		 $carrier_invoices = Load::select('routing_number', 'account_number', 'carrier_rate', 'account_type', 'account_name', 'id')
 		 ->where('payment_method', "ACH")->where('carrierPayStatus', "APPRVD")
-		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') > STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
-		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') < STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
 		 ->get();
 
 
@@ -522,6 +522,31 @@ public function truckerPathPost(\App\Transformers\TruckerPathTransformer $transf
         });
 
             return response()->download($savePath);
+
+}
+
+public function accountsPayableExcelFile($type, Request $request)
+{
+
+		//I want all APPRVD carrier invoices within a date range in vendor_invoice_date
+		$start = $request->input('start_date');
+		$end = $request->input('end_date');
+
+
+
+
+		$loads = Load::select('id', 'payment_method', 'carrier_name', 'carrier_rate', 'vendor_invoice_date', 'vendor_invoice_number', 'carrierPayStatus')
+						->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start}', '%m/%d/%Y')")
+						->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end}', '%m/%d/%Y')")
+						->orderBy('id', 'asc')->get();
+
+
+		return \Excel::create('Accounts_Payable_' . $start . '_to_' . $end, function($excel) use ($loads) {
+			$excel->sheet('mySheet', function($sheet) use ($loads)
+	        {
+				$sheet->fromArray($loads);
+	        });
+		})->download($type);
 
 }
 
