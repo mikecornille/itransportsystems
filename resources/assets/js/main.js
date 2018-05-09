@@ -1392,6 +1392,102 @@ $(document).ready(function() {
     } );
 } );
 
+
+
+//GET THE CONTENT FOR THE DATATABLE
+
+$(document).ready(function() {
+
+    var table = $('#generalLedgerTable').DataTable({
+
+     // scrollY:        "800px",
+   //       scrollX:        true,
+   //       scrollCollapse: true,
+   //       paging:         true,
+   //       fixedColumns: true,
+    "ajax": "/generalLedgerLoads",
+        "columns": [
+      
+        { "data": "date"},
+        { "data": "upload_date" },
+            { "data": "reference_number" },
+            { "data": "type" },
+            { "data": "type_description"},
+            {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           'journal_entry_number',
+                "render": function ( data, type, full, meta ) {
+            return '<a href="/journal/'+data+'/edit">'+data+'</a>';}
+            },
+            {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           'pro_number',
+                "render": function ( data, type, full, meta ) {
+            return '<a href="/edit/url?id='+data+'">'+data+'</a>';}
+            },
+            { "data": "account_name" },
+            { "data": "account_id"},
+            { "data": "memo" },
+            { "data": "payment_method" },
+            { "data": "payment_amount"},
+            { "data": "deposit_amount"},
+            { "data": "running_total"}
+
+
+        ],
+        "order": [[0,'asc']],
+
+        "columnDefs": [
+      { "width": "20px", "targets": 0 }, //pro # button
+      { "width": "40px", "targets": 1 }, //pro #
+      { "width": "50px", "targets": 2 }, //pick status 
+      { "width": "50px", "targets": 3 }, //pick date
+      { "width": "25px", "targets": 4 }, //pick time
+      { "width": "50px", "targets": 5 }, //delivery status 
+      { "width": "50px", "targets": 6 }, //delivery date
+      { "width": "25px", "targets": 7 }, //delivery time
+      { "width": "50px", "targets": 8 }, //billed date
+      { "width": "50px", "targets": 9 }, //reference number
+      { "width": "100px", "targets": 10 }, //customer
+      { "width": "100px", "targets": 11 }, //carrier
+      { "width": "100px", "targets": 12 }, //pick company
+      { "width": "100px", "targets": 13 } //pick city
+      
+     
+    ]
+
+});   
+
+});
+
+
+//MAKE EACH COLUMN SEARCHABLE AND SORTABLE
+
+$(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#generalLedgerTable tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="'+title+'" />' );
+    } );
+ 
+    // DataTable
+    var table = $('#generalLedgerTable').DataTable();
+ 
+    // Apply the search
+    table.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+} );
 //DATEPICKERS
 
 $('#datepicker').datepicker();

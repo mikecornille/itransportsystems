@@ -41,6 +41,7 @@ class LoadsController extends Controller
 		
 	}
 	
+	
 
 	public function deepLoads()
 	{
@@ -703,18 +704,18 @@ class LoadsController extends Controller
 	{
 		
 		//This will pull from a new table called ledger
-		$general_ledger = Ledger::orderBy('date', 'asc')->get();
+		//$general_ledger = Ledger::orderBy('date', 'asc')->get();
 
-		$general_ledger->map(function ($general_ledger) {
+		// $general_ledger->map(function ($general_ledger) {
     			
-				$payment_amount_totals = Ledger::where('date', '<=', $general_ledger->date)->sum('payment_amount');
+		// 		$payment_amount_totals = Ledger::where('date', '<=', $general_ledger->date)->sum('payment_amount');
 
-				$deposit_amount_totals = Ledger::where('date', '<=', $general_ledger->date)->sum('deposit_amount');
+		// 		$deposit_amount_totals = Ledger::where('date', '<=', $general_ledger->date)->sum('deposit_amount');
     			
-    			$general_ledger['running_total'] = $deposit_amount_totals - $payment_amount_totals;
+  //   			$general_ledger['running_total'] = $deposit_amount_totals - $payment_amount_totals;
     			
-    			return $general_ledger;
-			});
+  //   			return $general_ledger;
+		// 	});
 
 		$payment_amount_totals = Ledger::sum('payment_amount');
 
@@ -722,7 +723,35 @@ class LoadsController extends Controller
 
 		$balance = $deposit_amount_totals - $payment_amount_totals;
 
-		return view('general_ledger', compact('general_ledger',$general_ledger,'balance', $balance));
+		return view('general_ledger', compact('balance', $balance));
+	}
+
+	public function generalLedgerLoads()
+	{
+
+		//This will pull from a new table called ledger
+		$data = Ledger::orderBy('date', 'asc')->get();
+
+		$data->map(function ($data) {
+    			
+				$payment_amount_totals = Ledger::where('date', '<=', $data->date)->sum('payment_amount');
+
+				$deposit_amount_totals = Ledger::where('date', '<=', $data->date)->sum('deposit_amount');
+    			
+    			$data['running_total'] = $deposit_amount_totals - $payment_amount_totals;
+    			
+    			return $data;
+			});
+
+		// $payment_amount_totals = Ledger::sum('payment_amount');
+
+		// $deposit_amount_totals = Ledger::sum('deposit_amount');
+
+		// $balance = $deposit_amount_totals - $payment_amount_totals;
+
+		//return view('general_ledger', compact('general_ledger',$general_ledger,'balance', $balance));
+
+		return(['data' => $data]);
 	}
 	
 }

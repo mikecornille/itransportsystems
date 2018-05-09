@@ -74,7 +74,9 @@
 					'Meals' => 'Meals',
 					'Postage' => 'Postage',
 					'Distributions' => 'Distributions',
-					'Employee Payroll' => 'Employee Payroll'
+					'Employee Payroll' => 'Employee Payroll',
+					'Gifts and Promotions' => 'Gifts and Promotions',
+					'Donations' => 'Donations'
 					
 	  		
 				], null, ['placeholder' => 'Pick a sub description...', 'class' => 'form-control']) }}
