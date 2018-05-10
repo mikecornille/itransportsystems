@@ -62,6 +62,12 @@ Route::get('/ach_no_carrier_found', function () {
             return view('/positivePay');
         });
 
+         Route::get('/generalLedgerFiles', function() {
+            return view('/generalLedgerFiles');
+        });
+
+         
+
          
          Route::post('exportPositivePay/{type}', 'MaatwebsiteDemoController@exportPositivePay');
      
