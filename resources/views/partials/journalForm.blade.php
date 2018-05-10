@@ -48,7 +48,8 @@
 					'Other Asset' => 'Other Asset',
 					'Other Current Liability' => 'Other Current Liability',
 					'Other Income' => 'Other Income',
-					'Other Expense' => 'Other Expense'
+					'Other Expense' => 'Other Expense',
+					'Void' => 'Void'
 	  		
 				], null, ['placeholder' => 'Pick a description...', 'class' => 'form-control']) }}
 		</div>
