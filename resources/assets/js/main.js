@@ -1410,20 +1410,52 @@ $(document).ready(function() {
             { "data": "date"},
             { "data": "reference_number" },
             { "data": "type_description"},
+            
+
             {
                 "className":      'details-control',
                 "orderable":      false,
                 "data":           'journal_entry_number',
-                "render": function ( data, type, full, meta ) {
-            return '<a href="/journal/'+data+'/edit">'+data+'</a>';}
-            },
+                "render": function ( data, type, full, meta ) 
+                {
+            
+                  if(data !== null)
+                    {
+                  return '<a href="/journal/'+data+'/edit">'+data+'</a>';
+                    }
+                    else
+                    {
+                      return '';
+                    }
+                }
+
+                },
+            
+
             {
                 "className":      'details-control',
                 "orderable":      false,
                 "data":           'pro_number',
-                "render": function ( data, type, full, meta ) {
-            return '<a href="/edit/url?id='+data+'">'+data+'</a>';}
+                "render": function ( data, type, full, meta ){
+                    
+                    if(data !== null)
+                    {
+                      return '<a href="/edit/url?id='+data+'">'+data+'</a>';
+                    }
+                    else
+                    {
+                      return '';
+                    }
+                }
+                  
+                  
+              
             },
+            
+
+          
+
+
             { "data": "account_name"},
             { "data": "account_id"},
             { "data": "payment_method"},
