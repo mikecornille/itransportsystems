@@ -4,6 +4,8 @@
 
 
 <h1 class="text-center">General Ledger <small>all journal entries, customer pay status = paid, carrier pay status = completed</small></h1>
+<h3 class="text-center">Action Date <small>Carrier: Check or ACH sent date / Customer: Deposit date / Journal: Created date</small></h3>
+
 
 <div class="container">
     <div class="well">
@@ -130,20 +132,17 @@
 
 
 
-   <table id="generalLedgerTable" cellspacing="0" class="stripe row-border order-column" style="border-collapse: collapse; width: 2800px; margin-left: 10px; font-size: 12px; table-layout: fixed; word-wrap:break-word;">
+   <table id="generalLedgerTable" cellspacing="0" class="stripe row-border order-column">
 
     <thead>
       <tr>
         <th>Action Date</th>
-        <th>Upload Date</th>
         <th>Reference #</th>
-        <th>Type</th>
         <th>Type Description</th>
         <th>Journal Entry #</th>
         <th>PRO #</th>
         <th>Account Name</th>
         <th>Account ID #</th>
-        <th>Memo</th>
         <th>Payment Method</th>
         <th>Payment Amount</th>
         <th>Deposit Amount</th>
@@ -160,15 +159,12 @@
     <tfoot>
       <tr>
         <th>Action Date</th>
-        <th>Upload Date</th>
         <th>Reference #</th>
-        <th>Type</th>
         <th>Type Description</th>
         <th>Journal Entry #</th>
         <th>PRO #</th>
         <th>Account Name</th>
         <th>Account ID #</th>
-        <th>Memo</th>
         <th>Payment Method</th>
         <th>Payment Amount</th>
         <th>Deposit Amount</th>
@@ -181,6 +177,7 @@
       </tr>
     </tfoot>  
   </table>
+
 
 <h2>Total Balance - {{ $balance }}</h2>
 

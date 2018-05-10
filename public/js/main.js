@@ -1407,10 +1407,8 @@ $(document).ready(function() {
     "ajax": "/generalLedgerLoads",
         "columns": [
       
-        { "data": "date"},
-        { "data": "upload_date" },
+            { "data": "date"},
             { "data": "reference_number" },
-            { "data": "type" },
             { "data": "type_description"},
             {
                 "className":      'details-control',
@@ -1426,10 +1424,9 @@ $(document).ready(function() {
                 "render": function ( data, type, full, meta ) {
             return '<a href="/edit/url?id='+data+'">'+data+'</a>';}
             },
-            { "data": "account_name" },
+            { "data": "account_name"},
             { "data": "account_id"},
-            { "data": "memo" },
-            { "data": "payment_method" },
+            { "data": "payment_method"},
             { "data": "payment_amount"},
             { "data": "deposit_amount"},
             { "data": "running_total"}
@@ -1439,20 +1436,18 @@ $(document).ready(function() {
         "order": [[0,'asc']],
 
         "columnDefs": [
-      { "width": "20px", "targets": 0 }, //pro # button
-      { "width": "40px", "targets": 1 }, //pro #
-      { "width": "50px", "targets": 2 }, //pick status 
-      { "width": "50px", "targets": 3 }, //pick date
-      { "width": "25px", "targets": 4 }, //pick time
-      { "width": "50px", "targets": 5 }, //delivery status 
-      { "width": "50px", "targets": 6 }, //delivery date
-      { "width": "25px", "targets": 7 }, //delivery time
-      { "width": "50px", "targets": 8 }, //billed date
-      { "width": "50px", "targets": 9 }, //reference number
-      { "width": "100px", "targets": 10 }, //customer
-      { "width": "100px", "targets": 11 }, //carrier
-      { "width": "100px", "targets": 12 }, //pick company
-      { "width": "100px", "targets": 13 } //pick city
+      { "width": "10px", "targets": 0 }, //date
+      { "width": "10px", "targets": 1 }, //ref #
+      { "width": "25px", "targets": 2 }, //type description
+      { "width": "5px", "targets": 3 }, //journal
+      { "width": "5px", "targets": 4 }, //pro number
+      { "width": "30px", "targets": 5 }, //name
+      { "width": "10px", "targets": 6 }, //account id
+      { "width": "10px", "targets": 7 }, //method
+      { "width": "10px", "targets": 8 }, //amount
+      { "width": "10px", "targets": 9 }, //deposit amount
+      { "width": "10px", "targets": 10 }, //running
+      
       
      
     ]
