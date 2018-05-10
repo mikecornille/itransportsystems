@@ -38,8 +38,6 @@
 			{{ Form::label('type_description', 'Type Description') }}
 	  		{{ Form::select('type_description', 
 				[
-					'Accounts Receivable' => 'Accounts Receivable',
-					'Accounts Payable' => 'Accounts Payable',
 					'Bank' => 'Bank',
 					'Cost Of Goods Sold' => 'Cost Of Goods Sold',
 					'Equity' => 'Equity',
