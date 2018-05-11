@@ -1459,9 +1459,12 @@ $(document).ready(function() {
             { "data": "account_name"},
             { "data": "account_id"},
             { "data": "payment_method"},
-            { "data": "payment_amount"},
-            { "data": "deposit_amount"},
-            { "data": "running_total"}
+            { "data": "payment_amount", "className": "payment_amount_color"},
+    
+            
+
+            { "data": "deposit_amount", "className": "text-success"},
+            { "data": "running_total", "className": "text-primary"}
 
 
         ],

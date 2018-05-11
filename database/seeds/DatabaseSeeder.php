@@ -43,6 +43,8 @@ class DatabaseSeeder extends Seeder
 
          factory(App\Load::class,6)->create();
 
+         factory(App\Ledger::class,20)->create();
+
         
             }
 

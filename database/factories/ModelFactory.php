@@ -12,6 +12,27 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Ledger::class, function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+            'pro_number' => $faker->numberBetween($min = 91000, $max = 99000),
+            'type' => "BILLPMT",
+            'type_description' => "Accounts Receivable",
+            'type_description_sub' => "Subscriptions and Services",
+            'journal_entry_number' => "",
+            'date' => "2018-05-03 09:00:14",
+            'reference_number' => "850000",
+            'account_name' => "UNITED RENTALS",
+            'account_id' => "2500",
+            'memo' => "This is a memo",
+            'payment_amount' => "1050",
+            'deposit_amount' => "1350",
+            'upload_date' => "2018-05-07 09:31:01",
+            'payment_method' => "ACH"
+    ];
+});
+
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 

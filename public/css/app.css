@@ -482,4 +482,8 @@ textarea#commodity, textarea#special_ins, textarea#add_stops, textarea#invoice_n
   cursor: default;
 }
 
+.payment_amount_color {
+  color: #E88A79;
+}
+
 /*# sourceMappingURL=app.css.map */
