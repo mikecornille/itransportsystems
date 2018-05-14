@@ -38,18 +38,14 @@
 			{{ Form::label('type_description', 'Type Description') }}
 	  		{{ Form::select('type_description', 
 				[
-					'Bank' => 'Bank',
-					'Cost Of Goods Sold' => 'Cost Of Goods Sold',
+					
+					'Asset' => 'Asset',
+					'Liability' => 'Liability',
+					'Distribution' => 'Distribution',
 					'Equity' => 'Equity',
 					'Expense' => 'Expense',
-					'Fixed Asset' => 'Fixed Asset',
-					'Income' => 'Income',
-					'Other Current Asset' => 'Other Current Asset',
-					'Other Asset' => 'Other Asset',
-					'Other Current Liability' => 'Other Current Liability',
-					'Other Income' => 'Other Income',
-					'Other Expense' => 'Other Expense',
-					'Void' => 'Void'
+					'Revenue' => 'Revenue',
+					'Bank' => 'Bank'
 	  		
 				], null, ['placeholder' => 'Pick a description...', 'class' => 'form-control']) }}
 		</div>
@@ -72,10 +68,11 @@
 					'Checking' => 'Checking',
 					'Meals' => 'Meals',
 					'Postage' => 'Postage',
-					'Distributions' => 'Distributions',
 					'Employee Payroll' => 'Employee Payroll',
 					'Gifts and Promotions' => 'Gifts and Promotions',
-					'Donations' => 'Donations'
+					'Donations' => 'Donations',
+					'Void' => 'Void',
+					'Personal' => 'Personal',
 					
 	  		
 				], null, ['placeholder' => 'Pick a sub description...', 'class' => 'form-control']) }}
