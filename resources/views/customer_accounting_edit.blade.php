@@ -63,7 +63,6 @@
         <th>Billed Date</th>
         <th>Amount Due</th>
         <th>Amount Paid</th>
-        <th>Total Check Amount</th>
         <th>Payment Method</th>
         <th>Reference #</th>
         <th>Deposit Date</th>
@@ -85,7 +84,6 @@
         <td>{{ $load->billed_date }}</td>
 		<td>{{ $load->amount_due }}</td>
         <td>{{ $load->paid_amount_from_customer }}</td>
-        <td>{{ $load->totalCheckAmountFromCustomer }}</td>
         <td>{{ $load->payment_method_from_customer }}</td>
         <td>{{ $load->ref_or_check_num_from_customer }}</td>
         <td>{{ $load->deposit_date }}</td>
@@ -110,6 +108,7 @@
         <th>Billed Date</th>
         <th>Amount Due</th>
         <th>Amount Paid</th>
+        <th>Total Check Amount</th>
         <th>Payment Method</th>
         <th>Reference #</th>
         <th>Deposit Date</th>
@@ -131,6 +130,7 @@
         <td>{{ $load->billed_date }}</td>
 		<td>{{ $load->amount_due }}</td>
         <td>{{ $load->paid_amount_from_customer }}</td>
+        <td>{{ $load->totalCheckAmountFromCustomer }}</td>
         <td>{{ $load->payment_method_from_customer }}</td>
         <td>{{ $load->ref_or_check_num_from_customer }}</td>
         <td>{{ $load->deposit_date }}</td>
