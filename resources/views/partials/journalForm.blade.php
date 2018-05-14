@@ -73,6 +73,7 @@
 					'Donations' => 'Donations',
 					'Void' => 'Void',
 					'Personal' => 'Personal',
+					'Refund' => 'Refund'
 					
 	  		
 				], null, ['placeholder' => 'Pick a sub description...', 'class' => 'form-control']) }}
