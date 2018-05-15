@@ -448,6 +448,9 @@ class HaulerController extends Controller
         //Find the record in the database with matching ID #
         $post = Carrier::findOrFail($id);
 
+
+        //$request->company = preg_replace('/[^A-Za-z0-9 ]/', '', $request->company);
+
         //Get current record ID # to pass through to the view to re-display all info to user
         $current_record = $post->id;
 
@@ -455,8 +458,11 @@ class HaulerController extends Controller
         $flash_message = "The record has been updated!";
 
         //Save data to database
-        $post->update($request->all());
+        //$post->update($request->all());
 
+        $requestSave = $request->all();
+        $requestSave['company'] = $requestSave['company'] = preg_replace('/[^A-Za-z0-9 ]/', '', $requestSave['company']);
+        $post->update($requestSave);
         //Send to method inside controller to redisplay data and flash success and errors messages
         return $this->goBackWithData($current_record, $flash_message, $error_message);
             
