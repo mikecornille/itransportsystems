@@ -45,7 +45,6 @@
 					'Equity' => 'Equity',
 					'Expense' => 'Expense',
 					'Revenue' => 'Revenue',
-					'Bank' => 'Bank'
 	  		
 				], null, ['placeholder' => 'Pick a description...', 'class' => 'form-control']) }}
 		</div>
@@ -54,7 +53,7 @@
 			{{ Form::label('type_description_sub', 'Type Description Sub Category') }}
 	  		{{ Form::select('type_description_sub', 
 				[
-
+					
 					'Automobile' => 'Automobile',
 					'Telephone' => 'Telephone',
 					'Office Supplies' => 'Office Supplies',
@@ -73,7 +72,9 @@
 					'Donations' => 'Donations',
 					'Void' => 'Void',
 					'Personal' => 'Personal',
-					'Refund' => 'Refund'
+					'Refund' => 'Refund',
+					'Freight Cost' => 'Freight Cost',
+					'Income Collected' => 'Income Collected'
 					
 	  		
 				], null, ['placeholder' => 'Pick a sub description...', 'class' => 'form-control']) }}
