@@ -11,6 +11,7 @@ use App\User;
 use App\Load;
 use Illuminate\Support\Facades\Mail;
 use PDF;
+use Illuminate\Validation\Rule;
 
 class HaulerController extends Controller
 {
@@ -38,7 +39,9 @@ class HaulerController extends Controller
         $store = New Carrier();
 
         $store->mc_number = 0;
-        $store->company = $find_record[0]->LEGAL_NAME;
+        
+        $store->company = preg_replace('/[^A-Za-z0-9 ]/', '', $find_record[0]->LEGAL_NAME);
+
         $store->dot_number = $find_record[0]->DOT_NUMBER;
         $store->address = $find_record[0]->PHY_STREET;
         $store->city = $find_record[0]->PHY_CITY;
@@ -110,9 +113,13 @@ class HaulerController extends Controller
     public function store(Request $request)
     {
         
+        
+
         date_default_timezone_set("America/Chicago");
         
         $this->validate($request, [
+              
+
               'company' => 'required',
               'contact' => 'required',
               'mc_number' => 'required',
@@ -149,6 +156,8 @@ class HaulerController extends Controller
         ]);
 
         $store = New Carrier($request->all());
+
+        $store->company = preg_replace('/[^A-Za-z0-9 ]/', '', $store->company);
 
         $store->save();
 
