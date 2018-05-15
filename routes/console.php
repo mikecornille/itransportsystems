@@ -621,7 +621,8 @@ Artisan::command('insertLedgerRecords', function () {
 		\DB::table('ledgers')->insert([
 			'pro_number' => $customer->id,
 			'type' => "PMT",
-			'type_description' => "Accounts Receivable",
+			'type_description' => "Asset",
+			'type_description_sub' => "Accounts Receivable",
 			'date' => $customer->getAttributes()['deposit_date'],
 			'reference_number' => $customer->ref_or_check_num_from_customer,
 			'account_name' => $customer->customer_name,
@@ -637,7 +638,8 @@ Artisan::command('insertLedgerRecords', function () {
 		\DB::table('ledgers')->insert([
 			'pro_number' => $carrier->id,
 			'type' => "BILLPMT",
-			'type_description' => "Accounts Payable",
+			'type_description' => "Liability",
+			'type_description_sub' => "Accounts Payable",
 			'date' => $carrier->upload_date,
 			'reference_number' => $carrier->vendor_check_number,
 			'account_name' => $carrier->carrier_name,
