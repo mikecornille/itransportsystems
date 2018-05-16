@@ -53,7 +53,9 @@
   </table>
 
 
-<h2>Total Balance - {{ $balance }}</h2>
+
+
+<h2>Total Balance - ${{ $balance }}</h2>
 
 
 
