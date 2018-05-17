@@ -131,7 +131,7 @@ div.lowTable {
 </div>
 
 <div class="payTo">
-{{ $info->account_name }}
+{{ $info->name_on_check }}
 </div>
 
 <div class="checkDate">
