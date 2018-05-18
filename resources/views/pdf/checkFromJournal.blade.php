@@ -176,7 +176,7 @@ div.lowTable {
 </div>
 
 <div class="midTable">
-<p>{{ $info->account_name . ' - ' . $today }}</p>
+<p>{{ $info->name_on_check . ' - ' . $today }}</p>
 <table style="width:100%">
   <tr>
     <th>Invoice Date</th>
@@ -228,7 +228,7 @@ div.lowTable {
 </div>
 
 <div class="lowTable">
-<p>{{ $info->account_name . ' - ' . $today }}</p>
+<p>{{ $info->name_on_check . ' - ' . $today }}</p>
 <table style="width:100%">
   <tr>
     <th>Invoice Date</th>
