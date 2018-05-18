@@ -219,6 +219,7 @@ class CustomersController extends Controller
     //$data = Item::get()->toArray();
     $loads = Load::select('id', 'ref_number', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'delivery_date', 'amount_due', 'billed_date')
     ->where('customer_id', $id)->where('customerPayStatus', 'OPEN')->whereRaw('billed_date <> ""')
+    ->orderByRaw('billed_date', 'desc')
     ->get();
 
     $loads->map(function ($data) {
