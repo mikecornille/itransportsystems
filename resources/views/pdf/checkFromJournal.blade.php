@@ -190,13 +190,40 @@ div.lowTable {
     <td>{{ $info->invoice_date_journal }}</td>
     <td>{{ $info->type }}</td> 
     <td>{{ $info->reference_number }}</td>
-    <td>${{ $info->payment_amount }}.00</td>
-    <td>${{ $info->payment_amount }}.00</td>
-    <td>${{ $info->payment_amount }}.00</td>
+    
+
+
+    
+
+    @if($info->payment_cents == "")
+        <td>${{ $info->payment_amount }}.00</td>
+    @else
+        <td>${{ $info->payment_amount . '.' . $info->payment_cents }}</td>
+    @endif
+
+    @if($info->payment_cents == "")
+        <td>${{ $info->payment_amount }}.00</td>
+    @else
+        <td>${{ $info->payment_amount . '.' . $info->payment_cents }}</td>
+    @endif
+
+    @if($info->payment_cents == "")
+        <td>${{ $info->payment_amount }}.00</td>
+    @else
+        <td>${{ $info->payment_amount . '.' . $info->payment_cents }}</td>
+    @endif
+    
+
+
   </tr>
   
 </table>
-<p>Check Amount - ${{ $info->payment_amount }}.00</p>
+@if($info->payment_cents == "")
+        <p>Check Amount - ${{ $info->payment_amount }}.00</p>
+    @else
+        
+        <p>Check Amount - ${{ $info->payment_amount . '.' . $info->payment_cents }}</p>
+    @endif
 <p>Memo - {{ $info->memo }}</p>
 </div>
 
@@ -215,13 +242,36 @@ div.lowTable {
     <td>{{ $info->invoice_date_journal }}</td>
     <td>{{ $info->type }}</td> 
     <td>{{ $info->reference_number }}</td>
-    <td>${{ $info->payment_amount }}.00</td>
-    <td>${{ $info->payment_amount }}.00</td>
-    <td>${{ $info->payment_amount }}.00</td>
+    @if($info->payment_cents == "")
+        <td>${{ $info->payment_amount }}.00</td>
+    @else
+        <td>${{ $info->payment_amount . '.' . $info->payment_cents }}</td>
+    @endif
+
+    @if($info->payment_cents == "")
+        <td>${{ $info->payment_amount }}.00</td>
+    @else
+        <td>${{ $info->payment_amount . '.' . $info->payment_cents }}</td>
+    @endif
+
+    @if($info->payment_cents == "")
+        <td>${{ $info->payment_amount }}.00</td>
+    @else
+        <td>${{ $info->payment_amount . '.' . $info->payment_cents }}</td>
+    @endif
   </tr>
   
 </table>
-<p>Check Amount - ${{ $info->payment_amount }}.00</p>
+
+
+
+@if($info->payment_cents == "")
+        <p>Check Amount - ${{ $info->payment_amount }}.00</p>
+    @else
+        
+        <p>Check Amount - ${{ $info->payment_amount . '.' . $info->payment_cents }}</p>
+    @endif
+
 <p>Memo - {{ $info->memo }}</p>
 </div>
 

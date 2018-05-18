@@ -1487,9 +1487,13 @@ $(document).ready(function() {
      
     ]
 
-});   
+     
 
 });
+
+
+});
+
 
 
 //MAKE EACH COLUMN SEARCHABLE AND SORTABLE
