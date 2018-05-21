@@ -11,6 +11,7 @@ use App\Carrier;
 use App\Loadlist;
 use App\Customer;
 use App\Journal;
+use Carbon\Carbon;
 
 
 /*
@@ -738,5 +739,78 @@ Artisan::command('import:accountsR {filename}', function($filename) {
         ]);
 	}
 	fclose($file);
+});
+
+Artisan::command('achEmailsAndUpdate {start_date} {end_date}', function ($start_date, $end_date) {
+	
+
+		//Get the records for the emails
+		$loads = Load::where('payment_method', "ACH")->where('carrierPayStatus', "APPRVD")
+		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+		 ->get();
+	
+
+		//Loop through each load and email the accounting department
+
+		foreach($loads as $load) 
+			{ 
+				if ($load->accounting_email !== null)
+					{
+						$info = ['info' => $load ];
+
+						Mail::send(['html'=>'email.sendEmailToVendorReceivingACH'], $info, function($message) use ($info){
+
+						$message->to($info['info']['accounting_email'])->subject("ACH Payment Notice from ITS for PRO # " . $info['info']['id'])
+						->from('lianey@itransys.com', 'Liane')
+						->replyTo('lianey@itransys.com', 'Liane')
+						->sender('lianey@itransys.com', 'Liane');
+
+        	});
+			}
+    		}
+
+
+		 //Update the database
+		 $updates = Load::where('payment_method', "ACH")->where('carrierPayStatus', "APPRVD")
+		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+		 ->get();
+
+		 //Todays Date
+		 date_default_timezone_set("America/Chicago");
+        
+        $currentDate = Carbon::now();
+
+		 foreach ($updates as $update)
+		 {
+		 //UPDATE WHERE ID = LOAD
+		\DB::table('loads')->where('id', $update->id)->update([
+			'carrierPayStatus' => "COMPLETED",
+			'upload_date' => $currentDate
+		]);
+		}	
+
+		 
+
+
+	
+
+})->describe('Send an email to all carriers receiving an ACH payment and reflect in database');
+
+Artisan::command('import:clearedChecks {filename}', function($filename) {
+	
+	// $file = fopen(storage_path('imports/' . $filename),"r");
+
+	// $count = 0;
+	// while (($data = fgetcsv($file)) !== FALSE) {
+	// 	$count ++;
+		
+	// 		\DB::table('loads')->where('id', $data[0])->update([
+ //            'customerPayStatus' => "OPEN"
+        
+ //        ]);
+	// }
+	// fclose($file);
 });
 

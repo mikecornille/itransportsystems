@@ -98,7 +98,9 @@ class Load extends Model
             'customerPayStatus',
             'totalCheckAmountFromCustomer',
             'accounting_email',
-            'upload_date'
+            'upload_date',
+            'cleared',
+            'cleared_date'
 
 
 			  ];
