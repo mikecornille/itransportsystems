@@ -345,7 +345,6 @@
         <th>Load Type</th>
         <th>Commodity</th>
         <th>Notes</th>
-        <th>I | O | E</th>
         <th>Name</th>
         <th>Dims</th>
         <th>Offer</th>
@@ -420,24 +419,27 @@
 		
 		
 
-		<td><a href="{{ URL::to('/countIncomingCalls/' . $load[0]->id) }}" title="edit">{{ $load[0]->countIncomingCalls }}</a> | <a href="{{ URL::to('/countOutgoingCalls/' . $load[0]->id) }}" title="edit">{{ $load[0]->countOutgoingCalls }}</a> | <a href="{{ URL::to('/emailedOut/' . $load[0]->id) }}" title="edit">{{ $load[0]->emailedOut }}</a></td>
+		<!-- <td><a href="{{ URL::to('/countIncomingCalls/' . $load[0]->id) }}" title="edit">{{ $load[0]->countIncomingCalls }}</a> | <a href="{{ URL::to('/countOutgoingCalls/' . $load[0]->id) }}" title="edit">{{ $load[0]->countOutgoingCalls }}</a> | <a href="{{ URL::to('/emailedOut/' . $load[0]->id) }}" title="edit">{{ $load[0]->emailedOut }}</a></td> -->
 
-		@if ($load[0]->handler === 'AM')
+		@if ($load[0]->handler === 'KING')
         <td style="color: #65267F">{{ $load[0]->handler }}</td>
         
-        @elseif ($load[0]->handler === 'MK')
+        @elseif ($load[0]->handler === 'BANSBERG')
         <td style="color: #FA7708">{{ $load[0]->handler }}</td>
         
-        @elseif ($load[0]->handler === 'LT')
+        @elseif ($load[0]->handler === 'MESIK')
         <td style="color: #26597F">{{ $load[0]->handler }}</td>
      
         
-        @elseif ($load[0]->handler === 'RB')
+        @elseif ($load[0]->handler === 'THOMPSON')
         <td style="color: #277F40">{{ $load[0]->handler }}</td>
+
+        @elseif ($load[0]->handler === 'MARTINEZ')
+        <td style="color: #E84C21">{{ $load[0]->handler }}</td>
 
         @else
 
-        <td class="text-danger">??</td>
+        <td class="text-danger"></td>
         @endif
         
 
@@ -474,7 +476,7 @@
         <th>Load Type</th>
         <th>Commodity</th>
         <th>Notes</th>
-        <th>I | O | E</th>
+        <!-- <th>I | O | E</th> -->
         <th>Name</th>
         <th>Dims</th>
         <th>Offer</th>
@@ -547,24 +549,27 @@
 		
 		
 
-		<td><a href="{{ URL::to('/countIncomingCalls/' . $load->id) }}" title="edit">{{ $load->countIncomingCalls }}</a> | <a href="{{ URL::to('/countOutgoingCalls/' . $load->id) }}" title="edit">{{ $load->countOutgoingCalls }}</a> | <a href="{{ URL::to('/emailedOut/' . $load->id) }}" title="edit">{{ $load->emailedOut }}</a></td>
+		<!-- <td><a href="{{ URL::to('/countIncomingCalls/' . $load->id) }}" title="edit">{{ $load->countIncomingCalls }}</a> | <a href="{{ URL::to('/countOutgoingCalls/' . $load->id) }}" title="edit">{{ $load->countOutgoingCalls }}</a> | <a href="{{ URL::to('/emailedOut/' . $load->id) }}" title="edit">{{ $load->emailedOut }}</a></td> -->
 
-		@if ($load->handler === 'AM')
+		@if ($load->handler === 'KING')
         <td style="color: #65267F">{{ $load->handler }}</td>
         
-        @elseif ($load->handler === 'MK')
+        @elseif ($load->handler === 'BANSBERG')
         <td style="color: #FA7708">{{ $load->handler }}</td>
         
-        @elseif ($load->handler === 'LT')
+        @elseif ($load->handler === 'MESIK')
         <td style="color: #26597F">{{ $load->handler }}</td>
      
         
-        @elseif ($load->handler === 'RB')
+        @elseif ($load->handler === 'THOMPSON')
         <td style="color: #277F40">{{ $load->handler }}</td>
+
+        @elseif ($load->handler === 'MARTINEZ')
+        <td style="color: #E84C21">{{ $load->handler }}</td>
 
         @else
 
-        <td class="text-danger">??</td>
+        <td class="text-danger"></td>
         @endif
         
 

@@ -59,9 +59,9 @@ class LoadlistController extends Controller
         $random_load_id = uniqid();
         $newload->group_number = $random_load_id;
 
-        $a=array("AM","LT","MK","RB");
-        $random_key=array_rand($a,1);
-        $newload->handler = $a[$random_key];
+        // $a=array("AM","LT","MK","RB");
+        // $random_key=array_rand($a,1);
+        // $newload->handler = $a[$random_key];
 
 		    $newload->save();
 
