@@ -137,34 +137,34 @@ class MaatwebsiteDemoController extends Controller
 		 $end_date = $request->input('end_date');
 
 		  //For the emails
-		$loads = Load::where('payment_method', "ACH")->where('carrierPayStatus', "APPRVD")
-		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
-		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
-		 ->get();
+	// 	$loads = Load::where('payment_method', "ACH")->where('carrierPayStatus', "APPRVD")
+	// 	 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+	// 	 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+	// 	 ->get();
 	
 
-	//Loop through each load and email the accounting department
+	
 
-	foreach($loads as $load) 
-	{ 
+	// foreach($loads as $load) 
+	// { 
 	
 		
 
 
-		if ($load->accounting_email !== null)
-		{
-			$info = ['info' => $load ];
+	// 	if ($load->accounting_email !== null)
+	// 	{
+	// 		$info = ['info' => $load ];
 
-			Mail::send(['html'=>'email.sendEmailToVendorReceivingACH'], $info, function($message) use ($info){
+	// 		Mail::send(['html'=>'email.sendEmailToVendorReceivingACH'], $info, function($message) use ($info){
 
-			$message->to($info['info']['accounting_email'])->subject("ACH Payment Notice from ITS for PRO # " . $info['info']['id'])
-			->from('lianey@itransys.com', 'Liane')
-			->replyTo('lianey@itransys.com', 'Liane')
-			->sender('lianey@itransys.com', 'Liane');
+	// 		$message->to($info['info']['accounting_email'])->subject("ACH Payment Notice from ITS for PRO # " . $info['info']['id'])
+	// 		->from('lianey@itransys.com', 'Liane')
+	// 		->replyTo('lianey@itransys.com', 'Liane')
+	// 		->sender('lianey@itransys.com', 'Liane');
 
-        	});
-		}
-    }
+ //        	});
+	// 	}
+ //    }
 		 
 		 $carrier_invoices = Load::select('routing_number', 'account_number', 'carrier_rate', 'account_type', 'account_name', 'id')
 		 ->where('payment_method', "ACH")->where('carrierPayStatus', "APPRVD")
@@ -185,24 +185,24 @@ class MaatwebsiteDemoController extends Controller
 			});
 
 
-		 $updates = Load::where('payment_method', "ACH")->where('carrierPayStatus', "APPRVD")
-		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
-		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
-		 ->get();
+		 // $updates = Load::where('payment_method', "ACH")->where('carrierPayStatus', "APPRVD")
+		 // ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+		 // ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+		 // ->get();
 
 		 //Todays Date
-		 date_default_timezone_set("America/Chicago");
+		//  date_default_timezone_set("America/Chicago");
         
-        $currentDate = Carbon::now();
+  //       $currentDate = Carbon::now();
 
-		 foreach ($updates as $update)
-		 {
-		 //UPDATE WHERE ID = LOAD
-		\DB::table('loads')->where('id', $update->id)->update([
-			'carrierPayStatus' => "COMPLETED",
-			'upload_date' => $currentDate
-		]);
-		}	
+		//  foreach ($updates as $update)
+		//  {
+		 
+		// \DB::table('loads')->where('id', $update->id)->update([
+		// 	'carrierPayStatus' => "COMPLETED",
+		// 	'upload_date' => $currentDate
+		// ]);
+		// }	
 
 		 
 
