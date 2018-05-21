@@ -29,6 +29,8 @@ class CreateLedgersTable extends Migration
             $table->string('deposit_amount')->nullable();
             $table->string('upload_date')->nullable();
             $table->string('payment_method')->nullable();
+            $table->string('cleared')->nullable();
+            $table->string('cleared_date')->nullable();
             $table->timestamps();
         });
     }

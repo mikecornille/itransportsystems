@@ -648,7 +648,9 @@ Artisan::command('insertLedgerRecords', function () {
 			'memo' => $carrier->quick_status_notes,
 			'payment_amount' => $carrier->carrier_rate,
 			'upload_date' => $carrier->upload_date,
-			'payment_method' => $carrier->payment_method
+			'payment_method' => $carrier->payment_method,
+			'cleared' => $carrier->cleared,
+			'cleared_date' => $carrier->cleared_date
 		]);
 	}
 
