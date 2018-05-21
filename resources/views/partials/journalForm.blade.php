@@ -75,7 +75,8 @@
 					'Refund' => 'Refund',
 					'Freight Cost' => 'Freight Cost',
 					'Income Collected' => 'Income Collected',
-					'Bank Loan' => 'Bank Loan'
+					'Bank Loan' => 'Bank Loan',
+					'Cash Transfer' => 'Cash Transfer'
 					
 	  		
 				], null, ['placeholder' => 'Pick a sub description...', 'class' => 'form-control']) }}
