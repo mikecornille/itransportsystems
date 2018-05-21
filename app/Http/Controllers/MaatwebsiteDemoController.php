@@ -227,7 +227,7 @@ class MaatwebsiteDemoController extends Controller
 		 $start_date = $request->input('start_date');
 		 $end_date = $request->input('end_date');
 		 
-		 $carrier_invoices = Load::select('routing_number', 'account_number', 'carrier_rate', 'account_type', 'account_name', 'id', 'accounting_email')
+		 $carrier_invoices = Load::select('routing_number', 'account_number', 'carrier_rate', 'account_type', 'account_name', 'id', 'accounting_email', 'vendor_invoice_date')
 		 ->where('payment_method', "ACH")->where('carrierPayStatus', "APPRVD")
 		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
 		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
