@@ -74,7 +74,7 @@
 					'Personal' => 'Personal',
 					'Refund' => 'Refund',
 					'Freight Cost' => 'Freight Cost',
-					'Income Collected' => 'Income Collected'
+					'Income Collected' => 'Income Collected',
 					'Bank Loan' => 'Bank Loan'
 					
 	  		
