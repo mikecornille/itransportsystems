@@ -193,7 +193,7 @@ class MaatwebsiteDemoController extends Controller
 		 //Todays Date
 		//  date_default_timezone_set("America/Chicago");
         
-  //       $currentDate = Carbon::now();
+  $currentDate = Carbon::now();
 
 		//  foreach ($updates as $update)
 		//  {
