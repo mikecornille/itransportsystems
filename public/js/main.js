@@ -1459,6 +1459,8 @@ $(document).ready(function() {
             { "data": "account_name"},
             { "data": "account_id"},
             { "data": "payment_method"},
+            { "data": "cleared"},
+            { "data": "cleared_date"},
             { "data": "payment_amount", "className": "payment_amount_color"},
     
             

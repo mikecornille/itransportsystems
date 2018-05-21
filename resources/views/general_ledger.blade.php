@@ -18,6 +18,8 @@
         <th>Account Name</th>
         <th>Account ID #</th>
         <th>Payment Method</th>
+        <th>Cleared</th>
+        <th>Cleared Date</th>
         <th>Payment Amount</th>
         <th>Deposit Amount</th>
         <th>Running Total</th>
@@ -40,6 +42,8 @@
         <th>Account Name</th>
         <th>Account ID #</th>
         <th>Payment Method</th>
+        <th>Cleared</th>
+        <th>Cleared Date</th>
         <th>Payment Amount</th>
         <th>Deposit Amount</th>
         <th>Running Total</th>
