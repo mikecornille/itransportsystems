@@ -107,6 +107,7 @@
 					'CHECK' => 'CHECK',
 					'ACH' => 'ACH',
 					'CREDIT' => 'CREDIT',
+					'CASH' => 'CASH'
 	
 					
 	  		
