@@ -800,17 +800,18 @@ Artisan::command('achEmailsAndUpdate {start_date} {end_date}', function ($start_
 
 Artisan::command('import:clearedChecks {filename}', function($filename) {
 	
-	// $file = fopen(storage_path('imports/' . $filename),"r");
+	$file = fopen(storage_path('imports/' . $filename),"r");
 
-	// $count = 0;
-	// while (($data = fgetcsv($file)) !== FALSE) {
-	// 	$count ++;
+	$count = 0;
+	while (($data = fgetcsv($file)) !== FALSE) {
+		$count ++;
 		
-	// 		\DB::table('loads')->where('id', $data[0])->update([
- //            'customerPayStatus' => "OPEN"
+			\DB::table('loads')->where('vendor_check_number', $data[0])->update([
+            'cleared' => "YES",
+            'cleared_date' => $data[1]
         
- //        ]);
-	// }
-	// fclose($file);
+        ]);
+	}
+	fclose($file);
 });
 
