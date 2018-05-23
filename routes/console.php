@@ -747,7 +747,7 @@ Artisan::command('import:accountsR {filename}', function($filename) {
 	fclose($file);
 });
 
-Artisan::command('achEmailsAndUpdate {start_date} {end_date}', function ($start_date, $end_date) {
+Artisan::command('achEmailsAndUpdate {start_date} {end_date} {brn} {cleared_date}', function ($start_date, $end_date, $brn, $cleared_date) {
 	
 
 		//Get the records for the emails
@@ -793,7 +793,10 @@ Artisan::command('achEmailsAndUpdate {start_date} {end_date}', function ($start_
 		 //UPDATE WHERE ID = LOAD
 		\DB::table('loads')->where('id', $update->id)->update([
 			'carrierPayStatus' => "COMPLETED",
-			'upload_date' => $currentDate
+			'upload_date' => $currentDate,
+			'vendor_check_number' => $brn,
+			'cleared' => "YES",
+			'cleared_date' => $cleared_date
 		]);
 		}	
 
