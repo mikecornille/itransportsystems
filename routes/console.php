@@ -674,7 +674,9 @@ Artisan::command('insertLedgerRecords', function () {
 			'deposit_amount' => $journal->deposit_amount,
 			'journal_entry_number' => $journal->id,
 			'upload_date' => $journal->upload_date,
-			'payment_method' => $journal->payment_method
+			'payment_method' => $journal->payment_method,
+			'cleared' => $journal->cleared,
+			'cleared_date' => $journal->cleared_date
 		]);
 	}
 	}
@@ -696,7 +698,9 @@ Artisan::command('insertLedgerRecords', function () {
 			'deposit_amount' => $journal->deposit_amount,
 			'journal_entry_number' => $journal->id,
 			'upload_date' => $journal->upload_date,
-			'payment_method' => $journal->payment_method
+			'payment_method' => $journal->payment_method,
+			'cleared' => $journal->cleared,
+			'cleared_date' => $journal->cleared_date
 		]);
 	}
 	}
@@ -809,6 +813,23 @@ Artisan::command('import:clearedChecks {filename}', function($filename) {
 		$count ++;
 		
 			\DB::table('loads')->where('vendor_check_number', $data[0])->update([
+            'cleared' => "YES",
+            'cleared_date' => $data[1]
+        
+        ]);
+	}
+	fclose($file);
+});
+
+Artisan::command('import:clearedChecksInJournal {filename}', function($filename) {
+	
+	$file = fopen(storage_path('imports/' . $filename),"r");
+
+	$count = 0;
+	while (($data = fgetcsv($file)) !== FALSE) {
+		$count ++;
+		
+			\DB::table('journals')->where('payment_number', $data[0])->update([
             'cleared' => "YES",
             'cleared_date' => $data[1]
         

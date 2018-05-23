@@ -34,6 +34,8 @@ class CreateJournalsTable extends Migration
             $table->string('address')->nullable();
             $table->string('payment_method')->nullable();
             $table->string('payment_cents')->nullable();
+            $table->string('cleared')->nullable();
+            $table->string('cleared_date')->nullable();
             $table->timestamps();
         });
     }

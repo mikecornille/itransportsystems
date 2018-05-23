@@ -9,16 +9,16 @@ class Journal extends Model
 {
          
             public $fillable = [
-            	'type',
-            	'type_description',
+            	     'type',
+            	   'type_description',
                   'type_description_sub',
-            	'date',
-            	'reference_number',
-            	'account_name',
-            	'account_id',
-            	'memo',
-            	'payment_amount',
-            	'deposit_amount',
+            	     'date',
+            	     'reference_number',
+            	     'account_name',
+            	     'account_id',
+            	     'memo',
+            	     'payment_amount',
+            	     'deposit_amount',
                   'city',
                   'state',
                   'zip',
@@ -28,7 +28,9 @@ class Journal extends Model
                   'upload_date',
                   'payment_method',
                   'address',
-                  'payment_cents'
+                  'payment_cents',
+                  'cleared',
+                  'cleared_date'
 
 
             ];

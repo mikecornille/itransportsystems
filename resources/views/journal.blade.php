@@ -49,6 +49,8 @@
         <th>Memo</th>
         <th>Payment Amount</th>
         <th>Deposit Amount</th>
+        <th>Cleared</th>
+        <th>Cleared Date</th>
       </tr>
     </thead>
     <tbody>
@@ -67,6 +69,8 @@
         <td><a href="#" class="inactiveLink" title="Memo" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $entry->memo }}">{{ substr($entry->memo, 0, 25) }} {{ strlen($entry->memo) > 25 ? "..." : "" }}</a></td>
         <td>{{ $entry->payment_amount }}</td>
         <td>{{ $entry->deposit_amount }}</td>
+        <td>{{ $entry->cleared }}</td>
+        <td>{{ $entry->cleared_date }}</td>
         <td>{!! Html::linkRoute('journal.edit', 'Edit', array($entry->id), ['class' => 'btn btn-success btn-block']) !!}</td>
       </tr>
       @endforeach
