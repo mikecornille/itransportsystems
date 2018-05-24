@@ -31,9 +31,6 @@
                                      <div class="col-xs-8">
                                         <label class="label-control" for="type_selected">Type</label>
                                         <select class="form-control" id="type_selected" name="type_selected">
-                                            <option value="Accounts Receivable">Accounts Receivable</option>
-                                            <option value="Accounts Payable">Accounts Payable</option>
-                                            <option value="Bank">Bank</option>
                                             <option value="Asset">Asset</option>
                                             <option value="Liability">Liability</option>
                                             <option value="Distribution">Distribution</option>
