@@ -1583,7 +1583,9 @@ $('#datepicker_type2').datepicker();
 
 $('#datepickerPositivePay').datepicker();
 
+$('#datepickerClearedChecks').datepicker();
 
+$('#datepickerClearedChecks2').datepicker();
 
 
 
@@ -1699,7 +1701,13 @@ $('#datepickerPositivePay').on('changeDate', function(ev){
     $(this).datepicker('hide');
 });
 
+$('#datepickerClearedChecks').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
 
+$('#datepickerClearedChecks2').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
 
 
 

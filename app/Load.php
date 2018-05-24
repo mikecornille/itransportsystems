@@ -100,7 +100,9 @@ class Load extends Model
             'accounting_email',
             'upload_date',
             'cleared',
-            'cleared_date'
+            'cleared_date',
+            'quick_pay_flag',
+            'quick_pay_amount'
 
 
 			  ];

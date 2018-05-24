@@ -24,6 +24,17 @@ use Carbon\Carbon;
 class PDFController extends Controller
 {
     //use helpers\Mailer;
+
+    
+
+    public function generalLedgerTargetCheckPaid(Request $request)
+    {
+
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+        dd($start_date, $end_date);
+    
+    }
 	
 	//Prints the invoice
 	public function getInvoicePDF($id)

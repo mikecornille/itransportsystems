@@ -783,7 +783,29 @@
    <p class="text-primary">UPLOAD: {{ $info->upload_date }}</p>
  </div>
 
- 
+  <div class="col-xs-12">
+   <label class="label-control text-primary" for="quick_pay_amount">QUICK PAY AMOUNT</label>
+   
+
+
+
+   <div class="input-group">
+        <span class="input-group-addon">$</span>
+          <input type="text" class="form-control" id="quick_pay_amount" name="quick_pay_amount" value="{{ $info->quick_pay_amount }}">
+          <span class="input-group-addon">.00</span>
+      </div>
+ </div>
+<div class="col-xs-12">
+  
+   <label class="radio-inline"><input type="radio" name="quick_pay_flag" value="YES"><b>QP YES</b></label>
+   <label class="radio-inline"><input type="radio" name="quick_pay_flag" value="NO"><b>QP NO</b></label>
+ </div>
+
+ <div class="col-xs-12">
+   <p class="text-primary">QP STATUS: {{ $info->quick_pay_flag }}</p>
+ </div>
+
+
  
 
 
