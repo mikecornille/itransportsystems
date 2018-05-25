@@ -30,7 +30,8 @@ class Journal extends Model
                   'address',
                   'payment_cents',
                   'cleared',
-                  'cleared_date'
+                  'cleared_date',
+                  'off_ledger'
 
 
             ];

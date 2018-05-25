@@ -132,6 +132,15 @@
 			{{ Form::text('deposit_amount', null, ['class' => 'form-control']) }}
 		</div>
 	</div>
+	<h3>Off Ledger?</h3>
+	<div class="row">
+		<div class="col-md-3">
+			YES{{ Form::radio('off_ledger', 'YES') }}
+			NO{{ Form::radio('off_ledger', 'NO') }}
+		</div>
+	</div>
+
+	
 
 
 	<h3>Send A Check</h3>
@@ -168,7 +177,7 @@
 
 		</div>
 		<div class="col-md-4">
-			{{ Form::label('payment_number', 'Payment Number') }}
+			{{ Form::label('payment_number', 'Payment Number (Check # or Bank Ref #)') }}
 			{{ Form::text('payment_number', null, ['class' => 'form-control']) }}
 
 		</div>
