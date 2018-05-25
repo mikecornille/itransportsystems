@@ -110,7 +110,6 @@ class CreateLoadsTable extends Migration
             $table->string('cleared')->nullable();
             $table->string('cleared_date')->nullable();
             $table->string('quick_pay_flag', 10)->nullable();
-            $table->string('quick_pay_amount', 25)->nullable();
             $table->timestamps();
 
         });
