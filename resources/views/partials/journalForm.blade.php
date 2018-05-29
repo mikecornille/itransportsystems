@@ -76,7 +76,7 @@
 					'Freight Cost' => 'Freight Cost',
 					'Income Collected' => 'Income Collected',
 					'Bank Loan' => 'Bank Loan',
-					'Cash Transfer' => 'Cash Transfer'
+					'Cash Transfer' => 'Cash Transfer',
 					'Money Market Savings' => 'Money Market Savings'
 					
 	  		
