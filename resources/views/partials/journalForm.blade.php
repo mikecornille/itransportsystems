@@ -78,7 +78,9 @@
 					'Bank Loan' => 'Bank Loan',
 					'Cash Transfer' => 'Cash Transfer',
 					'Money Market Savings' => 'Money Market Savings',
-					'Capital Stock' => 'Capital Stock'
+					'Capital Stock' => 'Capital Stock',
+					'Retained Earnings' => 'Retained Earnings',
+					'Net Income' => 'Net Income'
 					
 	  		
 				], null, ['placeholder' => 'Pick a sub description...', 'class' => 'form-control']) }}
