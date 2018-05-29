@@ -77,7 +77,8 @@
 					'Income Collected' => 'Income Collected',
 					'Bank Loan' => 'Bank Loan',
 					'Cash Transfer' => 'Cash Transfer',
-					'Money Market Savings' => 'Money Market Savings'
+					'Money Market Savings' => 'Money Market Savings',
+					'Capital Stock' => 'Capital Stock'
 					
 	  		
 				], null, ['placeholder' => 'Pick a sub description...', 'class' => 'form-control']) }}
