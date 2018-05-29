@@ -22,7 +22,7 @@
         <th>Cleared Date</th>
         <th>Payment Amount</th>
         <th>Deposit Amount</th>
-        <th>Running Total</th>
+        <!-- <th>Running Total</th> -->
         
         
         
@@ -46,7 +46,7 @@
         <th>Cleared Date</th>
         <th>Payment Amount</th>
         <th>Deposit Amount</th>
-        <th>Running Total</th>
+        <!-- <th>Running Total</th> -->
         
         
         

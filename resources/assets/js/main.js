@@ -1465,8 +1465,8 @@ $(document).ready(function() {
     
             
 
-            { "data": "deposit_amount", "className": "text-success"},
-            { "data": "running_total", "className": "text-primary"}
+            { "data": "deposit_amount", "className": "text-success"}
+            
 
 
         ],
@@ -1485,7 +1485,7 @@ $(document).ready(function() {
       { "width": "10px", "targets": 9 }, //cleared date
       { "width": "10px", "targets": 10 }, //amount
       { "width": "10px", "targets": 11 }, //deposit amount
-      { "width": "10px", "targets": 12 }, //running
+      
       
       
      
