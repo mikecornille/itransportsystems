@@ -1745,6 +1745,16 @@ $('#internal_notes').val($('#internal_notes').val() + n + " " + m + " " + user.n
 
 });
 
+$(document).on('dblclick', '#notes_on_load', function(){
+
+var d = new Date();
+var n = d.toDateString();
+var m = d.toLocaleTimeString();
+
+$('#notes_on_load').val($('#notes_on_load').val() + n + " " + m + " " + user.name + " - ");
+
+});
+
 $(document).on('dblclick', '#quick_status_notes', function(){
 
 var d = new Date();

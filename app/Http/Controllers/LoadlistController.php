@@ -11,6 +11,8 @@ use App\Carrier;
 
 use DB;
 
+use Laracasts\Utilities\JavaScript\JavaScriptFacade as Javascript;
+
 
 class LoadlistController extends Controller
 {
@@ -363,6 +365,10 @@ class LoadlistController extends Controller
 
 	public function editLoadlist($id)
 	{
+    JavaScript::put([
+            'user' => \Auth::user(),
+    ]);
+
 		$loadlist = Loadlist::find($id);
 
 		return view('editLoadlist', compact('loadlist'));

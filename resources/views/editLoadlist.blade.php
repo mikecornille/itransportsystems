@@ -315,6 +315,16 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-xs-8">
+                <label class="label-control" for="notes_on_load">Load Activity</label>
+                
+
+                <textarea class="form-control" id="notes_on_load" rows="10" name="notes_on_load">{{ $loadlist->notes_on_load }}</textarea>
+            </div>
+            
+        </div>
         
         
           <button type="submit" class="btn btn-primary" id="newCustomerSubmit"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> UPDATE</button>

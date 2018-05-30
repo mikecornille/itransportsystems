@@ -486,4 +486,8 @@ textarea#commodity, textarea#special_ins, textarea#add_stops, textarea#invoice_n
   color: #E88A79;
 }
 
+.popover {
+  max-width: 40%;
+}
+
 /*# sourceMappingURL=app.css.map */

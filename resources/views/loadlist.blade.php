@@ -422,20 +422,20 @@
 		<!-- <td><a href="{{ URL::to('/countIncomingCalls/' . $load[0]->id) }}" title="edit">{{ $load[0]->countIncomingCalls }}</a> | <a href="{{ URL::to('/countOutgoingCalls/' . $load[0]->id) }}" title="edit">{{ $load[0]->countOutgoingCalls }}</a> | <a href="{{ URL::to('/emailedOut/' . $load[0]->id) }}" title="edit">{{ $load[0]->emailedOut }}</a></td> -->
 
 		@if ($load[0]->handler === 'KING')
-        <td style="color: #65267F">{{ $load[0]->handler }}</td>
+        <td><a style="color: #65267F" href="#" class="inactiveLink" title="Load Activity" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load[0]->notes_on_load }}">{{ $load[0]->handler }}</a></td>
         
         @elseif ($load[0]->handler === 'BANSBERG')
-        <td style="color: #FA7708">{{ $load[0]->handler }}</td>
+        <td><a style="color: #FA7708" href="#" class="inactiveLink" title="Load Activity" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load[0]->notes_on_load }}">{{ $load[0]->handler }}</a></td>
         
         @elseif ($load[0]->handler === 'MESIK')
-        <td style="color: #26597F">{{ $load[0]->handler }}</td>
+        <td><a style="color: #26597F" href="#" class="inactiveLink" title="Load Activity" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load[0]->notes_on_load }}">{{ $load[0]->handler }}</a></td>
      
         
         @elseif ($load[0]->handler === 'THOMPSON')
-        <td style="color: #277F40">{{ $load[0]->handler }}</td>
+        <td><a style="color: #277F40" href="#" class="inactiveLink" title="Load Activity" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load[0]->notes_on_load }}">{{ $load[0]->handler }}</a></td>
 
         @elseif ($load[0]->handler === 'MARTINEZ')
-        <td style="color: #E84C21">{{ $load[0]->handler }}</td>
+        <td><a style="color: #E84C21" href="#" class="inactiveLink" title="Load Activity" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load[0]->notes_on_load }}">{{ $load[0]->handler }}</a></td>
 
         @else
 
@@ -455,6 +455,21 @@
 
 
       </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       
       @endforeach
     </tbody>
@@ -700,15 +715,15 @@ $notetimestamp = date('m/d/Y g:ia');
 				<input type="hidden" id="time_name_stamp" name="time_name_stamp" value="{{ $notetimestamp . ' ' . \Auth::user()->name }}">
         			{{ csrf_field() }}
 						<div class="well">
-      						<h2 class="text-center">ITS Notes</h2> 
+      						<h2 class="text-center">Load Notes</h2> 
       							<div class="form-group">
         							<div class="row">
-            							<div class="col-xs-9">
-                							<input type="text" class="form-control" id="notes" name="notes" value="{{ old('notes') }}" placeholder="Specify the location, first name, phone, and reason for call">
+            							<div class="col-xs-12">
+                							<input type="text" class="form-control" id="notes" name="notes" value="{{ old('notes') }}">
             							</div>
-            							<div class="col-xs-3">
+            							<!-- <div class="col-xs-3">
                 							<input type="text" class="form-control" id="dialed_out" name="dialed_out" value="{{ old('dialed_out') }}" placeholder="Dialed/Emailed Out">
-            							</div>
+            							</div> -->
         							</div>
 											<button type="submit" class="btn btn-primary" id="submit_new_note"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> NEW</button>
 								</div>
