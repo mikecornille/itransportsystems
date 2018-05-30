@@ -80,7 +80,8 @@
 					'Money Market Savings' => 'Money Market Savings',
 					'Capital Stock' => 'Capital Stock',
 					'Retained Earnings' => 'Retained Earnings',
-					'Net Income' => 'Net Income'
+					'Net Income' => 'Net Income',
+					'Employee Parking' => 'Employee Parking'
 					
 	  		
 				], null, ['placeholder' => 'Pick a sub description...', 'class' => 'form-control']) }}
