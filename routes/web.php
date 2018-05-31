@@ -73,7 +73,7 @@ Route::get('/ach_no_carrier_found', function () {
 
          Route::post('generalLedgerTargetCheckPaid', 'PDFController@generalLedgerTargetCheckPaid');
 
-         
+         Route::post('balanceSheet', 'PDFController@balanceSheet');
      
 
      });

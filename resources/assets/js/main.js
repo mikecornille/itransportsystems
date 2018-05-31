@@ -1587,6 +1587,10 @@ $('#datepickerClearedChecks').datepicker();
 
 $('#datepickerClearedChecks2').datepicker();
 
+$('#datepicker_bs_start').datepicker();
+
+$('#datepicker_bs_end').datepicker();
+
 
 
 $('#datepicker').on('changeDate', function(ev){
@@ -1706,6 +1710,14 @@ $('#datepickerClearedChecks').on('changeDate', function(ev){
 });
 
 $('#datepickerClearedChecks2').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
+$('#datepicker_bs_start').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
+$('#datepicker_bs_end').on('changeDate', function(ev){
     $(this).datepicker('hide');
 });
 

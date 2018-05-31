@@ -149,8 +149,8 @@
                     </form>
             </div>
             <div class="col-md-4 col-md-offset-4">
-                <h2>All Data Excel</h2>
-                    <form role="form" class="form-horizontal" method="POST" action="/generalLedgerExcel/xlsx">
+                <h2>Balance Sheet</h2>
+                    <form role="form" class="form-horizontal" method="POST" action="/balanceSheet">
 
                         {{ csrf_field() }}
 
@@ -158,11 +158,11 @@
                                 <div class="row">
                                     <div class="col-xs-6">
                                         <label class="label-control" for="start_date">Start Date</label>
-                                        <input type="text" class="form-control" id="datepicker_profit_start" name="start_date">
+                                        <input type="text" class="form-control" id="datepicker_bs_start" name="start_date">
                                     </div>
                                     <div class="col-xs-6">
                                         <label class="label-control" for="end_date">End Date</label>
-                                        <input type="text" class="form-control" id="datepicker_profit_end" name="end_date">
+                                        <input type="text" class="form-control" id="datepicker_bs_end" name="end_date">
                                     </div>
                                 </div>
 

@@ -217,9 +217,9 @@
                                     @if (Auth::user()->email == 'mikec@itransys.com' || Auth::user()->email == 'lianey@itransys.com')
                                     <li><a href="{{ url('/general_ledger') }}">Ledger</a></li>
                                     <li><a href="{{ url('/journal') }}">Journal Entry</a></li>
-                                    <li><a href="{{ url('/achCSV') }}">Create ACH File</a></li>
+                                    <li><a href="{{ url('/achCSV') }}">Create ACH Files</a></li>
                                     <li><a href="{{ url('/positivePay') }}">Create Positive Pay</a></li>
-                                    <li><a href="{{ url('/generalLedgerFiles') }}">Create Ledger File</a></li>
+                                    <li><a href="{{ url('/generalLedgerFiles') }}">Generate Files</a></li>
                                     @endif
                                
                                </ul>

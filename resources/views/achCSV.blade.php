@@ -5,7 +5,7 @@
 	<div class="well">
 		<div class="row">
 			<div class="col-md-5">
-				<h2>SAMPLE ACH</h2>
+				<h2>ACH Quality Check File</h2>
 					<form role="form" class="form-horizontal" method="POST" action="/sampleACHCSV/csv">
 
 						{{ csrf_field() }}
@@ -32,7 +32,7 @@
 			</div>
 
 			<div class="col-md-5">
-				<h2>ACH FILE W/EMAIL</h2>
+				<h2>ACH Uploadable File</h2>
 					<form role="form" class="form-horizontal" method="POST" action="/achCSV/csv">
 
 						{{ csrf_field() }}

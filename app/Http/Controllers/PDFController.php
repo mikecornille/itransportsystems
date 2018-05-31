@@ -35,6 +35,24 @@ class PDFController extends Controller
         dd($start_date, $end_date);
     
     }
+
+    public function balanceSheet(Request $request)
+    {
+
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+
+        $info = Ledger::where('id', 1)->get();
+
+
+        
+
+        $pdf = PDF::loadView('pdf.balanceSheet',['info'=>$info, 'start_date'=>$start_date, 'end_date'=>$end_date]);
+    
+        return $pdf->stream('BalanceSheet' . '_' . $start_date . '_' . $end_date . '.pdf');
+        
+    
+    }
 	
 	//Prints the invoice
 	public function getInvoicePDF($id)
