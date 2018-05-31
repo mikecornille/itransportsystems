@@ -1114,8 +1114,49 @@
 
    
 
+//find journal accounts
+         $(function() {
+            function log( message ) {
+                $( "<div>" ).text( message ).prependTo( "#log" );
+                $( "#log" ).scrollTop( 0 );
+            }
+            $( "#find-journal-account" ).autocomplete({
+                source: function( request, response ) {
+                    $.ajax({
+                        url: "/api/carrier/" + request.term,
+                        dataType: "json",
+                        success: function( data ) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: 'Account Name: ' + item.company,
+                                    value: item.company,
+                                    object: item
+                                }
+                        }));
+                    }});
+                },
+                minLength: 3,
+                select: function( event, ui ) {
+                    window.carrierRecord = ui;
+                      $('#findJournalAccountsId').val(window.carrierRecord.item.object.id);
+                      
+                    
+                    
+                    log( ui.item ?
+                    "Selected: " + ui.item.label :
+                    "Nothing selected, input was " + this.value);
+                                        $('#find-journal-account').val('test');
 
-       //Vendor Autofill
+                },
+                open: function() {
+                    $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+
+                },
+                close: function() {
+                    $( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
+                }
+            });
+        });
   
 
 

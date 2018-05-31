@@ -63,7 +63,7 @@
         <td>{{ $entry->upload_date }}</td>
         <td>{{ $entry->invoice_date_journal }}</td>
         <td>{{ $entry->account_name }}</td>
-        <td>{{ $entry->account_id }}</td>
+        <td><a href="{{ URL::to('/goToAccountProfileFromJournal/' . $entry->account_id) }}">{{ $entry->account_id }}</a></td>
         <td>{{ $entry->type }}</td>
         <td>{{ $entry->type_description }}</td>
         <td>{{ $entry->type_description_sub }}</td>

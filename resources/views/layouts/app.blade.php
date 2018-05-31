@@ -220,6 +220,7 @@
                                     <li><a href="{{ url('/achCSV') }}">Create ACH Files</a></li>
                                     <li><a href="{{ url('/positivePay') }}">Create Positive Pay</a></li>
                                     <li><a href="{{ url('/generalLedgerFiles') }}">Generate Files</a></li>
+                                    <li><a href="{{ url('/journalAccountSearch') }}">Journal Account Search</a></li>
                                     @endif
                                
                                </ul>

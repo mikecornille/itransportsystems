@@ -139,4 +139,51 @@ class JournalController extends Controller
     {
         //
     }
+
+    public function journalAccountSearchEdit(Request $request)
+    {
+        $accountId = $request->input('findJournalAccountsId');
+
+        $account = Carrier::findOrFail($accountId);
+
+        $entries = Journal::where('account_id', $accountId)->get();
+
+        $payment_amount = Journal::where('account_id', $accountId)->where('type', 'BILLPMT')->sum('payment_amount');
+
+        $deposit_amount = Journal::where('account_id', $accountId)->where('type', 'PMT')->sum('deposit_amount');
+
+        $total = $deposit_amount - $payment_amount;
+
+
+
+        return view('accountInfo', compact($account, 'account', $entries, 'entries', $total, 'total'));
+    }
+
+    public function goToAccountProfileFromJournal($id)
+    {
+        $account = Carrier::findOrFail($id);
+
+        $entries = Journal::where('account_id', $id)->get();
+
+        $payment_amount = Journal::where('account_id', $id)->where('type', 'BILLPMT')->sum('payment_amount');
+
+        $deposit_amount = Journal::where('account_id', $id)->where('type', 'PMT')->sum('deposit_amount');
+
+        $total = $deposit_amount - $payment_amount;
+
+
+
+        return view('accountInfo', compact($account, 'account', $entries, 'entries', $total, 'total'));
+
+    }
+
+    public function journalAccountSearch()
+    {
+        $users = Journal::select('account_name')
+            ->groupBy('account_name')
+            ->get();
+
+
+        return view('journalAccountSearch', compact($users, 'users'));
+    }
 }

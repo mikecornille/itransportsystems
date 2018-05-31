@@ -74,6 +74,15 @@ Route::get('/ach_no_carrier_found', function () {
          Route::post('generalLedgerTargetCheckPaid', 'PDFController@generalLedgerTargetCheckPaid');
 
          Route::post('balanceSheet', 'PDFController@balanceSheet');
+
+         Route::post('/journalAccountSearchEdit', 'JournalController@journalAccountSearchEdit');
+
+         Route::get('/journalAccountSearch', 'JournalController@journalAccountSearch');
+
+         Route::get('/goToAccountProfileFromJournal/{id}', 'JournalController@goToAccountProfileFromJournal');
+
+         
+
      
 
      });
@@ -195,6 +204,13 @@ Route::get('/customer_accounting', function () {
     }
     return view('/customer_accounting');
 });
+
+// Route::get('/journalAccountSearch', function () {
+//     if ( ! Auth::user()->accounting) {
+//         return redirect('/home');
+//     }
+//     return view('/journalAccountSearch');
+// });
 
 Route::get('/toBeLoaded', function () {
     return view('/toBeLoaded');
