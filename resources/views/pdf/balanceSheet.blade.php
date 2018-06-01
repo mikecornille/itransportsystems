@@ -43,7 +43,7 @@ th {
   <tr>
   	
     <td>MB Finanacial</td>
-    <td>$106,000</td>
+    <td>${{ $mbFinancialBalance }}</td>
   </tr>
   <tr>
     

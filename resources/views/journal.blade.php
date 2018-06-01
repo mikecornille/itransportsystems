@@ -53,6 +53,8 @@
         <th>Deposit Amount</th>
         <th>Cleared</th>
         <th>Cleared Date</th>
+        <th>Off Ledger?</th>
+        <th>Edit</th>
       </tr>
     </thead>
     <tbody>
@@ -75,6 +77,7 @@
         <td>{{ $entry->deposit_amount }}</td>
         <td>{{ $entry->cleared }}</td>
         <td>{{ $entry->cleared_date }}</td>
+        <td>{{ $entry->off_ledger }}</td>
         <td>{!! Html::linkRoute('journal.edit', 'Edit', array($entry->id), ['class' => 'btn btn-success btn-block']) !!}</td>
       </tr>
       @endforeach

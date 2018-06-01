@@ -41,13 +41,29 @@ class PDFController extends Controller
 
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
+        $start_date = Carbon::createFromFormat('m/d/Y', $start_date, "America/Chicago");
+        $end_date = Carbon::createFromFormat('m/d/Y', $end_date, "America/Chicago");
+        $start_date = $start_date->toDateString();
+        $end_date = $end_date->toDateString();
 
-        $info = Ledger::where('id', 1)->get();
+        //^^^Takes the user input dates and converts them to computer readable
+
+        //Assets - MB Financial Totals from Ledger
+        $payment_amount_totals = Ledger::sum('payment_amount');
+        $deposit_amount_totals = Ledger::sum('deposit_amount');
+        $mbFinancialBalance = $deposit_amount_totals - $payment_amount_totals;
+        
+        $info = Ledger::where('type_description', 'Assets')->whereBetween('date', [$start_date, $end_date])->get();
+
+        
+       
+
+        //i need to take an user freidnsly date and convert it into shit date
 
 
         
 
-        $pdf = PDF::loadView('pdf.balanceSheet',['info'=>$info, 'start_date'=>$start_date, 'end_date'=>$end_date]);
+        $pdf = PDF::loadView('pdf.balanceSheet',['info'=>$info, 'start_date'=>$start_date, 'end_date'=>$end_date, 'mbFinancialBalance'=>$mbFinancialBalance]);
     
         return $pdf->stream('BalanceSheet' . '_' . $start_date . '_' . $end_date . '.pdf');
         
