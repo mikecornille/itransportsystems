@@ -25,6 +25,36 @@ class MaatwebsiteDemoController extends Controller
 		 $start_date = $request->input('start_date');
 		 $end_date = $request->input('end_date');
 
+		 $unique_customers = Load::select('customer_id')
+            ->groupBy('customer_id')
+            ->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+			->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+            ->get();
+
+         
+         $info = [];
+         foreach($unique_customers as $customer)
+         {
+
+         	$total = Load::where('customer_id', $customer->customer_id)->sum('amount_due');
+         	$cus = Load::where('customer_id', $customer->customer_id)->get();
+
+         	
+
+         	$info[] = [$total, $cus[0]->customer_name];
+
+
+         }
+
+
+         $info = ['info' => $info ];
+
+			Mail::send(['html'=>'email.customerTotals'], $info, function($message) use ($info){
+
+			$message->to('mikec@itransys.com')->subject("Customer Totals");
+
+        	});
+			
 
 		//$data = Item::get()->toArray();
 		$loads = Load::select('billed_date', 'approved_carrier_invoice', 'its_group', 'id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'customer_name', 'amount_due', 'carrier_name', 'carrier_rate', 'quick_pay_flag')
