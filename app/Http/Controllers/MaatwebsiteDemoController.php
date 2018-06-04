@@ -40,11 +40,12 @@ class MaatwebsiteDemoController extends Controller
          	->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
 			->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
 			->sum('amount_due');
+         	
          	$cus = Load::where('customer_id', $customer->customer_id)->get();
 
          	
 
-         	$info[] = [$total, $cus[0]->customer_name];
+         	$info[] = [$total, $cus[0]->customer_name, $cus[0]->customer_id];
 
 
          }
