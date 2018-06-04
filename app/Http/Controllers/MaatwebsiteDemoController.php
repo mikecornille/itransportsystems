@@ -36,7 +36,10 @@ class MaatwebsiteDemoController extends Controller
          foreach($unique_customers as $customer)
          {
 
-         	$total = Load::where('customer_id', $customer->customer_id)->sum('amount_due');
+         	$total = Load::where('customer_id', $customer->customer_id)
+         	->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+			->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+			->sum('amount_due');
          	$cus = Load::where('customer_id', $customer->customer_id)->get();
 
          	
