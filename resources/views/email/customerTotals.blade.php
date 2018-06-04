@@ -31,8 +31,8 @@ $count = $count - 1;
 	@for ($i = 0; $i <= $count; $i++)
     	<li>Company: {{ $info[$i][1] }}</li>
     	<li>ID: {{ $info[$i][2] }}</li>
-		<li>Total: {{ $info[$i][0] }}</li>
-		<br>
+		<li>Total: ${{ $info[$i][0] }}.00</li>
+		<br><br>
 	@endfor
 </ul>
 
