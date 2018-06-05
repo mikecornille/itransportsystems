@@ -48,11 +48,20 @@ class PDFController extends Controller
 
         //^^^Takes the user input dates and converts them to computer readable
 
-        //Assets - MB Financial Totals from Ledger
-        $payment_amount_totals = Ledger::sum('payment_amount');
-        $deposit_amount_totals = Ledger::sum('deposit_amount');
+        //Assets - MB Financial Bank Account Totals from Ledger
+        $payment_amount_totals = Ledger::whereBetween('date', [$start_date, $end_date])->sum('payment_amount');
+        $deposit_amount_totals = Ledger::whereBetween('date', [$start_date, $end_date])->sum('deposit_amount');
         $mbFinancialBalance = $deposit_amount_totals - $payment_amount_totals;
+
+        //Assets Money Market
+        $mm_payment_amount_totals = Journal::where('account_id', '39842')->whereBetween('created_at', [$start_date, $end_date])->sum('payment_amount');
+        $mm_deposit_amount_totals = Journal::where('account_id', '39842')->whereBetween('created_at', [$start_date, $end_date])->sum('deposit_amount');
+        $mm_FinancialBalance = $mm_deposit_amount_totals - $mm_payment_amount_totals;
+
         
+        
+
+
         $info = Ledger::where('type_description', 'Assets')->whereBetween('date', [$start_date, $end_date])->get();
 
         
@@ -63,7 +72,7 @@ class PDFController extends Controller
 
         
 
-        $pdf = PDF::loadView('pdf.balanceSheet',['info'=>$info, 'start_date'=>$start_date, 'end_date'=>$end_date, 'mbFinancialBalance'=>$mbFinancialBalance]);
+        $pdf = PDF::loadView('pdf.balanceSheet',['info'=>$info, 'start_date'=>$start_date, 'end_date'=>$end_date, 'mbFinancialBalance'=>$mbFinancialBalance, 'mm_FinancialBalance'=>$mm_FinancialBalance]);
     
         return $pdf->stream('BalanceSheet' . '_' . $start_date . '_' . $end_date . '.pdf');
         

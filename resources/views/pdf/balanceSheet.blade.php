@@ -48,7 +48,7 @@ th {
   <tr>
     
     <td>Money Market</td>
-    <td>$400,000</td>
+    <td>${{ $mm_FinancialBalance }}</td>
   </tr>
   
 </table>
