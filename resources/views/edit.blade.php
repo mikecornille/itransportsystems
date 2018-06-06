@@ -588,7 +588,7 @@
         @if (Auth::user()->accounting)
         <li class="dropdown-header">ACCOUNTING</li>
         <li><a href="{{ URL::to('/printCheck/' . $info->id) }}"><b>Print Check</b></a></li>
-        <li><a href="{{ URL::to('/achEmailNotify/' . $info->id) }}"><b>ACH Notify Email</b></a></li>
+        <li><a href="{{ URL::to('/achEmailNotify/' . $info->id) }}"><b>ACH Email, Download, Update</b></a></li>
         <li class="divider"></li>
         @endif
         <li class="dropdown-header">EMAILS WITH PDF</li>

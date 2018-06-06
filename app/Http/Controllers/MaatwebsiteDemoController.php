@@ -169,7 +169,50 @@ class MaatwebsiteDemoController extends Controller
 
         	});
 
-        return back()->with('status', 'Your ACH email notification has been sent!');
+
+        //Update the database 
+		date_default_timezone_set("America/Chicago");
+        $currentDate = Carbon::now();
+
+		\DB::table('loads')->where('id', $id)->update([
+			'carrierPayStatus' => "COMPLETED",
+			'upload_date' => $currentDate
+		]);
+
+
+
+		$carrier_invoices = Load::select('routing_number', 'account_number', 'carrier_rate', 'account_type', 'account_name', 'id')
+		->where('id', $id)->get();
+
+
+
+		$carrier_invoices->map(function ($carrier_invoices) {
+    			$carrier_invoices['addenda'] = 'This payment is from Intl Transport Systems on our PRO # ' . $carrier_invoices['id'];
+    			return $carrier_invoices;
+			});
+
+		 $carrier_invoices->map(function ($carrier_invoices) {
+    			$carrier_invoices['addenda_type'] = 'FRF';
+    			return $carrier_invoices;
+			});
+
+		 //Todays Date
+		date_default_timezone_set("America/Chicago");
+        
+  		$currentDate = Carbon::now();
+
+
+		return \Excel::create('ACH_Uploaded_On_' . $currentDate, function($excel) use ($carrier_invoices) {
+			$excel->sheet('mySheet', function($sheet) use ($carrier_invoices)
+	        {
+	        	
+				$sheet->fromArray($carrier_invoices);
+
+				$sheet->setColumnFormat(array('A'=>'0000'));
+
+			});
+
+		})->download('csv');
 	}
 
 	

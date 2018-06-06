@@ -58,7 +58,7 @@
 	  		{{ Form::select('account_type', 
 				[
 	  		 		'Checking' => 'Checking',
-			  		'Saving' => 'Saving',
+			  		'Savings' => 'Savings',
 				], null, ['placeholder' => 'Pick an account type...', 'class' => 'form-control']) }}
 		</div>
 	</div>
