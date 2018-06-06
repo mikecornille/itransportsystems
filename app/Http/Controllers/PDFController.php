@@ -58,21 +58,22 @@ class PDFController extends Controller
         $mm_deposit_amount_totals = Journal::where('account_id', '39842')->whereBetween('created_at', [$start_date, $end_date])->sum('deposit_amount');
         $mm_FinancialBalance = $mm_deposit_amount_totals - $mm_payment_amount_totals;
 
-        
-        
+        //Accounts Receivable (everything we have billed but not been paid on)
+        $accounts_receivable = Load::whereNotNull('billed_date')->where('customerPayStatus', 'OPEN')->where('billed_date', '!=', '')->sum('amount_due');
+
+        //Accounts Payable
+        $accounts_payable = Load::whereNotNull('vendor_invoice_date')->where('carrierPayStatus', 'APPRVD')->where('vendor_invoice_date', '!=', '')->sum('carrier_rate');
 
 
         $info = Ledger::where('type_description', 'Assets')->whereBetween('date', [$start_date, $end_date])->get();
 
         
-       
-
-        //i need to take an user freidnsly date and convert it into shit date
+       //i need to take an user freidnsly date and convert it into shit date
 
 
         
 
-        $pdf = PDF::loadView('pdf.balanceSheet',['info'=>$info, 'start_date'=>$start_date, 'end_date'=>$end_date, 'mbFinancialBalance'=>$mbFinancialBalance, 'mm_FinancialBalance'=>$mm_FinancialBalance]);
+        $pdf = PDF::loadView('pdf.balanceSheet',['info'=>$info, 'start_date'=>$start_date, 'end_date'=>$end_date, 'mbFinancialBalance'=>$mbFinancialBalance, 'mm_FinancialBalance'=>$mm_FinancialBalance, 'accounts_receivable'=>$accounts_receivable, 'accounts_payable'=>$accounts_payable]);
     
         return $pdf->stream('BalanceSheet' . '_' . $start_date . '_' . $end_date . '.pdf');
         
