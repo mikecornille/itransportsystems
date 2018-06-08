@@ -100,7 +100,7 @@ th {
   </tr>
   <tr>
     <td>Net Income</td>
-    <td>$100</td>
+    <td>${{ $net_income }}</td>
     
   </tr>
   <tr>

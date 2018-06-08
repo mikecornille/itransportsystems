@@ -74,7 +74,13 @@ class PDFController extends Controller
         $retained_earnings = Journal::where('account_id', '39912')->sum('deposit_amount');
 
         
+        //Net Income revenue - expenses
+        $revenue_calc = Ledger::where('type_description', 'Revenue')->whereBetween('date', [$start_date, $end_date])->sum('deposit_amount');
 
+        $expense_calc = Ledger::where('type_description', 'Expense')->whereBetween('date', [$start_date, $end_date])->sum('payment_amount');
+
+        
+        $net_income = $revenue_calc - $expense_calc;
 
         
 
@@ -86,7 +92,7 @@ class PDFController extends Controller
 
         
 
-        $pdf = PDF::loadView('pdf.balanceSheet',['info'=>$info, 'start_date'=>$start_date, 'end_date'=>$end_date, 'mbFinancialBalance'=>$mbFinancialBalance, 'mm_FinancialBalance'=>$mm_FinancialBalance, 'accounts_receivable'=>$accounts_receivable, 'accounts_payable'=>$accounts_payable, 'capital_stock'=>$capital_stock, 'distributions'=>$distributions, 'retained_earnings'=>$retained_earnings]);
+        $pdf = PDF::loadView('pdf.balanceSheet',['info'=>$info, 'start_date'=>$start_date, 'end_date'=>$end_date, 'mbFinancialBalance'=>$mbFinancialBalance, 'mm_FinancialBalance'=>$mm_FinancialBalance, 'accounts_receivable'=>$accounts_receivable, 'accounts_payable'=>$accounts_payable, 'capital_stock'=>$capital_stock, 'distributions'=>$distributions, 'retained_earnings'=>$retained_earnings, 'net_income'=>$net_income]);
     
         return $pdf->stream('BalanceSheet' . '_' . $start_date . '_' . $end_date . '.pdf');
         
