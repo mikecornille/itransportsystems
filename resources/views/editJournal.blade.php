@@ -3,23 +3,34 @@
 @section('content')
 
 <div class="container">
-
-
-         <div class="row">
-        <div class="col-md-8">
-            {!! Form::model($post, ['route' => ['journal.update', $post->id], 'method' => 'PUT']) !!}
-                @include('partials.journalForm', ['submitButtonText' => 'Update Journal'])
-            {!! Form::close() !!}
-        </div>
-
+    <div class="col-md-8">
+        {!! Form::model($post, ['route' => ['journal.update', $post->id], 'method' => 'PUT']) !!}
+            @include('partials.journalForm', ['submitButtonText' => 'Update Entry'])
+        {!! Form::close() !!}
+    </div>
+    <div class="row">
         <div class="col-md-4">
-            
-
-            {!! Html::linkRoute('journal.index', 'Back', array(), ['class' => 'btn btn-warning btn-block']) !!}
+            <form role="form" class="form-horizontal" method="POST" action="/journalAccountSearchEdit">
+                {{ csrf_field() }}
+                <input type="hidden" id="findJournalAccountsId" name="findJournalAccountsId" value="{{ $post->account_id }}">
+                <button style="margin-top: 15px;" type="submit" class="btn btn-warning" id="findJournalAccountsSubmit"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back to Profile</button>
+            </form>
+        </div>
+        <div style="margin-top: 15px;" class="col-md-4">
+            {!! Html::linkRoute('journal.index', 'New Journal Entry', array(), ['class' => 'btn btn-warning btn-block']) !!}
         </div>
     </div>
-             
+
+
+
+
+        
   
+
+
+
+
+
 
 </div>
 

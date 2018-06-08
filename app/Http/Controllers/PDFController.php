@@ -64,6 +64,16 @@ class PDFController extends Controller
         //Accounts Payable
         $accounts_payable = Load::whereNotNull('vendor_invoice_date')->where('carrierPayStatus', 'APPRVD')->where('vendor_invoice_date', '!=', '')->sum('carrier_rate');
 
+        //Capital Stock
+        $capital_stock = Journal::where('account_id', '39909')->sum('deposit_amount');
+
+        $distributions = Journal::where('type_description', 'Distributions')->whereBetween('created_at', [$start_date, $end_date])->sum('payment_amount');
+
+        //Retained Earnings Life to date accumulated earnings left in the company.
+        
+
+
+        
 
         $info = Ledger::where('type_description', 'Assets')->whereBetween('date', [$start_date, $end_date])->get();
 
@@ -73,7 +83,7 @@ class PDFController extends Controller
 
         
 
-        $pdf = PDF::loadView('pdf.balanceSheet',['info'=>$info, 'start_date'=>$start_date, 'end_date'=>$end_date, 'mbFinancialBalance'=>$mbFinancialBalance, 'mm_FinancialBalance'=>$mm_FinancialBalance, 'accounts_receivable'=>$accounts_receivable, 'accounts_payable'=>$accounts_payable]);
+        $pdf = PDF::loadView('pdf.balanceSheet',['info'=>$info, 'start_date'=>$start_date, 'end_date'=>$end_date, 'mbFinancialBalance'=>$mbFinancialBalance, 'mm_FinancialBalance'=>$mm_FinancialBalance, 'accounts_receivable'=>$accounts_receivable, 'accounts_payable'=>$accounts_payable, 'capital_stock'=>$capital_stock, 'distributions'=>$distributions]);
     
         return $pdf->stream('BalanceSheet' . '_' . $start_date . '_' . $end_date . '.pdf');
         

@@ -9,11 +9,11 @@ $id = "";
 
 
 <div class="container">
-	<h3>Journal Accounts Search</h3>
+	<h3>Accounts Search</h3>
 	<div class="row">
 		<div class="col-md-6">
 			<label class="label-control" for="find-journal-account">SEARCH</label>
-			<input type="text" class="form-control" id="find-journal-account" placeholder="Journal Account Search">
+			<input type="text" class="form-control" id="find-journal-account" placeholder="Account Search">
 		</div>
 
 	</div>
@@ -32,7 +32,7 @@ $id = "";
 	</div>
 
 	<div>
-		<h3>List of Journal Entry Accounts</h3>
+		<h3>Chart of Accounts</h3>
 		<ul>
 		@foreach($users as $user)
 

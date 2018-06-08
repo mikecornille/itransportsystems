@@ -35,7 +35,7 @@ th {
 </div>
 
 <div>
-	<center><h4>Balance Sheet for International Transport Systems, Inc. {{ $start_date }} to {{ $end_date }}</h4></center>
+	<center><h4>Balance Sheet International Transport Systems, Inc. {{ $start_date }} to {{ $end_date }}</h4></center>
 </div>
 
 <table>
@@ -95,17 +95,17 @@ th {
   </tr>
   <tr>
     <td>Retained Earnings</td>
-    <td>${{ $retained_earnings }}</td>
+    <td>$100</td>
     
   </tr>
   <tr>
     <td>Net Income</td>
-    <td>${{ $net_income }}</td>
+    <td>$100</td>
     
   </tr>
   <tr>
     <td><b><i>Total Equity</i></b></td>
-    <td><b><i>${{ $total_equity }}</i></b></td>
+    <td><b><i>$100</i></b></td>
   </tr>
 
 </table>

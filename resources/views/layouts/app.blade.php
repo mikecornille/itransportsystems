@@ -213,14 +213,14 @@
                                     <li><a href="{{ url('/customer_accounting') }}">Customer Search</a></li>
                                     <li><a href="{{ url('/carrier_accounting') }}">Carrier Search</a></li>
                                     <li><a href="{{ URL::to('/remit') }}">Factoring Info</a></li>
+                                    <li><a href="{{ url('/achCSV') }}">Create ACH Files</a></li>
+                                    <li><a href="{{ url('/positivePay') }}">Create Positive Pay</a></li>
                                     
                                     @if (Auth::user()->email == 'mikec@itransys.com' || Auth::user()->email == 'lianey@itransys.com')
                                     <li><a href="{{ url('/general_ledger') }}">Ledger</a></li>
-                                    <li><a href="{{ url('/journal') }}">Journal Entry</a></li>
-                                    <li><a href="{{ url('/achCSV') }}">Create ACH Files</a></li>
-                                    <li><a href="{{ url('/positivePay') }}">Create Positive Pay</a></li>
                                     <li><a href="{{ url('/generalLedgerFiles') }}">Generate Files</a></li>
-                                    <li><a href="{{ url('/journalAccountSearch') }}">Journal Account Search</a></li>
+                                    <li><a href="{{ url('/journal') }}">Journal Entry</a></li>
+                                    <li><a href="{{ url('/journalAccountSearch') }}">Chart of Accounts</a></li>
                                     @endif
                                
                                </ul>

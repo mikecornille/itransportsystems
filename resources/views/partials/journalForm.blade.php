@@ -1,10 +1,13 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-4">
 			<h3>Account Entry</h3>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-4">
 			<a href="newJournalEntry">Create New Account</a>
+		</div>
+		<div class="col-md-4">
+			<a href="payMultipleSubCategories">Pay Multiple Sub Categories</a>
 		</div>
 	</div>
 	<div class="row">
