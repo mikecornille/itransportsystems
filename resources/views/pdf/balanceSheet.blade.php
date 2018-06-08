@@ -119,6 +119,10 @@ th {
     <td><b><i>${{ $total_equity }}</i></b></td>
   </tr>
 
+ <tr>
+    <td><b><i>Total Liabilties & Equity</i></b></td>
+    <td><b><i>${{ $total_liabilties_equity }}</i></b></td>
+  </tr>
 </table>
 
 
