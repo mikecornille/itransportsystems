@@ -100,12 +100,17 @@ th {
   </tr>
   
   <tr>
-    <td>Retained Earnings</td>
+    <td>Retained Earnings  (QB Transfer Amount Yearly 2017)</td>
     <td>${{ $retained_earnings }}</td>
     
   </tr>
   <tr>
-    <td>Net Income</td>
+    <td>Net Income (QB Transfer Amount)</td>
+    <td>${{ $net_income_qb }}</td>
+    
+  </tr>
+  <tr>
+    <td>Net Income (ITS Maker)</td>
     <td>${{ $net_income }}</td>
     
   </tr>
