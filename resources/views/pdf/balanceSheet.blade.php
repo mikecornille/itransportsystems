@@ -95,7 +95,7 @@ th {
   </tr>
   <tr>
     <td>Retained Earnings</td>
-    <td>$100</td>
+    <td>${{ $retained_earnings }}</td>
     
   </tr>
   <tr>
