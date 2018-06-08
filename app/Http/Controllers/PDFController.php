@@ -90,6 +90,7 @@ class PDFController extends Controller
 
         $total_equity = $net_income - $distributions_its_maker;
         
+        $total_liabilties_equity = $total_equity + $accounts_payable;
 
         $info = Ledger::where('type_description', 'Assets')->whereBetween('date', [$start_date, $end_date])->get();
 
@@ -99,7 +100,7 @@ class PDFController extends Controller
 
         
 
-        $pdf = PDF::loadView('pdf.balanceSheet',['info'=>$info, 'start_date'=>$start_date, 'end_date'=>$end_date, 'mbFinancialBalance'=>$mbFinancialBalance, 'mm_FinancialBalance'=>$mm_FinancialBalance, 'accounts_receivable'=>$accounts_receivable, 'accounts_payable'=>$accounts_payable, 'capital_stock'=>$capital_stock, 'distributions'=>$distributions, 'retained_earnings'=>$retained_earnings, 'net_income'=>$net_income, 'distributions_its_maker'=>$distributions_its_maker, 'net_income_qb'=>$net_income_qb, 'total_equity'=>$total_equity]);
+        $pdf = PDF::loadView('pdf.balanceSheet',['info'=>$info, 'start_date'=>$start_date, 'end_date'=>$end_date, 'mbFinancialBalance'=>$mbFinancialBalance, 'mm_FinancialBalance'=>$mm_FinancialBalance, 'accounts_receivable'=>$accounts_receivable, 'accounts_payable'=>$accounts_payable, 'capital_stock'=>$capital_stock, 'distributions'=>$distributions, 'retained_earnings'=>$retained_earnings, 'net_income'=>$net_income, 'distributions_its_maker'=>$distributions_its_maker, 'net_income_qb'=>$net_income_qb, 'total_equity'=>$total_equity, 'total_liabilties_equity'=>$total_liabilties_equity]);
     
         return $pdf->stream('BalanceSheet' . '_' . $start_date . '_' . $end_date . '.pdf');
         
