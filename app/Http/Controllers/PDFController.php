@@ -69,7 +69,7 @@ class PDFController extends Controller
 
         $distributions = Journal::where('type_description', 'Distribution')->where('off_ledger', 'YES')->whereBetween('created_at', [$start_date, $end_date])->sum('payment_amount');
 
-        $distributions_its_maker = Ledger::where('type_description', 'Distribution')->whereBetween('created_at', [$start_date, $end_date])->sum('payment_amount');
+        $distributions_its_maker = Ledger::where('type_description', 'Distribution')->whereBetween('date', [$start_date, $end_date])->sum('payment_amount');
 
         //Retained Earnings Life to date accumulated earnings left in the company.
         //Get the retained earnings brought over from quickbooks
