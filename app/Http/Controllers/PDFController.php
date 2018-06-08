@@ -67,7 +67,7 @@ class PDFController extends Controller
         //Capital Stock
         $capital_stock = Journal::where('account_id', '39909')->sum('deposit_amount');
 
-        $distributions = Journal::where('type_description', 'Distributions')->whereBetween('created_at', [$start_date, $end_date])->sum('payment_amount');
+        $distributions = Journal::where('type_description', 'Distribution')->whereBetween('created_at', [$start_date, $end_date])->sum('payment_amount');
 
         //Retained Earnings Life to date accumulated earnings left in the company.
         //Get the retained earnings brought over from quickbooks
