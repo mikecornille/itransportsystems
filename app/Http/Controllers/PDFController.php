@@ -67,7 +67,9 @@ class PDFController extends Controller
         //Capital Stock
         $capital_stock = Journal::where('account_id', '39909')->sum('deposit_amount');
 
-        $distributions = Journal::where('type_description', 'Distribution')->whereBetween('created_at', [$start_date, $end_date])->sum('payment_amount');
+        $distributions = Journal::where('type_description', 'Distribution')->where('off_ledger', 'YES')->whereBetween('created_at', [$start_date, $end_date])->sum('payment_amount');
+
+        $distributions_its_maker = Ledger::where('type_description', 'Distribution')->whereBetween('created_at', [$start_date, $end_date])->sum('payment_amount');
 
         //Retained Earnings Life to date accumulated earnings left in the company.
         //Get the retained earnings brought over from quickbooks
@@ -92,7 +94,7 @@ class PDFController extends Controller
 
         
 
-        $pdf = PDF::loadView('pdf.balanceSheet',['info'=>$info, 'start_date'=>$start_date, 'end_date'=>$end_date, 'mbFinancialBalance'=>$mbFinancialBalance, 'mm_FinancialBalance'=>$mm_FinancialBalance, 'accounts_receivable'=>$accounts_receivable, 'accounts_payable'=>$accounts_payable, 'capital_stock'=>$capital_stock, 'distributions'=>$distributions, 'retained_earnings'=>$retained_earnings, 'net_income'=>$net_income]);
+        $pdf = PDF::loadView('pdf.balanceSheet',['info'=>$info, 'start_date'=>$start_date, 'end_date'=>$end_date, 'mbFinancialBalance'=>$mbFinancialBalance, 'mm_FinancialBalance'=>$mm_FinancialBalance, 'accounts_receivable'=>$accounts_receivable, 'accounts_payable'=>$accounts_payable, 'capital_stock'=>$capital_stock, 'distributions'=>$distributions, 'retained_earnings'=>$retained_earnings, 'net_income'=>$net_income, 'distributions_its_maker'=>$distributions_its_maker]);
     
         return $pdf->stream('BalanceSheet' . '_' . $start_date . '_' . $end_date . '.pdf');
         

@@ -89,10 +89,16 @@ th {
     
   </tr>
   <tr>
-    <td>Distributions</td>
+    <td>Distributions (QB Transfer Amount)</td>
     <td>${{ $distributions }}</td>
     
   </tr>
+  <tr>
+    <td>Distributions (ITS Maker)</td>
+    <td>${{ $distributions_its_maker }}</td>
+    
+  </tr>
+  
   <tr>
     <td>Retained Earnings</td>
     <td>${{ $retained_earnings }}</td>
