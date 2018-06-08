@@ -217,7 +217,7 @@
                                     <li><a href="{{ url('/positivePay') }}">Create Positive Pay</a></li>
                                     
                                     @if (Auth::user()->email == 'mikec@itransys.com' || Auth::user()->email == 'lianey@itransys.com')
-                                    <li><a href="{{ url('/general_ledger') }}">Ledger</a></li>
+                                    <li><a href="{{ url('/general_ledger') }}">Checking Account</a></li>
                                     <li><a href="{{ url('/generalLedgerFiles') }}">Generate Files</a></li>
                                     <li><a href="{{ url('/journal') }}">Journal Entry</a></li>
                                     <li><a href="{{ url('/journalAccountSearch') }}">Chart of Accounts</a></li>
