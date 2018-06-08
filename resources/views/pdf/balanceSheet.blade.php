@@ -84,7 +84,7 @@ th {
     <th></th>
   </tr>
   <tr>
-    <td>Capital Stock</td>
+    <td>Capital Stock (QB Transfer Amount)</td>
     <td>${{ $capital_stock }}</td>
     
   </tr>
@@ -116,7 +116,7 @@ th {
   </tr>
   <tr>
     <td><b><i>Total Equity</i></b></td>
-    <td><b><i>$100</i></b></td>
+    <td><b><i>${{ $total_equity }}</i></b></td>
   </tr>
 
 </table>

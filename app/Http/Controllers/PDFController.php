@@ -86,6 +86,9 @@ class PDFController extends Controller
 
         $net_income_qb = Journal::where('account_id', '39913')->sum('deposit_amount');
 
+
+
+        $total_equity = $net_income - $distributions_its_maker;
         
 
         $info = Ledger::where('type_description', 'Assets')->whereBetween('date', [$start_date, $end_date])->get();
@@ -96,7 +99,7 @@ class PDFController extends Controller
 
         
 
-        $pdf = PDF::loadView('pdf.balanceSheet',['info'=>$info, 'start_date'=>$start_date, 'end_date'=>$end_date, 'mbFinancialBalance'=>$mbFinancialBalance, 'mm_FinancialBalance'=>$mm_FinancialBalance, 'accounts_receivable'=>$accounts_receivable, 'accounts_payable'=>$accounts_payable, 'capital_stock'=>$capital_stock, 'distributions'=>$distributions, 'retained_earnings'=>$retained_earnings, 'net_income'=>$net_income, 'distributions_its_maker'=>$distributions_its_maker, 'net_income_qb'=>$net_income_qb]);
+        $pdf = PDF::loadView('pdf.balanceSheet',['info'=>$info, 'start_date'=>$start_date, 'end_date'=>$end_date, 'mbFinancialBalance'=>$mbFinancialBalance, 'mm_FinancialBalance'=>$mm_FinancialBalance, 'accounts_receivable'=>$accounts_receivable, 'accounts_payable'=>$accounts_payable, 'capital_stock'=>$capital_stock, 'distributions'=>$distributions, 'retained_earnings'=>$retained_earnings, 'net_income'=>$net_income, 'distributions_its_maker'=>$distributions_its_maker, 'net_income_qb'=>$net_income_qb, 'total_equity'=>$total_equity]);
     
         return $pdf->stream('BalanceSheet' . '_' . $start_date . '_' . $end_date . '.pdf');
         
