@@ -132,7 +132,7 @@ class MaatwebsiteDemoController extends Controller
 		
 
 
-		$loads = Load::select('billed_date', 'approved_carrier_invoice', 'vendor_invoice_date', 'id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'customer_name', 'customer_id', 'amount_due', 'carrier_name', 'carrier_rate')
+		$loads = Load::select('billed_date', 'approved_carrier_invoice', 'vendor_invoice_date', 'id', 'carrier_name', 'carrier_rate')
 		->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start}', '%m/%d/%Y')")
 		->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end}', '%m/%d/%Y')")
 		->where('carrierPayStatus', 'APPRVD')
