@@ -129,7 +129,7 @@ class MaatwebsiteDemoController extends Controller
 
 
 
-		$loads = Loads::select('billed_date', 'approved_carrier_invoice', 'id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'customer_name', 'customer_id', 'amount_due', 'carrier_name', 'carrier_rate')->whereBetween('date', [$start, $end])->orderBy('id', 'asc')->get();
+		$loads = Load::select('billed_date', 'approved_carrier_invoice', 'id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'customer_name', 'customer_id', 'amount_due', 'carrier_name', 'carrier_rate')->whereBetween('date', [$start, $end])->orderBy('id', 'asc')->get();
 		
 
 
