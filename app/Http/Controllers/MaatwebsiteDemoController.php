@@ -115,6 +115,34 @@ class MaatwebsiteDemoController extends Controller
 		})->download($type);
 	}
 
+	public function approvedCarrierBillsFile($type, Request $request)
+	{
+		$start = $request->input('start_date');
+		$end = $request->input('end_date');
+
+		$start = Carbon::createFromFormat('m/d/Y', $start, "America/Chicago");
+	    $end = Carbon::createFromFormat('m/d/Y', $end, "America/Chicago");
+
+	    $start = date("Y-m-d", strtotime($start));
+
+	    $end = date("Y-m-d", strtotime($end));
+
+
+
+		$loads = Loads::select('billed_date', 'approved_carrier_invoice', 'id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'customer_name', 'customer_id', 'amount_due', 'carrier_name', 'carrier_rate')->whereBetween('date', [$start, $end])->orderBy('id', 'asc')->get();
+		
+
+
+		return \Excel::create('Approved_Carrier_Invoices_' . $start . '_to_' . $end, function($excel) use ($loads) {
+			$excel->sheet('mySheet', function($sheet) use ($loads)
+	        {
+				$sheet->fromArray($loads);
+	        });
+		})->download($type);
+	}
+
+	
+
 	public function generalLedgerTargetType($type, Request $request)
 	{
 		$start = $request->input('start_date');

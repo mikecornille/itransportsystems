@@ -173,6 +173,37 @@
             
         </div> <!-- End row -->
     </div> <!-- End well -->
+
+    <div class="well">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Get All Approved Carrier Invoices (APPRVD)</h2>
+                    <form role="form" class="form-horizontal" method="POST" action="/approvedCarrierBillsFile/xlsx">
+
+                        {{ csrf_field() }}
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <label class="label-control" for="start_date">Start Date</label>
+                                        <input type="text" class="form-control" id="datepickerApprovedCarrierBills" name="start_date">
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="label-control" for="end_date">End Date</label>
+                                        <input type="text" class="form-control" id="datepickerApprovedCarrierBills2" name="end_date">
+                                    </div>
+                                </div>
+                                
+                                
+
+                            <button type="submit" style="margin-top: 10px;" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> GO</button>
+                            </div>
+                    </form>
+            </div>
+            
+            
+        </div> <!-- End row -->
+    </div> <!-- End well -->
 </div>
 
 

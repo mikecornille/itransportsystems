@@ -1591,6 +1591,12 @@ $('#datepicker_bs_start').datepicker();
 
 $('#datepicker_bs_end').datepicker();
 
+$('#datepickerApprovedCarrierBills').datepicker();
+
+$('#datepickerApprovedCarrierBills2').datepicker();
+
+
+
 
 
 $('#datepicker').on('changeDate', function(ev){
@@ -1718,6 +1724,14 @@ $('#datepicker_bs_start').on('changeDate', function(ev){
 });
 
 $('#datepicker_bs_end').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
+$('#datepickerApprovedCarrierBills').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
+
+$('#datepickerApprovedCarrierBills2').on('changeDate', function(ev){
     $(this).datepicker('hide');
 });
 
