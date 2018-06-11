@@ -120,16 +120,24 @@ class MaatwebsiteDemoController extends Controller
 		$start = $request->input('start_date');
 		$end = $request->input('end_date');
 
-		$start = Carbon::createFromFormat('m/d/Y', $start, "America/Chicago");
-	    $end = Carbon::createFromFormat('m/d/Y', $end, "America/Chicago");
+		// $start = Carbon::createFromFormat('m/d/Y', $start, "America/Chicago");
+	 //    $end = Carbon::createFromFormat('m/d/Y', $end, "America/Chicago");
 
-	    $start = date("Y-m-d", strtotime($start));
+	 //    $start = date("Y-m-d", strtotime($start));
 
-	    $end = date("Y-m-d", strtotime($end));
+	 //    $end = date("Y-m-d", strtotime($end));
 
 
 
-		$loads = Load::select('billed_date', 'approved_carrier_invoice', 'vendor_invoice_date', 'id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'customer_name', 'customer_id', 'amount_due', 'carrier_name', 'carrier_rate')->whereBetween('vendor_invoice_date', [$start, $end])->orderBy('id', 'asc')->get();
+		
+
+
+		$loads = Load::select('billed_date', 'approved_carrier_invoice', 'vendor_invoice_date', 'id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'customer_name', 'customer_id', 'amount_due', 'carrier_name', 'carrier_rate')
+		->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start}', '%m/%d/%Y')")
+		->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end}', '%m/%d/%Y')")
+		->where('carrierPayStatus', 'APPRVD')
+		->orderBy('id', 'asc')
+		->get();
 		
 
 
