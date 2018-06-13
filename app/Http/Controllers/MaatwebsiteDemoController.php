@@ -103,7 +103,7 @@ class MaatwebsiteDemoController extends Controller
 
 
 
-		$loads = Ledger::select('date', 'upload_date', 'reference_number', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->orderBy('id', 'asc')->get();
+		$loads = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->orderBy('id', 'asc')->get();
 		
 
 
