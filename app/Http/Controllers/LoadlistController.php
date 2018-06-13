@@ -86,7 +86,7 @@ class LoadlistController extends Controller
      public function storeFromQuote(Request $request)
   {
 
-    
+    date_default_timezone_set("America/Chicago");
     
      $this->validate($request, [
 
@@ -135,7 +135,7 @@ class LoadlistController extends Controller
   public function startLoadList(Request $request)
   {
 
-    
+    date_default_timezone_set("America/Chicago");
 
      $pick_city = $request->input('pick_city');
      $pick_state = $request->input('pick_state');
