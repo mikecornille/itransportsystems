@@ -57,6 +57,7 @@ class LoadlistController extends Controller
         $newload->countOutgoingCalls = 0;
         $newload->emailedOut = 0;
 		    $newload->created_by = strtoupper(\Auth::user()->email);
+        $newload->handler = "NOTES";
 
         $random_load_id = uniqid();
         $newload->group_number = $random_load_id;
@@ -121,9 +122,9 @@ class LoadlistController extends Controller
         $random_load_id = uniqid();
         $newload->group_number = $random_load_id;
 
-        $a=array("AM","LT","MK","RB");
-        $random_key=array_rand($a,1);
-        $newload->handler = $a[$random_key];
+        // $a=array("AM","LT","MK","RB");
+        // $random_key=array_rand($a,1);
+        $newload->handler = "NOTES";
         
         $newload->save();
 

@@ -434,8 +434,8 @@
         @elseif ($load[0]->handler === 'THOMPSON')
         <td><a style="color: #277F40" href="#" class="inactiveLink" title="Load Activity" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load[0]->notes_on_load }}">{{ $load[0]->handler }}</a></td>
 
-        @elseif ($load[0]->handler === 'MARTINEZ')
-        <td><a style="color: #E84C21" href="#" class="inactiveLink" title="Load Activity" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load[0]->notes_on_load }}">{{ $load[0]->handler }}</a></td>
+        @elseif ($load[0]->handler === 'NOTES')
+        <td><a style="color: #808080" href="#" class="inactiveLink" title="Load Activity" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load[0]->notes_on_load }}">{{ $load[0]->handler }}</a></td>
 
         @else
 
