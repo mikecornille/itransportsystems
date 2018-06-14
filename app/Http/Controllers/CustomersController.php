@@ -218,7 +218,9 @@ class CustomersController extends Controller
 
     //$data = Item::get()->toArray();
     $loads = Load::select('id', 'ref_number', 'pick_city', 'pick_state', 'pick_status', 'delivery_city', 'delivery_state', 'delivery_status', 'delivery_date', 'amount_due', 'billed_date')
-    ->where('customer_id', $id)->where('customerPayStatus', 'OPEN')->whereRaw('billed_date <> ""')
+    ->where('customer_id', $id)->where('customerPayStatus', 'OPEN')
+    ->whereRaw('billed_date <> ""')
+    ->whereRaw('pick_status <> "Towing"')
     ->orderByRaw('billed_date', 'desc')
     ->get();
 
