@@ -59,7 +59,9 @@
         <th>Pro</th>
         <th>Customer ID #</th>
         <th>Pick</th>
+        <th>Pick Status</th>
         <th>Delivery</th>
+        <th>Delivery Status</th>
         <th>Billed Date</th>
         <th>Amount Due</th>
         <th>Amount Paid</th>
@@ -80,9 +82,11 @@
       	<td><a href="/edit/url?id={{ $load->id }}">{{ $load->id }}</a></td>
       	<td>{{ $load->customer_id }}</td>
         <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
+        <td>{{ $load->pick_status }}</td>
         <td>{{ $load->delivery_city . ', ' . $load->delivery_state }}</td>
+        <td>{{ $load->delivery_status }}</td>
         <td>{{ $load->billed_date }}</td>
-		<td>{{ $load->amount_due }}</td>
+		    <td>{{ $load->amount_due }}</td>
         <td>{{ $load->paid_amount_from_customer }}</td>
         <td>{{ $load->payment_method_from_customer }}</td>
         <td>{{ $load->ref_or_check_num_from_customer }}</td>
@@ -104,11 +108,12 @@
         <th>Pro</th>
         <th>Customer ID #</th>
         <th>Pick</th>
+        <th>Pick Status</th>
         <th>Delivery</th>
+        <th>Delivery Status</th>
         <th>Billed Date</th>
         <th>Amount Due</th>
         <th>Amount Paid</th>
-        <th>Total Check Amount</th>
         <th>Payment Method</th>
         <th>Reference #</th>
         <th>Deposit Date</th>
@@ -126,11 +131,12 @@
       	<td><a href="/edit/url?id={{ $load->id }}">{{ $load->id }}</a></td>
       	<td>{{ $load->customer_id }}</td>
         <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
+        <td>{{ $load->pick_status }}</td>
         <td>{{ $load->delivery_city . ', ' . $load->delivery_state }}</td>
+        <td>{{ $load->delivery_status }}</td>
         <td>{{ $load->billed_date }}</td>
-		<td>{{ $load->amount_due }}</td>
+        <td>{{ $load->amount_due }}</td>
         <td>{{ $load->paid_amount_from_customer }}</td>
-        <td>{{ $load->totalCheckAmountFromCustomer }}</td>
         <td>{{ $load->payment_method_from_customer }}</td>
         <td>{{ $load->ref_or_check_num_from_customer }}</td>
         <td>{{ $load->deposit_date }}</td>
