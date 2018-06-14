@@ -40,7 +40,7 @@
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-          <li class="dropdown-header">Aging Report</li>
+          <li class="dropdown-header">Aging Report (pick status of towing does not show up)</li>
           <li><a href="{{ URL::to('/agingReport/' . $getCustomer->id) }}"><b>Aging Report</b></a></li>
         </ul>
       </div>
@@ -52,7 +52,7 @@
 
 </div>
 
-<h3 class="text-center"><u>Open Invoices - Total Owed: ${{ $sumOwedFromCustomer }}</u></h3>
+<h3 class="text-center"><u>Open Invoices (does not show records with towing or cancelled in pick status field) - Total Owed: ${{ $sumOwedFromCustomer }}</u></h3>
 <table class="table table-hover">
     <thead>
       <tr>

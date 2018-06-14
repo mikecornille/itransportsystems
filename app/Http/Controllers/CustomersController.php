@@ -122,7 +122,7 @@ class CustomersController extends Controller
             $getCustomer = Customer::findOrFail($id);
 
             //Find all the loads for the customer that need to be paid
-            $getCustomerLoadsNotPaid = Load::where('customer_id', "=", $getCustomer->id)->where('customerPayStatus', "=", "OPEN")->get();
+            $getCustomerLoadsNotPaid = Load::where('customer_id', "=", $getCustomer->id)->where('customerPayStatus', "=", "OPEN")->where('pick_status', '!=', 'Towing')->where('pick_status', '!=', 'Cancelled')->get();
 
             $getCustomerLoadsPaid = Load::where('customer_id', "=", $getCustomer->id)->where('customerPayStatus', "=", "PAID")->get();
 
@@ -154,7 +154,7 @@ class CustomersController extends Controller
    	{
 
    		//Get all the open loads
-   		$open_loads = Load::where('customer_id', "=", $id)->where('customerPayStatus', '=', "OPEN")->get();
+   		$open_loads = Load::where('customer_id', "=", $id)->where('customerPayStatus', '=', "OPEN")->where('pick_status', '!=', 'Towing')->where('pick_status', '!=', 'Cancelled')->get();
 
    		//Get the customer
    		$customer = Customer::findOrFail($id);
