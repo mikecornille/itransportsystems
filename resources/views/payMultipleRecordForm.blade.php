@@ -52,6 +52,8 @@
     <thead>
       <tr>
         <th>PRO #</th>
+        <th>PICK STATUS</th>
+        <th>DELIVERY STATUS</th>
         <th>AMOUNT DUE</th>
         <th>AMOUNT PAID (expected value provided)</th>
         <th>NEW PAY STATUS</th>
@@ -67,6 +69,8 @@
 
 <tr class="loadlist_row alt-colors">
         <td>{{ $load->id }}</td>
+        <td>{{ $load->pick_status }}</td>
+        <td>{{ $load->delivery_status }}</td>
         <td>{{ $load->amount_due }}</td>
         <td><input type="text" class="form-control" id="paid_amount_from_customer" name="paid_amount_from_customer[{{ $load->id }}]" value="{{ $load->amount_due }}"></td>
         <td><label class="radio-inline"><input class="radio-buttons" type="radio" id="{{ $load->id }}" data-amount="{{ $load->amount_due }}" name="customerPayStatus[{{ $load->id }}]" value="PAID">PAID</label>
