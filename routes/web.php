@@ -58,6 +58,9 @@ Route::get('/ach_no_carrier_found', function () {
 
          Route::get('achEmailNotify/{id}', 'MaatwebsiteDemoController@achEmailNotify');
 
+         Route::get('achEmailOnlyNotify/{id}', 'MaatwebsiteDemoController@achEmailOnlyNotify');
+         
+
          Route::get('/positivePay', function() {
             return view('/positivePay');
         });

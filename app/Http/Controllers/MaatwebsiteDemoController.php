@@ -251,6 +251,27 @@ class MaatwebsiteDemoController extends Controller
 		})->download('csv');
 	}
 
+
+	public function achEmailOnlyNotify($id)
+	{
+		
+		$load = Load::findOrFail($id);
+
+		$info = ['info' => $load ];
+
+			Mail::send(['html'=>'email.sendEmailToVendorReceivingACH'], $info, function($message) use ($info){
+
+			$message->to($info['info']['accounting_email'])->subject("ACH Payment Notice from ITS for PRO # " . $info['info']['id'])
+			->from('lianey@itransys.com', 'Liane')
+			->replyTo('lianey@itransys.com', 'Liane')
+			->sender('lianey@itransys.com', 'Liane');
+
+        	});
+
+
+		return back()->with('status', 'You Sent an ACH Email Notification.');
+	}
+
 	
 
 	public function achCSV($type, Request $request)
