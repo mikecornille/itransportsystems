@@ -62,6 +62,11 @@
 					'Office Supplies' => 'Office Supplies',
 					'Computer Supplies' => 'Computer Supplies',
 					'Insurance' => 'Insurance',
+					'Cargo Insurance' => 'Cargo Insurance',
+					'Automobile Insurance' => 'Automobile Insurance',
+					'Workmans Comp Insurance' => 'Workmans Comp Insurance',
+					'General Liability Insurance' => 'General Liability Insurance',
+					'Health Insurance' => 'Health Insurance',
 					'Subscriptions and Services' => 'Subscriptions and Services',
 					'Rent' => 'Rent',
 					'Travel' => 'Travel',
@@ -84,7 +89,10 @@
 					'Capital Stock' => 'Capital Stock',
 					'Retained Earnings' => 'Retained Earnings',
 					'Net Income' => 'Net Income',
-					'Employee Parking' => 'Employee Parking'
+					'Employee Parking' => 'Employee Parking',
+					'Bank Service Charges' => 'Bank Service Charges',
+					'Income Tax Payment' => 'Income Tax Payment'
+
 					
 	  		
 				], null, ['placeholder' => 'Pick a sub description...', 'class' => 'form-control']) }}
