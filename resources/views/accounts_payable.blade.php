@@ -3,12 +3,12 @@
 @section('content')
 
 
-<h1 class="text-center">Accounts Payable - ${{ $owed }} <small>vendor date = not null, not empty, carrier pay status = APPRVD</small></h1>
+<h1 class="text-center">Accounts Payable - ${{ $owed }} <small>All PRO #'s where vendor date has data and carrier pay status = APPRVD</small></h1>
 
 <div class="well">
         <div class="row">
-            <div class="col-md-3">
-                <h2>Target Type</h2>
+            <div class="col-md-4">
+                <h2>Select Date Range <small>Will pull from the vendor invoice date</small></h2>
                     <form role="form" class="form-horizontal" method="POST" action="/accountsPayableExcelFile/xlsx">
 
                         {{ csrf_field() }}

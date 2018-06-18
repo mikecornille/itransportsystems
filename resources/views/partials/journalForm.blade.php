@@ -148,7 +148,7 @@
 			{{ Form::text('deposit_amount', null, ['class' => 'form-control']) }}
 		</div>
 	</div>
-	<h3>Off Ledger?</h3>
+	<h3>Keep Off Checking Account?</h3>
 	<div class="row">
 		<div class="col-md-3">
 			YES{{ Form::radio('off_ledger', 'YES') }}

@@ -220,7 +220,7 @@
                                     <li><a href="{{ url('/general_ledger') }}">Checking Account</a></li>
                                     <li><a href="{{ url('/generalLedgerFiles') }}">Generate Files</a></li>
                                     <li><a href="{{ url('/journal') }}">Journal Entry</a></li>
-                                    <li><a href="{{ url('/journalAccountSearch') }}">Chart of Accounts</a></li>
+                                    <li><a href="{{ url('/journalAccountSearch') }}">Created Accounts</a></li>
                                     @endif
                                
                                </ul>
