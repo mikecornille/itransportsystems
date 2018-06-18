@@ -82,6 +82,7 @@
 					'Personal' => 'Personal',
 					'Refund' => 'Refund',
 					'Freight Cost' => 'Freight Cost',
+					'Freight Sales' => 'Freight Sales',
 					'Income Collected' => 'Income Collected',
 					'Bank Loan' => 'Bank Loan',
 					'Cash Transfer' => 'Cash Transfer',

@@ -3,7 +3,7 @@
 @section('content')
 
 
-<h1 class="text-center">Accounts Payable - ${{ $owed }} <small>All PRO #'s where vendor date has data and carrier pay status = APPRVD</small></h1>
+<h1 class="text-center">Freight Cost - ${{ $owed }} <small>All PRO #'s with an approved carrier invoice not yet paid</small></h1>
 
 <div class="well">
         <div class="row">

@@ -625,7 +625,7 @@ Artisan::command('insertLedgerRecords', function () {
 			'pro_number' => $customer->id,
 			'type' => "PMT",
 			'type_description' => "Revenue",
-			'type_description_sub' => "Income Collected",
+			'type_description_sub' => "Freight Sales",
 			'date' => $customer->getAttributes()['deposit_date'],
 			'reference_number' => $customer->ref_or_check_num_from_customer,
 			'account_name' => $customer->customer_name,
