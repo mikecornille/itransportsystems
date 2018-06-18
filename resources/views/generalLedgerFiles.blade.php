@@ -11,7 +11,7 @@
     <div class="well">
         <div class="row">
             <div class="col-md-4">
-                <h2>Target Type</h2>
+                <h2>Target type from ledger</h2>
                     <form role="form" class="form-horizontal" method="POST" action="/generalLedgerTargetType/xlsx">
 
                         {{ csrf_field() }}
@@ -48,7 +48,7 @@
                     </form>
             </div>
             <div class="col-md-4 col-md-offset-4">
-                <h2>All Data Excel</h2>
+                <h2>All data from ledger</h2>
                     <form role="form" class="form-horizontal" method="POST" action="/generalLedgerExcel/xlsx">
 
                         {{ csrf_field() }}
@@ -125,7 +125,7 @@
     <div class="well">
         <div class="row">
             <div class="col-md-4">
-                <h2>Cleared Ledger</h2>
+                <h2>All data from ledger with only cleared checks</h2>
                     <form role="form" class="form-horizontal" method="POST" action="/generalLedgerTargetCheckPaid">
 
                         {{ csrf_field() }}
@@ -137,7 +137,7 @@
                                         <input type="text" class="form-control" id="datepickerClearedChecks" name="start_date">
                                     </div>
                                     <div class="col-xs-4">
-                                        <label class="label-control" for="end_date">End Date</label>
+                                        <label class="label-control" for="end_date">End Date (+1)</label>
                                         <input type="text" class="form-control" id="datepickerClearedChecks2" name="end_date">
                                     </div>
                                 </div>
@@ -177,7 +177,7 @@
     <div class="well">
         <div class="row">
             <div class="col-md-4">
-                <h2>Get All Approved Carrier Invoices (APPRVD)</h2>
+                <h2>All approved carrier invoices</h2>
                     <form role="form" class="form-horizontal" method="POST" action="/approvedCarrierBillsFile/xlsx">
 
                         {{ csrf_field() }}

@@ -74,7 +74,7 @@ Route::get('/ach_no_carrier_found', function () {
          
          Route::post('exportPositivePay/{type}', 'MaatwebsiteDemoController@exportPositivePay');
 
-         Route::post('generalLedgerTargetCheckPaid', 'PDFController@generalLedgerTargetCheckPaid');
+         Route::post('generalLedgerTargetCheckPaid', 'MaatwebsiteDemoController@generalLedgerTargetCheckPaid');
 
          Route::post('balanceSheet', 'PDFController@balanceSheet');
 

@@ -20,6 +20,35 @@ use Carbon\Carbon;
 class MaatwebsiteDemoController extends Controller
 {
 
+	public function generalLedgerTargetCheckPaid(Request $request)
+	{
+		$start = $request->input('start_date');
+		$end = $request->input('end_date');
+		
+
+		$start = Carbon::createFromFormat('m/d/Y', $start, "America/Chicago");
+	    $end = Carbon::createFromFormat('m/d/Y', $end, "America/Chicago");
+
+	    $start = date("Y-m-d", strtotime($start));
+		$end = date("Y-m-d", strtotime($end));
+
+		$loads = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('cleared', 'YES')->orderBy('id', 'asc')->get();
+		
+
+
+		return \Excel::create('Ledger_Cleared_Checks' . $start . '_to_' . $end, function($excel) use ($loads) {
+			$excel->sheet('mySheet', function($sheet) use ($loads)
+	        {
+				$sheet->fromArray($loads);
+	        });
+		})->download('csv');
+		
+
+		
+	}
+
+
+
 	public function getProfitReport($type, Request $request)
 	{
 		 $start_date = $request->input('start_date');
