@@ -843,3 +843,5 @@ Artisan::command('import:clearedChecksInJournal {filename}', function($filename)
 	fclose($file);
 });
 
+
+

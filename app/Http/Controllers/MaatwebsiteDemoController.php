@@ -37,13 +37,19 @@ class MaatwebsiteDemoController extends Controller
 		->whereRaw("STR_TO_DATE(`cleared_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_raw}', '%m/%d/%Y')")
 		->whereRaw("STR_TO_DATE(`cleared_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_raw}', '%m/%d/%Y')")
 		->orderBy('id', 'asc')->get();
+
+
+		$revenue = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('type_description', 'Revenue')->orderBy('id', 'asc')->get();
+
+
 		
 
 
-		return \Excel::create('Ledger_Cleared_Checks' . $start . '_to_' . $end, function($excel) use ($cleared_checks) {
-			$excel->sheet('mySheet', function($sheet) use ($cleared_checks)
+		return \Excel::create('Ledger_Cleared_Checks' . $start . '_to_' . $end, function($excel) use ($cleared_checks, $revenue) {
+			$excel->sheet('mySheet', function($sheet) use ($cleared_checks, $revenue)
 	        {
 				$sheet->fromArray($cleared_checks);
+				$sheet->fromArray($revenue);
 				
 	        });
 		})->download('csv');
