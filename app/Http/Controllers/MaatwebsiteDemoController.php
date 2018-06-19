@@ -22,24 +22,29 @@ class MaatwebsiteDemoController extends Controller
 
 	public function generalLedgerTargetCheckPaid(Request $request)
 	{
-		$start = $request->input('start_date');
-		$end = $request->input('end_date');
+		$start_raw = $request->input('start_date');
+		$end_raw = $request->input('end_date');
 		
 
-		$start = Carbon::createFromFormat('m/d/Y', $start, "America/Chicago");
-	    $end = Carbon::createFromFormat('m/d/Y', $end, "America/Chicago");
+		$start = Carbon::createFromFormat('m/d/Y', $start_raw, "America/Chicago");
+	    $end = Carbon::createFromFormat('m/d/Y', $end_raw, "America/Chicago");
 
 	    $start = date("Y-m-d", strtotime($start));
 		$end = date("Y-m-d", strtotime($end));
 
-		$loads = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('cleared', 'YES')->orderBy('id', 'asc')->get();
+		//this is taken from the cleared date only since this will be used to balance with cleared checks in bank
+		$cleared_checks = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')
+		->whereRaw("STR_TO_DATE(`cleared_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_raw}', '%m/%d/%Y')")
+		->whereRaw("STR_TO_DATE(`cleared_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_raw}', '%m/%d/%Y')")
+		->orderBy('id', 'asc')->get();
 		
 
 
-		return \Excel::create('Ledger_Cleared_Checks' . $start . '_to_' . $end, function($excel) use ($loads) {
-			$excel->sheet('mySheet', function($sheet) use ($loads)
+		return \Excel::create('Ledger_Cleared_Checks' . $start . '_to_' . $end, function($excel) use ($cleared_checks) {
+			$excel->sheet('mySheet', function($sheet) use ($cleared_checks)
 	        {
-				$sheet->fromArray($loads);
+				$sheet->fromArray($cleared_checks);
+				
 	        });
 		})->download('csv');
 		
