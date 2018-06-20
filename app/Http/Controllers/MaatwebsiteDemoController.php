@@ -161,7 +161,7 @@ class MaatwebsiteDemoController extends Controller
 	{
 		
 
-	$loads = Load::select('id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'customer_name', 'customer_id', 'amount_due', 'carrier_name', 'carrier_rate', 'carrier_contact', 'carrier_email', 'carrier_phone', 'pick_date', 'pick_status', 'delivery_date', 'delivery_status')->where('delivery_status', 'Delivered')->where('billed_date','')->orderBy('id', 'asc')->get();
+	$loads = Load::select('id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'customer_name', 'customer_id', 'amount_due', 'carrier_name', 'carrier_rate', 'carrier_contact', 'carrier_email', 'carrier_phone', 'pick_date', 'pick_status', 'delivery_date', 'delivery_status')->where('delivery_status', 'Delivered')->where('billed_date','')->where('pick_status', '!=', 'Cancelled')->orderBy('id', 'asc')->get();
 		
 
 
