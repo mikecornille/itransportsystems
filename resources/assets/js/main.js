@@ -1843,7 +1843,6 @@ $('#delivery_time').val('0700');
 $('#pick_time').val('0700');
 $('#quick_status_notes').val('');
 $('#datepicker6').val('');
-$('#datepicker7').val('');
 $('#remit_name').val('');
 $('#remit_address').val('');
 $('#remit_city').val('');
