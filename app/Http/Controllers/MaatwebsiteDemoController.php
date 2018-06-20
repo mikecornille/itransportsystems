@@ -155,6 +155,24 @@ class MaatwebsiteDemoController extends Controller
 		})->download($type);
 	}
 
+	
+
+	public function allNeededPODs()
+	{
+		
+
+	$loads = Load::select('id', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'customer_name', 'customer_id', 'amount_due', 'carrier_name', 'carrier_rate', 'carrier_contact', 'carrier_email', 'carrier_phone', 'pick_date', 'pick_status', 'delivery_date', 'delivery_status')->where('delivery_status', 'Delivered')->where('billed_date','')->orderBy('id', 'asc')->get();
+		
+
+
+		return \Excel::create('Need_POD', function($excel) use ($loads) {
+			$excel->sheet('mySheet', function($sheet) use ($loads)
+	        {
+				$sheet->fromArray($loads);
+	        });
+		})->download('csv');
+	}
+
 	public function approvedCarrierBillsFile($type, Request $request)
 	{
 		$start = $request->input('start_date');
