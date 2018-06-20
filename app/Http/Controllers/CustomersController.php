@@ -217,6 +217,7 @@ class CustomersController extends Controller
         $currentDate = date('m-d-Y');
 
     //$data = Item::get()->toArray();
+    //we dont have to check for cancelled bc those will not have a billed date
     $loads = Load::select('id', 'ref_number', 'pick_city', 'pick_state', 'pick_status', 'delivery_city', 'delivery_state', 'delivery_status', 'delivery_date', 'amount_due', 'billed_date')
     ->where('customer_id', $id)->where('customerPayStatus', 'OPEN')
     ->whereRaw('billed_date <> ""')

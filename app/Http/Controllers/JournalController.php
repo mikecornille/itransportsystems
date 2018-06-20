@@ -186,4 +186,32 @@ class JournalController extends Controller
 
         return view('journalAccountSearch', compact($users, 'users'));
     }
+
+    public function creditCardStore(Request $request)
+    {
+        date_default_timezone_set("America/Chicago");
+
+        foreach($request->counter as $count)
+            {
+
+                if(!empty($request->payment_amount[$count])){
+                
+                $store = New Journal();
+                $store->account_name = $request->account_name;
+                $store->account_id = $request->account_id;
+                $store->invoice_date_journal = $request->invoice_date_journal;
+                $store->payment_method = $request->payment_method;
+                $store->payment_amount = $request->payment_amount[$count];
+                $store->payment_cents = $request->payment_cents[$count];
+                $store->type_description_sub = $request->type_description_sub[$count];
+                $store->type = "BILLPMT";
+                $store->type_description = "Expense";
+                $store->save();
+                }
+            }
+
+
+        return back();
+    
+}
 }

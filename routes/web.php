@@ -52,6 +52,9 @@ Route::get('/ach_no_carrier_found', function () {
          Route::get('/carrierAccoutingEditFromAccountsPayablePage/{id}', 'HaulerController@carrierAccoutingEditFromAccountsPayablePage');
          Route::put('/customer_accounting_update/{id}', 'CustomersController@CustomerAccountingUpdate')->name('customer_accounting_update');
 
+         Route::post('/creditCardStore', 'JournalController@creditCardStore')->name('journal.creditCardStore');
+         
+
          Route::resource('employee', 'EmployeeController');
 
          Route::resource('budget', 'BudgetController');
@@ -89,6 +92,10 @@ Route::get('/ach_no_carrier_found', function () {
          Route::post('approvedCarrierBillsFile/{type}', 'MaatwebsiteDemoController@approvedCarrierBillsFile');
          
          
+         
+          Route::get('/payMultipleSubCategories', function() {
+            return view('/payMultipleSubCategories');
+        });
 
      
 

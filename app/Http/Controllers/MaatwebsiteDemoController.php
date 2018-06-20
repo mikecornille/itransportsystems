@@ -506,13 +506,19 @@ class MaatwebsiteDemoController extends Controller
 		 //Customer Invoice Import
 		 $positivePayDate = $request->input('positivePay');
 
+
+
 		 //Convert time
 		 $positivePayDate = Carbon::createFromFormat('m/d/Y', $positivePayDate);
 
 		 $positivePayDate = $positivePayDate->toDateString();
+
+
 		 
 		
 		$positivePayResults = Load::select('vendor_check_number', 'upload_date', 'carrier_name', 'carrier_rate')->whereDate('upload_date', $positivePayDate)->where('payment_method', 'CHECK')->orderBy('id', 'desc')->get();
+
+
 
 		
 		$positivePayResults->transform(function($positivePayResults) {

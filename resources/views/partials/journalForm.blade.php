@@ -7,7 +7,7 @@
 			<a href="newJournalEntry">Create New Account</a>
 		</div>
 		<div class="col-md-4">
-			<a href="payMultipleSubCategories">Pay Multiple Sub Categories</a>
+			<a href="payMultipleSubCategories">Pay Multiple Credit Card Sub Categories</a>
 		</div>
 	</div>
 	<div class="row">
