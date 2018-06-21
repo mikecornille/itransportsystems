@@ -43,12 +43,14 @@ class MaatwebsiteDemoController extends Controller
 		$unique_ref_numbers = Ledger::select('reference_number')
             ->groupBy('reference_number')
             ->whereBetween('date', [$start, $end])
+            ->where('type_description', 'Revenue')
             ->get();
 
 
         $unique_ref_numbers_count = Ledger::select('reference_number')
             ->groupBy('reference_number')
             ->whereBetween('date', [$start, $end])
+            ->where('type_description', 'Revenue')
             ->count();
 
 
@@ -63,6 +65,7 @@ class MaatwebsiteDemoController extends Controller
          {
     
          	$queryResult = Ledger::where('reference_number', $unique_ref_numbers[$x]->reference_number)
+         	->where('type_description', 'Revenue')
          	->sum('deposit_amount');
     	
 
