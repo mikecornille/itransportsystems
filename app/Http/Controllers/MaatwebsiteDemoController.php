@@ -39,6 +39,53 @@ class MaatwebsiteDemoController extends Controller
 		->orderBy('id', 'asc')->get();
 
 
+		//consolidate all the reference numbers
+		$unique_ref_numbers = Ledger::select('reference_number')
+            ->groupBy('reference_number')
+            ->whereBetween('date', [$start, $end])
+            ->get();
+
+
+        $unique_ref_numbers_count = Ledger::select('reference_number')
+            ->groupBy('reference_number')
+            ->whereBetween('date', [$start, $end])
+            ->count();
+
+
+
+            
+
+          
+         //initialize array and save into database
+         $unique_ref_numbers_result = [];
+
+         for ($x = 0; $x <= ($unique_ref_numbers_count - 1); $x++) 
+         {
+    
+         	$queryResult = Ledger::where('reference_number', $unique_ref_numbers[$x]->reference_number)
+         	->sum('deposit_amount');
+    	
+
+         	$unique_ref_numbers_result[] = $unique_ref_numbers[$x]->reference_number . ' $' . $queryResult;
+
+		} 	
+
+
+		$info = ['info' => $unique_ref_numbers_result];
+
+
+
+			Mail::send(['html'=>'email.implodedRefNumbers'], $info, function($message) use ($info){
+			$message->to('mikec@itransys.com')->subject("Imploded Reference Numbers")
+			->from('mikec@itransys.com', 'Mike')
+			->replyTo('mikec@itransys.com', 'Mike')
+			->sender('mikec@itransys.com', 'Mike');
+
+        	});
+
+         
+
+
 		$revenue = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('type_description', 'Revenue')->orderBy('id', 'asc')->get();
 
 
@@ -50,6 +97,8 @@ class MaatwebsiteDemoController extends Controller
 	        {
 				$sheet->fromArray($cleared_checks);
 				$sheet->fromArray($revenue);
+				
+				
 				
 	        });
 		})->download('csv');
