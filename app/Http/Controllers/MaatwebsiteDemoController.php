@@ -55,6 +55,8 @@ class MaatwebsiteDemoController extends Controller
 
 
          
+    
+
             
 
           
@@ -63,13 +65,22 @@ class MaatwebsiteDemoController extends Controller
 
          for ($x = 0; $x <= ($unique_ref_numbers_count - 1); $x++) 
          {
-    
-         	$queryResult = Ledger::where('reference_number', $unique_ref_numbers[$x]->reference_number)
+
+         	if(preg_match("/[a-z]/i", $unique_ref_numbers[$x]->reference_number))
+         		{
+         			continue; 
+         		}
+         	else
+         	{
+         		$queryResult = Ledger::where('reference_number', $unique_ref_numbers[$x]->reference_number)
          	->where('type_description', 'Revenue')
          	->sum('deposit_amount');
     	
 
          	$unique_ref_numbers_result[] = $unique_ref_numbers[$x]->reference_number . ' $' . $queryResult;
+         	}
+    
+         	
 
 		} 	
 
