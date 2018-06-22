@@ -47,6 +47,7 @@ class MaatwebsiteDemoController extends Controller
             ->get();
 
 
+
         $unique_ref_numbers_count = Ledger::select('reference_number')
             ->groupBy('reference_number')
             ->whereBetween('date', [$start, $end])
@@ -54,30 +55,29 @@ class MaatwebsiteDemoController extends Controller
             ->count();
 
 
-         dd($unique_ref_numbers);
+         
     
 
             
 
           
-         //initialize array and save into database
+         //initialize array 
          $unique_ref_numbers_result = [];
 
          for ($x = 0; $x <= ($unique_ref_numbers_count - 1); $x++) 
          {
 
-         	if(preg_match("/[a-z]/i", $unique_ref_numbers[$x]->reference_number))
+         	if(isset($unique_ref_numbers[$x]->reference_number) && !preg_match("/[a-z]/i", $unique_ref_numbers[$x]->reference_number))
          		{
-         			continue; 
+         			$queryResult = Ledger::where('reference_number', $unique_ref_numbers[$x]->reference_number)
+         			->where('type_description', 'Revenue')
+         			->sum('deposit_amount');
+    	
+					$unique_ref_numbers_result[] = $unique_ref_numbers[$x]->reference_number . ' $' . $queryResult;
          		}
          	else
          	{
-         		$queryResult = Ledger::where('reference_number', $unique_ref_numbers[$x]->reference_number)
-         	->where('type_description', 'Revenue')
-         	->sum('deposit_amount');
-    	
-
-         	$unique_ref_numbers_result[] = $unique_ref_numbers[$x]->reference_number . ' $' . $queryResult;
+         		continue;
          	}
     
          	
