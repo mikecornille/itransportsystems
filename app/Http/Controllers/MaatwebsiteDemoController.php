@@ -47,6 +47,7 @@ class MaatwebsiteDemoController extends Controller
             ->get();
 
 
+         dd($unique_ref_numbers);
 
         $unique_ref_numbers_count = Ledger::select('reference_number')
             ->groupBy('reference_number')
