@@ -47,13 +47,15 @@ class MaatwebsiteDemoController extends Controller
             ->get();
 
 
-         
+            $loop_count = count($unique_ref_numbers);
 
-        $unique_ref_numbers_count = Ledger::select('reference_number')
-            ->groupBy('reference_number')
-            ->whereBetween('date', [$start, $end])
-            ->where('type_description', 'Revenue')
-            ->count();
+            
+
+        // $unique_ref_numbers_count = Ledger::select('reference_number')
+        //     ->groupBy('reference_number')
+        //     ->whereBetween('date', [$start, $end])
+        //     ->where('type_description', 'Revenue')
+        //     ->count();
 
 
          
@@ -65,7 +67,7 @@ class MaatwebsiteDemoController extends Controller
          //initialize array 
          $unique_ref_numbers_result = [];
 
-         for ($x = 0; $x <= ($unique_ref_numbers_count - 1); $x++) 
+         for ($x = 0; $x <= ($loop_count - 1); $x++) 
          {
 
          	if(isset($unique_ref_numbers[$x]->reference_number) && !preg_match("/[a-z]/i", $unique_ref_numbers[$x]->reference_number))
