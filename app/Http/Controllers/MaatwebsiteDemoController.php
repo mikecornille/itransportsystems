@@ -51,20 +51,6 @@ class MaatwebsiteDemoController extends Controller
 
 
 
-        // $unique_ref_numbers_count = Ledger::select('reference_number')
-        //     ->groupBy('reference_number')
-        //     ->whereBetween('date', [$start, $end])
-        //     ->where('type_description', 'Revenue')
-        //     ->count();
-
-
-         
-    
-
-             //&& !preg_match("/[a-z]/i", $unique_ref_numbers[$x]->reference_number)
-
-          
-         //initialize array 
          $unique_ref_numbers_result = [];
 
          for ($x = 0; $x <= ($loop_count - 1); $x++) 
@@ -113,7 +99,25 @@ class MaatwebsiteDemoController extends Controller
 		$revenue = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('type_description', 'Revenue')->orderBy('id', 'asc')->get();
 
 
+		//get the sum of all ach payments that day
+		//get all the dates
+		$achSums = [];
+		$endDay = date("d", strtotime($end)); //for counting
 		
+		for ($x = 1; $x <= $endDay; $x++) 
+        {
+        	$month = date("m", strtotime($start));
+        	$year = date("Y", strtotime($start));
+
+        	$queryDate = $year . '-' . $month . '-' . $x;
+
+        	$achSumResult = Ledger::whereDate('date', $queryDate)->where('payment_method', 'ACH')->sum('payment_amount');
+
+        	$achSums[] = $queryDate . ' : $' . $achSumResult;
+		}	 
+		
+		//i have the dates now i need to query the db with that date 
+		dd($achSums);
 
 
 		return \Excel::create('Ledger_Cleared_Checks' . $start . '_to_' . $end, function($excel) use ($cleared_checks, $revenue) {
