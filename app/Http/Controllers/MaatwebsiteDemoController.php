@@ -49,7 +49,7 @@ class MaatwebsiteDemoController extends Controller
 
             $loop_count = count($unique_ref_numbers);
 
-            
+
 
         // $unique_ref_numbers_count = Ledger::select('reference_number')
         //     ->groupBy('reference_number')
@@ -61,7 +61,7 @@ class MaatwebsiteDemoController extends Controller
          
     
 
-            
+             //&& !preg_match("/[a-z]/i", $unique_ref_numbers[$x]->reference_number)
 
           
          //initialize array 
@@ -70,13 +70,20 @@ class MaatwebsiteDemoController extends Controller
          for ($x = 0; $x <= ($loop_count - 1); $x++) 
          {
 
-         	if(isset($unique_ref_numbers[$x]->reference_number) && !preg_match("/[a-z]/i", $unique_ref_numbers[$x]->reference_number))
+         	if(isset($unique_ref_numbers[$x]->reference_number))
          		{
          			$queryResult = Ledger::where('reference_number', $unique_ref_numbers[$x]->reference_number)
          			->where('type_description', 'Revenue')
          			->sum('deposit_amount');
+
+         			$queryResultInfo = Ledger::where('reference_number', $unique_ref_numbers[$x]->reference_number)
+         			->where('type_description', 'Revenue')
+         			->first();
+
+
     	
-					$unique_ref_numbers_result[] = $unique_ref_numbers[$x]->reference_number . ' $' . $queryResult;
+					$unique_ref_numbers_result[] = $unique_ref_numbers[$x]->reference_number . ' $' . 
+					$queryResult . ' ' . $queryResultInfo->account_name . ' ID # ' . $queryResultInfo->account_id;
          		}
          	else
          	{
