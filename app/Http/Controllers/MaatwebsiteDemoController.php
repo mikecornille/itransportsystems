@@ -621,7 +621,7 @@ class MaatwebsiteDemoController extends Controller
 		
 
 
-		$overallAging = Load::select('customer_name', 'customer_id', 'amount_due', 'billed_date')->whereNotNull('billed_date')->where('customerPayStatus', 'OPEN')->where('billed_date', '!=', '')->where('pick_status', '!=', 'Cancelled')->orderBy('billed_date', 'asc')->get();
+		$overallAging = Load::select('customer_name', 'customer_id', 'id', 'amount_due', 'billed_date')->whereNotNull('billed_date')->where('customerPayStatus', 'OPEN')->where('billed_date', '!=', '')->where('pick_status', '!=', 'Cancelled')->where('amount_due', '!=', "0")->orderBy('billed_date', 'asc')->get();
 
 		$overallAging->map(function ($overallAging) {
     			$overallAging['plus_thirty'] = '';
@@ -674,11 +674,12 @@ class MaatwebsiteDemoController extends Controller
 			$excel->sheet('mySheet', function($sheet) use ($overallAging)
 	        {	
 	        	$sheet->setWidth('A', 15);
-	        	$sheet->setWidth('B', 15);
-	        	$sheet->setWidth('C', 15);
-	        	$sheet->setWidth('D', 15);
+	        	$sheet->setWidth('B', 10);
+	        	$sheet->setWidth('C', 10);
+	        	$sheet->setWidth('D', 10);
 	        	$sheet->setWidth('E', 15);
 	        	$sheet->setWidth('F', 15);
+	        	$sheet->setWidth('G', 15);
 				$sheet->fromArray($overallAging);
 
 
