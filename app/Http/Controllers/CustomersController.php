@@ -103,7 +103,11 @@ class CustomersController extends Controller
             $getCustomer = Customer::findOrFail($customer);
 
             //Find all the loads for the customer that need to be paid
-            $getCustomerLoadsNotPaid = Load::where('customer_id', "=", $getCustomer->id)->where('customerPayStatus', "=", "OPEN")->where('pick_status', '!=', 'Towing')->where('pick_status', '!=', 'Cancelled')->get();
+            $getCustomerLoadsNotPaid = Load::where('customer_id', "=", $getCustomer->id)
+            ->where('customerPayStatus', "=", "OPEN")
+            ->where('pick_status', '!=', 'Towing')
+            ->where('pick_status', '!=', 'Cancelled')
+            ->get();
 
             $getCustomerLoadsPaid = Load::where('customer_id', "=", $getCustomer->id)->where('customerPayStatus', "=", "PAID")->get();
 
@@ -238,7 +242,7 @@ class CustomersController extends Controller
       //Get the billed date
       $billed_date = Carbon::createFromFormat('m/d/Y', $loads->billed_date);
       //Send to datatable
-      $loads->aging = (string)$billed_date->diffInDays($today_raw, false);
+      $loads->aging = (string)$billed_date->diffInDays($today_raw, false) - 30;
 
       return $loads;
     });
