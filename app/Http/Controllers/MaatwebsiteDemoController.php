@@ -621,7 +621,7 @@ class MaatwebsiteDemoController extends Controller
 		
 
 
-		$overallAging = Load::select('customer_name', 'customer_contact', 'customer_email', 'customer_phone', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'po_number', 'ref_number', 'bol_number', 'amount_due', 'billed_date')->whereNotNull('billed_date')->where('customerPayStatus', 'OPEN')->where('billed_date', '!=', '')->where('pick_status', '!=', 'Cancelled')->orderBy('billed_date', 'asc')->get();
+		$overallAging = Load::select('customer_name', 'po_number', 'ref_number', 'bol_number', 'amount_due', 'billed_date')->whereNotNull('billed_date')->where('customerPayStatus', 'OPEN')->where('billed_date', '!=', '')->where('pick_status', '!=', 'Cancelled')->orderBy('billed_date', 'asc')->get();
 
 		$overallAging->map(function ($overallAging) {
     			$overallAging['plus_thirty'] = '';
