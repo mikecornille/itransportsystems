@@ -672,7 +672,15 @@ class MaatwebsiteDemoController extends Controller
 
 		return \Excel::create('Overall_Aging_File' , function($excel) use ($overallAging) {
 			$excel->sheet('mySheet', function($sheet) use ($overallAging)
-	        {
+	        {	
+	        	$sheet->setWidth('A', 15);
+	        	$sheet->setWidth('B', 15);
+	        	$sheet->setWidth('C', 15);
+	        	$sheet->setWidth('D', 15);
+	        	$sheet->setWidth('E', 15);
+	        	$sheet->setWidth('F', 15);
+	        	$sheet->setWidth('G', 15);
+	        	$sheet->setWidth('H', 15);
 				$sheet->fromArray($overallAging);
 
 
