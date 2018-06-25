@@ -612,6 +612,77 @@ class MaatwebsiteDemoController extends Controller
 		})->download($type);
 	}
 
+	public function overallAgingDownload($type, Request $request)
+	{
+		 
+		
+		
+		//query database
+		
+
+
+		$overallAging = Load::select('customer_name', 'customer_contact', 'customer_email', 'customer_phone', 'pick_city', 'pick_state', 'delivery_city', 'delivery_state', 'po_number', 'ref_number', 'bol_number', 'amount_due', 'billed_date')->whereNotNull('billed_date')->where('customerPayStatus', 'OPEN')->where('billed_date', '!=', '')->where('pick_status', '!=', 'Cancelled')->orderBy('billed_date', 'asc')->get();
+
+		$overallAging->map(function ($overallAging) {
+    			$overallAging['plus_thirty'] = '';
+    			return $overallAging;
+			});
+
+		$overallAging->map(function ($overallAging) {
+    			$overallAging['aging'] = '';
+    			return $overallAging;
+			});
+
+		
+		
+
+		$overallAging->transform(function($overallAging) {
+			
+			//IF THERE IS AN EMPTY BILLED DATE THEN ENTER IN 'NO BILLED DATE WHATS UP?'
+			if($overallAging->billed_date == '')
+			{
+				$overallAging->plus_thirty = 'No Billed Date Set';
+
+				$overallAging->aging = 'No Billed Date Set';
+			}
+			else
+			{
+
+			//Do +30 days from billed date
+			$date = Carbon::createFromFormat('m/d/Y', $overallAging->billed_date);
+			$plusThirty = (string)$date->addDays(30)->format('m/d/Y');
+			$overallAging->plus_thirty = $plusThirty;
+
+			
+
+
+			//Get todays date to do math
+			$today_raw = Carbon::now('America/Chicago');
+			//Get the billed date
+			$billed_date = Carbon::createFromFormat('m/d/Y', $overallAging->billed_date);
+			//Get the object of the billed date +30
+			$plusThirtyForMath = $billed_date->addDays(30);
+			
+			$overallAging->aging = (string)$plusThirtyForMath->diffInDays($today_raw, false);
+			}
+
+			
+			return $overallAging;
+		});
+
+		return \Excel::create('Overall_Aging_File' , function($excel) use ($overallAging) {
+			$excel->sheet('mySheet', function($sheet) use ($overallAging)
+	        {
+				$sheet->fromArray($overallAging);
+
+
+	        });
+
+		})->download($type);
+	}
+
+	
+
 	//exportPositivePay
 
 	public function exportPositivePay($type, Request $request)
