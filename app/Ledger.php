@@ -123,6 +123,7 @@ class Ledger extends Model
 		
 		$endDay = date("d", strtotime($end)); //for counting
 
+		// This gets revenue with a payment method of check
 		for ($x = 1; $x <= $endDay; $x++) 
         {
         	$month = date("m", strtotime($start));
@@ -130,13 +131,36 @@ class Ledger extends Model
 
         	$queryDate = $year . '-' . $month . '-' . $x;
 
-        	$revenueSumResult = Ledger::whereDate('date', $queryDate)->where('type_description', 'Revenue')->sum('deposit_amount');
+        	$revenueSumResult = Ledger::whereDate('date', $queryDate)->where('type_description', 'Revenue')->where('payment_method', 'CHECK')->sum('deposit_amount');
 
         	$revenueSums[] = $queryDate . ' : $' . $revenueSumResult;
 		}
 
 
-		$revenueTotals = ['revenueTotals' => $revenueSums];
+		// This gets revenue with a payment method of ACH
+		$revenueSumsACH = [];
+		
+		for ($x = 1; $x <= $endDay; $x++) 
+        {
+        	$month = date("m", strtotime($start));
+        	$year = date("Y", strtotime($start));
+
+        	$queryDate = $year . '-' . $month . '-' . $x;
+
+        	$revenueSumsACHResult = Ledger::whereDate('date', $queryDate)->where('type_description', 'Revenue')->where('payment_method', 'ACH')->sum('deposit_amount');
+
+        	$revenueSumsACH[] = $queryDate . ' : $' . $revenueSumsACHResult;
+		}
+
+
+
+
+
+		
+
+
+
+		$revenueTotals = ['revenueTotals' => $revenueSums, 'revenueSumsACH' => $revenueSumsACH];
 
 
 
