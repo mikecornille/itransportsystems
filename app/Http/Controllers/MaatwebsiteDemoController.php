@@ -22,137 +22,52 @@ class MaatwebsiteDemoController extends Controller
 
 	public function generalLedgerTargetCheckPaid(Request $request)
 	{
+		
+		// Access Ledger model
+		$ledger = new Ledger();
+
+		// Dates in computer and human readable
 		$start_raw = $request->input('start_date');
 		$end_raw = $request->input('end_date');
-		
-
 		$start = Carbon::createFromFormat('m/d/Y', $start_raw, "America/Chicago");
 	    $end = Carbon::createFromFormat('m/d/Y', $end_raw, "America/Chicago");
-
-	    $start = date("Y-m-d", strtotime($start));
+		$start = date("Y-m-d", strtotime($start));
 		$end = date("Y-m-d", strtotime($end));
 
-		//this is taken from the cleared date only since this will be used to balance with cleared checks in bank
-		$cleared_checks = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')
-		->whereRaw("STR_TO_DATE(`cleared_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_raw}', '%m/%d/%Y')")
-		->whereRaw("STR_TO_DATE(`cleared_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_raw}', '%m/%d/%Y')")
-		->orderBy('id', 'asc')->get();
+		// Cleared checks query
+		$cleared_checks = $ledger->clearedChecks($start_raw, $end_raw);
 
+		// Consolidate all reference numbers in respect to revenue and email results
+		$ledger->consolidateReferenceNumbersForRevenueAndEmail($start, $end);
 
-		//consolidate all the reference numbers
-		$unique_ref_numbers = Ledger::select('reference_number')
-            ->groupBy('reference_number')
-            ->whereBetween('date', [$start, $end])
-            ->where('type_description', 'Revenue')
-            ->get();
-
-
-            $loop_count = count($unique_ref_numbers);
-
-
-
-         $unique_ref_numbers_result = [];
-
-         for ($x = 0; $x <= ($loop_count - 1); $x++) 
-         {
-
-         	if(isset($unique_ref_numbers[$x]->reference_number))
-         		{
-         			$queryResult = Ledger::where('reference_number', $unique_ref_numbers[$x]->reference_number)
-         			->where('type_description', 'Revenue')
-         			->sum('deposit_amount');
-
-         			$queryResultInfo = Ledger::where('reference_number', $unique_ref_numbers[$x]->reference_number)
-         			->where('type_description', 'Revenue')
-         			->first();
-
-
-    	
-					$unique_ref_numbers_result[] = $unique_ref_numbers[$x]->reference_number . ' $' . 
-					$queryResult . ' ' . $queryResultInfo->account_name . ' ID # ' . $queryResultInfo->account_id;
-         		}
-         	else
-         	{
-         		continue;
-         	}
-    
-         	
-
-		}
-
-
-			 
-
-
-		$info = ['info' => $unique_ref_numbers_result];
-
-
-
-			Mail::send(['html'=>'email.implodedRefNumbers'], $info, function($message) use ($info){
-			$message->to('mikec@itransys.com')->subject("Imploded Reference Numbers")
-			->from('mikec@itransys.com', 'Mike')
-			->replyTo('mikec@itransys.com', 'Mike')
-			->sender('mikec@itransys.com', 'Mike');
-
-        	});
-
-
-
-        	//get the sum of all ach payments that day
-		//get all the dates
-		$achSums = [];
-		$endDay = date("d", strtotime($end)); //for counting
-		
-		for ($x = 1; $x <= $endDay; $x++) 
-        {
-        	$month = date("m", strtotime($start));
-        	$year = date("Y", strtotime($start));
-
-        	$queryDate = $year . '-' . $month . '-' . $x;
-
-        	$achSumResult = Ledger::whereDate('date', $queryDate)->where('payment_method', 'ACH')->sum('payment_amount');
-
-        	$achSums[] = $queryDate . ' : $' . $achSumResult;
-		}
-
-
-		$achTotals = ['achTotals' => $achSums];
-
-
-
-			Mail::send(['html'=>'email.implodedACHDates'], $achTotals, function($message) use ($achTotals){
-			$message->to('mikec@itransys.com')->subject("Freight Cost Expense via ACH Organized By Date")
-			->from('mikec@itransys.com', 'Mike')
-			->replyTo('mikec@itransys.com', 'Mike')
-			->sender('mikec@itransys.com', 'Mike');
-
-        	});
-
+		// Expense of freight cost totaled and organized by date and emailed
+       	$ledger->achTotalsByDate($start, $end);
          
+		// All records of revenue
+		$revenue = $ledger->revenueQuery($start, $end);
 
+		// Revenue broken up by deposit date and emailed
+		$ledger->totalRevenueByDate($start, $end);
 
-		$revenue = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('type_description', 'Revenue')->orderBy('id', 'asc')->get();
-
-
+		$expenseACH = $ledger->expenseACHQuery($start, $end);
 		
 		
 		
 
 
-		return \Excel::create('Ledger_Cleared_Checks' . $start . '_to_' . $end, function($excel) use ($cleared_checks, $revenue) {
-			$excel->sheet('mySheet', function($sheet) use ($cleared_checks, $revenue)
+		return \Excel::create('Ledger_Cleared_Checks' . $start . '_to_' . $end, function($excel) use ($cleared_checks, $revenue, $expenseACH) {
+			$excel->sheet('mySheet', function($sheet) use ($cleared_checks, $revenue, $expenseACH)
 	        {
 				$sheet->fromArray($cleared_checks);
 				$sheet->fromArray($revenue);
+				$sheet->fromArray($expenseACH);
 				
 				
 				
 	        });
 		})->download('csv');
 		
-
-		
-	}
+	} // End of function
 
 
 
@@ -621,7 +536,7 @@ class MaatwebsiteDemoController extends Controller
 		
 
 
-		$overallAging = Load::select('customer_name', 'customer_id', 'id', 'amount_due', 'billed_date')->whereNotNull('billed_date')->where('customerPayStatus', 'OPEN')->where('billed_date', '!=', '')->where('pick_status', '!=', 'Cancelled')->where('amount_due', '!=', "0")->orderBy('billed_date', 'asc')->get();
+		$overallAging = Load::select('customer_name', 'customer_id', 'id', 'amount_due', 'billed_date')->whereNotNull('billed_date')->where('customerPayStatus', 'OPEN')->where('billed_date', '!=', '')->where('pick_status', '!=', 'Cancelled')->where('amount_due', '!=', "0")->orderBy('billed_date', 'asc')->orderBy('customer_id', 'asc')->get();
 
 		$overallAging->map(function ($overallAging) {
     			$overallAging['plus_thirty'] = '';
