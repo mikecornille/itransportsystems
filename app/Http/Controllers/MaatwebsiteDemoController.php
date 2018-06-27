@@ -55,7 +55,7 @@ class MaatwebsiteDemoController extends Controller
 		
 
 
-		return \Excel::create('Ledger_Cleared_Checks' . $start . '_to_' . $end, function($excel) use ($cleared_checks, $revenue, $expenseACH) {
+		return \Excel::create('ITS_MAKER_BALANCE_VIEW_' . $start . '_to_' . $end, function($excel) use ($cleared_checks, $revenue, $expenseACH) {
 			$excel->sheet('mySheet', function($sheet) use ($cleared_checks, $revenue, $expenseACH)
 	        {
 				$sheet->fromArray($cleared_checks);

@@ -67,7 +67,7 @@ class Ledger extends Model
 
 
 			Mail::send(['html'=>'email.implodedRefNumbers'], $info, function($message) use ($info){
-			$message->to('mikec@itransys.com')->subject("Revenue Consolidated Reference Numbers")
+			$message->to('mikec@itransys.com')->subject("Revenue - Consolidated By Reference Numbers")
 			->from('mikec@itransys.com', 'Mike')
 			->replyTo('mikec@itransys.com', 'Mike')
 			->sender('mikec@itransys.com', 'Mike');
@@ -100,7 +100,7 @@ class Ledger extends Model
 
 
 			Mail::send(['html'=>'email.implodedACHDates'], $achTotals, function($message) use ($achTotals){
-			$message->to('mikec@itransys.com')->subject("Freight Cost Expense via ACH Organized By Date")
+			$message->to('mikec@itransys.com')->subject("Expense - ACH Payments Organized By Date")
 			->from('mikec@itransys.com', 'Mike')
 			->replyTo('mikec@itransys.com', 'Mike')
 			->sender('mikec@itransys.com', 'Mike');
@@ -165,7 +165,7 @@ class Ledger extends Model
 
 
 			Mail::send(['html'=>'email.implodedRevenueDates'], $revenueTotals, function($message) use ($revenueTotals){
-			$message->to('mikec@itransys.com')->subject("Revenue Organized By Deposit Date")
+			$message->to('mikec@itransys.com')->subject("Revenue - ACH And Checks Organized By Deposit Date")
 			->from('mikec@itransys.com', 'Mike')
 			->replyTo('mikec@itransys.com', 'Mike')
 			->sender('mikec@itransys.com', 'Mike');

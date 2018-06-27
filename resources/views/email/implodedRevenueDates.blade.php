@@ -8,13 +8,13 @@
 
 
 
-
+<h3>Check Sums By Date</h3>
 
 @for ($i = 0; $i < $count; $i++)
     {{ $revenueTotals[$i] }} <br>
 @endfor
 
-<h1>ACH Sums</h1>
+<h3>ACH Sums By Date</h3>
 
 @for ($i = 0; $i < $count2; $i++)
     {{ $revenueSumsACH[$i] }} <br>
