@@ -31,7 +31,8 @@ class Journal extends Model
                   'payment_cents',
                   'cleared',
                   'cleared_date',
-                  'off_ledger'
+                  'off_ledger',
+                  'created_at'
 
 
             ];

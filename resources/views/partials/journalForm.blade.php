@@ -142,6 +142,21 @@
 		</div>
 		
 	</div>
+
+	
+	
+	@if(!isset($newForm))
+	<h3>Date (this date is when you want the journal entry to show up on the checking account)</h3>
+	<div class="row">
+		<div class="col-md-3">
+			{{ Form::label('created_at', 'Date') }}
+			{{ Form::text('created_at', null, ['class' => 'form-control']) }}
+		</div>
+	</div>
+	@endif
+
+
+
 	<h3>Deposit Amount</h3>
 	<div class="row">
 		<div class="col-md-3">

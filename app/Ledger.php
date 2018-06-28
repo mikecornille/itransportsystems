@@ -46,8 +46,11 @@ class Ledger extends Model
          			->where('type_description', 'Revenue')
          			->first();
 
+         			
+         			$onlyDate = date("m-d-Y", strtotime($queryResultInfo->date));
+
 					$unique_ref_numbers_result[] = $unique_ref_numbers[$x]->reference_number . ' $' . 
-					$queryResult . ' ' . $queryResultInfo->account_name . ' ID # ' . $queryResultInfo->account_id;
+					$queryResult . ' ' . $queryResultInfo->account_name . ' ID # ' . $queryResultInfo->account_id . ' DEPOSIT DATE: ' . $onlyDate;
          		}
          	else
          	{
@@ -184,6 +187,8 @@ class Ledger extends Model
 
     	return $expenseACH;
     }
+
+
 
 
 }

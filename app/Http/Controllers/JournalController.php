@@ -20,8 +20,10 @@ class JournalController extends Controller
     public function index()
     {
         $journal_entries = Journal::orderBy('id', 'asc')->get();
+
+        $newForm = TRUE;
         
-        return view('journal', compact('journal_entries', $journal_entries));
+        return view('journal', compact('journal_entries', $journal_entries, 'newForm', $newForm));
     }
 
     public function submitNewJournalVendor(Request $request)
