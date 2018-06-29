@@ -14,11 +14,31 @@ use App\User;
 use App\Load;
 use App\Loadlist;
 use App\Ledger;
+//use App\Journal;
 use Carbon\Carbon;
 
 
 class MaatwebsiteDemoController extends Controller
 {
+
+	public function createACHFromJournal($id)
+	{
+
+		// $journal = new Journal();
+
+		// $ach_journal = $journal->createACH($id);
+
+		// return \Excel::create('ACH_' . $id, function($excel) use ($ach_journal) {
+		// 	$excel->sheet('mySheet', function($sheet) use ($ach_journal)
+	 //        	{
+		// 			$sheet->fromArray($ach_journal);
+		// 		});
+		// })->download('csv');
+
+
+
+
+	}
 
 	public function generalLedgerTargetCheckPaid(Request $request)
 	{
@@ -76,49 +96,49 @@ class MaatwebsiteDemoController extends Controller
 		 $start_date = $request->input('start_date');
 		 $end_date = $request->input('end_date');
 
-		 $unique_customers = Load::select('customer_id')
-            ->groupBy('customer_id')
-            ->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
-			->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
-            ->get();
+		 // $unique_customers = Load::select('customer_id')
+   //          ->groupBy('customer_id')
+   //          ->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+			// ->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+   //          ->get();
 
          
-         $info = [];
-         foreach($unique_customers as $customer)
-         {
+   //       $info = [];
+   //       foreach($unique_customers as $customer)
+   //       {
 
-         	$total = Load::where('customer_id', $customer->customer_id)
-         	->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
-			->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
-			->sum('amount_due');
+   //       	$total = Load::where('customer_id', $customer->customer_id)
+   //       	->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+			// ->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+			// ->sum('amount_due');
 
-			$carrier_rate_totals = Load::where('customer_id', $customer->customer_id)
-         	->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
-			->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
-			->sum('carrier_rate');
+			// $carrier_rate_totals = Load::where('customer_id', $customer->customer_id)
+   //       	->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+			// ->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+			// ->sum('carrier_rate');
 
-			$profit = $total - $carrier_rate_totals;
+			// $profit = $total - $carrier_rate_totals;
 
-			$profit_margin = $profit / $total;
-			$profit_margin = round((float)$profit_margin * 100 );
+			// $profit_margin = $profit / $total;
+			// $profit_margin = round((float)$profit_margin * 100 );
          	
-         	$cus = Load::where('customer_id', $customer->customer_id)->get();
+   //       	$cus = Load::where('customer_id', $customer->customer_id)->get();
 
          	
 
-         	$info[] = [$total, $cus[0]->customer_name, $cus[0]->customer_id, $carrier_rate_totals, $profit, $profit_margin];
+   //       	$info[] = [$total, $cus[0]->customer_name, $cus[0]->customer_id, $carrier_rate_totals, $profit, $profit_margin];
 
 
-         }
+   //       }
 
 
-         $info = ['info' => $info ];
+   //       $info = ['info' => $info ];
 
-			Mail::send(['html'=>'email.customerTotals'], $info, function($message) use ($info){
+			// Mail::send(['html'=>'email.customerTotals'], $info, function($message) use ($info){
 
-			$message->to('mikec@itransys.com')->subject("Customer Totals");
+			// $message->to('mikec@itransys.com')->subject("Customer Totals");
 
-        	});
+   //      	});
 			
 
 		//$data = Item::get()->toArray();

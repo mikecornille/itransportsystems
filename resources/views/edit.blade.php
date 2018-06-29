@@ -685,7 +685,6 @@
             <option value="CHECK">CHECK</option>
             <option value="CREDIT">CREDIT</option>
             <option value="CASH">CASH</option>
-            <option value="WIRE">WIRE</option>
             
           </select>
         </div>

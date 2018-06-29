@@ -227,7 +227,11 @@
 		<div class="col-md-4" style="margin-top: 30px;">
 			<a href="{{ URL::to('/printCheckFromJournal/' . $post->id) }}"><b>Print Check</b></a>
 		</div>
+		<!-- <div class="col-md-4" style="margin-top: 30px;">
+			<a href="{{ URL::to('/createACHFromJournal/' . $post->id) }}"><b>Creat ACH Page</b></a>
+		</div> -->
 		@endif
+
 	</div>
 	
 

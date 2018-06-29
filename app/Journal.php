@@ -63,4 +63,6 @@ class Journal extends Model
       return $this->attributes['upload_date'] = date("m/d/Y", strtotime($value));
            
     }
+
+    
 }

@@ -97,6 +97,9 @@ Route::get('/ach_no_carrier_found', function () {
          Route::post('/journalAccountSearchEdit', 'JournalController@journalAccountSearchEdit');
 
          Route::post('approvedCarrierBillsFile/{type}', 'MaatwebsiteDemoController@approvedCarrierBillsFile');
+
+         
+         Route::get('createACHFromJournal/{id}', 'MaatwebsiteDemoController@createACHFromJournal');
          
          
          
