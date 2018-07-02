@@ -12,6 +12,7 @@ use DB;
 use Excel;
 use App\User;
 use App\Load;
+use App\Journal;
 use App\Loadlist;
 use App\Ledger;
 //use App\Journal;
@@ -24,16 +25,16 @@ class MaatwebsiteDemoController extends Controller
 	public function createACHFromJournal($id)
 	{
 
-		// $journal = new Journal();
+		$journal = new Journal();
 
-		// $ach_journal = $journal->createACH($id);
+		$ach_journal = $journal->createACH($id);
 
-		// return \Excel::create('ACH_' . $id, function($excel) use ($ach_journal) {
-		// 	$excel->sheet('mySheet', function($sheet) use ($ach_journal)
-	 //        	{
-		// 			$sheet->fromArray($ach_journal);
-		// 		});
-		// })->download('csv');
+		return \Excel::create('ACH_' . $id, function($excel) use ($ach_journal) {
+			$excel->sheet('mySheet', function($sheet) use ($ach_journal)
+	        	{
+					$sheet->fromArray($ach_journal);
+				});
+		})->download('csv');
 
 
 
