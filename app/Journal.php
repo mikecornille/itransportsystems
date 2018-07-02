@@ -32,6 +32,13 @@ class Journal extends Model
                   'cleared',
                   'cleared_date',
                   'off_ledger',
+                  'bank_name',
+                  'routing_number',
+                  'account_number',
+                  'account_type',
+                  'accounting_email',
+                  'accounting_phone',
+                  'account_name_routing',
                   'created_at'
 
 

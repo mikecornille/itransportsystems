@@ -36,6 +36,13 @@ class CreateJournalsTable extends Migration
             $table->string('payment_cents')->nullable();
             $table->string('cleared')->nullable();
             $table->string('cleared_date')->nullable();
+            $table->string('bank_name')->nullable();
+            $table->string('routing_number')->nullable();
+            $table->string('account_number')->nullable();
+            $table->string('account_type')->nullable();
+            $table->string('accounting_email')->nullable();
+            $table->string('accounting_phone')->nullable();
+            $table->string('account_name_routing')->nullable();
             $table->string('off_ledger')->nullable();
             $table->timestamps();
         });

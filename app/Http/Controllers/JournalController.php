@@ -67,7 +67,10 @@ class JournalController extends Controller
             'account_id' => 'required',
             'type' => 'required',
             'type_description' => 'required',
-            'memo' => 'required'
+            'memo' => 'required',
+            'account_name_routing' => 'max:21',
+            'routing_number' => 'min:9|max:9',
+            'account_number' => 'max:12'
              
 
         ]);
@@ -118,7 +121,10 @@ class JournalController extends Controller
 
              'account_name' => 'required|max:39',
             'account_id' => 'required',
-            'type_description' => 'required'           
+            'type_description' => 'required',
+            'account_name_routing' => 'max:21',
+            'routing_number' => 'min:9|max:9',
+            'account_number' => 'max:12'           
               
         ]);
 

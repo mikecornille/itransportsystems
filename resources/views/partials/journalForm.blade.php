@@ -218,6 +218,51 @@
 		
 	</div>
 
+	<h2>ACH Payment Info (no canadian carriers)</h2>
+
+	<div class="row">
+	  	<div class="col-md-4">
+	  		{{ Form::label('bank_name', 'Bank Name') }}
+	  		{{ Form::text('bank_name', null, ['class' => 'form-control']) }}
+		</div>
+		<div class="col-md-4">
+			{{ Form::label('routing_number', 'Routing Number (Must be 9 digits)') }}
+	  		{{ Form::text('routing_number', null, ['class' => 'form-control']) }}
+		</div>
+		<div class="col-md-4">
+			{{ Form::label('account_number', 'Account Number (No more than 12 digits)') }}
+	  		{{ Form::text('account_number', null, ['class' => 'form-control']) }}
+		</div>
+	</div>
+
+	<div class="row">
+	  	<div class="col-md-4">
+	  		{{ Form::label('account_type', 'Account Type') }}
+	  		{{ Form::select('account_type', 
+				[
+	  		 		'Checking' => 'Checking',
+			  		'Savings' => 'Savings',
+				], null, ['placeholder' => 'Pick an account type...', 'class' => 'form-control']) }}
+		</div>
+		<div class="col-md-4">
+			{{ Form::label('accounting_email', 'Accounting Email') }}
+	  		{{ Form::text('accounting_email', null, ['class' => 'form-control']) }}
+		</div>
+		<div class="col-md-4">
+			{{ Form::label('accounting_phone', 'Accounting Phone') }}
+	  		{{ Form::text('accounting_phone', null, ['class' => 'form-control']) }}
+		</div>
+	</div>
+
+	<div class="row">
+	  	
+		<div class="col-md-4">
+			{{ Form::label('account_name_routing', 'Account Name (NOT EXCEED 22 CHAR OR CONTAIN A COMMA)') }}
+	  		{{ Form::text('account_name_routing', null, ['class' => 'form-control', 'maxlength' => '22', 'placeholder' => 'No Commas']) }}
+		</div>
+		
+	</div>
+
 	<div class="row">
 		<div class="col-md-4">
 			{{ Form::submit($submitButtonText, ['class' => 'form-control btn btn-primary', 'style' => 'margin-top: 15px;']) }}
