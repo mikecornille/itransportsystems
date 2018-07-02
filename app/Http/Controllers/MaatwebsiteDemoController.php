@@ -684,6 +684,55 @@ $positivePayResults->upload_date = Carbon::parse($positivePayResults->upload_dat
 		})->download($type);
 	}
 
+
+	public function exportPositivePayJournal($type, Request $request)
+	{
+		
+		 //Customer Invoice Import
+		 $positivePayDate = $request->input('positivePayJournal');
+
+
+
+		 //Convert time
+		 $positivePayDate = Carbon::createFromFormat('m/d/Y', $positivePayDate);
+
+		 $positivePayDate = $positivePayDate->toDateString();
+
+
+		 
+		
+		$positivePayResults = Journal::select('reference_number', 'upload_date', 'name_on_check', 'payment_amount')->whereDate('upload_date', $positivePayDate)->where('payment_method', 'CHECK')->orderBy('id', 'desc')->get();
+
+
+
+		
+		$positivePayResults->transform(function($positivePayResults) {
+			
+			$positivePayResults->payment_amount = $positivePayResults->payment_amount . "00";
+
+			//convert to mm/dd/yy
+
+
+			$positivePayResults->upload_date = Carbon::parse($positivePayResults->upload_date)->format('m/d/y');
+			
+			
+
+
+			return $positivePayResults;
+			});
+
+
+		return \Excel::create('Positive_Pay_' . $positivePayDate, function($excel) use ($positivePayResults) {
+			$excel->sheet('mySheet', function($sheet) use ($positivePayResults)
+	        {
+				$sheet->fromArray($positivePayResults);
+
+
+	        });
+
+		})->download($type);
+	}
+
 	public function exportCarrierBills($type, Request $request)
 	{
 		 //Set timezone

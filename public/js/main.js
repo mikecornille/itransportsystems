@@ -1,4 +1,5 @@
 
+
 //PAYING MULTIPLE BILLS
 var total = 0;
 
@@ -1595,6 +1596,8 @@ $('#datepickerApprovedCarrierBills').datepicker();
 
 $('#datepickerApprovedCarrierBills2').datepicker();
 
+$('#datepickerPositivePayJournal').datepicker();
+
 
 
 
@@ -1735,7 +1738,9 @@ $('#datepickerApprovedCarrierBills2').on('changeDate', function(ev){
     $(this).datepicker('hide');
 });
 
-
+$('#datepickerPositivePayJournal').on('changeDate', function(ev){
+    $(this).datepicker('hide');
+});
 
 
 
