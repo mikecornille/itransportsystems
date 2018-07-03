@@ -106,6 +106,13 @@ class Load extends Model
 
 			  ];
 
+    public function paidNotBilled()
+    {
+      $loads = Load::select('id', 'customer_name', 'customer_id', 'amount_due', 'carrier_name', 'carrier_rate', 'carrierPayStatus', 'customerPayStatus', 'billed_date')->where('carrierPayStatus', 'COMPLETED')->where('customerPayStatus', 'OPEN')->orderBy('id', 'asc')->get();
+
+      return $loads;
+    }    
+
     public function setDepositDateAttribute($value)
     {
       $date = Carbon::createFromFormat('m/d/Y', $value, "America/Chicago");

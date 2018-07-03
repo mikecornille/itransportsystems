@@ -12,8 +12,8 @@
     <div class="btn-group" role="group" aria-label="Basic example">
         
         <a type="button" class="btn btn-md btn-info" href="{{ url('/allNeededPODs') }}">Needed BOL</a>
-        <a type="button" class="btn btn-md btn-info" href="{{ url('/allNeededPODs') }}">Carrier Paid Not Billed</a>
-        <a type="button" class="btn btn-md btn-info" href="{{ url('/allNeededPODs') }}">Paid vs. Amount Due</a>
+        <a type="button" class="btn btn-md btn-info" href="{{ url('/carrierPaidNotBilled') }}">Carrier Paid Not Billed</a>
+        <a type="button" class="btn btn-md btn-info" href="{{ url('/paidVSAmountDue') }}">Paid vs. Amount Due</a>
         
     </div>
 

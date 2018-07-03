@@ -205,6 +205,23 @@ class MaatwebsiteDemoController extends Controller
 		})->download('csv');
 	}
 
+	public function carrierPaidNotBilled()
+	{
+		
+		$load = new Load();
+
+		$loads = $load->paidNotBilled();
+	
+		return \Excel::create('CarrierPaidNotBilled', function($excel) use ($loads) {
+			$excel->sheet('mySheet', function($sheet) use ($loads)
+	        {
+				$sheet->fromArray($loads);
+	        });
+		})->download('csv');
+	}
+
+	
+
 	public function approvedCarrierBillsFile($type, Request $request)
 	{
 		$start = $request->input('start_date');

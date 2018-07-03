@@ -86,6 +86,9 @@ Route::get('/ach_no_carrier_found', function () {
          Route::post('generalLedgerTargetCheckPaid', 'MaatwebsiteDemoController@generalLedgerTargetCheckPaid');
 
          Route::get('allNeededPODs', 'MaatwebsiteDemoController@allNeededPODs');
+
+         Route::get('carrierPaidNotBilled', 'MaatwebsiteDemoController@carrierPaidNotBilled');
+         
          
 
          Route::post('balanceSheet', 'PDFController@balanceSheet');
