@@ -111,7 +111,21 @@ class Load extends Model
       $loads = Load::select('id', 'customer_name', 'customer_id', 'amount_due', 'carrier_name', 'carrier_rate', 'carrierPayStatus', 'customerPayStatus', 'billed_date')->where('carrierPayStatus', 'COMPLETED')->where('customerPayStatus', 'OPEN')->orderBy('id', 'asc')->get();
 
       return $loads;
-    }    
+    } 
+
+    public function paidVSAmount()
+    {
+      $loads = Load::select('id', 'customer_name', 'customer_id', 'amount_due', 'paid_amount_from_customer', 'customerPayStatus', 'billed_date')->whereColumn('amount_due', '!=', 'paid_amount_from_customer')->orderBy('id', 'asc')->get();
+
+
+        //       SELECT *
+        // FROM my_table
+        // WHERE NOT column_a <=> column_b
+
+      return $loads;
+    }   
+
+     
 
     public function setDepositDateAttribute($value)
     {

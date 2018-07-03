@@ -220,6 +220,23 @@ class MaatwebsiteDemoController extends Controller
 		})->download('csv');
 	}
 
+	public function paidVSAmountDue()
+	{
+		
+		$load = new Load();
+
+		$loads = $load->paidVSAmount();
+	
+		return \Excel::create('PaidVSAmountDue', function($excel) use ($loads) {
+			$excel->sheet('mySheet', function($sheet) use ($loads)
+	        {
+				$sheet->fromArray($loads);
+	        });
+		})->download('csv');
+	}
+
+	
+
 	
 
 	public function approvedCarrierBillsFile($type, Request $request)

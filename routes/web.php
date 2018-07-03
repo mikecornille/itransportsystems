@@ -88,6 +88,9 @@ Route::get('/ach_no_carrier_found', function () {
          Route::get('allNeededPODs', 'MaatwebsiteDemoController@allNeededPODs');
 
          Route::get('carrierPaidNotBilled', 'MaatwebsiteDemoController@carrierPaidNotBilled');
+
+         Route::get('paidVSAmountDue', 'MaatwebsiteDemoController@paidVSAmountDue');
+         
          
          
 
@@ -105,6 +108,8 @@ Route::get('/ach_no_carrier_found', function () {
 
          
          Route::get('createACHFromJournal/{id}', 'MaatwebsiteDemoController@createACHFromJournal');
+
+
          
          
          
