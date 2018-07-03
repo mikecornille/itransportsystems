@@ -115,7 +115,7 @@ class Load extends Model
 
     public function paidVSAmount()
     {
-      $loads = Load::select('id', 'customer_name', 'customer_id', 'amount_due', 'paid_amount_from_customer', 'customerPayStatus', 'billed_date')->where('customerPayStatus', '!=', 'QB')->whereColumn('amount_due', '!=', 'paid_amount_from_customer')->orderBy('id', 'asc')->get();
+      $loads = Load::select('id', 'customer_name', 'customer_id', 'amount_due', 'paid_amount_from_customer', 'customerPayStatus', 'billed_date')->where('customerPayStatus', 'PAID')->whereColumn('amount_due', '!=', 'paid_amount_from_customer')->orderBy('id', 'asc')->get();
 
 
         //       SELECT *
