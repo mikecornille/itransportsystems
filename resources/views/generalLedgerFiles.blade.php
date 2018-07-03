@@ -8,6 +8,15 @@
 
 
 <div class="container">
+
+    <div class="btn-group" role="group" aria-label="Basic example">
+        
+        <a type="button" class="btn btn-md btn-info" href="{{ url('/allNeededPODs') }}">Needed BOL</a>
+        <a type="button" class="btn btn-md btn-info" href="{{ url('/allNeededPODs') }}">Carrier Paid Not Billed</a>
+        <a type="button" class="btn btn-md btn-info" href="{{ url('/allNeededPODs') }}">Paid vs. Amount Due</a>
+        
+    </div>
+
     <div class="well">
         <div class="row">
             <div class="col-md-4">
