@@ -188,6 +188,17 @@ class Ledger extends Model
     	return $expenseACH;
     }
 
+    public function checkingAccountBalance($start, $end)
+    {
+
+        $payment_amount_totals = Ledger::whereBetween('date', [$start, $end])->sum('payment_amount');
+        $deposit_amount_totals = Ledger::whereBetween('date', [$start, $end])->sum('deposit_amount');
+        $mbFinancialBalance = $deposit_amount_totals - $payment_amount_totals;
+
+        return $mbFinancialBalance; 
+
+    }
+
 
 
 

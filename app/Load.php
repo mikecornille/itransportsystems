@@ -396,6 +396,22 @@ class Load extends Model
         $this->attributes['internal_message'] = strtoupper($value);
     }
 
+    public function accountsReceivable()
+    {
+      //Accounts Receivable (everything we have billed but not been paid on)
+        $accounts_receivable = Load::whereNotNull('billed_date')->where('customerPayStatus', 'OPEN')->where('billed_date', '!=', '')->sum('amount_due');
+        return $accounts_receivable;
+    }
+
+    public function accountsPayable()
+    {
+      
+         //Accounts Payable
+        $accounts_payable = Load::whereNotNull('vendor_invoice_date')->where('carrierPayStatus', 'APPRVD')->where('vendor_invoice_date', '!=', '')->sum('carrier_rate');
+        return $accounts_payable;
+    }
+
+
 
     
 }

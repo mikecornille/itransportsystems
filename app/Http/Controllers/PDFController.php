@@ -27,7 +27,7 @@ class PDFController extends Controller
 
     public function balanceSheet(Request $request)
     {
-
+        //Takes the user input dates and converts them to computer readable
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
         $start_date = Carbon::createFromFormat('m/d/Y', $start_date, "America/Chicago");
@@ -35,48 +35,46 @@ class PDFController extends Controller
         $start_date = $start_date->toDateString();
         $end_date = $end_date->toDateString();
 
-        //^^^Takes the user input dates and converts them to computer readable
+        
 
-        //Assets - MB Financial Bank Account Totals from Ledger
-        $payment_amount_totals = Ledger::whereBetween('date', [$start_date, $end_date])->sum('payment_amount');
-        $deposit_amount_totals = Ledger::whereBetween('date', [$start_date, $end_date])->sum('deposit_amount');
-        $mbFinancialBalance = $deposit_amount_totals - $payment_amount_totals;
+        
+        $ledger = new Ledger();
+        //Checking account balance
+        $checking = $ledger->checkingAccountBalance($start_date, $end_date);
 
-        //Assets Money Market
-        $mm_payment_amount_totals = Journal::where('account_id', '39842')->whereBetween('created_at', [$start_date, $end_date])->sum('payment_amount');
-        $mm_deposit_amount_totals = Journal::where('account_id', '39842')->whereBetween('created_at', [$start_date, $end_date])->sum('deposit_amount');
-        $mm_FinancialBalance = $mm_deposit_amount_totals - $mm_payment_amount_totals;
 
-        //Accounts Receivable (everything we have billed but not been paid on)
-        $accounts_receivable = Load::whereNotNull('billed_date')->where('customerPayStatus', 'OPEN')->where('billed_date', '!=', '')->sum('amount_due');
+        
+        $journal = new Journal();
+        //Money market balance
+        $market = $journal->moneyMarketBalance($start_date, $end_date);
+        //Capital stock
+        $capital_stock = $journal->capitalStock();
+        //Distributions
+        $distributions = $journal->distributions($start_date, $end_date);
+        //Retained Earnings
+        $retained_earnings = $journal->retainedEarnings();
+        //Net income QB 
+        $net_income_QB = $journal->netIncomeQB();
 
-        //Accounts Payable
-        $accounts_payable = Load::whereNotNull('vendor_invoice_date')->where('carrierPayStatus', 'APPRVD')->where('vendor_invoice_date', '!=', '')->sum('carrier_rate');
 
-        //Capital Stock
-        $capital_stock = Journal::where('account_id', '39909')->sum('deposit_amount');
 
-        $distributions = Journal::where('type_description', 'Distribution')->where('off_ledger', 'YES')->whereBetween('created_at', [$start_date, $end_date])->sum('payment_amount');
+
+        $load = new Load();
+        $accounts_receivable = $load->accountsReceivable();
+        $accounts_payable = $load->accountsPayable();
+
+       
+
+    dd($accounts_receivable, $accounts_payable);
+        
+
+       
 
         $distributions_its_maker = Ledger::where('type_description', 'Distribution')->whereBetween('date', [$start_date, $end_date])->sum('payment_amount');
-
-        //Retained Earnings Life to date accumulated earnings left in the company.
-        //Get the retained earnings brought over from quickbooks
-        $retained_earnings = Journal::where('account_id', '39912')->sum('deposit_amount');
-
-        
         //Net Income revenue - expenses
         $revenue_calc = Ledger::where('type_description', 'Revenue')->whereBetween('date', [$start_date, $end_date])->sum('deposit_amount');
-
         $expense_calc = Ledger::where('type_description', 'Expense')->whereBetween('date', [$start_date, $end_date])->sum('payment_amount');
-
-        
         $net_income = $revenue_calc - $expense_calc;
-
-        $net_income_qb = Journal::where('account_id', '39913')->sum('deposit_amount');
-
-
-
         $total_equity = $net_income - $distributions_its_maker;
         
         $total_liabilties_equity = $total_equity + $accounts_payable;

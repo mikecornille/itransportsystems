@@ -137,5 +137,43 @@ class Journal extends Model
     })->download('csv');
     }
 
+    public function moneyMarketBalance($start, $end)
+    {
+        $mm_payment_amount_totals = Journal::where('account_id', '39842')->whereBetween('created_at', [$start, $end])->sum('payment_amount');
+        $mm_deposit_amount_totals = Journal::where('account_id', '39842')->whereBetween('created_at', [$start, $end])->sum('deposit_amount');
+        $mm_FinancialBalance = $mm_deposit_amount_totals - $mm_payment_amount_totals;
+        return $mm_FinancialBalance;
+    }
+
+    public function capitalStock()
+    {
+      $capital_stock = Journal::where('account_id', '39909')->sum('deposit_amount');
+      return $capital_stock; 
+
+    }
+
+    public function distributions($start, $end)
+    {
+       $distributions = Journal::where('type_description', 'Distribution')->where('off_ledger', 'YES')->whereBetween('created_at', [$start, $end])->sum('payment_amount');
+       return $distributions;
+
+    }
+
+    public function retainedEarnings()
+    {
+       //Retained Earnings Life to date accumulated earnings left in the company.
+        //Get the retained earnings brought over from quickbooks
+        $retained_earnings = Journal::where('account_id', '39912')->sum('deposit_amount');
+        return $retained_earnings;
+
+    }
+
+    public function netIncomeQB()
+    {
+      $net_income_qb = Journal::where('account_id', '39913')->sum('deposit_amount');
+      return $net_income_qb;
+    }
+
+
     
 }
