@@ -74,6 +74,10 @@
                 <label class="label-control" for="created_by">CREATED BY</label>
                 <input type="text" class="form-control" id="created_by" name="created_by" value="{{ old('created_by') }}">
             </div>
+            <div class="col-xs-4">
+                <label class="label-control" for="id">QUOTE ID</label>
+                <input type="text" class="form-control" id="id" name="id" value="{{ old('id') }}">
+            </div>
         </div>
         
 

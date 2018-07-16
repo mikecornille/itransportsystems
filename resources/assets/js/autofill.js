@@ -414,7 +414,7 @@
                         success: function( data ) {
                             response($.map(data, function (item) {
                                 return {
-                                    label: '--NAME-- ' + item.company + ' --MC #-- ' + item.mc_number + ' --ADDRESS-- ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' --CONTACT-- ' + item.contact + ' --PHONE-- ' + item.phone + ' --EMAIL-- ' + item.email + ' --CARGO EXP-- ' + item.cargo_exp + ' --CARGO AMOUNT-- ' + item.cargo_amount + ' --BROKER CONTRACT-- ' + item.bc_contract,
+                                    label: '--ID-- ' + item.id + ' --NAME-- ' + item.company + ' --MC #-- ' + item.mc_number + ' --ADDRESS-- ' + item.address + ' ' + item.city + ' ' + item.state + ' ' + item.zip + ' --CONTACT-- ' + item.contact + ' --PHONE-- ' + item.phone + ' --EMAIL-- ' + item.email + ' --CARGO EXP-- ' + item.cargo_exp + ' --CARGO AMOUNT-- ' + item.cargo_amount + ' --BROKER CONTRACT-- ' + item.bc_contract,
                                     value: item.company + ' ' + item.address,
                                     object: item
                                 }

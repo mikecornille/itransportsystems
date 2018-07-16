@@ -62,10 +62,6 @@ class PDFController extends Controller
         $load = new Load();
         $accounts_receivable = $load->accountsReceivable();
         $accounts_payable = $load->accountsPayable();
-
-       
-
-    dd($accounts_receivable, $accounts_payable);
         
 
        

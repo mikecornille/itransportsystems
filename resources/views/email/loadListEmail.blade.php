@@ -19,6 +19,7 @@
 <p>Thank you for this opportunity, below is the quotation you requested containing all parameters unique to this shipment.</p>
 
 <ul>
+<li>Quote ID: {{ $info->id }}</li>
 <li>Customer: {{ $info->customer }}</li>
 <li>Lane: {{ $info->pick_city . ', ' . $info->pick_state . ' to ' . $info->delivery_city . ', ' . $info->delivery_state }}</li>
 <li>Commodity: {{ $info->commodity }}</li>

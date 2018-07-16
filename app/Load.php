@@ -400,6 +400,7 @@ class Load extends Model
     {
       //Accounts Receivable (everything we have billed but not been paid on)
         $accounts_receivable = Load::whereNotNull('billed_date')->where('customerPayStatus', 'OPEN')->where('billed_date', '!=', '')->sum('amount_due');
+
         return $accounts_receivable;
     }
 

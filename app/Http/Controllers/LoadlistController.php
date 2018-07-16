@@ -462,6 +462,10 @@ class LoadlistController extends Controller
         $loads->where('created_by', $request->created_by);
       }
 
+      if ($request->has('id')){
+        $loads->where('id', $request->id);
+      }
+
 
 
     	$open_loads = $loads->orderBy('created_at', 'desc')->get();
