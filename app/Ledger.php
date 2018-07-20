@@ -50,7 +50,7 @@ class Ledger extends Model
          			$onlyDate = date("m-d-Y", strtotime($queryResultInfo->date));
 
 					$unique_ref_numbers_result[] = $unique_ref_numbers[$x]->reference_number . ' $' . 
-					$queryResult . ' ' . $queryResultInfo->account_name . ' ID # ' . $queryResultInfo->account_id . ' DEPOSIT DATE: ' . $onlyDate;
+					$queryResult . ' ' . $queryResultInfo->account_name . ' ID # ' . $queryResultInfo->account_id . ' DEPOSIT DATE: ' . $onlyDate . ' TYPE: ' . $queryResultInfo->payment_method;
          		}
          	else
          	{
@@ -112,12 +112,21 @@ class Ledger extends Model
 
     }
 
-    public function revenueQuery($start, $end)
+    public function revenueQueryACH($start, $end)
     {
-    	$revenue = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('type_description', 'Revenue')->orderBy('date', 'asc')->get();
+    	$revenueACH = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('type_description', 'Revenue')->where('payment_method', 'ACH')->orderBy('date', 'asc')->get();
 
-    	return $revenue;
+    	return $revenueACH;
     }
+
+    public function revenueQueryCHECK($start, $end)
+    {
+        $revenueCHECK = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('type_description', 'Revenue')->where('payment_method', 'CHECK')->orderBy('date', 'asc')->get();
+
+        return $revenueCHECK;
+    }
+
+    
 
     public function totalRevenueByDate($start, $end)
     {

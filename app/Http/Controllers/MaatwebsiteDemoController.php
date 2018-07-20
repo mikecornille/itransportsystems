@@ -64,8 +64,11 @@ class MaatwebsiteDemoController extends Controller
 		// Expense of freight cost totaled and organized by date and emailed
        	$ledger->achTotalsByDate($start, $end);
          
-		// All records of revenue
-		$revenue = $ledger->revenueQuery($start, $end);
+		// All records of revenue by ACH only
+		$revenueACH = $ledger->revenueQueryACH($start, $end);
+
+		// All records of revenue by CHECK only
+		$revenueCHECK = $ledger->revenueQueryCHECK($start, $end);
 
 		// Revenue broken up by deposit date and emailed
 		$ledger->totalRevenueByDate($start, $end);
@@ -76,12 +79,14 @@ class MaatwebsiteDemoController extends Controller
 		
 
 
-		return \Excel::create('ITS_MAKER_BALANCE_VIEW_' . $start . '_to_' . $end, function($excel) use ($cleared_checks, $revenue, $expenseACH) {
-			$excel->sheet('mySheet', function($sheet) use ($cleared_checks, $revenue, $expenseACH)
+		return \Excel::create('ITS_MAKER_BALANCE_VIEW_' . $start . '_to_' . $end, function($excel) use ($cleared_checks, $revenueACH, $expenseACH, $revenueCHECK) {
+			$excel->sheet('mySheet', function($sheet) use ($cleared_checks, $revenueACH, $expenseACH, $revenueCHECK)
 	        {
 				$sheet->fromArray($cleared_checks);
-				$sheet->fromArray($revenue);
+				$sheet->fromArray($revenueACH);
+				$sheet->fromArray($revenueCHECK);
 				$sheet->fromArray($expenseACH);
+				
 				
 				
 				
