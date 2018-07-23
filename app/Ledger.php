@@ -208,6 +208,21 @@ class Ledger extends Model
 
     }
 
+    public function bankCodes()
+    {
+        $info = ['foo' => 'foo', 'bar' => 'bar'];
+
+
+
+            Mail::send(['html'=>'email.bankCodes'], $info, function($message) use ($info){
+            $message->to('mikec@itransys.com')->subject("Bank Codes")
+            ->from('mikec@itransys.com', 'Mike')
+            ->replyTo('mikec@itransys.com', 'Mike')
+            ->sender('mikec@itransys.com', 'Mike');
+
+            });
+    }
+
 
 
 
