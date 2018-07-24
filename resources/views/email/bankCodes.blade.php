@@ -22,7 +22,7 @@
 <li><b>ACH Credit Received:</b> 142</li>
 <li><b>Pre-authorized ACH Debit (auto): </b> 455</li>
 <li><b>Incoming Money Transfer:</b> 195</li>
-<li><b>Analysis Charge:</b> 698</li>
+<li><b>Miscellaneous Fees (analysis charge):</b> 698</li>
 <li><b>Miscellaneous Credit:</b> 399</li>
 </ul>
 

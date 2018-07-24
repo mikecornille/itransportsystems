@@ -83,7 +83,7 @@ class MaatwebsiteDemoController extends Controller
 		
 
 
-		return \Excel::create('ITS_MAKER_BALANCE_VIEW_' . $start . '_to_' . $end, function($excel) use ($cleared_checks, $revenueACH, $expenseACH, $revenueCHECK) {
+		return \Excel::create('ITS_Checking_Account_' . $start . '_to_' . $end, function($excel) use ($cleared_checks, $revenueACH, $expenseACH, $revenueCHECK) {
 			$excel->sheet('mySheet', function($sheet) use ($cleared_checks, $revenueACH, $expenseACH, $revenueCHECK)
 	        {
 	        	

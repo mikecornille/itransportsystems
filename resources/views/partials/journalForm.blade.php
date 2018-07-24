@@ -92,7 +92,9 @@
 					'Net Income' => 'Net Income',
 					'Employee Parking' => 'Employee Parking',
 					'Bank Service Charges' => 'Bank Service Charges',
-					'Income Tax Payment' => 'Income Tax Payment'
+					'Income Tax Payment' => 'Income Tax Payment',
+					'Payroll Service' => 'Payroll Service',
+					'Professional Service' => 'Professional Service'
 
 					
 	  		
