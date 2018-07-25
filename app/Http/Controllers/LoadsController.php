@@ -33,6 +33,86 @@ class LoadsController extends Controller
 	//use helpers\Mailer;
     
 	//Load the datatable
+	public function newAccounting()
+	{
+		//credit
+		$customer = Load::select('customer_name as name', 'amount_due as rate', 'deposit_date as date')->take(5)->get();
+
+		$customer->map(function ($customer) {
+    			$customer['type'] = 'Credit';
+				return $customer;
+			});
+
+		//debit
+		$carrier = Load::select('carrier_name as name', 'carrier_rate as rate', 'upload_date as date')->take(5)->get();
+
+		$carrier->map(function ($carrier) {
+    			$carrier['type'] = 'Debit';
+				return $carrier;
+			});
+
+		$mergedCollection = $customer->toBase()->merge($carrier);
+
+
+
+
+
+		$mergedCollection->map(function ($mergedCollection) {
+    			$mergedCollection['running_total'] = '';
+    			return $mergedCollection;
+			});
+
+		
+
+		
+
+		
+		 	
+	
+
+//$credit = Load::where('deposit_date', '<=', $mergedCollection->date)->where('customerPayStatus', 'PAID')->sum('amount_due');
+				// $credit = $customer->where('date', '<=', $customer->date)->sum('rate');
+
+				// $debit = $carrier->where('date', '<=', $carrier->date)->sum('rate');
+				//$debit = Load::where('upload_date', '<=', $mergedCollection->date)->where('carrierPayStatus', 'COMPLETED')->sum('carrier_rate');
+		
+
+			$mergedCollection->transform(function($mergedCollection) {
+			
+
+			//give me the sum on and before the current date
+			$customer = Load::select('customer_name as name', 'amount_due as rate', 'deposit_date as date')->take(5)->get();
+			$credit = $customer->where('date', '<=', $mergedCollection->date)->sum('rate');
+
+			$carrier = Load::select('carrier_name as name', 'carrier_rate as rate', 'upload_date as date')->take(5)->get();
+			$debit = $carrier->where('date', '<=', $mergedCollection->date)->sum('rate');
+
+
+			$mergedCollection->running_total = $credit - $debit;
+			
+			 
+			return $mergedCollection;
+			});
+
+			$sorted = $mergedCollection->sortBy('date');
+
+			
+
+//array_key_exists('first', $search_array)
+
+//if (!$servicesImpacted->contains('name', $service->name))
+
+
+		//$sorted = $mergedCollection->sortBy('price');
+
+
+		
+
+
+		return view('newAccounting', compact('sorted', $sorted));
+	}
+
+
     public function index()
 	{
 		

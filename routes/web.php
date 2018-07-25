@@ -110,6 +110,10 @@ Route::get('/ach_no_carrier_found', function () {
          Route::get('createACHFromJournal/{id}', 'MaatwebsiteDemoController@createACHFromJournal');
 
 
+         Route::get('newAccounting', 'LoadsController@newAccounting');
+
+
+
          
          
          
