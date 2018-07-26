@@ -6,6 +6,8 @@ use App\Load;
 
 use App\Text;
 
+use App\Journal;
+
 use App\Loadlist;
 
 use App\Carrier;
@@ -38,21 +40,34 @@ class LoadsController extends Controller
 			
 			
 			$loads = new Load();
-			 //Query for customer where customerPayStatus = PAID
+
+			$journal = new Journal();
+			
+			//Query for customer where customerPayStatus = PAID
 			$customer = $loads->customerCreditCheckingAccount();
 
-			 //Query for carrier where carrierPayStatus = COMPLETED
+			//Query for carrier where carrierPayStatus = COMPLETED
 			$carrier = $loads->carrierCreditCheckingAccount();
 
+			//Query for journal debits where type = BILLPMT
+			$journalDebits = $journal->journalCheckingAccountDebits(); 
+
+			//Query for journal credits where type = PMT
+			$journalCredits = $journal->journalCheckingAccountCredits();
+
+
 			//Merge the two collections together
-			$mergedCollection = $customer->toBase()->merge($carrier);
+			$mergedCollection = $customer->toBase()->merge($carrier)->merge($journalDebits)->merge($journalCredits);
+
+			
+			
 
 
 			//Add the running total column to the merged collection
-			$mergedCollection->map(function ($mergedCollection) {
-    			$mergedCollection['running_total'] = '';
-    			return $mergedCollection;
-			});
+			// $mergedCollection->map(function ($mergedCollection) {
+   //  			$mergedCollection['running_total'] = '';
+   //  			return $mergedCollection;
+			// });
 
 			//Populate the running total with credits - debits
 			// $mergedCollection->transform(function($mergedCollection) {

@@ -174,6 +174,36 @@ class Journal extends Model
       return $net_income_qb;
     }
 
+    public function journalCheckingAccountDebits()
+    {
+
+      $debits = Journal::select('account_name as name', 'payment_amount as rate', 'created_at as date', 'reference_number', 'id', 'account_id', 'payment_method as method', 'cleared', 'cleared_date')->where('type', 'BILLPMT')->get();
+
+        $debits->map(function ($debits) {
+          $debits['type'] = 'Debit';
+          return $debits;
+        });
+
+      return $debits;
+
+    }
+
+    public function journalCheckingAccountCredits()
+    {
+
+      $credits = Journal::select('account_name as name', 'payment_amount as rate', 'created_at as date', 'reference_number', 'id', 'account_id', 'payment_method as method', 'cleared', 'cleared_date')->where('type', 'PMT')->get();
+
+        $credits->map(function ($credits) {
+          $credits['type'] = 'Credit';
+          return $credits;
+        });
+
+      return $credits;
+
+    }
+
+    
+
 
     
 }
