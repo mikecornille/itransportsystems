@@ -1653,7 +1653,7 @@ $(document).ready(function() {
                 }
             },
             
-            { "data": "running_total" }
+            // { "data": "running_total" }
 
             
             

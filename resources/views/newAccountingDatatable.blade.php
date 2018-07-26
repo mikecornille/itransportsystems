@@ -20,7 +20,7 @@
         <th>Cleared Date</th>
         <th>Debit</th>
         <th>Credit</th>
-        <th>Balance</th>
+        <!-- <th>Balance</th> -->
         
         
         
@@ -44,7 +44,7 @@
         <th>Cleared Date</th>
         <th>Debit</th>
         <th>Credit</th>
-        <th>Balance</th>
+       <!--  <th>Balance</th> -->
         
         
         

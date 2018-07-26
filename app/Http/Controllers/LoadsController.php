@@ -55,19 +55,19 @@ class LoadsController extends Controller
 			});
 
 			//Populate the running total with credits - debits
-			$mergedCollection->transform(function($mergedCollection) {
+			// $mergedCollection->transform(function($mergedCollection) {
 			
-				$customer = Load::select('customer_name as name', 'amount_due as rate', 'deposit_date as date')->where('customerPayStatus', 'PAID')->get();
-        		$credit = $customer->where('date', '<=', $mergedCollection->date)->sum('rate');
+			// 	$customer = Load::select('customer_name as name', 'amount_due as rate', 'deposit_date as date')->where('customerPayStatus', 'PAID')->get();
+   //      		$credit = $customer->where('date', '<=', $mergedCollection->date)->sum('rate');
 
-				$carrier = Load::select('carrier_name as name', 'carrier_rate as rate', 'upload_date as date')->where('carrierPayStatus', 'COMPLETED')->get();
-				$debit = $carrier->where('date', '<=', $mergedCollection->date)->sum('rate');
+			// 	$carrier = Load::select('carrier_name as name', 'carrier_rate as rate', 'upload_date as date')->where('carrierPayStatus', 'COMPLETED')->get();
+			// 	$debit = $carrier->where('date', '<=', $mergedCollection->date)->sum('rate');
 
 
-				$mergedCollection->running_total = $credit - $debit;
+			// 	$mergedCollection->running_total = $credit - $debit;
 			
-			 	return $mergedCollection;
-			});
+			//  	return $mergedCollection;
+			// });
 
 			
 
