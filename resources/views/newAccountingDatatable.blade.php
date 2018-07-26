@@ -13,6 +13,7 @@
         <th>Date</th>
         <th>Reference #</th>
         <th>Pro #</th>
+        <th>Journal #</th>
         <th>Name</th>
         <th>Account ID</th>
         <th>Payment Method</th>
@@ -37,6 +38,7 @@
         <th>Date</th>
         <th>Reference #</th>
         <th>Pro #</th>
+        <th>Journal #</th>
         <th>Name</th>
         <th>Account ID</th>
         <th>Payment Method</th>

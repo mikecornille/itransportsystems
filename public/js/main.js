@@ -1551,7 +1551,7 @@ $(document).ready(function() {
                 "data":           'id',
                 "render": function ( data, type, full, meta ){
                     
-                    if(data !== null)
+                    if(data !== undefined)
                     {
                       return '<a href="/edit/url?id='+data+'">'+data+'</a>';
                     }
@@ -1564,6 +1564,26 @@ $(document).ready(function() {
                   
               
             },
+
+            {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           'journal_id',
+                "render": function ( data, type, full, meta ) 
+                {
+            
+                  if(data !== undefined)
+                    {
+                  return '<a href="/journal/'+data+'/edit">'+data+'</a>';
+                    }
+                    else
+                    {
+                      return '';
+                    }
+                }
+
+                },
+
             { "data": "name" },
             { "data": "account_id" },
             { "data": "method" },
