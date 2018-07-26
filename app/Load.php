@@ -426,7 +426,7 @@ class Load extends Model
 
     public function carrierCreditCheckingAccount()
     {
-        $carrier = Load::select('carrier_name as name', 'carrier_rate as rate', 'upload_date as date', 'vendor_check_number as reference_number', 'id', 'carrier_id as account_id', 'payment_method as method')->where('carrierPayStatus', 'COMPLETED')->get();
+        $carrier = Load::select('carrier_name as name', 'carrier_rate as rate', 'upload_date as date', 'vendor_check_number as reference_number', 'id', 'carrier_id as account_id', 'payment_method as method', 'cleared', 'cleared_date')->where('carrierPayStatus', 'COMPLETED')->get();
 
         $carrier->map(function ($carrier) {
           $carrier['type'] = 'Debit';

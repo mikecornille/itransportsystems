@@ -1567,6 +1567,59 @@ $(document).ready(function() {
             { "data": "name" },
             { "data": "account_id" },
             { "data": "method" },
+            
+
+
+
+
+
+
+
+
+
+            
+            {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           'type',  
+                "render": function ( data, type, full, meta ){
+                    
+                    if(data === 'Debit')
+                    {
+                      return full.cleared;
+                    }
+                    else
+                    {
+                      return '';
+                    }
+                    
+                }
+            },
+            {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           'type',  
+                "render": function ( data, type, full, meta ){
+                    
+                    if(data === 'Debit')
+                    {
+                      return full.cleared_date;
+                    }
+                    else
+                    {
+                      return '';
+                    }
+                }
+            },
+
+
+
+
+
+
+
+
+
             {
                 "className":      'payment_amount_color',
                 "orderable":      false,
@@ -1599,6 +1652,7 @@ $(document).ready(function() {
                     }
                 }
             },
+            
             { "data": "running_total" }
 
             

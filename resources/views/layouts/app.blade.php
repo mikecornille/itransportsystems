@@ -219,7 +219,7 @@
                                     
                                     @if (Auth::user()->email == 'mikec@itransys.com' || Auth::user()->email == 'lianey@itransys.com')
                                     <li><a href="{{ url('/general_ledger') }}">Checking Account</a></li>
-                                    <li><a href="{{ url('/checkingAccount') }}">Checking Account 2</a></li>
+                                    <li><a href="{{ url('/newAccountingDatatable') }}">Checking Account 2</a></li>
                                     <li><a href="{{ url('/generalLedgerFiles') }}">Generate Files</a></li>
                                     <li><a href="{{ url('/journal') }}">Journal Entry</a></li>
                                     <li><a href="{{ url('/journalAccountSearch') }}">Created Accounts</a></li>
