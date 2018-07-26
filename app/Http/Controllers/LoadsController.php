@@ -33,84 +33,54 @@ class LoadsController extends Controller
 	//use helpers\Mailer;
     
 	//Load the datatable
-	public function newAccounting()
+	public function tableNewAccCall()
 	{
-		//credit
-		$customer = Load::select('customer_name as name', 'amount_due as rate', 'deposit_date as date')->take(5)->get();
+			
+			
+			$loads = new Load();
+			 //Query for customer where customerPayStatus = PAID
+			$customer = $loads->customerCreditCheckingAccount();
 
-		$customer->map(function ($customer) {
-    			$customer['type'] = 'Credit';
-				return $customer;
-			});
+			 //Query for carrier where carrierPayStatus = COMPLETED
+			$carrier = $loads->carrierCreditCheckingAccount();
 
-		//debit
-		$carrier = Load::select('carrier_name as name', 'carrier_rate as rate', 'upload_date as date')->take(5)->get();
-
-		$carrier->map(function ($carrier) {
-    			$carrier['type'] = 'Debit';
-				return $carrier;
-			});
-
-		$mergedCollection = $customer->toBase()->merge($carrier);
+			//Merge the two collections together
+			$mergedCollection = $customer->toBase()->merge($carrier);
 
 
-
-
-
-		$mergedCollection->map(function ($mergedCollection) {
+			//Add the running total column to the merged collection
+			$mergedCollection->map(function ($mergedCollection) {
     			$mergedCollection['running_total'] = '';
     			return $mergedCollection;
 			});
 
-		
-
-		
-
-		
-		 	
-	
-
-//$credit = Load::where('deposit_date', '<=', $mergedCollection->date)->where('customerPayStatus', 'PAID')->sum('amount_due');
-				// $credit = $customer->where('date', '<=', $customer->date)->sum('rate');
-
-				// $debit = $carrier->where('date', '<=', $carrier->date)->sum('rate');
-				//$debit = Load::where('upload_date', '<=', $mergedCollection->date)->where('carrierPayStatus', 'COMPLETED')->sum('carrier_rate');
-		
-
+			//Populate the running total with credits - debits
 			$mergedCollection->transform(function($mergedCollection) {
 			
+				$customer = Load::select('customer_name as name', 'amount_due as rate', 'deposit_date as date')->where('customerPayStatus', 'PAID')->get();
+        		$credit = $customer->where('date', '<=', $mergedCollection->date)->sum('rate');
 
-			//give me the sum on and before the current date
-			$customer = Load::select('customer_name as name', 'amount_due as rate', 'deposit_date as date')->take(5)->get();
-			$credit = $customer->where('date', '<=', $mergedCollection->date)->sum('rate');
-
-			$carrier = Load::select('carrier_name as name', 'carrier_rate as rate', 'upload_date as date')->take(5)->get();
-			$debit = $carrier->where('date', '<=', $mergedCollection->date)->sum('rate');
+				$carrier = Load::select('carrier_name as name', 'carrier_rate as rate', 'upload_date as date')->where('carrierPayStatus', 'COMPLETED')->get();
+				$debit = $carrier->where('date', '<=', $mergedCollection->date)->sum('rate');
 
 
-			$mergedCollection->running_total = $credit - $debit;
+				$mergedCollection->running_total = $credit - $debit;
 			
-			 
-			return $mergedCollection;
+			 	return $mergedCollection;
 			});
 
-			$sorted = $mergedCollection->sortBy('date');
+			
 
 			
 
-//array_key_exists('first', $search_array)
+			$data = $mergedCollection;
 
-//if (!$servicesImpacted->contains('name', $service->name))
-
-
-		//$sorted = $mergedCollection->sortBy('price');
+			
+			return(['data' => $data]);
 
 
-		
-
-
-		return view('newAccounting', compact('sorted', $sorted));
 	}
+
 
 
     public function index()
@@ -656,6 +626,14 @@ class LoadsController extends Controller
 		
 		
 		return view('general_ledger');
+	}
+
+
+	public function newAccountingDatatable()
+	{
+		
+		
+		return view('newAccountingDatatable');
 	}
 
 	

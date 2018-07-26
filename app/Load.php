@@ -412,6 +412,36 @@ class Load extends Model
         return $accounts_payable;
     }
 
+    public function customerCreditCheckingAccount()
+    {
+        $customer = Load::select('customer_name as name', 'amount_due as rate', 'deposit_date as date', 'ref_or_check_num_from_customer as reference_number', 'id', 'customer_id as account_id', 'payment_method_from_customer as method')->where('customerPayStatus', 'PAID')->get();
+
+            $customer->map(function ($customer) {
+                $customer['type'] = 'Credit';
+                return $customer;
+            });
+
+        return $customer;
+    }
+
+    public function carrierCreditCheckingAccount()
+    {
+        $carrier = Load::select('carrier_name as name', 'carrier_rate as rate', 'upload_date as date', 'vendor_check_number as reference_number', 'id', 'carrier_id as account_id', 'payment_method as method')->where('carrierPayStatus', 'COMPLETED')->get();
+
+        $carrier->map(function ($carrier) {
+          $carrier['type'] = 'Debit';
+          return $carrier;
+        });
+
+        return $carrier;
+    }
+
+   
+
+    
+
+    
+
 
 
     

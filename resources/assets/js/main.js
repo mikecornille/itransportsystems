@@ -1526,6 +1526,132 @@ $(document).ready(function() {
         } );
     } );
 } );
+
+
+//GET THE CONTENT FOR THE DATATABLE
+
+$(document).ready(function() {
+
+    var table = $('#datatableNewChecking').DataTable({
+
+     // scrollY:        "800px",
+   //       scrollX:        true,
+   //       scrollCollapse: true,
+   //       paging:         true,
+   //       fixedColumns: true,
+    "ajax": "/tableNewAccCall",
+        "columns": [
+      
+            { "data": "date"},
+            { "data": "reference_number"},
+
+            {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           'id',
+                "render": function ( data, type, full, meta ){
+                    
+                    if(data !== null)
+                    {
+                      return '<a href="/edit/url?id='+data+'">'+data+'</a>';
+                    }
+                    else
+                    {
+                      return '';
+                    }
+                }
+                  
+                  
+              
+            },
+            { "data": "name" },
+            { "data": "account_id" },
+            { "data": "method" },
+            {
+                "className":      'payment_amount_color',
+                "orderable":      false,
+                "data":           'type',  
+                "render": function ( data, type, full, meta ){
+                    
+                    if(data === 'Debit')
+                    {
+                      return full.rate;
+                    }
+                    else
+                    {
+                      return '';
+                    }
+                }
+            },
+            {
+                "className":      'text-success',
+                "orderable":      false,
+                "data":           'type',  
+                "render": function ( data, type, full, meta ){
+                    
+                    if(data === 'Credit')
+                    {
+                      return full.rate;
+                    }
+                    else
+                    {
+                      return '';
+                    }
+                }
+            },
+            { "data": "running_total" }
+
+            
+            
+
+
+        ],
+        "order": [[0,'asc']],
+
+        "columnDefs": [
+      { "width": "10px", "targets": 0 }, //date
+      { "width": "10px", "targets": 1 } //ref #
+      
+      
+      
+      
+     
+    ]
+
+     
+
+});
+
+
+});
+
+
+
+//MAKE EACH COLUMN SEARCHABLE AND SORTABLE
+
+$(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#datatableNewChecking tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="'+title+'" />' );
+    } );
+ 
+    // DataTable
+    var table = $('#datatableNewChecking').DataTable();
+ 
+    // Apply the search
+    table.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+} );
 //DATEPICKERS
 
 $('#datepicker').datepicker();

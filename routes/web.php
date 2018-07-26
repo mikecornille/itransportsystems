@@ -40,6 +40,8 @@ Route::get('/ach_no_carrier_found', function () {
 
 
          Route::get('general_ledger', 'LoadsController@generalLedger');
+
+         Route::get('newAccountingDatatable', 'LoadsController@newAccountingDatatable');
          
          Route::get('accounts_receivable', 'LoadsController@accounts_receivable');
          Route::get('accounts_payable', 'LoadsController@accounts_payable');
@@ -368,6 +370,8 @@ Route::get('/deepDeepLoads', 'LoadsController@deepDeepLoads');
 Route::get('/tobedata', 'LoadsController@indextwo'); //FOR DATATABLES
 Route::get('/tobedatatwo', 'LoadsController@tobedatatwo'); //FOR DATATABLES
 Route::get('/generalLedgerLoads', 'LoadsController@generalLedgerLoads'); //FOR DATATABLES
+
+Route::get('/tableNewAccCall', 'LoadsController@tableNewAccCall'); //FOR DATATABLES
 
 //Route::get('/generalLedger', 'LoadsController@generalLedger');
 Route::get('/personal_status_table', 'LoadsController@personal_status_table'); //FOR DATATABLES
