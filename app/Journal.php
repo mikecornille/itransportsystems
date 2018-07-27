@@ -191,7 +191,7 @@ class Journal extends Model
     public function journalCheckingAccountCredits()
     {
 
-      $credits = Journal::select('account_name as name', 'payment_amount as rate', 'created_at as date', 'reference_number', 'id', 'account_id', 'payment_method as method', 'cleared', 'cleared_date')->where('type', 'PMT')->get();
+      $credits = Journal::select('account_name as name', 'deposit_amount as rate', 'created_at as date', 'reference_number', 'id as journal_id', 'account_id', 'payment_method as method', 'cleared', 'cleared_date')->where('type', 'PMT')->get();
 
         $credits->map(function ($credits) {
           $credits['type'] = 'Credit';
