@@ -34,8 +34,8 @@
       </tr>
     </thead>
     <tfoot>
-      <tr>
-        <th>Date</th>
+       <tr>
+            <th>Date</th>
         <th>Reference #</th>
         <th>Pro #</th>
         <th>Journal #</th>
@@ -46,21 +46,15 @@
         <th>Cleared Date</th>
         <th>Debit</th>
         <th>Credit</th>
-       <!--  <th>Balance</th> -->
-        
-        
-        
-        
-
       </tr>
-    </tfoot>  
+        </tfoot> 
   </table>
 
 
 
 
-
-
+<h1>Balance including outstanding checks: {{ $balanceOut }}</h1>
+<h1>Balance with only cleared checks: {{ $balanceCleared }}</h1>
 
 
 

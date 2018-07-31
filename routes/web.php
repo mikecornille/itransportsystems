@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/testDatatable', function () {
+    return view('/testDatatable');
+});
+
 Route::get('/', function () {
 	return view('welcome');
 });

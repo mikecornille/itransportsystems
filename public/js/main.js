@@ -1534,11 +1534,11 @@ $(document).ready(function() {
 
     var table = $('#datatableNewChecking').DataTable({
 
-     // scrollY:        "800px",
-   //       scrollX:        true,
-   //       scrollCollapse: true,
-   //       paging:         true,
-   //       fixedColumns: true,
+
+       
+
+
+     
     "ajax": "/tableNewAccCall",
         "columns": [
       
@@ -1704,16 +1704,16 @@ $(document).ready(function() {
 //MAKE EACH COLUMN SEARCHABLE AND SORTABLE
 
 $(document).ready(function() {
-    // Setup - add a text input to each footer cell
+    
     $('#datatableNewChecking tfoot th').each( function () {
         var title = $(this).text();
         $(this).html( '<input type="text" placeholder="'+title+'" />' );
     } );
  
-    // DataTable
+    
     var table = $('#datatableNewChecking').DataTable();
  
-    // Apply the search
+    
     table.columns().every( function () {
         var that = this;
  

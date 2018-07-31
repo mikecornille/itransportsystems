@@ -647,8 +647,32 @@ class LoadsController extends Controller
 	public function newAccountingDatatable()
 	{
 		
+		$debitsLoadsOut = Load::where('carrierPayStatus', 'COMPLETED')->sum('carrier_rate');
+		$debitsJournalOut = Journal::sum('payment_amount');
+		$totalDebits = $debitsLoadsOut + $debitsJournalOut;
+		$creditsLoadsOut = Load::where('customerPayStatus', 'PAID')->sum('paid_amount_from_customer');
+		$creditsJournalOut = Journal::sum('deposit_amount');
+		$totalCredits = $creditsLoadsOut + $creditsJournalOut;
+		$balanceOut = $totalCredits - $totalDebits;
+
+
+		$debitsLoads = Load::where('carrierPayStatus', 'COMPLETED')->where('cleared', 'YES')->sum('carrier_rate');
+		$debitsJournal = Journal::where('cleared', 'YES')->sum('payment_amount');
+		$totalDebitsCleared = $debitsLoads + $debitsJournal;
+		$creditsLoads = Load::where('customerPayStatus', 'PAID')->sum('paid_amount_from_customer');
+		$creditsJournal = Journal::sum('deposit_amount');
+		$totalCreditsCleared = $creditsLoads + $creditsJournal;
+		$balanceCleared = $totalCreditsCleared - $totalDebitsCleared;
+
+
+
+
 		
-		return view('newAccountingDatatable');
+
+		
+		
+		
+		return view('newAccountingDatatable')->with('balanceCleared', $balanceCleared)->with('balanceOut', $balanceOut);
 	}
 
 	

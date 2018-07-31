@@ -215,12 +215,12 @@
                                     <li><a href="{{ URL::to('/remit') }}">Billing Info Database</a></li>
                                     <li><a href="{{ url('/achCSV') }}">Create ACH Files</a></li>
                                     <li><a href="{{ url('/positivePay') }}">Create Positive Pay</a></li>
+                                    <li><a href="{{ url('/generalLedgerFiles') }}">Generate Files</a></li>
                                     <!-- <li><a href="{{ url('/allNeededPODs') }}">Needed BOL</a></li> -->
                                     
                                     @if (Auth::user()->email == 'mikec@itransys.com' || Auth::user()->email == 'lianey@itransys.com')
                                     <li><a href="{{ url('/general_ledger') }}">Checking Account</a></li>
                                     <li><a href="{{ url('/newAccountingDatatable') }}">Checking Account 2</a></li>
-                                    <li><a href="{{ url('/generalLedgerFiles') }}">Generate Files</a></li>
                                     <li><a href="{{ url('/journal') }}">Journal Entry</a></li>
                                     <li><a href="{{ url('/journalAccountSearch') }}">Created Accounts</a></li>
                                     @endif
