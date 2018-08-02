@@ -71,17 +71,17 @@ return [
             /*
              * The amount of days that all backups must be kept.
              */
-            'keepAllBackupsForDays' => 7,
+            'keepAllBackupsForDays' => 3,
 
             /*
              * The amount of days that all daily backups must be kept.
              */
-            'keepDailyBackupsForDays' => 16,
+            'keepDailyBackupsForDays' => 4,
 
             /*
              * The amount of weeks of which one weekly backup must be kept.
              */
-            'keepWeeklyBackupsForWeeks' => 8,
+            'keepWeeklyBackupsForWeeks' => 4,
 
             /*
              * The amount of months of which one monthly backup must be kept.
@@ -153,7 +153,7 @@ return [
          * Here you can specify how emails should be sent.
          */
         'mail' => [
-            'from' => 'Itrans Load Email',
+            'from' => 'mikec@itransys.com',
             'to'   => 'mikec@itransys.com',
         ],
 
