@@ -867,6 +867,31 @@ class LoadsController extends Controller
 
 		return(['data' => $data]);
 	}
+
+	public function toBeAvailable()
+	{
+		
+
+		$loads = Load::where('pick_status', 'Loaded')->where('delivery_status', 'En Route')->orderBy('delivery_date', 'asc')->get();
+
+		
+
+		$loads->map(function ($loads) {
+
+            //Get todays date to do math
+            $today = Carbon::now('America/Chicago');
+            //Get the delivery date
+            $delivery_date = Carbon::createFromFormat('m/d/Y', $loads->delivery_date);
+            //Send to datatable
+            $diff = (string)$today->diffInDays($delivery_date, false);
+                $loads['countdown'] = $diff;
+                return $loads;
+            });
+
+
+		return view('toBeAvailable', compact('loads', $loads));
+
+	}
 	
 }
 

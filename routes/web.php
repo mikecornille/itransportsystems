@@ -140,6 +140,9 @@ Route::get('newJournalEntry', function() {
 
 });
 
+
+Route::get('toBeAvailable', 'LoadsController@toBeAvailable');
+
 Route::post('submitNewJournalVendor', 'JournalController@submitNewJournalVendor');
 
 Route::resource('journal', 'JournalController');

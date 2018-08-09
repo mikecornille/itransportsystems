@@ -165,6 +165,7 @@
 
                                 <li><a href="{{ URL::to('/toBeLoaded') }}">To Be Loaded</a></li>
                                 <li><a href="{{ URL::to('/toBeDelivered') }}">To Be Delivered</a></li>
+                                <li><a href="{{ URL::to('/toBeAvailable') }}">To Be Available</a></li>
 
 
                                 </ul>
