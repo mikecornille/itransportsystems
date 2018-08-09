@@ -3,12 +3,12 @@
 		<div class="col-md-4">
 			<h3>Account Entry</h3>
 		</div>
-		<div class="col-md-4">
-			<a href="newJournalEntry">Create New Account</a>
+		<!-- <div class="col-md-4">
+			<a class="btn btn-primary" href="newJournalEntry">Create New Account</a>
 		</div>
 		<div class="col-md-4">
-			<a href="payMultipleSubCategories">Pay Multiple Credit Card Sub Categories</a>
-		</div>
+			<a class="btn btn-primary" href="payMultipleSubCategories">Pay Multiple Credit Card Sub Categories</a>
+		</div> -->
 	</div>
 	<div class="row">
 		<div class="col-md-4">
@@ -179,7 +179,12 @@
 
 	<h3>Send A Check</h3>
 	
-	
+	@if(isset($post->id) === true)
+	<ul>
+		<li>Check Cleared: {{ $post->cleared }}</li>
+		<li>Check Cleared Date: {{ $post->cleared_date }}</li>
+	</ul>
+	@endif
 	<div class="row">
 		<div class="col-md-3">
 			{{ Form::label('address', 'Address') }}
@@ -271,14 +276,20 @@
 		</div>
 		
 		@if(isset($post->id) !== false)
-		<div class="col-md-4" style="margin-top: 30px;">
-			<a href="{{ URL::to('/printCheckFromJournal/' . $post->id) }}"><b>Print Check</b></a>
+		<!-- <div class="col-md-4" style="margin-top: 30px;">
+			<a class="btn btn-primary" href="{{ URL::to('/printCheckFromJournal/' . $post->id) }}"><b>Print Check</b></a>
 		</div>
 		<div class="col-md-4" style="margin-top: 30px;">
-			<a href="{{ URL::to('/createACHFromJournal/' . $post->id) }}"><b>Create ACH File</b></a>
-		</div>
-		@endif
+			<a class="btn btn-primary" href="{{ URL::to('/createACHFromJournal/' . $post->id) }}"><b>Create ACH File</b></a>
+		</div> -->
 
+		<div class="btn-group" role="group" aria-label="Basic example">
+		  <a class="btn btn-primary" href="{{ URL::to('/printCheckFromJournal/' . $post->id) }}"><b>Print Check</b></a>
+		  <a class="btn btn-primary" href="{{ URL::to('/createACHFromJournal/' . $post->id) }}"><b>Create ACH File</b></a>
+		  @endif
+		<a class="btn btn-primary" href="newJournalEntry"><b>Create New Account</b></a>
+		<a class="btn btn-primary" href="payMultipleSubCategories"><b>Pay Multiple Credit Card Sub Categories</b></a>
+		</div>
 	</div>
 	
 

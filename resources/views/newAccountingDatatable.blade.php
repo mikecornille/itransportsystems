@@ -17,6 +17,7 @@
         <th>Name</th>
         <th>Account ID</th>
         <th>Payment Method</th>
+        <th>Type</th>
         <th>Cleared</th>
         <th>Cleared Date</th>
         <th>Debit</th>
@@ -42,6 +43,7 @@
         <th>Name</th>
         <th>Account ID</th>
         <th>Payment Method</th>
+        <th>Type</th>
         <th>Cleared</th>
         <th>Cleared Date</th>
         <th>Debit</th>

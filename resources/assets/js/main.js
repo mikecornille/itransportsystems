@@ -1587,17 +1587,12 @@ $(document).ready(function() {
             { "data": "name" },
             { "data": "account_id" },
             { "data": "method" },
+            { "data": "type_des" },
             
 
 
 
 
-
-
-
-
-
-            
             {
                 "className":      'details-control',
                 "orderable":      false,
@@ -1671,7 +1666,7 @@ $(document).ready(function() {
                       return '';
                     }
                 }
-            },
+            }
             
             // { "data": "running_total" }
 

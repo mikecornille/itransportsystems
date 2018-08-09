@@ -819,7 +819,7 @@ Artisan::command('import:clearedChecks {filename}', function($filename) {
 		
 			\DB::table('loads')->where('vendor_check_number', $data[0])->update([
             'cleared' => "YES",
-            'cleared_date' => $data[1]
+            'cleared_date' => \Carbon\Carbon::parse($data[1])
         
         ]);
 	}
@@ -836,12 +836,26 @@ Artisan::command('import:clearedChecksInJournal {filename}', function($filename)
 		
 			\DB::table('journals')->where('payment_number', $data[0])->update([
             'cleared' => "YES",
-            'cleared_date' => $data[1]
+            'cleared_date' => \Carbon\Carbon::parse($data[1])
         
         ]);
 	}
 	fclose($file);
 });
 
+// Artisan::command('accounting:test', function() {
+// 	$end = \Carbon\Carbon::now();
+// 	$results = \App\Load::all()->transform(function($record) {		$record->cleared_date = \Carbon\Carbon::parse($record->cleared_date);		return $record;	});
+	
+// 	$paidToCarrier = $results->where('cleared_date', '<', $end)->sum('carrier_rate');
+// 	echo $paidToCarrier . PHP_EOL;
+// 	$paidFromCustomer = $results->where('deposit_date', '<', $end)->sum('paid_amount_from_customer');
+// 	echo $paidFromCustomer . PHP_EOL;
+// 	$journalAmount = \App\Journal::where(function($query) {
+// 		$query->where('payment_method', 'CHECK')
+// 		->and('cleared_date', '<', 'now()')	
+// 	})
+// 	dd($paidFromCustomer - $paidToCarrier);
+// });
 
 

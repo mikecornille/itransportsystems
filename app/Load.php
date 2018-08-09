@@ -421,15 +421,42 @@ class Load extends Model
                 return $customer;
             });
 
+            $customer->map(function ($customer) {
+                $customer['type_des'] = 'Revenue';
+                return $customer;
+            });
+
         return $customer;
     }
 
-    public function carrierCreditCheckingAccount()
+    public function carrierClearedChecks()
     {
-        $carrier = Load::select('carrier_name as name', 'carrier_rate as rate', 'upload_date as date', 'vendor_check_number as reference_number', 'id', 'carrier_id as account_id', 'payment_method as method', 'cleared', 'cleared_date')->where('carrierPayStatus', 'COMPLETED')->get();
+        $carrier = Load::select('carrier_name as name', 'carrier_rate as rate', 'cleared_date as date', 'vendor_check_number as reference_number', 'id', 'carrier_id as account_id', 'payment_method as method', 'cleared', 'cleared_date')->where('carrierPayStatus', 'COMPLETED')->where('payment_method', 'CHECK')->where('cleared', 'YES')->get();
 
         $carrier->map(function ($carrier) {
           $carrier['type'] = 'Debit';
+          return $carrier;
+        });
+
+         $carrier->map(function ($carrier) {
+          $carrier['type_des'] = 'Expense';
+          return $carrier;
+        });
+
+        return $carrier;
+    }
+
+    public function carrierACHPayments()
+    {
+      $carrier = Load::select('carrier_name as name', 'carrier_rate as rate', 'upload_date as date', 'vendor_check_number as reference_number', 'id', 'carrier_id as account_id', 'payment_method as method', 'cleared', 'cleared_date')->where('carrierPayStatus', 'COMPLETED')->where('payment_method', 'ACH')->get();
+
+      $carrier->map(function ($carrier) {
+          $carrier['type'] = 'Debit';
+          return $carrier;
+        });
+
+         $carrier->map(function ($carrier) {
+          $carrier['type_des'] = 'Expense';
           return $carrier;
         });
 

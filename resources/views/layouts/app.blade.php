@@ -219,8 +219,8 @@
                                     <!-- <li><a href="{{ url('/allNeededPODs') }}">Needed BOL</a></li> -->
                                     
                                     @if (Auth::user()->email == 'mikec@itransys.com' || Auth::user()->email == 'lianey@itransys.com')
-                                    <li><a href="{{ url('/general_ledger') }}">Checking Account</a></li>
-                                    <li><a href="{{ url('/newAccountingDatatable') }}">Checking Account 2</a></li>
+                                    <li><a href="{{ url('/general_ledger') }}">Ledger</a></li>
+                                    <li><a href="{{ url('/newAccountingDatatable') }}">Checking Account</a></li>
                                     <li><a href="{{ url('/journal') }}">Journal Entry</a></li>
                                     <li><a href="{{ url('/journalAccountSearch') }}">Created Accounts</a></li>
                                     @endif

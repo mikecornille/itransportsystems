@@ -889,6 +889,10 @@
   <li>Account Type: {{ $info->account_type }}</li>
   <li>Account Email: {{ $info->accounting_email }}</li>
 </ul>
+<ul>
+  <li>Check Cleared: {{ $info->cleared }}</li>
+  <li>Check Cleared Date: {{ $info->cleared_date }}</li>
+</ul>
 @endif
 </div>
 

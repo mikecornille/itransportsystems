@@ -43,33 +43,50 @@ class LoadsController extends Controller
 
 			$journal = new Journal();
 			
-			//Query for customer where customerPayStatus = PAID
+			//Query for customer where customerPayStatus = PAID / deposit_date as date
 			$customer = $loads->customerCreditCheckingAccount();
 
-			//Query for carrier where carrierPayStatus = COMPLETED
-			$carrier = $loads->carrierCreditCheckingAccount();
+			//Query for carrier where carrierPayStatus = COMPLETED, where payment_method = CHECK, where cleared = YES / cleared_date as date
+			$carrierClearedChecks = $loads->carrierClearedChecks();
 
-			//Query for journal debits where type = BILLPMT
-			$journalDebits = $journal->journalCheckingAccountDebits(); 
+			//Query for carrier where carrierPayStatus = COMPLETED, where payment_method = ACH / upload_date as date
+			$carrierACHPayments = $loads->carrierACHPayments();
 
-			//Query for journal credits where type = PMT
-			$journalCredits = $journal->journalCheckingAccountCredits();
+			//Query for journal where type_description = Expense, where payment_method = CHECK, where type = BILLPMT, where cleared = YES / cleared_date as date
+			$journalClearedChecks = $journal->journalClearedChecks();
+
+			//Query for journal where type_description = Expense, where payment_method = ACH, where type = BILLPMT / created_at as date
+			$journalACHPayments = $journal->journalACHPayments();
+
+			//Query for journal where type = PMT / created_at = date
+			$journalPMTReceived = $journal->journalPMTReceived();
+
+			//Query for journal where type = BILLPMT, where type_description != Expense, where payment_method != CHECK / created_at = date
+			$journalBILLPMT = $journal->journalBILLPMT();
 
 
-			//Merge the two collections together
-			$mergedCollection = $customer->toBase()->merge($carrier)->merge($journalDebits)->merge($journalCredits);
+			
+
+
+			//Merge the seven collections together
+			$mergedCollection = $customer->toBase()->merge($carrierClearedChecks)
+			->merge($carrierACHPayments)
+			->merge($journalClearedChecks)
+			->merge($journalACHPayments)
+			->merge($journalPMTReceived)
+			->merge($journalBILLPMT);
 
 			
 			
 
 
-			//Add the running total column to the merged collection
+			// Add the running total column to the merged collection
 			// $mergedCollection->map(function ($mergedCollection) {
    //  			$mergedCollection['running_total'] = '';
    //  			return $mergedCollection;
 			// });
 
-			//Populate the running total with credits - debits
+			// Populate the running total with credits - debits
 			// $mergedCollection->transform(function($mergedCollection) {
 			
 			// 	$customer = Load::select('customer_name as name', 'amount_due as rate', 'deposit_date as date')->where('customerPayStatus', 'PAID')->get();

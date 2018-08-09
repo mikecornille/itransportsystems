@@ -174,10 +174,10 @@ class Journal extends Model
       return $net_income_qb;
     }
 
-    public function journalCheckingAccountDebits()
+    public function journalClearedChecks()
     {
 
-      $debits = Journal::select('account_name as name', 'payment_amount as rate', 'created_at as date', 'reference_number', 'id as journal_id', 'account_id', 'payment_method as method', 'cleared', 'cleared_date')->where('type', 'BILLPMT')->get();
+      $debits = Journal::select('account_name as name', 'payment_amount as rate', 'cleared_date as date', 'reference_number', 'id as journal_id', 'account_id', 'payment_method as method', 'cleared', 'cleared_date', 'type_description as type_des')->where('type', 'BILLPMT')->where('type_description', 'Expense')->where('payment_method', 'CHECK')->where('cleared', 'YES')->get();
 
         $debits->map(function ($debits) {
           $debits['type'] = 'Debit';
@@ -188,10 +188,27 @@ class Journal extends Model
 
     }
 
-    public function journalCheckingAccountCredits()
+    public function journalACHPayments()
     {
 
-      $credits = Journal::select('account_name as name', 'deposit_amount as rate', 'created_at as date', 'reference_number', 'id as journal_id', 'account_id', 'payment_method as method', 'cleared', 'cleared_date')->where('type', 'PMT')->get();
+      $debits = Journal::select('account_name as name', 'payment_amount as rate', 'created_at as date', 'reference_number', 'id as journal_id', 'account_id', 'payment_method as method', 'cleared', 'cleared_date', 'type_description as type_des')->where('type', 'BILLPMT')->where('type_description', 'Expense')->where('payment_method', 'ACH')->get();
+
+        $debits->map(function ($debits) {
+          $debits['type'] = 'Debit';
+          return $debits;
+        });
+
+      return $debits;
+
+    }
+
+
+
+    
+ public function journalPMTReceived()
+    {
+
+      $credits = Journal::select('account_name as name', 'deposit_amount as rate', 'created_at as date', 'reference_number', 'id as journal_id', 'account_id', 'payment_method as method', 'cleared', 'cleared_date', 'type_description as type_des')->where('type', 'PMT')->get();
 
         $credits->map(function ($credits) {
           $credits['type'] = 'Credit';
@@ -199,6 +216,22 @@ class Journal extends Model
         });
 
       return $credits;
+
+    }
+
+    
+
+    public function journalBILLPMT()
+    {
+
+      $debits = Journal::select('account_name as name', 'payment_amount as rate', 'created_at as date', 'reference_number', 'id as journal_id', 'account_id', 'payment_method as method', 'cleared', 'cleared_date', 'type_description as type_des')->where('type', 'BILLPMT')->where('type_description', '!=', 'Expense')->where('payment_method', '!=', 'CHECK')->get();
+
+        $debits->map(function ($debits) {
+          $debits['type'] = 'Debit';
+          return $debits;
+        });
+
+      return $debits;
 
     }
 
