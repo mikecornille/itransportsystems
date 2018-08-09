@@ -50,13 +50,24 @@ class MaatwebsiteDemoController extends Controller
 		// Dates in computer and human readable
 		$start_raw = $request->input('start_date');
 		$end_raw = $request->input('end_date');
-		$start = Carbon::createFromFormat('m/d/Y', $start_raw, "America/Chicago");
-	    $end = Carbon::createFromFormat('m/d/Y', $end_raw, "America/Chicago");
-		$start = date("Y-m-d", strtotime($start));
-		$end = date("Y-m-d", strtotime($end));
+		$start_carb = Carbon::createFromFormat('m/d/Y', $start_raw, "America/Chicago");
+	    $end_carb = Carbon::createFromFormat('m/d/Y', $end_raw, "America/Chicago");
+		$start = date("Y-m-d", strtotime($start_carb));
+		$end = date("Y-m-d", strtotime($end_carb));
+
+		
+
+
+		//Time for cleared checks query
+		$start_cleared = date("Y-m-d H:i:s", strtotime($start_carb));
+		$end_cleared = date("Y-m-d H:i:s", strtotime($end_carb));
+
+		// H:i:s
 
 		// Cleared checks query
-		$cleared_checks = $ledger->clearedChecks($start_raw, $end_raw);
+		$cleared_checks = $ledger->clearedChecks($start_cleared, $end_cleared);
+
+		
 
 		// Consolidate all reference numbers in respect to revenue and email results
 		//$ledger->consolidateReferenceNumbersForRevenueAndEmail($start, $end);

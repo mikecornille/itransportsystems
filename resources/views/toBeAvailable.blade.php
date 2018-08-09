@@ -64,6 +64,9 @@ h2 a {
 	  margin: 0 auto;
   display: table;
   padding: 0 0 8em 0;
+
+ 
+
 }
 
 .container td, .container th {
@@ -133,6 +136,8 @@ h2 a {
 			<th><h1>Phone</h1></th>
 			<th><h1>Email</h1></th>
 			<th><h1>Trailer Type</h1></th>
+			<th><h1>PRO #</h1></th>
+			<th><h1>Carrier #</h1></th>
 			
 		</tr>
 	</thead>
@@ -147,6 +152,8 @@ h2 a {
 			<td style="color:white;">{{ $load->carrier_phone }}</td>
 			<td>{{ $load->carrier_email }}</td>
 			<td>{{ $load->trailer_type }}</td>
+			<td>{{ $load->id }}</td>
+			<td>{{ $load->carrier_id }}</td>
 		</tr>
 @endforeach		
 		

@@ -9,12 +9,23 @@ class Ledger extends Model
 {
     public function clearedChecks($start_raw, $end_raw)
     {
-    	$cleared_checks = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'payment_method', 'payment_amount', 'deposit_amount')
-		->whereRaw("STR_TO_DATE(`cleared_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_raw}', '%m/%d/%Y')")
-		->whereRaw("STR_TO_DATE(`cleared_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_raw}', '%m/%d/%Y')")
-		->orderBy('cleared_date', 'asc')->get();
 
-		return $cleared_checks;
+        
+
+
+    	$cleared_checks = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('cleared_date', [$start_raw, $end_raw])->orderBy('cleared_date', 'asc')->get();
+		
+        return $cleared_checks;
+  //       ->whereRaw("STR_TO_DATE(`cleared_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_raw}', '%m/%d/%Y')")
+		// ->whereRaw("STR_TO_DATE(`cleared_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_raw}', '%m/%d/%Y')")
+		
+
+
+
+
+        
+
+		
     }
 
 
