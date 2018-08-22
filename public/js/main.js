@@ -951,6 +951,105 @@ $(document).ready(function() {
 } );
 
 
+// JOURNAL ENTRY
+
+//ACCOUNTS RECEIVABLE
+
+$(document).ready(function() {
+
+
+
+    var table = $('#journalDatatable').DataTable({
+        
+         // scrollY:        "800px",
+   //       scrollX:        true,
+   //       scrollCollapse: true,
+   //       paging:         true,
+   //       fixedColumns: true,
+        "ajax": "/journalDatatable",
+        "columns": [
+            {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           'account_id',
+                "render": function ( data, type, full, meta ) {
+                return '<a href="/goToAccountProfileFromJournal/'+data+'">View Account</a>';}
+            },
+            
+            
+            { "data": "created_at"},
+            { "data": "upload_date"},
+            { "data": "invoice_date_journal"},
+            { "data": "account_name"},
+            { "data": "type"},
+            { "data": "type_description"},
+            { "data": "type_description_sub"},
+            { "data": "memo"},
+            { "data": "payment_method"},
+            { "data": "payment_number"},
+            { "data": "payment_amount"},
+            { "data": "deposit_amount"},
+            { "data": "cleared"},
+            { "data": "cleared_date"},
+            { "data": "off_ledger"},
+
+
+
+            
+            // {
+            //     "className":      'details-control',
+            //     "orderable":      false,
+            //     "data":           'carrier_id',
+            //     "render": function ( data, type, full, meta ) {
+            //     return '<a href="/carrierAccoutingEditFromAccountsPayablePage/'+data+'">View Carrier</a>';}
+            // },
+
+
+
+
+            // { "data": "carrier_rate"},
+            // { "data": "vendor_invoice_date"},
+            // { "data": "vendor_invoice_number"},
+            // { "data": "carrierPayStatus"},
+            // { "data": "plus_thirty"},
+            // { "data": "aging"}
+
+
+        ],
+        "order": [[0,'asc'],[1,'asc']],
+
+
+
+       
+
+});   
+
+});
+
+$(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#journalDatatable tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="'+title+'" />' );
+    } );
+ 
+    // DataTable
+    var table = $('#journalDatatable').DataTable();
+ 
+    // Apply the search
+    table.columns().every( function () {
+        var that = this;
+ 
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+} );
+
 //GENERAL LEDGER
 
 // $(document).ready(function() {

@@ -223,4 +223,13 @@ class JournalController extends Controller
         return back();
     
 }
+    public function journalDatatable()
+    {
+        
+        $data = Journal::orderBy('id', 'desc')->take(2000)->get();
+        return(['data' => $data]);
+        
+    }
+
+
 }

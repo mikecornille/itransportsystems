@@ -33,7 +33,7 @@
 
         </div>
              
-  <table class="table table-striped">
+  <!-- <table class="table table-striped">
     <thead>
       <tr>
         <th></th>
@@ -57,8 +57,8 @@
         <th>Edit</th>
       </tr>
     </thead>
-    <tbody>
-    @foreach($journal_entries as $entry)
+    <tbody> -->
+    <!-- @foreach($journal_entries as $entry)
       <tr>
         <td></td>
         <td>{{ $entry->created_at }}</td>
@@ -80,10 +80,72 @@
         <td>{{ $entry->off_ledger }}</td>
         <td>{!! Html::linkRoute('journal.edit', 'Edit', array($entry->id), ['class' => 'btn btn-success btn-block']) !!}</td>
       </tr>
-      @endforeach
+      @endforeach -->
       
-    </tbody>
-  </table>
+   <!--  </tbody>
+  </table> -->
+
+
+  <div class="container-fluid">
+
+<table id="journalDatatable" cellspacing="0" class="stripe row-border order-column" style="border-collapse: collapse; width: 2800px; margin-left: 10px; font-size: 12px; table-layout: fixed; word-wrap:break-word;">
+
+        <thead>
+            <tr>
+            <th>Account Link</th>
+                <th>Created</th>
+        <th>Check Print</th>
+        <th>Invoice Date</th>
+        <th>Account</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Sub Desc</th>
+        <th>Memo</th>
+        <th>Payment Method</th>
+        <th>Payment Number</th>
+        <th>Payment Amount</th>
+        <th>Deposit Amount</th>
+        <th>Cleared</th>
+        <th>Cleared Date</th>
+        <th>Off Ledger</th>
+         
+                
+                
+                
+                
+
+
+            </tr>
+        </thead>
+         <tfoot>
+            <tr>
+            
+                <th>Account ID</th>
+                <th>Created</th>
+        <th>Check Print</th>
+        <th>Invoice Date</th>
+        <th>Account</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Sub Desc</th>
+        <th>Memo</th>
+        <th>Payment Method</th>
+        <th>Payment Number</th>
+        <th>Payment Amount</th>
+        <th>Deposit Amount</th>
+        <th>Cleared</th>
+        <th>Cleared Date</th>
+        <th>Off Ledger</th>
+              
+                
+           
+                
+
+            </tr>
+        </tfoot>  
+    </table>
+    
+    </div> 
 
 <!-- </div> -->
 <script src="/js/datepicker.js"></script>
