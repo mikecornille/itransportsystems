@@ -76,7 +76,7 @@
 
                             <li><a href="{{ URL::to('/start_bidboard') }}">Bid Board</a></li>
                             <li><a href="{{ URL::to('/loadlist') }}">Load List</a></li>
-                            <li><a href="{{ URL::to('/notes') }}">Notes</a></li>
+                            <!-- <li><a href="{{ URL::to('/notes') }}">Reference</a></li> -->
 
 
 

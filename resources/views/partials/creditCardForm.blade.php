@@ -49,7 +49,7 @@
 @for ($i = 0; $i < 15; $i++)
     <input type="hidden" name="counter[]" value="{{ $i }}">
     <div class="row">
-    	<div class="col-md-4">
+    	<div class="col-md-3">
 			{{ Form::label('type_description_sub', 'Sub') }}
 	  		{{ Form::select('type_description_sub[]', 
 				[
@@ -95,11 +95,15 @@
 	  		
 				], null, ['placeholder' => 'Pick a sub description...', 'class' => 'form-control']) }}
 		</div>
-    	<div class="col-md-4">
+		<div class="col-md-3">
+			<label>Memo</label>
+			<td><input type="text" class="form-control" id="memo" name="memo[{{ $i }}]"></td>
+		</div>
+    	<div class="col-md-3">
 			<label>Payment Amount</label>
 			<td><input type="text" class="form-control" id="payment_amount" name="payment_amount[{{ $i }}]"></td>
 		</div>
-    <div class="col-md-4">
+    <div class="col-md-3">
 		<label>Cents</label>
 			<td><input type="text" class="form-control" id="payment_cents" name="payment_cents[{{ $i }}]"></td>
 		</div>

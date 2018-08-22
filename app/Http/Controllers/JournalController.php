@@ -209,6 +209,7 @@ class JournalController extends Controller
                 $store->account_id = $request->account_id;
                 $store->invoice_date_journal = $request->invoice_date_journal;
                 $store->payment_method = $request->payment_method;
+                $store->memo = $request->memo[$count];
                 $store->payment_amount = $request->payment_amount[$count];
                 $store->payment_cents = $request->payment_cents[$count];
                 $store->type_description_sub = $request->type_description_sub[$count];
