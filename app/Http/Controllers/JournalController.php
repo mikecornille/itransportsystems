@@ -223,10 +223,10 @@ class JournalController extends Controller
         return back();
     
 }
-    public function journalDatatable()
+    public function journalDatatableFunction()
     {
         
-        $data = Journal::orderBy('id', 'desc')->take(2000)->get();
+        $data = Journal::orderBy('created_at', 'desc')->get();
         return(['data' => $data]);
         
     }

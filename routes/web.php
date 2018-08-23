@@ -53,7 +53,7 @@ Route::get('/ach_no_carrier_found', function () {
          Route::get('/accountsReceivable', 'LoadsController@accountsReceivable'); //FOR DATATABLES
          Route::get('/accountsPayable', 'LoadsController@accountsPayable'); //FOR DATATABLES
 
-         Route::get('/journalDatatable', 'JournalController@journalDatatable'); //FOR DATATABLES
+         Route::get('/journalDatatable', 'JournalController@journalDatatableFunction'); //FOR DATATABLES
          
 
          Route::post('/customerAccoutingEdit', 'CustomersController@customerAccoutingEdit');

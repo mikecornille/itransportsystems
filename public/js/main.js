@@ -953,19 +953,14 @@ $(document).ready(function() {
 
 // JOURNAL ENTRY
 
-//ACCOUNTS RECEIVABLE
 
 $(document).ready(function() {
 
 
 
-    var table = $('#journalDatatable').DataTable({
+    var table = $('#journalDatatable1').DataTable({
         
-         // scrollY:        "800px",
-   //       scrollX:        true,
-   //       scrollCollapse: true,
-   //       paging:         true,
-   //       fixedColumns: true,
+        
         "ajax": "/journalDatatable",
         "columns": [
             {
@@ -973,7 +968,7 @@ $(document).ready(function() {
                 "orderable":      false,
                 "data":           'account_id',
                 "render": function ( data, type, full, meta ) {
-                return '<a href="/goToAccountProfileFromJournal/'+data+'">View Account</a>';}
+                return '<a href="/goToAccountProfileFromJournal/'+data+'">View Account</a>'}
             },
             
             
@@ -994,47 +989,26 @@ $(document).ready(function() {
             { "data": "off_ledger"},
 
 
-
-            
-            // {
-            //     "className":      'details-control',
-            //     "orderable":      false,
-            //     "data":           'carrier_id',
-            //     "render": function ( data, type, full, meta ) {
-            //     return '<a href="/carrierAccoutingEditFromAccountsPayablePage/'+data+'">View Carrier</a>';}
-            // },
-
-
-
-
-            // { "data": "carrier_rate"},
-            // { "data": "vendor_invoice_date"},
-            // { "data": "vendor_invoice_number"},
-            // { "data": "carrierPayStatus"},
-            // { "data": "plus_thirty"},
-            // { "data": "aging"}
-
-
         ],
-        "order": [[0,'asc'],[1,'asc']],
+        "order": [1,'asc'],
 
-
-
+        
+        "bDestroy": true
        
 
 });   
 
-});
+// });
 
-$(document).ready(function() {
+// $(document).ready(function() {
     // Setup - add a text input to each footer cell
-    $('#journalDatatable tfoot th').each( function () {
+    $('#journalDatatable1 tfoot th').each( function () {
         var title = $(this).text();
         $(this).html( '<input type="text" placeholder="'+title+'" />' );
     } );
  
     // DataTable
-    var table = $('#journalDatatable').DataTable();
+    var table = $('#journalDatatable1').DataTable();
  
     // Apply the search
     table.columns().every( function () {
@@ -1048,79 +1022,9 @@ $(document).ready(function() {
             }
         } );
     } );
-} );
-
-//GENERAL LEDGER
-
-// $(document).ready(function() {
+});
 
 
-
-//     var table = $('#generalLedger').DataTable({
-        
-//          // scrollY:        "800px",
-//    //       scrollX:        true,
-//    //       scrollCollapse: true,
-//    //       paging:         true,
-//    //       fixedColumns: true,
-//         "ajax": "/generalLedger",
-//         "columns": [
-//             {
-//                 "className":      'details-control',
-//                 "orderable":      false,
-//                 "data":           'id',
-//                 "render": function ( data, type, full, meta ) {
-//                 return '<a href="/edit/url?id='+data+'">View</a>';}
-//             },
-            
-            
-      
-//             { "data": "customer_name"},
-//             { "data": "deposit_date"},
-//             { "data": "paid_amount_from_customer"},
-//             { "data": "ref_or_check_num_from_customer"},
-//             { "data": "carrier_name"},
-//             { "data": "approved_carrier_invoice"},
-//             { "data": "carrier_rate"},
-//             { "data": "vendor_check_number"},
-//             { "data": "quick_status_notes"},
-//             { "data": "id"}
-
-            
-//         ],
-//         "order": [[0,'asc'],[1,'asc']],
-
-
-
-       
-
-// });   
-
-// });
-
-// $(document).ready(function() {
-//     // Setup - add a text input to each footer cell
-//     $('#generalLedger tfoot th').each( function () {
-//         var title = $(this).text();
-//         $(this).html( '<input type="text" placeholder="'+title+'" />' );
-//     } );
- 
-//     // DataTable
-//     var table = $('#generalLedger').DataTable();
- 
-//     // Apply the search
-//     table.columns().every( function () {
-//         var that = this;
- 
-//         $( 'input', this.footer() ).on( 'keyup change', function () {
-//             if ( that.search() !== this.value ) {
-//                 that
-//                     .search( this.value )
-//                     .draw();
-//             }
-//         } );
-//     } );
-// } );
 
 //GET THE CONTENT FOR THE DATATABLE
 
