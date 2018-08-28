@@ -32,7 +32,7 @@ use Laracasts\Utilities\JavaScript\JavaScriptFacade as Javascript;
 
 class LoadsController extends Controller
 {
-	//use helpers\Mailer;
+	
     
 	//Load the datatable
 	public function tableNewAccCall()
