@@ -29,25 +29,39 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
 
-//Run through a list of PRO #'s and disable editing after the books have been balanced
-//I need a flag in the loads table
-//create a "locked" field and mark it YES in needed to be locked
-// Artisan::command('import:disableEditing {filename}', function($filename) {
+//Run through a list of PRO #'s and disable editing after the books have been balanced for the customer
+Artisan::command('import:customerBalanced {filename}', function($filename) {
 	
-// 	$file = fopen(storage_path('imports/' . $filename),"r");
+	$file = fopen(storage_path('imports/' . $filename),"r");
 
-// 	$count = 0;
-// 	while (($data = fgetcsv($file)) !== FALSE) {
-// 		$count ++;
+	$count = 0;
+	while (($data = fgetcsv($file)) !== FALSE) {
+		$count ++;
 		
-// 			\DB::table('journals')->where('payment_number', $data[0])->update([
-//             'cleared' => "YES",
-//             'cleared_date' => \Carbon\Carbon::parse($data[1])
+			\DB::table('loads')->where('id', $data[0])->update([
+            'customer_balanced' => "YES"
         
-//         ]);
-// 	}
-// 	fclose($file);
-// });
+        ]);
+	}
+	fclose($file);
+});
+
+//Run through a list of PRO #'s and disable editing after the books have been balanced for the carrier
+Artisan::command('import:carrierBalanced {filename}', function($filename) {
+	
+	$file = fopen(storage_path('imports/' . $filename),"r");
+
+	$count = 0;
+	while (($data = fgetcsv($file)) !== FALSE) {
+		$count ++;
+		
+			\DB::table('loads')->where('id', $data[0])->update([
+            'carrier_balanced' => "YES"
+        
+        ]);
+	}
+	fclose($file);
+});
 
 
 
@@ -657,7 +671,7 @@ Artisan::command('insertLedgerRecords', function () {
 			'memo' => $customer->ref_or_check_num_from_customer,
 			'deposit_amount' => $customer->paid_amount_from_customer,
 			'payment_method' => $customer->payment_method_from_customer,
-			'paid_amount_from_customer' => $customer->paid_amount_from_customer
+			'paid_amount_from_customer' => $customer->amount_due
 		]);
 	}
 

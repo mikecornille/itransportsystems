@@ -533,7 +533,18 @@
        <label class="label-control" for="amount_due">Amount Due</label>
        <div class="input-group">
         <span class="input-group-addon">$</span>
-        <input type="text" class="form-control" id="amount_due" name="amount_due" value="{{ $info->amount_due }}">
+        
+
+        
+
+        @if ( $info->customer_balanced === "YES" )
+          <input type="text" class="form-control" id="amount_due" name="amount_due" value="{{ $info->amount_due }}" readonly>
+          @else
+          <input type="text" class="form-control" id="amount_due" name="amount_due" value="{{ $info->amount_due }}">
+          @endif
+        
+
+
         <span class="input-group-addon">.00</span>
       </div>
     </div>
@@ -541,7 +552,15 @@
      <label class="label-control" for="carrier_rate">Carrier Rate</label>
      <div class="input-group">
       <span class="input-group-addon">$</span>
-      <input type="text" class="form-control" id="carrier_rate" name="carrier_rate" value="{{ $info->carrier_rate }}">
+      
+
+       @if ( $info->carrier_balanced === "YES" )
+          <input type="text" class="form-control" id="carrier_rate" name="carrier_rate" value="{{ $info->carrier_rate }}" readonly>
+          @else
+          <input type="text" class="form-control" id="carrier_rate" name="carrier_rate" value="{{ $info->carrier_rate }}">
+          @endif
+
+
       <span class="input-group-addon">.00</span>
     </div>
   </div>
@@ -587,9 +606,17 @@
       <ul class="dropdown-menu" role="menu">
         @if (Auth::user()->accounting)
         <li class="dropdown-header">ACCOUNTING</li>
+
+        @if($info->carrier_balanced === "YES")
+        <li><a><b><s>Print Check</s></b></a></li>
+        <li><a><b><s>ACH Email Only</s></b></a></li>
+        <li><a><b><s>ACH Email, Download, Update</s></b></a></li>
+        @else
         <li><a href="{{ URL::to('/printCheck/' . $info->id) }}"><b>Print Check</b></a></li>
         <li><a href="{{ URL::to('/achEmailOnlyNotify/' . $info->id) }}"><b>ACH Email Only</b></a></li>
         <li><a href="{{ URL::to('/achEmailNotify/' . $info->id) }}"><b>ACH Email, Download, Update</b></a></li>
+        @endif
+
         <li class="divider"></li>
         @endif
         <li class="dropdown-header">EMAILS WITH PDF</li>
@@ -656,7 +683,12 @@
           <label class="label-control text-success" for="paid_amount_from_customer">CUSTOMER PAID</label>
           <div class="input-group">
         <span class="input-group-addon">$</span>
+
+          @if ( $info->customer_balanced === "YES" )
+          <input type="text" class="form-control" id="paid_amount_from_customer" name="paid_amount_from_customer" value="{{ $info->paid_amount_from_customer }}" readonly>
+          @else
           <input type="text" class="form-control" id="paid_amount_from_customer" name="paid_amount_from_customer" value="{{ $info->paid_amount_from_customer }}">
+          @endif
           <span class="input-group-addon">.00</span>
       </div>
         </div>
@@ -665,7 +697,14 @@
           <label class="label-control text-success" for="totalCheckAmountFromCustomer">TOTAL CHECK AMOUNT</label>
           <div class="input-group">
         <span class="input-group-addon">$</span>
+          
+          @if ( $info->customer_balanced === "YES" )
+          <input type="text" class="form-control" id="totalCheckAmountFromCustomer" name="totalCheckAmountFromCustomer" value="{{ $info->totalCheckAmountFromCustomer }}" readonly>
+          @else
           <input type="text" class="form-control" id="totalCheckAmountFromCustomer" name="totalCheckAmountFromCustomer" value="{{ $info->totalCheckAmountFromCustomer }}">
+          @endif
+
+
           <span class="input-group-addon">.00</span>
       </div>
         </div>
@@ -675,7 +714,15 @@
 
         <div class="col-xs-12">
           <label class="label-control text-success" for="payment_method_from_customer">PAYMENT METHOD</label>
+
+
+          @if ( $info->customer_balanced === "YES" )
+          <select name="payment_method_from_customer" id="payment_method_from_customer" class="form-control" disabled>
+          @else
           <select name="payment_method_from_customer" id="payment_method_from_customer" class="form-control">
+          @endif
+
+          
             
           @if($info->payment_method_from_customer)
             <option value="{{ $info->payment_method_from_customer }}">{{ $info->payment_method_from_customer }}</option>
@@ -691,23 +738,58 @@
 
          <div class="col-xs-12">
           <label class="label-control text-success" for="ref_or_check_num_from_customer">REF OR CHECK #</label>
+          
+          @if ( $info->customer_balanced === "YES" )
+          <input type="text" class="form-control" id="ref_or_check_num_from_customer" name="ref_or_check_num_from_customer" value="{{ $info->ref_or_check_num_from_customer }}" readonly>
+          @else
           <input type="text" class="form-control" id="ref_or_check_num_from_customer" name="ref_or_check_num_from_customer" value="{{ $info->ref_or_check_num_from_customer }}">
+          @endif
+
+
 </div>
 
         
 <div class="col-xs-12">
    <label class="label-control text-success" for="datepicker_deposit_date">DEPOSIT DATE</label>
-   <input type="text" class="form-control datepicker" id="datepicker_deposit_date" name="deposit_date" value="{{ $info->deposit_date }}">
+   
+
+   @if ( $info->customer_balanced === "YES" )
+          <input type="text" class="form-control datepicker" id="datepicker_deposit_date" name="deposit_date" value="{{ $info->deposit_date }}" disabled>
+          @else
+          <input type="text" class="form-control datepicker" id="datepicker_deposit_date" name="deposit_date" value="{{ $info->deposit_date }}">
+          @endif
+
+
  </div>
 
  <div class="col-xs-12">
    <label class="label-control text-success" for="datepicker6">BILLED DATE</label>
-   <input type="text" class="form-control datepicker" id="datepicker6" name="billed_date" value="{{ $info->billed_date }}">
+   
+
+    @if ( $info->customer_balanced === "YES" )
+          <input type="text" class="form-control datepicker" id="datepicker6" name="billed_date" value="{{ $info->billed_date }}" disabled>
+          @else
+          <input type="text" class="form-control datepicker" id="datepicker6" name="billed_date" value="{{ $info->billed_date }}">
+          @endif
+
  </div>
 
   <div class="col-xs-12">
-   <label class="radio-inline"><input type="radio" name="customerPayStatus" value="PAID">PAID</label>
-   <label class="radio-inline"><input type="radio" name="customerPayStatus" value="OPEN">OPEN</label>
+
+    @if ( $info->customer_balanced === "YES" )
+          <label class="radio-inline"><input type="radio" name="customerPayStatus" value="PAID" disabled>PAID</label>
+          @else
+         <label class="radio-inline"><input type="radio" name="customerPayStatus" value="PAID">PAID</label>
+          @endif
+
+
+           @if ( $info->customer_balanced === "YES" )
+          <label class="radio-inline"><input type="radio" name="customerPayStatus" value="OPEN" disabled>OPEN</label>
+          @else
+         <label class="radio-inline"><input type="radio" name="customerPayStatus" value="OPEN">OPEN</label>
+          @endif
+   
+   
  </div>
 
  <div class="col-xs-12">
@@ -733,7 +815,14 @@
 
          <div class="col-xs-12">
           <label class="label-control text-primary" for="payment_method">PAYMENT METHOD</label>
-          <select name="payment_method" id="payment_method" class="form-control">
+         
+
+            @if ( $info->carrier_balanced === "YES" )
+           <select name="payment_method" id="payment_method" class="form-control" disabled>
+          @else
+         <select name="payment_method" id="payment_method" class="form-control">
+          @endif
+
             
           @if($info->payment_method)
             <option value="{{ $info->payment_method }}">{{ $info->payment_method }}</option>
@@ -749,11 +838,27 @@
 
         <div class="col-xs-12">
           <label class="label-control text-primary" for="vendor_invoice_number">VENDOR INVOICE #</label>
-          <input type="text" class="form-control" id="vendor_invoice_number" name="vendor_invoice_number" value="{{ $info->vendor_invoice_number }}">
+          
+
+
+          @if ( $info->carrier_balanced === "YES" )
+           <input type="text" class="form-control" id="vendor_invoice_number" name="vendor_invoice_number" value="{{ $info->vendor_invoice_number }}" readonly>
+          @else
+         <input type="text" class="form-control" id="vendor_invoice_number" name="vendor_invoice_number" value="{{ $info->vendor_invoice_number }}">
+          @endif
+
+
         </div>
         <div class="col-xs-12">
           <label class="label-control text-primary" for="vendor_invoice_date">VENDOR DATE</label>
-          <input type="text" class="form-control datepicker" id="datepicker3" name="vendor_invoice_date" value="{{ $info->vendor_invoice_date }}">
+          
+
+          @if ( $info->carrier_balanced === "YES" )
+           <input type="text" class="form-control datepicker" id="datepicker3" name="vendor_invoice_date" value="{{ $info->vendor_invoice_date }}" disabled>
+          @else
+         <input type="text" class="form-control datepicker" id="datepicker3" name="vendor_invoice_date" value="{{ $info->vendor_invoice_date }}">
+          @endif
+
         </div>
 
 
@@ -763,17 +868,45 @@
  
  <div class="col-xs-12">
    <label class="label-control text-primary" for="datepicker7">APP CRR INV</label>
-   <input type="text" class="form-control datepicker" id="datepicker7" name="approved_carrier_invoice" value="{{ $info->approved_carrier_invoice }}">
+   
+
+    @if ( $info->carrier_balanced === "YES" )
+           <input type="text" class="form-control datepicker" id="datepicker7" name="approved_carrier_invoice" value="{{ $info->approved_carrier_invoice }}" disabled>
+          @else
+         <input type="text" class="form-control datepicker" id="datepicker7" name="approved_carrier_invoice" value="{{ $info->approved_carrier_invoice }}">
+          @endif
+
  </div>
 
   <div class="col-xs-12">
    <label class="label-control text-primary" for="vendor_check_number">VENDOR PAYMENT #</label>
-   <input type="text" class="form-control" id="vendor_check_number" name="vendor_check_number" value="{{ $info->vendor_check_number }}">
+   
+
+@if ( $info->carrier_balanced === "YES" )
+           <input type="text" class="form-control" id="vendor_check_number" name="vendor_check_number" value="{{ $info->vendor_check_number }}" readonly>
+          @else
+         <input type="text" class="form-control" id="vendor_check_number" name="vendor_check_number" value="{{ $info->vendor_check_number }}">
+          @endif
+
  </div>
 
  <div class="col-xs-12">
-   <label class="radio-inline"><input type="radio" name="carrierPayStatus" value="APPRVD">APPRVD</label>
-   <label class="radio-inline"><input type="radio" name="carrierPayStatus" value="OPEN">OPEN</label>
+   
+
+   @if ( $info->carrier_balanced === "YES" )
+           <label class="radio-inline"><input type="radio" name="carrierPayStatus" value="APPRVD" disabled>APPRVD</label>
+          @else
+         <label class="radio-inline"><input type="radio" name="carrierPayStatus" value="APPRVD">APPRVD</label>
+          @endif
+
+    @if ( $info->carrier_balanced === "YES" )
+           <label class="radio-inline"><input type="radio" name="carrierPayStatus" value="OPEN" disabled>OPEN</label>
+          @else
+         <label class="radio-inline"><input type="radio" name="carrierPayStatus" value="OPEN">OPEN</label>
+          @endif
+
+
+   
  </div>
 
  <div class="col-xs-12">
@@ -784,8 +917,22 @@
  </div>
 <div class="col-xs-12">
   
-   <label class="radio-inline"><input type="radio" name="quick_pay_flag" value="YES"><b>QP YES</b></label>
-   <label class="radio-inline"><input type="radio" name="quick_pay_flag" value="NO"><b>QP NO</b></label>
+   
+   
+
+   @if ( $info->carrier_balanced === "YES" )
+           <label class="radio-inline"><input type="radio" name="quick_pay_flag" value="YES" disabled><b>QP YES</b></label>
+          @else
+         <label class="radio-inline"><input type="radio" name="quick_pay_flag" value="YES"><b>QP YES</b></label>
+          @endif
+
+    @if ( $info->carrier_balanced === "YES" )
+           <label class="radio-inline"><input type="radio" name="quick_pay_flag" value="NO" disabled><b>QP NO</b></label>
+          @else
+         <label class="radio-inline"><input type="radio" name="quick_pay_flag" value="NO"><b>QP NO</b></label>
+          @endif
+
+
  </div>
 
  <div class="col-xs-12">
