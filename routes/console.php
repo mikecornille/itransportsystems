@@ -46,6 +46,23 @@ Artisan::command('import:customerBalanced {filename}', function($filename) {
 	fclose($file);
 });
 
+//Reverse the above
+Artisan::command('import:customerBalancedReverse {filename}', function($filename) {
+	
+	$file = fopen(storage_path('imports/' . $filename),"r");
+
+	$count = 0;
+	while (($data = fgetcsv($file)) !== FALSE) {
+		$count ++;
+		
+			\DB::table('loads')->where('id', $data[0])->update([
+            'customer_balanced' => ""
+        
+        ]);
+	}
+	fclose($file);
+});
+
 //Run through a list of PRO #'s and disable editing after the books have been balanced for the carrier
 Artisan::command('import:carrierBalanced {filename}', function($filename) {
 	
@@ -57,6 +74,23 @@ Artisan::command('import:carrierBalanced {filename}', function($filename) {
 		
 			\DB::table('loads')->where('id', $data[0])->update([
             'carrier_balanced' => "YES"
+        
+        ]);
+	}
+	fclose($file);
+});
+
+//Reverse
+Artisan::command('import:carrierBalancedReverse {filename}', function($filename) {
+	
+	$file = fopen(storage_path('imports/' . $filename),"r");
+
+	$count = 0;
+	while (($data = fgetcsv($file)) !== FALSE) {
+		$count ++;
+		
+			\DB::table('loads')->where('id', $data[0])->update([
+            'carrier_balanced' => ""
         
         ]);
 	}
