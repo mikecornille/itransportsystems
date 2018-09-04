@@ -125,7 +125,7 @@ class Ledger extends Model
 
     public function revenueQueryACH($start, $end)
     {
-    	$revenueACH = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('type_description', 'Revenue')->where('payment_method', 'ACH')->orderBy('date', 'asc')->get();
+    	$revenueACH = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('type_description', 'Revenue')->where('payment_method', 'ACH')->orderBy('reference_number', 'asc')->get();
 
     	return $revenueACH;
     }
@@ -137,7 +137,7 @@ class Ledger extends Model
         return $revenueCHECK;
     }
 
-    
+  
 
     public function totalRevenueByDate($start, $end)
     {
