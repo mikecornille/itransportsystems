@@ -62,6 +62,8 @@ class MaatwebsiteDemoController extends Controller
 		$start_cleared = date("Y-m-d H:i:s", strtotime($start_carb));
 		$end_cleared = date("Y-m-d H:i:s", strtotime($end_carb));
 
+		
+
 		// H:i:s
 
 		// Cleared checks query

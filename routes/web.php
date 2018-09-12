@@ -99,6 +99,10 @@ Route::get('/ach_no_carrier_found', function () {
          Route::get('carrierPaidNotBilled', 'MaatwebsiteDemoController@carrierPaidNotBilled');
 
          Route::get('paidVSAmountDue', 'MaatwebsiteDemoController@paidVSAmountDue');
+
+         Route::get('xpoFuelRequest', 'LoadsController@xpoFuelRequest');
+
+         
          
          
          

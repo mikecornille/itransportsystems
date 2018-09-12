@@ -14,6 +14,7 @@
         <a type="button" class="btn btn-md btn-info" href="{{ url('/allNeededPODs') }}">Needed BOL</a>
         <a type="button" class="btn btn-md btn-info" href="{{ url('/carrierPaidNotBilled') }}">Carrier Paid Not Billed</a>
         <a type="button" class="btn btn-md btn-info" href="{{ url('/paidVSAmountDue') }}">Paid vs. Amount Due</a>
+        <a type="button" class="btn btn-md btn-info" href="{{ url('/xpoFuelRequest') }}">XPO Fuel Request</a>
         
     </div>
 

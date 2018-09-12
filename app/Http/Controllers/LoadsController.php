@@ -892,6 +892,15 @@ class LoadsController extends Controller
 		return view('toBeAvailable', compact('loads', $loads));
 
 	}
+
+	public function xpoFuelRequest()
+	{
+		$xpo = Load::where('amount_due', '1')->where('delivery_status', 'Delivered')->where('customer_id', '2188')->get();
+
+		
+
+		return view('xpoFuelRequestDisplay', compact('xpo', $xpo));
+	}
 	
 }
 
