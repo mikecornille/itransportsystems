@@ -5,3 +5,12 @@
 
 
 @endforeach
+
+
+@foreach($xpo as $x)
+
+<p>{{ $x->pick_status . ' / ' . $x->delivery_status }}</p>
+
+
+
+@endforeach
