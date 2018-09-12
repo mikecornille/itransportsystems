@@ -895,7 +895,7 @@ class LoadsController extends Controller
 
 	public function xpoFuelRequest()
 	{
-		$xpo = Load::where('amount_due', '1')->where('delivery_status', 'Delivered')->where('customer_id', '2188')->get();
+		$xpo = Load::where('amount_due', '1')->where('delivery_status', 'Delivered')->where('pick_status', 'Loaded')->where('customer_id', '2188')->get();
 
 		
 
