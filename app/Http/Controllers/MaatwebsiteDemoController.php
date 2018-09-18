@@ -47,11 +47,13 @@ class MaatwebsiteDemoController extends Controller
 		// Access Ledger model
 		$ledger = new Ledger();
 
-		// Dates in computer and human readable
+		// Date format from user input
 		$start_raw = $request->input('start_date');
 		$end_raw = $request->input('end_date');
+		// Date coverted to date time
 		$start_carb = Carbon::createFromFormat('m/d/Y', $start_raw, "America/Chicago");
 	    $end_carb = Carbon::createFromFormat('m/d/Y', $end_raw, "America/Chicago");
+		// Date converted to only date no time
 		$start = date("Y-m-d", strtotime($start_carb));
 		$end = date("Y-m-d", strtotime($end_carb));
 
@@ -59,8 +61,25 @@ class MaatwebsiteDemoController extends Controller
 
 
 		//Time for cleared checks query
-		$start_cleared = date("Y-m-d H:i:s", strtotime($start_carb));
-		$end_cleared = date("Y-m-d H:i:s", strtotime($end_carb));
+		$start_cleared = date("Y-m-d", strtotime($start_carb));
+
+		// $start_cleared = date_create_from_format('Y-m-d H:i:s', $start_cleared);
+
+		// $start_cleared->setTime(0,0,0);
+
+		// $start_cleared = date("Y-m-d H:i:s", strtotime($start_cleared));
+
+		
+
+		$end_cleared = date("Y-m-d", strtotime($end_carb));
+
+		// $end_cleared = date_create_from_format('Y-m-d H:i:s', $end_cleared);
+
+		// $end_cleared->setTime(23,59,59);
+
+		// $end_cleared = date("Y-m-d H:i:s", strtotime($end_cleared));
+
+		
 
 		
 
