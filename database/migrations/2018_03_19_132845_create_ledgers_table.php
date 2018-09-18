@@ -31,7 +31,7 @@ class CreateLedgersTable extends Migration
             $table->string('payment_method')->nullable();
             $table->string('cleared')->nullable();
             $table->string('cleared_date')->nullable();
-            $table->string('paid_amount_from_customer')->nullable();
+            $table->string('amount_due_from_customer')->nullable();
             $table->timestamps();
         });
     }

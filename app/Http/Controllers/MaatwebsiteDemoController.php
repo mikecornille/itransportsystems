@@ -62,28 +62,9 @@ class MaatwebsiteDemoController extends Controller
 
 		//Time for cleared checks query
 		$start_cleared = date("Y-m-d", strtotime($start_carb));
-
-		// $start_cleared = date_create_from_format('Y-m-d H:i:s', $start_cleared);
-
-		// $start_cleared->setTime(0,0,0);
-
-		// $start_cleared = date("Y-m-d H:i:s", strtotime($start_cleared));
-
-		
-
 		$end_cleared = date("Y-m-d", strtotime($end_carb));
 
-		// $end_cleared = date_create_from_format('Y-m-d H:i:s', $end_cleared);
-
-		// $end_cleared->setTime(23,59,59);
-
-		// $end_cleared = date("Y-m-d H:i:s", strtotime($end_cleared));
-
 		
-
-		
-
-		// H:i:s
 
 		// Cleared checks query
 		$cleared_checks = $ledger->clearedChecks($start_cleared, $end_cleared);

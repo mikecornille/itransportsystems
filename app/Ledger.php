@@ -132,7 +132,7 @@ class Ledger extends Model
 
     public function revenueQueryCHECK($start, $end)
     {
-        $revenueCHECK = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount', 'paid_amount_from_customer')->whereBetween('date', [$start, $end])->where('type_description', 'Revenue')->where('payment_method', 'CHECK')->orderBy('reference_number', 'asc')->get();
+        $revenueCHECK = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount', 'amount_due_from_customer')->whereBetween('date', [$start, $end])->where('type_description', 'Revenue')->where('payment_method', 'CHECK')->orderBy('reference_number', 'asc')->get();
 
         return $revenueCHECK;
     }

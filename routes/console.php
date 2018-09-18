@@ -705,7 +705,7 @@ Artisan::command('insertLedgerRecords', function () {
 			'memo' => $customer->ref_or_check_num_from_customer,
 			'deposit_amount' => $customer->paid_amount_from_customer,
 			'payment_method' => $customer->payment_method_from_customer,
-			'paid_amount_from_customer' => $customer->amount_due
+			'amount_due_from_customer' => $customer->amount_due
 		]);
 	}
 
