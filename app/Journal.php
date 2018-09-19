@@ -40,7 +40,8 @@ class Journal extends Model
                   'accounting_email',
                   'accounting_phone',
                   'account_name_routing',
-                  'created_at'
+                  'created_at',
+                  'journal_balanced'
 
 
             ];

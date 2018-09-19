@@ -98,6 +98,39 @@ Artisan::command('import:carrierBalancedReverse {filename}', function($filename)
 });
 
 
+//Run through a list of PRO #'s and disable editing after the books have been balanced for the journal
+Artisan::command('import:journalBalanced {filename}', function($filename) {
+	
+	$file = fopen(storage_path('imports/' . $filename),"r");
+
+	$count = 0;
+	while (($data = fgetcsv($file)) !== FALSE) {
+		$count ++;
+		
+			\DB::table('journals')->where('id', $data[0])->update([
+            'journal_balanced' => "YES"
+        
+        ]);
+	}
+	fclose($file);
+});
+
+//Reverse it
+Artisan::command('import:journalBalancedReverse {filename}', function($filename) {
+	
+	$file = fopen(storage_path('imports/' . $filename),"r");
+
+	$count = 0;
+	while (($data = fgetcsv($file)) !== FALSE) {
+		$count ++;
+		
+			\DB::table('journals')->where('id', $data[0])->update([
+            'journal_balanced' => NULL
+        
+        ]);
+	}
+	fclose($file);
+});
 
 
 

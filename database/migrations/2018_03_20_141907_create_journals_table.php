@@ -44,6 +44,7 @@ class CreateJournalsTable extends Migration
             $table->string('accounting_phone')->nullable();
             $table->string('account_name_routing')->nullable();
             $table->string('off_ledger')->nullable();
+            $table->string('journal_balanced')->nullable();
             $table->timestamps();
         });
     }

@@ -271,9 +271,17 @@
 	</div>
 
 	<div class="row">
+
+		@if(isset($post->id) !== false && $post->journal_balanced === 'YES')
+		<div class="col-md-4">
+			{{ Form::submit($submitButtonText, ['class' => 'form-control btn btn-default', 'style' => 'margin-top: 15px; pointer-events: none; cursor: default;']) }}
+		</div>
+		@else
 		<div class="col-md-4">
 			{{ Form::submit($submitButtonText, ['class' => 'form-control btn btn-primary', 'style' => 'margin-top: 15px;']) }}
 		</div>
+
+		@endif
 		
 		@if(isset($post->id) !== false)
 		<!-- <div class="col-md-4" style="margin-top: 30px;">
@@ -284,11 +292,24 @@
 		</div> -->
 
 		<div class="btn-group" role="group" aria-label="Basic example">
+		  
+		  @if(isset($post->id) !== false && $post->journal_balanced === 'YES')
+		  <a style="pointer-events: none; cursor: default;" class="btn btn-default" href="{{ URL::to('/printCheckFromJournal/' . $post->id) }}"><b>Print Check (L)</b></a>
+		  
+		  <a style="pointer-events: none; cursor: default;" class="btn btn-default" href="{{ URL::to('/createACHFromJournal/' . $post->id) }}"><b>Create ACH File (L)</b></a>
+		  @else
 		  <a class="btn btn-primary" href="{{ URL::to('/printCheckFromJournal/' . $post->id) }}"><b>Print Check</b></a>
+		  
 		  <a class="btn btn-primary" href="{{ URL::to('/createACHFromJournal/' . $post->id) }}"><b>Create ACH File</b></a>
+
+		   @endif
+
+
 		  @endif
 		<a class="btn btn-primary" href="newJournalEntry"><b>Create New Account</b></a>
+		
 		<a class="btn btn-primary" href="payMultipleSubCategories"><b>Pay Multiple Credit Card Sub Categories</b></a>
+		
 		</div>
 	</div>
 	
