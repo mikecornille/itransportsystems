@@ -88,6 +88,9 @@ class MaatwebsiteDemoController extends Controller
 
 		$expenseACH = $ledger->expenseACHQuery($start, $end);
 
+		//All assets
+		$assetsITS = $ledger->assetsITSQuery($start, $end);
+
 		//Email bank codes
 		$ledger->bankCodes();
 
@@ -96,10 +99,11 @@ class MaatwebsiteDemoController extends Controller
 		
 
 
-		return \Excel::create('ITS_Checking_Account_' . $start . '_to_' . $end, function($excel) use ($cleared_checks, $revenueACH, $expenseACH, $revenueCHECK) {
-			$excel->sheet('mySheet', function($sheet) use ($cleared_checks, $revenueACH, $expenseACH, $revenueCHECK)
+		return \Excel::create('ITS_Checking_Account_' . $start . '_to_' . $end, function($excel) use ($cleared_checks, $revenueACH, $expenseACH, $revenueCHECK, $assetsITS) {
+			$excel->sheet('mySheet', function($sheet) use ($cleared_checks, $revenueACH, $expenseACH, $revenueCHECK, $assetsITS)
 	        {
 	        	
+	        	$sheet->fromArray($assetsITS);
 				$sheet->fromArray($cleared_checks);
 				$sheet->fromArray($revenueACH);
 				$sheet->fromArray($revenueCHECK);
