@@ -24,6 +24,7 @@ class CreateJournalsTable extends Migration
             $table->string('memo')->nullable();
             $table->string('payment_amount')->nullable();
             $table->string('deposit_amount')->nullable();
+            $table->string('address')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('zip')->nullable();
@@ -31,11 +32,11 @@ class CreateJournalsTable extends Migration
             $table->string('payment_number')->nullable();
             $table->string('invoice_date_journal')->nullable();
             $table->string('upload_date')->nullable();
-            $table->string('address')->nullable();
             $table->string('payment_method')->nullable();
             $table->string('payment_cents')->nullable();
             $table->string('cleared')->nullable();
             $table->string('cleared_date')->nullable();
+            $table->string('off_ledger')->nullable();
             $table->string('bank_name')->nullable();
             $table->string('routing_number')->nullable();
             $table->string('account_number')->nullable();
@@ -43,7 +44,6 @@ class CreateJournalsTable extends Migration
             $table->string('accounting_email')->nullable();
             $table->string('accounting_phone')->nullable();
             $table->string('account_name_routing')->nullable();
-            $table->string('off_ledger')->nullable();
             $table->string('journal_balanced')->nullable();
             $table->timestamps();
         });

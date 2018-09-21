@@ -210,16 +210,17 @@ class Ledger extends Model
     	return $expenseACH;
     }
 
-    public function checkingAccountBalance($start, $end)
+    public function mb_checking_account_total($start, $end)
     {
-
-        $payment_amount_totals = Ledger::whereBetween('date', [$start, $end])->sum('payment_amount');
         $deposit_amount_totals = Ledger::whereBetween('date', [$start, $end])->sum('deposit_amount');
+        $payment_amount_totals = Ledger::whereBetween('date', [$start, $end])->sum('payment_amount');
         $mbFinancialBalance = $deposit_amount_totals - $payment_amount_totals;
 
         return $mbFinancialBalance; 
 
     }
+
+    
 
     public function bankCodes()
     {
@@ -235,6 +236,17 @@ class Ledger extends Model
 
             });
     }
+
+    public function expense_journal_for_net_income($start_date, $end_date)
+   {
+
+      $journal_expense = Ledger::whereNotNull('journal_entry_number')->whereBetween('date', [$start_date, $end_date])->sum('payment_amount');
+
+
+      return $journal_expense;
+
+
+   }
 
     
 

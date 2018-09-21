@@ -28,62 +28,50 @@ class PDFController extends Controller
     public function balanceSheet(Request $request)
     {
         //Takes the user input dates and converts them to computer readable
-        $start_date = $request->input('start_date');
-        $end_date = $request->input('end_date');
-        $start_date = Carbon::createFromFormat('m/d/Y', $start_date, "America/Chicago");
-        $end_date = Carbon::createFromFormat('m/d/Y', $end_date, "America/Chicago");
-        $start_date = $start_date->toDateString();
-        $end_date = $end_date->toDateString();
+        $start_date_user = $request->input('start_date');
+        $end_date_user = $request->input('end_date');
+        $start_date_carbon = Carbon::createFromFormat('m/d/Y', $start_date_user, "America/Chicago");
+        $end_date_carbon = Carbon::createFromFormat('m/d/Y', $end_date_user, "America/Chicago");
+        $start_date = $start_date_carbon->toDateString();
+        $end_date = $end_date_carbon->toDateString();
 
-        
 
-        
         $ledger = new Ledger();
-        //Checking account balance
-        $checking = $ledger->checkingAccountBalance($start_date, $end_date);
 
+        $mb_checking_account_total = $ledger->mb_checking_account_total($start_date, $end_date);
 
-        
-        $journal = new Journal();
         //Money market balance
-        $market = $journal->moneyMarketBalance($start_date, $end_date);
-        //Capital stock
-        $capital_stock = $journal->capitalStock();
-        //Distributions
-        $distributions = $journal->distributions($start_date, $end_date);
-        //Retained Earnings
-        $retained_earnings = $journal->retainedEarnings();
-        //Net income QB 
-        $net_income_QB = $journal->netIncomeQB();
+        $journal = new Journal();
+        $mb_money_market_total = $journal->mb_money_market_total($start_date, $end_date);
 
-
-
-
+        //Accounts Receivable
         $load = new Load();
-        $accounts_receivable = $load->accountsReceivable();
-        $accounts_payable = $load->accountsPayable();
+        $accounts_receivable_total = $load->accounts_receivable_total();
+
+        //Rent Deposit
+        $rent_deposit = $journal->rent_deposit();
+
+        //Accounts Payable
+        $accounts_payable_total = $load->accounts_payable_total();
+
+        //Capital Stock
+        $capital_stock = Journal::where('account_id', '39909')->sum('deposit_amount');
+
+        //Distributions
+        $distributions = Journal::where('type_description', 'Distribution')->where('type', 'BILLPMT')->sum('payment_amount');
+
+        //Net Income
+        //revenue (all oads that have been paid, or billed within a time frame) - expenses all carrier bills that have completed, apprvd - all jounral expenses 
+        //customerPayStatus = PAID / Billed Date
+        $revenue_for_net_income = $load->revenue_for_net_income($start_date_user, $end_date_user);
+        $expense_for_net_income = $load->expense_for_net_income($start_date_user, $end_date_user);
+        $expense_journal_for_net_income = $ledger->expense_journal_for_net_income($start_date, $end_date);
+
+        dd($revenue_for_net_income, $expense_for_net_income, $expense_journal_for_net_income);
+
         
 
-       
-
-        $distributions_its_maker = Ledger::where('type_description', 'Distribution')->whereBetween('date', [$start_date, $end_date])->sum('payment_amount');
-        //Net Income revenue - expenses
-        $revenue_calc = Ledger::where('type_description', 'Revenue')->whereBetween('date', [$start_date, $end_date])->sum('deposit_amount');
-        $expense_calc = Ledger::where('type_description', 'Expense')->whereBetween('date', [$start_date, $end_date])->sum('payment_amount');
-        $net_income = $revenue_calc - $expense_calc;
-        $total_equity = $net_income - $distributions_its_maker;
-        
-        $total_liabilties_equity = $total_equity + $accounts_payable;
-
-        $info = Ledger::where('type_description', 'Assets')->whereBetween('date', [$start_date, $end_date])->get();
-
-        
-       //i need to take an user freidnsly date and convert it into shit date
-
-
-        
-
-        $pdf = PDF::loadView('pdf.balanceSheet',['info'=>$info, 'start_date'=>$start_date, 'end_date'=>$end_date, 'mbFinancialBalance'=>$mbFinancialBalance, 'mm_FinancialBalance'=>$mm_FinancialBalance, 'accounts_receivable'=>$accounts_receivable, 'accounts_payable'=>$accounts_payable, 'capital_stock'=>$capital_stock, 'distributions'=>$distributions, 'retained_earnings'=>$retained_earnings, 'net_income'=>$net_income, 'distributions_its_maker'=>$distributions_its_maker, 'net_income_qb'=>$net_income_qb, 'total_equity'=>$total_equity, 'total_liabilties_equity'=>$total_liabilties_equity]);
+        $pdf = PDF::loadView('pdf.balanceSheet',['start_date'=>$start_date, 'end_date'=>$end_date, 'mb_checking_account_total'=>$mb_checking_account_total, 'mb_money_market_total'=>$mb_money_market_total, 'accounts_receivable_total'=>$accounts_receivable_total, 'rent_deposit'=>$rent_deposit, 'accounts_payable_total'=>$accounts_payable_total, 'capital_stock'=>$capital_stock, 'distributions'=>$distributions]);
     
         return $pdf->stream('BalanceSheet' . '_' . $start_date . '_' . $end_date . '.pdf');
         

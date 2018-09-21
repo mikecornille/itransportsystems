@@ -24,6 +24,7 @@ class CreateLoadsTable extends Migration
             $table->string('customer_email')->nullable();
             $table->string('customer_phone')->nullable();
             $table->string('customer_fax')->nullable();
+            $table->string('customer_id')->nullable();
             $table->string('carrier_name')->nullable();
             $table->string('carrier_address')->nullable();
             $table->string('carrier_city')->nullable();
@@ -90,6 +91,7 @@ class CreateLoadsTable extends Migration
             $table->string('rate_con_creator')->nullable();
             $table->string('trailer_for_search')->nullable();
             $table->string('carrier_mc')->nullable();
+            $table->bigInteger('carrier_id')->nullable();
             $table->string('routing_number')->nullable();
             $table->string('account_number')->nullable();
             $table->string('account_type')->nullable();
@@ -99,20 +101,19 @@ class CreateLoadsTable extends Migration
             $table->string('payment_method_from_customer')->nullable();
             $table->string('ref_or_check_num_from_customer')->nullable();
             $table->string('deposit_date')->nullable();
-            $table->bigInteger('carrier_id')->nullable();
-            $table->string('customer_id')->nullable();
             $table->string('vendor_check_number')->nullable();
             $table->string('carrierPayStatus')->nullable();
             $table->string('customerPayStatus')->nullable();
             $table->string('totalCheckAmountFromCustomer')->nullable();
             $table->string('accounting_email')->nullable();
             $table->string('upload_date')->nullable();
+            $table->timestamps();
             $table->string('cleared')->nullable();
             $table->string('cleared_date')->nullable();
             $table->string('quick_pay_flag', 10)->nullable();
             $table->string('customer_balanced', 10)->nullable();
             $table->string('carrier_balanced', 10)->nullable();
-            $table->timestamps();
+            
 
         });
 

@@ -138,7 +138,7 @@ class Journal extends Model
     })->download('csv');
     }
 
-    public function moneyMarketBalance($start, $end)
+    public function mb_money_market_total($start, $end)
     {
         $mm_payment_amount_totals = Journal::where('account_id', '39842')->whereBetween('created_at', [$start, $end])->sum('payment_amount');
         $mm_deposit_amount_totals = Journal::where('account_id', '39842')->whereBetween('created_at', [$start, $end])->sum('deposit_amount');
@@ -235,6 +235,15 @@ class Journal extends Model
       return $debits;
 
     }
+
+    public function rent_deposit()
+    {
+      $rent_deposit = Journal::where('account_id', 39899)->sum('deposit_amount');
+
+      return $rent_deposit;
+    }
+
+   
 
     
 

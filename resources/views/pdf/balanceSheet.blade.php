@@ -1,6 +1,10 @@
 @PHP
-$total_checking_saving = $mbFinancialBalance + $mm_FinancialBalance + $accounts_receivable;
-@ENDPHP	
+
+setlocale(LC_MONETARY, 'en_US');
+
+$total_assets = $mb_checking_account_total + $mb_money_market_total + $accounts_receivable_total + $rent_deposit;
+
+@ENDPHP
 
 <!DOCTYPE html>
 <html>
@@ -14,12 +18,16 @@ $total_checking_saving = $mbFinancialBalance + $mm_FinancialBalance + $accounts_
 
 
 
-table {
+/*table {
     width: 100%;
 }
 
 th {
     height: 50px;
+}*/
+
+th, td {
+    padding: 5px;
 }
 
 
@@ -44,84 +52,52 @@ th {
     <th><u>{{ $start_date }} to {{ $end_date }}</u></th>
   </tr>
   <tr>
-  	<td>MB Finanacial</td>
-    <td>${{ $mbFinancialBalance }}</td>
+    <th>Current Assets</th>
   </tr>
   <tr>
-    <td>Money Market</td>
-    <td>${{ $mm_FinancialBalance }}</td>
-  </tr>
-  
-
-  <tr>
-  	<td>Accounts Receivable</td>
-    <td>${{ $accounts_receivable }}</td>
+    <th>MB Checking Account</th>
+    <th>{{ '$' . number_format($mb_checking_account_total, 2) }}</th>
   </tr>
   <tr>
-    <td><b><i>Total Assets</i></b></td>
-    <td><b><i>${{ $total_checking_saving }}</i></b></td>
+    <th>MB Money Market</th>
+    <th>{{ '$' . number_format($mb_money_market_total, 2) }}</th>
   </tr>
-  
-  <tr>
-  	<th><u>LIABILITIES & EQUITY</u></th>
-    <th><u>{{ $start_date }} to {{ $end_date }}</u></th>
-  </tr>
-  <tr>
-  	<th>LIABILITIES</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>Accounts Payable</td>
-    <td>${{ $accounts_payable }}</td>
-  </tr>
-  <tr>
-    <td><b><i>Total Accounts Payable</i></b></td>
-    <td><b><i>${{ $accounts_payable }}</i></b></td>
-  </tr>
-
-  <tr>
-  	<th>EQUITY</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>Capital Stock (QB Transfer Amount)</td>
-    <td>${{ $capital_stock }}</td>
-    
-  </tr>
-  <tr>
-    <td>Distributions (QB Transfer Amount)</td>
-    <td>${{ $distributions }}</td>
-    
-  </tr>
-  <tr>
-    <td>Distributions (ITS Maker)</td>
-    <td>${{ $distributions_its_maker }}</td>
-    
-  </tr>
-  
-  <tr>
-    <td>Retained Earnings  (QB Transfer Amount Yearly 2017)</td>
-    <td>${{ $retained_earnings }}</td>
-    
-  </tr>
-  <tr>
-    <td>Net Income (QB Transfer Amount)</td>
-    <td>${{ $net_income_qb }}</td>
-    
-  </tr>
-  <tr>
-    <td>Net Income (ITS Maker)</td>
-    <td>${{ $net_income }}</td>
-    
-  </tr>
-  <tr>
-    <td><b><i>Total Equity</i></b></td>
-    <td><b><i>${{ $total_equity }}</i></b></td>
-  </tr>
-
  <tr>
-    <td><b><i>Total Liabilties & Equity</i></b></td>
-    <td><b><i>${{ $total_liabilties_equity }}</i></b></td>
+    <th>Accounts Receivable</th>
+    <th>{{ '$' . number_format($accounts_receivable_total, 2) }}</th>
+  </tr>
+  <tr>
+    <th>Rent Deposit</th>
+    <th>{{ '$' . number_format($rent_deposit, 2) }}</th>
+  </tr>
+  <tr>
+    <th>Total Assets</th>
+    <th>{{ '$' . number_format($total_assets, 2) }}</th>
+  </tr>
+
+  <tr>
+    <th><u>LIABILITIES</u></th>
+    <th><u>{{ $start_date }} to {{ $end_date }}</u></th>
+  </tr> 
+  <tr>
+    <th>Accounts Payable</th>
+    <th>{{ '$' . number_format($accounts_payable_total, 2) }}</th>
+  </tr>
+  <tr>
+    <th><u>EQUITY</u></th>
+    <th><u>{{ $start_date }} to {{ $end_date }}</u></th>
+  </tr> 
+  <tr>
+    <th>Capital Stock</th>
+    <th>{{ '$' . number_format($capital_stock, 2) }}</th>
+  </tr>
+  <tr>
+    <th>Distributions</th>
+    <th>{{ '$' . number_format($distributions, 2) }}</th>
+  </tr>
+  <tr>
+    <th>Net Income</th>
+    <th>{{ '$' . number_format($net_income, 2) }}</th>
   </tr>
 </table>
 

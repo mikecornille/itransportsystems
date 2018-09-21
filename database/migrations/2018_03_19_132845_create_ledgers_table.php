@@ -19,7 +19,6 @@ class CreateLedgersTable extends Migration
             $table->string('type')->nullable();
             $table->string('type_description')->nullable();
             $table->string('type_description_sub')->nullable();
-            $table->string('journal_entry_number')->nullable();
             $table->string('date')->nullable();
             $table->string('reference_number')->nullable();
             $table->string('account_name')->nullable();
@@ -28,6 +27,7 @@ class CreateLedgersTable extends Migration
             $table->string('payment_amount')->nullable();
             $table->string('deposit_amount')->nullable();
             $table->string('upload_date')->nullable();
+            $table->string('journal_entry_number')->nullable();
             $table->string('payment_method')->nullable();
             $table->string('cleared')->nullable();
             $table->string('cleared_date')->nullable();

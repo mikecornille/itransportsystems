@@ -396,19 +396,30 @@ class Load extends Model
         $this->attributes['internal_message'] = strtoupper($value);
     }
 
-    public function accountsReceivable()
+    public function accounts_receivable_total()
     {
-      //Accounts Receivable (everything we have billed but not been paid on)
-        $accounts_receivable = Load::whereNotNull('billed_date')->where('customerPayStatus', 'OPEN')->where('billed_date', '!=', '')->sum('amount_due');
+        $start_date = '05/01/2018'; //start date of the system
+      
+        $accounts_receivable = Load::whereNotNull('billed_date')
+        ->where('billed_date', '!=', '')
+        ->where('customerPayStatus', 'OPEN')
+        ->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+        ->sum('amount_due');
 
         return $accounts_receivable;
     }
 
-    public function accountsPayable()
+    public function accounts_payable_total()
     {
       
-         //Accounts Payable
-        $accounts_payable = Load::whereNotNull('vendor_invoice_date')->where('carrierPayStatus', 'APPRVD')->where('vendor_invoice_date', '!=', '')->sum('carrier_rate');
+         $start_date = '05/01/2018'; //start date of the system
+      
+        $accounts_payable = Load::whereNotNull('vendor_invoice_date')
+        ->where('vendor_invoice_date', '!=', '')
+        ->where('carrierPayStatus', 'APPRVD')
+        ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+        ->sum('carrier_rate');
+
         return $accounts_payable;
     }
 
@@ -463,6 +474,27 @@ class Load extends Model
         return $carrier;
     }
 
+    public function revenue_for_net_income($start_date, $end_date)
+    {
+      $rev = Load::whereNotNull('billed_date')
+                  ->where('billed_date', '!=', '')
+                  ->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+                  ->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+                  ->sum('amount_due');
+
+                  return $rev;
+    }
+
+    public function expense_for_net_income($start_date, $end_date)
+    {
+      $exp = Load::whereNotNull('vendor_invoice_date')
+                  ->where('vendor_invoice_date', '!=', '')
+                  ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+                  ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+                  ->sum('carrier_rate');
+
+                  return $exp;
+    }
    
 
     
