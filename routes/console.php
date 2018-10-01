@@ -915,6 +915,7 @@ Artisan::command('achEmailsAndUpdate {start_date} {end_date}', function ($start_
 
 })->describe('Send an email to all carriers receiving an ACH payment and reflect in database');
 
+
 Artisan::command('import:clearedChecks {filename}', function($filename) {
 	
 	$file = fopen(storage_path('imports/' . $filename),"r");
