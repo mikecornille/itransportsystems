@@ -31,8 +31,8 @@
 				[
 
 					'PMT' => 'PMT',
-					'BILLPMT' => 'BILLPMT',
-					'GENJRN' => 'GENJRN'
+					'BILLPMT' => 'BILLPMT'
+					
 					
 	  		
 				], null, ['placeholder' => 'Pick a type...', 'class' => 'form-control']) }}
