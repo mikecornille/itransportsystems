@@ -210,6 +210,20 @@ class Ledger extends Model
     	return $expenseACH;
     }
 
+     public function expenseACHDistributionQuery($start, $end)
+    {
+      $expenseACHDistribution = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('type_description', 'Distribution')->where('payment_method', 'ACH')->orderBy('date', 'asc')->get();
+
+      return $expenseACHDistribution;
+    }
+
+    public function receiveCCPayment($start, $end)
+    {
+      $receiveCCPayment = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('type_description', 'Revenue')->where('payment_method', 'CREDIT')->orderBy('date', 'asc')->get();
+
+      return $receiveCCPayment;
+    }
+
     public function mb_checking_account_total($start, $end)
     {
         $deposit_amount_totals = Ledger::whereBetween('date', [$start, $end])->sum('deposit_amount');
