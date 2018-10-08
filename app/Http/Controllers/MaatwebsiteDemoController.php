@@ -103,9 +103,10 @@ class MaatwebsiteDemoController extends Controller
 			$excel->sheet('mySheet', function($sheet) use ($cleared_checks, $revenueACH, $expenseACH, $revenueCHECK, $assetsITS)
 	        {
 	        	
+	        	
+	        	$sheet->fromArray($revenueACH);
+	        	$sheet->fromArray($cleared_checks);
 	        	$sheet->fromArray($assetsITS);
-				$sheet->fromArray($cleared_checks);
-				$sheet->fromArray($revenueACH);
 				$sheet->fromArray($revenueCHECK);
 				$sheet->fromArray($expenseACH);
 				
