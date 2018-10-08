@@ -205,7 +205,7 @@ class Ledger extends Model
 
     public function expenseACHQuery($start, $end)
     {
-    	$expenseACH = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('type_description', 'Expense')->orwhere('type_description', 'Distribution')->where('payment_method', 'ACH')->orWhere('payment_method', 'CREDIT')->orderBy('date', 'asc')->get();
+    	$expenseACH = Ledger::select('date', 'upload_date', 'reference_number', 'cleared', 'cleared_date', 'type', 'type_description', 'journal_entry_number', 'pro_number', 'account_name', 'memo', 'payment_method', 'payment_amount', 'deposit_amount')->whereBetween('date', [$start, $end])->where('type_description', 'Expense')->where('payment_method', 'ACH')->orderBy('date', 'asc')->get();
 
     	return $expenseACH;
     }
