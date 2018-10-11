@@ -21,6 +21,7 @@ class LoadlistController extends Controller
     public function messagebidder($id)
     {
        
+      dd('hit');
 
        $info = Loadlist::findOrFail($id);
 
