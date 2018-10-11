@@ -21,7 +21,7 @@ class LoadlistController extends Controller
     public function messagebidder($id)
     {
        
-      
+
 
        $info = Loadlist::findOrFail($id);
 
@@ -35,7 +35,9 @@ class LoadlistController extends Controller
 
             ->subject('Important Note ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
           
-            $message->from(\Auth::user()->email, \Auth::user()->name);
+            $message->from(\Auth::user()->email, \Auth::user()->name)
+            ->replyTo(\Auth::user()->email, \Auth::user()->name)
+            ->sender(\Auth::user()->email, \Auth::user()->name);
 
            
 
