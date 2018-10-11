@@ -16,6 +16,37 @@ use Laracasts\Utilities\JavaScript\JavaScriptFacade as Javascript;
 
 class LoadlistController extends Controller
 {
+
+
+    public function messagebidder($id)
+    {
+       
+
+       $info = Loadlist::findOrFail($id);
+
+
+       $info = ['info' => $info];
+        
+        Mail::send(['html'=>'email.internalBidderMessage'], $info, function($message) use ($info){
+            
+            
+            $message->to($info['info']['created_by'])
+
+            ->subject('Important Note ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+          
+            $message->from(\Auth::user()->email, \Auth::user()->name);
+
+           
+
+        });
+
+        return back()->with('status', 'Specific message sent to load creator!');
+
+       
+    }
+
+
+
      public function store(Request $request)
 	{
 

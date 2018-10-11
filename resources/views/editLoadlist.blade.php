@@ -325,9 +325,15 @@
             </div>
             
         </div>
+
+        <div class="row">
+            <div class="col-xs-8">
+                <label class="label-control" for="specific_message">Message to Bidder</label>
+                <input type="text" class="form-control" id="specific_message" name="specific_message" value="{{ $loadlist->specific_message }}">
+            </div>
+        </div>
         
-        
-          <button type="submit" class="btn btn-primary" id="newCustomerSubmit"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> UPDATE</button>
+          <button type="submit" class="btn btn-primary" id="newCustomerSubmit"><span aria-hidden="true"></span> UPDATE</button>
           
           
 
@@ -338,6 +344,8 @@
         </div>
 
 </form>
+
+<!-- Send activity note to the bidder -->
 
 <div id="mile_calc" style="font-size: small;"></div>
 

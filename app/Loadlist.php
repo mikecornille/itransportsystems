@@ -37,7 +37,8 @@ class Loadlist extends Model
             'countOutgoingCalls',
             'emailedOut',
             'group_number',
-            'notes_on_load'
+            'notes_on_load',
+            'specific_message'
         ];
 
         public function setCreatedByAttribute($value)
