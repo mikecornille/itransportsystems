@@ -40,7 +40,7 @@ class LoadlistController extends Controller
 
         });
 
-        return back()->with('status', 'Message sent to load creator on ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
+        return redirect('loadlist')->with('status', 'Message sent to load creator on ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
 
        
     }
@@ -416,7 +416,7 @@ class LoadlistController extends Controller
     
 		$loadlist->update($request->all());
     
-		return redirect('loadlist')->with('status', 'Your updates have been successfully saved!');
+		return redirect('loadlist')->with('status', 'Your updates have been successfully saved for ' . $request->pick_city . ', ' . $request->pick_state  . ' to ' . $request->delivery_city . ', ' .  $request->delivery_state);
 
 
    }
