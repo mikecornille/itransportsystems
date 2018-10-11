@@ -43,7 +43,7 @@ Route::get('/ach_no_carrier_found', function () {
  Route::group(['middleware' => ['auth', 'accounting']],function() {
 
 
-         Route::get('messagebidder/{id}', 'LoadlistController@messagebidder');
+         
 
 
          Route::get('general_ledger', 'LoadsController@generalLedger');
@@ -143,6 +143,8 @@ Route::get('/ach_no_carrier_found', function () {
 
 
 Route::group(['middleware' => 'auth'],function() {
+
+    Route::get('messagebidder/{id}', 'LoadlistController@messagebidder');
 
 Route::get('newJournalEntry', function() {
 
