@@ -40,7 +40,7 @@ class LoadlistController extends Controller
 
         });
 
-        return back()->with('status', 'Specific message sent to load creator!');
+        return back()->with('status', 'Message sent to load creator on ' . $info['info']['pick_city'] . ', ' . $info['info']['pick_state'] . ' to ' . $info['info']['delivery_city'] . ', ' . $info['info']['delivery_state']);
 
        
     }
@@ -549,7 +549,8 @@ class LoadlistController extends Controller
    public function emailTruckOffer($id) {
 
     $info = Loadlist::find($id);
-      $carrier = Carrier::where('state', $info->pick_state)->where('email', '!=', '')->get();
+      
+    $carrier = Carrier::where('state', $info->pick_state)->where('email', '!=', '')->get();
     
   
     $info = ['info' => $info, 'carrier' => $carrier];
