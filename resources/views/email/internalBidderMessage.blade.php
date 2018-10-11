@@ -1,4 +1,4 @@
-<p>{{ $info->notes_on_load }}</p>
+<p>{{ $info->specific_message }}</p>
 
 <ul>
 	<li>Best,</li>
