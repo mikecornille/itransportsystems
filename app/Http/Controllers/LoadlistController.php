@@ -384,7 +384,9 @@ class LoadlistController extends Controller
 
     $personal_booked_loads = Loadlist::where('urgency', '=', 'Booked')->where('created_by', '=', \Auth::user()->email)->whereBetween('created_at', [$twoWeeksAgo, $currentDate])->orderBy('created_at', 'desc')->get();
 
-		return view('loadlist', compact('open_loads', 'quote_loads', 'personal_loads', 'manageloads_loads', 'personal_booked_loads', 'grouped'));
+    $title = "LoadList";
+
+		return view('loadlist', compact('open_loads', 'quote_loads', 'personal_loads', 'manageloads_loads', 'personal_booked_loads', 'grouped', 'title'));
 	
 	}
 

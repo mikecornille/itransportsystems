@@ -28,7 +28,8 @@ class HaulerController extends Controller
 
     public function deleteViaEmail()
     {
-      return view('deleteViaEmail');
+      $title = "Delete Email";
+      return view('deleteViaEmail')->with('title', $title);
     }
 
     public function deleteEmailFromCarrier(Request $request)
@@ -324,7 +325,9 @@ class HaulerController extends Controller
             //Init the error message variable
             $error_message = "";
 
-            return view('hauler.edit', compact('gethauler', $gethauler, 'employees', $employees, 'error_message', $error_message, 'getCrashCount', $getCrashCount, 'getFatalityCount', $getFatalityCount, 'getInjuryCount', $getInjuryCount, 'getTowTotals', $getTowTotals, 'singleDate', $singleDate, 'getSMS', $getSMS));
+            $title = $gethauler->company;
+
+            return view('hauler.edit', compact('gethauler', $gethauler, 'employees', $employees, 'error_message', $error_message, 'getCrashCount', $getCrashCount, 'getFatalityCount', $getFatalityCount, 'getInjuryCount', $getInjuryCount, 'getTowTotals', $getTowTotals, 'singleDate', $singleDate, 'getSMS', $getSMS, 'title', $title));
 
           
     }

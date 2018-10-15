@@ -8,9 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
-    <title>{{ config('app.name', 'ITS Maker') }}</title>
-
+    @if(isset($title))
+    <title>{{ $title }}</title>
+    @else
+    <title>ITS Maker</title>
+    @endif
     <!-- Styles -->
 
 
