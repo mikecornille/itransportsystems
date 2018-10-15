@@ -26,6 +26,36 @@ class HaulerController extends Controller
         return view('hauler', compact($employees, 'employees'));
     }
 
+    public function deleteViaEmail()
+    {
+      return view('deleteViaEmail');
+    }
+
+    public function deleteEmailFromCarrier(Request $request)
+    {
+
+      $email = $request->input('email');
+
+      //find all the records where the email matches
+      $delete = Carrier::where('email', $email)->get();
+
+      //Loop through each and set the email field to empty
+
+      foreach($delete as $del)
+      {
+        $carrier = Carrier::findOrFail($del->id);
+
+        \DB::table('carriers')->where('id', $carrier->id)->update([
+            'email' => ""
+        
+        ]);
+      }
+
+      return back()->with('status', 'Email Removed'); 
+
+    }
+
+
     public function insertDOT(Request $request)
     {
         $dot_number = $request->input('insertDOT');
@@ -129,7 +159,6 @@ class HaulerController extends Controller
               'state' => 'required',
               'zip' => 'required',
               'phone' => 'required',
-              'email' => 'required|email',
               'driver_name' => 'required',
               'driver_phone' => 'required',
               // 'remit_name' => 'required',

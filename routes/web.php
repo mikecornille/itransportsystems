@@ -153,6 +153,11 @@ Route::get('newJournalEntry', function() {
 });
 
 
+Route::get('deleteViaEmail', 'HaulerController@deleteViaEmail');
+
+Route::post('deleteEmailFromCarrier', 'HaulerController@deleteEmailFromCarrier');
+
+
 Route::get('toBeAvailable', 'LoadsController@toBeAvailable');
 
 Route::post('submitNewJournalVendor', 'JournalController@submitNewJournalVendor');

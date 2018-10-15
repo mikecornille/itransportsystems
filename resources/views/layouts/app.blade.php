@@ -133,6 +133,7 @@
                                 <li><a href="{{ URL::to('/findTrucks') }}">Find Trucks From Carriers</a></li>
                                 <li><a href="{{ URL::to('/findTrucksFromLoads') }}">Find Trucks From Loads</a></li>
                                 <li><a href="{{ URL::to('/generateTextList') }}">Generate Text List</a></li>
+                                <li><a href="{{ URL::to('/deleteViaEmail') }}">Delete Email</a></li>
 
 
                                 </ul>
