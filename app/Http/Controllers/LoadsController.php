@@ -147,6 +147,9 @@ class LoadsController extends Controller
 	{
 		
 		$data = Load::where('pick_status', 'Booked')->get();
+
+		
+
 		return(['data' => $data]);
 		
 	}
@@ -275,8 +278,10 @@ class LoadsController extends Controller
 		$info = Load::find($request->input('id'));
 
 		$text_message = Text::where('pro', $request->input('id'))->orderBy('sentAt', 'asc')->get();
+
+		$title = 'PRO # ' . $info->id;
 		
-		return view('edit', compact('info', 'text_message'));	
+		return view('edit', compact('info', 'text_message', 'title'));	
 		
 	}
 
