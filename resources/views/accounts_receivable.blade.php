@@ -31,8 +31,7 @@
                 <th>Pro</th>
                 <th>Customer Name</th>
                 <th>Customer Link</th>
-                <th>Amount Due</th>
-                <th>Billed Date</th>
+               
                 
                 
               </tr>
@@ -43,8 +42,7 @@
                 <th>Pro</th>
                 <th>Customer Name</th>
                 <th>Customer Link</th>
-                <th>Amount Due</th>
-                <th>Billed Date</th>
+               \
                 
               
                 

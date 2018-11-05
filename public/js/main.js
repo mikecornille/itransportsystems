@@ -823,8 +823,8 @@ $(document).ready(function() {
 
 
 
-            { "data": "amount_due"},
-            { "data": "billed_date"},
+            // { "data": "amount_due"},
+            // { "data": "billed_date"},
             // { "data": "plus_thirty"},
             // { "data": "aging"}
 
