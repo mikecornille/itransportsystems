@@ -798,16 +798,16 @@ $(document).ready(function() {
    //       fixedColumns: true,
         "ajax": "/accountsReceivable",
         "columns": [
-            {
-                "className":      'details-control',
-                "orderable":      false,
-                "data":           'id',
-                "render": function ( data, type, full, meta ) {
-                return '<a href="/edit/url?id='+data+'">'+data+'</a>';}
-            },
+            // {
+            //     "className":      'details-control',
+            //     "orderable":      false,
+            //     "data":           'id',
+            //     "render": function ( data, type, full, meta ) {
+            //     return '<a href="/edit/url?id='+data+'">'+data+'</a>';}
+            // },
             
             
-            // { "data": "customer_name"},
+            { "data": "customer_name"},
 
 
 
