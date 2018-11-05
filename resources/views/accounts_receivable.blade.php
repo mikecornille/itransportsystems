@@ -33,8 +33,7 @@
                 <th>Customer Link</th>
                 <th>Amount Due</th>
                 <th>Billed Date</th>
-                <th>Due Date</th>
-                <!-- <th>Aging</th> -->
+                
                 
               </tr>
         </thead>
@@ -46,8 +45,7 @@
                 <th>Customer Link</th>
                 <th>Amount Due</th>
                 <th>Billed Date</th>
-                <th>Due Date</th>
-                <!-- <th>Aging</th> -->
+                
               
                 
            
