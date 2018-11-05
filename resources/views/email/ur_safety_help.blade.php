@@ -17,7 +17,7 @@
 
 <p>{{ $info->carrier_contact }},</p>
 
-<p>The largest equipment rental company in the country, United Rentals, will soon be implementing a course requirement in order to haul equipment for their branches, end users, and OEM’s.  This course must be completed by October 31, 2017 and requires watching a 45 minute instructional video online.  Along with viewing the video there are 7 true/false safety questions that must be answered.</p>
+<p>The largest equipment rental company in the country, United Rentals, will soon be implementing a course requirement in order to haul equipment for their branches, end users, and OEM’s.  This course must be completed and requires watching a 45 minute instructional video online.  Along with viewing the video there are 7 true/false safety questions that must be answered.</p>
 
 <p>We are offering a program in which we can help streamline this requirement by registering and paying for the course. The driver is required to be the one to actually watch the video and take the test. Once the driver completes the online course and questions, they will be issued a confirmation number and will receive a physical card in the mail which is valid for the duration of their driving career. Per United Rentals, drivers who do not complete this course risk being turned away at their 880+ locations upon arrival. We’ve reviewed this requirement and although it takes 45 minutes of driver’s time, it opens up the opportunity to be able to haul for the largest equipment company in North America. Please contact us if we can help assist you and your drivers with this transition.</p>
 

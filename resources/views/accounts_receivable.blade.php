@@ -34,7 +34,7 @@
                 <th>Amount Due</th>
                 <th>Billed Date</th>
                 <th>Due Date</th>
-                <th>Aging</th>
+                <!-- <th>Aging</th> -->
                 
               </tr>
         </thead>
@@ -47,7 +47,7 @@
                 <th>Amount Due</th>
                 <th>Billed Date</th>
                 <th>Due Date</th>
-                <th>Aging</th>
+                <!-- <th>Aging</th> -->
               
                 
            

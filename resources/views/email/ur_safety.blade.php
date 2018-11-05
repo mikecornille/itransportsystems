@@ -17,7 +17,7 @@
 
 <p>{{ $info->carrier_contact }},</p>
 
-<p>The largest equipment rental company in the country, United Rentals, will soon be implementing a course requirement in order to haul equipment for their branches, end users, and OEM’s.  This course must be completed by October 31, 2017 and requires watching a 45 minute instructional video online.  Along with viewing the video there are 7 true/false safety questions that must be answered.</p>
+<p>The largest equipment rental company in the country, United Rentals, will soon be implementing a course requirement in order to haul equipment for their branches, end users, and OEM’s.  This course must be completed and requires watching a 45 minute instructional video online.  Along with viewing the video there are 7 true/false safety questions that must be answered.</p>
 
 <p>Once the driver completes the online course and questions, they will be issued a confirmation number and will receive a physical card in the mail which is valid for the duration of their driving career. Per United Rentals, drivers who do not complete this course risk being turned away at their 880+ locations upon arrival. We’ve reviewed this requirement here at International Transport Systems and although it takes 45 minutes of driver’s time, it opens up the opportunity to be able to haul for the largest equipment company in North America. Please contact us if we can help assist you and your drivers with this transition, or if you have any questions.</p>
 
@@ -30,7 +30,7 @@
 <li>4. Fill out the sign up form (record your username and password!) and submit, you should see a successful alert, click continue</li>
 <li>5. Click Purchase Training and select the country you'll be paying from</li>
 <li>6. In the Search Courses Box, copy and paste "Third Party Hauling Safety Requirements" and click the search icon</li>
-<li>7. You should see a course: Third Party Hauling Safety Requirements - $9.00 USD, click Buy</li>
+<li>7. You should see a course: Third Party Hauling Safety Requirements - $12.00 USD, click Buy</li>
 <li>8. Click Student Account</li>
 <li>9. Enter the login credentials you registered with in step 4.  Click Submit</li>
 <li>10. Enter Your Billing Information, click Continue to Checkout</li>
