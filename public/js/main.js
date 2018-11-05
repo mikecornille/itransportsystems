@@ -807,18 +807,18 @@ $(document).ready(function() {
             },
             
             
-            { "data": "customer_name"},
+            // { "data": "customer_name"},
 
 
 
             
-            {
-                "className":      'details-control',
-                "orderable":      false,
-                "data":           'customer_id',
-                "render": function ( data, type, full, meta ) {
-                return '<a href="/customerAccoutingEditFromAccountsReceivablePage/'+data+'">'+data+'</a>';}
-            },
+            // {
+            //     "className":      'details-control',
+            //     "orderable":      false,
+            //     "data":           'customer_id',
+            //     "render": function ( data, type, full, meta ) {
+            //     return '<a href="/customerAccoutingEditFromAccountsReceivablePage/'+data+'">'+data+'</a>';}
+            // },
 
 
 
@@ -830,7 +830,7 @@ $(document).ready(function() {
 
 
         ],
-        "order": [[2,'asc'],[1,'asc']],
+        // "order": [[2,'asc'],[1,'asc']],
 
 
 
