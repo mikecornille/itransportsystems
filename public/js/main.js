@@ -798,13 +798,13 @@ $(document).ready(function() {
    //       fixedColumns: true,
         "ajax": "/accountsReceivable",
         "columns": [
-            // {
-            //     "className":      'details-control',
-            //     "orderable":      false,
-            //     "data":           'id',
-            //     "render": function ( data, type, full, meta ) {
-            //     return '<a href="/edit/url?id='+data+'">'+data+'</a>';}
-            // },
+            {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           'id',
+                "render": function ( data, type, full, meta ) {
+                return '<a href="/edit/url?id='+data+'">'+data+'</a>';}
+            },
             
             
             { "data": "customer_name"},
@@ -812,25 +812,25 @@ $(document).ready(function() {
 
 
             
-            // {
-            //     "className":      'details-control',
-            //     "orderable":      false,
-            //     "data":           'customer_id',
-            //     "render": function ( data, type, full, meta ) {
-            //     return '<a href="/customerAccoutingEditFromAccountsReceivablePage/'+data+'">'+data+'</a>';}
-            // },
+            {
+                "className":      'details-control',
+                "orderable":      false,
+                "data":           'customer_id',
+                "render": function ( data, type, full, meta ) {
+                return '<a href="/customerAccoutingEditFromAccountsReceivablePage/'+data+'">'+data+'</a>';}
+            },
 
 
 
 
-            // { "data": "amount_due"},
-            // { "data": "billed_date"},
-            // { "data": "plus_thirty"},
-            // { "data": "aging"}
+            { "data": "amount_due"},
+            { "data": "billed_date"},
+            { "data": "plus_thirty"},
+            { "data": "aging"}
 
 
         ],
-        // "order": [[2,'asc'],[1,'asc']],
+        "order": [[2,'asc'],[1,'asc']],
 
 
 
