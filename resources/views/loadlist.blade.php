@@ -483,7 +483,7 @@
   </table>
 
 
-<h1 class="text-center text-success">Available Loads</h1>
+<h1 class="text-center text-success">Full List</h1>
 
 <table class="table table-hover">
     <thead>
