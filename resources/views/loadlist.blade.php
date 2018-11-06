@@ -246,7 +246,7 @@
         </div>
 		<div class="row">
            <div class="col-xs-8">
-                <label class="label-control" for="equipment-search">COMMODITY</label>
+                <label class="label-control" for="equipment-search">PUBLICLY DISPLAYED COMMODITY (CARRIERS WILL SEE THIS INFO)</label>
                 <input type="text" class="form-control" id="equipment-search" name="commodity" value="{{ old('commodity') }}" placeholder="Commodity Search">
             </div>
             <div class="col-xs-4">
@@ -312,6 +312,13 @@
 				  		<span class="input-group-addon">.00</span>
 					</div>
 			</div>
+        </div>
+
+        <div class="row">
+           <div class="col-xs-12">
+                <label class="label-control" for="notes_on_load">LOAD ACTIVITY</label>
+                <input type="text" class="form-control" id="notes_on_load" name="notes_on_load" value="{{ old('notes_on_load') }}" placeholder="Load Notes">
+            </div>
         </div>
         
         
