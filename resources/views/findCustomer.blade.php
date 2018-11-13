@@ -125,10 +125,10 @@
 <div>
 <h3>Insurance Requests</h3>
 <ul>
-<li>thomas.hassett@dbschenker.com & tara.roger@dbschenker.com - Contingent Cargo</li>
+<li>Main: barbara.cadolino@dbschenker.com; Alternate: thomas.hassett@dbschenker.com; tara.roger@dbschenker.com; - Contingent Cargo</li>
 <li>taylor@dukanefinancial.com - Workmans Comp</li> 
-<li>carol.stassen@stasseninsurance.com & bonnie@stasseninsurance.com - General Liability</li>
-<li>carol.stassen@stasseninsurance.com; bonnie@stasseninsurance.com; taylor@dukanefinancial.com; thomas.hassett@dbschenker.com; tara.roger@dbschenker.com;</li>   
+<li>carol.stassen@stasseninsurance.com; bonnie@stasseninsurance.com; - General Liability</li>
+<li>carol.stassen@stasseninsurance.com; bonnie@stasseninsurance.com; taylor@dukanefinancial.com; barbara.cadolino@dbschenker.com;</li>   
 </ul>
 </div>
 

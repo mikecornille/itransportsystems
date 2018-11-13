@@ -499,8 +499,7 @@ class PDFController extends Controller
 
 
         // Step 2: set our AccountSid and AuthToken from https://twilio.com/console
-        // $AccountSid = "ACf01e703e3d89fe05b97de8f8b103058e";
-        // $AuthToken = "b71795afcc839bbd050ad1a513d1d871";
+        
 
         
 
