@@ -36,42 +36,55 @@ class PDFController extends Controller
         $end_date = $end_date_carbon->toDateString();
 
 
+
+
         $ledger = new Ledger();
 
+        // Deposits minus payments
         $mb_checking_account_total = $ledger->mb_checking_account_total($start_date, $end_date);
 
-        //Money market balance
+
+
+        //Money market deposits minus payments
         $journal = new Journal();
         $mb_money_market_total = $journal->mb_money_market_total($start_date, $end_date);
 
+
         //Accounts Receivable
         $load = new Load();
-        $accounts_receivable_total = $load->accounts_receivable_total();
+        $accounts_receivable_total = $load->accounts_receivable_total($start_date_user, $end_date_user);
+
+
 
         //Rent Deposit
         $rent_deposit = $journal->rent_deposit();
 
         //Accounts Payable
-        $accounts_payable_total = $load->accounts_payable_total();
+        $accounts_payable_total = $load->accounts_payable_total($start_date_user, $end_date_user);
 
         //Capital Stock
         $capital_stock = Journal::where('account_id', '39909')->sum('deposit_amount');
 
         //Distributions
-        $distributions = Journal::where('type_description', 'Distribution')->where('type', 'BILLPMT')->sum('payment_amount');
+        $distributions = Journal::where('type_description', 'Distribution')
+        ->where('type', 'BILLPMT')
+        ->whereBetween('created_at', [$start_date, $end_date])
+        ->sum('payment_amount');
 
-        //Net Income
-        //revenue (all oads that have been paid, or billed within a time frame) - expenses all carrier bills that have completed, apprvd - all jounral expenses 
-        //customerPayStatus = PAID / Billed Date
-        $revenue_for_net_income = $load->revenue_for_net_income($start_date_user, $end_date_user);
-        $expense_for_net_income = $load->expense_for_net_income($start_date_user, $end_date_user);
-        $expense_journal_for_net_income = $ledger->expense_journal_for_net_income($start_date, $end_date);
+        $life_to_date_distributions_journal = Journal::where('type_description', 'Distribution')->where('type', 'BILLPMT')->sum('payment_amount');
 
-        dd($revenue_for_net_income, $expense_for_net_income, $expense_journal_for_net_income);
+        $life_to_date_distributions_quickbooks = 2279067;
+
+        $life_to_date_distributions = $life_to_date_distributions_journal + $life_to_date_distributions_quickbooks;
+        
+        $life_to_date_retained_earnings = 2912947.32 + $mb_checking_account_total;
 
         
 
-        $pdf = PDF::loadView('pdf.balanceSheet',['start_date'=>$start_date, 'end_date'=>$end_date, 'mb_checking_account_total'=>$mb_checking_account_total, 'mb_money_market_total'=>$mb_money_market_total, 'accounts_receivable_total'=>$accounts_receivable_total, 'rent_deposit'=>$rent_deposit, 'accounts_payable_total'=>$accounts_payable_total, 'capital_stock'=>$capital_stock, 'distributions'=>$distributions]);
+
+
+
+        $pdf = PDF::loadView('pdf.balanceSheet',['start_date'=>$start_date, 'end_date'=>$end_date, 'mb_checking_account_total'=>$mb_checking_account_total, 'mb_money_market_total'=>$mb_money_market_total, 'accounts_receivable_total'=>$accounts_receivable_total, 'rent_deposit'=>$rent_deposit, 'accounts_payable_total'=>$accounts_payable_total, 'capital_stock'=>$capital_stock, 'distributions'=>$distributions, 'life_to_date_distributions'=>$life_to_date_distributions, 'life_to_date_retained_earnings'=>$life_to_date_retained_earnings]);
     
         return $pdf->stream('BalanceSheet' . '_' . $start_date . '_' . $end_date . '.pdf');
         
@@ -243,6 +256,11 @@ class PDFController extends Controller
 
             $pdf = PDF::loadView('pdf.contract', $info);
 
+            //PDF with saftey instructions
+
+            $pathToSafetyFile = 'UnitedRentalsSafetyCard.pdf';
+
+           
             $message->to($info['info']['carrier_email'])
 
             ->cc(\Auth::user()->email)
@@ -256,8 +274,19 @@ class PDFController extends Controller
             ->sender(\Auth::user()->email, \Auth::user()->name);
 
             $message->attachData($pdf->output(), 'Load_Confirmation_' . $info['info']['id'] . '.pdf');
+
             
             $message->attach($pathToFile);
+
+            
+            
+
+            if($info['info']['customer_id'] == '1709'){
+                $message->attach($pathToSafetyFile);
+            }
+
+            else{}
+            
             
 
         });
