@@ -161,14 +161,15 @@ class MaatwebsiteDemoController extends Controller
 			$profit = $total - $carrier_rate_totals;
 
 			
-			if($total !== 0 || $carrier_rate_totals !== 0)
+			if($total == '0' || $carrier_rate_totals == '0')
 			{
-				$profit_margin = $profit / $total;
-				$profit_margin = round((float)$profit_margin * 100 );
+				$profit_margin = 'error';
 			}
 			else
 			{
-				$profit_margin = 'error';
+				
+				$profit_margin = $profit / $total;
+				$profit_margin = round((float)$profit_margin * 100 );
 			}
          	
          	$cus = Load::where('customer_id', $customer->customer_id)->get();
