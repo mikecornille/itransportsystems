@@ -145,20 +145,31 @@ class MaatwebsiteDemoController extends Controller
          foreach($unique_customers as $customer)
          {
 
+         	// Amount due from the customer
          	$total = Load::where('customer_id', $customer->customer_id)
          	->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
 			->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
 			->sum('amount_due');
 
+			// Amount we owe the carrier
 			$carrier_rate_totals = Load::where('customer_id', $customer->customer_id)
          	->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
 			->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
 			->sum('carrier_rate');
 
+			// Amount due minus carrier rate gives us the profit 
 			$profit = $total - $carrier_rate_totals;
 
-			$profit_margin = $profit / $total;
-			$profit_margin = round((float)$profit_margin * 100 );
+			
+			if($total !== 0 || $carrier_rate_totals !== 0)
+			{
+				$profit_margin = $profit / $total;
+				$profit_margin = round((float)$profit_margin * 100 );
+			}
+			else
+			{
+				$profit_margin = 'error';
+			}
          	
          	$cus = Load::where('customer_id', $customer->customer_id)->get();
 
