@@ -215,7 +215,18 @@ class JournalController extends Controller
                 $store->type_description_sub = $request->type_description_sub[$count];
                 $store->type = "BILLPMT";
                 $store->type_description = "Expense";
-                $store->off_ledger = "Yes";
+
+                if($store->account_id == 42278)
+                {
+                    $store->off_ledger = "Yes";
+                }
+                
+                else
+                {
+                    
+                }
+                
+
                 $store->save();
                 }
             }
