@@ -131,24 +131,39 @@ th {
 <hr>
 
 <div>
-  <center><h4>Balance Sheet from ITS Maker {{ $start_date }} to {{ $end_date }}</h4></center>
+  <center><h4>ITS Maker Data with QB $ Amounts {{ $start_date }} to {{ $end_date }}</h4></center>
 </div>
 
  <table>
+  
   <tr>
-    <th><u>ASSETS</u></th>
-  </tr>
-  <tr>
-    <th><i>MB Checking Account</i></th>
+    <th><i>Ledger (Accrual) (Deposits - Payments)</i></th>
     <th>{{ '$' . number_format($mb_checking_account_total, 2) }}</th>
   </tr>
   <tr>
-    <th><i>MB Money Market</i></th>
+    <th><i>Money Market</i></th>
     <th>{{ '$' . number_format($mb_money_market_total, 2) }}</th>
   </tr>
   <tr>
-    <th><i>Total Accounts Receivable</i></th>
+    <th><i>Billed Customer Invoices (Payment Not Received)</i></th>
     <th>{{ '$' . number_format($accounts_receivable_total, 2) }}</th>
+  </tr>
+  
+  
+  
+ 
+ </table>
+
+  <table>
+  
+  <tr>
+    <th><i>Carrier Invoices (Approved Not Paid)</i></th>
+    <th>{{ '$' . number_format($accounts_payable_total, 2) }}</th>
+  </tr>
+  
+  <tr>
+    <th><i>Distributions</i></th>
+    <th>{{ '$-' . number_format($distributions, 2) }}</th>
   </tr>
   
   

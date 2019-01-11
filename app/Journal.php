@@ -155,7 +155,7 @@ class Journal extends Model
 
     public function distributions($start, $end)
     {
-       $distributions = Journal::where('type_description', 'Distribution')->where('off_ledger', 'YES')->whereBetween('created_at', [$start, $end])->sum('payment_amount');
+       $distributions = Journal::where('type_description', 'Distribution')->whereBetween('created_at', [$start, $end])->sum('payment_amount');
        return $distributions;
 
     }
