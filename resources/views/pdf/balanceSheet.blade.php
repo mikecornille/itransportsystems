@@ -163,7 +163,7 @@ th {
  </table>
 
 <div>
-  <center><h4>ITS Maker Expenses {{ $start_date }} to {{ $end_date }}</h4></center>
+  <center><h4>ITS Maker Expenses By Sub Categories {{ $start_date }} to {{ $end_date }}</h4></center>
 </div>
 
 <table>

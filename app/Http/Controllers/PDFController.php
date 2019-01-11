@@ -95,7 +95,7 @@ class PDFController extends Controller
          {
 
             
-            $total = Journal::where('type_description_sub', $cat->type_description_sub)
+            $total = Journal::where('type_description', 'Expense')->where('type_description_sub', $cat->type_description_sub)
             ->whereBetween('created_at', [$start_date, $end_date])->sum('payment_amount');
             
             
@@ -110,7 +110,7 @@ class PDFController extends Controller
 
           $info = ['info' => $info ];
 
-          
+
 
 
         $pdf = PDF::loadView('pdf.balanceSheet',['start_date'=>$start_date, 'end_date'=>$end_date, 'mb_checking_account_total'=>$mb_checking_account_total, 'mb_money_market_total'=>$mb_money_market_total, 'accounts_receivable_total'=>$accounts_receivable_total, 'rent_deposit'=>$rent_deposit, 'accounts_payable_total'=>$accounts_payable_total, 'capital_stock'=>$capital_stock, 'distributions'=>$distributions, 'life_to_date_distributions'=>$life_to_date_distributions, 'life_to_date_retained_earnings'=>$life_to_date_retained_earnings, 'info'=>$info]);
