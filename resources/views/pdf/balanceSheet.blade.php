@@ -148,15 +148,7 @@ th {
     <th><i>Billed Customer Invoices (Payment Not Received)</i></th>
     <th>{{ '$' . number_format($accounts_receivable_total, 2) }}</th>
   </tr>
-  
-  
-  
- 
- </table>
-
-  <table>
-  
-  <tr>
+    <tr>
     <th><i>Carrier Invoices (Approved Not Paid)</i></th>
     <th>{{ '$' . number_format($accounts_payable_total, 2) }}</th>
   </tr>
@@ -170,7 +162,25 @@ th {
  
  </table>
 
+<div>
+  <center><h4>ITS Maker Expenses {{ $start_date }} to {{ $end_date }}</h4></center>
+</div>
 
+<table>
+
+
+@for ($i = 0; $i < count($info['info']); $i++)
+
+
+    
+<tr>
+    <th>{{ $info['info'][$i][1] }}</th>
+    <th>{{ '$' . number_format($info['info'][$i][0], 2) }}</th>
+</tr>
+      
+@endfor
+
+</table>
 
 </body>
 </html>

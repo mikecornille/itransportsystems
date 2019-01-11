@@ -55,7 +55,6 @@ class PDFController extends Controller
         $accounts_receivable_total = $load->accounts_receivable_total($start_date_user, $end_date_user);
 
 
-
         //Rent Deposit
         $rent_deposit = $journal->rent_deposit();
 
@@ -81,10 +80,40 @@ class PDFController extends Controller
 
         
 
+        //get all the different sub categories for expenses
+        //loop through all of them and add up all the payment amounts
+
+        //find all unique type_description_sub categories
+
+        
+
+        //Get all the unique categories
+        $unique_cats = Journal::select('type_description_sub')->groupBy('type_description_sub')->get(); 
+
+         $info = [];
+         foreach($unique_cats as $cat)
+         {
+
+            
+            $total = Journal::where('type_description_sub', $cat->type_description_sub)
+            ->whereBetween('created_at', [$start_date, $end_date])->sum('payment_amount');
+            
+            
+            
+
+            $info[] = [$total, $cat->type_description_sub];
+
+            
 
 
+         }         
 
-        $pdf = PDF::loadView('pdf.balanceSheet',['start_date'=>$start_date, 'end_date'=>$end_date, 'mb_checking_account_total'=>$mb_checking_account_total, 'mb_money_market_total'=>$mb_money_market_total, 'accounts_receivable_total'=>$accounts_receivable_total, 'rent_deposit'=>$rent_deposit, 'accounts_payable_total'=>$accounts_payable_total, 'capital_stock'=>$capital_stock, 'distributions'=>$distributions, 'life_to_date_distributions'=>$life_to_date_distributions, 'life_to_date_retained_earnings'=>$life_to_date_retained_earnings]);
+          $info = ['info' => $info ];
+
+          
+
+
+        $pdf = PDF::loadView('pdf.balanceSheet',['start_date'=>$start_date, 'end_date'=>$end_date, 'mb_checking_account_total'=>$mb_checking_account_total, 'mb_money_market_total'=>$mb_money_market_total, 'accounts_receivable_total'=>$accounts_receivable_total, 'rent_deposit'=>$rent_deposit, 'accounts_payable_total'=>$accounts_payable_total, 'capital_stock'=>$capital_stock, 'distributions'=>$distributions, 'life_to_date_distributions'=>$life_to_date_distributions, 'life_to_date_retained_earnings'=>$life_to_date_retained_earnings, 'info'=>$info]);
     
         return $pdf->stream('BalanceSheet' . '_' . $start_date . '_' . $end_date . '.pdf');
         
