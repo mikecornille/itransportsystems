@@ -215,6 +215,7 @@ class JournalController extends Controller
                 $store->type_description_sub = $request->type_description_sub[$count];
                 $store->type = "BILLPMT";
                 $store->type_description = "Expense";
+                $store->off_ledger = "Yes";
                 $store->save();
                 }
             }

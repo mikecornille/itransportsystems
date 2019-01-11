@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-4">
-			<h3>Credit Card Entry</h3>
+			<h3>Multiple Entries</h3>
 		</div>
 		
 	</div>
@@ -46,7 +46,7 @@
 
 	
 
-@for ($i = 0; $i < 15; $i++)
+@for ($i = 0; $i < 15; $i++) 
     <input type="hidden" name="counter[]" value="{{ $i }}">
     <div class="row">
     	<div class="col-md-3">
@@ -89,7 +89,17 @@
 					'Net Income' => 'Net Income',
 					'Employee Parking' => 'Employee Parking',
 					'Bank Service Charges' => 'Bank Service Charges',
-					'Income Tax Payment' => 'Income Tax Payment'
+					'Income Tax Payment' => 'Income Tax Payment',
+					'Federal Withholding' => 'Federal Withholding',
+					'FICA' => 'FICA',
+					'State Withholding' => 'State Withholding',
+					'401k' => '401k',
+					'Health Tax' => 'Health Tax',
+					'Payroll Cash' => 'Payroll Cash',
+					'FUTA' => 'FUTA',
+					'SUTA' => 'SUTA',
+					'Match' => 'Match',
+					'Wages' => 'Wages',
 
 					
 	  		

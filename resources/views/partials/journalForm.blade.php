@@ -95,7 +95,7 @@
 					'Income Tax Payment' => 'Income Tax Payment',
 					'Payroll Service' => 'Payroll Service',
 					'Professional Service' => 'Professional Service',
-					'Interest Income' => 'Interest Income'
+					'Interest Income' => 'Interest Income', 
 
 					
 	  		
@@ -309,7 +309,7 @@
 		  @endif
 		<a class="btn btn-primary" href="newJournalEntry"><b>Create New Account</b></a>
 		
-		<a class="btn btn-primary" href="payMultipleSubCategories"><b>Pay Multiple Credit Card Sub Categories</b></a>
+		<a class="btn btn-primary" href="payMultipleSubCategories"><b>Pay Multiple Sub Categories</b></a>
 		
 		</div>
 	</div>

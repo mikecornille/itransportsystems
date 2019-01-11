@@ -24,7 +24,7 @@
         <div class="col-md-12">
 
             {!! Form::open(['route' => 'journal.creditCardStore']) !!}
-                @include('partials.creditCardForm', ['submitButtonText' => 'New Credit Card Entry'])
+                @include('partials.creditCardForm', ['submitButtonText' => 'New Entry'])
             {!! Form::close() !!}
  
 
