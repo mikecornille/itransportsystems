@@ -95,7 +95,11 @@
 					'Income Tax Payment' => 'Income Tax Payment',
 					'Payroll Service' => 'Payroll Service',
 					'Professional Service' => 'Professional Service',
-					'Interest Income' => 'Interest Income', 
+					'Interest Income' => 'Interest Income',
+					'Payroll Taxes' => 'Payroll Taxes',
+					'Salaries' => 'Salaries',
+					
+
 
 					
 	  		

@@ -36,8 +36,6 @@ class PDFController extends Controller
         $end_date = $end_date_carbon->toDateString();
 
 
-
-
         $ledger = new Ledger();
 
         // Deposits minus payments
@@ -111,9 +109,44 @@ class PDFController extends Controller
           $info = ['info' => $info ];
 
 
+          // Allowance for Bad Debts
+          $allowance_for_bad_debts = Journal::where('account_name', 'ALLOWANCE FOR BAD DEBTS')->whereBetween('created_at', [$start_date, $end_date])
+            ->sum('payment_amount');
 
+            // RECEIVABLE DAMAGE
+          $other_current_assets = Journal::where('account_name', 'RECEIVABLE DAMAGE')->whereBetween('created_at', [$start_date, $end_date])
+            ->sum('deposit_amount');
 
-        $pdf = PDF::loadView('pdf.balanceSheet',['start_date'=>$start_date, 'end_date'=>$end_date, 'mb_checking_account_total'=>$mb_checking_account_total, 'mb_money_market_total'=>$mb_money_market_total, 'accounts_receivable_total'=>$accounts_receivable_total, 'rent_deposit'=>$rent_deposit, 'accounts_payable_total'=>$accounts_payable_total, 'capital_stock'=>$capital_stock, 'distributions'=>$distributions, 'life_to_date_distributions'=>$life_to_date_distributions, 'life_to_date_retained_earnings'=>$life_to_date_retained_earnings, 'info'=>$info]);
+            
+
+            $accum_office = Journal::where('account_name', 'ACCUMULATED DEPR OFFICE EQUIP')->whereBetween('created_at', [$start_date, $end_date])
+            ->sum('payment_amount');
+
+            $machineryAndEquipment = Journal::where('account_name', 'MACHINERY AND EQUIPMENT')->whereBetween('created_at', [$start_date, $end_date])
+            ->sum('deposit_amount');
+
+            $accum_mach = Journal::where('account_name', 'ACCUMULATED DEPR MACH EQUIP')->whereBetween('created_at', [$start_date, $end_date])
+            ->sum('payment_amount');
+
+            $officeEquipment = Journal::where('account_name', 'OFFICE EQUIPMENT')->whereBetween('created_at', [$start_date, $end_date])
+            ->sum('deposit_amount');
+
+            $rentDeposit = Journal::where('account_name', 'RENT DEPOSIT')->whereBetween('created_at', [$start_date, $end_date])
+            ->sum('deposit_amount');
+
+            $accrued_state = Journal::where('account_name', 'ACCRUED STATE INCOME TAX')->whereBetween('created_at', [$start_date, $end_date])
+            ->sum('payment_amount');
+
+            $net_income = Journal::where('account_name', 'QUICKBOOKS NET INCOME')->whereBetween('created_at', [$start_date, $end_date])
+            ->sum('deposit_amount');
+
+            
+
+        $pdf = PDF::loadView('pdf.balanceSheet',[
+            'net_income'=>$net_income,
+            'accrued_state'=>$accrued_state,
+            'rentDeposit'=>$rentDeposit,
+            'accum_office'=>$accum_office,'machineryAndEquipment'=>$machineryAndEquipment,'accum_mach'=>$accum_mach,'officeEquipment'=>$officeEquipment,'other_current_assets'=>$other_current_assets,'allowance_for_bad_debts'=>$allowance_for_bad_debts,'start_date'=>$start_date, 'end_date'=>$end_date, 'mb_checking_account_total'=>$mb_checking_account_total, 'mb_money_market_total'=>$mb_money_market_total, 'accounts_receivable_total'=>$accounts_receivable_total, 'rent_deposit'=>$rent_deposit, 'accounts_payable_total'=>$accounts_payable_total, 'capital_stock'=>$capital_stock, 'distributions'=>$distributions, 'life_to_date_distributions'=>$life_to_date_distributions, 'life_to_date_retained_earnings'=>$life_to_date_retained_earnings, 'info'=>$info]);
     
         return $pdf->stream('BalanceSheet' . '_' . $start_date . '_' . $end_date . '.pdf');
         
