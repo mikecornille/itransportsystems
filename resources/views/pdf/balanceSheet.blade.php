@@ -24,6 +24,25 @@ th {
   <img src="images/its_logo_162_150.png" class="img-responsive" alt="ITS Logo">
 </div>
 
+<div>
+  <center><h4>{{ $start_date }} to {{ $end_date }}</h4></center>
+</div>
+
+ <table>
+  
+  <tr>
+    <th><i>Freight Sales</i></th>
+    <th>{{ '$' . number_format($sales, 2) }}</th>
+  </tr>
+  <tr>
+    <th><i>Freight Cost</i></th>
+    <th>{{ '$' . number_format($cost, 2) }}</th>
+  </tr>
+  <tr>
+    <th><i>Gross Profit</i></th>
+    <th>{{ '$' . number_format($gross_profit, 2) }}</th>
+
+ </table>
 
 
 <div>

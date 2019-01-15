@@ -140,9 +140,24 @@ class PDFController extends Controller
             $net_income = Journal::where('account_name', 'QUICKBOOKS NET INCOME')->whereBetween('created_at', [$start_date, $end_date])
             ->sum('deposit_amount');
 
-            
+        $sales = Load::where('pick_status', 'Loaded')
+                        ->whereBetween('created_at', [$start_date, $end_date])
+                        ->sum('amount_due');
+
+                        
+
+        $cost = Load::where('delivery_status', 'Delivered')
+                        ->whereBetween('created_at', [$start_date, $end_date])
+                        ->sum('carrier_rate');
+
+        $gross_profit = $sales - $cost;
+
+                        
 
         $pdf = PDF::loadView('pdf.balanceSheet',[
+            'sales'=>$sales,
+            'cost'=>$cost,
+            'gross_profit'=>$gross_profit,
             'net_income'=>$net_income,
             'accrued_state'=>$accrued_state,
             'rentDeposit'=>$rentDeposit,
