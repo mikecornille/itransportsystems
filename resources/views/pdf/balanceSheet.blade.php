@@ -25,7 +25,7 @@ th {
 </div>
 
 <div>
-  <center><h4>{{ $start_date }} to {{ $end_date }}</h4></center>
+  <center><h4>Profit and Loss {{ $start_date }} to {{ $end_date }}</h4></center>
 </div>
 
  <table>
@@ -44,44 +44,10 @@ th {
   </tr>
  </table>
 
-
-<div>
-  <center><h4>ITS Maker Data with QB $ Amounts {{ $start_date }} to {{ $end_date }}</h4></center>
-</div>
-
- <table>
-  
-  <tr>
-    <th><i>Ledger (Accrual) (Deposits - Payments)</i></th>
-    <th>{{ '$' . number_format($mb_checking_account_total, 2) }}</th>
-  </tr>
-  <tr>
-    <th><i>Money Market</i></th>
-    <th>{{ '$' . number_format($mb_money_market_total, 2) }}</th>
-  </tr>
-  <tr>
-    <th><i>Billed Customer Invoices (Payment Not Received)</i></th>
-    <th>{{ '$' . number_format($accounts_receivable_total, 2) }}</th>
-  </tr>
-    <tr>
-    <th><i>Carrier Invoices (Approved Not Paid)</i></th>
-    <th>{{ '$' . number_format($accounts_payable_total, 2) }}</th>
-  </tr>
-  
-  <tr>
-    <th><i>Distributions</i></th>
-    <th>{{ '$-' . number_format($distributions, 2) }}</th>
-  </tr>
-  
-  
- 
- </table>
-
-<div>
-  <center><h4>ITS Maker Expenses By Sub Categories {{ $start_date }} to {{ $end_date }}</h4></center>
-</div>
-
-<table>
+   <div>
+    <center><h4>Expenses By Sub Categories {{ $start_date }} to {{ $end_date }}</h4></center>
+  </div>
+    <table>
 
 
 @for ($i = 0; $i < count($info['info']); $i++)
@@ -99,21 +65,126 @@ th {
       
 @endfor
 
+<tr>
+    <th>Expenses Total</th>
+    <th>{{ '$' . number_format($expenses_total, 2) }}</th>
+</tr>
+
+</table>
+<hr>
+<table>
+<tr>
+    <th>Net Income</th>
+    <th>{{ '$' . number_format($net_income, 2) }}</th>
+</tr>
 </table>
 
+
 <div>
-  <center><h4>Expenses Total{{ $start_date }} to {{ $end_date }}</h4></center>
+  <center><h4>Balance Sheet {{ $start_date }} to {{ $end_date }}</h4></center>
 </div>
 
  <table>
   
   <tr>
-    <th><i>Expenses Total</i></th>
-    <th>{{ '$' . number_format($expenses_total, 2) }}</th>
+    <th><i>Ledger (Accrual) (Deposits - Payments)</i></th>
+    <th>{{ '$' . number_format($mb_checking_account_total, 2) }}</th>
+  </tr>
+  <tr>
+    <th><i>Money Market</i></th>
+    <th>{{ '$' . number_format($mb_money_market_total, 2) }}</th>
+  </tr>
+  <tr>
+    <th><i>Accounts Receivable</i></th>
+    <th>{{ '$' . number_format($accounts_receivable_total, 2) }}</th>
+  </tr>
+
+  <tr>
+    <th><i>Allowance for Bad Debts</i></th>
+    <th>{{ '-$' . number_format($bad_debts, 2) }}</th>
+  </tr>
+   <tr>
+    <th><i>Receivable Damage</i></th>
+    <th>{{ '$' . number_format($receivable_damage, 2) }}</th>
+  </tr>
+
+  <tr>
+    <th><i>Accumulated Depr Office Equip</i></th>
+    <th>{{ '-$' . number_format($accum_office, 2) }}</th>
+  </tr>
+  <tr>
+    <th><i>Accumulated Depr Mach Equipment</i></th>
+    <th>{{ '-$' . number_format($accum_mach, 2) }}</th>
+  </tr>
+   <tr>
+    <th><i>Machinery and Equipment</i></th>
+    <th>{{ '$' . number_format($machineryAndEquipment, 2) }}</th>
+  </tr>
+  <tr>
+    <th><i>Office Equipment</i></th>
+    <th>{{ '$' . number_format($officeEquipment, 2) }}</th>
+  </tr>
+
+  <tr>
+    <th><i>Rent Deposit</i></th>
+    <th>{{ '$' . number_format($rentDeposit, 2) }}</th>
   </tr>
   
 
+  <tr>
+    <th><i>Total Assets</i></th>
+    <th>{{ '$' . number_format($assets_total, 2) }}</th>
+  </tr>
+
+
+  </table>
+
+  <hr>
+
+  <table>
+
+    
+    <tr>
+    <th><i>Accounts Payable</i></th>
+    <th>{{ '$' . number_format($accounts_payable_total, 2) }}</th>
+  </tr>
+
+   <tr>
+    <th><i>Accrued State Income Tax</i></th>
+    <th>{{ '-$' . number_format($accrued_state, 2) }}</th>
+  </tr>
+
+  <tr>
+    <th><i>Capital Stock</i></th>
+    <th>{{ '$' . number_format($capital_stock, 2) }}</th>
+  </tr>
+  
+  <tr>
+    <th><i>Distributions</i></th>
+    <th>{{ '$-' . number_format($distributions, 2) }}</th>
+  </tr>
+
+   <tr>
+    <th><i>Retained Earnings</i></th>
+    <th>{{ '$' . number_format($retained_earnings, 2) }}</th>
+  </tr>
+  
+  <tr>
+    <th>Net Income</th>
+    <th>{{ '$' . number_format($net_income, 2) }}</th>
+</tr>
+
+<tr>
+    <th>Total Liabilities and Equity</th>
+    <th>{{ '$' . number_format($liability_total, 2) }}</th>
+</tr>
+  
+ 
  </table>
+
+
+
+ 
 
 </body>
 </html>

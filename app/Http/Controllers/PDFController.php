@@ -74,7 +74,7 @@ class PDFController extends Controller
 
         $life_to_date_distributions = $life_to_date_distributions_journal + $life_to_date_distributions_quickbooks;
         
-        $life_to_date_retained_earnings = 2912947.32 + $mb_checking_account_total;
+         
 
         
 
@@ -153,14 +153,40 @@ class PDFController extends Controller
         $gross_profit = $sales - $cost;
 
 
+
+
         // Expnses Total
         $expenses_total = Journal::where('type_description', 'Expense')
         ->whereBetween('created_at', [$start_date, $end_date])->sum('payment_amount');
 
+        // Net Income
+        $net_income = $gross_profit - $expenses_total;
 
+        $bad_debts = Journal::where('type_description_sub', 'Bad Debts')->whereBetween('created_at', [$start_date, $end_date])->sum('payment_amount');
+
+        $receivable_damage = Journal::where('type_description_sub', 'Receivable Damage')->whereBetween('created_at', [$start_date, $end_date])->sum('deposit_amount');
+
+
+    $assets_positive = $accounts_receivable_total + $mb_checking_account_total + $mb_money_market_total + $receivable_damage + $machineryAndEquipment + $officeEquipment + $rentDeposit;
+
+$assets_negative = $bad_debts + $accum_office + $accum_mach;
+$assets_total = $assets_positive - $assets_negative;
+
+$retained_earnings = Journal::where('type_description_sub', 'Retained Earnings')->whereBetween('created_at', [$start_date, $end_date])
+            ->sum('deposit_amount');
+
+$liability_pos = $accounts_payable_total + $capital_stock + $retained_earnings + $net_income;
+$liability_neg = $accrued_state + $distributions;
+$liability_total = $liability_pos - $liability_neg;
                         
 
         $pdf = PDF::loadView('pdf.balanceSheet',[
+            'liability_total'=>$liability_total,
+            'retained_earnings'=>$retained_earnings,
+            'assets_total'=>$assets_total,
+            'receivable_damage'=>$receivable_damage,
+            'bad_debts'=>$bad_debts,
+            'net_income'=>$net_income,
             'expenses_total'=>$expenses_total,
             'sales'=>$sales,
             'cost'=>$cost,
@@ -168,7 +194,7 @@ class PDFController extends Controller
             'net_income'=>$net_income,
             'accrued_state'=>$accrued_state,
             'rentDeposit'=>$rentDeposit,
-            'accum_office'=>$accum_office,'machineryAndEquipment'=>$machineryAndEquipment,'accum_mach'=>$accum_mach,'officeEquipment'=>$officeEquipment,'other_current_assets'=>$other_current_assets,'allowance_for_bad_debts'=>$allowance_for_bad_debts,'start_date'=>$start_date, 'end_date'=>$end_date, 'mb_checking_account_total'=>$mb_checking_account_total, 'mb_money_market_total'=>$mb_money_market_total, 'accounts_receivable_total'=>$accounts_receivable_total, 'rent_deposit'=>$rent_deposit, 'accounts_payable_total'=>$accounts_payable_total, 'capital_stock'=>$capital_stock, 'distributions'=>$distributions, 'life_to_date_distributions'=>$life_to_date_distributions, 'life_to_date_retained_earnings'=>$life_to_date_retained_earnings, 'info'=>$info]);
+            'accum_office'=>$accum_office,'machineryAndEquipment'=>$machineryAndEquipment,'accum_mach'=>$accum_mach,'officeEquipment'=>$officeEquipment,'other_current_assets'=>$other_current_assets,'allowance_for_bad_debts'=>$allowance_for_bad_debts,'start_date'=>$start_date, 'end_date'=>$end_date, 'mb_checking_account_total'=>$mb_checking_account_total, 'mb_money_market_total'=>$mb_money_market_total, 'accounts_receivable_total'=>$accounts_receivable_total, 'rent_deposit'=>$rent_deposit, 'accounts_payable_total'=>$accounts_payable_total, 'capital_stock'=>$capital_stock, 'distributions'=>$distributions, 'life_to_date_distributions'=>$life_to_date_distributions, 'info'=>$info]);
     
         return $pdf->stream('BalanceSheet' . '_' . $start_date . '_' . $end_date . '.pdf');
         
