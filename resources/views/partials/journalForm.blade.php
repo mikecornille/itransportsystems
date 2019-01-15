@@ -101,7 +101,8 @@
 					'Printing and Reproduction' => 'Printing and Reproduction',
 					'Profit Sharing 401k' => 'Profit Sharing 401k',
 					'Bad Debts' => 'Bad Debts',
-					'Receivable Damage' => 'Receivable Damage'
+					'Receivable Damage' => 'Receivable Damage',
+					'Commissions' => 'Commissions'
 
 
 
