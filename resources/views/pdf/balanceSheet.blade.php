@@ -67,12 +67,16 @@ th {
 
 @for ($i = 0; $i < count($info['info']); $i++)
 
+@if ($info['info'][$i][0] == 0)
 
+@else
     
 <tr>
     <th>{{ $info['info'][$i][1] }}</th>
     <th>{{ '$' . number_format($info['info'][$i][0], 2) }}</th>
 </tr>
+
+@endif
       
 @endfor
 
