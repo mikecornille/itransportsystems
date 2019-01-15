@@ -41,7 +41,7 @@ th {
   <tr>
     <th><i>Gross Profit</i></th>
     <th>{{ '$' . number_format($gross_profit, 2) }}</th>
-
+  </tr>
  </table>
 
 
@@ -100,6 +100,20 @@ th {
 @endfor
 
 </table>
+
+<div>
+  <center><h4>Expenses Total{{ $start_date }} to {{ $end_date }}</h4></center>
+</div>
+
+ <table>
+  
+  <tr>
+    <th><i>Expenses Total</i></th>
+    <th>{{ '$' . number_format($expenses_total, 2) }}</th>
+  </tr>
+  
+
+ </table>
 
 </body>
 </html>

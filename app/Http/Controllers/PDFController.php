@@ -152,9 +152,16 @@ class PDFController extends Controller
 
         $gross_profit = $sales - $cost;
 
+
+        // Expnses Total
+        $expenses_total = Journal::where('type_description', 'Expense')
+        ->whereBetween('created_at', [$start_date, $end_date])->sum('payment_amount');
+
+
                         
 
         $pdf = PDF::loadView('pdf.balanceSheet',[
+            'expenses_total'=>$expenses_total,
             'sales'=>$sales,
             'cost'=>$cost,
             'gross_profit'=>$gross_profit,
