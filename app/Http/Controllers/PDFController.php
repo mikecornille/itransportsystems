@@ -93,8 +93,13 @@ class PDFController extends Controller
          {
 
             
-            $total = Journal::where('type_description', 'Expense')->where('type_description_sub', $cat->type_description_sub)
+            $total_expense = Journal::where('type_description', 'Expense')->where('type_description_sub', $cat->type_description_sub)
             ->whereBetween('created_at', [$start_date, $end_date])->sum('payment_amount');
+
+            $total_revenue = Journal::where('type_description', 'Revenue')->where('type_description_sub', $cat->type_description_sub)
+            ->whereBetween('created_at', [$start_date, $end_date])->sum('deposit_amount');
+
+            $total = $total_expense - $total_revenue;
             
             
             
