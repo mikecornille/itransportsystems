@@ -79,7 +79,7 @@ th {
 </tr>
 </table>
 
-
+<!-- 
 <div>
   <center><h4>Balance Sheet {{ $start_date }} to {{ $end_date }}</h4></center>
 </div>
@@ -183,7 +183,7 @@ th {
   
  
  </table>
-
+ -->
 
 
  
