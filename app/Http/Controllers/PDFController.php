@@ -140,17 +140,21 @@ class PDFController extends Controller
             $net_income = Journal::where('account_name', 'QUICKBOOKS NET INCOME')->whereBetween('created_at', [$start_date, $end_date])
             ->sum('deposit_amount');
 
-        $sales = Load::where('pick_status', 'Loaded')
-                        ->whereBetween('created_at', [$start_date, $end_date])
-                        ->sum('amount_due');
+        $sales = Load::whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date_user}', '%m/%d/%Y')")->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date_user}', '%m/%d/%Y')")->sum('amount_due');
+
+
 
                         
 
-        $cost = Load::where('delivery_status', 'Delivered')
-                        ->whereBetween('created_at', [$start_date, $end_date])
+        $cost = Load::whereBetween('approved_carrier_invoice', [$start_date, $end_date])
                         ->sum('carrier_rate');
 
         $gross_profit = $sales - $cost;
+
+
+
+
+        
 
 
 
