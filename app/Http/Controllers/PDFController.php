@@ -146,7 +146,7 @@ class PDFController extends Controller
 
                         
 
-        $cost = whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date_user}', '%m/%d/%Y')")->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date_user}', '%m/%d/%Y')")->sum('carrier_rate');
+        $cost = Load::whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date_user}', '%m/%d/%Y')")->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date_user}', '%m/%d/%Y')")->sum('carrier_rate');
 
         $gross_profit = $sales - $cost;
 
