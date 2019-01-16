@@ -178,6 +178,8 @@ $retained_earnings = Journal::where('type_description_sub', 'Retained Earnings')
 $liability_pos = $accounts_payable_total + $capital_stock + $retained_earnings + $net_income;
 $liability_neg = $accrued_state + $distributions;
 $liability_total = $liability_pos - $liability_neg;
+
+
                         
 
         $pdf = PDF::loadView('pdf.balanceSheet',[

@@ -401,7 +401,6 @@ class Load extends Model
       
         $accounts_receivable = Load::whereNotNull('billed_date')
         ->where('billed_date', '!=', '')
-        ->where('customerPayStatus', 'OPEN')
         ->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
         ->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
         ->sum('amount_due');
@@ -416,7 +415,6 @@ class Load extends Model
       
         $accounts_payable = Load::whereNotNull('vendor_invoice_date')
         ->where('vendor_invoice_date', '!=', '')
-        ->where('carrierPayStatus', 'APPRVD')
         ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
         ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
         ->sum('carrier_rate');

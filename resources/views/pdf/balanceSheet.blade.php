@@ -147,6 +147,8 @@ th {
     <tr>
     <th><i>Accounts Payable</i></th>
     <th>{{ '$' . number_format($accounts_payable_total, 2) }}</th>
+    
+    
   </tr>
 
    <tr>
