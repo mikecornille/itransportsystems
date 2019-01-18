@@ -344,6 +344,8 @@ Route::get('downloadExcel/{type}', 'MaatwebsiteDemoController@downloadExcel');
 
 Route::post('generalLedgerExcel/{type}', 'MaatwebsiteDemoController@generalLedgerExcel');
 
+Route::post('viewLedger/{type}', 'LedgerController@viewLedger');
+
 Route::post('generalLedgerTargetType/{type}', 'MaatwebsiteDemoController@generalLedgerTargetType');
 
 Route::post('profitLoss', 'PDFController@profitLoss');
