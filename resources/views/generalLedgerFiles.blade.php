@@ -21,7 +21,7 @@
     <div class="well">
         <div class="row">
             <div class="col-md-4">
-                <h2>Target type from ledger</h2>
+                <h2>Target Category from Ledger</h2>
                     <form role="form" class="form-horizontal" method="POST" action="/generalLedgerTargetType/xlsx">
 
                         {{ csrf_field() }}
@@ -58,7 +58,7 @@
                     </form>
             </div>
             <div class="col-md-4 col-md-offset-4">
-                <h2>All data from ledger</h2>
+                <h2>Download Full Ledger</h2>
                     <form role="form" class="form-horizontal" method="POST" action="/generalLedgerExcel/xlsx">
 
                         {{ csrf_field() }}
@@ -135,7 +135,7 @@
     <div class="well">
         <div class="row">
             <div class="col-md-4">
-                <h2>All data from ledger with only cleared checks</h2>
+                <h2>Ledger With Only Cleared Checks</h2>
                     <form role="form" class="form-horizontal" method="POST" action="/generalLedgerTargetCheckPaid">
 
                         {{ csrf_field() }}
@@ -159,7 +159,7 @@
                     </form>
             </div>
             <div class="col-md-4 col-md-offset-4">
-                <h2>Balance Sheet</h2>
+                <h2>Profit / Loss</h2>
                     <form role="form" class="form-horizontal" method="POST" action="/balanceSheet">
 
                         {{ csrf_field() }}
@@ -184,7 +184,7 @@
         </div> <!-- End row -->
     </div> <!-- End well -->
 
-    <div class="well">
+   <!--  <div class="well">
         <div class="row">
             <div class="col-md-4">
                 <h2>All approved carrier invoices</h2>
@@ -212,8 +212,8 @@
             </div>
             
             
-        </div> <!-- End row -->
-    </div> <!-- End well -->
+        </div>
+    </div> --> 
 </div>
 
 

@@ -968,13 +968,13 @@ $(document).ready(function() {
                 "orderable":      false,
                 "data":           'account_id',
                 "render": function ( data, type, full, meta ) {
-                return '<a href="/goToAccountProfileFromJournal/'+data+'">View Account</a>'}
+                return '<a href="/goToAccountProfileFromJournal/'+data+'">Account</a>'}
             },
             
             
             { "data": "created_at"},
-            { "data": "upload_date"},
-            { "data": "invoice_date_journal"},
+            // { "data": "upload_date"},
+            // { "data": "invoice_date_journal"},
             { "data": "account_name"},
             { "data": "type"},
             { "data": "type_description"},
@@ -983,10 +983,17 @@ $(document).ready(function() {
             { "data": "payment_method"},
             { "data": "payment_number"},
             { "data": "payment_amount"},
+            
+
+
             { "data": "deposit_amount"},
-            { "data": "cleared"},
-            { "data": "cleared_date"},
-            { "data": "off_ledger"},
+            
+
+           
+
+            // { "data": "cleared"},
+            // { "data": "cleared_date"},
+            // { "data": "off_ledger"},
 
 
         ],

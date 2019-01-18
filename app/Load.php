@@ -399,12 +399,25 @@ class Load extends Model
     public function accounts_receivable_total($start_date, $end_date)
     {
       
-        $accounts_receivable = Load::whereNotNull('billed_date')
-        ->where('billed_date', '!=', '')
-        ->where('customerPayStatus', 'OPEN')
-        ->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+        // $accounts_receivable = Load::whereNotNull('billed_date')
+        // ->where('billed_date', '!=', '')
+        // ->where('customerPayStatus', 'OPEN')
+        // ->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+        // ->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+        // ->sum('amount_due');
+
+
+      $accounts_receivable = Load::
+        whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
         ->whereRaw("STR_TO_DATE(`billed_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+        ->where('deposit_date', '>', $end_date)
         ->sum('amount_due');
+     
+
+        
+
+
+    
 
         return $accounts_receivable;
     }
@@ -414,12 +427,20 @@ class Load extends Model
       
          
       
-        $accounts_payable = Load::whereNotNull('vendor_invoice_date')
-        ->where('vendor_invoice_date', '!=', '')
-        ->where('carrierPayStatus', 'APPRVD')
-        ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
-        ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+        // $accounts_payable = Load::whereNotNull('vendor_invoice_date')
+        // ->where('vendor_invoice_date', '!=', '')
+        // ->where('carrierPayStatus', 'APPRVD')
+        // ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+        // ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+        // ->sum('carrier_rate');
+
+
+
+      $accounts_payable = Load::
+        whereBetween('approved_carrier_invoice', [$start_date, $end_date])
         ->sum('carrier_rate');
+
+        dd($accounts_payable);
 
         return $accounts_payable;
     }

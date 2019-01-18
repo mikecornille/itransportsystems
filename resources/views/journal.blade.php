@@ -94,8 +94,8 @@
             <tr>
                 <th>Account Link</th>
                 <th>Created</th>
-                <th>Check Print</th>
-                <th>Invoice Date</th>
+                
+                
                 <th>Account</th>
                 <th>Type</th>
                 <th>Description</th>
@@ -105,17 +105,17 @@
                 <th>Payment Number</th>
                 <th>Payment Amount</th>
                 <th>Deposit Amount</th>
-                <th>Cleared</th>
+                <!-- <th>Cleared</th>
                 <th>Cleared Date</th>
-                <th>Off Ledger</th>
+                <th>Off Ledger</th> -->
             </tr>
         </thead>
          <tfoot>
             <tr>
                 <th>Account ID</th>
                 <th>Created</th>
-                <th>Check Print</th>
-                <th>Invoice Date</th>
+                
+                
                 <th>Account</th>
                 <th>Type</th>
                 <th>Description</th>
@@ -125,9 +125,9 @@
                 <th>Payment Number</th>
                 <th>Payment Amount</th>
                 <th>Deposit Amount</th>
-                <th>Cleared</th>
+                <!-- <th>Cleared</th>
                 <th>Cleared Date</th>
-                <th>Off Ledger</th>
+                <th>Off Ledger</th> -->
             </tr>
         </tfoot>  
     </table>
