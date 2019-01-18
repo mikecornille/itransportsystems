@@ -57,9 +57,9 @@
   </table>
 
 
+@PHP setlocale(LC_MONETARY, 'en_US.UTF-8'); @ENDPHP 
 
-
-<h2>Total Balance - ${{ $balance }}</h2>
+<h2>Balance : {{ money_format('%.2n', $balance) }}</h2>
 
 
 

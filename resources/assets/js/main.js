@@ -1492,8 +1492,8 @@ $(document).ready(function() {
       { "width": "30px", "targets": 5 }, //name
       { "width": "10px", "targets": 6 }, //account id
       { "width": "10px", "targets": 7 }, //method
-      { "width": "10px", "targets": 8 }, //cleared
-      { "width": "10px", "targets": 9 }, //cleared date
+      { "width": "10px", "targets": 8 }, 
+      { "width": "10px", "targets": 9 }, 
       { "width": "10px", "targets": 10 }, //amount
       { "width": "10px", "targets": 11 }, //deposit amount
       
