@@ -226,7 +226,8 @@
                                     <li><a href="{{ url('/general_ledger') }}">Ledger</a></li>
                                     <!-- <li><a href="{{ url('/newAccountingDatatable') }}">Checking Account</a></li> -->
                                     <li><a href="{{ url('/journal') }}">Journal Form and Data</a></li>
-                                    <li><a href="{{ url('/journalAccountSearch') }}">Created Accounts</a></li>
+                                    <li><a href="{{ url('/journalAccountSearch') }}">Specific Accounts</a></li>
+                                    <li><a href="{{ url('/journalGeneralAccountSearch') }}">General Accounts</a></li>
                                     @endif
                                
                                </ul>

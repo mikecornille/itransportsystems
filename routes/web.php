@@ -44,7 +44,9 @@ Route::get('/ach_no_carrier_found', function () {
 
 
          
+         Route::get('journalGeneralAccountSearch', 'JournalController@journalGeneralAccountSearch');
 
+         Route::get('/findGeneralAccount/{id}', 'JournalController@findGeneralAccount');
 
          Route::get('general_ledger', 'LoadsController@generalLedger');
 

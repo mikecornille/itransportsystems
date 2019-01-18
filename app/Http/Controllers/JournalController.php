@@ -26,6 +26,48 @@ class JournalController extends Controller
         return view('journal', compact('journal_entries', $journal_entries, 'newForm', $newForm));
     }
 
+    public function findGeneralAccount($id)
+    {
+        $generalAccount = Journal::where('type_description_sub', $id)->get();
+
+        $payment_amount = Journal::where('type_description_sub', $id)->where('type', 'BILLPMT')->sum('payment_amount');
+
+        $deposit_amount = Journal::where('type_description_sub', $id)->where('type', 'PMT')->sum('deposit_amount');
+
+        $total = $deposit_amount - $payment_amount;
+        
+        return view('GeneralAccountDetail')->with('generalAccount', $generalAccount)->with('total', $total);
+    }
+
+    public function journalGeneralAccountSearch()
+    {
+         //Get all the unique categories
+        $unique_cats = Journal::select('type_description_sub')->groupBy('type_description_sub')->get(); 
+
+         $info = [];
+         foreach($unique_cats as $cat)
+         {
+
+            $total_expense = Journal::where('type_description', 'Expense')->where('type_description_sub', $cat->type_description_sub)
+            ->sum('payment_amount');
+
+            $total_revenue = Journal::where('type_description', 'Revenue')->where('type_description_sub', $cat->type_description_sub)
+            ->sum('deposit_amount');
+
+            $total = $total_expense - $total_revenue;
+            
+            $info[] = [$total, $cat->type_description_sub];
+
+        }         
+
+          $info = ['info' => $info ];
+
+       
+
+
+        return view('journalGeneralAccountSearch')->with('info', $info);
+    }
+
     public function submitNewJournalVendor(Request $request)
     {
         $vendor_name = $request->input('vendor_name');
@@ -190,6 +232,8 @@ class JournalController extends Controller
         $users = Journal::select('account_name')
             ->groupBy('account_name')
             ->get();
+
+        
 
 
         return view('journalAccountSearch', compact($users, 'users'));

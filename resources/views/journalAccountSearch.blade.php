@@ -9,7 +9,7 @@ $id = "";
 
 
 <div class="container">
-	<h3>Account Search</h3>
+	<h3>Specific Account Search</h3>
 	<div class="row">
 		<div class="col-md-6">
 			<label class="label-control" for="find-journal-account">SEARCH</label>
@@ -36,11 +36,14 @@ $id = "";
 		<ul>
 		@foreach($users as $user)
 
-			<li>{{ $user->account_name }}</li>
+			<li>{{$user->account_name}}</li>
 
 		@endforeach
 	</ul>
 	</div>
+
+
+	
 </div>
 
 
