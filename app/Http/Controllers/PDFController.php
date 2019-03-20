@@ -401,7 +401,7 @@ $liability_total = $liability_pos - $liability_neg;
             
             
 
-            if($info['info']['customer_id'] == '1709'){
+            if($info['info']['customer_id'] == '3'){
                 $message->attach($pathToSafetyFile);
             }
 

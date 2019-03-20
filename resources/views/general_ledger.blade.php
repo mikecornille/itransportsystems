@@ -4,7 +4,7 @@
 
 
 
-<h1 class="text-center">Ledger</h1>
+<h1 class="text-center">Transactions</h1>
 
    <table id="generalLedgerTable" cellspacing="0" class="stripe row-border order-column">
 

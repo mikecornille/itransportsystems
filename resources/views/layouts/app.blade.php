@@ -223,7 +223,7 @@
                                     <!-- <li><a href="{{ url('/allNeededPODs') }}">Needed BOL</a></li> -->
                                     
                                     @if (Auth::user()->email == 'mikec@itransys.com' || Auth::user()->email == 'lianey@itransys.com')
-                                    <li><a href="{{ url('/general_ledger') }}">Ledger</a></li>
+                                    <li><a href="{{ url('/general_ledger') }}">Transactions</a></li>
                                     <!-- <li><a href="{{ url('/newAccountingDatatable') }}">Checking Account</a></li> -->
                                     <li><a href="{{ url('/journal') }}">Journal Form and Data</a></li>
                                     <li><a href="{{ url('/journalAccountSearch') }}">Specific Accounts</a></li>
