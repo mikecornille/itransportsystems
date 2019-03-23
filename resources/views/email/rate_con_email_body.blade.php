@@ -30,6 +30,8 @@ table {
 
 <p>If you prefer not to print out and sign the attached PDF contract you may agree electronically.  Please read through the entire message and reply with: I, [insert your name] , agree this email correspondence is a legally binding contract.</p>
 
+<p><b>{{ $info->is_full_load == 'YES' ? ' THIS SHIPMENT IS A FULL TRUCKLOAD OF ' . $info->piece_count . ' PIECE(S) NO OTHER FREIGHT ALLOWED' : ' THIS SHIPMENT HAS ' . $info->piece_count . ' PIECE(S)' }}</b></p>
+
 <p><b>CARRIER AGREES THE DRIVER'S E-LOG DISPLAYS THE CORRECT DATE, LOCATION, SUFFICIENT ENGINE/DRIVER HOURS, AND SUFFICIENT MILES TO MEET THE TIME FRAME SPECIFIED ABOVE.  CARRIER AGREES ALL FMCSA REGULATIONS PERTAINING TO DRIVER'S E-LOG ARE MET.</b></p>
 
 <p><b>DRIVER MUST HAVE LONG SLEEVE SHIRT, LONG PANTS, STEEL TOED SHOES, SAFETY VEST, SAFETY GLASSES, AND HARD HAT.  NO PETS ALLOWED.</b></p>

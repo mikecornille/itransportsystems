@@ -5,7 +5,6 @@
 
 
 
-
 @if (count($errors) > 0)
     <div class="alert alert-danger">
         <ul>
@@ -15,6 +14,7 @@
         </ul>
     </div>
 @endif
+
 
 @if (session('status'))
     <div class="alert alert-success alert-dismissible">
@@ -222,6 +222,18 @@
           <input type="text" class="form-control" id="amount_due" name="amount_due" value="{{ old('amount_due') }}">
           <span class="input-group-addon">.00</span>
                     </div>
+        </div>
+        <div class="col-xs-12">
+            <label for="is_full_load" class="label-control">Full Load?</label>
+            <select name="is_full_load" id="is_full_load" class="form-control"> 
+              <option value="">Select</option>
+              <option value="YES">YES</option>
+              <option value="NO">NO</option>
+            </select>
+          </div>
+          <div class="col-xs-12">
+          <label class="label-control" for="piece_count">Piece Count</label>
+          <input type="number" class="form-control" id="piece_count" name="piece_count" value="{{ old('piece_count') }}">
         </div>
         <div class="col-xs-12" id="submit_new_load_button">
             <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> NEW</button>

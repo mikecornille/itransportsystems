@@ -113,6 +113,8 @@ class CreateLoadsTable extends Migration
             $table->string('quick_pay_flag', 10)->nullable();
             $table->string('customer_balanced', 10)->nullable();
             $table->string('carrier_balanced', 10)->nullable();
+            $table->string('is_full_load', 3)->nullable();
+            $table->integer('piece_count')->nullable();
             
 
         });

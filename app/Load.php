@@ -101,7 +101,9 @@ class Load extends Model
             'upload_date',
             'cleared',
             'cleared_date',
-            'quick_pay_flag'
+            'quick_pay_flag',
+            'is_full_load',
+            'piece_count'
 
 
 			  ];

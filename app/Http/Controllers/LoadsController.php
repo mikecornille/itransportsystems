@@ -221,6 +221,8 @@ class LoadsController extends Controller
 			  'delivery_phone' => 'required',
 			  'amount_due' => 'required',
 			  'commodity' => 'required',
+			  'is_full_load' => 'required',
+			  'piece_count' => 'required'
         
          ]);
 
@@ -316,6 +318,8 @@ class LoadsController extends Controller
 			  'amount_due' => 'required',
 			  'commodity' => 'required',
 			  'carrier_id' => 'required',
+			  'is_full_load' => 'required',
+			  'piece_count' => 'required'
         
          ]);
 

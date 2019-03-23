@@ -148,7 +148,7 @@ table {
 
 
 <div class="text_sections">
-	<p><u><b>COMMODITY</b></u></p>
+	<p><u><b>COMMODITY</b></u>{{ $info->is_full_load == 'YES' ? ' THIS SHIPMENT IS A FULL TRUCKLOAD OF ' . $info->piece_count . ' PIECE(S) NO OTHER FREIGHT ALLOWED' : ' THIS SHIPMENT HAS ' . $info->piece_count . ' PIECE(S)' }}</p>
 	<p>{{ $info->commodity }}</p>
 </div>
 

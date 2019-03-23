@@ -586,6 +586,22 @@
    <input type="text" class="form-control datepicker" id="datepicker5" name="rate_con_creation_date" value="{{ $info->rate_con_creation_date }}">
  </div>
 
+
+ <div class="col-xs-12">
+            <label for="is_full_load" class="label-control">Full Load?</label>
+            <select name="is_full_load" id="is_full_load" class="form-control"> 
+              @if($info->is_full_load)
+            <option value="{{ $info->is_full_load }}">{{ $info->is_full_load }}</option>
+            @endif
+              <option value="YES">YES</option>
+              <option value="NO">NO</option>
+            </select>
+          </div>
+          <div class="col-xs-12">
+          <label class="label-control" for="piece_count">Piece Count</label>
+          <input type="number" class="form-control" id="piece_count" name="piece_count" value="{{ $info->piece_count }}">
+        </div>
+
   <div class="col-xs-12" id="submit_button">
   <button class="btn btn-success form-control" type="submit">Update</button>
 </div>
