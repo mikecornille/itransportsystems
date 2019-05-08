@@ -487,7 +487,7 @@ class MaatwebsiteDemoController extends Controller
   //   			return $carrier_invoices;
 		// 	});
 
-		  $carrier_invoices = Load::select('account_name', 'carrier_id', 'account_number', 'vendor_invoice_number', 'routing_number', 'carrier_rate', 'carrier_name' )
+		  $carrier_invoices = Load::select('account_name', 'carrier_id', 'account_number', 'vendor_invoice_number', 'routing_number', 'carrier_rate', 'carrier_name', 'id')
 		 ->where('payment_method', "ACH")->where('carrierPayStatus', "APPRVD")
 		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
 		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
@@ -500,10 +500,10 @@ class MaatwebsiteDemoController extends Controller
     			return $carrier_invoices;
 			});
 
-		 $carrier_invoices->map(function ($carrier_invoices) {
-    			$carrier_invoices['company_entry_description'] = 'FRTCOST';
-    			return $carrier_invoices;
-			});
+		 // $carrier_invoices->map(function ($carrier_invoices) {
+   //  			$carrier_invoices['company_entry_description'] = 'FRTCOST';
+   //  			return $carrier_invoices;
+			// });
 
 		 
 
