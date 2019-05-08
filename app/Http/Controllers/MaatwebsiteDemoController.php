@@ -449,76 +449,75 @@ class MaatwebsiteDemoController extends Controller
 	public function achCSV($type, Request $request)
 	{
 	
-		 $start_date = $request->input('start_date');
-		 $end_date = $request->input('end_date');
+		$start_date = $request->input('start_date');
+		$end_date = $request->input('end_date');
 
-		  //For the emails
-	// 	$loads = Load::where('payment_method', "ACH")->where('carrierPayStatus', "APPRVD")
-	// 	 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
-	// 	 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
-	// 	 ->get();
-	
+		 //Todays Date
+		date_default_timezone_set("America/Chicago");
+        $currentDate = Carbon::now();
 
-	
-
-	// foreach($loads as $load) 
-	// { 
-	
-		
-
-
-	// 	if ($load->accounting_email !== null)
-	// 	{
-	// 		$info = ['info' => $load ];
-
-	// 		Mail::send(['html'=>'email.sendEmailToVendorReceivingACH'], $info, function($message) use ($info){
-
-	// 		$message->to($info['info']['accounting_email'])->subject("ACH Payment Notice from ITS for PRO # " . $info['info']['id'])
-	// 		->from('lianey@itransys.com', 'Liane')
-	// 		->replyTo('lianey@itransys.com', 'Liane')
-	// 		->sender('lianey@itransys.com', 'Liane');
-
- //        	});
-	// 	}
- //    }
+        
+		//New file format
+		 //1. Company Entry Description = FRTCOST =>MAP IT
+		 //2. Payment Date = MM/DD/YYYY =>Map IT
+		 //3. Payment Name = PRO #
+		 //4. Receiver Name = account Name not carrier name
+		 //5. Receiver ID = Our systems carrier ID #
+		 //6. Receiver Account Number = account #
+		 //7. Receiver Comments = pro, invoice # =>Map it
+		 //8. Receiver Bank ID = routing number
+		 //9. Receiver Amount = float
+		 //10. Receiver Addenda = 'This payment is from Intl Transport Systems on our PRO # ' . $carrier_invoices['id' and your inv # ... =>map it
 		 
-		 $carrier_invoices = Load::select('routing_number', 'account_number', 'carrier_rate', 'account_type', 'account_name', 'id')
+		//  $carrier_invoices = Load::select('routing_number', 'account_number', 'carrier_rate', 'account_type', 'account_name', 'id')
+		//  ->where('payment_method', "ACH")->where('carrierPayStatus', "APPRVD")
+		//  ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
+		//  ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
+		//  ->get();
+
+
+
+		// $carrier_invoices->map(function ($carrier_invoices) {
+  //   			$carrier_invoices['addenda'] = 'This payment is from Intl Transport Systems on our PRO # ' . $carrier_invoices['id'];
+  //   			return $carrier_invoices;
+		// 	});
+
+		//  $carrier_invoices->map(function ($carrier_invoices) {
+  //   			$carrier_invoices['addenda_type'] = 'FRF';
+  //   			return $carrier_invoices;
+		// 	});
+
+		  $carrier_invoices = Load::select('id', 'account_name', 'carrier_id', 'account_number', 'vendor_invoice_number', 'routing_number', 'carrier_rate', 'carrier_name' )
 		 ->where('payment_method', "ACH")->where('carrierPayStatus', "APPRVD")
 		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
 		 ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
 		 ->get();
 
-
-
-		$carrier_invoices->map(function ($carrier_invoices) {
-    			$carrier_invoices['addenda'] = 'This payment is from Intl Transport Systems on our PRO # ' . $carrier_invoices['id'];
+		 $carrier_invoices->map(function ($carrier_invoices) {
+    			date_default_timezone_set("America/Chicago");
+        		$currentDate = Carbon::now()->format('m/d/Y');
+    			$carrier_invoices['payment_date'] = $currentDate;
     			return $carrier_invoices;
 			});
 
 		 $carrier_invoices->map(function ($carrier_invoices) {
-    			$carrier_invoices['addenda_type'] = 'FRF';
+    			$carrier_invoices['company_entry_description'] = 'FRTCOST';
     			return $carrier_invoices;
 			});
 
-
-		 // $updates = Load::where('payment_method', "ACH")->where('carrierPayStatus', "APPRVD")
-		 // ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') >= STR_TO_DATE('{$start_date}', '%m/%d/%Y')")
-		 // ->whereRaw("STR_TO_DATE(`vendor_invoice_date`, '%m/%d/%Y') <= STR_TO_DATE('{$end_date}', '%m/%d/%Y')")
-		 // ->get();
-
-		 //Todays Date
-		  date_default_timezone_set("America/Chicago");
-        
-  $currentDate = Carbon::now();
-
-		//  foreach ($updates as $update)
-		//  {
 		 
-		// \DB::table('loads')->where('id', $update->id)->update([
-		// 	'carrierPayStatus' => "COMPLETED",
-		// 	'upload_date' => $currentDate
-		// ]);
-		// }	
+
+		 // $carrier_invoices->map(function ($carrier_invoices) {
+   //  			$carrier_invoices['receiver_comments'] = $carrier_invoices['id'] . ',' . $carrier_invoices['vendor_invoice_number'] . ',' . $carrier_invoices['carrier_name'];
+   //  			return $carrier_invoices;
+			// });
+
+		 // $carrier_invoices->map(function ($carrier_invoices) {
+   //  			$carrier_invoices['receiver_addenda'] = 'This payment is from Intl Transport Systems on our PRO ' . $carrier_invoices['id'] . ' for your invoice ' . $carrier_invoices['vendor_invoice_number'];
+   //  			return $carrier_invoices;
+			// });
+	
+			
 
 		 
 
@@ -527,8 +526,6 @@ class MaatwebsiteDemoController extends Controller
 	        {
 	        	
 				$sheet->fromArray($carrier_invoices);
-
-				$sheet->setColumnFormat(array('A'=>'0000'));
 
 			});
 
