@@ -389,18 +389,20 @@ class MaatwebsiteDemoController extends Controller
 
 
 
-		$carrier_invoices = Load::select('routing_number', 'account_number', 'carrier_rate', 'account_type', 'account_name', 'id')
+		$carrier_invoices = Load::select('account_name', 'carrier_id', 'account_number', 'vendor_invoice_number', 'routing_number', 'carrier_rate', 'id')
 		->where('id', $id)->get();
 
 
 
 		$carrier_invoices->map(function ($carrier_invoices) {
-    			$carrier_invoices['addenda'] = 'This payment is from Intl Transport Systems on our PRO # ' . $carrier_invoices['id'];
+    			date_default_timezone_set("America/Chicago");
+        		$currentDate = Carbon::now()->format('m/d/Y');
+    			$carrier_invoices['payment_date'] = $currentDate;
     			return $carrier_invoices;
 			});
 
 		 $carrier_invoices->map(function ($carrier_invoices) {
-    			$carrier_invoices['addenda_type'] = 'FRF';
+    			$carrier_invoices['company_entry_description'] = 'FRTCOST';
     			return $carrier_invoices;
 			});
 
@@ -416,7 +418,7 @@ class MaatwebsiteDemoController extends Controller
 	        	
 				$sheet->fromArray($carrier_invoices);
 
-				$sheet->setColumnFormat(array('A'=>'0000'));
+				// $sheet->setColumnFormat(array('A'=>'0000'));
 
 			});
 
