@@ -103,8 +103,7 @@ class Journal extends Model
     // ]);
 
 
-
-    $journal_entry = Journal::select('account_name_routing', 'id', 'account_number', 'reference_number', 'routing_number', 'payment_amount','id')
+    $journal_entry = Journal::select('account_name_routing', 'id', 'account_number', 'reference_number', 'routing_number', 'payment_amount')
     ->where('id', $id)->get();
 
   
@@ -120,6 +119,12 @@ class Journal extends Model
     //   });
 
     $journal_entry->map(function ($journal_entry) {
+          $journal_entry['id_2'] = 330;
+          return $journal_entry;
+      });
+
+
+    $journal_entry->map(function ($journal_entry) {
           date_default_timezone_set("America/Chicago");
             $currentDate = Carbon::now()->format('m/d/Y');
           $journal_entry['payment_date'] = $currentDate;
@@ -130,7 +135,7 @@ class Journal extends Model
           $journal_entry['company_entry_description'] = 'FRTCOST';
           return $journal_entry;
       });
-     
+
 
      //Todays Date
     date_default_timezone_set("America/Chicago");
