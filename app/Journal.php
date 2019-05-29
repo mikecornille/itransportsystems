@@ -104,20 +104,33 @@ class Journal extends Model
 
 
 
-    $journal_entry = Journal::select('routing_number', 'account_number', 'payment_amount', 'account_type', 'account_name_routing', 'id')
+    $journal_entry = Journal::select('account_name_routing', 'id', 'account_number', 'reference_number', 'routing_number', 'payment_amount','id')
     ->where('id', $id)->get();
 
+  
 
+    // $journal_entry->map(function ($journal_entry) {
+    //       $journal_entry['addenda'] = 'This payment is from Intl Transport Systems on our PRO # ' . $journal_entry['id'];
+    //       return $journal_entry;
+    //   });
+
+    //  $journal_entry->map(function ($journal_entry) {
+    //       $journal_entry['addenda_type'] = 'FRF';
+    //       return $journal_entry;
+    //   });
 
     $journal_entry->map(function ($journal_entry) {
-          $journal_entry['addenda'] = 'This payment is from Intl Transport Systems on our PRO # ' . $journal_entry['id'];
+          date_default_timezone_set("America/Chicago");
+            $currentDate = Carbon::now()->format('m/d/Y');
+          $journal_entry['payment_date'] = $currentDate;
           return $journal_entry;
       });
 
      $journal_entry->map(function ($journal_entry) {
-          $journal_entry['addenda_type'] = 'FRF';
+          $journal_entry['company_entry_description'] = 'FRTCOST';
           return $journal_entry;
       });
+     
 
      //Todays Date
     date_default_timezone_set("America/Chicago");
