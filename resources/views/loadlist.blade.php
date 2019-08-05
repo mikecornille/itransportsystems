@@ -347,7 +347,7 @@
         <th>Trailer</th>
         <th>Ready Date</th>
         <th>Deliver By</th>
-        <th>Customer</th>
+        
         <th>Urgency</th>
         <th>Load Type</th>
         <th>Commodity</th>
@@ -368,8 +368,7 @@
 
 
 			
-$myvalue = $load[0]->customer;
-            $arr = explode(' ',trim($myvalue));
+
 			
 
 
@@ -383,7 +382,7 @@ $myvalue = $load[0]->customer;
         <td>{{ $load[0]->trailer_type }}</td>
         <td>{{ date("m/d", strtotime($load[0]->pick_date)) . ' ' . (date("g:ia", strtotime($load[0]->pick_time))) }}</td>
         <td>{{ date("m/d", strtotime($load[0]->delivery_date)) . ' ' . (date("g:ia", strtotime($load[0]->delivery_time))) }}</td>
-        <td>{{ $arr[0] }}</td>
+       
         
         
 		@if ($load[0]->urgency === 'Screaming')
@@ -459,7 +458,7 @@ $myvalue = $load[0]->customer;
         <th>Trailer</th>
         <th>Ready Date</th>
         <th>Deliver By</th>
-        <th>Customer</th>
+        
         <th>Urgency</th>
         <th>Load Type</th>
         <th>Commodity</th>
@@ -479,8 +478,7 @@ $myvalue = $load[0]->customer;
       @foreach($open_loads as $load)
       	<?php
 			
-        $myvalue = $load[0]->customer;
-            $arr = explode(' ',trim($myvalue));
+        
 		?>
 		
       <tr class="loadlist_row alt-colors">
@@ -489,7 +487,7 @@ $myvalue = $load[0]->customer;
         <td>{{ $load->trailer_type }}</td>
         <td>{{ date("m/d", strtotime($load->pick_date)) . ' ' . (date("g:ia", strtotime($load->pick_time))) }}</td>
         <td>{{ date("m/d", strtotime($load->delivery_date)) . ' ' . (date("g:ia", strtotime($load->delivery_time))) }}</td>
-        <td>{{ $arr[0] }}</td>
+        
         
 		@if ($load->urgency === 'Screaming')
         <td class="text-danger">{{ $load->urgency }}</td>
