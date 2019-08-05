@@ -337,7 +337,114 @@
 
 </div>
 
+<h1 class="text-center text-success">Short List</h1>
 
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Pick</th>
+        <th>Delivery</th>
+        <th>Trailer</th>
+        <th>Ready Date</th>
+        <th>Deliver By</th>
+        <th>Customer</th>
+        <th>Urgency</th>
+        <th>Load Type</th>
+        <th>Commodity</th>
+        <th>Notes</th>
+        <th>Name</th>
+        <th>Dims</th>
+        <th>Offer</th>
+        <th>Post</th>
+        <th>Mile</th>
+        <th>Billing</th>
+        
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach($grouped as $load)
+      	<?php
+
+
+			
+
+			
+
+
+			
+
+		?>
+		
+      <tr class="loadlist_row alt-colors">
+        <td>{{ $load[0]->pick_city . ', ' . $load[0]->pick_state }}</td>
+        <td>{{ $load[0]->delivery_city . ', ' . $load[0]->delivery_state . ' (' . $load[0]->miles . 'mi')' }}</td>
+        <td>{{ $load[0]->trailer_type }}</td>
+        <td>{{ date("m/d", strtotime($load[0]->pick_date)) . ' ' . (date("g:ia", strtotime($load[0]->pick_time))) }}</td>
+        <td>{{ date("m/d", strtotime($load[0]->delivery_date)) . ' ' . (date("g:ia", strtotime($load[0]->delivery_time))) }}</td>
+        
+        
+		@if ($load[0]->urgency === 'Screaming')
+        <td class="text-danger">{{ $load[0]->urgency }}</td>
+        @elseif ($load[0]->urgency === 'Fossilized')
+        <td class="text-warning">{{ $load[0]->urgency }}</td>
+        @elseif ($load[0]->urgency === 'Stabber')
+        <td class="text-danger">{{ $load[0]->urgency }}</td>
+        @else
+        <td>{{ $load[0]->urgency }}</td>
+        @endif
+        
+		<td>{{ $load[0]->load_type }}</td>
+		
+
+		<td><a href="#" class="inactiveLink" title="Commodity" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load[0]->commodity }}">{{ substr($load[0]->commodity, 0, 25) }} {{ strlen($load[0]->commodity) > 25 ? "..." : "" }}</a></td>
+		
+		<td><a href="#" class="inactiveLink" title="Special Instructions" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load[0]->special_instructions }}">{{ substr($load[0]->special_instructions, 0, 25) }} {{ strlen($load[0]->special_instructions) > 25 ? "..." : "" }}</a></td>
+
+		
+		
+
+		<!-- <td><a href="{{ URL::to('/countIncomingCalls/' . $load[0]->id) }}" title="edit">{{ $load[0]->countIncomingCalls }}</a> | <a href="{{ URL::to('/countOutgoingCalls/' . $load[0]->id) }}" title="edit">{{ $load[0]->countOutgoingCalls }}</a> | <a href="{{ URL::to('/emailedOut/' . $load[0]->id) }}" title="edit">{{ $load[0]->emailedOut }}</a></td> -->
+
+		@if ($load[0]->handler === 'KING')
+        <td><a style="color: #65267F" href="#" class="inactiveLink" title="Load Activity" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load[0]->notes_on_load }}">{{ $load[0]->handler }}</a></td>
+        
+        @elseif ($load[0]->handler === 'BANSBERG')
+        <td><a style="color: #FA7708" href="#" class="inactiveLink" title="Load Activity" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load[0]->notes_on_load }}">{{ $load[0]->handler }}</a></td>
+        
+        @elseif ($load[0]->handler === 'MESIK')
+        <td><a style="color: #26597F" href="#" class="inactiveLink" title="Load Activity" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load[0]->notes_on_load }}">{{ $load[0]->handler }}</a></td>
+     
+        
+        @elseif ($load[0]->handler === 'THOMPSON')
+        <td><a style="color: #277F40" href="#" class="inactiveLink" title="Load Activity" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load[0]->notes_on_load }}">{{ $load[0]->handler }}</a></td>
+
+        @elseif ($load[0]->handler === 'NOTES')
+        <td><a style="color: #808080" href="#" class="inactiveLink" title="Load Activity" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load[0]->notes_on_load }}">{{ $load[0]->handler }}</a></td>
+
+        @else
+
+        <td class="text-danger"></td>
+        @endif
+        
+
+        <td>{{ $load[0]->length . '\' x ' . $load[0]->width . '\' x ' . $load[0]->height . '\' ' . $load[0]->weight . 'lbs' }}</td>
+        
+        
+        <td class="offering_rate">${{ $load[0]->offer_money }}</td>
+        <td class="margin">${{ $load[0]->post_money }}</td>
+        
+        <td class="billing_rate">${{ $load[0]->billing_money }}</td>
+        
+        <td><a href="{{ URL::to('/editLoadlist/' . $load[0]->id) }}" title="edit"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> | <a href="#" title="{{ $load[0]->created_by }}" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="{{ $load[0]->customer . ' ' . (date("m/d g:ia", strtotime($load[0]->created_at))) }}"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a> | <a href="{{ URL::to('/duplicateLoadlist/' . $load[0]->id) }}" title="duplicate"><span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span></a> | <a href="{{ URL::to('/messagebidder/' . $load[0]->id) }}" title="email creator"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a> | <a href="{{ URL::to('/newDateLoadlist/' . $load[0]->id) }}" title="post next day"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailLoad/' . $load[0]->id) }}" title="email"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a> | <a href="{{ URL::to('/emailTruckOffer/' . $load[0]->id) }}" title="email truck template"><span class="glyphicon glyphicon-road" aria-hidden="true"></span></a> | <a onclick="return confirm('Are you sure?')" href="{{ URL::to('/deleteLoadlist/' . $load[0]->id) }}" title="delete"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+
+
+      </tr>
+
+
+@endforeach
+    </tbody>
+  </table>
 
 
 <h1 class="text-center text-success">Full List</h1>
@@ -360,9 +467,9 @@
         <th>Dims</th>
         <th>Offer</th>
         <th>Post</th>
-        <th>Mile</th>
+        
         <th>Billing</th>
-        <th>Margin</th>
+        
         <th>Actions</th>
       </tr>
     </thead>
@@ -375,7 +482,7 @@
 		
       <tr class="loadlist_row alt-colors">
         <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
-        <td>{{ $load->delivery_city . ', ' . $load->delivery_state . ' (' . $load->miles . 'mi : ' . '$' }}</td>
+        <td>{{ $load->delivery_city . ', ' . $load->delivery_state . ' (' . $load->miles . 'mi)' }}</td>
         <td>{{ $load->trailer_type }}</td>
         <td>{{ date("m/d", strtotime($load->pick_date)) . ' ' . (date("g:ia", strtotime($load->pick_time))) }}</td>
         <td>{{ date("m/d", strtotime($load->delivery_date)) . ' ' . (date("g:ia", strtotime($load->delivery_time))) }}</td>
