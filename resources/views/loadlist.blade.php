@@ -378,7 +378,7 @@
 		
       <tr class="loadlist_row alt-colors">
         <td>{{ $load[0]->pick_city . ', ' . $load[0]->pick_state }}</td>
-        <td>{{ $load[0]->delivery_city . ', ' . $load[0]->delivery_state . ' (' . $load[0]->miles . 'mi')' }}</td>
+        <td>{{ $load[0]->delivery_city . ', ' . $load[0]->delivery_state . ' ' . $load[0]->miles }}</td>
         <td>{{ $load[0]->trailer_type }}</td>
         <td>{{ date("m/d", strtotime($load[0]->pick_date)) . ' ' . (date("g:ia", strtotime($load[0]->pick_time))) }}</td>
         <td>{{ date("m/d", strtotime($load[0]->delivery_date)) . ' ' . (date("g:ia", strtotime($load[0]->delivery_time))) }}</td>
@@ -482,7 +482,7 @@
 		
       <tr class="loadlist_row alt-colors">
         <td>{{ $load->pick_city . ', ' . $load->pick_state }}</td>
-        <td>{{ $load->delivery_city . ', ' . $load->delivery_state . ' (' . $load->miles . 'mi)' }}</td>
+        <td>{{ $load->delivery_city . ', ' . $load->delivery_state . ' ' . $load->miles }}</td>
         <td>{{ $load->trailer_type }}</td>
         <td>{{ date("m/d", strtotime($load->pick_date)) . ' ' . (date("g:ia", strtotime($load->pick_time))) }}</td>
         <td>{{ date("m/d", strtotime($load->delivery_date)) . ' ' . (date("g:ia", strtotime($load->delivery_time))) }}</td>
