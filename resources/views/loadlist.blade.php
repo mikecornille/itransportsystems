@@ -356,7 +356,7 @@
         <th>Dims</th>
         <th>Offer</th>
         <th>Post</th>
-        <th>Mile</th>
+        
         <th>Billing</th>
         
         <th>Actions</th>
