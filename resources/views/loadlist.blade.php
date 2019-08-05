@@ -377,7 +377,7 @@
         <td>{{ $load[0]->trailer_type }}</td>
         <td>{{ date("m/d", strtotime($load[0]->pick_date)) . ' ' . (date("g:ia", strtotime($load[0]->pick_time))) }}</td>
         <td>{{ date("m/d", strtotime($load[0]->delivery_date)) . ' ' . (date("g:ia", strtotime($load[0]->delivery_time))) }}</td>
-        <td>{{ $arr[0] }}</td>
+      
         
 		@if ($load[0]->urgency === 'Screaming')
         <td class="text-danger">{{ $load[0]->urgency }}</td>
