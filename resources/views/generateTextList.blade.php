@@ -14,7 +14,7 @@
 @foreach ($loads as $load)
     
 	<p>Driver's Cell: {{ $load->carrier_driver_cell }}</p>
-    <p class="text-primary">Good Morning this is {{ \Auth::user()->name }} with International Transport Systems, I was checking to see how you are looking for pick up at {{ $load->pick_company }} in {{ $load->pick_city . ', ' . $load->pick_state }}?  PRO # {{ $load->id }}</p>
+    <p class="text-primary">Good Morning this is {{ \Auth::user()->name }} with International Transport Systems, I was checking to see how you are looking for the {{ $load->is_full_load == 'YES' ? 'FULL' : 'PARTIAL' }} LOAD with {{ $load->piece_count }} piece(s) picking up at {{ $load->pick_company }} in {{ $load->pick_city . ', ' . $load->pick_state }}?  PRO # {{ $load->id }}</p>
     
     <p>Pick Date: {{ $load->pick_date . ' ' . $load->pick_time }} ---- Delivery Date: {{ $load->delivery_date . ' ' . $load->delivery_time }}</p>
     <p>Short Status Mesage: {{ $load->quick_status_notes }}</p>
@@ -32,7 +32,7 @@
 @foreach ($picked as $pick)
     
 	<p>Driver's Cell: {{ $pick->carrier_driver_cell }}</p>
-    <p class="text-warning">Good Morning this is {{ \Auth::user()->name }} with International Transport Systems, I was checking to see how you are looking for delivery at {{ $pick->delivery_company }} in {{ $pick->delivery_city . ', ' . $pick->delivery_state }}?  PRO # {{ $pick->id }}</p>
+    <p class="text-warning">Good Morning this is {{ \Auth::user()->name }} with International Transport Systems, I was checking to see how you are looking for delivery of the {{ $load->is_full_load == 'YES' ? 'FULL' : 'PARTIAL' }} LOAD with {{ $load->piece_count }} piece(s) at {{ $pick->delivery_company }} in {{ $pick->delivery_city . ', ' . $pick->delivery_state }}?  PRO # {{ $pick->id }}</p>
     <p>Pick Date: {{ $pick->pick_date . ' ' . $pick->pick_time }} ---- Delivery Date: {{ $pick->delivery_date . ' ' . $pick->delivery_time }}</p>
     <p>Short Status Mesage: {{ $pick->quick_status_notes }}</p>
 
