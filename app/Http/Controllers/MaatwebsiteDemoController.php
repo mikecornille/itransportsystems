@@ -882,7 +882,7 @@ $positivePayResults->upload_date = Carbon::parse($positivePayResults->upload_dat
 
        	// $recipients = ['joem@itransys.com', 'mikeb@itransys.com', 'robert@itransys.com', 'loads@truckstop.com', 'mikec@itransys.com', 'mattc@itransys.com', 'mattk@itransys.com', 'luke@itransys.com', 'aj@itransys.com'];
 
-       	$recipients = ['loads@truckstop.com', 'mikec@itransys.com'];
+       	$recipients = ['loads@truckstop.com', 'mikec@itransys.com', 'mattk@itransys.com'];
 
         $message->to($recipients)->subject('Truckstop Posted')
 			->from(\Auth::user()->email, \Auth::user()->name)
