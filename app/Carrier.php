@@ -52,6 +52,7 @@ class Carrier extends Model
         'accounting_phone',
         'security',
         'ach_token',
+        'workers_comp'
         
         // 'fmcsa_time'
         // 'active',

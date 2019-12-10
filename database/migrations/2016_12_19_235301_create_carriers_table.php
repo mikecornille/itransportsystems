@@ -58,6 +58,7 @@ class CreateCarriersTable extends Migration
             $table->string('insurance_company_email')->nullable();
             $table->string('security')->nullable();
             $table->string('ach_token')->nullable();
+            $table->string('workers_comp')->nullable();
             //$table->string('active')->nullable();
             //$table->string('google_carrier')->nullable();
             // $table->string('oos_driver_national')->nullable();

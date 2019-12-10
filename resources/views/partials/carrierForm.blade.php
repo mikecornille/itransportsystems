@@ -129,6 +129,16 @@
 	  		{{ Form::text('bc_contract', null, ['class' => 'form-control']) }}
 		</div>
 	</div>
+	<div class="row">
+	  	<div class="col-md-4">
+	  		{{ Form::label('workers_comp', 'Workers Comp') }}
+	  		{{ Form::select('workers_comp', 
+				[
+	  		 		'YES' => 'YES',
+			  		'NO' => 'NO',
+				], null, ['placeholder' => 'Make a selection...', 'class' => 'form-control']) }}
+		</div>
+	</div>
 	<hr>
 	<div class="row">
 	  	<div class="col-md-4">
