@@ -64,6 +64,7 @@ return [
             'prefix' => '',
             'strict' => true,
             'engine' => null,
+            'dump_command_timeout' => 60 * 3
         ],
 
         'pgsql' => [
