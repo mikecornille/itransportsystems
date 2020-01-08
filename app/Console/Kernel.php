@@ -28,15 +28,15 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
         $schedule->command('backup:clean')->daily()->at('01:00');
         $schedule->command('backup:run')->daily()->at('02:00');
-        $schedule->command('weeklyProfitReport')->weekly()->fridays()->at('12:00')->timezone('America/Chicago');
-        $schedule->command('dailyCarriersSetUp')->weekdays()->at('14:45')->timezone('America/Chicago');
-        $schedule->command('screamerCheck')->weekdays()->at('10:45')->timezone('America/Chicago');
-        $schedule->command('brokerCallEmail')->weekdays()->twiceDaily(10, 14)->timezone('America/Chicago');
-        $schedule->command('followUpScreamerEmail')->weekdays()->at('12:30')->timezone('America/Chicago');
+        //$schedule->command('weeklyProfitReport')->weekly()->fridays()->at('12:00')->timezone('America/Chicago');
+        //$schedule->command('dailyCarriersSetUp')->weekdays()->at('14:45')->timezone('America/Chicago');
+        //$schedule->command('screamerCheck')->weekdays()->at('10:45')->timezone('America/Chicago');
+        //$schedule->command('brokerCallEmail')->weekdays()->twiceDaily(10, 14)->timezone('America/Chicago');
+        //$schedule->command('followUpScreamerEmail')->weekdays()->at('12:30')->timezone('America/Chicago');
         //$schedule->command('weeklyCustomerTouch')->weekly()->thursdays()->at('10:00')->timezone('America/Chicago');
-        $schedule->command('currentCarrierInspection')->daily()->at('14:15')->timezone('America/Chicago');
-        $schedule->command('biddersCheckOnTheRoad')->weekdays()->at('11:45')->timezone('America/Chicago');
-        $schedule->command('brokersCheckMyStats')->weekdays()->at('11:15')->timezone('America/Chicago');
+        //$schedule->command('currentCarrierInspection')->daily()->at('14:15')->timezone('America/Chicago');
+        //$schedule->command('biddersCheckOnTheRoad')->weekdays()->at('11:45')->timezone('America/Chicago');
+        //$schedule->command('brokersCheckMyStats')->weekdays()->at('11:15')->timezone('America/Chicago');
         $schedule->command('insertLedgerRecords')->hourlyAt(30)->timezone('America/Chicago');
         //$schedule->command('sendEmailToVendorReceivingACH')->weekly()->tuesdays()->at('11:35')->timezone('America/Chicago');
 
